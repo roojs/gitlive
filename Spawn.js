@@ -126,7 +126,9 @@ Spawn.prototype = {
             
         this.pid = ret.child_pid;
         
-        
+        if (this.debug) {
+            print("PID: " + pid);
+        }
         function tidyup()
         {
             if (_this.pid) {
@@ -211,6 +213,7 @@ Spawn.prototype = {
         // start mainloop if not async..
         if (!this.async) {
             if (this.pid !== false) {
+                
                 ctx = GLib.main_loop_new (null, false);
                 GLib.main_loop_run(ctx, false); // wait fore exit?
             } else {
