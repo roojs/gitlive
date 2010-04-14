@@ -87,7 +87,7 @@ Spawn.prototype = {
     /**
      * 
      * @method run
-     * Run the 
+     * Run the configured command.
      * 
      */
     
