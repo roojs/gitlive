@@ -72,6 +72,9 @@ Git.prototype = {
                 for(var k in arguments[i]) {
                     var v = arguments[i][k];
                     args.push('--' + k);
+                    if (v === true) {
+                        continue;
+                    }
                     args.push(v);
                 }
             }
