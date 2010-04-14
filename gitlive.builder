@@ -3,10 +3,11 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkDialog" id="clone_repo">
+    <property name="width_request">500</property>
+    <property name="height_request">150</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Clone Repsoitory</property>
     <property name="resizable">False</property>
-    <property name="window_position">center</property>
     <property name="type_hint">normal</property>
     <property name="deletable">False</property>
     <property name="has_separator">False</property>
@@ -91,7 +92,6 @@
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="fill">False</property>
             <property name="position">1</property>
           </packing>
         </child>
