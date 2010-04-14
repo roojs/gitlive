@@ -304,6 +304,7 @@ function run(cfg) {
     cfg.async = false;
     var s = new Spawn(cfg);
     var ret = s.run();
+    print(s);
     return s.output;
 }
 
