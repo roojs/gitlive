@@ -27,8 +27,13 @@ Spawn = imports.Spawn;
  * 
  * 
  */
-var prototypeInit = false;
+//var prototypeInit = false;
 function Git( repo) {
+    
+    if (!GLib.file_test(repo, GLib.FileTest.IS_DIR)) {
+        throw "Repo does not exist";
+    }
+    this.repo = repo;
     /*
     if (!prototypeInit) {
         // proto type on set up yet..
@@ -42,6 +47,7 @@ function Git( repo) {
     
 }
 Git.prototype = {
+    repo : ''
     run : function() {
         var args = [];
         
@@ -59,7 +65,11 @@ Git.prototype = {
             }
              
         }
-        
+        var out = Spawn.run({
+            env : [ "GITPATH=" + this.repo ],
+            cwd : this.repo
+            args: args
+        });
         
     }
 }
