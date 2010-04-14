@@ -110,19 +110,19 @@ Spawn.prototype = {
     
     run : function()
     {
+        
+        var _this = this;
+        
+        var err_src = false;
+        var out_src = false;
+        var ctx = false; 
         var ret = {};
+        
         GLib.spawn_async_with_pipes(this.cwd, this.args, null, 
             GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
             null, null, ret);
             
         this.pid = ret.child_pid;
-        
-        var ctx = false; 
-       
-        var _this = this;
-        
-        var err_src = false;
-        var out_src = false;
         
         
         function tidyup()
