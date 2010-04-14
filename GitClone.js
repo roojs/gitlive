@@ -1,6 +1,9 @@
 ///<script type="text/javascript">
 
 Gtk      = imports.gi.Gtk;
+
+imports.gtkbuilder;
+
 Gtk.init(null,null);
 
 var builder = new Gtk.Builder();
