@@ -77,9 +77,9 @@ Spawn.prototype = {
      */
     result: 0
     /**
-     * @property pid {Number} pid of chlid prociss
+     * @property pid {Number} pid of child process (of false if it's not running)
      */
-    pid : 0,
+    pid : false,
     
     /**
      * @property done {Boolean} has the process completed.
@@ -109,9 +109,9 @@ Spawn.prototype = {
         
         GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
             _this.result = result;
-            _this.done = true;
             
             GLib.spawn_close_pid(_this.pid);
+            _this.pid = false;
             if (ctx) {
                 GLib.main_loop_quit(ctx);
             }
@@ -162,13 +162,13 @@ Spawn.prototype = {
              readstr(err_ch, 'stderr');
              
         });
-        if (!this.done) {
+        if (this.pid !== false) {
             // child can exit before we get this far..
             if (this.listeners.input) {
                 this.write(this.listeners.input.call(this));
             }
         }
-        if (!this.done && !this.async) {
+        if (this.pid !== false && !this.async) {
             
             ctx = GLib.main_loop_new (null, false);
             GLib.main_loop_run(ctx, false); // wait fore exit?
