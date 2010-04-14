@@ -171,7 +171,7 @@ Spawn.prototype = {
         GLib.source_remove(out_src);
         
         
-        return retval;
+        return this;
     
     },
     write : function(str) // write a line to 
