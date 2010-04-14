@@ -1,6 +1,10 @@
 ///<script type="text/javascript">
 
-Gio      = imports.gi.Gio;
-GLib      = imports.gi.GLib;
+Gtk      = imports.gi.Gtk;
 
-Spawn = imports.Spawn;
+var builder = new Gtk.Builder();
+builder.add_from_file(__script_dir__+'/gitlive.builder');
+var win = builder.get_object('clone_repo');
+win.show();
+
+ 
