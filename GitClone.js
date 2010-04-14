@@ -18,9 +18,9 @@ builder.get_object('cancel').signal.clicked.connect( function() {
 
 var hosts = builder.get_object('hosts');
 hosts.get_model().clear();
-hosts.append("http://public.akbkhome.com");
-hosts.append("http://private.akbkhome.com");
-hosts.append("git://git.gnome.org");
+hosts.append_text("http://public.akbkhome.com");
+hosts.append_text("http://private.akbkhome.com");
+hosts.append_text("git://git.gnome.org");
 
 
 win.show_all();
