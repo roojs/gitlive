@@ -19,8 +19,8 @@ GLib      = imports.gi.GLib;
 *   args : [ 'ls', '-l' ],
 *   env : [], // optional
 *   listeners : {
-        output : function (line) { },
-*       stderr :  function (line) { },
+        output : function (line) { Seed.print(line); },
+*       stderr :  function (line) {Seed.print("ERROR" + line);  },
 *       input : function() { return 'xxx' },
 *   }
 *  });
@@ -33,13 +33,14 @@ GLib      = imports.gi.GLib;
  * @class Spawn
  * @param cfg {Object} settings - see properties.
  * 
- * @arg async {Boolean} return instantly, or wait for exit. (default no)
- * @arg exceptions {Boolean} throw exception on failure (default no)
- * @arg cwd {String} working directory. (defaults to home directory)
- * @arg args {Array} arguments eg. [ 'ls', '-l' ]
- * @arg listeners {Object} handlers for output, stderr, input
+ * @arg cwd {String}            working directory. (defaults to home directory)
+ * @arg args {Array}            arguments eg. [ 'ls', '-l' ]
+ * @arg listeners {Object} (optional) handlers for output, stderr, input
  *     stderr/output both receive output line as argument
  *     input should return any standard input
+ * @arg env {Array}             enviroment eg. [ 'GITDIR=/home/test' ]
+ * @arg async {Boolean} (optional)return instantly, or wait for exit. (default no)
+ * @arg exceptions {Boolean}    throw exception on failure (default no)
  * 
  * 
  */
@@ -59,6 +60,7 @@ Spawn.prototype = {
     
     listeners : false,
     async : false,
+    env : null,
     cwd: false,
     args: false,
     exceptions : false,
