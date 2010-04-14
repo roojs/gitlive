@@ -45,6 +45,7 @@
             </child>
             <child>
               <object class="GtkHBox" id="hbox1">
+                <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <child>
                   <object class="GtkComboBox" id="combobox1">
@@ -76,10 +77,12 @@
               <packing>
                 <property name="left_attach">1</property>
                 <property name="right_attach">2</property>
+                <property name="y_options">GTK_FILL</property>
               </packing>
             </child>
             <child>
               <object class="GtkComboBox" id="combobox2">
+                <property name="height_request">30</property>
                 <property name="visible">True</property>
               </object>
               <packing>
@@ -92,6 +95,7 @@
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="fill">False</property>
             <property name="position">1</property>
           </packing>
         </child>
