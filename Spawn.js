@@ -310,9 +310,9 @@ function run(cfg) {
 // test
 
 
-Seed.print(run({
-    args: ['ls', '/tmp'],
-    //debug : true
-}));
+//Seed.print(run({
+//    args: ['ls', '/tmp'],
+//    //debug : true
+//}));
 
      
