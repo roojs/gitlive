@@ -162,20 +162,20 @@ Spawn.prototype = {
                 this.write(this.listeners.input.call(this));
             }
         }
+        // start mainloop if not async..
         if (this.pid !== false && !this.async) {
             
             ctx = GLib.main_loop_new (null, false);
             GLib.main_loop_run(ctx, false); // wait fore exit?
         }
         // read any resulting data.
+        // not sure if we should be blocking here..
         readstr(this.out_ch);
         readstr(this.err_ch);
         
         // clean up.
         
-        
         GLib.io_channel_close(this.in_ch);
-        
         GLib.io_channel_close(this.out_ch);
         GLib.io_channel_close(this.err_ch);
         this.in_ch = false;
