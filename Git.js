@@ -57,8 +57,7 @@ Git.prototype = {
                     args.push(v);
                 }
             }
-            
-            
+             
         }
         
         
