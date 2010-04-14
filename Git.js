@@ -15,8 +15,9 @@ Spawn = imports.Spawn;
  * 
  * var g = new Git({ repo: '/home/me/git'});
  * 
- * g.commit({ all : true , message : 'test' }) 
+ * g.run('commit', { all : true , message : 'test' }, 'filename',) 
  * 
+ * g.
  */
 
 
@@ -38,7 +39,27 @@ function Git( repo) {
     
 }
 Git.prototype = {
-    _run(
+    _run : function() {
+        var args = [];
+        
+        for (var i=0;i< arguments.length;i++) {
+            if (typeof(arguments[i]) == 'string') {
+                args.push(arguments[i]);
+                continue;
+            }
+            if (typeof(arguments[i]) == 'object') {
+                for(var k in arguments[i]) {
+                    var v = arguments[i][k];
+                    args.push('--' + k);
+                    args.push(v);
+                }
+            }
+            
+            
+        }
+        
+        
+    }
 }
 
 
