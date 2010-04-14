@@ -140,20 +140,22 @@ Spawn.prototype = {
         GLib.io_channel_set_flags (this.err_ch,GLib.IOFlags.NONBLOCK);
 
       
-        
+        // add handlers for output and stderr.
         var out_src= GLib.io_add_watch(this.out_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.OUT + GLib.IOCondition.IN  + GLib.IOCondition.PRI, function()
         {
-            readstr(this.out_ch,  'output');
+            _this.readstr(this.out_ch);
             
         });
         var err_src= GLib.io_add_watch(this.err_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.ERR + GLib.IOCondition.IN + GLib.IOCondition.PRI + GLib.IOCondition.OUT, 
             function()
         {
-             readstr(this.err_ch, 'stderr');
+            _this.readstr(this.err_ch);
              
         });
+        
+        // call input.. 
         if (this.pid !== false) {
             // child can exit before we get this far..
             if (this.listeners.input) {
@@ -166,8 +168,8 @@ Spawn.prototype = {
             GLib.main_loop_run(ctx, false); // wait fore exit?
         }
         // read any resulting data.
-        readstr(this.out_ch,  'output');
-        readstr(this.err_ch,  'error');
+        readstr(this.out_ch);
+        readstr(this.err_ch);
         
         // clean up.
         
@@ -206,16 +208,16 @@ Spawn.prototype = {
         
     }
     /**
-     * read from pipe 
+     * read from pipe and call appropriate listerner and add to output or stderr string.
      * @arg giochannel to read from.
-     * @arg giochannel to read from.
-     * @returns GLib.IOStatus (0 == error, 1= NORMAL)
+     * @returns none
      */
 
     
     
-    read: function(ch, prop) {
-        
+    read: function(ch) 
+    {
+        var prop = ch == this.out_ch ? 'output' : 'stderr';
         while (true) {
             var x = new GLib.String();
             var status = GLib.io_channel_read_line_string (ch, x);
