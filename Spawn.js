@@ -29,6 +29,7 @@ GLib      = imports.gi.GLib;
 /**
  * @class Spawn
  * @arg async {Boolean} return instantly, or wait for exit. (default no)
+ * @arg exceptions {Boolean} throw exception on failure (default no)
  * @arg cwd {String} working directory. (defaults to home directory)
  * @arg args {Array} arguments eg. [ 'ls', '-l' ]
  * @arg listeners {Object} handlers for output, stderr, input
@@ -55,6 +56,7 @@ Spawn.prototype = {
     async : false,
     cwd: false,
     args: false,
+    exceptions : false,
     /**
      * @property output {String} resulting output
      */
@@ -169,8 +171,9 @@ Spawn.prototype = {
         GLib.io_channel_close(err_ch);
         GLib.source_remove(err_src);
         GLib.source_remove(out_src);
-        
-        
+        if (this.exceptions && this.result != 0) {
+            throw this.stderr;
+        }
         return this;
     
     },
