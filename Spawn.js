@@ -177,11 +177,18 @@ Spawn.prototype = {
         return this;
     
     },
+    /**
+     * write to stdin of process
+     * @returns GLib.IOStatus (0 == error, 1= NORMAL)
+     * 
+     */
+    
     write : function(str) // write a line to 
     {
         if (!this.in_ch) {
             return; // input is closed
         }
+        return GLib.io_channel_write_chars(this.in_ch, str, str.length, ret);
         
     }
     
