@@ -13,9 +13,13 @@ Spawn = imports.Spawn;
  * 
  * Git = import.Git.Git;
  * 
- * var g = new Git({ repo: '/home/me/git'});
+ * var g = new Git(  '/home/me/git' );
  * 
  * g.run('commit', { all : true , message : 'test' }, 'filename',) 
+ * 
+ * or 
+ * print(Git.run('/home/me/git', 'log'))
+ * 
  * 
  *  
  */
@@ -48,6 +52,14 @@ function Git( repo) {
 }
 Git.prototype = {
     repo : '',
+    /**
+     * @method run
+     * 
+     * @arg command {String} command to run
+     * @arg arguments.... {String|Object}  arguments to send to command
+     * 
+     * 
+     */
     run : function() {
         var args = [];
         
@@ -77,6 +89,29 @@ Git.prototype = {
         return out;
     }
 }
+/**
+ * @function run
+ * 
+ * @arg command {String} command to run
+ * @arg arguments.... {String|Object}  arguments to send to command
+ * 
+ * 
+ */
+
+function run() {
+    var args = [];
+    for (var i=0;i< arguments.length;i++) {
+        args.push(arguments[0]);
+    }
+    var repo = args.shift(args);
+    var x = new Git(repo);
+    x.run.apply(x, args);
+}
 
 
+// test.
+
+print(run('/home/me/git', 'log'))
+
+// test..
    
