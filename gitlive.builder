@@ -4,9 +4,10 @@
   <!-- interface-naming-policy project-wide -->
   <object class="GtkDialog" id="clone_repo">
     <property name="border_width">5</property>
+    <property name="type">popup</property>
     <property name="title" translatable="yes">Clone Repsoitory</property>
+    <property name="resizable">False</property>
     <property name="window_position">center</property>
-    <property name="default_height">100</property>
     <property name="type_hint">normal</property>
     <property name="has_separator">False</property>
     <child internal-child="vbox">
@@ -100,6 +101,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
                 <property name="image_position">right</property>
+                <signal name="activate" handler="on_ok"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -114,6 +116,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
+                <signal name="activate" handler="on_cancel"/>
               </object>
               <packing>
                 <property name="expand">False</property>
