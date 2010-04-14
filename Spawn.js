@@ -87,6 +87,19 @@ Spawn.prototype = {
     done : false,
     
     /**
+     * @property in_ch {GLib.IOChannel} input io channel
+     */
+    in_ch : false,
+    /**
+     * @property out_ch {GLib.IOChannel} output io channel
+     */
+    out_ch : false,
+    /**
+     * @property err_ch {GLib.IOChannel} stderr io channel
+     */
+    err_ch : false,
+    
+    /**
      * 
      * @method run
      * Run the configured command.
@@ -118,48 +131,27 @@ Spawn.prototype = {
             
         });
         this.in_ch = GLib.io_channel_unix_new(ret.standard_input);
-        var out_ch = GLib.io_channel_unix_new(ret.standard_output);
-        var err_ch = GLib.io_channel_unix_new(ret.standard_error);
+        this.out_ch = GLib.io_channel_unix_new(ret.standard_output);
+        this.err_ch = GLib.io_channel_unix_new(ret.standard_error);
        
         // make everything non-blocking!
         GLib.io_channel_set_flags (this.in_ch,GLib.IOFlags.NONBLOCK);
-        GLib.io_channel_set_flags (out_ch,GLib.IOFlags.NONBLOCK);
-        GLib.io_channel_set_flags (err_ch,GLib.IOFlags.NONBLOCK);
+        GLib.io_channel_set_flags (this.out_ch,GLib.IOFlags.NONBLOCK);
+        GLib.io_channel_set_flags (this.err_ch,GLib.IOFlags.NONBLOCK);
 
-        function readstr(ch, prop) {
-            while (true) {
-                var x = new GLib.String();
-                var status = GLib.io_channel_read_line_string (ch, x);
-                switch(status) {
-                    case GLib.IOStatus.NORMAL:
-                        //write(fn, x.str);
-                        if (this.listeners[prop]) {
-                            this.listeners[prop].call(this, x.str);
-                        }
-                        _this[prop] += x.str;
-                       continue;
-                    case GLib.IOStatus.AGAIN:   
-                        break;
-                    case GLib.IOStatus.ERROR:    
-                    case GLib.IOStatus.EOF:   
-                       break;
-                    
-                }
-                break;
-            }
-        }
+      
         
-        var out_src= GLib.io_add_watch(out_ch, GLib.PRIORITY_DEFAULT, 
+        var out_src= GLib.io_add_watch(this.out_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.OUT + GLib.IOCondition.IN  + GLib.IOCondition.PRI, function()
         {
-            readstr(out_ch,  'output');
+            readstr(this.out_ch,  'output');
             
         });
-        var err_src= GLib.io_add_watch(err_ch, GLib.PRIORITY_DEFAULT, 
+        var err_src= GLib.io_add_watch(this.err_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.ERR + GLib.IOCondition.IN + GLib.IOCondition.PRI + GLib.IOCondition.OUT, 
             function()
         {
-             readstr(err_ch, 'stderr');
+             readstr(this.err_ch, 'stderr');
              
         });
         if (this.pid !== false) {
@@ -174,16 +166,19 @@ Spawn.prototype = {
             GLib.main_loop_run(ctx, false); // wait fore exit?
         }
         // read any resulting data.
-        readstr(out_ch,  'output');
-        readstr(err_ch,  'error');
+        readstr(this.out_ch,  'output');
+        readstr(this.err_ch,  'error');
         
         // clean up.
         
         
         GLib.io_channel_close(this.in_ch);
+        
+        GLib.io_channel_close(this.out_ch);
+        GLib.io_channel_close(this.err_ch);
         this.in_ch = false;
-        GLib.io_channel_close(out_ch);
-        GLib.io_channel_close(err_ch);
+        this.err_ch = false;
+        this.out_ch = false;
         GLib.source_remove(err_src);
         GLib.source_remove(out_src);
         if (this.exceptions && this.result != 0) {
@@ -194,10 +189,9 @@ Spawn.prototype = {
     },
     /**
      * write to stdin of process
+     * @arg str {String} string to write to stdin of process
      * @returns GLib.IOStatus (0 == error, 1= NORMAL)
-     * 
      */
-    
     write : function(str) // write a line to 
     {
         if (!this.in_ch) {
@@ -210,6 +204,38 @@ Spawn.prototype = {
         }
         return ret.bytes_written;
         
+    }
+    /**
+     * read from pipe 
+     * @arg giochannel to read from.
+     * @arg giochannel to read from.
+     * @returns GLib.IOStatus (0 == error, 1= NORMAL)
+     */
+
+    
+    
+    read: function(ch, prop) {
+        
+        while (true) {
+            var x = new GLib.String();
+            var status = GLib.io_channel_read_line_string (ch, x);
+            switch(status) {
+                case GLib.IOStatus.NORMAL:
+                    //write(fn, x.str);
+                    if (this.listeners[prop]) {
+                        this.listeners[prop].call(this, x.str);
+                    }
+                    _this[prop] += x.str;
+                   continue;
+                case GLib.IOStatus.AGAIN:   
+                    break;
+                case GLib.IOStatus.ERROR:    
+                case GLib.IOStatus.EOF:   
+                   break;
+                
+            }
+            break;
+        }
     }
     
 };
