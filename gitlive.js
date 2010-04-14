@@ -83,82 +83,91 @@ function onChange(fm, f, of, event_type, uh) {
     var vpath = vpath_ar.join('/');
     if (!vpath.length) {
         return;
-       }
-    
-    
-    switch(event_type) {
-        case Gio.FileMonitorEvent.CHANGED:
-            return; // ingore thise?? -wait for changes_done_htin?
+    }
+    try {
             
-        case Gio.FileMonitorEvent.CHANGES_DONE_HINT:
-            var add_it = false;
-            if (typeof(just_created[path]) !='undefined') {
-                delete just_created[path];
-                Git.run(gitpath, 'add', vpath);
+        
+        switch(event_type) {
+            case Gio.FileMonitorEvent.CHANGED:
+                return; // ingore thise?? -wait for changes_done_htin?
+                
+            case Gio.FileMonitorEvent.CHANGES_DONE_HINT:
+                var add_it = false;
+                if (typeof(just_created[path]) !='undefined') {
+                    delete just_created[path];
+                    Git.run(gitpath, 'add', vpath);
+                    var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
+                    Git.run(gitpath , 'push', '--all' );
+                    notify(path,"CHANGED", sp);
+                    return;
+                }
+                
                 var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
                 Git.run(gitpath , 'push', '--all' );
                 notify(path,"CHANGED", sp);
                 return;
-            }
-            
-            var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
-            Git.run(gitpath , 'push', '--all' );
-            notify(path,"CHANGED", sp);
-            return;
-        case Gio.FileMonitorEvent.DELETED:
-            var sp = Git.run(gitpath,'rm' , vpath);
-            Git.run(gitpath , 'push', '--all' );
-            if (sp.status !=0) {
+            case Gio.FileMonitorEvent.DELETED:
+                var sp = Git.run(gitpath,'rm' , vpath);
+                Git.run(gitpath , 'push', '--all' );
+                if (sp.status !=0) {
+                    notify(path,"DELETED", sp);
+                    return;
+                }
+                sp = Git.run(gitpath,'commit' , '-a', '-m' ,vpath);
+                Git.run(gitpath , 'push', '--all' );
                 notify(path,"DELETED", sp);
                 return;
-            }
-            sp = Git.run(gitpath,'commit' , '-a', '-m' ,vpath);
-            Git.run(gitpath , 'push', '--all' );
-            notify(path,"DELETED", sp);
-            return;
-        case Gio.FileMonitorEvent.CREATED:
-            if (!GLib.file_test(path, GLib.FileTest.IS_DIR)) {
-                just_created[path] = true;
-                return; // we do not handle file create flags... - use done hint.
-            }
-            // director has bee cread.
-            start_monitor(path, onChange);
-            var sp = Git.run(gitpath, 'add', vpath);
-            Git.run(gitpath , 'push', '--all' );
+            case Gio.FileMonitorEvent.CREATED:
+                if (!GLib.file_test(path, GLib.FileTest.IS_DIR)) {
+                    just_created[path] = true;
+                    return; // we do not handle file create flags... - use done hint.
+                }
+                // director has bee cread.
+                start_monitor(path, onChange);
+                var sp = Git.run(gitpath, 'add', vpath);
+                Git.run(gitpath , 'push', '--all' );
 
-            if (sp.status !=0) {
+                if (sp.status !=0) {
+                    notify(path,"CREATED", sp);
+                    return;
+                }
+                //uh.call(fm,f,of, event_type);
+                sp = Git.run(gitpath,'commit' , '-a', '-m' ,vpath);
+                Git.run(gitpath , 'push', '--all' );
                 notify(path,"CREATED", sp);
                 return;
-            }
-            //uh.call(fm,f,of, event_type);
-            sp = Git.run(gitpath,'commit' , '-a', '-m' ,vpath);
-            Git.run(gitpath , 'push', '--all' );
-            notify(path,"CREATED", sp);
-            return;
-        
-        case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
-            var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
-            Git.run(gitpath , 'push', '--all' );
-            notify(path,"ATTRIBUTE_CHANGED", sp);
-            return;
-        
-        case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
-            var tpath = of.get_path();
-            var tpath_ar = tpath.substring(gitlive.length +1).split('/');
-            tpath_ar.shift();
-            var vtpath = vpath_ar.join('/');
             
-        
-            var sp = Git.run(gitpath,  'mv',  '-k', vpath, vtpath);
-            if (sp.status !=0) {
-                notify(path,"MOVED", sp);
+            case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
+                var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
+                Git.run(gitpath , 'push', '--all' );
+                notify(path,"ATTRIBUTE_CHANGED", sp);
                 return;
-            }
-            sp = Git.run(gitpath,'commit' , '-a', '-m' , 'MOVED ' + vpath +' to ' + vtpath);
-            Git.run(gitpath , 'push', '--all' );
-            notify(path,"MOVED", sp);
-            return; 
-        // rest ar emount related
+            
+            case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
+                var tpath = of.get_path();
+                var tpath_ar = tpath.substring(gitlive.length +1).split('/');
+                tpath_ar.shift();
+                var vtpath = vpath_ar.join('/');
+                
+            
+                var sp = Git.run(gitpath,  'mv',  '-k', vpath, vtpath);
+                if (sp.status !=0) {
+                    notify(path,"MOVED", sp);
+                    return;
+                }
+                sp = Git.run(gitpath,'commit' , '-a', '-m' , 'MOVED ' + vpath +' to ' + vtpath);
+                Git.run(gitpath , 'push', '--all' );
+                notify(path,"MOVED", sp);
+                return; 
+            // rest ar emount related
+        }
+    } catch (e) {
+        if (e.stderr.length) {
+            notify(path, "ERROR", e.stderr);
+            return;
+        }
+        notify(path, "ERROR", "unknown error?");
+        
     }
 }
 function notify(fn, act , sp)
