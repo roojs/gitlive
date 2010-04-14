@@ -120,6 +120,30 @@ Spawn.prototype = {
        
         var _this = this;
         
+        var err_src = false;
+        var out_src = false;
+        function tidyup()
+        {
+            if (_this.pid) {
+                GLib.spawn_close_pid(_this.pid); // hopefully kills it..
+            }
+            if (_this.in_ch)  GLib.io_channel_close(_this.in_ch);
+            if (_this.out_ch)  GLib.io_channel_close(_this.out_ch);
+            if (_this.err_ch)  GLib.io_channel_close(_this.err_ch);
+            // blank out channels
+            _this.in_ch = false;
+            _this.err_ch = false;
+            _this.out_ch = false;
+            // rmeove listeners !! important otherwise we kill the CPU
+            if (err_src !== false) GLib.source_remove(err_src);
+            if (out_src !== false) GLib.source_remove(out_src);
+            err_src = false;
+            out_src = false;
+            
+        }
+        
+        
+        
         GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
             _this.result = result;
             
@@ -128,8 +152,10 @@ Spawn.prototype = {
             if (ctx) {
                 GLib.main_loop_quit(ctx);
             }
-            
+            tidyup();
         });
+        
+        
         this.in_ch = GLib.io_channel_unix_new(ret.standard_input);
         this.out_ch = GLib.io_channel_unix_new(ret.standard_output);
         this.err_ch = GLib.io_channel_unix_new(ret.standard_error);
@@ -141,13 +167,13 @@ Spawn.prototype = {
 
       
         // add handlers for output and stderr.
-        var out_src= GLib.io_add_watch(this.out_ch, GLib.PRIORITY_DEFAULT, 
+        out_src= GLib.io_add_watch(this.out_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.OUT + GLib.IOCondition.IN  + GLib.IOCondition.PRI, function()
         {
             _this.read(this.out_ch);
             
         });
-        var err_src= GLib.io_add_watch(this.err_ch, GLib.PRIORITY_DEFAULT, 
+        err_src= GLib.io_add_watch(this.err_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.ERR + GLib.IOCondition.IN + GLib.IOCondition.PRI + GLib.IOCondition.OUT, 
             function()
         {
@@ -155,36 +181,28 @@ Spawn.prototype = {
              
         });
         
+      
+        
         // call input.. 
         if (this.pid !== false) {
             // child can exit before we get this far..
             if (this.listeners.input) {
-                this.write(this.listeners.input.call(this));
+                try {
+                    this.write(this.listeners.input.call(this));
+                } catch (e) {
+                    tidyup();
+                    throw e;
+                    
+                }
+                
             }
         }
         // start mainloop if not async..
         if (this.pid !== false && !this.async) {
-            
             ctx = GLib.main_loop_new (null, false);
             GLib.main_loop_run(ctx, false); // wait fore exit?
         }
-        // read any resulting data.
-        // not sure if we should be blocking here..
-        this.read(this.out_ch);
-        this.read(this.err_ch);
-        
-        // clean up.
-        
-        GLib.io_channel_close(this.in_ch);
-        GLib.io_channel_close(this.out_ch);
-        GLib.io_channel_close(this.err_ch);
-        // blank out channels
-        this.in_ch = false;
-        this.err_ch = false;
-        this.out_ch = false;
-        // rmeove listeners !! important otherwise we kill the CPU
-        GLib.source_remove(err_src);
-        GLib.source_remove(out_src);
+         
         
         // finally throw, or return self..
         if (this.exceptions && this.result != 0) {
