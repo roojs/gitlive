@@ -198,7 +198,12 @@ Spawn.prototype = {
         if (!this.in_ch) {
             return; // input is closed
         }
-        return GLib.io_channel_write_chars(this.in_ch, str, str.length, ret);
+        var ret = {};
+        var res = GLib.io_channel_write_chars(this.in_ch, str, str.length);
+        if (res != GLib.IOStatus.NORMAL) {
+            throw "Write failed";
+        }
+        return ret.bytes_written;
         
     }
     
