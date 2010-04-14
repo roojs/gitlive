@@ -28,6 +28,8 @@ GLib      = imports.gi.GLib;
 
 /**
  * @class Spawn
+ * @param cfg {Object} settings - see properties.
+ * 
  * @arg async {Boolean} return instantly, or wait for exit. (default no)
  * @arg exceptions {Boolean} throw exception on failure (default no)
  * @arg cwd {String} working directory. (defaults to home directory)
@@ -192,6 +194,20 @@ Spawn.prototype = {
         
     }
     
+};
+/**
+ * run 
+ * 
+ * simple run a process - returns result, or throws error..
+ * @param cfg {Object}  see spawn
+ */
+function run(cfg) {
+    cfg.exceptions = true;
+    cfg.async = false;
+    var s = new Spawn(cfg);
+    var ret = s.run();
+    return ret.output;
 }
+
 
      
