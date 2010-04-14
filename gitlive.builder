@@ -50,6 +50,7 @@
                 <child>
                   <object class="GtkComboBox" id="hosts">
                     <property name="visible">True</property>
+                    <property name="model">serverlist</property>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -84,6 +85,7 @@
               <object class="GtkComboBox" id="repos">
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
+                <property name="model">reposlist</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -148,4 +150,6 @@
       <action-widget response="2">cancel</action-widget>
     </action-widgets>
   </object>
+  <object class="GtkListStore" id="serverlist"/>
+  <object class="GtkListStore" id="reposlist"/>
 </interface>
