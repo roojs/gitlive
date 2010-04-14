@@ -11,10 +11,10 @@ builder.add_from_file(__script_path__+'/gitlive.builder');
 var win = builder.get_object('clone_repo');
 builder.connect_signals({
     on_ok : function() {
-        print("OK");
+        Seed.print("OK");
     },
     on_cancel : function() {
-        print("Cancel");
+        Seed.print("Cancel");
     },
 });
 
