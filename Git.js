@@ -47,7 +47,7 @@ function Git( repo) {
     
 }
 Git.prototype = {
-    repo : ''
+    repo : '',
     run : function() {
         var args = [];
         
