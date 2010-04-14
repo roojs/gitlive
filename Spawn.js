@@ -202,17 +202,21 @@ Spawn.prototype = {
             }
         }
         // start mainloop if not async..
-        if (this.pid !== false && !this.async) {
-            ctx = GLib.main_loop_new (null, false);
-            GLib.main_loop_run(ctx, false); // wait fore exit?
+        if (!this.async) {
+            if (this.pid !== false) {
+                ctx = GLib.main_loop_new (null, false);
+                GLib.main_loop_run(ctx, false); // wait fore exit?
+            }
+            
             tidyup();
+            if (this.exceptions && this.result != 0) {
+                throw this; // we throw self...
+            }
         }
          
         
         // finally throw, or return self..
-        if (this.exceptions && this.result != 0) {
-            throw this; // we throw self...
-        }
+        
         return this;
     
     },
