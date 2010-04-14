@@ -154,7 +154,7 @@ Spawn.prototype = {
         
         GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
             _this.result = result;
-            if (this.debug) {
+            if (_this.debug) {
                 print("result: " + result);
             }
             GLib.spawn_close_pid(_this.pid);
