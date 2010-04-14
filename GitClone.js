@@ -16,7 +16,7 @@ builder.connect_signals({
     on_cancel : function() {
         print("Cancel");
     },
-   });
+});
 
 
 win.show_all();
