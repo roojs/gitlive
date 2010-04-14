@@ -76,7 +76,7 @@ Spawn.prototype = {
      /**
      * @property result {Number} execution result.
      */
-    result: 0
+    result: 0,
     /**
      * @property pid {Number} pid of child process (of false if it's not running)
      */
