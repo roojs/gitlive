@@ -213,24 +213,27 @@ Spawn.prototype = {
                 
             }
         }
-        // start mainloop if not async..
-        if (!this.async) {
-            if (this.pid !== false) {
-                if (this.debug) {
-                    print("starting main loop");
-                }
-                ctx = GLib.main_loop_new (null, false);
-                GLib.main_loop_run(ctx, false); // wait fore exit?
-                
-            } else {
-                tidyup(); // tidyup get's called in main loop. 
-            }
-            
-            if (this.exceptions && this.result != 0) {
-                throw this; // we throw self...
-            }
+        // async - does in background..
+        if (this.async) {
+            return this;
         }
-         
+        
+        // start mainloop if not async..
+        
+        if (this.pid !== false) {
+            if (this.debug) {
+                print("starting main loop");
+            }
+            ctx = GLib.main_loop_new (null, false);
+            GLib.main_loop_run(ctx, false); // wait fore exit?
+            
+        } else {
+            tidyup(); // tidyup get's called in main loop. 
+        }
+        
+        if (this.exceptions && this.result != 0) {
+            throw this; // we throw self...
+        }
         
         // finally throw, or return self..
         
