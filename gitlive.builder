@@ -160,6 +160,8 @@
     <columns>
       <!-- column-name name -->
       <column type="gchararray"/>
+      <!-- column-name id -->
+      <column type="gint"/>
     </columns>
   </object>
 </interface>
