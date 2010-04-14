@@ -48,7 +48,7 @@
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <child>
-                  <object class="GtkComboBox" id="combobox1">
+                  <object class="GtkComboBox" id="hosts">
                     <property name="visible">True</property>
                   </object>
                   <packing>
@@ -81,7 +81,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBox" id="combobox2">
+              <object class="GtkComboBox" id="repos">
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
               </object>
