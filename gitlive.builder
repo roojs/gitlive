@@ -150,6 +150,16 @@
       <action-widget response="2">cancel</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkListStore" id="serverlist"/>
-  <object class="GtkListStore" id="reposlist"/>
+  <object class="GtkListStore" id="reposlist">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="serverlist">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
 </interface>
