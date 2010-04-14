@@ -23,6 +23,8 @@ hosts.append_text("http://public.akbkhome.com");
 hosts.append_text("http://private.akbkhome.com");
 hosts.append_text("git://git.gnome.org");
 
+// scanning repos - need to html parse the bugger..
+
 
 win.show_all();
 Gtk.main();
