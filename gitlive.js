@@ -97,25 +97,25 @@ function onChange(fm, f, of, event_type, uh) {
                 if (typeof(just_created[path]) !='undefined') {
                     delete just_created[path];
                     Git.run(gitpath, 'add', vpath);
-                    var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
-                    Git.run(gitpath , 'push', '--all' );
+                    var sp = Git.run(gitpath, 'commit', { all: true, message: vpath});
+                    Git.run(gitpath , 'push', { all: true } );
                     notify(path,"CHANGED", sp);
                     return;
                 }
                 
-                var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
+                var sp = Git.run(gitpath, 'commit', { all: true, message: vpath});
                 Git.run(gitpath , 'push', '--all' );
                 notify(path,"CHANGED", sp);
                 return;
             case Gio.FileMonitorEvent.DELETED:
                 var sp = Git.run(gitpath,'rm' , vpath);
-                Git.run(gitpath , 'push', '--all' );
+                Git.run(gitpath , 'push', { all: true } );
                 if (sp.status !=0) {
                     notify(path,"DELETED", sp);
                     return;
                 }
-                sp = Git.run(gitpath,'commit' , '-a', '-m' ,vpath);
-                Git.run(gitpath , 'push', '--all' );
+                sp = Git.run(gitpath,'commit' ,{ all: true, message: vpath});
+                Git.run(gitpath , 'push',{ all: true });
                 notify(path,"DELETED", sp);
                 return;
             case Gio.FileMonitorEvent.CREATED:
@@ -126,21 +126,21 @@ function onChange(fm, f, of, event_type, uh) {
                 // director has bee cread.
                 start_monitor(path, onChange);
                 var sp = Git.run(gitpath, 'add', vpath);
-                Git.run(gitpath , 'push', '--all' );
+                Git.run(gitpath , 'push', { all: true } );
 
                 if (sp.status !=0) {
                     notify(path,"CREATED", sp);
                     return;
                 }
                 //uh.call(fm,f,of, event_type);
-                sp = Git.run(gitpath,'commit' , '-a', '-m' ,vpath);
-                Git.run(gitpath , 'push', '--all' );
+                sp = Git.run(gitpath,'commit' , { all: true, message: vpath});
+                Git.run(gitpath , 'push', { all: true } );
                 notify(path,"CREATED", sp);
                 return;
             
             case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
-                var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
-                Git.run(gitpath , 'push', '--all' );
+                var sp = Git.run(gitpath, 'commit',{ all: true, message: vpath});
+                Git.run(gitpath , 'push', { all: true } );
                 notify(path,"ATTRIBUTE_CHANGED", sp);
                 return;
             
@@ -156,8 +156,8 @@ function onChange(fm, f, of, event_type, uh) {
                     notify(path,"MOVED", sp);
                     return;
                 }
-                sp = Git.run(gitpath,'commit' , '-a', '-m' , 'MOVED ' + vpath +' to ' + vtpath);
-                Git.run(gitpath , 'push', '--all' );
+                sp = Git.run(gitpath,'commit' , { all: true, message:   'MOVED ' + vpath +' to ' + vtpath} );
+                Git.run(gitpath , 'push', { all: true } );
                 notify(path,"MOVED", sp);
                 return; 
             // rest ar emount related
