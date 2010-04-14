@@ -287,5 +287,11 @@ function run(cfg) {
     return ret.output;
 }
 
+// test
+
+
+Seed.print(run({
+    args: ['ls']
+}));
 
      
