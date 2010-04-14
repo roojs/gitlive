@@ -263,6 +263,7 @@ Spawn.prototype = {
     read: function(ch) 
     {
         var prop = ch == this.out_ch ? 'output' : 'stderr';
+        var _this = this;
         while (true) {
             var x = new GLib.String();
             var status = GLib.io_channel_read_line_string (ch, x);
