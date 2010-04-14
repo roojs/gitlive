@@ -16,6 +16,11 @@ builder.get_object('cancel').signal.clicked.connect( function() {
         win.hide();
 });
 
+var hosts = builder.get_object('hosts');
+hosts.get_model().clear();
+hosts.append("http://www.akbkhome.com");
+hosts.append("git.gnome.org");
+
 
 win.show_all();
 Gtk.main();
