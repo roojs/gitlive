@@ -4,11 +4,11 @@
   <!-- interface-naming-policy project-wide -->
   <object class="GtkDialog" id="clone_repo">
     <property name="border_width">5</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Clone Repsoitory</property>
     <property name="resizable">False</property>
     <property name="window_position">center</property>
     <property name="type_hint">normal</property>
+    <property name="deletable">False</property>
     <property name="has_separator">False</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
