@@ -120,7 +120,7 @@ Spawn.prototype = {
                             this.listeners[prop].call(this, x.str);
                         }
                         _this[prop] += x.str;
-                       continue
+                       continue;
                     case GLib.IOStatus.AGAIN:   
                         break;
                     case GLib.IOStatus.ERROR:    
@@ -146,6 +146,8 @@ Spawn.prototype = {
              
         });
         if (!this.done) {
+            // child can exit before we get this far..
+            
             started = true;
             GLib.main_loop_run(ctx, false); // wait fore exit?
         }
