@@ -68,11 +68,12 @@ function onChange(fm, f, of, event_type, uh) {
         return;
     }
     
-    Seed.print(enumToString('Gio.FileMonitorEvent', event_type) + ":"  +
+    
+    /*Seed.print(enumToString('Gio.FileMonitorEvent', event_type) + ":"  +
           f.get_path() + 
         (of ? ( " => " + of.get_path()  ) : '') 
         
-    );
+    );*/
     
     // first handle maintenance..
     var path = f.get_path();
@@ -170,6 +171,7 @@ function onChange(fm, f, of, event_type, uh) {
         
     }
 }
+
 function notify(fn, act , sp)
 {
     var sum = act + " " + fn;
