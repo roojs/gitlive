@@ -67,7 +67,7 @@ Git.prototype = {
         }
         var out = Spawn.run({
             env : [ "GITPATH=" + this.repo ],
-            cwd : this.repo
+            cwd : this.repo,
             args: args
         });
         
