@@ -29,6 +29,7 @@ Spawn = imports.Spawn;
  */
 var prototypeInit = false;
 function Git( repo) {
+    /*
     if (!prototypeInit) {
         // proto type on set up yet..
         var props = Gil.prototypeInit();
@@ -36,6 +37,7 @@ function Git( repo) {
             this[i]= props[i];
         }
     }
+    */
     
 }
 Git.prototype = {
