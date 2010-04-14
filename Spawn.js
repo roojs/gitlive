@@ -154,8 +154,8 @@ Spawn.prototype = {
                 GLib.main_loop_quit(ctx);
             }
             tidyup();
-            if (this.listeners.finish) {
-                this.listeners.finish.call(this, this.result);
+            if (_this.listeners.finish) {
+                _this.listeners.finish.call(this, _this.result);
             }
         });
         
