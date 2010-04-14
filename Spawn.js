@@ -213,8 +213,8 @@ Spawn.prototype = {
                 
             }
         }
-        // async - does in background..
-        if (this.async) {
+        // async - if running - return..
+        if (this.async && this.pid) {
             return this;
         }
         
