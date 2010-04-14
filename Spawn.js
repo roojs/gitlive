@@ -213,7 +213,9 @@ Spawn.prototype = {
         // start mainloop if not async..
         if (!this.async) {
             if (this.pid !== false) {
-                
+                if (this.debug) {
+                    print("starting main loop");
+                }
                 ctx = GLib.main_loop_new (null, false);
                 GLib.main_loop_run(ctx, false); // wait fore exit?
             } else {
