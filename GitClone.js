@@ -2,7 +2,7 @@
 
 Gtk      = imports.gi.Gtk;
 
-imports.gtkbuilder;
+//imports.gtkbuilder;
 
 Gtk.init(null,null);
 
