@@ -65,6 +65,7 @@ Spawn.prototype = {
     cwd: false,
     args: false,
     exceptions : false,
+    debug : false,
     /**
      * @property output {String} resulting output
      */
@@ -257,6 +258,9 @@ Spawn.prototype = {
                         this.listeners[prop].call(this, x.str);
                     }
                     _this[prop] += x.str;
+                    if (_this.debug) {
+                        print(prop + ':' + x.str);
+                    }
                    continue;
                 case GLib.IOStatus.AGAIN:   
                     break;
