@@ -218,6 +218,8 @@ Spawn.prototype = {
                 }
                 ctx = GLib.main_loop_new (null, false);
                 GLib.main_loop_run(ctx, false); // wait fore exit?
+                _this.read(_this.out_ch);
+                _this.read(_this.err_ch);
             } else {
                 tidyup(); // tidyup get's called in main loop. 
             }
