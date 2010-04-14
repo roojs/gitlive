@@ -71,8 +71,10 @@ Git.prototype = {
             args: args
         });
         
+        
         // parse output..
         
+        return out;
     }
 }
 
