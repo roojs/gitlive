@@ -18,6 +18,7 @@ builder.get_object('cancel').signal.clicked.connect( function() {
 
 var hosts = builder.get_object('hosts');
 hosts.get_model().clear();
+// need to use list model here..
 hosts.append_text("http://public.akbkhome.com");
 hosts.append_text("http://private.akbkhome.com");
 hosts.append_text("git://git.gnome.org");
