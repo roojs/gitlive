@@ -238,7 +238,7 @@ Spawn.prototype = {
         }
         return ret.bytes_written;
         
-    }
+    },
     /**
      * read from pipe and call appropriate listerner and add to output or stderr string.
      * @arg giochannel to read from.
