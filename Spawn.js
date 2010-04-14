@@ -129,6 +129,7 @@ Spawn.prototype = {
         {
             if (_this.pid) {
                 GLib.spawn_close_pid(_this.pid); // hopefully kills it..
+                _this.pid = false;
             }
             if (_this.in_ch)  GLib.io_channel_close(_this.in_ch);
             if (_this.out_ch)  GLib.io_channel_close(_this.out_ch);
