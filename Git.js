@@ -105,6 +105,7 @@ function run() {
     }
     var repo = args.shift(args);
     var x = new Git(repo);
+    print(args);
     x.run.apply(x, args);
 }
 
