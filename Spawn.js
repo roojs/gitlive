@@ -188,7 +188,7 @@ Spawn.prototype = {
         
         // finally throw, or return self..
         if (this.exceptions && this.result != 0) {
-            throw this.stderr;
+            throw this.stderr; // should we return a special object here?
         }
         return this;
     
@@ -216,7 +216,7 @@ Spawn.prototype = {
      * @arg giochannel to read from.
      * @returns none
      */
-  read: function(ch) 
+    read: function(ch) 
     {
         var prop = ch == this.out_ch ? 'output' : 'stderr';
         while (true) {
