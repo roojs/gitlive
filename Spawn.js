@@ -144,14 +144,14 @@ Spawn.prototype = {
         var out_src= GLib.io_add_watch(this.out_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.OUT + GLib.IOCondition.IN  + GLib.IOCondition.PRI, function()
         {
-            _this.readstr(this.out_ch);
+            _this.read(this.out_ch);
             
         });
         var err_src= GLib.io_add_watch(this.err_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.ERR + GLib.IOCondition.IN + GLib.IOCondition.PRI + GLib.IOCondition.OUT, 
             function()
         {
-            _this.readstr(this.err_ch);
+            _this.read(this.err_ch);
              
         });
         
@@ -170,8 +170,8 @@ Spawn.prototype = {
         }
         // read any resulting data.
         // not sure if we should be blocking here..
-        readstr(this.out_ch);
-        readstr(this.err_ch);
+        this.read(this.out_ch);
+        this.read(this.err_ch);
         
         // clean up.
         
@@ -216,10 +216,7 @@ Spawn.prototype = {
      * @arg giochannel to read from.
      * @returns none
      */
-
-    
-    
-    read: function(ch) 
+  read: function(ch) 
     {
         var prop = ch == this.out_ch ? 'output' : 'stderr';
         while (true) {
