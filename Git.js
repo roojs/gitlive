@@ -32,6 +32,7 @@ function Git( repo) {
     /*
     if (!prototypeInit) {
         // proto type on set up yet..
+        // we could list this to generate methods.. /usr/lib/git-core/
         var props = Gil.prototypeInit();
         for (var i in props) {
             this[i]= props[i];
@@ -65,4 +66,4 @@ Git.prototype = {
 }
 
 
-    /usr/lib/git-core/
+   
