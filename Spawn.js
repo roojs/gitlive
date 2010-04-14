@@ -1,6 +1,11 @@
 ///<script type="text/javascript">
+
+Gio      = imports.gi.Gio;
+GLib      = imports.gi.GLib;
+
+
 /**
-* Spawn
+* @namespace Spawn
 * 
 * Library to wrap GLib.spawn_async_with_pipes
 * 
@@ -23,8 +28,6 @@
 * 
 */
 
-Gio      = imports.gi.Gio;
-GLib      = imports.gi.GLib;
 
 /**
  * @class Spawn
@@ -81,7 +84,12 @@ Spawn.prototype = {
      */
     done : false,
     
-    
+    /**
+     * 
+     * @method run
+     * Run the 
+     * 
+     */
     
     
     run : function()
@@ -196,7 +204,7 @@ Spawn.prototype = {
     
 };
 /**
- * run 
+ * @function run 
  * 
  * simple run a process - returns result, or throws error..
  * @param cfg {Object}  see spawn
