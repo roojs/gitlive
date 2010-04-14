@@ -101,8 +101,8 @@ Spawn.prototype = {
             
         this.pid = ret.child_pid;
         
-        var ctx = GLib.main_loop_new (null, false);
-        var started = false;
+        var ctx = false; 
+       
         var _this = this;
         
         GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
@@ -110,7 +110,7 @@ Spawn.prototype = {
             _this.done = true;
             
             GLib.spawn_close_pid(_this.pid);
-            if (started) {
+            if (ctx) {
                 GLib.main_loop_quit(ctx);
             }
             
@@ -165,7 +165,10 @@ Spawn.prototype = {
             if (this.listeners.input) {
                 this.write(this.listeners.input.call(this));
             }
-            started = true;
+        }
+        if (!this.done && !this.async) {
+            
+            ctx = GLib.main_loop_new (null, false);
             GLib.main_loop_run(ctx, false); // wait fore exit?
         }
         // read any resulting data.
