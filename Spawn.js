@@ -188,7 +188,7 @@ Spawn.prototype = {
         
         // finally throw, or return self..
         if (this.exceptions && this.result != 0) {
-            throw this.stderr; // should we return a special object here?
+            throw this; // we throw self...
         }
         return this;
     
