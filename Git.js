@@ -39,7 +39,7 @@ function Git( repo) {
     
 }
 Git.prototype = {
-    _run : function() {
+    run : function() {
         var args = [];
         
         for (var i=0;i< arguments.length;i++) {
