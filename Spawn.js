@@ -206,8 +206,10 @@ Spawn.prototype = {
             if (this.pid !== false) {
                 ctx = GLib.main_loop_new (null, false);
                 GLib.main_loop_run(ctx, false); // wait fore exit?
-            }            
-            tidyup();
+            } else {
+                tidyup(); // tidyup get's called in main loop. 
+            }
+            
             if (this.exceptions && this.result != 0) {
                 throw this; // we throw self...
             }
