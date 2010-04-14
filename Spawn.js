@@ -178,11 +178,15 @@ Spawn.prototype = {
         GLib.io_channel_close(this.in_ch);
         GLib.io_channel_close(this.out_ch);
         GLib.io_channel_close(this.err_ch);
+        // blank out channels
         this.in_ch = false;
         this.err_ch = false;
         this.out_ch = false;
+        // rmeove listeners !! important otherwise we kill the CPU
         GLib.source_remove(err_src);
         GLib.source_remove(out_src);
+        
+        // finally throw, or return self..
         if (this.exceptions && this.result != 0) {
             throw this.stderr;
         }
