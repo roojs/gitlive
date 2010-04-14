@@ -98,10 +98,8 @@ Git.prototype = {
  */
 
 function run() {
-    var args = [];
-    for (var i=0;i< arguments.length;i++) {
-        args.push(arguments[i]);
-    }
+    var args = Array.prototype.slice.call(arguments);
+  
     var repo = args.shift(args);
     var x = new Git(repo);
     
