@@ -17,13 +17,13 @@ Spawn = imports.Spawn;
  * 
  * g.run('commit', { all : true , message : 'test' }, 'filename',) 
  * 
- * g.
+ *  
  */
 
 
 /**
  * @class Git
- * @param cfg {Object} settings - see git manual for this..
+ * @param repo {String} directory that the repo is in, either bare or not.
  * 
  * 
  */
