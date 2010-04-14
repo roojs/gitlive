@@ -42,7 +42,7 @@ GLib      = imports.gi.GLib;
  * @arg env {Array}             enviroment eg. [ 'GITDIR=/home/test' ]
  * @arg async {Boolean} (optional)return instantly, or wait for exit. (default no)
  * @arg exceptions {Boolean}    throw exception on failure (default no)
- * 
+ * @arg debug {Boolean}    print out what's going on.. (default no)
  * 
  */
 function Spawn(cfg) {
