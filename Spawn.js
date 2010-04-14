@@ -123,6 +123,8 @@ Spawn.prototype = {
         
         var err_src = false;
         var out_src = false;
+        
+        
         function tidyup()
         {
             if (_this.pid) {
