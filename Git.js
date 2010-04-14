@@ -83,7 +83,7 @@ Git.prototype = {
             args: args,
             debug: true
         });
-        
+        print(out);
         
         // parse output..
         
