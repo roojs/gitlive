@@ -91,7 +91,6 @@ Git.prototype = {
 }
 /**
  * @function run
- * 
  * @arg command {String} command to run
  * @arg arguments.... {String|Object}  arguments to send to command
  * 
@@ -111,7 +110,7 @@ function run() {
 
 // test.
 
-print(run('/home/me/git', 'log'))
+print(run('/home/alan/gitlive/gitlive', 'log'));
 
 // test..
    
