@@ -3,7 +3,6 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkDialog" id="clone_repo">
-    <property name="height_request">100</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Clone Repsoitory</property>
     <property name="window_position">center</property>
