@@ -127,7 +127,7 @@ Spawn.prototype = {
         this.pid = ret.child_pid;
         
         if (this.debug) {
-            print("PID: " + pid);
+            print("PID: " + this.pid);
         }
         function tidyup()
         {
