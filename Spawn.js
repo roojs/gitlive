@@ -245,7 +245,7 @@ Spawn.prototype = {
 /**
  * @function run 
  * 
- * simple run a process - returns result, or throws error..
+ * simple run a process - returns result, or throws stderr result...
  * @param cfg {Object}  see spawn
  */
 function run(cfg) {
