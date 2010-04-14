@@ -82,10 +82,7 @@ Spawn.prototype = {
      */
     pid : false,
     
-    /**
-     * @property done {Boolean} has the process completed.
-     */
-    done : false,
+   
     
     /**
      * @property in_ch {GLib.IOChannel} input io channel
