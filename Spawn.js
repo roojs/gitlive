@@ -288,7 +288,7 @@ function run(cfg) {
 
 
 Seed.print(run({
-    args: ['ls']
+    args: ['ls', '/tmp']
 }));
 
      
