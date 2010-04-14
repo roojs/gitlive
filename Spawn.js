@@ -115,9 +115,11 @@ Spawn.prototype = {
         var out_src = false;
         var ctx = false; 
         var ret = {};
+        
         if (this.debug) {
             print("spawn : " + this.args.join(" "));
         }
+        
         GLib.spawn_async_with_pipes(this.cwd, this.args, null, 
             GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
             null, null, ret);
