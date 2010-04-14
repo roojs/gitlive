@@ -142,7 +142,8 @@ function onChange(fm, f, of, event_type, uh) {
                 notify(path,"MOVED", sp);
                 return;
             }
-            sp = git(gitpath,'commit' , '-a', '-m' , 'MOVED ' + vpath +' to ' + vtpath);
+            sp = Git.run(gitpath,'commit' , '-a', '-m' , 'MOVED ' + vpath +' to ' + vtpath);
+            Git.run(gitpath , 'push', '--all' );
             notify(path,"MOVED", sp);
             return; 
         // rest ar emount related
@@ -181,6 +182,8 @@ function git()
     args.unshift('git');
     var out_values = { };
     Seed.print(wd+':'+args.join(' '));
+    
+    
     var sp = spawn(wd, args);
     Seed.print(sp.output);
     Seed.print(sp.error);
