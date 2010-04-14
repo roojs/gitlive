@@ -38,6 +38,7 @@ GLib      = imports.gi.GLib;
  * @arg listeners {Object} (optional) handlers for output, stderr, input
  *     stderr/output both receive output line as argument
  *     input should return any standard input
+ *     finish recieves result as argument.
  * @arg env {Array}             enviroment eg. [ 'GITDIR=/home/test' ]
  * @arg async {Boolean} (optional)return instantly, or wait for exit. (default no)
  * @arg exceptions {Boolean}    throw exception on failure (default no)
