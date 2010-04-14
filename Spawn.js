@@ -120,7 +120,7 @@ Spawn.prototype = {
             print("spawn : " + this.args.join(" "));
         }
         
-        GLib.spawn_async_with_pipes(this.cwd, this.args, null, 
+        GLib.spawn_async_with_pipes(this.cwd, this.args, this.env, 
             GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
             null, null, ret);
             
@@ -181,14 +181,14 @@ Spawn.prototype = {
         out_src= GLib.io_add_watch(this.out_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.OUT + GLib.IOCondition.IN  + GLib.IOCondition.PRI, function()
         {
-            _this.read(this.out_ch);
+            _this.read(_this.out_ch);
             
         });
         err_src= GLib.io_add_watch(this.err_ch, GLib.PRIORITY_DEFAULT, 
             GLib.IOCondition.ERR + GLib.IOCondition.IN + GLib.IOCondition.PRI + GLib.IOCondition.OUT, 
             function()
         {
-            _this.read(this.err_ch);
+            _this.read(_this.err_ch);
              
         });
         
