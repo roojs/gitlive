@@ -90,22 +90,26 @@ function onChange(fm, f, of, event_type, uh) {
             var add_it = false;
             if (typeof(just_created[path]) !='undefined') {
                 delete just_created[path];
-                git(gitpath, 'add', vpath);
-                var sp = git(gitpath, 'commit', '-a', '-m' ,vpath);
+                Git.run(gitpath, 'add', vpath);
+                var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
+                Git.run(gitpath , 'push', '--all' );
                 notify(path,"CHANGED", sp);
                 return;
             }
             
-            var sp = git(gitpath, 'commit', '-a', '-m' ,vpath);
+            var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
+            Git.run(gitpath , 'push', '--all' );
             notify(path,"CHANGED", sp);
             return;
         case Gio.FileMonitorEvent.DELETED:
-            var sp = git(gitpath,'rm' , vpath);
+            var sp = Git.run(gitpath,'rm' , vpath);
+            Git.run(gitpath , 'push', '--all' );
             if (sp.status !=0) {
                 notify(path,"DELETED", sp);
                 return;
             }
-            sp = git(gitpath,'commit' , '-a', '-m' ,vpath);
+            sp = Git.run(gitpath,'commit' , '-a', '-m' ,vpath);
+            Git.run(gitpath , 'push', '--all' );
             notify(path,"DELETED", sp);
             return;
         case Gio.FileMonitorEvent.CREATED:
@@ -115,18 +119,22 @@ function onChange(fm, f, of, event_type, uh) {
             }
             // director has bee cread.
             start_monitor(path, onChange);
-            var sp = git(gitpath, 'add', vpath);
+            var sp = Git.run(gitpath, 'add', vpath);
+            Git.run(gitpath , 'push', '--all' );
+
             if (sp.status !=0) {
                 notify(path,"CREATED", sp);
                 return;
             }
             //uh.call(fm,f,of, event_type);
-            sp = git(gitpath,'commit' , '-a', '-m' ,vpath);
+            sp = Git.run(gitpath,'commit' , '-a', '-m' ,vpath);
+            Git.run(gitpath , 'push', '--all' );
             notify(path,"CREATED", sp);
             return;
         
         case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
-            var sp = git(gitpath, 'commit', '-a', '-m' ,vpath);
+            var sp = Git.run(gitpath, 'commit', '-a', '-m' ,vpath);
+            Git.run(gitpath , 'push', '--all' );
             notify(path,"ATTRIBUTE_CHANGED", sp);
             return;
         
@@ -137,7 +145,7 @@ function onChange(fm, f, of, event_type, uh) {
             var vtpath = vpath_ar.join('/');
             
         
-            var sp = git(gitpath,  'mv',  '-k', vpath, vtpath);
+            var sp = Git.run(gitpath,  'mv',  '-k', vpath, vtpath);
             if (sp.status !=0) {
                 notify(path,"MOVED", sp);
                 return;
@@ -152,14 +160,10 @@ function onChange(fm, f, of, event_type, uh) {
 function notify(fn, act , sp)
 {
     var sum = act + " " + fn;
-    var body = sp.output;
-    if (sp.status != 0) {
-        sum = "ERROR:" + sum;
-        body = sp.error;
-    }
+    
     var notification = new Notify.Notification({
     	summary: sum,
-		body : body
+		body : sp
 	});
 
     notification.set_timeout(500);
@@ -168,36 +172,7 @@ function notify(fn, act , sp)
 
 
 
-
-function git()
-{
-    var args = Array.prototype.slice.call(arguments);
-    
-    
-    if (!GLib.file_test(args[0]+'/.git', GLib.FileTest.IS_DIR)) {
-       return; // not git managed!
-    }
-    
-    var wd = args.shift();
-    args.unshift('git');
-    var out_values = { };
-    Seed.print(wd+':'+args.join(' '));
-    
-    
-    var sp = spawn(wd, args);
-    Seed.print(sp.output);
-    Seed.print(sp.error);
-    Seed.print(sp.status);
-    if (sp.status !=0 ){
-        return sp;
-    }
-    out_values = { };
-    sp = spawn(wd, [ 'git', 'push', '--all'] );
-    Seed.print(sp.output);
-    Seed.print(sp.error);
-    Seed.print(sp.status);
-    return sp;
-}
+ 
 function spawn(cwd, s) {
     var ret = { };
     var retval =  { output: '' , error : '', cmd : s.join(' ') , done : false};
