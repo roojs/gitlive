@@ -81,7 +81,7 @@ Git.prototype = {
             env : [ "GITPATH=" + this.repo ],
             cwd : this.repo,
             args: args,
-    //        debug: true
+            debug: true
         });
         
         // parse output..
@@ -89,6 +89,7 @@ Git.prototype = {
         return out;
     }
 }
+
 /**
  * @function run
  * @arg command {String} command to run
