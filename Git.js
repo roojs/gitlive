@@ -112,7 +112,7 @@ function run() {
 
 // test.
 
-print(run('/home/alan/gitlive/gitlive', 'log'));
+//print(run('/home/alan/gitlive/gitlive', 'log'));
 
 // test..
    
