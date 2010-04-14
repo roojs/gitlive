@@ -101,7 +101,7 @@ Git.prototype = {
 function run() {
     var args = [];
     for (var i=0;i< arguments.length;i++) {
-        args.push(arguments[0]);
+        args.push(arguments[i]);
     }
     var repo = args.shift(args);
     var x = new Git(repo);
