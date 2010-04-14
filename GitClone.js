@@ -9,13 +9,11 @@ Gtk.init(null,null);
 var builder = new Gtk.Builder();
 builder.add_from_file(__script_path__+'/gitlive.builder');
 var win = builder.get_object('clone_repo');
-builder.connect_signals({
-    on_ok : function() {
+builder.get_object('ok').signals.activate.connect( function() {
         Seed.print("OK");
-    },
-    on_cancel : function() {
+});
+builder.get_object('cancel').signals.activate.connect( function() {
         Seed.print("Cancel");
-    },
 });
 
 
