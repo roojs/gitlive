@@ -61,7 +61,7 @@ Git.prototype = {
      * 
      */
     run : function() {
-        var args = [];
+        var args = ['git'];
         
         for (var i=0;i< arguments.length;i++) {
             if (typeof(arguments[i]) == 'string') {
