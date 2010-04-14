@@ -14,6 +14,10 @@ Gio      = imports.gi.Gio;
 GLib      = imports.gi.GLib;
 Gtk      = imports.gi.Gtk;
 Notify = imports.gi.Notify;
+
+Spawn = imports.Spawn;
+Git = imports.Git;
+
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
 
 var ndirs = 0;
@@ -172,102 +176,7 @@ function notify(fn, act , sp)
 
 
 
- 
-function spawn(cwd, s) {
-    var ret = { };
-    var retval =  { output: '' , error : '', cmd : s.join(' ') , done : false};
-    GLib.spawn_async_with_pipes(cwd, s, null, 
-        GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
-        null, null, ret);
-        
-    var ctx = GLib.main_loop_new (null, false);
-    var started = false;
-    
-    GLib.child_watch_add(GLib.PRIORITY_DEFAULT, ret.child_pid, function(pid, status) {
-        retval.status = status;
-        retval.done = true;
-        GLib.spawn_close_pid(ret.child_pid);
-        if (started) {
-            GLib.main_loop_quit(ctx);
-        }
-        
-    });
-    var in_ch = GLib.io_channel_unix_new(ret.standard_input);
-    var out_ch = GLib.io_channel_unix_new(ret.standard_output);
-    var err_ch = GLib.io_channel_unix_new(ret.standard_error);
-    // fixme - put non-blocking
-    GLib.io_channel_set_flags (in_ch,GLib.IOFlags.NONBLOCK);
-    GLib.io_channel_set_flags (out_ch,GLib.IOFlags.NONBLOCK);
-    GLib.io_channel_set_flags (err_ch,GLib.IOFlags.NONBLOCK);
-
-    function readstr(ch, prop) {
-        while (true) {
-            var x = new GLib.String();
-            var cstatus = GLib.io_channel_get_buffer_condition(ch);
-            cstatus = GLib.io_channel_get_flags (ch);
-            var status = GLib.io_channel_read_line_string (ch, x);
-            switch(status) {
-                case GLib.IOStatus.NORMAL:
-                    //write(fn, x.str);
-                    retval[prop] += x.str;
-                   continue
-                case GLib.IOStatus.AGAIN:   
-                    break;
-                case GLib.IOStatus.ERROR:    
-                case GLib.IOStatus.EOF:   
-                   break;
-                
-            }
-            break;
-        }
-    }
-    var out_src= GLib.io_add_watch(out_ch, GLib.PRIORITY_DEFAULT, 
-        GLib.IOCondition.OUT + GLib.IOCondition.IN  + GLib.IOCondition.PRI, function()
-    {
-        //Seed.print("GOT INOUT ON IN");
-        readstr(out_ch,  'output');
-        
-    });
-    var err_src= GLib.io_add_watch(err_ch, GLib.PRIORITY_DEFAULT, 
-        GLib.IOCondition.ERR + GLib.IOCondition.IN + GLib.IOCondition.PRI + GLib.IOCondition.OUT, 
-        function()
-    {
-        // Seed.print("GOT INOUT ON ERR");
-         readstr(err_ch, 'error');
-         
-    });
-    if (!retval.done) {
-        started = true;
-        //console.log("STARTING LOOP");
-        GLib.main_loop_run(ctx, false); // wait fore exit?
-    }
-    readstr(out_ch,  'output');
-    readstr(err_ch,  'error');
-    GLib.io_channel_close(in_ch);
-    GLib.io_channel_close(out_ch);
-    GLib.io_channel_close(err_ch);
-    GLib.source_remove(err_src);
-    GLib.source_remove(out_src);
-    
-    
-    return retval;
-}
-function enumToString(type, n) {
-    
-    var gi = GI.IRepository.get_default();
-    var t = type.split('.');
-    var bi = gi.find_by_name(t[0], t[1]);  
-    for(var i =0; i < GI.enum_info_get_n_values(bi); i++) {
-        var prop = GI.enum_info_get_value(bi,i);
-        if (GI.value_info_get_value(prop)  == n) {
-            return GI.base_info_get_name(prop).toUpperCase();
-        }
-    }
-    return '??';
-}
-
-
-
+  
 
 function message(data) {
     var msg = new Gtk.MessageDialog({message_type:
