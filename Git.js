@@ -3,7 +3,7 @@
 Gio      = imports.gi.Gio;
 GLib      = imports.gi.GLib;
 
-
+Spawn = imports.Spawn;
 /**
  * @namespace Git
  * 
