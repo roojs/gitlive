@@ -4,7 +4,7 @@
   <!-- interface-naming-policy project-wide -->
   <object class="GtkDialog" id="clone_repo">
     <property name="width_request">500</property>
-    <property name="height_request">150</property>
+    <property name="height_request">120</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Clone Repsoitory</property>
     <property name="resizable">False</property>
