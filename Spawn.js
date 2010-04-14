@@ -157,6 +157,9 @@ Spawn.prototype = {
             if (_this.debug) {
                 print("result: " + result);
             }
+            _this.read(_this.out_ch);
+            _this.read(_this.err_ch);
+            
             GLib.spawn_close_pid(_this.pid);
             _this.pid = false;
             if (ctx) {
@@ -218,8 +221,7 @@ Spawn.prototype = {
                 }
                 ctx = GLib.main_loop_new (null, false);
                 GLib.main_loop_run(ctx, false); // wait fore exit?
-                _this.read(_this.out_ch);
-                _this.read(_this.err_ch);
+                
             } else {
                 tidyup(); // tidyup get's called in main loop. 
             }
