@@ -10,6 +10,8 @@
  * @arg xtype {String|Function} constructor or string.
  * @arg xid {String}  (optional) id for registry
  * @arg xns {String|Object}   (optional) namespace eg. Gtk or 'Gtk' - used with xtype.
+ * @arg items {Array}   (optional) list of child elements which will be constructed.. using XObject
+ * @arg listeners {Object}   (optional) map Gobject signals to functions
  * 
  */
 
