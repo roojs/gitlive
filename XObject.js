@@ -42,7 +42,9 @@ XObject.prototype = {
      * @property parent {XObject} parent Element
      */
      
-    
+     /**
+     * @property config {Object} the construction configuration.
+     */
      /**
       * @method init
       * Initializes the Element (el) hooks up all the listeners
