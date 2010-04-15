@@ -20,7 +20,7 @@ function XObject (cfg) {
     // first apply cfg if set.
     o =  {};
     o.pack = o.pack || 'add';
-    cfg.items = cfg.items || {};
+    cfg.items = cfg.items || [];
     
     XObject.extend(o, cfg); // copy everything into o.
     XObject.extend(this, o);
