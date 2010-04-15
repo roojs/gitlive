@@ -148,9 +148,8 @@ XObject.prototype = {
       */
     addItem : function(o) {
         
-        
-        
-        var item = o.constructor == XObject ? o : xnew XObject(o);
+         
+        var item = (o.constructor == XObject) ? o : xnew XObject(o);
         item.parent = this;
         this.items.push(item);
         
