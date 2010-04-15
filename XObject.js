@@ -21,7 +21,7 @@ function XObject (cfg) {
     o =  {};
     o.pack = o.pack || 'add';
     
-    this.items = [];
+    
     
     XObject.extend(o, cfg); // copy everything into o.
     XObject.extend(this, o);
@@ -29,7 +29,7 @@ function XObject (cfg) {
     // remove items.
     
     this.listeners = this.listeners || {}; 
-    
+    this.items = [];
     
     // remove objects/functions from o, so they can be sent to the contructor.
     for (var i in o) {
