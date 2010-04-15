@@ -57,6 +57,11 @@ XObject.prototype = {
       * @method init
       * Initializes the Element (el) hooks up all the listeners
       * and packs the children.
+      * you can override this, in child objects, then 
+      * do this to do thi initailiztion.
+      * XObject.prototype.init.call(this); 
+      * 
+      * 
       */ 
     init : function()
     {
