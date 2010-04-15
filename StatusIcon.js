@@ -15,7 +15,7 @@
  */
  
 Gtk      = imports.gi.Gtk;
- 
+Gdk      = imports.gi.Gdk;
 XObject = imports['XObject.js'].XObject
 
 
@@ -37,14 +37,14 @@ StatusIcon  = new XObject({
             
             menu.el.popup(null, null,null, null, event, event_time);
             var g = { };
-            
+            var a = new Gdk.Rectangle();
             //  needs direction=out setting in gir to work (fixed in HEAD)
-            this.el.get_geometry(g);
+            this.el.get_geometry(g,a,null);
             
             print(Object.keys(g).join(','));
-            print(g.area.x +','+ g.area.y);
+            print(g.area);
             
-            menu.el.get_toplevel().move(g.area.x,g.area.y);
+           // menu.el.get_toplevel().move(null, r);
             //menu.el.reposition();
             
             //menu.el.popup(null, null , null, null,  event, event_time);
