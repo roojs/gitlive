@@ -15,7 +15,7 @@
  * @arg pack {Function|String|Array}   (optional) how this object gets added to it's parent
  * @arg el {Object}   (optional) premade GObject
  * 
- *  --- needs a debug option!
+ *  --- needs a xdebug option!
  */
 
 function XObject (cfg) {
@@ -45,7 +45,7 @@ function XObject (cfg) {
             i == 'pack' ||
             i == 'xid' ||
             i == 'xtype' ||
-            i == 'debug' ||
+            i == 'xdebug' ||
             i == 'xns'
         ) {
             delete o[i];
