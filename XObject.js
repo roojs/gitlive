@@ -3,6 +3,12 @@
 /**
  * XObject
  * Yet another attempt to create a usable object construction library for seed..
+ * 
+ * Why is this useful?
+ * A) It turns rather messy code into a tree structure, making it easy to find code relating to 
+ *    an interface element
+ * B) In theory it should be gjs/Seed compatible..
+ * C) It provides getElementById style lookups for elements.
  *
  * Extend this.. to use it's wonderful features..
  * 
@@ -27,6 +33,13 @@
  * @arg el {Object}   (optional) premade GObject
  * 
  *  --- needs a xdebug option!
+ * 
+ * 
+ * He's some questions.
+ * - should we generate ID's for all elements? (if so we probably need to garbage collect)
+ * 
+ * 
+ * 
  */
 
 function XObject (cfg) {
