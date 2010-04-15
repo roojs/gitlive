@@ -12,7 +12,7 @@
  
 
 Object = imports['Object.js'].Object
-GtkObject = imports['GtkObject.js'].GtkObject
+XObject = imports['GtkObject.js'].XObject
 
  
 StatusIcon  = Object.define(
@@ -22,7 +22,7 @@ StatusIcon  = Object.define(
         this.prototype.superclass.constructor.call(this);
         
     },
-    GtkObject,
+    XObject,
     
     listeners : {
         'popup-menu' : function(w, event, event_time) {
