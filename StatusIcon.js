@@ -45,7 +45,7 @@ StatusIcon  = new XObject({
                         activate : function () {
                             var status = this.el.label == 'Pause' ? 1 : 0
                             this.el.label  = status ? 'Resume' : 'Pause';
-                            this.parent.el.set_from_stock( status ? Gtk.STOCK_MEDIA_PLAY : Gtk.STOCK_MEDIA_PAUSED);
+                            this.parent.parent.el.set_from_stock( status ? Gtk.STOCK_MEDIA_PLAY : Gtk.STOCK_MEDIA_PAUSED);
                             
                         }
                     }
