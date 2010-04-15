@@ -34,7 +34,7 @@ StatusIcon  = new XObject({
     },
     items : [
        {
-            xtype: Gtk.Menu,
+            xtype: Gtk.ImageMenu,
             xid : 'menu',
             pack: false,
             items : [
