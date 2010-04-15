@@ -59,7 +59,7 @@ function XObject (cfg) {
         this.el = this.el ||  this.xtype(o);
     }
     if (typeof(this.xtype) == 'object') {
-        print(o);
+        print(XObject.keys(o).join(','));
         this.el = this.el ||  new this.xtype(o);
     }
     print(this.el);
