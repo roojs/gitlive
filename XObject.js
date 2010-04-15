@@ -57,7 +57,7 @@ function XObject (cfg) {
     // xtype= Gtk.Menu ?? what about c_new stuff?
     print(this.xtype);
     if (typeof(this.xtype) == 'function') {
-        this.el = this.el ||  this.xtype(o);
+        this.el = this.el ||  new this.xtype(o);
     }
     if (typeof(this.xtype) == 'object') {
         print(XObject.keys(o).join(','));
