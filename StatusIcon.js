@@ -35,11 +35,13 @@ StatusIcon  = new XObject({
             
             this.get(this.status ?  'pause' : 'resume').el.hide();
             
-            menu.el.popup(null, null, null, event, event_time);
-            var g = Gtk.StatusIcon.position_menu (menu.el, null, null, null, null)
+            menu.el.popup(null, null,Gtk.StatusIcon.position_menu, this.el, event, event_time);
+            //var g = Gtk.StatusIcon.position_menu (menu.el, null, null, null, this.el)
+            
             print(Object.keys(g).join(','));
             print(g.x +','+ g.y);
-            menu.el.get_toplevel().move(g.x,g.y);
+            
+            //menu.el.get_toplevel().move(g.x,g.y);
             //menu.el.reposition();
             
             //menu.el.popup(null, null , null, null,  event, event_time);
