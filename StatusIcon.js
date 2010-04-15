@@ -29,6 +29,8 @@ StatusIcon  = new XObject({
             menu = this.get('menu');
             
             menu.el.show_all();
+            
+            this.get(this.status ? 'resume' : 'pause').el.hide();
             menu.el.popup(null, null , null, null,  event, event_time);
         }
     },
@@ -39,9 +41,10 @@ StatusIcon  = new XObject({
             pack: false,
             items : [
                 {
-                    el: new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_HELP),
+                    el: new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE),
                     always_show_image : true,
                     accel_group : null,
+                    xid : 'pause',
                     //label: 'Pause',
                     pack:  'append',
                     listeners : {
@@ -51,12 +54,29 @@ StatusIcon  = new XObject({
                             this.parent.parent.el.set_from_stock( 
                                 status ? Gtk.STOCK_MEDIA_PAUSE : Gtk.STOCK_MEDIA_PLAY
                             );
-                            //this.el.set_use_stock(
+                            
                         }
                     }
                 },
                 
-            
+               {
+                    el: new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE),
+                    always_show_image : true,
+                    accel_group : null,
+                    xid : 'resume',
+                    //label: 'Pause',
+                    pack:  'append',
+                    listeners : {
+                        activate : function () {
+                            //var status = this.el.label == 'Pause' ? 1 : 0
+                           // this.el.label  = status ? 'Resume' : 'Pause';
+                            this.parent.parent.el.set_from_stock( 
+                                status ? Gtk.STOCK_MEDIA_PAUSE : Gtk.STOCK_MEDIA_PLAY
+                            );
+                            
+                        }
+                    }
+                },
             
                 {
                     xtype: Gtk.MenuItem,
