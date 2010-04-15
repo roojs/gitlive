@@ -20,7 +20,7 @@ Gtk.init(null,null);
 StatusIcon  = new XObject({
     
     xtype :  Gtk.StatusIcon,
-    stock : Gtk.STOCK_ABOUT,
+    stock : Gtk.STOCK_MEDIA_PLAY,
     listeners : {
         'popup-menu' : function( w, event, event_time) {
             print(Array.prototype.slice.call(arguments).join(','));
@@ -43,7 +43,10 @@ StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                            this.el.label  = this.el.label == 'Pause' ? 'Resume' : 'Pause';
+                            var status = this.el.label == 'Pause' ? 1 : 0
+                            this.el.label  = status ? 'Resume' : 'Pause';
+                            this.parent.el.stock = status ? Gtk.STOCK_MEDIA_PLAY : Gtk.STOCK_MEDIA_PAUSED
+                            
                         }
                     }
                 },
