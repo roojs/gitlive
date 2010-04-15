@@ -106,7 +106,7 @@ XObject.prototype = {
             if ((typeof(o[i]) == 'object') || 
                 (typeof(o[i]) == 'function') || 
                 i == 'pack' ||
-                i == 'xid' ||
+                i == 'id' ||
                 i == 'xtype' ||
                 i == 'xdebug' ||
                 i == 'xns'
@@ -152,10 +152,10 @@ XObject.prototype = {
             this.el[i] = o[i];
         }
         // register it!
-        //if (o.xnsid  && o.xid) {
+        //if (o.xnsid  && o.id) {
          //   XObject.registry = XObject.registry || { };
          //   XObject.registry[o.xnsid] = XObject.registry[o.xnsid] || {}; 
-         //   XObject.registry[o.xnsid][o.xid] = this;
+         //   XObject.registry[o.xnsid][o.id] = this;
         //}
         
         cfg.items.forEach(this.addItem, this);
@@ -262,7 +262,7 @@ XObject.prototype = {
         
         
         this.items.forEach(function(ch) {
-            if (ch.xid == xid) {
+            if (ch.id == xid) {
                 ret = ch;
                 return true;
             }
