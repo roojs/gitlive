@@ -4,6 +4,10 @@
 /**
  * Status icon and menu for component of gitlive.
  * 
+ * Implements XObject - however we want to control initialization.
+ * 
+ * 
+ * 
  * Currently only does a few things
  * a) Quit
  * 
@@ -18,7 +22,11 @@ XObject = imports['XObject.js'].XObject
  
 StatusIcon  = new XObject({
     
-    xtype :  Gtk.StatusIcon,
+    init : function() {
+         
+    }
+    
+    xtype : Gtk.StatusIcon,
     stock : Gtk.STOCK_MEDIA_PLAY,
     tooltip_text : 'GitLive',
     listeners : {
