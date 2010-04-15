@@ -41,15 +41,10 @@ StatusIcon  = new XObject({
             var a = new Gdk.Rectangle();
             //  needs direction=inout setting in gir to work (in bugzilla @present)
             this.el.get_geometry(g,a,null);
-            
-            //print(Object.keys(a).join(','));
-            //print(a.x);
+             
             // should check to see if @ top or bottom I guess..
             menu.el.get_toplevel().move(a.x, a.y +a.height);
-            //menu.el.reposition();
-            
-            
-            //menu.el.popup(null, null , null, null,  event, event_time);
+             
         }
     },
     items : [
