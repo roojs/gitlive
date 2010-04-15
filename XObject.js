@@ -70,6 +70,10 @@ function XObject (cfg) {
     
     cfg.items.forEach(this.addItem, this);
     
+    for (var i in this.listeners) {
+        this.addListener(i, this.listeners[i]);
+    }
+    
     
 }
 XObject.prototype = {
@@ -119,36 +123,25 @@ XObject.prototype = {
         item.parent = this;
         
     }
+    addListener  : function(sig, fn) {
+              
+        var _li = XObject.createDelegate(fn,this);
+        // private listeners that are not copied to GTk.
+        
+        if (typeof(Seed) != 'undefined') {
+          //   Seed.print(typeof(_li));
+            this.el.signal[sig].connect(_li);
+        } else {
+            this.el.connect( sig, _li);
+        }
+             
+        
+    }
     
-}
-xnew: function (o, in_xnsid)
-    {
-         
-         
+} 
          
         
-        var isSeed = typeof(Seed) != 'undefined';
-        
-        var constructor = false
-        
-     
-        // XNS contructor..
-        Seed.print('xnew : ' + o.xns + '.' + o.xtype);
-        // support for xns='Gtk', xtyle='Window'..
-        var NS = imports.gi[o.xns];
-        if (!NS) {
-            Seed.print('Invalid xns: ' + o.xns);
-        }
-        constructor = NS[o.xtype];
-        if (!constructor) {
-            Seed.print('Invalid xtype: ' + o.xns + '.' + o.xtype);
-        }
-         
-        // how to hanlde gjs constructor???? - can it even be done..
-        
-        o.el  = o.el ||  (isSeed ? new constructor(o) : new constructor());
-        
-        
+   
         
         
         if (o.listeners._new) { // rendered!?!?
