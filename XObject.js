@@ -82,14 +82,12 @@ function XObject (cfg) {
             Seed.print('Invalid xtype: ' + o.xns + '.' + o.xtype);
         }
         this.el  =   isSeed ? new constructor(o) : new constructor();
-        if (!isSeed) {
-            // this might work for gjs!?
-            for (var i in o) {
-                this.el[i] = o;
-            }
-        }
+        
     }
-    
+    // always overlay props..
+    for (var i in o) {
+        this.el[i] = o;
+    }
     // register it!
     //if (o.xnsid  && o.xid) {
      //   XObject.registry = XObject.registry || { };
