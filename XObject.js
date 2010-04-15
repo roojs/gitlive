@@ -20,12 +20,14 @@ function XObject (cfg) {
     // first apply cfg if set.
     o =  {};
     o.pack = o.pack || 'add';
-       
+    
+    this.items = [];
+    
     XObject.extend(o, cfg); // copy everything into o.
     XObject.extend(this, o);
     
     // remove items.
-    this.items = [];
+    
     this.listeners = this.listeners || {}; 
     
     
