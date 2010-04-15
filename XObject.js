@@ -101,7 +101,7 @@ XObject.prototype = {
       * @method addItem
       * Adds an item to the object using a new XObject
       * uses pack property to determine how to add it.
-      *  
+      * @arg cfg {Object} same as XObject constructor.
       */
     addItem : function(o) {
         var item = new XObject(o);
@@ -138,7 +138,13 @@ XObject.prototype = {
         item.parent = this;
         
     },
-    
+    /**
+      * @method addListener
+      * Connects a method to a signal. (gjs/Seed aware)
+      * 
+      * @arg sig  {String} name of signal
+      * @arg fn  {Function} handler.
+      */
     addListener  : function(sig, fn) {
               
         var _li = XObject.createDelegate(fn,this);
