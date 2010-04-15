@@ -213,7 +213,7 @@ XObject.prototype = {
  */
 
 
-XObject.extend : function(o, c, defaults){
+XObject.extend = function(o, c, defaults){
     if(defaults){
         // no "this" reference for friendly out of scope calls
         XObject.extend(o, defaults);
