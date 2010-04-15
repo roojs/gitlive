@@ -58,7 +58,7 @@ XObject.prototype = {
       * Initializes the Element (el) hooks up all the listeners
       * and packs the children.
       * you can override this, in child objects, then 
-      * do this to do thi initailiztion.
+      * do this to do thi initaliztion.
       * XObject.prototype.init.call(this); 
       * 
       * 
