@@ -39,7 +39,9 @@ StatusIcon  = new XObject({
             pack: false,
             items : [
                 {
-                    xtype: Gtk.MenuItem,
+                    xtype: Gtk.ImageMenuItem,
+                    stock : Gtk.STOCK_MEDIA_PAUSE ,
+                    use_stock : true,
                     label: 'Pause',
                     pack:  'append',
                     listeners : {
@@ -49,7 +51,7 @@ StatusIcon  = new XObject({
                             this.parent.parent.el.set_from_stock( 
                                 status ? Gtk.STOCK_MEDIA_PAUSE : Gtk.STOCK_MEDIA_PLAY
                             );
-                            
+                            this.el.set_use_stock(
                         }
                     }
                 },
