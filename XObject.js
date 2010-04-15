@@ -14,6 +14,8 @@
  * @arg listeners {Object}   (optional) map Gobject signals to functions
  * @arg pack {Function|String|Array}   (optional) how this object gets added to it's parent
  * @arg el {Object}   (optional) premade GObject
+ * 
+ *  --- needs a debug option!
  */
 
 function XObject (cfg) {
@@ -67,7 +69,7 @@ function XObject (cfg) {
         print("obj?"  + XObject.keys(o).join(','));
         this.el = this.el ||  new this.xtype(o);
     }
-    print(this.el);
+    //print(this.el);
     if (!this.el && o.xns) {
         
         var NS = imports.gi[o.xns];
@@ -155,7 +157,7 @@ XObject.prototype = {
         }
         
         
-        Seed.print('Pack ' + this.el + '.'+ pack_m + '(' + item.el + ')');
+        //Seed.print('Pack ' + this.el + '.'+ pack_m + '(' + item.el + ')');
 
         args.unshift(item.el);
         print('[' + args.join(',') +']');
