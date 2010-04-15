@@ -150,6 +150,7 @@ XObject.prototype = {
         
          
         var item = (o.constructor == XObject) ? o : new XObject(o);
+        item.init();
         item.parent = this;
         this.items.push(item);
         
