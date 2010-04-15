@@ -19,8 +19,8 @@ Gtk.init(null,null);
  
 StatusIcon  = new XObject({
     
-    el :  new Gtk.StatusIcon.from_stock(Gtk.STOCK_ABOUT),
-
+    xtype :  Gtk.StatusIcon,
+    stock : Gtk.STOCK_ABOUT
     listeners : {
         'popup-menu' : function( w, event, event_time) {
             print(Array.prototype.slice.call(arguments).join(','));
