@@ -55,6 +55,7 @@ function XObject (cfg) {
     var isSeed = typeof(Seed) != 'undefined';
      
     // xtype= Gtk.Menu ?? what about c_new stuff?
+    print(this.xtype);
     if (typeof(this.xtype) == 'function') {
         this.el = this.el ||  this.xtype(o);
     }
