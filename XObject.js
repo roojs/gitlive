@@ -10,10 +10,12 @@
  * B) In theory it should be gjs/Seed compatible..
  * C) It provides getElementById style lookups for elements.
  * D) It provides classic OO constructors for Javascript (extend/define)
+ * E) It does not modify any buildin prototypes.. 
  *
  * Extend this.. to use it's wonderful features..
  * 
  * normal usage:
+ * XObject = imports.XObject.XObject;
  * Xyz = new XObject({
  *     xtype: Gtk.Window,
  *     id : 'window',
