@@ -61,8 +61,8 @@ StatusIcon  = new XObject({
                     init : function() {
                         this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE);
                         XObject.prototype.init.call(this);
-                    }
-                    
+                    },
+                    label: 'Pause Commits',
                    
                     always_show_image : true,
                     accel_group : null,
@@ -79,11 +79,12 @@ StatusIcon  = new XObject({
                     }
                 },
                 
-               {
+                {
                     init : function() {
                         this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PLAY);
                         XObject.prototype.init.call(this);
-                    }                    
+                    },
+                    label: 'Resume Commits',
                     always_show_image : true,
                     accel_group : null,
                     xid : 'resume',

@@ -32,6 +32,9 @@
 function XObject (cfg) {
     // first apply cfg if set.
     this.config = cfg;
+    if (cfg.init) {
+        this.init = cfg.init; // override!
+    }
     
     
 }
