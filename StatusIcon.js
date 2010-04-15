@@ -51,8 +51,7 @@ StatusIcon  = new XObject({
                         activate : function () {
                             this.parent.parent.status = 0;
                            // this.el.label  = status ? 'Resume' : 'Pause';
-                            this.parent.parent.el.set_from_stock( 
-                                status ? Gtk.STOCK_MEDIA_PAUSE : Gtk.STOCK_MEDIA_PLAY
+                            this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE )
                             );
                             
                         }
@@ -71,8 +70,7 @@ StatusIcon  = new XObject({
                             this.parent.parent.status = 1;
                             //var status = this.el.label == 'Pause' ? 1 : 0
                            // this.el.label  = status ? 'Resume' : 'Pause';
-                            this.parent.parent.el.set_from_stock( 
-                                status ? Gtk.STOCK_MEDIA_PAUSE : Gtk.STOCK_MEDIA_PLAY
+                            this.parent.parent.el.set_from_stock(   Gtk.STOCK_MEDIA_PLAY)
                             );
                             
                         }
