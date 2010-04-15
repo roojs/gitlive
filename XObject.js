@@ -122,7 +122,8 @@ XObject.prototype = {
         
         item.parent = this;
         
-    }
+    },
+    
     addListener  : function(sig, fn) {
               
         var _li = XObject.createDelegate(fn,this);
