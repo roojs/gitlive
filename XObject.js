@@ -6,7 +6,15 @@
  *
  * Extend this.. to use it's wonderful features..
  * 
- * 
+ * normal usage:
+ * Xyz = new XObject({
+ *     xtype: Gtk.Window,
+ *     id : 'window',
+ *     items : [
+ *     
+ *     ]
+ *  });
+ *  Xyz.init(); // create and show.
  * 
  * 
  * 
