@@ -89,7 +89,7 @@ StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                            this.parent.parent.status = 1;
+                            this.parent.parent.paused = false;
                             //var status = this.el.label == 'Pause' ? 1 : 0
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock(   Gtk.STOCK_MEDIA_PLAY);
