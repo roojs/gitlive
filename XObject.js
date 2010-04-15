@@ -36,6 +36,7 @@ function XObject (o) {
     if (typeof(this.xtype) == 'function') {
         this.el = this.el ||  new this.xtype(o);
     }
+    
     if (!this.el && o.xns) 
         var NS = imports.gi[o.xns];
         if (!NS) {
