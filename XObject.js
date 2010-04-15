@@ -133,10 +133,14 @@ XObject.prototype = {
             item.parent = this;
             return;
         }
-        
-        
-        
-        var pack_m = typeof(item.pack) == 'string' ?  item.pack :  item.pack.shift();
+        var args = [];
+        var pack_m  = false;
+        if (typeof(item.pack) == 'string') {
+            pack_m = item.pack;
+        } else {
+            pack_m = item.pack.shift();
+            args = item.pack;
+        }
         
         // handle error.
         if (pack_m && typeof(this.el[pack_m]) == 'undefined') {
@@ -146,8 +150,7 @@ XObject.prototype = {
         
         
         Seed.print('Pack ' + this.el + '.'+ pack_m + '(' + item.el + ')');
-        // copy.
-        var args = Array.prototype.slice.call(typeof(item.pack) == 'string' ? [] : item.pack);
+
         args.unshift(item.el);
         print(args.join(','));
         //Seed.print('args: ' + args.length);
