@@ -41,7 +41,7 @@ StatusIcon  = new XObject({
             //  needs direction=out setting in gir to work (fixed in HEAD)
             this.el.get_geometry(g,a,null);
             
-            print(Object.keys(g).join(','));
+            print(Object.keys(a).join(','));
             print(g.area);
             
            // menu.el.get_toplevel().move(null, r);
