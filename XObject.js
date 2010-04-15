@@ -341,7 +341,7 @@ XObject.extend(XObject,
     {
         var ret = [];
         for(var i in o) {
-            ret.push[i];
+            ret.push(i);
         }
         return ret;
     },
