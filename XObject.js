@@ -9,19 +9,41 @@
  * 
  */
 
-function XObject (cfg) {
+function XObject (o) {
     // first apply cfg if set.
-    cfg = cfg || {};
-    XObject.extend(cfg);
-    o.set = o.set || {}; 
-    o.listeners = o.listeners || {}; 
-    o.packing = o.packing || [ 'add' ]; 
-    o.items = o.items || []; 
+    o = o || {};
+    XObject.extend(this, o);
+    
+    // remove objects/functions from o, so they can be sent to the contructor.
+    for (var i in o) {
+        if ((typeof(o[i]) == 'object') || (typeof(o[i]) == 'function')) {
+            delete o[i];
+        }
+    }
+    
+    this.set = this.set || {}; 
+    this.listeners = this.listeners || {}; 
+    this.packing = this.packing || [ 'add' ]; 
+    this.items = this.items || []; 
+    
+    // handle include?
+    //if ((this.xtype == 'Include')) {
+    //    o = this.pre_registry[cls];
+    //}
+    
+    // xtype= Gtk.Menu
+    if (typeof(this.xtype) == 'function') {
+        this.el = this.xtype(o);
+    }
+    
     
     
 }
 XObject.prototype = {
-    
+    /**
+     * @property el - the Gtk / etc. element.
+     */
+    el : false, 
     
     
     
