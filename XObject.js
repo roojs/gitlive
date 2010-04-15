@@ -34,8 +34,9 @@ function XObject (cfg) {
         if ((typeof(o[i]) == 'object') || 
             (typeof(o[i]) == 'function') || 
             i == 'pack' ||
-            i == 'xid'
-            
+            i == 'xid' ||
+            i == 'xtype' ||
+            i == 'xns'
         ) {
             delete o[i];
         }
