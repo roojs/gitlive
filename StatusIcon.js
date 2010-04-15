@@ -24,18 +24,18 @@ StatusIcon  = new XObject({
     listeners : {
         'popup-menu' : function( w, event, event_time) {
             print(Array.prototype.slice.call(arguments).join(','));
-            var menu = this.get('menu');
-            menu.menuitems.forEach(menu.addItem, menu);
+            
+            menu = new XObject(this.menu);
+            
             menu.el.show_all();
             menu.el.popup(null, null, null, null,  event, event_time);
         }
     },
-    items : [
-        {
+    menu {
             xtype: Gtk.Menu,
             xid : 'menu',
             pack: false,
-            menuitems : [
+            items : [
                 {
                     xtype: Gtk.MenuItem,
                     label: 'About',
