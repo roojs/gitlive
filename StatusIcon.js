@@ -36,7 +36,7 @@ StatusIcon  = new XObject({
             
             this.get(this.status ?  'pause' : 'resume').el.hide();
             
-            menu.el.popup(null, null,null, null, event, event_time);
+            menu.el.popup(null, null,null, null, 1, Gtk.get_current_event_time());
             var g = { };
             var a = new Gdk.Rectangle();
             //  needs direction=inout setting in gir to work (in bugzilla @present)
