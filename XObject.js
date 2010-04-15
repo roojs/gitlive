@@ -149,6 +149,125 @@ XObject.prototype = {
 } 
          
         
-   
-        
+/**
+ * Copies all the properties of config to obj.
+ *
+ * Pretty much the same as JQuery/Prototype..
+ * @param {Object} obj The receiver of the properties
+ * @param {Object} config The source of the properties
+ * @param {Object} defaults A different object that will also be applied for default values
+ * @return {Object} returns obj
+ * @member XObject extend
+ */
+
+
+XObject.extend : function(o, c, defaults){
+    if(defaults){
+        // no "this" reference for friendly out of scope calls
+        XObject.extend(o, defaults);
+    }
+    if(o && c && typeof c == 'object'){
+        for(var p in c){
+            o[p] = c[p];
+        }
+    }
+    return o;
+};
+
+XObject.extend(XObject,
+{
+    /**
+     * Copies all the properties of config to obj, if the do not exist.
+     * @param {Object} obj The receiver of the properties
+     * @param {Object} config The source of the properties
+     * @return {Object} returns obj
+     * @member Object extendIf
+     */
+
+
+    extendIf : function(o, c){
+
+        if(!o || !c || typeof c != 'object'){
+            return o;
+        }
+        for(var p in c){
+            if (typeof(o[p]) != 'undefined') {
+                continue;
+            }
+            o[p] = c[p];
+        }
+        return o;
+    },
+
+ 
+
+    /**
+     * Extends one class with another class and optionally overrides members with the passed literal. This class
+     * also adds the function "override()" to the class that can be used to override
+     * members on an instance.
+     *
+     * usage:
+     * MyObject = Object.define(
+     *     function(...) {
+     *          ....
+     *     },
+     *     parentClass, // or Object
+     *     {
+     *        ... methods and properties.
+     *     }
+     * });
+     * @param {Function} constructor The class inheriting the functionality
+     * @param {Object} superclass The class being extended
+     * @param {Object} overrides (optional) A literal with members
+     * @return {Function} constructor (eg. class
+     * @method define
+     */
+    define : function(){
+        // inline overrides
+        var io = function(o){
+            for(var m in o){
+                this[m] = o[m];
+            }
+        };
+        return function(sb, sp, overrides) {
+            if (typeof(sp) == 'undefined') {
+                // error condition - try and dump..
+                throw "Missing superclass: when applying: " + sb
+            }
+
+            var F = function(){}, sbp, spp = sp.prototype;
+            F.prototype = spp;
+            sbp = sb.prototype = new F();
+            sbp.constructor=sb;
+            sb.superclass=spp;
+
+            // extends Object.
+            if(spp.constructor == Object.prototype.constructor){
+                spp.constructor=sp;
+            }
+
+            sb.override = function(o){
+                Object.extend(sb.prototype, o);
+            };
+            sbp.override = io;
+            Object.extend(sb.prototype, overrides);
+            return sb;
+        };
+    }(),
+
          
+    /**
+     * returns a list of keys of the object.
+     * @param {Object} obj object to inspect
+     * @return {Array} returns list of kyes
+     * @member Object keys
+     */
+    keys : function(o)
+    {
+        var ret = [];
+        for(var i in o) {
+            ret.push[i];
+        }
+        return ret;
+    }
+});
