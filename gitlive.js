@@ -65,7 +65,7 @@ var just_created = {};
 function onChange(fm, f, of, event_type, uh) {
     if (StatusIcon.paused) {
         return;
-       }
+    }
     
     Seed.print(f.get_path());
     if (f.get_basename()[0] == '.') {
