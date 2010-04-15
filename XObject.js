@@ -25,7 +25,7 @@
  * 
  * 
  * @arg xtype {String|Function} constructor or string.
- * @arg xid {String}  (optional) id for registry
+ * @arg id {String}  (optional) id for registry
  * @arg xns {String|Object}   (optional) namespace eg. Gtk or 'Gtk' - used with xtype.
  * @arg items {Array}   (optional) list of child elements which will be constructed.. using XObject
  * @arg listeners {Object}   (optional) map Gobject signals to functions
@@ -37,7 +37,8 @@
  * 
  * He's some questions.
  * - should we generate ID's for all elements? (if so we probably need to garbage collect)
- * 
+ * - should we have a special property to use as the constructor / gobject.properties rather
+ *   than sending all basic types to this?
  * 
  * 
  */
