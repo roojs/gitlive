@@ -55,7 +55,8 @@ function XObject (cfg) {
         this.el = this.el ||  new this.xtype(o);
     }
     
-    if (!this.el && o.xns) 
+    if (!this.el && o.xns) {
+        
         var NS = imports.gi[o.xns];
         if (!NS) {
             Seed.print('Invalid xns: ' + o.xns);
@@ -72,7 +73,6 @@ function XObject (cfg) {
             }
         }
     }
-    
     
     // register it!
     //if (o.xnsid  && o.xid) {
