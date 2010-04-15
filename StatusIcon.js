@@ -42,7 +42,7 @@ StatusIcon  = new XObject({
             this.el.get_geometry(g,a,null);
             
             print(Object.keys(a).join(','));
-            print(g.area);
+            print(a.x);
             
            // menu.el.get_toplevel().move(null, r);
             //menu.el.reposition();
