@@ -12,7 +12,8 @@
  * @arg xns {String|Object}   (optional) namespace eg. Gtk or 'Gtk' - used with xtype.
  * @arg items {Array}   (optional) list of child elements which will be constructed.. using XObject
  * @arg listeners {Object}   (optional) map Gobject signals to functions
- * 
+ * @arg pack {Function|String|Array}   (optional) how this object gets added to it's parent
+ * @arg el {Object}   (optional) premade GObject
  */
 
 function XObject (cfg) {
