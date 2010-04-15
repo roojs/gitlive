@@ -323,9 +323,7 @@ XObject.extend(XObject,
         }
         return ret;
     }
-    
-     },
-         
+      
     /**
      * @member XObject createDelegate
      * creates a delage metdhod
