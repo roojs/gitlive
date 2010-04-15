@@ -53,9 +53,12 @@ function XObject (cfg) {
      
     // xtype= Gtk.Menu ?? what about c_new stuff?
     if (typeof(this.xtype) == 'function') {
+        this.el = this.el ||  this.xtype(o);
+    }
+    if (typeof(this.xtype) == 'object') {
         this.el = this.el ||  new this.xtype(o);
     }
-    print(typeof(this.xtype));
+    print(this.el);
     if (!this.el && o.xns) {
         
         var NS = imports.gi[o.xns];
