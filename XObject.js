@@ -59,6 +59,7 @@ function XObject (cfg) {
         this.el = this.el ||  this.xtype(o);
     }
     if (typeof(this.xtype) == 'object') {
+        print(o);
         this.el = this.el ||  new this.xtype(o);
     }
     print(this.el);
@@ -314,7 +315,7 @@ XObject.extend(XObject,
             if(spp.constructor == Object.prototype.constructor){
                 spp.constructor=sp;
             }
-
+            
             sb.override = function(o){
                 Object.extend(sb.prototype, o);
             };
