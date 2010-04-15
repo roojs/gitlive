@@ -33,7 +33,9 @@ function XObject (cfg) {
     for (var i in o) {
         if ((typeof(o[i]) == 'object') || 
             (typeof(o[i]) == 'function') || 
-            i == 'pack'
+            i == 'pack' ||
+            i == 'xid'
+            
         ) {
             delete o[i];
         }
