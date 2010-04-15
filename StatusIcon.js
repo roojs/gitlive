@@ -12,10 +12,9 @@
  
 Gtk      = imports.gi.Gtk;
  
- 
 XObject = imports['XObject.js'].XObject
 
-Gtk.init(null,null);
+
  
 StatusIcon  = new XObject({
     
@@ -109,7 +108,4 @@ StatusIcon  = new XObject({
 
 
 // test..
-
-
-
- Gtk.main()
+ 
