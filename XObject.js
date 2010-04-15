@@ -12,6 +12,8 @@
 function XObject (cfg) {
     // first apply cfg if set.
     o =  {};
+    o.pack = o.pack || 'add';
+       
     XObject.extend(o, cfg); // copy everything into o.
     XObject.extend(this, o);
     
@@ -22,14 +24,17 @@ function XObject (cfg) {
     
     // remove objects/functions from o, so they can be sent to the contructor.
     for (var i in o) {
-        if ((typeof(o[i]) == 'object') || (typeof(o[i]) == 'function')) {
+        if ((typeof(o[i]) == 'object') || 
+            (typeof(o[i]) == 'function') || 
+            i == 'pack'
+        ) {
             delete o[i];
         }
     }
     
     this.listeners = this.listeners || {}; 
     
-    this.pack = cfg.pack || 'add';  // default to add to parent..
+    
     
     
     // handle include?
@@ -63,45 +68,55 @@ function XObject (cfg) {
         XObject.registry[o.xnsid][o.xid] = this;
     }
     
-    cfg.items.forEach(this.add, this);
+    cfg.items.forEach(this.addItem, this);
     
     
 }
 XObject.prototype = {
     /**
-     * @property el - the Gtk / etc. element.
+     * @property el {GObject} the Gtk / etc. element.
      */
     el : false, 
-    
-    add : function(o) {
+    /*
+     * @property items {Array} list of sub elements
+     */
+    /**
+     * @property parent {XObject} parent Element
+     */
+     
+    addItem : function(o) {
         var item = new XObject(o);
         
+        this.items.push(item);
         
-            
-        o.items[i] = xnew.xnew(o.items[i], xnsid);
-        
-        if (typeof(o.items[i].packing) == 'function') {
+         
+        if (typeof(item.pack) == 'function') {
             // parent, child
-            o.items[i].packing.apply(o, [ o , o.items[i] ]);
-            o.items[i].xparent = o;
-            continue;
+            item.pack.apply(o, [ o , o.items[i] ]);
+            item.parent = this;
+            return;
         }
-        var pack_m = o.items[i].packing[0];
         
+        
+        var pack_m = typeof(item.pack) == 'string' ?  item.pack :  item.pack.shift();
+        
+        // handle error.
         if (pack_m && typeof(o.el[pack_m]) == 'undefined') {
             Seed.print('pack method not available : ' + o.xtype + '.' +  pack_m);
-            continue;
-        }
-        Seed.print('Pack ' + o.xtype + '.'+ pack_m + '(' + o.items[i].xtype + ')');
-        // copy..
-        args = this.copyArray(o.items[i].packing);
-        args[0] = o.items[i].el;
-        Seed.print('args: ' + args.length);
-        if (pack_m) {
-            o.el[pack_m].apply(o.el, args);
+            return;
         }
         
-        o.items[i].xparent = o;
+        
+        //Seed.print('Pack ' + o.xtype + '.'+ pack_m + '(' + o.items[i].xtype + ')');
+        // copy.
+        var args = Array.prototype.slice.call(typeof(item.pack) == 'string' ? [] : item.pack);
+        item.pack.unshift(item.el);
+        //Seed.print('args: ' + args.length);
+        if (pack_m) {
+            this.el[pack_m].apply(item.el, args);
+        }
+        
+        item.parent = this;
         
     }
     
