@@ -145,7 +145,7 @@ XObject.prototype = {
         }
         
         
-        Seed.print('Pack ' + this.xtype + '.'+ pack_m + '(' + item.xtype + ')');
+        Seed.print('Pack ' + this.el + '.'+ pack_m + '(' + item.el + ')');
         // copy.
         var args = Array.prototype.slice.call(typeof(item.pack) == 'string' ? [] : item.pack);
         args.unshift(item.el);
