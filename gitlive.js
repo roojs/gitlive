@@ -17,6 +17,9 @@ Notify = imports.gi.Notify;
 
 Spawn = imports.Spawn;
 Git = imports.Git;
+StatusIcon = imports.StatusIcon.StatusIcon;
+
+
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
 
