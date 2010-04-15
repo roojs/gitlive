@@ -127,8 +127,11 @@ XObject.prototype = {
       * @arg cfg {Object} same as XObject constructor.
       */
     addItem : function(o) {
-        var item = new XObject(o);
-         item.parent = this;
+        
+        
+        
+        var item = o.constructor == XObject ? o : xnew XObject(o);
+        item.parent = this;
         this.items.push(item);
         
         if (item.pack===false) {  // no 
