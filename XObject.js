@@ -30,11 +30,24 @@ function XObject (o) {
     //if ((this.xtype == 'Include')) {
     //    o = this.pre_registry[cls];
     //}
-    
-    // xtype= Gtk.Menu
+    var isSeed = typeof(Seed) != 'undefined';
+     
+    // xtype= Gtk.Menu ?? what about c_new stuff?
     if (typeof(this.xtype) == 'function') {
-        this.el = this.xtype(o);
+        this.el = this.el ||  new this.xtype(o);
     }
+    if (!this.el && o.xns) 
+        var NS = imports.gi[o.xns];
+        if (!NS) {
+            Seed.print('Invalid xns: ' + o.xns);
+        }
+        constructor = NS[o.xtype];
+        if (!constructor) {
+            Seed.print('Invalid xtype: ' + o.xns + '.' + o.xtype);
+        }
+        this.el  = this.el ||  (isSeed ? new constructor(o) : new constructor());
+    }
+    
     
     // register it!
     if (o.xnsid  && o.xid) {
@@ -58,12 +71,7 @@ xnew: function (o, in_xnsid)
     {
          
          
-        if (o.xnsid  && o.xid) {
-            xnew.registry = xnew.registry || { };
-            xnew.registry[o.xnsid] = xnew.registry[o.xnsid] || {}; 
-            xnew.registry[o.xnsid][o.xid] = o;
-        }
-        
+         
         
         var isSeed = typeof(Seed) != 'undefined';
         
