@@ -116,6 +116,26 @@ StatusIcon  = new XObject({
                         }
                     }
                 },
+                {
+                    init : function() {
+                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_RELOAD);
+                        XObject.prototype.init.call(this);
+                    },
+                    label: 'Manage Clones',
+                    always_show_image : true,
+                    accel_group : null,
+                    xid : 'resume',
+                    //label: 'Pause',
+                    pack:  'append',
+                    listeners : {
+                        activate : function () {
+                             
+                            
+                        }
+                    }
+                },
+                
+                
                 
             
                 {
