@@ -121,7 +121,9 @@ XObject.prototype = {
         
         this.items.push(item);
         
-         
+        if (item.pack && item.pack===false) {  // no 
+            return;
+        }
         if (typeof(item.pack) == 'function') {
             // parent, child
             item.pack.apply(o, [ o , o.items[i] ]);
