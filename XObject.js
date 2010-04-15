@@ -24,7 +24,7 @@ function XObject (cfg) {
     
     XObject.extend(o, cfg); // copy everything into o.
     XObject.extend(this, o);
-    o.pack = typeof(o.pack) == 'undefined' || 'add';
+    o.pack = typeof(o.pack) == 'undefined' ? 'add' : o.pack;
     // remove items.
     
     this.listeners = this.listeners || {}; 
