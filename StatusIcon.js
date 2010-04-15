@@ -27,6 +27,7 @@ StatusIcon  = new XObject({
             var menu = this.get('menu');   
             menu.el.show_all();
             menu.el.popup(null, null, null, null,  event, event_time);
+        }
     },
     items : [
         {
@@ -64,7 +65,7 @@ StatusIcon  = new XObject({
         }
     ]
     
-})
+});
 
 
 // test..
