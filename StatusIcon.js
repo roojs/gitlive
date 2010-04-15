@@ -35,11 +35,10 @@ StatusIcon  = new XObject({
             
             this.get(this.status ?  'pause' : 'resume').el.hide();
             
-            menu.el.popup(null, null, function(m,x,y,push_in) {
-                var ret =  Gtk.StatusIcon.position_menu(menu.el,  x, y, push_in, null) ; 
-                menu.el.set_uposition(ret.x,ret.y);
-            }, 
-             event, event_time)
+            menu.el.popup(null, null, null, event, event_time);
+            var g = this.el.get_geometry();
+            menu.el.set_uposition(pg.area.x,pg.area.y);
+            
             
             //menu.el.popup(null, null , null, null,  event, event_time);
         }
