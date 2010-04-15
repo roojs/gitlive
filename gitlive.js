@@ -206,32 +206,11 @@ function message(data) {
 Gtk.init (null, null);
 //
 // need a better icon...
-var icon = new Gtk.StatusIcon.from_stock(Gtk.STOCK_ABOUT);
+
+StatusIcon.init(); 
 
 
 
-icon.signal["popup-menu"].connect(function(w, event, event_time) {
-    var menu = new Gtk.Menu();
-    var open_item = new Gtk.MenuItem({label: "About"});
-    var close_item = new Gtk.MenuItem({label: "Quit"});
-
-    menu.append(open_item);
-    menu.append(close_item);
-
-    close_item.signal["activate"].connect( function() {
-        Seed.quit();
-    });
-    open_item.signal["activate"].connect( 
-        function message(data) {
-            var msg = new Gtk.MessageDialog({message_type:
-                Gtk.MessageType.INFO, buttons : Gtk.ButtonsType.OK, text: "GIT Live - auto commits and pushes everything in ~/gitlive"});
-            msg.run();
-            msg.destroy();
-    });
-    
-    menu.show_all();
-    menu.popup(null, null, null, null,  event, event_time);
-});
 Notify.init("gitlive");
 if (!GLib.file_test(GLib.get_home_dir() + "/gitlive", GLib.FileTest.IS_DIR)) {
     var msg = new Gtk.MessageDialog({message_type:
