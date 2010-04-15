@@ -149,7 +149,7 @@ XObject.prototype = {
         // copy.
         var args = Array.prototype.slice.call(typeof(item.pack) == 'string' ? [] : item.pack);
         args.unshift(item.el);
-        seed.print(args.join(','));
+        print(args.join(','));
         //Seed.print('args: ' + args.length);
         if (pack_m) {
             this.el[pack_m].apply(item.el, args);
