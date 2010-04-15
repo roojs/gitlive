@@ -159,7 +159,36 @@ XObject.prototype = {
              
         
     }
-    
+     /**
+      * @method get
+      * Finds an object in the child elements using xid of object.
+      * 
+      * @arg name  {String} name of signal
+      * @return   {XObject|false} the object if found.
+      */
+    get : function(xid)
+    {
+        var ret=  false;
+        this.items.each(function(ch) {
+            if (ch.xid == xid) {
+                ret = ch;
+                return true;
+            }
+        })
+        if (ret) {
+            return ret;
+        }
+        // iterate children.
+        this.items.each(function(ch) {
+            ret = ch.get(xid);
+            if (ret) {
+                return true;
+            }
+        })
+        return ret;
+    }
+      
+      
 } 
          
         
