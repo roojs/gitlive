@@ -16,6 +16,7 @@
  * 
  * normal usage:
  * XObject = imports.XObject.XObject;
+ * 
  * Xyz = new XObject({
  *     xtype: Gtk.Window,
  *     id : 'window',
