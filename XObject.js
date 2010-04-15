@@ -59,8 +59,8 @@ XObject.prototype = {
       * and packs the children.
       * you can override this, in child objects, then 
       * do this to do thi initaliztion.
-      * XObject.prototype.init.call(this); 
       * 
+      * XObject.prototype.init.call(this); 
       * 
       */ 
     init : function()
