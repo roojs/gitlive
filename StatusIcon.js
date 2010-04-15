@@ -38,7 +38,7 @@ StatusIcon  = new XObject({
             menu.el.popup(null, null, null, event, event_time);
             var g = { };
             print (this.el.get_geometry(g));
-            print(g);
+            print(Object.keys(g).join(','));
             
             menu.el.set_uposition(g.area.x,g.area.y);
             
