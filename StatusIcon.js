@@ -10,20 +10,14 @@
  * b) Pause!??!
  */
  
-
-Object = imports['Object.js'].Object
-XObject = imports['GtkObject.js'].XObject
+Gtk      = imports.gi.Gtk;
+ 
+XObject = imports['XObject.js'].XObject
 
  
-StatusIcon  = Object.define(
-    function ()
-    {
-        var icon = new Gtk.StatusIcon.from_stock(Gtk.STOCK_ABOUT);
-        this.prototype.superclass.constructor.call(this);
-        
-    },
-    XObject,
-    
+StatusIcon  = new XObject(
+    el :  new Gtk.StatusIcon.from_stock(Gtk.STOCK_ABOUT),
+
     listeners : {
         'popup-menu' : function(w, event, event_time) {
             
@@ -34,6 +28,7 @@ StatusIcon  = Object.define(
     items : [
         {
             xtype: Gtk.Menu,
+            xid : 'menu',
             pack: false,
             items : [
                 {
