@@ -117,7 +117,7 @@ StatusIcon  = new XObject({
                 
                 {
                     init : function() {
-                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_EXIT);
+                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_QUIT);
                         XObject.prototype.init.call(this);
                     },
                     label: 'Quit',
