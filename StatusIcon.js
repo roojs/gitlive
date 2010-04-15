@@ -34,13 +34,13 @@ StatusIcon  = new XObject({
     },
     items : [
        {
-            xtype: Gtk.ImageMenu,
+            xtype: Gtk.Menu,
             xid : 'menu',
             pack: false,
             items : [
                 {
                     el: new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_HELP  ),
-                    
+                    always_show_image : true,
                     accel_group : null,
                     //label: 'Pause',
                     pack:  'append',
