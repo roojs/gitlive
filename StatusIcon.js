@@ -25,13 +25,14 @@ StatusIcon  = new XObject({
         'popup-menu' : function( w, event, event_time) {
             print(Array.prototype.slice.call(arguments).join(','));
             
-            menu = new XObject(this.menu);
+            menu = this.get('menu');
             
             menu.el.show_all();
             menu.el.popup(null, null, null, null,  event, event_time);
         }
     },
-    menu : {
+    items : [
+       {
             xtype: Gtk.Menu,
             xid : 'menu',
             pack: false,
@@ -64,7 +65,7 @@ StatusIcon  = new XObject({
                 
             ]
         }
-     
+    ]
     
 });
 
