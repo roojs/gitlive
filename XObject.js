@@ -322,7 +322,7 @@ XObject.extend(XObject,
             ret.push[i];
         }
         return ret;
-    }
+    },
       
     /**
      * @member XObject createDelegate
@@ -348,6 +348,6 @@ XObject.extend(XObject,
                 }
                 return method.apply(obj || window, callArgs);
             };
-    },
+    }
     
 });
