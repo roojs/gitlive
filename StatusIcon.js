@@ -35,11 +35,14 @@ StatusIcon  = new XObject({
             
             this.get(this.status ?  'pause' : 'resume').el.hide();
             
-            menu.el.popup(null, null,Gtk.StatusIcon.position_menu, this.el, event, event_time);
-            //var g = Gtk.StatusIcon.position_menu (menu.el, null, null, null, this.el)
+            menu.el.popup(null, null,null, null, event, event_time);
+            var g = { };
+            
+            //  needs direction=out setting in gir to work (fixed in HEAD)
+            this.el.get_geometry(g);
             
             print(Object.keys(g).join(','));
-            print(g.x +','+ g.y);
+            print(g.area.x +','+ g.area.y);
             
             //menu.el.get_toplevel().move(g.x,g.y);
             //menu.el.reposition();
