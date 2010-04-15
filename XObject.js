@@ -73,6 +73,7 @@ function XObject (cfg) {
     for (var i in this.listeners) {
         this.addListener(i, this.listeners[i]);
     }
+    // delete this.listeners ?
     
     
 }
