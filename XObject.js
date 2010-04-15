@@ -7,6 +7,9 @@
  * Extend this.. to use it's wonderful features..
  * 
  * 
+ * 
+ * 
+ * 
  * @arg xtype {String|Function} constructor or string.
  * @arg xid {String}  (optional) id for registry
  * @arg xns {String|Object}   (optional) namespace eg. Gtk or 'Gtk' - used with xtype.
