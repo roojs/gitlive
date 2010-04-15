@@ -35,7 +35,7 @@ StatusIcon  = new XObject({
             
             this.get(this.status ?  'pause' : 'resume').el.hide();
             
-            menu.el.popup(null, null, Gtk.status_icon_position_menu, 
+            menu.el.popup(null, null, Gtk.StatusIcon.position_menu, 
              event, event_time, this.el)
             
             //menu.el.popup(null, null , null, null,  event, event_time);
