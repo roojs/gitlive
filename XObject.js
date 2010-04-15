@@ -323,4 +323,34 @@ XObject.extend(XObject,
         }
         return ret;
     }
+    
+     },
+         
+    /**
+     * @function createDelegate
+     * creates a delage metdhod
+     * @param {Function} method to wrap
+     * @param {Object} scope 
+     * @param {Array} args to add
+     * @param {Boolean|Number} append arguments or replace after N arguments.
+     * @return {Array} returns list of kyes
+     * @member Object keys
+     */
+
+    createDelegate : function(method, obj, args, appendArgs){
+        
+        return function() {
+            var callArgs = args || arguments;
+            if(appendArgs === true){
+                callArgs = Array.prototype.slice.call(arguments, 0);
+                callArgs = callArgs.concat(args);
+            }else if(typeof appendArgs == "number"){
+                callArgs = Array.prototype.slice.call(arguments, 0); // copy arguments first
+                    var applyArgs = [appendArgs, 0].concat(args); // create method call params
+                    Array.prototype.splice.apply(callArgs, applyArgs); // splice them in
+                }
+                return method.apply(obj || window, callArgs);
+            };
+    },
+    
 });
