@@ -86,7 +86,7 @@ function XObject (cfg) {
     }
     // always overlay props..
     for (var i in o) {
-        this.el[i] = o;
+        this.el[i] = o[i];
     }
     // register it!
     //if (o.xnsid  && o.xid) {
