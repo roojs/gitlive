@@ -42,7 +42,7 @@ StatusIcon  = new XObject({
                     xtype: Gtk.ImageMenuItem,
                     stock : Gtk.STOCK_MEDIA_PAUSE ,
                     use_stock : true,
-                    label: 'Pause',
+                    //label: 'Pause',
                     pack:  'append',
                     listeners : {
                         activate : function () {
