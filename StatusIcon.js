@@ -23,7 +23,7 @@ StatusIcon  = new XObject({
 
     listeners : {
         'popup-menu' : function( w, event, event_time) {
-            print(arguments);
+            print(Array.prototype.slice.call(arguments).join(','));
             var menu = this.get('menu');   
             menu.el.show_all();
             menu.el.popup(null, null, null, null,  event, event_time);
