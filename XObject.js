@@ -18,6 +18,7 @@
 
 function XObject (cfg) {
     // first apply cfg if set.
+    print("new xobj?"  + XObject.keys(cfg).join(','));
     o =  {};
     
     cfg.items = cfg.items || [];
