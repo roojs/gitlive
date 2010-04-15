@@ -130,7 +130,7 @@ XObject.prototype = {
       */
     addItem : function(o) {
         var item = new XObject(o);
-        
+         item.parent = this;
         this.items.push(item);
         
         if (item.pack===false) {  // no 
@@ -167,7 +167,7 @@ XObject.prototype = {
             this.el[pack_m].apply(this.el, args);
         }
         
-        item.parent = this;
+       
         
     },
     /**
