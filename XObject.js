@@ -14,6 +14,9 @@ function XObject (o) {
     o = o || {};
     XObject.extend(this, o);
     
+    // remove items.
+    this.items = [];
+    var items = o.items || []
     // remove objects/functions from o, so they can be sent to the contructor.
     for (var i in o) {
         if ((typeof(o[i]) == 'object') || (typeof(o[i]) == 'function')) {
@@ -56,6 +59,8 @@ function XObject (o) {
         XObject.registry[o.xnsid] = XObject.registry[o.xnsid] || {}; 
         XObject.registry[o.xnsid][o.xid] = this;
     }
+    
+    this.addItems(
     
     
 }
