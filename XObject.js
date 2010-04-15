@@ -167,7 +167,7 @@ XObject.prototype = {
         }
              
         
-    }
+    },
      /**
       * @method get
       * Finds an object in the child elements using xid of object.
