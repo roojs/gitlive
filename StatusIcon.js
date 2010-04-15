@@ -39,6 +39,19 @@ StatusIcon  = new XObject({
             items : [
                 {
                     xtype: Gtk.MenuItem,
+                    label: 'Pause',
+                    pack:  'append',
+                    listeners : {
+                        activate : function () {
+                            this.el.label  = this.el.label == 'Pause' ? 'Resume' : 'Pause';
+                        }
+                    }
+                }
+                
+            
+            
+                {
+                    xtype: Gtk.MenuItem,
                     label: 'About',
                     pack:  'append',
                     listeners : {
