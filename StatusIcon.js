@@ -31,12 +31,12 @@ StatusIcon  = new XObject({
             menu.el.popup(null, null, null, null,  event, event_time);
         }
     },
-    menuitems : [
+    items : [
         {
             xtype: Gtk.Menu,
             xid : 'menu',
             pack: false,
-            items : [
+            menuitems : [
                 {
                     xtype: Gtk.MenuItem,
                     label: 'About',
