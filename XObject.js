@@ -45,6 +45,7 @@ function XObject (cfg) {
             i == 'pack' ||
             i == 'xid' ||
             i == 'xtype' ||
+            i == 'debug' ||
             i == 'xns'
         ) {
             delete o[i];
