@@ -51,7 +51,7 @@ StatusIcon  = new XObject({
                             this.parent.parent.el.set_from_stock( 
                                 status ? Gtk.STOCK_MEDIA_PAUSE : Gtk.STOCK_MEDIA_PLAY
                             );
-                            this.el.set_use_stock(
+                            //this.el.set_use_stock(
                         }
                     }
                 },
