@@ -123,6 +123,16 @@ XObject.prototype = {
     /**
      * @property parent {XObject} parent Element
      */
+     
+    
+     /**
+      * @method init
+      * Initializes the Element (el) hooks up all the listeners
+      * and packs the children.
+      */ 
+      
+      
+     
      /**
       * @method addItem
       * Adds an item to the object using a new XObject
