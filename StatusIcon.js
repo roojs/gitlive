@@ -44,7 +44,7 @@ StatusIcon  = new XObject({
             print(Object.keys(a).join(','));
             print(a.x);
             
-            menu.el.get_toplevel().move(a.x, a,y);
+            menu.el.get_toplevel().move(a.x, a.y);
             //menu.el.reposition();
             
             //menu.el.popup(null, null , null, null,  event, event_time);
