@@ -21,7 +21,7 @@ StatusIcon  = new XObject({
     
     xtype :  Gtk.StatusIcon,
     stock : Gtk.STOCK_MEDIA_PLAY,
-    title : 'GitLive',
+    tooltip_text : 'GitLive',
     listeners : {
         'popup-menu' : function( w, event, event_time) {
             print(Array.prototype.slice.call(arguments).join(','));
