@@ -17,7 +17,8 @@ XObject = imports['XObject.js'].XObject
 
 Gtk.init(null,null);
  
-StatusIcon  = new XObject(
+StatusIcon  = new XObject({
+    
     el :  new Gtk.StatusIcon.from_stock(Gtk.STOCK_ABOUT),
 
     listeners : {
@@ -63,7 +64,7 @@ StatusIcon  = new XObject(
         }
     ]
     
-} 
+})
 
 
 // test..
