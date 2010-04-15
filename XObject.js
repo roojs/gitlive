@@ -19,7 +19,7 @@ function XObject (cfg) {
     
     // remove items.
     this.items = [];
-    
+    this.listeners = this.listeners || {}; 
     
     
     // remove objects/functions from o, so they can be sent to the contructor.
@@ -32,11 +32,8 @@ function XObject (cfg) {
         }
     }
     
-    this.listeners = this.listeners || {}; 
-    
-    
-    
-    
+    // do we need to call 'beforeInit here?'
+     
     // handle include?
     //if ((this.xtype == 'Include')) {
     //    o = this.pre_registry[cls];
@@ -57,7 +54,7 @@ function XObject (cfg) {
         if (!constructor) {
             Seed.print('Invalid xtype: ' + o.xns + '.' + o.xtype);
         }
-        this.el  = this.el ||  (isSeed ? new constructor(o) : new constructor());
+        this.el  =   isSeed ? new constructor(o) : new constructor();
     }
     
     
@@ -75,6 +72,8 @@ function XObject (cfg) {
     }
     // delete this.listeners ?
     
+    
+    // do we need to call 'init here?'
     
 }
 XObject.prototype = {
@@ -144,83 +143,4 @@ XObject.prototype = {
         
    
         
-        
-        if (o.listeners._new) { // rendered!?!?
-            Seed.print('Call : ' + o.xtype+'.listeners._new');
-            o.listeners._new.call(o);
-        }
-        
-        
-        //Seed.print(o.pack.length);
-        // packing  - if 'add method exists on created node use that..
-        
-        
-        for( var i =0; i < o.items.length;i++) {
-            
-            
-            
-            
-            o.items[i] = xnew.xnew(o.items[i], xnsid);
-            
-            if (typeof(o.items[i].packing) == 'function') {
-                // parent, child
-                o.items[i].packing.apply(o, [ o , o.items[i] ]);
-                o.items[i].xparent = o;
-                continue;
-            }
-            var pack_m = o.items[i].packing[0];
-            
-            if (pack_m && typeof(o.el[pack_m]) == 'undefined') {
-                Seed.print('pack method not available : ' + o.xtype + '.' +  pack_m);
-                continue;
-            }
-            Seed.print('Pack ' + o.xtype + '.'+ pack_m + '(' + o.items[i].xtype + ')');
-            // copy..
-            args = this.copyArray(o.items[i].packing);
-            args[0] = o.items[i].el;
-            Seed.print('args: ' + args.length);
-            if (pack_m) {
-                o.el[pack_m].apply(o.el, args);
-            }
-            
-            o.items[i].xparent = o;
-        }
-        
-        /// Setting stuff...
-        
-        for (var i in o.set) {
-            Seed.print('Set ' + i);
-            if (typeof(o.el[i].apply) !='undefined') {
-                o.el[i].apply(o.el, o.set[i]);
-               }
-            
-        }
-          
-        for (var i in o.listeners) {
-            if (i.substring(0,1) == '_') {
-                continue;
-            }
-            Seed.print('Add Listener ' + i);
-            
-            var _li = this.createDelegate(o.listeners[i],o);
-            // private listeners that are not copied to GTk.
-            
-             
-            if (isSeed) {
-              //   Seed.print(typeof(_li));
-                o.el.signal[i].connect(_li);
-            } else {
-                o.el.connect( i, _li);
-            }
-             
-        }
-       
-        // apply functions..
-        if (o.listeners._rendered) { // rendered!?!?
-            Seed.print('Call : ' + o.xtype+'.listeners._rendered');
-            o.listeners._rendered.call(o);
-        }
-        
-        return o;
-
-    }
+         
