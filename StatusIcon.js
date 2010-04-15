@@ -106,7 +106,6 @@ StatusIcon  = new XObject({
                     label: 'Pull (Refresh) All',
                     always_show_image : true,
                     accel_group : null,
-                    xid : 'resume',
                     //label: 'Pause',
                     pack:  'append',
                     listeners : {
@@ -124,7 +123,7 @@ StatusIcon  = new XObject({
                     label: 'Manage Clones',
                     always_show_image : true,
                     accel_group : null,
-                    xid : 'resume',
+                    
                     //label: 'Pause',
                     pack:  'append',
                     listeners : {
