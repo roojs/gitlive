@@ -191,7 +191,7 @@ XObject.prototype = {
     get : function(xid)
     {
         var ret=  false;
-        this.items.each(function(ch) {
+        this.items.forEach(function(ch) {
             if (ch.xid == xid) {
                 ret = ch;
                 return true;
@@ -201,7 +201,7 @@ XObject.prototype = {
             return ret;
         }
         // iterate children.
-        this.items.each(function(ch) {
+        this.items.forEach(function(ch) {
             ret = ch.get(xid);
             if (ret) {
                 return true;
