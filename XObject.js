@@ -83,6 +83,9 @@ function XObject (cfg) {
     // do we need to call 'init here?'
     
 }
+
+
+
 XObject.prototype = {
     /**
      * @property el {GObject} the Gtk / etc. element.
