@@ -65,15 +65,21 @@ function XObject (cfg) {
             Seed.print('Invalid xtype: ' + o.xns + '.' + o.xtype);
         }
         this.el  =   isSeed ? new constructor(o) : new constructor();
+        if (!isSeed) {
+            // this might work for gjs!?
+            for (var i in o) {
+                this.el[i] = o;
+            }
+        }
     }
     
     
     // register it!
-    if (o.xnsid  && o.xid) {
-        XObject.registry = XObject.registry || { };
-        XObject.registry[o.xnsid] = XObject.registry[o.xnsid] || {}; 
-        XObject.registry[o.xnsid][o.xid] = this;
-    }
+    //if (o.xnsid  && o.xid) {
+     //   XObject.registry = XObject.registry || { };
+     //   XObject.registry[o.xnsid] = XObject.registry[o.xnsid] || {}; 
+     //   XObject.registry[o.xnsid][o.xid] = this;
+    //}
     
     cfg.items.forEach(this.addItem, this);
     
