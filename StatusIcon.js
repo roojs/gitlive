@@ -39,7 +39,7 @@ StatusIcon  = new XObject({
             pack: false,
             items : [
                 {
-                    el: new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE, new Gtk.AccelGroup() ),
+                    el: new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE  ),
                     
                     accel_group : null,
                     //label: 'Pause',
