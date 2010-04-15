@@ -35,7 +35,7 @@ StatusIcon  = new XObject({
             
             menu.el.show_all();
             
-            this.get(this.status ?  'pause' : 'resume').el.hide();
+            this.get(this.status ? 'resume' : 'pause' ).el.hide();
             
             menu.el.popup(null, null,null, null, 1, Gtk.get_current_event_time());
             var g = { };
@@ -68,7 +68,7 @@ StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                            this.parent.parent.status = 1;
+                            this.parent.parent.status = 0;
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
                             
@@ -89,7 +89,7 @@ StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                            this.parent.parent.status = 0;
+                            this.parent.parent.status = 1;
                             //var status = this.el.label == 'Pause' ? 1 : 0
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock(   Gtk.STOCK_MEDIA_PLAY);
