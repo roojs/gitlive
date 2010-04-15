@@ -61,7 +61,7 @@ function XObject (cfg) {
     print(this.xtype);
     if (typeof(this.xtype) == 'function') {
         print("func?"  + XObject.keys(o).join(','));
-        this.el = this.el ||  new this.xtype(o);
+        this.el = this.el ||   this.xtype(o);
     }
     if (typeof(this.xtype) == 'object') {
         print("obj?"  + XObject.keys(o).join(','));
