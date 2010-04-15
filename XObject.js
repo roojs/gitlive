@@ -133,8 +133,8 @@ XObject.prototype = {
         var pack_m = typeof(item.pack) == 'string' ?  item.pack :  item.pack.shift();
         
         // handle error.
-        if (pack_m && typeof(o.el[pack_m]) == 'undefined') {
-            Seed.print('pack method not available : ' + o.xtype + '.' +  pack_m);
+        if (pack_m && typeof(this.el[pack_m]) == 'undefined') {
+            Seed.print('pack method not available : ' + this.xtype + '.' +  pack_m);
             return;
         }
         
