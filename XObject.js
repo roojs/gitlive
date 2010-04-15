@@ -155,8 +155,11 @@ XObject.prototype = {
       * @arg sig  {String} name of signal
       * @arg fn  {Function} handler.
       */
-    addListener  : function(sig, fn) {
-              
+    addListener  : function(sig, fn) 
+    {
+ 
+        Seed.print("Add signal " + sig);
+ 
         var _li = XObject.createDelegate(fn,this);
         // private listeners that are not copied to GTk.
         
