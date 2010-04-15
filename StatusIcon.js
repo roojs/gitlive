@@ -31,7 +31,7 @@ StatusIcon  = new XObject({
             menu.el.popup(null, null, null, null,  event, event_time);
         }
     },
-    menu {
+    menu : {
             xtype: Gtk.Menu,
             xid : 'menu',
             pack: false,
