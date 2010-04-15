@@ -22,8 +22,8 @@ StatusIcon  = new XObject({
     el :  new Gtk.StatusIcon.from_stock(Gtk.STOCK_ABOUT),
 
     listeners : {
-        'popup-menu' : function(mn, w, event, event_time) {
-            
+        'popup-menu' : function( w, event, event_time) {
+            print(arguments);
             var menu = this.get('menu');   
             menu.el.show_all();
             menu.el.popup(null, null, null, null,  event, event_time);
