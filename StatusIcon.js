@@ -51,7 +51,7 @@ StatusIcon  = new XObject({
     items : [
        {
             xtype: Gtk.Menu,
-            xid : 'menu',
+            id : 'menu',
             pack: false,
             items : [
                 {
@@ -63,7 +63,7 @@ StatusIcon  = new XObject({
                    
                     always_show_image : true,
                     accel_group : null,
-                    xid : 'pause',
+                    id : 'pause',
                     //label: 'Pause',
                     pack:  'append',
                     listeners : {
@@ -84,7 +84,7 @@ StatusIcon  = new XObject({
                     label: 'Resume Commits',
                     always_show_image : true,
                     accel_group : null,
-                    xid : 'resume',
+                    id : 'resume',
                     //label: 'Pause',
                     pack:  'append',
                     listeners : {
