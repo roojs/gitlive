@@ -64,7 +64,7 @@ StatusIcon  = new XObject({
                 
             ]
         }
-    ]
+     
     
 });
 
