@@ -23,90 +23,8 @@
 
 function XObject (cfg) {
     // first apply cfg if set.
+    this.config = cfg;
     
-    print("new xobj?"  + XObject.keys(cfg).join(','));
-    //print(cfg);
-    o =  {};
-    
-    cfg.items = cfg.items || [];
-    
-    XObject.extend(o, cfg); // copy everything into o.
-    
-    o.pack = typeof(o.pack) == 'undefined' ? 'add' : o.pack;
-    
-    XObject.extend(this, o);
-
-    // remove items.
-    
-    this.listeners = this.listeners || {}; 
-    this.items = [];
-    
-    // remove objects/functions from o, so they can be sent to the contructor.
-    for (var i in o) {
-        if ((typeof(o[i]) == 'object') || 
-            (typeof(o[i]) == 'function') || 
-            i == 'pack' ||
-            i == 'xid' ||
-            i == 'xtype' ||
-            i == 'xdebug' ||
-            i == 'xns'
-        ) {
-            delete o[i];
-        }
-    }
-    
-    // do we need to call 'beforeInit here?'
-     
-    // handle include?
-    //if ((this.xtype == 'Include')) {
-    //    o = this.pre_registry[cls];
-    //}
-    var isSeed = typeof(Seed) != 'undefined';
-     
-    // xtype= Gtk.Menu ?? what about c_new stuff?
-    print(this.xtype);
-    if (typeof(this.xtype) == 'function') {
-        print("func?"  + XObject.keys(o).join(','));
-        this.el = this.el ||   this.xtype(o);
-    }
-    if (typeof(this.xtype) == 'object') {
-        print("obj?"  + XObject.keys(o).join(','));
-        this.el = this.el ||  new this.xtype(o);
-    }
-    //print(this.el);
-    if (!this.el && o.xns) {
-        
-        var NS = imports.gi[o.xns];
-        if (!NS) {
-            Seed.print('Invalid xns: ' + o.xns);
-        }
-        constructor = NS[o.xtype];
-        if (!constructor) {
-            Seed.print('Invalid xtype: ' + o.xns + '.' + o.xtype);
-        }
-        this.el  =   isSeed ? new constructor(o) : new constructor();
-        
-    }
-    // always overlay props..
-    for (var i in o) {
-        this.el[i] = o[i];
-    }
-    // register it!
-    //if (o.xnsid  && o.xid) {
-     //   XObject.registry = XObject.registry || { };
-     //   XObject.registry[o.xnsid] = XObject.registry[o.xnsid] || {}; 
-     //   XObject.registry[o.xnsid][o.xid] = this;
-    //}
-    
-    cfg.items.forEach(this.addItem, this);
-    
-    for (var i in this.listeners) {
-        this.addListener(i, this.listeners[i]);
-    }
-    // delete this.listeners ?
-    
-    
-    // do we need to call 'init here?'
     
 }
 
@@ -130,7 +48,94 @@ XObject.prototype = {
       * Initializes the Element (el) hooks up all the listeners
       * and packs the children.
       */ 
-      
+    init : function()
+    {
+        var cfg = this.config;
+    
+        print("new xobj?"  + XObject.keys(cfg).join(','));
+        //print(cfg);
+        o =  {};
+        
+        cfg.items = cfg.items || [];
+        
+        XObject.extend(o, cfg); // copy everything into o.
+        
+        o.pack = typeof(o.pack) == 'undefined' ? 'add' : o.pack;
+        
+        XObject.extend(this, o);
+
+        // remove items.
+        
+        this.listeners = this.listeners || {}; 
+        this.items = [];
+        
+        // remove objects/functions from o, so they can be sent to the contructor.
+        for (var i in o) {
+            if ((typeof(o[i]) == 'object') || 
+                (typeof(o[i]) == 'function') || 
+                i == 'pack' ||
+                i == 'xid' ||
+                i == 'xtype' ||
+                i == 'xdebug' ||
+                i == 'xns'
+            ) {
+                delete o[i];
+            }
+        }
+        
+        // do we need to call 'beforeInit here?'
+         
+        // handle include?
+        //if ((this.xtype == 'Include')) {
+        //    o = this.pre_registry[cls];
+        //}
+        var isSeed = typeof(Seed) != 'undefined';
+         
+        // xtype= Gtk.Menu ?? what about c_new stuff?
+        print(this.xtype);
+        if (typeof(this.xtype) == 'function') {
+            print("func?"  + XObject.keys(o).join(','));
+            this.el = this.el ||   this.xtype(o);
+        }
+        if (typeof(this.xtype) == 'object') {
+            print("obj?"  + XObject.keys(o).join(','));
+            this.el = this.el ||  new this.xtype(o);
+        }
+        //print(this.el);
+        if (!this.el && o.xns) {
+            
+            var NS = imports.gi[o.xns];
+            if (!NS) {
+                Seed.print('Invalid xns: ' + o.xns);
+            }
+            constructor = NS[o.xtype];
+            if (!constructor) {
+                Seed.print('Invalid xtype: ' + o.xns + '.' + o.xtype);
+            }
+            this.el  =   isSeed ? new constructor(o) : new constructor();
+            
+        }
+        // always overlay props..
+        for (var i in o) {
+            this.el[i] = o[i];
+        }
+        // register it!
+        //if (o.xnsid  && o.xid) {
+         //   XObject.registry = XObject.registry || { };
+         //   XObject.registry[o.xnsid] = XObject.registry[o.xnsid] || {}; 
+         //   XObject.registry[o.xnsid][o.xid] = this;
+        //}
+        
+        cfg.items.forEach(this.addItem, this);
+        
+        for (var i in this.listeners) {
+            this.addListener(i, this.listeners[i]);
+        }
+        // delete this.listeners ?
+        
+        
+        // do we need to call 'init here?'
+    },
       
      
      /**
