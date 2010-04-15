@@ -58,8 +58,11 @@ StatusIcon  = new XObject({
             pack: false,
             items : [
                 {
-                    xtype: Gtk.ImageMenuItem.from_stock,
-                    stock: Gtk.STOCK_MEDIA_PAUSE,
+                    init : function() {
+                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE);
+                        XObject.prototype.init.call(this);
+                    }
+                    
                    
                     always_show_image : true,
                     accel_group : null,
@@ -77,8 +80,10 @@ StatusIcon  = new XObject({
                 },
                 
                {
-                    xtype: Gtk.ImageMenuItem.from_stock,
-                    stock: Gtk.STOCK_MEDIA_PLAY,
+                    init : function() {
+                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PLAY);
+                        XObject.prototype.init.call(this);
+                    }                    
                     always_show_image : true,
                     accel_group : null,
                     xid : 'resume',
