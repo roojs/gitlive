@@ -20,7 +20,7 @@ Gtk.init(null,null);
 StatusIcon  = new XObject({
     
     xtype :  Gtk.StatusIcon,
-    stock : Gtk.STOCK_ABOUT
+    stock : Gtk.STOCK_ABOUT,
     listeners : {
         'popup-menu' : function( w, event, event_time) {
             print(Array.prototype.slice.call(arguments).join(','));
