@@ -130,7 +130,7 @@ XObject.prototype = {
             item.parent = this;
             return;
         }
-        
+        print(item.pack);
         
         var pack_m = typeof(item.pack) == 'string' ?  item.pack :  item.pack.shift();
         
