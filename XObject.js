@@ -36,6 +36,12 @@ function XObject (o) {
         this.el = this.xtype(o);
     }
     
+    // register it!
+    if (o.xnsid  && o.xid) {
+        XObject.registry = XObject.registry || { };
+        XObject.registry[o.xnsid] = XObject.registry[o.xnsid] || {}; 
+        XObject.registry[o.xnsid][o.xid] = this;
+    }
     
     
 }
@@ -50,34 +56,8 @@ XObject.prototype = {
 }
 xnew: function (o, in_xnsid)
     {
-        in_xnsid = in_xnsid || '';
-        var xnsid = '' + in_xnsid;
          
-        if ((o.xtype == 'Include') && (o.xns == 'xnew')) {
-            if (typeof(o.cls) != 'string') {
-                return xnew.xnew( o.cls.create(), xnsid);
-            }
-            var cls = o.cls;
-            o = this.pre_registry[cls];
-        }
-        if (typeof(o.xtype) == 'function') {
-            return   new o.xtype(o);
-        }
-        o.set = o.set || {}; 
-        o.listeners = o.listeners || {}; 
-        o.packing = o.packing || [ 'add' ]; 
-        o.items = o.items || []; 
-        // handle xnsid..
-        
-        if (typeof(o.xnsid) !='undefined') {
-            Seed.print("\n\n------------------------------------------");
-            Seed.print( o.xnsid);
-            Seed.print("------------------------------------------\n\n");
-            xnsid = ''+ o.xnsid;
-        }
-        if ((typeof(xnsid) != 'undefined') &&  !o.xnsid) {
-            o.xnsid = xnsid;
-        }
+         
         if (o.xnsid  && o.xid) {
             xnew.registry = xnew.registry || { };
             xnew.registry[o.xnsid] = xnew.registry[o.xnsid] || {}; 
