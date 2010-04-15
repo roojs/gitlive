@@ -114,7 +114,3 @@ StatusIcon  = new XObject({
 });
 
 
-// test..
-Gtk.init(null,null)
-StatusIcon.init();
-Gtk.main();
