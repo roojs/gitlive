@@ -313,7 +313,7 @@ XObject.extend(XObject,
      * returns a list of keys of the object.
      * @param {Object} obj object to inspect
      * @return {Array} returns list of kyes
-     * @member Object keys
+     * @member XObject keys
      */
     keys : function(o)
     {
@@ -327,14 +327,13 @@ XObject.extend(XObject,
      },
          
     /**
-     * @function createDelegate
+     * @member XObject createDelegate
      * creates a delage metdhod
      * @param {Function} method to wrap
      * @param {Object} scope 
      * @param {Array} args to add
      * @param {Boolean|Number} append arguments or replace after N arguments.
-     * @return {Array} returns list of kyes
-     * @member Object keys
+     * @return {Function} returns the delegate
      */
 
     createDelegate : function(method, obj, args, appendArgs){
