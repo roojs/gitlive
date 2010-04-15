@@ -161,7 +161,7 @@ XObject.prototype = {
         print('[' + args.join(',') +']');
         //Seed.print('args: ' + args.length);
         if (pack_m) {
-            this.el[pack_m].apply(item.el, args);
+            this.el[pack_m].apply(this.el, args);
         }
         
         item.parent = this;
