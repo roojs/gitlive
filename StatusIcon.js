@@ -46,7 +46,7 @@ StatusIcon  = new XObject({
                             this.el.label  = this.el.label == 'Pause' ? 'Resume' : 'Pause';
                         }
                     }
-                }
+                },
                 
             
             
