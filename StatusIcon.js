@@ -22,10 +22,6 @@ XObject = imports['XObject.js'].XObject
  
 StatusIcon  = new XObject({
     
-    init : function() {
-         
-    }
-    
     xtype : Gtk.StatusIcon,
     stock : Gtk.STOCK_MEDIA_PLAY,
     tooltip_text : 'GitLive',
@@ -116,4 +112,6 @@ StatusIcon  = new XObject({
 
 
 // test..
- 
+Gtk.init(null,null)
+StatusIcon.init();
+Gtk.main();
