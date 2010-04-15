@@ -9,6 +9,7 @@
  *    an interface element
  * B) In theory it should be gjs/Seed compatible..
  * C) It provides getElementById style lookups for elements.
+ * D) It provides classic OO constructors for Javascript (extend/define)
  *
  * Extend this.. to use it's wonderful features..
  * 
