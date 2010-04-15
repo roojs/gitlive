@@ -101,10 +101,7 @@ XObject.prototype = {
       * @method addItem
       * Adds an item to the object using a new XObject
       * uses pack property to determine how to add it.
-      * 
-      * 
-      * 
-      * 
+      *  
       */
     addItem : function(o) {
         var item = new XObject(o);
