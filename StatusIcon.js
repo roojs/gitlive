@@ -38,7 +38,7 @@ StatusIcon  = new XObject({
             menu.el.popup(null, null, null, event, event_time);
             var g = Gtk.StatusIcon.position_menu (menu.el, null, null, null, null)
             print(Object.keys(g).join(','));
-            menu.el.set_uposition(g.x,g.y);
+            menu.el.set_uposition(g.x,g.y+100);
             
             
             //menu.el.popup(null, null , null, null,  event, event_time);
