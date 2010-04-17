@@ -230,7 +230,7 @@ if (!GLib.file_test(GLib.get_home_dir() + "/gitlive", GLib.FileTest.IS_DIR)) {
     
     Seed.quit();
 } else {
-    monitor.add(GLib.get_home_dir() + "/gitlive", onChange);
+    monitor.add(GLib.get_home_dir() + "/gitlive");
     monitor.start();
     var notification = new Notify.Notification({
     	summary: "Git Live",
