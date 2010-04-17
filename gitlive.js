@@ -102,24 +102,36 @@ x = new Monitor({
     onChanged : function(src) 
     { 
         return; // always ignore this..?
-        this.parsePath(src);
+        //this.parsePath(src);
     },
     onChangesDoneHint : function(src) 
     { 
         this.parsePath(src);
+        if (this.shouldIgnore(src)) {
+            return;
+        }
     },
     onDeleted : function(src) 
     { 
         this.parsePath(src);
+        if (this.shouldIgnore(src)) {
+            return;
+        }
     },
     onCreated : function(src) 
     { 
         this.parsePath(src);
+        if (this.shouldIgnore(src)) {
+            return;
+        }
     },
     onMoved : function(src,dest)
     { 
         this.parsePath(src);
         this.parsePath(dest);
+        
+        // needs to handle move to/from unsupported types..
+        
         
     },
           
