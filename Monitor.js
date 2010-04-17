@@ -29,8 +29,6 @@ Monitor = function(cfg){
     this.top = [];
     
     
-    
-    
 }
 
 Monitor.prototype = {
