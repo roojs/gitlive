@@ -146,6 +146,7 @@ Monitor.prototype = {
     onChangesDoneHint : function(src) { },
     onDeleted : function(src) { },
     onCreated : function(src) { },
+    onAttributeChanged : function(src) { },
     onMoved : function(src) { }
           
     
