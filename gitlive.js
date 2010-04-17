@@ -98,7 +98,30 @@ x = new Monitor({
         
     },
     
-    
+      
+    onChanged : function(src) 
+    { 
+        this.parsePath(src);
+    },
+    onChangesDoneHint : function(src) 
+    { 
+        this.parsePath(src);
+    },
+    onDeleted : function(src) 
+    { 
+        this.parsePath(src);
+    },
+    onCreated : function(src) 
+    { 
+        this.parsePath(src);
+    },
+    onMoved : function(src,dest)
+    { 
+        this.parsePath(src);
+        this.parsePath(dest);
+        
+    },
+          
     
 }
 
