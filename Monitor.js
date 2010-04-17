@@ -140,7 +140,15 @@ Monitor.prototype = {
             // rest are mount related - not really relivant.. maybe add later..
                 
         } 
-    }
+    },
+    /** override these to do stuff.. */
+     
+    function onChanged(src) { },
+    function onChangesDoneHint(src) { },
+    function onDeleted(src) { },
+    function onCreated(src) { },
+    function onMoved(src) { },
+          
     
 }
  
