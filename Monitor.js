@@ -98,7 +98,8 @@ Monitor.prototype = {
             this.monitor(path+'/'+next_file.get_display_name(), fn)
         }
     
-    file_enum.close(null);
+        file_enum.close(null);
+    }
     
     
     
