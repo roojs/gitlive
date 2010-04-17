@@ -101,7 +101,10 @@ Monitor.prototype = {
         file_enum.close(null);
     }
     
-    
+    function onChange(fm, f, of, event_type, uh)
+    {
+        
+    }
     
 }
  
