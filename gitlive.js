@@ -190,8 +190,21 @@ x = new Monitor({
         this.parsePath(src);
         this.parsePath(dest);
         
+        if (src.gitpath != dest.gitpath) {
+            this.onDeleted(src);
+            this.onCreated(desc);
+            this.onChangedDoneHint(desc);
+        }
         // needs to handle move to/from unsupported types..
         
+        var sp = Git.run(src.gitpath,  'mv',  '-k', vpath, vtpath);
+        if (sp.status !=0) {
+            notify(path,"MOVED", sp);
+            return;
+        }
+        sp = Git.run(gitpath,'commit' , { all: true, message:   'MOVED ' + vpath +' to ' + vtpath} );
+        Git.run(gitpath , 'push', { all: true } );
+        notify(path,"MOVED", sp
         
     },
           
