@@ -133,7 +133,16 @@ x = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
-        
+        var sp = Git.run(src.gitpath,'rm' , src.vpath);
+        Git.run(src.gitpath , 'push', { all: true } );
+        if (sp.status !=0) {
+            notify(src.name,"DELETED", sp);
+            return;
+        }
+        sp = Git.run(src.gitpath,'commit' ,{ all: true, message: src.vpath});
+        Git.run(src.gitpath , 'push',{ all: true });
+        notify(src.name,"DELETED", sp);
+        return;
         
     },
     onCreated : function(src) 
