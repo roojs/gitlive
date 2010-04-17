@@ -198,16 +198,25 @@ x = new Monitor({
         }
         // needs to handle move to/from unsupported types..
         
-        var sp = Git.run(src.gitpath,  'mv',  '-k', vpath, vtpath);
-        if (sp.status !=0) {
-            notify(path,"MOVED", sp);
+        if (this.shouldIgnore(src)) {
             return;
         }
-        sp = Git.run(gitpath,'commit' , { all: true, message:   'MOVED ' + vpath +' to ' + vtpath} );
-        Git.run(gitpath , 'push', { all: true } );
-        notify(path,"MOVED", sp
+        if (this.shouldIgnore(dest)) {
+            return;
+        }
         
-    },
+        
+        
+        var sp = Git.run(src.gitpath,  'mv',  '-k', src.vpath, dest.vpath);
+        if (sp.status !=0) {
+            notify(dest.path,"MOVED", sp);
+            return;
+        }
+        sp = Git.run(src.gitpath,'commit' , { all: true, message:   'MOVED ' + src.vpath +' to ' + dest.vpath} );
+        Git.run(src.gitpath , 'push', { all: true } );
+        notify(src.path,"MOVED", sp);
+        
+    }
           
     
 }
