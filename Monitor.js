@@ -103,10 +103,12 @@ Monitor.prototype = {
         var src = {
             name : f.get_basename(),
             path : f.get_path(),
+            dir   : GLib.path_get_dirname(of.get_path())
         };
         var dest = of ? {
             name : of.get_basename(),
             path : of.get_path(),
+            dir   : GLib.path_get_dirname(of.get_path())
         } : false;
          
         switch(event_type) {
