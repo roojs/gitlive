@@ -101,7 +101,7 @@ x = new Monitor({
       
     onChanged : function(src) 
     { 
-        return; // always ignore this..
+        return; // always ignore this..?
         this.parsePath(src);
     },
     onChangesDoneHint : function(src) 
