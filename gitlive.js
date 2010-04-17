@@ -63,7 +63,7 @@ var just_created = {};
 
 var gitlive = GLib.get_home_dir() + "/gitlive";
 
-x = new Monitor({
+var monitor = new Monitor({
     
     shouldIgnore: function(f)
     {
