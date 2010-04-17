@@ -20,7 +20,7 @@
  
 Monitor = function(cfg){
     for (var i in cfg) {
-        
+        this[i] = cfg[i]'
     }
     
     
