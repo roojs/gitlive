@@ -64,7 +64,7 @@ Monitor.prototype = {
      * 
      * 
      */
-    function monitor(path, fn)
+    monitor : function(path, fn)
     {
         var _this = this;
         fn = fn || function (fm, f, of, event_type, uh) {
@@ -98,7 +98,7 @@ Monitor.prototype = {
         file_enum.close(null);
     }
     
-    function onEvent(fm, f, of, event_type, uh)
+    onEvent : function(fm, f, of, event_type, uh)
     {
         var src = {
             name : f.get_basename(),
@@ -140,11 +140,11 @@ Monitor.prototype = {
     },
     /** override these to do stuff.. */
      
-    function onChanged(src) { },
-    function onChangesDoneHint(src) { },
-    function onDeleted(src) { },
-    function onCreated(src) { },
-    function onMoved(src) { },
+    onChanged : function(src) { },
+    onChangesDoneHint : function(src) { },
+    onDeleted : function(src) { },
+    onCreated : function(src) { },
+    onMoved : function(src) { },
           
     
 }
