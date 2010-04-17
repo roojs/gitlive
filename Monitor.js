@@ -24,7 +24,7 @@ Monitor = function(cfg){
     }
     
     
-    this.monitors  [],
+    this.monitors = [];
     
     this.top = [];
     
