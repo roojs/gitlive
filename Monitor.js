@@ -136,7 +136,9 @@ Monitor.prototype = {
             case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
                 this.onMoved(src,dest);
                 return; 
-            // rest ar emount related
+            
+            // rest are mount related - not really relivant.. maybe add later..
+                
         } 
     }
     
