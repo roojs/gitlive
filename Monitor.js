@@ -37,11 +37,28 @@ Monitor.prototype = {
     
     monitors : false, // Array of GioFileMonitors
     top : false, // list of top level directories..
-    
-    function add()
+    /**
+     * add a directory or file to monitor
+     */
+    function add(add)
     {
         this.top.push(add);
-    }
+    },
+    
+    function start()
+    {
+        this.top.forEach(this.monitor, this);
+    },
+    
+    function stop()
+    {
+        this.monitors.foreach(function(m) {
+            m.cancel();
+        })
+        this.monitors = [];
+    },
+    
+    
     
     
     
