@@ -194,6 +194,7 @@ x = new Monitor({
             this.onDeleted(src);
             this.onCreated(dest);
             this.onChangedDoneHint(dest);
+            return;
         }
         // needs to handle move to/from unsupported types..
         
