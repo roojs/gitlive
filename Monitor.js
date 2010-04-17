@@ -67,14 +67,17 @@ Monitor.prototype = {
      * 
      * 
      */
-    function monitor(path)
+    function monitor(path, fn)
     {
-        
+        var _this = this;
+        fn = fn || function (fm, f, of, event_type, uh) {
+            _this.onChange(fm, f, of, event_type, uh);
+        }
        
         var f = Gio.file_new_for_path(path);
         //var cancel = new Gio.Cancellable ();
         var fm = f.monitor(2,null); //Gio.FileMonitorFlags.SEND_MOVED
-        fm.signal.changed.connect(this.onChange, this);
+        fm.signal.changed.connect(fn);
         this.monitors.push(fm);
         // iterate children?
         
