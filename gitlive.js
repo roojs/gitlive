@@ -98,6 +98,7 @@ x = new Monitor({
         
     },
     
+    just_created : {},
       
     onChanged : function(src) 
     { 
@@ -110,6 +111,21 @@ x = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
+        
+        var add_it = false;
+        if (typeof(this.just_created[src.path]) !='undefined') {
+            delete just_created[src.path];
+            Git.run(src.gitpath, 'add', src.vpath);
+            var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
+            Git.run(src.gitpath , 'push', { all: true } );
+            notify(src.name,"CHANGED", sp);
+            return;
+        }
+                
+        var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
+        Git.run(src.gitpath , 'push', '--all' );
+        notify(src.name,"CHANGED", sp);
+
     },
     onDeleted : function(src) 
     { 
@@ -117,6 +133,8 @@ x = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
+        
+        
     },
     onCreated : function(src) 
     { 
