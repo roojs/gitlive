@@ -114,7 +114,7 @@ var monitor = new Monitor({
         
         var add_it = false;
         if (typeof(this.just_created[src.path]) !='undefined') {
-            delete just_created[src.path];
+            delete this.just_created[src.path];
             Git.run(src.gitpath, 'add', src.vpath);
             var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
             Git.run(src.gitpath , 'push', { all: true } );
@@ -220,125 +220,7 @@ var monitor = new Monitor({
           
     
 });
-
-
-
-function onChange(fm, f, of, event_type, uh) {
-    if (StatusIcon.paused) {
-        return;
-    }
-    
-    Seed.print(f.get_path());
-    if (f.get_basename()[0] == '.') {
-        return;
-    }
-    if (f.get_basename().match(/~$/)) {
-        return;
-    }
-    
-    
-    /*Seed.print(enumToString('Gio.FileMonitorEvent', event_type) + ":"  +
-          f.get_path() + 
-        (of ? ( " => " + of.get_path()  ) : '') 
-        
-    );*/
-    
-    // first handle maintenance..
-    var path = f.get_path();
-    var dpath = GLib.path_get_dirname(path);
-    var gitlive = GLib.get_home_dir() + "/gitlive";
-    var vpath_ar = path.substring(gitlive.length +1).split('/');
-    var gitpath = gitlive + '/' + vpath_ar.shift();
-    var vpath = vpath_ar.join('/');
-    if (!vpath.length) {
-        return;
-    }
-    try {
-            
-        
-        switch(event_type) {
-            case Gio.FileMonitorEvent.CHANGED:
-                return; // ingore thise?? -wait for changes_done_htin?
-                
-            case Gio.FileMonitorEvent.CHANGES_DONE_HINT:
-                var add_it = false;
-                if (typeof(just_created[path]) !='undefined') {
-                    delete just_created[path];
-                    Git.run(gitpath, 'add', vpath);
-                    var sp = Git.run(gitpath, 'commit', { all: true, message: vpath});
-                    Git.run(gitpath , 'push', { all: true } );
-                    notify(path,"CHANGED", sp);
-                    return;
-                }
-                
-                var sp = Git.run(gitpath, 'commit', { all: true, message: vpath});
-                Git.run(gitpath , 'push', '--all' );
-                notify(path,"CHANGED", sp);
-                return;
-            case Gio.FileMonitorEvent.DELETED:
-                var sp = Git.run(gitpath,'rm' , vpath);
-                Git.run(gitpath , 'push', { all: true } );
-                if (sp.status !=0) {
-                    notify(path,"DELETED", sp);
-                    return;
-                }
-                sp = Git.run(gitpath,'commit' ,{ all: true, message: vpath});
-                Git.run(gitpath , 'push',{ all: true });
-                notify(path,"DELETED", sp);
-                return;
-            case Gio.FileMonitorEvent.CREATED:
-                if (!GLib.file_test(path, GLib.FileTest.IS_DIR)) {
-                    just_created[path] = true;
-                    return; // we do not handle file create flags... - use done hint.
-                }
-                // director has bee cread.
-                start_monitor(path, onChange);
-                var sp = Git.run(gitpath, 'add', vpath);
-                Git.run(gitpath , 'push', { all: true } );
-
-                if (sp.status !=0) {
-                    notify(path,"CREATED", sp);
-                    return;
-                }
-                //uh.call(fm,f,of, event_type);
-                sp = Git.run(gitpath,'commit' , { all: true, message: vpath});
-                Git.run(gitpath , 'push', { all: true } );
-                notify(path,"CREATED", sp);
-                return;
-            
-            case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
-                var sp = Git.run(gitpath, 'commit',{ all: true, message: vpath});
-                Git.run(gitpath , 'push', { all: true } );
-                notify(path,"ATTRIBUTE_CHANGED", sp);
-                return;
-            
-            case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
-                var tpath = of.get_path();
-                var tpath_ar = tpath.substring(gitlive.length +1).split('/');
-                tpath_ar.shift();
-                var vtpath = vpath_ar.join('/');
-                
-            
-                var sp = Git.run(gitpath,  'mv',  '-k', vpath, vtpath);
-                if (sp.status !=0) {
-                    notify(path,"MOVED", sp);
-                    return;
-                }
-                sp = Git.run(gitpath,'commit' , { all: true, message:   'MOVED ' + vpath +' to ' + vtpath} );
-                Git.run(gitpath , 'push', { all: true } );
-                notify(path,"MOVED", sp);
-                return; 
-            // rest ar emount related
-        }
-    } catch (e) {
-        if (e.stderr.length) {
-            notify(path, "ERROR", e.stderr);
-            return;
-        }
-        notify(path, "ERROR", "unknown error?");
-        
-    }
-}
+ 
 
 function notify(fn, act , sp)
 {
