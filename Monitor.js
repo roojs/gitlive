@@ -37,14 +37,14 @@ Monitor.prototype = {
     /**
      * add a directory or file to monitor
      */
-    function add(add)
+    add : function(add)
     {
         this.top.push(add);
     },
     /**
      * start monitoring
      */
-    function start()
+    start : function()
     {
         this.top.forEach(this.monitor, this);
     },
@@ -52,7 +52,7 @@ Monitor.prototype = {
      * stop / pause monitoring
      * 
      */
-    function stop()
+    stop : function()
     {
         this.monitors.foreach(function(m) {
             m.cancel();
