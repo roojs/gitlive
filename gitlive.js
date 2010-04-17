@@ -79,6 +79,9 @@ x = new Monitor({
             return true;
         }
         // ignore anything in top level!!!!
+        if (!f.vpath.length) {
+            return true;
+        }
         
         return false;
         
@@ -90,12 +93,11 @@ x = new Monitor({
            
         var vpath_ar = f.path.substring(gitlive.length +1).split('/');
         
-        var gitpath = gitlive + '/' + vpath_ar.shift();
-        var vpath = vpath_ar.join('/');
-        if (!vpath.length) {
-            return;
-        }
-    }
+        f.gitrepo = gitlive + '/' + vpath_ar.shift();
+        f.vpath =  vpath_ar.join('/');
+        
+    },
+    
     
     
 }
