@@ -151,6 +151,26 @@ x = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
+        
+        if (!GLib.file_test(src.path, GLib.FileTest.IS_DIR)) {
+            this.just_created[src.path] = true;
+            return; // we do not handle file create flags... - use done hint.
+        }
+        // director has bee cread.
+        this.monitor(src.path);
+        var sp = Git.run(src.gitpath, 'add', src.vpath);
+        Git.run(src.gitpath , 'push', { all: true } );
+
+        if (sp.status !=0) {
+            notify(src.path,"CREATED", sp);
+            return;
+        }
+        //uh.call(fm,f,of, event_type);
+        sp = Git.run(src.gitpath,'commit' , { all: true, message: src.vpath});
+        Git.run(src.gitpath , 'push', { all: true } );
+        notify(src.path,"CREATED", sp);
+        return;
+        
     },
     onMoved : function(src,dest)
     { 
