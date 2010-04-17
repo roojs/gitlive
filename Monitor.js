@@ -71,7 +71,7 @@ Monitor.prototype = {
     {
         var _this = this;
         fn = fn || function (fm, f, of, event_type, uh) {
-            _this.onChange(fm, f, of, event_type, uh);
+            _this.onEvent(fm, f, of, event_type, uh);
         }
        
         var f = Gio.file_new_for_path(path);
@@ -101,9 +101,43 @@ Monitor.prototype = {
         file_enum.close(null);
     }
     
-    function onChange(fm, f, of, event_type, uh)
+    function onEvent(fm, f, of, event_type, uh)
     {
-        
+        var src = {
+            name : f.get_basename(),
+            path : f.get_path(),
+        };
+        var dest = of ? {
+            name : of.get_basename(),
+            path : of.get_path(),
+        } : false;
+         
+        switch(event_type) {
+            case Gio.FileMonitorEvent.CHANGED:
+                this.onChanged(src);
+                return; // ingore thise?? -wait for changes_done_htin?
+                
+            case Gio.FileMonitorEvent.CHANGES_DONE_HINT:
+                this.onChangesDoneHint(src);
+                return;
+                
+            case Gio.FileMonitorEvent.DELETED:
+                this.onDeleted(src);
+                return;
+                
+            case Gio.FileMonitorEvent.CREATED:
+                this.onCreated(src);
+                return;
+            
+            case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
+                this.onAttributeCreated(src);
+                return;
+            
+            case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
+                this.onMoved(src,dest);
+                return; 
+            // rest ar emount related
+        } 
     }
     
 }
