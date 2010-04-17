@@ -61,6 +61,46 @@ function start_monitor(path, fn)
 }
 var just_created = {}; 
 
+var gitlive = GLib.get_home_dir() + "/gitlive";
+
+x = new Monitor({
+    
+    shouldIgnore: function(f)
+    {
+        if (f.name[0] == '.') {
+            // except!
+            if (f.name == '.htaccess') {
+                return false;
+            }
+            
+            return true;
+        }
+        if (f.name.match(/~$/)) {
+            return true;
+        }
+        // ignore anything in top level!!!!
+        
+        return false;
+        
+        
+        
+    },
+    
+    parsePath: function(f) {
+           
+        var vpath_ar = f.path.substring(gitlive.length +1).split('/');
+        
+        var gitpath = gitlive + '/' + vpath_ar.shift();
+        var vpath = vpath_ar.join('/');
+        if (!vpath.length) {
+            return;
+        }
+    }
+    
+    
+}
+
+
 
 function onChange(fm, f, of, event_type, uh) {
     if (StatusIcon.paused) {
