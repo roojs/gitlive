@@ -23,44 +23,7 @@ Monitor = imports.Monitor.Monitor;
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
 
-var ndirs = 0;
-var watches = { };
-function start_monitor(path, fn)
-{
-    
-    ndirs++;
-    Seed.print("ADD path" + path);
-    var f = Gio.file_new_for_path(path);
-    //var cancel = new Gio.Cancellable ();
-    var fm = f.monitor(2,null); //Gio.FileMonitorFlags.SEND_MOVED
-    fm.signal.changed.connect(fn);
-    watches[path] = fm;
-    // iterate children?
-    
-    var file_enum = f.enumerate_children(
-        Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME + ','+ 
-        Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
-        Gio.FileQueryInfoFlags.NONE,
-        null);
-        
-    while ((next_file = file_enum.next_file(null)) != null) {
-     
-        if (next_file.get_file_type() != Gio.FileType.DIRECTORY) {
-            continue;
-        }
-        if (next_file.get_display_name()[0] == '.') {
-            continue;
-        }
-        start_monitor(path+'/'+next_file.get_display_name(), fn)
-    }
-    
-    file_enum.close(null);
-
-
-    
-}
-var just_created = {}; 
-
+ 
 var gitlive = GLib.get_home_dir() + "/gitlive";
 
 var monitor = new Monitor({
@@ -270,7 +233,7 @@ if (!GLib.file_test(GLib.get_home_dir() + "/gitlive", GLib.FileTest.IS_DIR)) {
     start_monitor(GLib.get_home_dir() + "/gitlive", onChange);    
     var notification = new Notify.Notification({
     	summary: "Git Live",
-		body : GLib.get_home_dir() + "/gitlive\nMonitoring " + ndirs + " Directories"
+		body : GLib.get_home_dir() + "/gitlive\nMonitoring " + monitor.monitors.length + " Directories"
 	});
 
     notification.set_timeout(500);
