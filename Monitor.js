@@ -102,48 +102,64 @@ Monitor.prototype = {
         file_enum.close(null);
     },
     
+    
     onEvent : function(fm, f, of, event_type, uh)
     {
         var src = {
             name : f.get_basename(),
             path : f.get_path(),
-            dir   : GLib.path_get_dirname(of.get_path())
+            dir   : GLib.path_get_dirname(f.get_path())
         };
         var dest = of ? {
             name : of.get_basename(),
             path : of.get_path(),
             dir   : GLib.path_get_dirname(of.get_path())
         } : false;
-         
-        switch(event_type) {
-            case Gio.FileMonitorEvent.CHANGED:
-                this.onChanged(src);
-                return; // ingore thise?? -wait for changes_done_htin?
+        
+        
+        for(var i in Gio.FileMonitorEvent) {
+            if (Gio.FileMonitorEvent[i] == event_type) {
+                event_name = i;
+            }
+        }
+        print ("got event: " +event_name);
+        print ("got src: " + src.toString());
+        //print ("got event: " + src.toString());
+        try {
                 
-            case Gio.FileMonitorEvent.CHANGES_DONE_HINT:
-                this.onChangesDoneHint(src);
-                return;
+            switch(event_type) {
+                case Gio.FileMonitorEvent.CHANGED:
+                    this.onChanged(src);
+                    return; // ingore thise?? -wait for changes_done_htin?
+                    
+                case Gio.FileMonitorEvent.CHANGES_DONE_HINT:
+                    this.onChangesDoneHint(src);
+                    return;
+                    
+                case Gio.FileMonitorEvent.DELETED:
+                    this.onDeleted(src);
+                    return;
+                    
+                case Gio.FileMonitorEvent.CREATED:
+                    this.onCreated(src);
+                    return;
                 
-            case Gio.FileMonitorEvent.DELETED:
-                this.onDeleted(src);
-                return;
+                case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
+                    this.onAttributeCreated(src);
+                    return;
                 
-            case Gio.FileMonitorEvent.CREATED:
-                this.onCreated(src);
-                return;
-            
-            case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
-                this.onAttributeCreated(src);
-                return;
-            
-            case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
-                this.onMoved(src,dest);
-                return; 
-            
-            // rest are mount related - not really relivant.. maybe add later..
+                case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
+                    this.onMoved(src,dest);
+                    return; 
                 
-        } 
+                // rest are mount related - not really relivant.. maybe add later..
+            } 
+        } catch(e) {
+            print(e);
+        }
+        
     },
+    
     /** override these to do stuff.. */
      
     onChanged : function(src) { },

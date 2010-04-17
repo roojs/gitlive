@@ -48,16 +48,15 @@ var monitor = new Monitor({
         
         return false;
         
-        
-        
     },
     
     parsePath: function(f) {
            
         var vpath_ar = f.path.substring(gitlive.length +1).split('/');
         
-        f.gitrepo = gitlive + '/' + vpath_ar.shift();
+        f.gitpath = gitlive + '/' + vpath_ar.shift();
         f.vpath =  vpath_ar.join('/');
+        
         
     },
     
@@ -183,6 +182,8 @@ var monitor = new Monitor({
           
     
 });
+ 
+ 
  
 
 function notify(fn, act , sp)
