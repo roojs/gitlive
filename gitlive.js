@@ -192,8 +192,8 @@ x = new Monitor({
         
         if (src.gitpath != dest.gitpath) {
             this.onDeleted(src);
-            this.onCreated(desc);
-            this.onChangedDoneHint(desc);
+            this.onCreated(dest);
+            this.onChangedDoneHint(dest);
         }
         // needs to handle move to/from unsupported types..
         
