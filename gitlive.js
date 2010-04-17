@@ -172,11 +172,18 @@ x = new Monitor({
         return;
         
     },
+    onAttributeChanged : function(src) { 
+        this.parsePath(src);
+        if (this.shouldIgnore(src)) {
+            return;
+        }
+        
+        var sp = Git.run(src.gitpath, 'commit',{ all: true, message: src.vpath});
+        Git.run(src.gitpath , 'push', { all: true } );
+        notify(src.path,"ATTRIBUTE_CHANGED", sp);
+        return;
     
-       var sp = Git.run(gitpath, 'commit',{ all: true, message: vpath});
-                Git.run(gitpath , 'push', { all: true } );
-                notify(path,"ATTRIBUTE_CHANGED", sp);
-                return;
+    },
     
     onMoved : function(src,dest)
     { 
