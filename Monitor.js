@@ -1,4 +1,8 @@
 //<Script type="text/javascript">
+Gio      = imports.gi.Gio;
+GLib      = imports.gi.GLib;
+
+
 /**
  * Monitor class - handles monitor managment for a large tree...
  * 
