@@ -96,7 +96,7 @@ Monitor.prototype = {
         }
     
         file_enum.close(null);
-    }
+    },
     
     onEvent : function(fm, f, of, event_type, uh)
     {
