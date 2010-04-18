@@ -23,7 +23,7 @@ Gtk.GtkListStore.prototype.setValue(r, c ,v)
 {
     var tp = new Gtk.TreePath.from_string('' + r) ;
     var citer = new Gtk.TreeIter();
-    if (!get_iter (citer, tp)) {
+    if (!this.get_iter (citer, tp)) {
         this.append(citer);
     }
     this.el.set_value(citer, c, [GObject.TYPE_STRING, v ]); 
