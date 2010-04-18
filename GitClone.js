@@ -8,7 +8,7 @@ imports.gtkbuilder;
 Gtk.init(null,null);
 
 var builder = new Gtk.Builder();
-builder.add_from_file(__script_path__+'/gitlive.builder');
+builder.add_from_file(__script_path__+'/manage_git.builder');
 var win = builder.get_object('clone_repo');
 builder.connect_signals({
     on_ok :  function() {
