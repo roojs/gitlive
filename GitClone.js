@@ -2,6 +2,7 @@
 
 Gtk      = imports.gi.Gtk;
 
+
 imports.gtkbuilder;
 
 Gtk.init(null,null);
@@ -9,12 +10,14 @@ Gtk.init(null,null);
 var builder = new Gtk.Builder();
 builder.add_from_file(__script_path__+'/gitlive.builder');
 var win = builder.get_object('clone_repo');
-builder.get_object('ok').signal.clicked.connect( function() {
+builder.connect_signals({
+    on_ok :  function() {
         win.hide();
-});
-builder.get_object('cancel').signal.clicked.connect( function() {
+    }, 
+    on_cancel : function() {
         win.hide();
-});
+    }
+);
 
 var hosts = builder.get_object('hosts');
 hosts.get_model().clear();
