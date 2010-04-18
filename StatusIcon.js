@@ -16,8 +16,9 @@
  
 Gtk      = imports.gi.Gtk;
 Gdk      = imports.gi.Gdk;
-Notify = imports.gi.Notify;
-
+Gio      = imports.gi.Gio;
+GLib     = imports.gi.GLib;
+Notify   = imports.gi.Notify;
 
 
 XObject = imports.XObject.XObject
@@ -126,7 +127,7 @@ StatusIcon  = new XObject({
                                 Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME, Gio.FileQueryInfoFlags.NONE, null);
 
                             var next_file = null;
-                            var mgs = [];
+                            
                             var err = [];
                             while ((next_file = file_enum.next_file(null)) != null) {
                                 
@@ -137,7 +138,10 @@ StatusIcon  = new XObject({
                                 
                                 try {
                                     var res = Git.run(fn, [ 'pull' ]);
-                                    mgs.push( "Updated"  + fn + ":" + res);
+                                    var notification = new Notify.Notification({
+                                        summary: "Updated " + fn,
+                                        body : res
+                                    });
                                     // should also update modules ideally.
                                 } catch (e) {
                                     err.push(new String(e));
@@ -146,15 +150,7 @@ StatusIcon  = new XObject({
                             if (err.length) {
                                 gitlive.errordialog(e.join("\n"));
                             }
-                            if (mgs.length) {
-                                var notification = new Notify.Notification({
-                                    summary: "Updated gliblive",
-                                    body : mgs.join("\n")
-                                });
-
-                                notification.set_timeout(500);
-                                notification.show();
-                            }
+                            
                                 
                             file_enum.close(null);
 
