@@ -16,6 +16,10 @@
  
 Gtk      = imports.gi.Gtk;
 Gdk      = imports.gi.Gdk;
+Notify = imports.gi.Notify;
+
+
+
 XObject = imports.XObject.XObject
 gitlive = imports.gitlive;
 
@@ -135,7 +139,7 @@ StatusIcon  = new XObject({
                                     var res = Git.run(fn, [ 'pull' ]);
                                     mgs.push( "Updated"  + fn + ":" + res);
                                     // should also update modules ideally.
-                                } cat (e) {
+                                } catch (e) {
                                     err.push(new String(e));
                                 }
                             }
@@ -145,7 +149,7 @@ StatusIcon  = new XObject({
                             if (mgs.length) {
                                 var notification = new Notify.Notification({
                                     summary: "Updated gliblive",
-                                    body : mgs.join("\n");
+                                    body : mgs.join("\n")
                                 });
 
                                 notification.set_timeout(500);

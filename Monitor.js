@@ -58,7 +58,7 @@ Monitor.prototype = {
      */
     stop : function()
     {
-        this.monitors.foreach(function(m) {
+        this.monitors.forEach(function(m) {
             m.cancel();
         })
         this.monitors = [];
