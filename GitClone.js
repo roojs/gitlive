@@ -30,7 +30,7 @@ Gtk.ListStore.prototype.setValue = function(r, c ,v)
                             
 }
 
-var repos = builder.get_object('reposlist');
+var repos = builder.get_object('serverlist');
 repos.clear();
 
 // need to use list model here..
