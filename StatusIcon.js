@@ -194,8 +194,14 @@ StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                            var msg = new Gtk.MessageDialog({message_type:
-                                Gtk.MessageType.INFO, buttons : Gtk.ButtonsType.OK, text: "GIT Live - auto commits and pushes everything in ~/gitlive"});
+                            var msg = new Gtk.AboutDialog({
+                                program_name : "Git Live",
+                                version: '0.1',
+                                website: 'http://git.akbkhome.com',
+                                website_label: 'AK BK Consulting (git repo)',
+                                license : 'LGPL'
+                            });
+                            msg.set_authors([ "Alan Knowles" ]);
                             msg.run();
                             msg.destroy();
                         }
