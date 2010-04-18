@@ -22,11 +22,36 @@ Monitor = imports.Monitor.Monitor;
 
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
-
+Gtk.init (null, null);
  
 var gitlive = GLib.get_home_dir() + "/gitlive";
 
+if (!GLib.file_test(gitlive.gitlive, GLib.FileTest.IS_DIR)) {
+    var msg = new Gtk.MessageDialog({message_type:
+        Gtk.MessageType.INFO, buttons : Gtk.ButtonsType.OK, text: "GIT Live - ~/gitlive does not exist."});
+    msg.run();
+    msg.destroy();
+    
+    Seed.quit();
+}
+
+
+
 var monitor = new Monitor({
+    
+    
+    start: function() {
+        
+        Monitor.prototype.start.call(this);
+        var notification = new Notify.Notification({
+            summary: "Git Live",
+            body : gitlive + "\nMonitoring " + this.monitors.length + " Directories"
+        });
+
+        notification.set_timeout(500);
+        notification.show();   
+        
+    }
     
     shouldIgnore: function(f)
     {
@@ -216,36 +241,14 @@ function errorDialog(data) {
  
 
 
-Gtk.init (null, null);
+
 //
 // need a better icon...
 
 StatusIcon.init(); 
-
-
-
 Notify.init("gitlive");
-if (!GLib.file_test(GLib.get_home_dir() + "/gitlive", GLib.FileTest.IS_DIR)) {
-    var msg = new Gtk.MessageDialog({message_type:
-        Gtk.MessageType.INFO, buttons : Gtk.ButtonsType.OK, text: "GIT Live - ~/gitlive does not exist."});
-    msg.run();
-    msg.destroy();
-    
-    Seed.quit();
-} else {
-    monitor.add(GLib.get_home_dir() + "/gitlive");
-    monitor.start();
-    var notification = new Notify.Notification({
-    	summary: "Git Live",
-		body : GLib.get_home_dir() + "/gitlive\nMonitoring " + monitor.monitors.length + " Directories"
-	});
-
-    notification.set_timeout(500);
-    notification.show();   
-    
-    
-}
-
+monitor.add(GLib.get_home_dir() + "/gitlive");
+monitor.start();
 Gtk.main();
 //icon.signal["activate"].connect(on_left_click);
  
