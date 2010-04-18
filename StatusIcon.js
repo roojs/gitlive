@@ -16,8 +16,8 @@
  
 Gtk      = imports.gi.Gtk;
 Gdk      = imports.gi.Gdk;
-XObject = imports['XObject.js'].XObject
-
+XObject = imports.XObject.XObject
+gitlive = imports.gitlive;
 
  
 StatusIcon  = new XObject({
