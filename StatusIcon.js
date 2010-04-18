@@ -201,7 +201,7 @@ StatusIcon  = new XObject({
                                 website_label: 'AK BK Consulting (git repo)',
                                 license : 'LGPL'
                             });
-                            msg.set_authors([ "Alan Knowles" ]);
+                            msg.set_authors([ "Alan Knowles <alan@akbkhome.com>" ]);
                             msg.run();
                             msg.destroy();
                         }
