@@ -21,7 +21,7 @@ builder.connect_signals({
 
 Gtk.GtkListStore.prototype.setValue(r, c ,v)
 {
-    var tp = new Gtk.TreePath.from_string ('' + r) :
+    var tp = new Gtk.TreePath.from_string('' + r) ;
     var citer = new Gtk.TreeIter();
     if (!get_iter (citer, tp)) {
         this.append(citer);
