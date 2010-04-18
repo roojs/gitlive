@@ -203,12 +203,14 @@ function notify(fn, act , sp)
 
   
 
-function message(data) {
-    var msg = new Gtk.MessageDialog({message_type:
-        Gtk.MessageType.INFO, buttons : Gtk.ButtonsType.OK, text: "Information only"});
+function errrodialog(data) {
+    var msg = new Gtk.MessageDialog({
+            message_type: Gtk.MessageType.INFO, 
+            buttons : Gtk.ButtonsType.OK, 
+            text: data
+    });
     msg.run();
     msg.destroy();
-    Gtk.main_quit();
 }
 
  
