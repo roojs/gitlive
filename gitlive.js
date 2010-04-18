@@ -26,7 +26,7 @@ Gtk.init (null, null);
  
 var gitlive = GLib.get_home_dir() + "/gitlive";
 
-if (!GLib.file_test(gitlive.gitlive, GLib.FileTest.IS_DIR)) {
+if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
     var msg = new Gtk.MessageDialog({message_type:
         Gtk.MessageType.INFO, buttons : Gtk.ButtonsType.OK, text: "GIT Live - ~/gitlive does not exist."});
     msg.run();
