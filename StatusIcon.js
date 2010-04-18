@@ -122,38 +122,37 @@ StatusIcon  = new XObject({
                                 Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME, Gio.FileQueryInfoFlags.NONE, null);
 
                             var next_file = null;
-
+                            var mgs = [];
+                            var err = [];
                             while ((next_file = file_enum.next_file(null)) != null) {
                                 
                                 var fn = next_file.get_path();
                                 if (! GLib.file_test(fn + '/.git', GLib.FileTest.IS_DIR)) {
                                     continue;
                                 }
-                                var mgs = [];
-                                var err = [];
+                                
                                 try {
                                     var res = Git.run(fn, [ 'pull' ]);
-                                    msg.push( "Updated"  + fn + ":" + res);
+                                    mgs.push( "Updated"  + fn + ":" + res);
                                 } cat (e) {
                                     err.push(new String(e));
                                 }
-                                if (err.length) {
-                                    gitlive.errordialog(e.join("\n"));
-                                }
-                                if (mgs.length) {
-                                    
-                                }
-                                
-                                
-                                
                             }
+                            if (err.length) {
+                                gitlive.errordialog(e.join("\n"));
+                            }
+                            if (mgs.length) {
+                                var notification = new Notify.Notification({
+                                    summary: "Updated gliblive",
+                                    body : mgs.join("\n");
+                                });
 
-        file_enum.close(null);
+                                notification.set_timeout(500);
+                                notification.show();
+                            }
+                                
+                            file_enum.close(null);
 
-        listing.sort();
-
-        return listing;
-                            
                             
                             gitlive.monitor.start();
                             
