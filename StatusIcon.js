@@ -20,7 +20,7 @@ Gio      = imports.gi.Gio;
 GLib     = imports.gi.GLib;
 Notify   = imports.gi.Notify;
 
-
+Git = imports.Git;
 XObject = imports.XObject.XObject
 gitlive = imports.gitlive;
 
@@ -122,6 +122,7 @@ StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             gitlive.monitor.stop();
+                            
                             var f = Gio.file_new_for_path(gitlive.gitlive);
                             var file_enum = f.enumerate_children(
                                 Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME, Gio.FileQueryInfoFlags.NONE, null);
@@ -131,24 +132,26 @@ StatusIcon  = new XObject({
                             var err = [];
                             while ((next_file = file_enum.next_file(null)) != null) {
                                 
-                                var fn = next_file.get_path();
+                                var fn = gitlive.gitlive + '/' + next_file.get_display_name();
                                 if (! GLib.file_test(fn + '/.git', GLib.FileTest.IS_DIR)) {
                                     continue;
                                 }
                                 
                                 try {
-                                    var res = Git.run(fn, [ 'pull' ]);
+                                    var res = Git.run(fn,  'pull' );
                                     var notification = new Notify.Notification({
                                         summary: "Updated " + fn,
                                         body : res
                                     });
+                                    notification.set_timeout(500);
+                                    notification.show();
                                     // should also update modules ideally.
                                 } catch (e) {
-                                    err.push(new String(e));
+                                    err.push(e.toString());
                                 }
                             }
                             if (err.length) {
-                                gitlive.errordialog(e.join("\n"));
+                                gitlive.errorDialog(err.join("\n"));
                             }
                             
                                 

@@ -203,7 +203,7 @@ function notify(fn, act , sp)
 
   
 
-function errrodialog(data) {
+function errorDialog(data) {
     var msg = new Gtk.MessageDialog({
             message_type: Gtk.MessageType.ERROR, 
             buttons : Gtk.ButtonsType.OK, 
