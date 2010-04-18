@@ -73,6 +73,7 @@ StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             this.parent.parent.paused = true;
+                            gitlive.monitor.stop();
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
                             
@@ -94,6 +95,7 @@ StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             this.parent.parent.paused = false;
+                            gitlive.monitor.start();
                             //var status = this.el.label == 'Pause' ? 1 : 0
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock(   Gtk.STOCK_MEDIA_PLAY);
@@ -114,7 +116,11 @@ StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                             
+                            gitlive.monitor.stop();
+                            
+                            
+                            
+                            gitlive.monitor.start();
                             
                         }
                     }
