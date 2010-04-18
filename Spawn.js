@@ -232,6 +232,7 @@ Spawn.prototype = {
         }
         
         if (this.exceptions && this.result != 0) {
+            this.toString = function() { return this.stderr; }
             throw this; // we throw self...
         }
         
