@@ -19,8 +19,16 @@ builder.connect_signals({
     }
 );
 
-var hosts = builder.get_object('hosts');
-hosts.get_model().clear();
+Gtk.GtkListStore.prototype.setValue(r, c ,v)
+{
+     var citer = new Gtk.TreeIter();
+     this.el.set_value(citer, c, [GObject.TYPE_STRING, v ]); 
+                            
+}
+
+var hosts = builder.get_object('reposlist');
+hosts.clear();
+
 // need to use list model here..
 hosts.append_text("http://public.akbkhome.com");
 hosts.append_text("http://private.akbkhome.com");
