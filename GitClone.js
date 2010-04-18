@@ -19,7 +19,7 @@ builder.connect_signals({
     }
 });
 
-Gtk.ListStore.prototype.setValue(r, c ,v)
+Gtk.ListStore.prototype.setValue = function(r, c ,v)
 {
     var tp = new Gtk.TreePath.from_string('' + r) ;
     var citer = new Gtk.TreeIter();
