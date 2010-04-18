@@ -26,7 +26,7 @@ Gtk.ListStore.prototype.setValue = function(r, c ,v)
     if (!this.get_iter (citer, tp)) {
         this.append(citer);
     }
-    this.el.set_value(citer, c, [GObject.TYPE_STRING, v ]); 
+    this.set_value(citer, c, [GObject.TYPE_STRING, v ]); 
                             
 }
 
