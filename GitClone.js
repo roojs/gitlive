@@ -17,7 +17,7 @@ builder.connect_signals({
     on_cancel : function() {
         win.hide();
     }
-);
+});
 
 Gtk.GtkListStore.prototype.setValue(r, c ,v)
 {
