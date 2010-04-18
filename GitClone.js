@@ -1,7 +1,7 @@
 ///<script type="text/javascript">
 
 Gtk      = imports.gi.Gtk;
-
+GObject      = imports.gi.GObject;
 
 imports.gtkbuilder;
 
