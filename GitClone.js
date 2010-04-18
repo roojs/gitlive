@@ -30,13 +30,13 @@ Gtk.GtkListStore.prototype.setValue(r, c ,v)
                             
 }
 
-var hosts = builder.get_object('reposlist');
+var repos = builder.get_object('reposlist');
 hosts.clear();
 
 // need to use list model here..
-hosts.append_text("http://public.akbkhome.com");
-hosts.append_text("http://private.akbkhome.com");
-hosts.append_text("git://git.gnome.org");
+repos.setValue(0,0, "http://public.akbkhome.com");
+repos.setValue(1,0,"http://private.akbkhome.com");
+repos.setValue(2,0,"git://git.gnome.org");
 
 // scanning repos - need to html parse the bugger..
 
