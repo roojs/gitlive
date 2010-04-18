@@ -134,6 +134,7 @@ StatusIcon  = new XObject({
                                 try {
                                     var res = Git.run(fn, [ 'pull' ]);
                                     mgs.push( "Updated"  + fn + ":" + res);
+                                    // should also update modules ideally.
                                 } cat (e) {
                                     err.push(new String(e));
                                 }
