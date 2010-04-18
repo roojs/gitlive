@@ -31,7 +31,7 @@ Gtk.ListStore.prototype.setValue = function(r, c ,v)
 }
 
 var repos = builder.get_object('reposlist');
-hosts.clear();
+repos.clear();
 
 // need to use list model here..
 repos.setValue(0,0, "http://public.akbkhome.com");
