@@ -205,7 +205,7 @@ function notify(fn, act , sp)
 
 function errrodialog(data) {
     var msg = new Gtk.MessageDialog({
-            message_type: Gtk.MessageType.INFO, 
+            message_type: Gtk.MessageType.ERROR, 
             buttons : Gtk.ButtonsType.OK, 
             text: data
     });
