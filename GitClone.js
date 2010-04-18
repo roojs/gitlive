@@ -31,7 +31,7 @@ Gtk.ListStore.prototype.setValue = function(r, c ,v)
 }
 var cell = new Gtk.CellRendererText()
 
-builder.get_object('hosts').pack_start(cell, True)
+builder.get_object('hosts').pack_start(cell, true)
 builder.get_object('hosts').add_attribute(cell, 'text', 0)
 
 var repos = builder.get_object('serverlist');
