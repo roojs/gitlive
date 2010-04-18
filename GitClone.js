@@ -7,17 +7,7 @@ imports.gtkbuilder;
 
 Gtk.init(null,null);
 
-var builder = new Gtk.Builder();
-builder.add_from_file(__script_path__+'/manage_git.builder');
-var win = builder.get_object('clone_repo');
-builder.connect_signals({
-    on_ok :  function() {
-        win.hide();
-    }, 
-    on_cancel : function() {
-        win.hide();
-    }
-});
+
 
 Gtk.ListStore.prototype.setValue = function(r, c ,v)
 {
@@ -29,7 +19,20 @@ Gtk.ListStore.prototype.setValue = function(r, c ,v)
     this.set_value(citer, c, [GObject.TYPE_STRING, v ]); 
                             
 }
-var cell = new Gtk.CellRendererText()
+
+
+
+var builder = new Gtk.Builder();
+builder.add_from_file(__script_path__+'/manage_git.builder');
+var win = builder.get_object('clone_repo');
+builder.connect_signals({
+    on_ok :  function() {
+        win.hide();
+    }, 
+    on_cancel : function() {
+        win.hide();
+    }
+});var cell = new Gtk.CellRendererText()
 
 builder.get_object('hosts').pack_start(cell, true)
 builder.get_object('hosts').add_attribute(cell, 'text', 0)
