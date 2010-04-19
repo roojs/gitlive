@@ -389,7 +389,7 @@ XObject.extend(XObject,
                 Object.extend(sb.prototype, o);
             };
             sbp.override = io;
-            Object.extend(sb.prototype, overrides);
+            XObject.extend(sb.prototype, overrides);
             return sb;
         };
     }(),
