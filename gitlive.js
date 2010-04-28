@@ -141,10 +141,12 @@ var monitor = new Monitor({
         }
          this.queue.push( 
             [ src.gitpath, 'rm' , src.vpath ],
-            [ src.gitpath,  'commit', { all: true, message: src.vpath} ],
-            [ src.gitpath , 'push', { all: true } ]
+            [ src.gitpath, 'commit', { all: true, message: src.vpath} ],
+            [ src.gitpath, 'push', { all: true } ]
         );
-        
+        if (!this.nqv) {
+            return;
+        }
         
         var sp = Git.run(src.gitpath,'rm' , src.vpath);
         Git.run(src.gitpath , 'push', { all: true } );
