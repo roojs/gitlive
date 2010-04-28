@@ -139,6 +139,10 @@ var monitor = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
+        // should check if monitor needs removing..
+        // it should also check if it was a directory..
+        
+        
         this.queue.push( 
             [ src.gitpath, 'rm' , src.vpath ],
             [ src.gitpath, 'commit', { all: true, message: src.vpath} ],
@@ -175,11 +179,13 @@ var monitor = new Monitor({
         this.monitor(src.path);
         
         this.queue.push( 
-            [ src.gitpath, 'rm' , src.vpath ],
-            [ src.gitpath, 'commit', { all: true, message: src.vpath} ],
+            [ src.gitpath, 'add' , src.vpath,  { all: true } ],
+            [ src.gitpath, 'commit' , { all: true, message: src.vpath} ],
             [ src.gitpath, 'push', { all: true } ]
         );
-        
+        if (!this.nqv) {
+            return;
+        }
         var sp = Git.run(src.gitpath, 'add', src.vpath);
         Git.run(src.gitpath , 'push', { all: true } );
 
