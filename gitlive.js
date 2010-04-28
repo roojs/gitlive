@@ -119,11 +119,11 @@ var monitor = new Monitor({
             return;
         }
         this.queue.push( 
-                //[ src.gitpath,  'add', src.vpath ],
-                [ src.gitpath,  'commit', { all: true, message: src.vpath} ],
-                [ src.gitpath , 'push', { all: true } ]
-                
-            );
+            //[ src.gitpath,  'add', src.vpath ],
+            [ src.gitpath,  'commit', { all: true, message: src.vpath} ],
+            [ src.gitpath , 'push', { all: true } ]
+            
+        );
        // var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
         //Git.run(src.gitpath , 'push', '--all' );
         //notify(src.name,"CHANGED", sp);
