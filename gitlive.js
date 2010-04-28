@@ -126,9 +126,11 @@ var monitor = new Monitor({
             [ src.gitpath , 'push', { all: true } ]
             
         );
-       // var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
-        //Git.run(src.gitpath , 'push', '--all' );
-        //notify(src.name,"CHANGED", sp);
+        if (this.nqv) {
+            var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
+            Git.run(src.gitpath , 'push', '--all' );
+            notify(src.name,"CHANGED", sp);
+        }
 
     },
     onDeleted : function(src) 
@@ -137,6 +139,14 @@ var monitor = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
+         this.queue.push( 
+            [ src.gitpath, 'rm' , src.vpath ],
+            [ src.gitpath, 'push', { all: true } ]
+            [ src.gitpath,  'commit', { all: true, message: src.vpath} ],
+            [ src.gitpath , 'push', { all: true } ]
+        );
+        
+        
         var sp = Git.run(src.gitpath,'rm' , src.vpath);
         Git.run(src.gitpath , 'push', { all: true } );
         if (sp.status !=0) {
