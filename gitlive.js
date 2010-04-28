@@ -85,7 +85,7 @@ var monitor = new Monitor({
                     failure.push(sp.args.join(' '));
                     failure.push(sp.output);
                     failure.push(sp.stderr);
-                    
+                    break;
                }
             
             
@@ -94,15 +94,17 @@ var monitor = new Monitor({
             }
             
         }
+        if (success.length) {
         
-        var notification = new Notify.Notification({
-            summary: "Git Live",
-            body : gitlive + "\nMonitoring " + this.monitors.length + " Directories"
-        });
+            var notification = new Notify.Notification({
+                summary: "Git Live Commited",
+                body : success.join("\n")
+                
+            });
 
-        notification.set_timeout(500);
-        notification.show();   
-        
+            notification.set_timeout(500);
+            notification.show();   
+        }
     }
     
     shouldIgnore: function(f)
