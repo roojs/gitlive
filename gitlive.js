@@ -70,15 +70,24 @@ var monitor = new Monitor({
     
     runQueue: function()
     {
-        var cmd = array_shift(this.queue);
-        while (cmd) {
-            
+        var cmd;
+        while (true) {
+            cmd = array_shift(this.queue);
             var sp = Git.run.call(cmd);
             
+            if (!this.queue.length) {
+                break;
+            }
             
-            cmd = array_shift(this.queue);
         }
         
+        var notification = new Notify.Notification({
+            summary: "Git Live",
+            body : gitlive + "\nMonitoring " + this.monitors.length + " Directories"
+        });
+
+        notification.set_timeout(500);
+        notification.show();   
         
     }
     
