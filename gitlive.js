@@ -141,7 +141,6 @@ var monitor = new Monitor({
         }
          this.queue.push( 
             [ src.gitpath, 'rm' , src.vpath ],
-            [ src.gitpath, 'push', { all: true } ]
             [ src.gitpath,  'commit', { all: true, message: src.vpath} ],
             [ src.gitpath , 'push', { all: true } ]
         );
