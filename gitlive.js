@@ -139,7 +139,7 @@ var monitor = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
-         this.queue.push( 
+        this.queue.push( 
             [ src.gitpath, 'rm' , src.vpath ],
             [ src.gitpath, 'commit', { all: true, message: src.vpath} ],
             [ src.gitpath, 'push', { all: true } ]
@@ -171,8 +171,15 @@ var monitor = new Monitor({
             this.just_created[src.path] = true;
             return; // we do not handle file create flags... - use done hint.
         }
-        // director has bee cread.
+        // director has bee created
         this.monitor(src.path);
+        
+        this.queue.push( 
+            [ src.gitpath, 'rm' , src.vpath ],
+            [ src.gitpath, 'commit', { all: true, message: src.vpath} ],
+            [ src.gitpath, 'push', { all: true } ]
+        );
+        
         var sp = Git.run(src.gitpath, 'add', src.vpath);
         Git.run(src.gitpath , 'push', { all: true } );
 
