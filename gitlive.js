@@ -240,7 +240,8 @@ var monitor = new Monitor({
         }
         this.queue.push( 
             [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
-            [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ],
+            [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
+                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ],
             [ src.gitpath, 'push', { all: true } ]
         );
         
