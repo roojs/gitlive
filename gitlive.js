@@ -50,7 +50,10 @@ var monitor = new Monitor({
             if (!_this.queue.length) {
                 return 0;
             }
-            Math.floor(((new Date()) - this.lastAdd) / 100)
+            var last = Math.floor(((new Date()) - this.lastAdd) / 100);
+            if (last < 5) { // wait 1/2 a seconnd before running.
+                return 0;
+            }
             _this.runQueue();
         },null,null);
         
