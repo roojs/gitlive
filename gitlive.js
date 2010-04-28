@@ -238,8 +238,15 @@ var monitor = new Monitor({
         if (this.shouldIgnore(dest)) {
             return;
         }
+        this.queue.push( 
+            [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
+            [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ],
+            [ src.gitpath, 'push', { all: true } ]
+        );
         
-        
+        if (!this.nqv) {
+            return;
+        }
         
         var sp = Git.run(src.gitpath,  'mv',  '-k', src.vpath, dest.vpath);
         if (sp.status !=0) {
