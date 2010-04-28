@@ -48,7 +48,7 @@ var monitor = new Monitor({
         
         Glib.idle_add(PRIORITY_LOW, function() {
             if (!_this.queue.length) {
-                return o;
+                return 0;
             }
             Math.floor(((new Date()) - this.lastAdd) / 100)
             _this.runQueue();
