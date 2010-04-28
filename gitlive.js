@@ -40,6 +40,7 @@ if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
 var monitor = new Monitor({
     
     queue : [],
+    nqv : true, // temp var while I switch to queued version.
     
     start: function() {
         
@@ -110,12 +111,13 @@ var monitor = new Monitor({
                 [ src.gitpath , 'push', { all: true } ]
                 
             );
-            /*
-            Git.run(src.gitpath, 'add', src.vpath);
-            var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
-            Git.run(src.gitpath , 'push', { all: true } );
-            notify(src.name,"CHANGED", sp);
-            */
+            if (this.nqv) {
+                
+                Git.run(src.gitpath, 'add', src.vpath);
+                var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
+                Git.run(src.gitpath , 'push', { all: true } );
+                notify(src.name,"CHANGED", sp);
+            }
             return;
         }
         this.queue.push( 
