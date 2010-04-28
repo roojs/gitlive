@@ -68,6 +68,22 @@ var monitor = new Monitor({
         
     },
     
+    runQueue: function()
+    {
+        var cmd = array_shift(this.queue);
+        while (cmd) {
+            
+            Git.run.call(cmd);
+            
+            
+            
+            
+            cmd = array_shift(this.queue);
+        }
+        
+        
+    }
+    
     shouldIgnore: function(f)
     {
         if (f.name[0] == '.') {
