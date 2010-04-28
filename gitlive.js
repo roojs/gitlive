@@ -205,10 +205,13 @@ var monitor = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
-         this.queue.push( 
+        this.queue.push( 
             [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ],
             [ src.gitpath, 'push', { all: true } ]
         );
+        if (!this.nqv) {
+            return;
+        }
         var sp = Git.run(src.gitpath, 'commit',{ all: true, message: src.vpath});
         Git.run(src.gitpath , 'push', { all: true } );
         notify(src.path,"ATTRIBUTE_CHANGED", sp);
