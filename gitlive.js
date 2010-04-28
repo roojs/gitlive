@@ -105,6 +105,17 @@ var monitor = new Monitor({
             notification.set_timeout(500);
             notification.show();   
         }
+        if (success.length) {
+        
+            var notification = new Notify.Notification({
+                summary: "Git Live ERROR!!",
+                body : failure.join("\n")
+                
+            });
+
+            notification.set_timeout(500);
+            notification.show();   
+        }
     }
     
     shouldIgnore: function(f)
