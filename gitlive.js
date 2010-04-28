@@ -43,7 +43,10 @@ var monitor = new Monitor({
     nqv : true, // temp var while I switch to queued version.
     
     start: function() {
-        
+        var _this = this;
+        Glib.idle_add(PRIORITY_LOW, function() {
+            _this.runQueue();
+        },null,null);
         Monitor.prototype.start.call(this);
         var notification = new Notify.Notification({
             summary: "Git Live",
