@@ -44,6 +44,7 @@ var monitor = new Monitor({
     
     start: function() {
         var _this = this;
+        this.lastAdd = new Date();
         Glib.idle_add(PRIORITY_LOW, function() {
             _this.runQueue();
         },null,null);
@@ -107,7 +108,7 @@ var monitor = new Monitor({
         var add_it = false;
         if (typeof(this.just_created[src.path]) !='undefined') {
             delete this.just_created[src.path];
-            
+            this.lastAdd = new Date();
             this.queue.push( 
                 [ src.gitpath,  'add', src.vpath ],
                 [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ],
@@ -123,7 +124,7 @@ var monitor = new Monitor({
             }
             return;
         }
-        
+        this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath,  'add', src.vpath ],
             [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ],
@@ -146,7 +147,7 @@ var monitor = new Monitor({
         // should check if monitor needs removing..
         // it should also check if it was a directory.. - so we dont have to commit all..
         
-        
+        this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath, 'rm' , src.vpath ],
             [ src.gitpath, 'commit', { all: true, message: src.vpath} ],
@@ -181,7 +182,7 @@ var monitor = new Monitor({
         }
         // director has bee created
         this.monitor(src.path);
-        
+        this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath, 'add' , src.vpath,  { all: true } ],
             [ src.gitpath, 'commit' , { all: true, message: src.vpath} ],
@@ -209,6 +210,7 @@ var monitor = new Monitor({
         if (this.shouldIgnore(src)) {
             return;
         }
+        this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ],
             [ src.gitpath, 'push', { all: true } ]
@@ -242,6 +244,7 @@ var monitor = new Monitor({
         if (this.shouldIgnore(dest)) {
             return;
         }
+        this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
             [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
