@@ -72,6 +72,7 @@ var monitor = new Monitor({
     {
         var cmd;
         var success = [];
+        var failure = [];
         while (true) {
             cmd = array_shift(this.queue);
             var sp = Git.run.call(cmd);
