@@ -39,6 +39,7 @@ if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
 
 var monitor = new Monitor({
     
+    queue : [],
     
     start: function() {
         
@@ -102,16 +103,30 @@ var monitor = new Monitor({
         var add_it = false;
         if (typeof(this.just_created[src.path]) !='undefined') {
             delete this.just_created[src.path];
+            
+            this.queue.push( 
+                [ src.gitpath,  'add', src.vpath ],
+                [ src.gitpath,  'commit', { all: true, message: src.vpath} ],
+                [ src.gitpath , 'push', { all: true } ]
+                
+            );
+            /*
             Git.run(src.gitpath, 'add', src.vpath);
             var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
             Git.run(src.gitpath , 'push', { all: true } );
             notify(src.name,"CHANGED", sp);
+            */
             return;
         }
+        this.queue.push( 
+                //[ src.gitpath,  'add', src.vpath ],
+                [ src.gitpath,  'commit', { all: true, message: src.vpath} ],
+                [ src.gitpath , 'push', { all: true } ]
                 
-        var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
-        Git.run(src.gitpath , 'push', '--all' );
-        notify(src.name,"CHANGED", sp);
+            );
+       // var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
+        //Git.run(src.gitpath , 'push', '--all' );
+        //notify(src.name,"CHANGED", sp);
 
     },
     onDeleted : function(src) 
