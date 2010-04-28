@@ -71,9 +71,23 @@ var monitor = new Monitor({
     runQueue: function()
     {
         var cmd;
+        var success = [];
         while (true) {
             cmd = array_shift(this.queue);
             var sp = Git.run.call(cmd);
+            
+            switch (sp.result) {
+                case 0: // success:
+                    success.push(sp.args.join(' '));
+                    success.push(sp.output);
+                    break;
+                default: 
+                    failure.push(sp.args.join(' '));
+                    failure.push(sp.output);
+                    failure.push(sp.stderr);
+                    
+               }
+            
             
             if (!this.queue.length) {
                 break;
