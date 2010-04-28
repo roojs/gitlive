@@ -40,7 +40,7 @@ if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
 var monitor = new Monitor({
     
     queue : [],
-    nqv : true, // temp var while I switch to queued version.
+    nqv : false, // temp var while I switch to queued version.
     
     start: function() {
         var _this = this;
