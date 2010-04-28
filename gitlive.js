@@ -45,9 +45,15 @@ var monitor = new Monitor({
     start: function() {
         var _this = this;
         this.lastAdd = new Date();
+        
         Glib.idle_add(PRIORITY_LOW, function() {
+            if (!_this.queue.length) {
+                return o;
+            }
+            Math.floor(((new Date()) - this.lastAdd) / 100)
             _this.runQueue();
         },null,null);
+        
         Monitor.prototype.start.call(this);
         var notification = new Notify.Notification({
             summary: "Git Live",
