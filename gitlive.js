@@ -120,9 +120,10 @@ var monitor = new Monitor({
             }
             return;
         }
+        
         this.queue.push( 
-            //[ src.gitpath,  'add', src.vpath ],
-            [ src.gitpath,  'commit', { all: true, message: src.vpath} ],
+            [ src.gitpath,  'add', src.vpath ],
+            [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ],
             [ src.gitpath , 'push', { all: true } ]
             
         );
