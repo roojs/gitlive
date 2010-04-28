@@ -140,7 +140,7 @@ var monitor = new Monitor({
             return;
         }
         // should check if monitor needs removing..
-        // it should also check if it was a directory..
+        // it should also check if it was a directory.. - so we dont have to commit all..
         
         
         this.queue.push( 
