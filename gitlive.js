@@ -73,9 +73,7 @@ var monitor = new Monitor({
         var cmd = array_shift(this.queue);
         while (cmd) {
             
-            Git.run.call(cmd);
-            
-            
+            var sp = Git.run.call(cmd);
             
             
             cmd = array_shift(this.queue);
