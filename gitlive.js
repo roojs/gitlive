@@ -90,6 +90,7 @@ var monitor = new Monitor({
         cmds.forEach(function(cmd) {
             if (repos.indexOf(cmd[0]) < 0) {
                 repos.push(cmd[0]);
+                Git.run(cmd[0] , 'pull'); // pull before we push!
             }
             var sp = Git.run.apply(Git,cmd);
              
