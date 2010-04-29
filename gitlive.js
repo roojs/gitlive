@@ -99,7 +99,6 @@ var monitor = new Monitor({
             if (sp.length) {
                 success.push(sp);
             }
-             
             /*
             switch (sp.result) {
                 case 0: // success:
@@ -113,7 +112,6 @@ var monitor = new Monitor({
                     break;
             }
             */
-             
         });
         // push upstream.
         repos.forEach(function(r) {
