@@ -96,7 +96,9 @@ var monitor = new Monitor({
             var sp = Git.run.apply(Git,cmd);
             
             success.push([cmd[1],cmd[2]].join(' '));
-            success.push(sp);
+            if (sp.length) {
+                success.push(sp);
+            }
              
             /*
             switch (sp.result) {
@@ -115,8 +117,11 @@ var monitor = new Monitor({
         });
         // push upstream.
         repos.forEach(function(r) {
-            var sp = Git.run(r , 'push', { all: true } )
-            success.push(sp);
+            var sp = Git.run(r , 'push', { all: true } );
+            if (sp.length) {
+                success.push(sp);
+            }
+            
         });
         
         if (success.length) {
