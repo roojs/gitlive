@@ -98,7 +98,7 @@ var monitor = new Monitor({
                 case 0: // success:
                     success.push(sp.args.join(' '));
                     if (sp.output.length) success.push(sp.output + '');
-                    if (sp.stderr.length) success.push(sp.stderr + '');
+                  // if (sp.stderr.length) success.push(sp.stderr + '');
                     break;
                 default: 
                     failure.push(sp.args.join(' '));
@@ -108,6 +108,7 @@ var monitor = new Monitor({
             }
             
         });
+         
          
         // push upstream.
         repos.forEach(function(r) {
