@@ -137,7 +137,7 @@ var monitor = new Monitor({
                 
             });
 
-            notification.set_timeout(500);
+            notification.set_timeout(2000);
             notification.show();   
         }
         this.queueRunning = false;
@@ -351,9 +351,7 @@ var monitor = new Monitor({
     
 });
  
- 
- 
-
+  
 function notify(fn, act , sp)
 {
     var sum = act + " " + fn;
@@ -363,7 +361,7 @@ function notify(fn, act , sp)
 		body : sp
 	});
 
-    notification.set_timeout(500);
+    notification.set_timeout(2000);
     notification.show();
 }
 
