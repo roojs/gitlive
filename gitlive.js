@@ -67,7 +67,6 @@ var monitor = new Monitor({
 
         notification.set_timeout(500);
         notification.show();   
-        
     },
     /**
      * run the queue.
