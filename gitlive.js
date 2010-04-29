@@ -115,7 +115,8 @@ var monitor = new Monitor({
         });
         // push upstream.
         repos.forEach(function(r) {
-             Git.run(r , 'push', { all: true } )
+            var sp = Git.run(r , 'push', { all: true } )
+            success.push(sp);
         });
         
         if (success.length) {
