@@ -110,7 +110,6 @@ var monitor = new Monitor({
             
         });
         
-        
         // push upstream.
         repos.forEach(function(r) {
             var sp = Git.run(r , 'push', { all: true } );
