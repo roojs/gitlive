@@ -80,12 +80,13 @@ Git.prototype = {
             }
              
         }
-        var out = Spawn.run({
+        var sp = new Spawn.run(
             env : [ "GITPATH=" + this.repo ],
             cwd : this.repo,
             args: args,
             debug: true
         });
+        sp.run();
         
         // parse output..
         
