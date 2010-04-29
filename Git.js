@@ -3,7 +3,7 @@
 Gio      = imports.gi.Gio;
 GLib      = imports.gi.GLib;
 
-Spawn = imports.Spawn;
+Spawn = imports.Spawn.Spawn;
 /**
  * @namespace Git
  * 
@@ -80,19 +80,16 @@ Git.prototype = {
             }
              
         }
-        var sp = new Spawn.run(
+        var sp = new Spawn({
             env : [ "GITPATH=" + this.repo ],
             cwd : this.repo,
             args: args,
             debug: true,
             exceptions : false,
             async : false
-
         });
         var out = sp.run();
-        
-        // parse output..
-        
+         
         return out;
     }
 }
