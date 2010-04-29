@@ -65,7 +65,7 @@ var monitor = new Monitor({
             body : gitlive + "\nMonitoring " + this.monitors.length + " Directories"
         });
 
-        notification.set_timeout(500);
+        notification.set_timeout(2000);
         notification.show();   
     },
     /**
@@ -126,7 +126,7 @@ var monitor = new Monitor({
                 
             });
 
-            notification.set_timeout(500);
+            notification.set_timeout(2000);
             notification.show();   
         }
         if (failure.length) {
