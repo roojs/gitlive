@@ -84,7 +84,8 @@ Git.prototype = {
             env : [ "GITPATH=" + this.repo ],
             cwd : this.repo,
             args: args,
-            debug: true
+            debug: true,
+            exceptions : false
         });
         sp.run();
         
