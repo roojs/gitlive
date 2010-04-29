@@ -40,8 +40,7 @@ var monitor = new Monitor({
     
     queue : [],
     queueRunning : false,
-    nqv : false, // temp var while I switch to queued version.
-    
+     
     start: function() {
         var _this = this;
         this.lastAdd = new Date();
@@ -198,13 +197,7 @@ var monitor = new Monitor({
                 [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
                 
             );
-            if (this.nqv) {
-                
-                Git.run(src.gitpath, 'add', src.vpath);
-                var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
-                Git.run(src.gitpath , 'push', { all: true } );
-                notify(src.name,"CHANGED", sp);
-            }
+         
             return;
         }
         this.lastAdd = new Date();
@@ -214,11 +207,7 @@ var monitor = new Monitor({
 
             
         );
-        if (this.nqv) {
-            var sp = Git.run(src.gitpath, 'commit', { all: true, message: src.vpath});
-            Git.run(src.gitpath , 'push', '--all' );
-            notify(src.name,"CHANGED", sp);
-        }
+       
 
     },
     onDeleted : function(src) 
@@ -236,20 +225,7 @@ var monitor = new Monitor({
             [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
             
         );
-        if (!this.nqv) {
-            return;
-        }
-        
-        var sp = Git.run(src.gitpath,'rm' , src.vpath);
-        Git.run(src.gitpath , 'push', { all: true } );
-        if (sp.status !=0) {
-            notify(src.name,"DELETED", sp);
-            return;
-        }
-        sp = Git.run(src.gitpath,'commit' ,{ all: true, message: src.vpath});
-        Git.run(src.gitpath , 'push',{ all: true });
-        notify(src.name,"DELETED", sp);
-        return;
+    
         
     },
     onCreated : function(src) 
@@ -271,21 +247,7 @@ var monitor = new Monitor({
             [ src.gitpath, 'commit' , { all: true, message: src.vpath} ]
             
         );
-        if (!this.nqv) {
-            return;
-        }
-        var sp = Git.run(src.gitpath, 'add', src.vpath);
-        Git.run(src.gitpath , 'push', { all: true } );
-
-        if (sp.status !=0) {
-            notify(src.path,"CREATED", sp);
-            return;
-        }
-        //uh.call(fm,f,of, event_type);
-        sp = Git.run(src.gitpath,'commit' , { all: true, message: src.vpath});
-        Git.run(src.gitpath , 'push', { all: true } );
-        notify(src.path,"CREATED", sp);
-        return;
+        
         
     },
     onAttributeChanged : function(src) { 
@@ -297,13 +259,7 @@ var monitor = new Monitor({
         this.queue.push( 
             [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
         );
-        if (!this.nqv) {
-            return;
-        }
-        var sp = Git.run(src.gitpath, 'commit',{ all: true, message: src.vpath});
-        Git.run(src.gitpath , 'push', { all: true } );
-        notify(src.path,"ATTRIBUTE_CHANGED", sp);
-        return;
+ 
     
     },
     
@@ -332,41 +288,13 @@ var monitor = new Monitor({
             [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
                 { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
         );
-        
-        if (!this.nqv) {
-            return;
-        }
-        
-        var sp = Git.run(src.gitpath,  'mv',  '-k', src.vpath, dest.vpath);
-        if (sp.status !=0) {
-            notify(dest.path,"MOVED", sp);
-            return;
-        }
-        sp = Git.run(src.gitpath,'commit' , { all: true, message:   'MOVED ' + src.vpath +' to ' + dest.vpath} );
-        Git.run(src.gitpath , 'push', { all: true } );
-        notify(src.path,"MOVED", sp);
-        
+         
     }
           
     
 });
  
-  
-function notify(fn, act , sp)
-{
-    var sum = act + " " + fn;
-    
-    var notification = new Notify.Notification({
-    	summary: sum,
-		body : sp
-	});
-
-    notification.set_timeout(2000);
-    notification.show();
-}
-
-
-
+ 
   
 
 function errorDialog(data) {
