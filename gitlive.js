@@ -121,7 +121,7 @@ var monitor = new Monitor({
         });
         
         if (success.length) {
-        
+            print(success.join("\n"));
             var notification = new Notify.Notification({
                 summary: "Git Live Commited",
                 body : success.join("\n")
