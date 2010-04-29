@@ -98,6 +98,8 @@ var monitor = new Monitor({
             success.push([cmd[1],cmd[2]].join(' '));
             success.push(sp);
             
+            
+            
             /*
             switch (sp.result) {
                 case 0: // success:
@@ -114,7 +116,7 @@ var monitor = new Monitor({
              
         });
         // push upstream.
-        repos.foreach(function(r) {
+        repos.forEach(function(r) {
              Git.run(r , 'push', { all: true } )
         });
         
