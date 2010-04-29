@@ -80,8 +80,9 @@ Git.prototype = {
             }
              
         }
+        
         var sp = new Spawn({
-            env : [ "GITPATH=" + this.repo ],
+            env : [ "GITPATH=" + this.repo , "HOME=" + GLib.get_home_dir() ],
             cwd : this.repo,
             args: args,
             debug: true,
@@ -93,6 +94,7 @@ Git.prototype = {
         return out;
     }
 }
+
 
 /**
  * @function run
