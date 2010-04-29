@@ -85,7 +85,9 @@ Git.prototype = {
             cwd : this.repo,
             args: args,
             debug: true,
-            exceptions : false
+            exceptions : false,
+            async : false
+
         });
         var out = sp.run();
         
