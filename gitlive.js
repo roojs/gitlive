@@ -97,9 +97,7 @@ var monitor = new Monitor({
             
             success.push([cmd[1],cmd[2]].join(' '));
             success.push(sp);
-            
-            
-            
+             
             /*
             switch (sp.result) {
                 case 0: // success:
