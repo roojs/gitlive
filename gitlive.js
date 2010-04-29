@@ -98,13 +98,13 @@ var monitor = new Monitor({
             switch (sp.result) {
                 case 0: // success:
                     success.push(sp.args.join(' '));
-                    success.push(sp.output + '');
-                    success.push(sp.stderr + '');
+                    if (sp.output.length) success.push(sp.output + '');
+                    if (sp.stderr.length) success.push(sp.stderr + '');
                     break;
                 default: 
                     failure.push(sp.args.join(' '));
-                    failure.push(sp.output);
-                    failure.push(sp.stderr);
+                    if (sp.output.length) failure.push(sp.output);
+                    if (sp.stderr.length) failure.push(sp.stderr);
                     break;
             }
             
