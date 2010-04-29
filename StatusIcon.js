@@ -153,9 +153,6 @@ StatusIcon  = new XObject({
                                     // should also update modules ideally.
                                 
                             }
-                            if (err.length) {
-                                gitlive.errorDialog(err.join("\n"));
-                            }
                             
                                 
                             file_enum.close(null);
