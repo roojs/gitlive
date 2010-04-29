@@ -87,7 +87,7 @@ Git.prototype = {
             debug: true,
             exceptions : false
         });
-        sp.run();
+        var out = sp.run();
         
         // parse output..
         
