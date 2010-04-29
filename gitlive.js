@@ -35,26 +35,28 @@ if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
     Seed.quit();
 }
 
-
-
+ 
 var monitor = new Monitor({
     
     queue : [],
+    queueRunning : false,
     nqv : false, // temp var while I switch to queued version.
     
     start: function() {
         var _this = this;
         this.lastAdd = new Date();
-        
-        Glib.idle_add(PRIORITY_LOW, function() {
-            if (!_this.queue.length) {
-                return 0;
+         
+        GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
+            print(["TIMEOUT", _this.queue.length , _this.queueRunning].join(', '));
+            if (!_this.queue.length || _this.queueRunning) {
+                return 1;
             }
             var last = Math.floor(((new Date()) - this.lastAdd) / 100);
-            if (last < 5) { // wait 1/2 a seconnd before running.
-                return 0;
+            if (last < 4) { // wait 1/2 a seconnd before running.
+                return 1;
             }
             _this.runQueue();
+            return 1;
         },null,null);
         
         Monitor.prototype.start.call(this);
@@ -67,16 +69,36 @@ var monitor = new Monitor({
         notification.show();   
         
     },
-    
+    /**
+     * run the queue.
+     * - pulls the items off the queue 
+     *    (as commands run concurrently and new items may get added while it's running)
+     * - runs the queue items
+     * - pushes upstream.
+     * 
+     */
     runQueue: function()
     {
-        var cmd;
+        this.queueRunning = true;
+        var cmds = [];
+        this.queue.forEach(function (q) {
+            cmds.push(q);
+        });
+        this.queue = []; // empty queue!
+        
         var success = [];
         var failure = [];
-        while (true) {
-            cmd = array_shift(this.queue);
-            var sp = Git.run.call(cmd);
+        var repos = [];
+        cmds.forEach(function(cmd) {
+            if (repos.indexOf(cmd[0]) < -1) {
+                repos.push(cmd[0]);
+            }
+            var sp = Git.run.apply(Git,cmd);
             
+            success.push([cmd[1],cmd[2]].join(' '));
+            success.push(sp);
+            
+            /*
             switch (sp.result) {
                 case 0: // success:
                     success.push(sp.args.join(' '));
@@ -87,14 +109,15 @@ var monitor = new Monitor({
                     failure.push(sp.output);
                     failure.push(sp.stderr);
                     break;
-               }
-            
-            
-            if (!this.queue.length) {
-                break;
             }
-            
-        }
+            */
+             
+        });
+        // push upstream.
+        repos.foreach(function(r) {
+             Git.run(r , 'push', { all: true } )
+        });
+        
         if (success.length) {
         
             var notification = new Notify.Notification({
@@ -117,7 +140,8 @@ var monitor = new Monitor({
             notification.set_timeout(500);
             notification.show();   
         }
-    }
+        this.queueRunning = false;
+    },
     
     shouldIgnore: function(f)
     {
@@ -171,8 +195,7 @@ var monitor = new Monitor({
             this.lastAdd = new Date();
             this.queue.push( 
                 [ src.gitpath,  'add', src.vpath ],
-                [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ],
-                [ src.gitpath , 'push', { all: true } ]
+                [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
                 
             );
             if (this.nqv) {
@@ -187,8 +210,8 @@ var monitor = new Monitor({
         this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath,  'add', src.vpath ],
-            [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ],
-            [ src.gitpath , 'push', { all: true } ]
+            [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ]
+
             
         );
         if (this.nqv) {
@@ -210,8 +233,8 @@ var monitor = new Monitor({
         this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath, 'rm' , src.vpath ],
-            [ src.gitpath, 'commit', { all: true, message: src.vpath} ],
-            [ src.gitpath, 'push', { all: true } ]
+            [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
+            
         );
         if (!this.nqv) {
             return;
@@ -245,8 +268,8 @@ var monitor = new Monitor({
         this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath, 'add' , src.vpath,  { all: true } ],
-            [ src.gitpath, 'commit' , { all: true, message: src.vpath} ],
-            [ src.gitpath, 'push', { all: true } ]
+            [ src.gitpath, 'commit' , { all: true, message: src.vpath} ]
+            
         );
         if (!this.nqv) {
             return;
@@ -272,8 +295,7 @@ var monitor = new Monitor({
         }
         this.lastAdd = new Date();
         this.queue.push( 
-            [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ],
-            [ src.gitpath, 'push', { all: true } ]
+            [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
         );
         if (!this.nqv) {
             return;
@@ -308,8 +330,7 @@ var monitor = new Monitor({
         this.queue.push( 
             [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
             [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
-                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ],
-            [ src.gitpath, 'push', { all: true } ]
+                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
         );
         
         if (!this.nqv) {
