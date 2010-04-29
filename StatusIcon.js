@@ -137,18 +137,21 @@ StatusIcon  = new XObject({
                                     continue;
                                 }
                                 
-                                try {
-                                    var res = Git.run(fn,  'pull' );
+                                
+                                var res = Git.run(fn,  'pull' );
+                                if (res.result * 1  == 0) {
+                                        
                                     var notification = new Notify.Notification({
                                         summary: "Updated " + fn,
                                         body : res.output
                                     });
                                     notification.set_timeout(500);
                                     notification.show();
-                                    // should also update modules ideally.
-                                } catch (e) {
-                                    err.push(e.toString());
+                                    continue;
                                 }
+                                gitlive.errorDialog(res.stderr);
+                                    // should also update modules ideally.
+                                
                             }
                             if (err.length) {
                                 gitlive.errorDialog(err.join("\n"));
