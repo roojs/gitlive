@@ -89,7 +89,7 @@ Git.prototype = {
             async : false
         });
         var out = sp.run();
-         
+        // parse output for some commands ?
         return out;
     }
 }
