@@ -141,7 +141,7 @@ StatusIcon  = new XObject({
                                     var res = Git.run(fn,  'pull' );
                                     var notification = new Notify.Notification({
                                         summary: "Updated " + fn,
-                                        body : res
+                                        body : res.output
                                     });
                                     notification.set_timeout(500);
                                     notification.show();
