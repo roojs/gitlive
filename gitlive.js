@@ -94,7 +94,7 @@ var monitor = new Monitor({
             }
             var sp = Git.run.apply(Git,cmd);
              
-            switch (sp.result) {
+            switch (sp.result * 1) {
                 case 0: // success:
                     success.push(sp.args.join(' '));
                     if (sp.output.length) success.push(sp.output + '');
