@@ -90,7 +90,7 @@ var monitor = new Monitor({
         var failure = [];
         var repos = [];
         cmds.forEach(function(cmd) {
-            if (repos.indexOf(cmd[0]) < -1) {
+            if (repos.indexOf(cmd[0]) < 0) {
                 repos.push(cmd[0]);
             }
             var sp = Git.run.apply(Git,cmd);
