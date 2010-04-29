@@ -137,7 +137,7 @@ var monitor = new Monitor({
                 
             });
 
-            notification.set_timeout(2000);
+            notification.set_timeout(5000); // show errros for longer
             notification.show();   
         }
         this.queueRunning = false;
