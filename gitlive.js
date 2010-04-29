@@ -99,7 +99,7 @@ var monitor = new Monitor({
                 case 0: // success:
                     success.push(sp.args.join(' '));
                     success.push(sp.output + '');
-                    success.push(sp.stderr+ '');
+                    success.push(sp.stderr + '');
                     break;
                 default: 
                     failure.push(sp.args.join(' '));
