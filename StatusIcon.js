@@ -129,7 +129,6 @@ StatusIcon  = new XObject({
 
                             var next_file = null;
                             
-                            var err = [];
                             while ((next_file = file_enum.next_file(null)) != null) {
                                 
                                 var fn = gitlive.gitlive + '/' + next_file.get_display_name();
