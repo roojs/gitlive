@@ -87,7 +87,14 @@ var monitor = new Monitor({
         var success = [];
         var failure = [];
         var repos = [];
+        var done = [];
         cmds.forEach(function(cmd) {
+            // prevent duplicate calls..
+            if (done.indexOf(cmd.join(',')) > -1) {
+                continue;
+            }
+            done.push(cmd.join(','));
+            
             if (repos.indexOf(cmd[0]) < 0) {
                 repos.push(cmd[0]);
                 Git.run(cmd[0] , 'pull'); // pull before we push!
