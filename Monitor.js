@@ -68,9 +68,10 @@ Monitor.prototype = {
      * 
      * 
      */
-    monitor : function(path, fn)
+    monitor : function(path, fn, depth)
     {
         var _this = this;
+        depth = depth || 0
         fn = fn || function (fm, f, of, event_type, uh) {
             _this.onEvent(fm, f, of, event_type, uh);
         }
@@ -87,7 +88,9 @@ Monitor.prototype = {
             Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
             Gio.FileQueryInfoFlags.NONE,
             null);
-            
+        
+        
+        
         while ((next_file = file_enum.next_file(null)) != null) {
          
             if (next_file.get_file_type() != Gio.FileType.DIRECTORY) {
@@ -96,7 +99,14 @@ Monitor.prototype = {
             if (next_file.get_display_name()[0] == '.') {
                 continue;
             }
-            this.monitor(path+'/'+next_file.get_display_name(), fn)
+            var sp = path+'/'+next_file.get_display_name();
+            // skip modules.
+            if (depth > 1 && GLib.file_test(sp + '/.git' , GLib.FileTest.IS_DIR)) {
+                continue;
+            }
+            
+            
+            this.monitor(sp, fn, depth+1)
         }
     
         file_enum.close(null);
