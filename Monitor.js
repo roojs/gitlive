@@ -71,10 +71,17 @@ Monitor.prototype = {
     monitor : function(path, fn, depth)
     {
         var _this = this;
-        depth = depth || 0
+        depth = depth  ? depth *1 : 0;
         fn = fn || function (fm, f, of, event_type, uh) {
             _this.onEvent(fm, f, of, event_type, uh);
         }
+       
+        if (depth > 0 && GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR)) {
+            return;
+        }
+            
+       
+       
        
         var f = Gio.file_new_for_path(path);
         //var cancel = new Gio.Cancellable ();
@@ -89,7 +96,7 @@ Monitor.prototype = {
             Gio.FileQueryInfoFlags.NONE,
             null);
         
-        
+        print("ADD path " + depth + ' ' + path);
         
         while ((next_file = file_enum.next_file(null)) != null) {
          
@@ -101,12 +108,9 @@ Monitor.prototype = {
             }
             var sp = path+'/'+next_file.get_display_name();
             // skip modules.
-            if (depth > 1 && GLib.file_test(sp + '/.git' , GLib.FileTest.IS_DIR)) {
-                continue;
-            }
+           
             
-            
-            this.monitor(sp, fn, depth+1)
+            this.monitor(sp, fn, depth + 1)
         }
     
         file_enum.close(null);
