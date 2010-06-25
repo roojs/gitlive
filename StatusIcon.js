@@ -144,7 +144,7 @@ StatusIcon  = new XObject({
                                         summary: "Updated " + fn,
                                         body : res.output
                                     });
-                                    notification.set_timeout(500);
+                                    notification.set_timeout(1000);
                                     notification.show();
                                     continue;
                                 }

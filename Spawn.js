@@ -299,6 +299,7 @@ Spawn.prototype = {
  * 
  * simple run a process - returns result, or throws stderr result...
  * @param cfg {Object}  see spawn
+ * @return {string} stdout output.
  */
 function run(cfg) {
     cfg.exceptions = true;
