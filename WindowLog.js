@@ -2,7 +2,9 @@
 /**
  * log desktop actions..
  * 
- * 
+ * mouse:
+ * xdotool getmouselocation
+ *
  * 
  */
 
