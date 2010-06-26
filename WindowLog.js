@@ -10,6 +10,10 @@
  * root@wideboy:/home/alan# xwit -property WM_CLASS -print 
  * 0x3a13d6c: x=1 y=25 w=1109 h=747 d=32 'gnome-terminal'
  * root@wideboy:/home/alan# 
+ * 
+ * -- log to a remote url.
+ * 
+ * 
  */
 
 
