@@ -13,6 +13,9 @@
  * 
  * -- log to a remote url.
  * 
+ * LOG:
+ * DATE / TIME / Application / Title
+ * if cursor same as before.. - SEND IDLE...
  * 
  */
 
