@@ -17,6 +17,9 @@
  * DATE / TIME / Application / Title
  * if cursor same as before.. - SEND IDLE... (twice, then stop sending..)
  * 
+ * For commits...
+ * DATE / TIME / Project.. 
+ * 
  */
 
 
