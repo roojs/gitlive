@@ -11,6 +11,9 @@
  * 0x3a13d6c: x=1 y=25 w=1109 h=747 d=32 'gnome-terminal'
  * root@wideboy:/home/alan# 
  * 
+ * 
+ * Not sure how we handle last key press...
+ * 
  * -- log to a remote url.
  * 
  * LOG:
