@@ -17,9 +17,12 @@
  * DATE / TIME / Application / Title
  * if cursor same as before.. - SEND IDLE... (twice, then stop sending..)
  * 
- * For commits... (we care about this in batches of 5 minutes.. - so we can send a summary
- * eg. yyyy-mm-dd 12:05  GIT  / XXXXX<< repo.
- * DATE / TIME / Project.. 
+ * For commits... (we send out every 1 minute as well, it's upto the other end to determine if that means updating
+ * or creating a new record..
+ * If commits are done to other 
+ * eg. 
+ * yyyy-mm-dd /12:00 / GIT / XXXXX << repo. / 12 commits.
+ * yyyy-mm-dd /12:15 / GIT / XXXXX<< repo.
  * 
  */
 
