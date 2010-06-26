@@ -15,7 +15,7 @@
  * 
  * LOG:
  * DATE / TIME / Application / Title
- * if cursor same as before.. - SEND IDLE...
+ * if cursor same as before.. - SEND IDLE... (twice, then stop sending..)
  * 
  */
 
