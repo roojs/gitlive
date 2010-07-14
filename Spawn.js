@@ -135,9 +135,9 @@ Spawn.prototype = {
                 GLib.spawn_close_pid(_this.pid); // hopefully kills it..
                 _this.pid = false;
             }
-            if (_this.in_ch)  GLib.io_channel_close(_this.in_ch);
-            if (_this.out_ch)  GLib.io_channel_close(_this.out_ch);
-            if (_this.err_ch)  GLib.io_channel_close(_this.err_ch);
+            if (_this.in_ch)  _this.in_ch.close();
+            if (_this.out_ch)  _this.out_ch.close();
+            if (_this.err_ch)  _this.err_ch.close();
             // blank out channels
             _this.in_ch = false;
             _this.err_ch = false;
@@ -163,7 +163,7 @@ Spawn.prototype = {
             GLib.spawn_close_pid(_this.pid);
             _this.pid = false;
             if (ctx) {
-                GLib.main_loop_quit(ctx);
+                ctx.quit();
             }
             tidyup();
             if (_this.listeners.finish) {
@@ -177,9 +177,9 @@ Spawn.prototype = {
         this.err_ch = GLib.io_channel_unix_new(ret.standard_error);
        
         // make everything non-blocking!
-        GLib.io_channel_set_flags (this.in_ch,GLib.IOFlags.NONBLOCK);
-        GLib.io_channel_set_flags (this.out_ch,GLib.IOFlags.NONBLOCK);
-        GLib.io_channel_set_flags (this.err_ch,GLib.IOFlags.NONBLOCK);
+        this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
+        this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
+        this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
 
       
         // add handlers for output and stderr.
@@ -218,14 +218,15 @@ Spawn.prototype = {
             return this;
         }
         
+        
         // start mainloop if not async..
         
         if (this.pid !== false) {
             if (this.debug) {
                 print("starting main loop");
             }
-            ctx = GLib.main_loop_new (null, false);
-            GLib.main_loop_run(ctx, false); // wait fore exit?
+            ctx = new GLib.MainLoop.c_new (null, false);
+            ctx.run(false); // wait fore exit?
             
         } else {
             tidyup(); // tidyup get's called in main loop. 
@@ -252,13 +253,14 @@ Spawn.prototype = {
             return; // input is closed
         }
         var ret = {};
-        var res = GLib.io_channel_write_chars(this.in_ch, str, str.length);
+        var res = this.in_ch.write_chars(str, str.length);
         if (res != GLib.IOStatus.NORMAL) {
             throw "Write failed";
         }
         return ret.bytes_written;
         
     },
+    
     /**
      * read from pipe and call appropriate listerner and add to output or stderr string.
      * @arg giochannel to read from.
@@ -270,7 +272,7 @@ Spawn.prototype = {
         var _this = this;
         while (true) {
             var x = new GLib.String();
-            var status = GLib.io_channel_read_line_string (ch, x);
+            var status = ch.read_line_string( x);
             switch(status) {
                 case GLib.IOStatus.NORMAL:
                     //write(fn, x.str);
