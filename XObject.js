@@ -1,5 +1,6 @@
 //<script type="text/javascript">
-
+GIRepository = imports.gi.GIRepository;
+GObject = imports.gi.GObject;
 /**
  * XObject
  * Yet another attempt to create a usable object construction library for seed..
@@ -49,10 +50,46 @@
 
 function XObject (cfg) {
     // first apply cfg if set.
-    this.config = cfg;
-    if (cfg.init) {
-        this.init = cfg.init; // override!
+      //print("new XOBJECT!!!");
+    this.config = {};
+    this.constructor = XObject;
+    
+    // copy down all elements into self..
+    
+    for (var i in cfg) {
+        this[i] = cfg[i];
+        if (typeof(cfg[i]) == 'function') { // do we skip objects.
+            continue;
+        }
+        // these properties are not copied to cfg.
+        if (    i == 'pack' ||
+                i == 'items' ||
+                i == 'id' ||
+                i == 'xtype' ||
+                i == 'xdebug' ||
+                i == 'xns') {
+            continue;
+        }
+        
+        
+        this.config[i] = cfg[i];
     }
+    this.items = this.items || [];
+    // pack can be false!
+    if (typeof(this.pack) == 'undefined') {
+        
+        this.pack = [ 'add' ]
+        /*
+        var Gtk  = imports.gi.Gtk;
+        switch (true) {
+            // any others!!
+            case (this.xtype == Gtk.MenuItem):  this.pack = [ 'append' ]; break;
+            
+        }
+        */
+        
+    }
+    
     
     
 }
@@ -86,39 +123,15 @@ XObject.prototype = {
       */ 
     init : function()
     {
-        var cfg = this.config;
-    
-        print("new xobj?"  + XObject.keys(cfg).join(','));
-        //print(cfg);
-        o =  {};
-        
-        cfg.items = cfg.items || [];
-        
-        XObject.extend(o, cfg); // copy everything into o.
-        
-        o.pack = typeof(o.pack) == 'undefined' ? 'add' : o.pack;
-        
-        XObject.extend(this, o);
-
+         
+        var items = [];
+        this.items.forEach(function(i) {
+            items.push(i);
+        });
         // remove items.
-        
         this.listeners = this.listeners || {}; 
         this.items = [];
-        
-        // remove objects/functions from o, so they can be sent to the contructor.
-        for (var i in o) {
-            if ((typeof(o[i]) == 'object') || 
-                (typeof(o[i]) == 'function') || 
-                i == 'pack' ||
-                i == 'id' ||
-                i == 'xtype' ||
-                i == 'xdebug' ||
-                i == 'xns'
-            ) {
-                delete o[i];
-            }
-        }
-        
+         
         // do we need to call 'beforeInit here?'
          
         // handle include?
@@ -128,33 +141,67 @@ XObject.prototype = {
         var isSeed = typeof(Seed) != 'undefined';
          
         // xtype= Gtk.Menu ?? what about c_new stuff?
-        print(this.xtype);
-        if (typeof(this.xtype) == 'function') {
-            print("func?"  + XObject.keys(o).join(','));
-            this.el = this.el ||   this.xtype(o);
+        if (XObject.debug) print("init: ID:"+ this.id +" typeof(xtype): "  + typeof(this.xtype));
+        if (!this.el && typeof(this.xtype) == 'function') {
+            if (XObject.debug) print("func?"  + XObject.keys(this.config).join(','));
+            this.el = this.xtype(this.config);
+           
         }
-        if (typeof(this.xtype) == 'object') {
-            print("obj?"  + XObject.keys(o).join(','));
-            this.el = this.el ||  new this.xtype(o);
+        if (!this.el && typeof(this.xtype) == 'object') {
+            if (XObject.debug) print("obj?"  + XObject.keys(this.config).join(','));
+            this.el = new (this.xtype)(this.config);
+      
         }
         //print(this.el);
-        if (!this.el && o.xns) {
+        if (!this.el && this.xns) {
             
-            var NS = imports.gi[o.xns];
+            var NS = imports.gi[this.xns];
             if (!NS) {
-                Seed.print('Invalid xns: ' + o.xns);
+                Seed.print('Invalid xns: ' + this.xns);
             }
-            constructor = NS[o.xtype];
+            constructor = NS[this.xtype];
             if (!constructor) {
-                Seed.print('Invalid xtype: ' + o.xns + '.' + o.xtype);
+                Seed.print('Invalid xtype: ' + this.xns + '.' + this.xtype);
             }
-            this.el  =   isSeed ? new constructor(o) : new constructor();
+            this.el  =   isSeed ? new constructor(this.config) : new constructor();
             
         }
+        if (XObject.debug) print("init: ID:"+ this.id +" typeof(el):" + this.el);
+        
         // always overlay props..
-        for (var i in o) {
-            this.el[i] = o[i];
+        // check for 'write' on object..
+        /*
+        if (typeof(XObject.writeablePropsCache[this.xtype.type]) == 'undefined') {
+                
+            var gi = GIRepository.IRepository.get_default();
+            var ty = gi.find_by_gtype(this.xtype.type);
+            var write = [];
+            for (var i =0; i < GIRepository.object_info_get_n_properties(ty);i++) {
+                var p =   GIRepository.object_info_get_property(ty,i);
+                if (GIRepository.property_info_get_flags(p) & 2) {
+                    write.push(GIRepository.base_info_get_name(p));
+                }
+            }
+            XObject.writeablePropsCache[this.xtype.type] = write;
+            print(write.join(", "));
         }
+        
+        */
+        
+         
+        for (var i in this.config) {
+            if (i == 'type') { // problem with Gtk.Window... - not decided on a better way to handle this.
+                continue;
+            }
+            if (i == 'buttons') { // problem with Gtk.MessageDialog..
+                continue;
+            }
+            if (i[0] == '.') { // parent? - 
+                continue;
+            }
+            this.el[i] = this.config[i];
+        }
+        
         // register it!
         //if (o.xnsid  && o.id) {
          //   XObject.registry = XObject.registry || { };
@@ -162,18 +209,39 @@ XObject.prototype = {
          //   XObject.registry[o.xnsid][o.id] = this;
         //}
         
-        cfg.items.forEach(this.addItem, this);
+        var type = this.xtype && this.xtype.type ? GObject.type_name(this.xtype.type) : '';
+        print("MAKE " + type);
+        
+        
+        var _this=this;
+        items.forEach(function(i,n) {
+            
+            if (type == 'GtkTable' && i.pack == 'add') {
+                var c = n % _this.config.n_columns;
+                var r = Math.floor(n/_this.config.n_columns);
+                i.pack = [ 'attach', c, c+1, r, r+1, 
+                        typeof(i.x_options) == 'undefined' ?  5 : i.x_options,
+                        typeof(i.y_options) == 'undefined' ?  5 : i.y_options,
+                        typeof(i.x_padding) == 'undefined' ?  0 : i.x_padding,
+                        typeof(i.x_padding) == 'undefined' ?  0 : i.x_padding
+                       
+                ]
+            }
+            
+            _this.addItem(i);
+        })
+            
         
         for (var i in this.listeners) {
             this.addListener(i, this.listeners[i]);
         }
+        
         // delete this.listeners ?
-        
-        
+        // do again so child props work!
+       
         // do we need to call 'init here?'
     },
       
-     
      /**
       * @method addItem
       * Adds an item to the object using a new XObject
@@ -181,26 +249,48 @@ XObject.prototype = {
       * @arg cfg {Object} same as XObject constructor.
       */
     addItem : function(o) {
-        
-         
+        if (typeof(o) == 'undefined') {
+            print("Invalid Item added to this!");
+            imports.console.dump(this);
+            Seed.quit();
+        }
+        // what about extended items!?!?!?
         var item = (o.constructor == XObject) ? o : new XObject(o);
-        item.init();
         item.parent = this;
         this.items.push(item);
+        item.init();
+        //print("CTR:PROTO:" + ( item.id ? item.id : '??'));
+       // print("addItem - call init [" + item.pack.join(',') + ']');
+        if (!item.el) {
+            print("NO EL!");
+            imports.console.dump(item);
+            Seed.quit();
+        }
+         
         
         if (item.pack===false) {  // no 
             return;
         }
         if (typeof(item.pack) == 'function') {
             // parent, child
-            item.pack.apply(o, [ o , o.items[i] ]);
+            item.pack.apply(item, [ this , item  ]);
             item.parent = this;
             return;
         }
         var args = [];
         var pack_m  = false;
         if (typeof(item.pack) == 'string') {
-            pack_m = item.pack;
+             
+            item.pack.split(',').forEach(function(e, i) {
+                
+                if (e == 'false') { args.push( false); return; }
+                if (e == 'true') {  args.push( true);  return; }
+                if (!isNaN(parseInt(e))) { args.push( parseInt(e)); return; }
+                args.push(e);
+            });
+            //print(args.join(","));
+            
+            pack_m = args.shift();
         } else {
             pack_m = item.pack.shift();
             args = item.pack;
@@ -208,7 +298,16 @@ XObject.prototype = {
         
         // handle error.
         if (pack_m && typeof(this.el[pack_m]) == 'undefined') {
-            Seed.print('pack method not available : ' + this.xtype + '.' +  pack_m);
+            
+            throw {
+                name: "ArgumentError", 
+                message : 'pack method not available : ' + this.id + " : " + this.xtype + '.' +  pack_m + " ADDING " + item.el
+                    
+            }
+           
+            
+            
+            
             return;
         }
         
@@ -216,7 +315,7 @@ XObject.prototype = {
         //Seed.print('Pack ' + this.el + '.'+ pack_m + '(' + item.el + ')');
 
         args.unshift(item.el);
-        print('[' + args.join(',') +']');
+        if (XObject.debug) print(pack_m + '[' + args.join(',') +']');
         //Seed.print('args: ' + args.length);
         if (pack_m) {
             this.el[pack_m].apply(this.el, args);
@@ -235,8 +334,8 @@ XObject.prototype = {
     addListener  : function(sig, fn) 
     {
  
-        Seed.print("Add signal " + sig);
- 
+        if (XObject.debug) Seed.print("Add signal " + sig);
+        fn.id= sig;
         var _li = XObject.createDelegate(fn,this);
         // private listeners that are not copied to GTk.
         
@@ -252,42 +351,141 @@ XObject.prototype = {
      /**
       * @method get
       * Finds an object in the child elements using xid of object.
-      * prefix with '.' to look up the tree.. multiple '..' to look further up..
+      * prefix with '.' to look up the tree.. 
+      * prefix with multiple '..' to look further up..
+      * prefix with '/' to look from the top, eg. '^LeftTree.model'
       * 
       * @arg name  {String} name of signal
       * @return   {XObject|false} the object if found.
       */
     get : function(xid)
     {
+        if (XObject.debug) print("SEARCH FOR " + xid + " in " + this.id);
         var ret=  false;
+        var oid = '' + xid;
+        if (!xid.length) {
+            throw {
+                name: "ArgumentError", 
+                message : "ID not found : empty id"
+            }
+        }
+        
         if (xid[0] == '.') {
             return this.parent.get(xid.substring(1));
         }
+        if (xid[0] == '/') {
+            
+            if (typeof(XObject.cache[xid]) != 'undefined') {
+                return XObject.cache[xid]; 
+            }
+            if (xid.indexOf('.') > -1) {
+                
+                var child = xid.split('.');
+                var nxid = child.shift();
+                    
+                child = child.join('.');
+                if (typeof(XObject.cache[nxid]) != 'undefined') {
+                    return XObject.cache[nxid].get(child);
+                }
+                
+                
+            }
+            var e = this;
+            while (e.parent) {
+                e = e.parent;
+            }
+            
+            try {
+                ret = e.get(xid.substring(1));
+            } catch (ex) { }
+            
+            if (!ret) {
+                throw {
+                    name: "ArgumentError", 
+                    message : "ID not found : " + oid
+                }
+            }
+            XObject.cache[xid] = ret;
+            return XObject.cache[xid];
+        }
+        var child = false;
+        
+        if (xid.indexOf('.') > -1) {
+            child = xid.split('.');
+            xid = child.shift();
+            
+            child = child.join('.');
+            
+        }
+        if (xid == this.id) {
+            try {
+                return child === false ? this : this.get(child);
+            } catch (ex) {
+                throw {
+                    name: "ArgumentError", 
+                    message : "ID not found : " + oid
+                }
+            }
+            
+        }
         
         
         this.items.forEach(function(ch) {
+            if (ret) {
+                return;
+            }
             if (ch.id == xid) {
                 ret = ch;
-                return true;
             }
         })
         if (ret) {
-            return ret;
+            try {
+                return child === false ? ret : ret.get(child);
+            } catch (ex) {
+                throw {
+                    name: "ArgumentError", 
+                    message : "ID not found : " + oid
+                }
+            }
+            
         }
         // iterate children.
+        var _this = this;
         this.items.forEach(function(ch) {
-            ret = ch.get(xid);
             if (ret) {
-                return true;
+                return;
             }
-        })
-        return ret;
+            if (!ch.get) {
+                print("invalid item...");
+                imports.console.dump(_this);
+                Seed.quit();
+            }
+            try {
+                ret = ch.get(xid);
+            } catch (ex) { }
+            
+            
+        });
+        if (!ret) {
+            throw {
+                name: "ArgumentError", 
+                message : "ID not found : " + oid
+            }
+        }
+        try {
+            return child === false ? ret : ret.get(child);
+        } catch (ex) {
+            throw {
+                name: "ArgumentError", 
+                message : "ID not found : " + oid
+            }
+        }
     }
       
       
 } 
          
-        
+     
 /**
  * Copies all the properties of config to obj.
  *
@@ -315,6 +513,18 @@ XObject.extend = function(o, c, defaults){
 
 XObject.extend(XObject,
 {
+     
+    /**
+     * @property {Boolean} debug XObject  debugging.  - set to true to debug.
+     * 
+     */
+    debug : true,
+    /**
+     * @property {Object} cache - cache of object ids
+     * 
+     */
+    cache: { },
+    
     /**
      * Copies all the properties of config to obj, if the do not exist.
      * @param {Object} obj The receiver of the properties
@@ -368,29 +578,38 @@ XObject.extend(XObject,
                 this[m] = o[m];
             }
         };
-        return function(sb, sp, overrides) {
-            if (typeof(sp) == 'undefined') {
-                // error condition - try and dump..
-                throw "Missing superclass: when applying: " + sb
+        return function(constructor, parentClass, overrides) {
+            if (typeof(parentClass) == 'undefined') {
+                print("XObject.define: Missing parentClass: when applying: " );
+                print(new String(constructor));
+                Seed.quit(); 
             }
-
-            var F = function(){}, sbp, spp = sp.prototype;
+            if (typeof(parentClass.prototype) == 'undefined') {
+                print("Missing protype: when applying: " );
+                print(new String(constructor));
+                print(new String(parentClass));
+                Seed.quit(); 
+            }
+            var F = function(){};
+            var sbp;
+            var spp = parentClass.prototype;
+            
             F.prototype = spp;
-            sbp = sb.prototype = new F();
-            sbp.constructor=sb;
-            sb.superclass=spp;
+            sbp = constructor.prototype = new F();
+            sbp.constructor=constructor;
+            constructor.superclass=spp;
 
             // extends Object.
             if(spp.constructor == Object.prototype.constructor){
-                spp.constructor=sp;
+                spp.constructor=parentClass;
             }
             
-            sb.override = function(o){
-                Object.extend(sb.prototype, o);
+            constructor.override = function(o){
+                Object.extend(constructor.prototype, o);
             };
             sbp.override = io;
-            XObject.extend(sb.prototype, overrides);
-            return sb;
+            XObject.extend(constructor.prototype, overrides);
+            return constructor;
         };
     }(),
 
@@ -423,6 +642,8 @@ XObject.extend(XObject,
     createDelegate : function(method, obj, args, appendArgs){
         
         return function() {
+            if (XObject.debug) print("CALL: " + obj.id + ':'+ method.id);
+            
             var callArgs = args || arguments;
             if(appendArgs === true){
                 callArgs = Array.prototype.slice.call(arguments, 0);
