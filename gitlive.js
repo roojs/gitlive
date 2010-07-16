@@ -322,8 +322,12 @@ function errorDialog(data) {
 //
 // need a better icon...
 
-StatusIcon.init(); 
+
+StatusIcon.init();   
+
+
 Notify.init("gitlive");
+
 monitor.add(GLib.get_home_dir() + "/gitlive");
 monitor.start();
 Gtk.main();
