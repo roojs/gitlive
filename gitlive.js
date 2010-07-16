@@ -91,7 +91,11 @@ var monitor = new Monitor({
         cmds.forEach(function(cmd) {
             // prevent duplicate calls..
             if (done.indexOf(cmd.join(',')) > -1) {
+<<<<<<< HEAD
                 return;
+=======
+               return; 
+>>>>>>> 0a9d49d2bf517d459e7f027fe21d49bc7f3fbcd0
             }
             done.push(cmd.join(','));
             

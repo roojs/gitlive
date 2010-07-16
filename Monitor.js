@@ -159,7 +159,7 @@ Monitor.prototype = {
                     return;
                 
                 case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
-                    this.onAttributeCreated(src);
+                    this.onAttributeChanged(src);
                     return;
                 
                 case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
