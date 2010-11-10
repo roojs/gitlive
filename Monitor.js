@@ -96,7 +96,7 @@ Monitor.prototype = {
             Gio.FileQueryInfoFlags.NONE,
             null);
         
-        print("ADD path " + depth + ' ' + path);
+        //print("ADD path " + depth + ' ' + path);
         
         while ((next_file = file_enum.next_file(null)) != null) {
          
@@ -136,8 +136,8 @@ Monitor.prototype = {
                 event_name = i;
             }
         }
-        print ("got event: " +event_name);
-        print ("got src: " + src.toString());
+        //print ("got event: " +event_name);
+        //print ("got src: " + src.toString());
         //print ("got event: " + src.toString());
         try {
                 
