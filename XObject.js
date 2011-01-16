@@ -143,6 +143,7 @@ XObject.prototype = {
         // xtype= Gtk.Menu ?? what about c_new stuff?
         if (XObject.debug) print("init: ID:"+ this.id +" typeof(xtype): "  + typeof(this.xtype));
         if (!this.el && typeof(this.xtype) == 'function') {
+            // gjs implements xtype as function in seed they are undefined..
             if (XObject.debug) print("func?"  + XObject.keys(this.config).join(','));
             try {
                 this.el = this.xtype(this.config);
