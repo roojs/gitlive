@@ -1,6 +1,6 @@
 //<script type="text/javascript">
-GIRepository = imports.gi.GIRepository;
-GObject = imports.gi.GObject;
+var GIRepository = imports.gi.GIRepository;
+var GObject = imports.gi.GObject;
 /**
  * XObject
  * Yet another attempt to create a usable object construction library for seed..
@@ -144,7 +144,12 @@ XObject.prototype = {
         if (XObject.debug) print("init: ID:"+ this.id +" typeof(xtype): "  + typeof(this.xtype));
         if (!this.el && typeof(this.xtype) == 'function') {
             if (XObject.debug) print("func?"  + XObject.keys(this.config).join(','));
-            this.el = this.xtype(this.config);
+            try {
+                this.el = this.xtype(this.config);
+            } catch(e) {
+                this.el = false;
+            }
+            
            
         }
         if (!this.el && typeof(this.xtype) == 'object') {
