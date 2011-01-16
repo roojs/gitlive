@@ -1,7 +1,7 @@
 ///<script type="text/javascript">
 
-Gio      = imports.gi.Gio;
-GLib      = imports.gi.GLib;
+var Gio      = imports.gi.Gio;
+var GLib      = imports.gi.GLib;
 
 
 /**
@@ -57,6 +57,8 @@ function Spawn(cfg) {
     }
     
 }
+
+
 Spawn.prototype = {
     
     listeners : false,
@@ -129,6 +131,7 @@ Spawn.prototype = {
         if (this.debug) {
             print("PID: " + this.pid);
         }
+        
         function tidyup()
         {
             if (_this.pid) {
@@ -250,7 +253,7 @@ Spawn.prototype = {
     write : function(str) // write a line to 
     {
         if (!this.in_ch) {
-            return; // input is closed
+            return 0; // input is closed
         }
         var ret = {};
         var res = this.in_ch.write_chars(str, str.length);
