@@ -9,16 +9,16 @@
 * 
 * 
 */
-GI      = imports.gi.GIRepository;
-Gio      = imports.gi.Gio;
-GLib      = imports.gi.GLib;
-Gtk      = imports.gi.Gtk;
-Notify = imports.gi.Notify;
+var GI      = imports.gi.GIRepository;
+var Gio      = imports.gi.Gio;
+var GLib      = imports.gi.GLib;
+var Gtk      = imports.gi.Gtk;
+var Notify = imports.gi.Notify;
 
-Spawn = imports.Spawn;
-Git = imports.Git;
-StatusIcon = imports.StatusIcon.StatusIcon;
-Monitor = imports.Monitor.Monitor;
+var Spawn = imports.Spawn;
+var Git = imports.Git;
+var StatusIcon = imports.StatusIcon.StatusIcon;
+var Monitor = imports.Monitor.Monitor;
 
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
