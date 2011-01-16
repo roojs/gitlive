@@ -14,18 +14,19 @@
  * b) Pause!??!
  */
  
-Gtk      = imports.gi.Gtk;
-Gdk      = imports.gi.Gdk;
-Gio      = imports.gi.Gio;
-GLib     = imports.gi.GLib;
-Notify   = imports.gi.Notify;
+var Gtk      = imports.gi.Gtk;
+var Gdk      = imports.gi.Gdk;
+var Gio      = imports.gi.Gio;
+var GLib     = imports.gi.GLib;
+var Notify   = imports.gi.Notify;
 
-Git = imports.Git;
-XObject = imports.XObject.XObject
-gitlive = imports.gitlive;
+var Git = imports.Git;
+var XObject = imports.XObject.XObject;
+
+//var gitlive = imports.gitlive;
 
  
-StatusIcon  = new XObject({
+var StatusIcon  = new XObject({
     
     paused : false, // on!
     xtype : Gtk.StatusIcon,
