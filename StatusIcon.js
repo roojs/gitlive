@@ -23,7 +23,7 @@ var Notify   = imports.gi.Notify;
 var Git = imports.Git;
 var XObject = imports.XObject.XObject;
 
-//var gitlive = imports.gitlive;
+var gitlive = imports.gitlive;
 
  
 var StatusIcon  = new XObject({
