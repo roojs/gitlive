@@ -23,7 +23,7 @@ var Monitor = imports.Monitor.Monitor;
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
 Gtk.init (null, null);
- 
+
 var gitlive = GLib.get_home_dir() + "/gitlive";
 
 if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
