@@ -28,3 +28,6 @@ Tickets = {
     
 }
 
+Tickets.parseNetrc();
+print ( JSON.stringify(Tickets.machines) );
+
