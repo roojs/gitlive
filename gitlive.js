@@ -16,14 +16,14 @@ GLib        = imports.gi.GLib;
 // we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
 GI.IRepository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
 
-Gio      = imports.gi.Gio;
-Gtk      = imports.gi.Gtk;
-Notify = imports.gi.Notify;
+Gio         = imports.gi.Gio;
+Gtk         = imports.gi.Gtk;
+Notify      = imports.gi.Notify;
 
-Spawn = imports.Spawn;
-Git = imports.Git;
-StatusIcon = imports.StatusIcon.StatusIcon;
-Monitor = imports.Monitor.Monitor;
+Spawn       = imports.Spawn;
+Git         = imports.Git;
+StatusIcon  = imports.StatusIcon.StatusIcon;
+Monitor     = imports.Monitor.Monitor;
 
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
