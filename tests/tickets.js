@@ -50,5 +50,6 @@ Tickets = {
 }
 
 Tickets.parseNetrc();
-print ( JSON.stringify(Tickets.machines) );
+//print ( JSON.stringify(Tickets.machines) );
 
+Tickets.fetchBugs();
