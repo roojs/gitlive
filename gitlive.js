@@ -9,9 +9,13 @@
 * 
 * 
 */
-GI      = imports.gi.GIRepository;
+GI      = imports.gi.GIRepository
+GLib        = imports.gi.GLib;
+
+// we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
+GI.IRepository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
+
 Gio      = imports.gi.Gio;
-GLib      = imports.gi.GLib;
 Gtk      = imports.gi.Gtk;
 Notify = imports.gi.Notify;
 
