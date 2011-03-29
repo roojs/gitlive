@@ -7,7 +7,7 @@ GLib        = imports.gi.GLib;
 
 
 
-File = imports['../File.js'];
+File = imports['../File.js'].File;
 
 Tickets = {
     
