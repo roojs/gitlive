@@ -43,7 +43,7 @@ Tickets = {
         var auth = new Soup.Auth()
         var session = new Soup.SessionSync();
         session.signal.authenticate(function(sess, msg, auth, rt) {
-            
+            print("authenticate?");
             
         })
         var request = new Soup.Message({
