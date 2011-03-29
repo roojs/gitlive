@@ -27,7 +27,24 @@ Tickets = {
         });
         
         
+    },
+    
+    fetchBugs : function()
+    {
+        var session = new Soup.SessionSync();
+        
+        var status = session.send_message(
+            new Soup.Message({
+                method:"GET",
+                uri:new Soup.URI.c_new("http://roojs.com/mtrack.php/Bugs")
+            })                                          
+        );
+        
+        var data = request.response_body.data;
+        print(data);
+        
     }
+    
     
     
 }
