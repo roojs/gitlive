@@ -15,7 +15,7 @@ Tickets = {
     {
         this.machines = {};
         // very basic parsing - only support single line version..
-        var lines = File.read(GLib.get_home_dir() + '.netrc').split(/\n/);
+        var lines = File.read(GLib.get_home_dir() + '/.netrc').split(/\n/);
         var t = this;
         lines.forEach(function(l)  {
             if (!l.match(/^machine/)) {
