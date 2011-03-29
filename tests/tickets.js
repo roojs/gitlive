@@ -48,7 +48,7 @@ Tickets = {
         })
         var request = new Soup.Message({
                 method:"GET",
-                uri:new Soup.URI.c_new()
+                uri:new Soup.URI.c_new(url)
             });
         var status = session.send_message(request); 
         
