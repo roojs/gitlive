@@ -40,8 +40,12 @@ Tickets = {
         Tickets.parseNetrc();
         var ar = url.split('/');
         print(JSON.stringify(ar, null, 4));
-        
+        var auth = new Soup.Auth()
         var session = new Soup.SessionSync();
+        session.signal.authenticate(function(sess, msg, auth, rt) {
+            
+            
+        })
         var request = new Soup.Message({
                 method:"GET",
                 uri:new Soup.URI.c_new()
@@ -60,4 +64,5 @@ Tickets = {
 
 //print ( JSON.stringify(Tickets.machines) );
 
-Tickets.fetchBugs("http://roojs.com/mtrack.php/Bugs");
+//Tickets.fetchBugs("http://roojs.com/mtrack.php/Bugs");
+Tickets.fetchBugs("http://git.roojs.com");
