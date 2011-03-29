@@ -3,7 +3,7 @@
  * let's see if we can pull a list of tickets from the tracker..
  *
  */
-Fie = imports.File;
+Fie = imports['../File.js'];
 
 Tickets = {
     
