@@ -4,7 +4,7 @@
  *
  */
 GLib        = imports.gi.GLib;
-
+Soup = imports.gi.Soup ;
 
 
 File = imports['../File.js'].File;
