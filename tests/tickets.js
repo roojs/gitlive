@@ -3,6 +3,10 @@
  * let's see if we can pull a list of tickets from the tracker..
  *
  */
+GLib        = imports.gi.GLib;
+
+
+
 File = imports['../File.js'];
 
 Tickets = {
@@ -11,7 +15,7 @@ Tickets = {
     {
         this.machines = {};
         // very basic parsing - only support single line version..
-        var lines = File.read(Lib.get_home_dir() + '.netrc').split(/\n/);
+        var lines = File.read(GLib.get_home_dir() + '.netrc').split(/\n/);
         var t = this;
         lines.forEach(function(l)  {
             if (!l.match(/^machine/)) {
