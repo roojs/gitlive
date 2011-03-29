@@ -3,14 +3,14 @@
  * let's see if we can pull a list of tickets from the tracker..
  *
  */
-GLib        = imports.gi.GLib;
-Soup = imports.gi.Soup ;
 
 GI      = imports.gi.GIRepository
 GLib        = imports.gi.GLib;
 
 // we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
 GI.IRepository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
+
+Soup = imports.gi.Soup ;
 
 
 File = imports['../File.js'].File;
