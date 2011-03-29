@@ -23,7 +23,7 @@ Tickets = {
             }
             var ar = l.split(/\s+/);
             // assume machine XXX login XXX password XXXX
-            t.machines[ar[1]] = { login : ar[3], password: ar[4]}
+            t.machines[ar[1]] = { login : ar[3], password: ar[5]}
         });
         
         
