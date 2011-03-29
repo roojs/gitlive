@@ -44,7 +44,10 @@ Tickets = {
         var session = new Soup.SessionSync();
         session.signal.authenticate.connect(function(sess, msg, auth, rt) {
             //print("authenticate?");
-            auth.authenticate(Tickets.machines[ar[2]].login, Tickets.machines[ar[2]].password);
+            auth.authenticate(
+                    Tickets.machines[ar[2]].login,
+                    Tickets.machines[ar[2]].password
+            );
         });
         var request = new Soup.Message({
                 method:"GET",
