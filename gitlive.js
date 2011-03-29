@@ -9,6 +9,7 @@
 * 
 * 
 */
+<<<<<<< HEAD
 GI      = imports.gi.GIRepository
 GLib        = imports.gi.GLib;
 
@@ -18,16 +19,23 @@ GI.IRepository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository
 Gio      = imports.gi.Gio;
 Gtk      = imports.gi.Gtk;
 Notify = imports.gi.Notify;
+=======
+var GI      = imports.gi.GIRepository;
+var Gio      = imports.gi.Gio;
+var GLib      = imports.gi.GLib;
+var Gtk      = imports.gi.Gtk;
+var Notify = imports.gi.Notify;
+>>>>>>> e9aa44647c32a34dfa368f7594ed72579c912bc3
 
-Spawn = imports.Spawn;
-Git = imports.Git;
-StatusIcon = imports.StatusIcon.StatusIcon;
-Monitor = imports.Monitor.Monitor;
+var Spawn = imports.Spawn;
+var Git = imports.Git;
+var StatusIcon = imports.StatusIcon.StatusIcon;
+var Monitor = imports.Monitor.Monitor;
 
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
 Gtk.init (null, null);
- 
+
 var gitlive = GLib.get_home_dir() + "/gitlive";
 
 if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {

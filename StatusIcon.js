@@ -14,18 +14,19 @@
  * b) Pause!??!
  */
  
-Gtk      = imports.gi.Gtk;
-Gdk      = imports.gi.Gdk;
-Gio      = imports.gi.Gio;
-GLib     = imports.gi.GLib;
-Notify   = imports.gi.Notify;
+var Gtk      = imports.gi.Gtk;
+var Gdk      = imports.gi.Gdk;
+var Gio      = imports.gi.Gio;
+var GLib     = imports.gi.GLib;
+var Notify   = imports.gi.Notify;
 
-Git = imports.Git;
-XObject = imports.XObject.XObject
-gitlive = imports.gitlive;
+var Git = imports.Git;
+var XObject = imports.XObject.XObject;
+
+//var gitlive = imports.gitlive;
 
  
-StatusIcon  = new XObject({
+var StatusIcon  = new XObject({
     
     paused : false, // on!
     xtype : Gtk.StatusIcon,
@@ -78,7 +79,7 @@ StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             this.parent.parent.paused = true;
-                            gitlive.monitor.stop();
+                            imports.gitlive.monitor.stop();
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
                             
@@ -100,7 +101,7 @@ StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             this.parent.parent.paused = false;
-                            gitlive.monitor.start();
+                            imports.gitlive.monitor.start();
                             //var status = this.el.label == 'Pause' ? 1 : 0
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock(   Gtk.STOCK_MEDIA_PLAY);
@@ -121,9 +122,9 @@ StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                            gitlive.monitor.stop();
+                            imports.gitlive.monitor.stop();
                             
-                            var f = Gio.file_new_for_path(gitlive.gitlive);
+                            var f = Gio.file_new_for_path(imports.gitlive.gitlive);
                             var file_enum = f.enumerate_children(
                                 Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME, Gio.FileQueryInfoFlags.NONE, null);
 
@@ -131,7 +132,7 @@ StatusIcon  = new XObject({
                             
                             while ((next_file = file_enum.next_file(null)) != null) {
                                 
-                                var fn = gitlive.gitlive + '/' + next_file.get_display_name();
+                                var fn = imports.gitlive.gitlive + '/' + next_file.get_display_name();
                                 if (! GLib.file_test(fn + '/.git', GLib.FileTest.IS_DIR)) {
                                     continue;
                                 }
@@ -148,7 +149,7 @@ StatusIcon  = new XObject({
                                     notification.show();
                                     continue;
                                 }
-                                gitlive.errorDialog(res.stderr);
+                                imports.gitlive.errorDialog(res.stderr);
                                     // should also update modules ideally.
                                 
                             }
@@ -157,7 +158,7 @@ StatusIcon  = new XObject({
                             file_enum.close(null);
 
                             
-                            gitlive.monitor.start();
+                            imports.gitlive.monitor.start();
                             
                         }
                     }

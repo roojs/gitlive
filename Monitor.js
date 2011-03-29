@@ -1,6 +1,6 @@
 //<Script type="text/javascript">
-Gio      = imports.gi.Gio;
-GLib      = imports.gi.GLib;
+var Gio      = imports.gi.Gio;
+var GLib      = imports.gi.GLib;
 
 
 /**
@@ -22,7 +22,7 @@ GLib      = imports.gi.GLib;
  */
  
  
-Monitor = function(cfg){
+function Monitor(cfg){
     for (var i in cfg) {
         this[i] = cfg[i];
     }
