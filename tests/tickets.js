@@ -68,4 +68,4 @@ Tickets = {
 //print ( JSON.stringify(Tickets.machines) );
 
 Tickets.fetchBugs("http://www.roojs.com/mtrack.php/Gitlive");
-Tickets.fetchBugs("http://git.roojs.com");
+ 
