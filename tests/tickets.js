@@ -38,13 +38,11 @@ Tickets = {
     fetchBugs : function()
     {
         var session = new Soup.SessionSync();
-        
-        var status = session.send_message(
-            new Soup.Message({
+        var request = new Soup.Message({
                 method:"GET",
                 uri:new Soup.URI.c_new("http://roojs.com/mtrack.php/Bugs")
-            })                                          
-        );
+            });
+        var status = session.send_message(request); 
         
         var data = request.response_body.data;
         print(data);
