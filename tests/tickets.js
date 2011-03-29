@@ -35,12 +35,16 @@ Tickets = {
         
     },
     
-    fetchBugs : function()
+    fetchBugs : function(url)
     {
+        Tickets.parseNetrc();
+        var ar = url.split('/');
+        print(JSON.stringify(ar, null, 4));
+        
         var session = new Soup.SessionSync();
         var request = new Soup.Message({
                 method:"GET",
-                uri:new Soup.URI.c_new("http://roojs.com/mtrack.php/Bugs")
+                uri:new Soup.URI.c_new()
             });
         var status = session.send_message(request); 
         
@@ -53,7 +57,7 @@ Tickets = {
     
 }
 
-Tickets.parseNetrc();
+
 //print ( JSON.stringify(Tickets.machines) );
 
-Tickets.fetchBugs();
+Tickets.fetchBugs("http://roojs.com/mtrack.php/Bugs");
