@@ -20,25 +20,25 @@ FixBug=new XObject({
         },
         response : function (self, id) {
           // hide
-         if (id < 1) {
+             if (id < 1) {
                 this.el.hide();
                 return;
             }
-            if (!this.get('bug').getValue().length) {
+            if (typeof(this.get('bug').getValue()) != 'object') {
                 print("ERROR");
-                    return;
-                }
+                return;
+            }
          
-                this.el.hide();
+            this.el.hide();
                 
-                var val = this.get('bug').getValue();
-                Seed.print(val);
+            //var val = this.get('bug').getValue();
+             //   Seed.print(val);
         }
     },
     border_width : 3,
     default_height : 400,
     default_width : 600,
-    title : "Project Properties",
+    title : "Select Active Bug",
     deletable : true,
     modal : true,
     show : function(c) {
@@ -53,6 +53,12 @@ FixBug=new XObject({
     	// shouild set path..
         */
         this.el.show_all();
+        
+        // block until we return.
+        this.el.run();
+        
+        print(JSON.serialize(this.get('bug').getValue()));
+        
         //this.success = c.success;
     },
     items : [
