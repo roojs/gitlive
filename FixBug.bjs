@@ -37,7 +37,7 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "id": "xtype",
+                                    "id": "bug",
                                     "pack": "pack_end,true,true,3",
                                     "xtype": "ComboBox",
                                     "|getValue": "function() {\n     var ix = this.el.get_active();\n            if (ix < 0 ) {\n                return '';\n            }\n            return this.get('model').data[ix].xtype;\n}\n",
