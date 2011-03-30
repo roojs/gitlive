@@ -6,7 +6,27 @@
 * inotify hooks for ~/gitlive
 * that commit and push any changes made.
 * Bit like a revision controled backed up file system!?
+*
+*
+* The aims of this
+* A) have a gitlive branch - where all our commits go.. - so they can be replicated on the server 
+* B) HEAD branch - where things get merged to..
+*    -- eventually on closing issues..
+*    -- currently when we switch from one feature to another..
+*    
 * 
+*
+* Notes on feature branch implementation
+* we clone directory into gitlive_feature/XXXXX
+*     git branch issue_XXX
+*     git checkout issue_XXX
+*    
+* 
+*
+
+
+
+
 * 
 */
 
