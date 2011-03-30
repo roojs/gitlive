@@ -21,7 +21,9 @@
 *     git branch issue_XXX
 *     git checkout issue_XXX
 *    
-* 
+* run this on the feature branch
+*  git pull origin master << or gitlive..
+*  
 * 
 * 
 */
