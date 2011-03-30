@@ -31,7 +31,7 @@
                             "pack": "pack_start,false,true,3",
                             "items": [
                                 {
-                                    "label": "Project type :",
+                                    "label": "Select Active Bug",
                                     "pack": "pack_start,false,true,3",
                                     "xtype": "Label",
                                     "|xns": "Gtk"
