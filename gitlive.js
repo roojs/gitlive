@@ -55,7 +55,7 @@ var monitor = new Monitor({
      * 
      *
      */
-    action_queue = [],
+    action_queue : [],
     queue : [],
     queueRunning : false,
      
