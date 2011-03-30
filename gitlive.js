@@ -81,6 +81,10 @@ var monitor = new Monitor({
         var _this = this;
         this.lastAdd = new Date();
          
+        // start monitoring first..
+        Monitor.prototype.start.call(this);
+        
+        // then start our queue runner..
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
             //TIMEOUT", _this.queue.length , _this.queueRunning].join(', '));
             if (!_this.queue.length || _this.queueRunning) {
@@ -94,7 +98,7 @@ var monitor = new Monitor({
             return 1;
         },null,null);
         
-        Monitor.prototype.start.call(this);
+        
         var notification = new Notify.Notification({
             summary: "Git Live",
             body : gitlive + "\nMonitoring " + this.monitors.length + " Directories"
