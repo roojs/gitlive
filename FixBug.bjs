@@ -10,11 +10,10 @@
             "xtype": "Dialog",
             "items": [
                 {
+                    "label": "OK",
                     "pack": false,
                     "xtype": "Button",
-                    "|xns": "Gtk",
-                    "label": "",
-                    "listeners": {}
+                    "|xns": "Gtk"
                 }
             ]
         }
