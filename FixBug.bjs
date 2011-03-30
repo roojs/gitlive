@@ -11,7 +11,7 @@
                 "response": "function (self, id) {\n  // hide\n if (id < 1) {\n        this.el.hide();\n        return;\n    }\n    if (!this.get('bug').getValue().length) {\n        print(\"ERROR\");\n            return;\n        }\n \n        this.el.hide();\n        \n        var val = this.get('bug').getValue();\n        Seed.print(val);\n}"
             },
             "border_width": 3,
-            "default_height": 150,
+            "default_height": 400,
             "default_width": 600,
             "title": "Project Properties",
             "xtype": "Dialog",
