@@ -61,11 +61,6 @@
                                     ]
                                 }
                             ]
-                        },
-                        {
-                            "xtype": "Entry",
-                            "|xns": "Gtk",
-                            "listeners": {}
                         }
                     ]
                 },
@@ -85,5 +80,5 @@
         }
     ],
     "permname": "",
-    "modOrder": "0"
+    "modOrder": ""
 }
