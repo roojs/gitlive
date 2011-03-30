@@ -52,10 +52,16 @@ FixBug=new XObject({
         });
     	// shouild set path..
         */
+    
+        
         this.el.show_all();
+            this.get('/ok_button').el.set_sensitive(false);
         
         // block until we return.
         var run_ret = this.el.run();
+        if (run_ret < 1 ) {
+            return false;
+        }
         print("RUN RETURN : " + run_ret);
         
         //print(JSON.stringify(this.get('bug').getValue()));
@@ -236,13 +242,14 @@ FixBug=new XObject({
         },
         {
             xtype: Gtk.Button,
-            pack : "add_action_widget,0",
-            label : "Cancel"
+            label : "Cancel",
+            pack : "add_action_widget,0"
         },
         {
             xtype: Gtk.Button,
-            pack : "add_action_widget,1",
-            label : "OK"
+            id : "ok_button",
+            label : "OK",
+            pack : "add_action_widget,1"
         }
     ]
 });
