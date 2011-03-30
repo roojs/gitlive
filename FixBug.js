@@ -55,7 +55,7 @@ FixBug=new XObject({
     
         
         this.el.show_all();
-            this.get('/ok_button').el.set_sensitive(false);
+        this.get('/ok_button').el.set_sensitive(false);
         
         // block until we return.
         var run_ret = this.el.run();
@@ -90,6 +90,7 @@ FixBug=new XObject({
                                 changed : function (self) {
                                     var d = this.getValue();
                                     this.get('/view').load(d.description);
+                                      this.get('/ok_button').el.set_sensitive(true);
                                 }
                             },
                             id : "bug",
