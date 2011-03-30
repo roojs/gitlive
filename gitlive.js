@@ -168,7 +168,7 @@ var monitor = new Monitor({
          
         // push upstream.
         repos.forEach(function(r) {
-            var sp = Git.run(r , 'push', { all: true } );
+            var sp = Git.run(gitlive + '/' +r , 'push', { all: true } );
             if (sp.length) {
                 success.push(sp);
             }
