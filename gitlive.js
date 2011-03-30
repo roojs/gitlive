@@ -180,7 +180,7 @@ var monitor = new Monitor({
     
     /**
      * set gitpath and vpath
-     *
+     * 
      * 
      */
     
@@ -188,8 +188,8 @@ var monitor = new Monitor({
     {
            
         var vpath_ar = f.path.substring(gitlive.length +1).split('/');
-        
-        f.gitpath = gitlive + '/' + vpath_ar.shift();
+        f.repo = vpath_ar.shift();
+        f.gitpath = gitlive + '/' + f.repo;
         f.vpath =  vpath_ar.join('/');
         
         
