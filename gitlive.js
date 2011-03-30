@@ -47,6 +47,12 @@
 *     
 *  Change to new bug number..
 *  cd featuredir
+*    git checkout -b master origin/master
+*    git pull origin gitlive
+*  cd gitlive
+*    git push
+*    
+*  cd featuredir
 *     git push origin origin:refs/heads/feature_XXX
 *     git checkout feature_XXX
 *   cd gitlive
