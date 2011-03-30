@@ -105,12 +105,11 @@
                     "listeners": {}
                 },
                 {
+                    "id": "ok_buttn",
                     "label": "OK",
                     "pack": "add_action_widget,1",
                     "xtype": "Button",
-                    "|xns": "Gtk",
-                    "id": "",
-                    "listeners": {}
+                    "|xns": "Gtk"
                 }
             ]
         }
