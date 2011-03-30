@@ -11,7 +11,7 @@ GLib        = imports.gi.GLib;
 Soup = imports.gi.Soup ;
 
 
-var File = File.File;
+var File = imports.File.File;
 
 Tickets = {
     
