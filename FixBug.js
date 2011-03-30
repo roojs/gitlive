@@ -57,7 +57,7 @@ FixBug=new XObject({
         // block until we return.
         this.el.run();
         
-        print(JSON.serialize(this.get('bug').getValue()));
+        print(JSON.stringify(this.get('bug').getValue()));
         
         //this.success = c.success;
     },
@@ -235,13 +235,13 @@ FixBug=new XObject({
         },
         {
             xtype: Gtk.Button,
-            pack : "add_action_widget,1",
-            label : "OK"
+            pack : "add_action_widget,0",
+            label : "Cancel"
         },
         {
             xtype: Gtk.Button,
-            pack : "add_action_widget,0",
-            label : "Cancel"
+            pack : "add_action_widget,1",
+            label : "OK"
         }
     ]
 });
