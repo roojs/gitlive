@@ -42,7 +42,20 @@ if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
 
  
 var monitor = new Monitor({
-    
+    /**
+     *
+     * queue objects
+     *  action: 'add' | rm | update
+     *  repo : 'gitlive'
+     *  file : XXXXX
+     *
+     *
+     *
+     *  
+     * 
+     *
+     */
+    action_queue = [],
     queue : [],
     queueRunning : false,
      
@@ -202,6 +215,14 @@ var monitor = new Monitor({
         return; // always ignore this..?
         //this.parsePath(src);
     },
+    
+    /**
+     *  results in  git add  + git commit..
+     *  
+     *
+     *
+     */
+    
     onChangesDoneHint : function(src) 
     { 
         this.parsePath(src);
@@ -218,6 +239,14 @@ var monitor = new Monitor({
                 [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
                 
             );
+            this.action_queue.push(
+                {
+                    action: 'add',
+                    repo : src.repo,
+                    file : src.vpath
+                })
+            
+            
          
             return;
         }
