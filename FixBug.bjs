@@ -17,7 +17,7 @@
             "xtype": "Dialog",
             "|deletable": true,
             "|modal": true,
-            "|show": "function(c) {\n    \n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    /*[ 'xtype'  ].forEach(function(k) {\n        _this.get(k).setValue(typeof(c[k]) == 'undefined' ? '' : c[k]);\n    });\n\t// shouild set path..\n    */\n    this.el.show_all();\n    \n    // block until we return.\n    this.el.run();\n    \n    //print(JSON.stringify(this.get('bug').getValue()));\n    return this.get('bug').getValue();\n    //this.success = c.success;\n}\n",
+            "|show": "function(c) {\n    \n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    /*[ 'xtype'  ].forEach(function(k) {\n        _this.get(k).setValue(typeof(c[k]) == 'undefined' ? '' : c[k]);\n    });\n\t// shouild set path..\n    */\n    this.el.show_all();\n    \n    // block until we return.\n    var run_ret = this.el.run();\n    print(\"RUN RETURN : \" + run_ret);\n    \n    //print(JSON.stringify(this.get('bug').getValue()));\n    return this.get('bug').getValue();\n    //this.success = c.success;\n}\n",
             "|xns": "Gtk",
             "items": [
                 {
