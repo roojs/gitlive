@@ -98,10 +98,14 @@ var monitor = new Monitor({
     {
         this.queueRunning = true;
         var cmds = [];
-        this.queue.forEach(function (q) {
+        //this.queue.forEach(function (q) {
+        //    cmds.push(q);
+        //});
+        
+        this.action_queue.forEach(function (q) {
             cmds.push(q);
         });
-        this.queue = []; // empty queue!
+        //this.queue = []; // empty queue!
         this.action_queue = [];
         var success = [];
         var failure = [];
@@ -109,7 +113,7 @@ var monitor = new Monitor({
         var done = [];
         cmds.forEach(function(cmd) {
             // prevent duplicate calls..
-            if (done.indexOf(cmd.join(',')) > -1) {
+            if (done.indexOf(JSON.stringify(cmd)) > -1) {
                 return;
             }
             done.push(cmd.join(','));
@@ -234,11 +238,11 @@ var monitor = new Monitor({
         if (typeof(this.just_created[src.path]) !='undefined') {
             delete this.just_created[src.path];
             this.lastAdd = new Date();
-            this.queue.push( 
-                [ src.gitpath,  'add', src.vpath ],
-                [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
-                
-            );
+            //this.queue.push( 
+            //    [ src.gitpath,  'add', src.vpath ],
+            //    [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
+            //    
+            //);
             this.action_queue.push({
                 action: 'add',
                 repo : src.repo,
@@ -255,6 +259,7 @@ var monitor = new Monitor({
         //    [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ]
         //
         //);
+        
         this.action_queue.push({
             action: 'add',
             repo : src.repo,
