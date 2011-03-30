@@ -194,6 +194,7 @@ FixBug=new XObject({
                                     xtype: GtkSource.Buffer,
                                     listeners : {
                                         changed : function (self) {
+                                            /*
                                             var s = new Gtk.TextIter();
                                             var e = new Gtk.TextIter();
                                             this.el.get_start_iter(s);
@@ -215,6 +216,7 @@ FixBug=new XObject({
                                                    }));
                                             
                                              this.get('/LeftPanel.model').changed(  str , false);
+                                             */
                                         }
                                     },
                                     pack : "set_buffer"
