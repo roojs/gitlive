@@ -36,7 +36,7 @@ FixBug=new XObject({
         }
     },
     border_width : 3,
-    default_height : 150,
+    default_height : 400,
     default_width : 600,
     title : "Project Properties",
     deletable : true,
