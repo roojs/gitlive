@@ -117,7 +117,7 @@ FixBug=new XObject({
                                             ] );
                                             var Tickets = imports.Tickets.Tickets;
                                             
-                                            var data = Tickets.fetchBugs("http://www.roojs.com/mtrack/index.php/Gitlive/web.hex");
+                                            this.data = Tickets.fetchBugs("http://www.roojs.com/mtrack/index.php/Gitlive/web.hex");
                                     /*        this.data = [
                                                 { xtype: 'Roo', desc : "Roo Project" },
                                                 { xtype: 'Gtk', desc : "Gtk Project" },    
