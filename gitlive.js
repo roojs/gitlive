@@ -117,11 +117,28 @@ var monitor = new Monitor({
                 return;
             }
             done.push(JSON.stringify(cmd));
+            // --- what does this do?????
             
-            if (repos.indexOf(cmd[0]) < 0) {
-                repos.push(cmd[0]);
-                Git.run(cmd[0] , 'pull'); // pull before we push!
+            //if (repos.indexOf(cmd[0]) < 0) {
+            //    repos.push(cmd[0]);
+            //    Git.run(cmd[0] , 'pull'); // pull before we push!
+            //}
+            
+            switch( cmd.action ) {
+                case 'add':
+                    Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file ])
+                    
+                case 'rm':
+                    
+                    
+                case 'update':
+                
+                case 'mv':
+                
+                
             }
+            
+            
             var sp = Git.run.apply(Git,cmd);
              
             switch (sp.result * 1) {
