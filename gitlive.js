@@ -116,7 +116,7 @@ var monitor = new Monitor({
             if (done.indexOf(JSON.stringify(cmd)) > -1) {
                 return;
             }
-            done.push(cmd.join(','));
+            done.push(JSON.stringify(cmd));
             
             if (repos.indexOf(cmd[0]) < 0) {
                 repos.push(cmd[0]);
