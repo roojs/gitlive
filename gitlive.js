@@ -278,7 +278,11 @@ var monitor = new Monitor({
             [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
             
         );
-    
+        this.action_queue.push({
+            action: 'rm',
+            repo : src.repo,
+            file : src.vpath
+        });
         
     },
     onCreated : function(src) 
@@ -294,12 +298,23 @@ var monitor = new Monitor({
         }
         // director has bee created
         this.monitor(src.path);
+        
+        /*
+          since git does not really handle directory adds...
+         
         this.lastAdd = new Date();
+        this.action_queue.push({
+            action: 'add',
+            repo : src.repo,
+            file : src.vpath
+        });
+        
         this.queue.push( 
             [ src.gitpath, 'add' , src.vpath,  { all: true } ],
             [ src.gitpath, 'commit' , { all: true, message: src.vpath} ]
             
         );
+        */
         
         
     },
