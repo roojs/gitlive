@@ -7,7 +7,14 @@
     "items": [
         {
             "|xns": "Gtk",
-            "xtype": "Dialog"
+            "xtype": "Dialog",
+            "items": [
+                {
+                    "|xns": "Gtk",
+                    "xtype": "Button",
+                    "pack": false
+                }
+            ]
         }
     ],
     "permname": "",
