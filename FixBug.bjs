@@ -105,7 +105,7 @@
                     "listeners": {}
                 },
                 {
-                    "id": "ok_buttun",
+                    "id": "ok_button",
                     "label": "OK",
                     "pack": "add_action_widget,1",
                     "xtype": "Button",
