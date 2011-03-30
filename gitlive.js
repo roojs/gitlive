@@ -250,11 +250,11 @@ var monitor = new Monitor({
             return;
         }
         this.lastAdd = new Date();
-        this.queue.push( 
-            [ src.gitpath,  'add', src.vpath ],
-            [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ]
-
-        );
+        //this.queue.push( 
+        //    [ src.gitpath,  'add', src.vpath ],
+        //    [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ]
+        //
+        //);
         this.action_queue.push({
             action: 'add',
             repo : src.repo,
@@ -273,11 +273,11 @@ var monitor = new Monitor({
         // it should also check if it was a directory.. - so we dont have to commit all..
         
         this.lastAdd = new Date();
-        this.queue.push( 
-            [ src.gitpath, 'rm' , src.vpath ],
-            [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
-            
-        );
+        //this.queue.push( 
+        //    [ src.gitpath, 'rm' , src.vpath ],
+        //    [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
+        //    
+        //);
         this.action_queue.push({
             action: 'rm',
             repo : src.repo,
@@ -326,9 +326,9 @@ var monitor = new Monitor({
         this.lastAdd = new Date();
         
         
-        this.queue.push( 
-            [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
-        );
+        //this.queue.push( 
+       //     [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
+       // );
         this.action_queue.push({
             action: 'update',
             repo : src.repo,
@@ -358,11 +358,11 @@ var monitor = new Monitor({
             return;
         }
         this.lastAdd = new Date();
-        this.queue.push( 
-            [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
-            [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
-                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
-        );
+       // this.queue.push( 
+       //     [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
+       //     [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
+       //         { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
+       // );
         
         this.action_queue.push({
             action: 'mv',
