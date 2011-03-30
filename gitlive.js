@@ -111,6 +111,22 @@ var monitor = new Monitor({
         var failure = [];
         var repos = [];
         var done = [];
+        
+        function readResult(sp) {
+            switch (sp.result * 1) {
+                case 0: // success:
+                    success.push(sp.args.join(' '));
+                    if (sp.output.length) success.push(sp.output + '');
+                  // if (sp.stderr.length) success.push(sp.stderr + '');
+                    break;
+                default: 
+                    failure.push(sp.args.join(' '));
+                    if (sp.output.length) failure.push(sp.output);
+                    if (sp.stderr.length) failure.push(sp.stderr);
+                    break;
+            }
+        }
+            
         cmds.forEach(function(cmd) {
             // prevent duplicate calls..
             if (done.indexOf(JSON.stringify(cmd)) > -1) {
@@ -119,14 +135,17 @@ var monitor = new Monitor({
             done.push(JSON.stringify(cmd));
             // --- what does this do?????
             
-            //if (repos.indexOf(cmd[0]) < 0) {
-            //    repos.push(cmd[0]);
-            //    Git.run(cmd[0] , 'pull'); // pull before we push!
-            //}
+            if (repos.indexOf(cmd.repos) < 0) {
+                repos.push(cmd.repos);
+                //    Git.run(cmd.repos , 'pull'); // pull before we push!
+            }
+            
+            
             
             switch( cmd.action ) {
                 case 'add':
-                    Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file );
+                    readResult(Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file ));
+                    readResult(Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file ));
                     
                     
                 case 'rm':
