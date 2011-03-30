@@ -13,12 +13,20 @@
 * B) HEAD branch - where things get merged to..
 *    -- eventually on closing issues..
 *    -- currently when we switch from one feature to another..
-*    
+*
+* CURRENT HEAD?   
+* git log -n 1
+* --pretty=format:%H BRANCHNAME
 * 
 *
 * Notes on feature branch implementation
 * We need to add a gitlive branch on the remote server..
-*   git branch gitlive (in the repo..)
+*   git push origin origin:refs/heads/gitlive 
+*   git checkout --track -b gitlive origin/gitlive << means pull will use both branches..
+*
+*
+* On our feature tree..  
+*   git push origin origin:refs/heads/feature_2
 * 
 * we clone directory into gitlive_feature/XXXXX
 *     git branch issue_XXX
@@ -27,7 +35,27 @@
 * run this on the feature branch it merges and commits..
 *  git pull origin master << or gitlive..
 *  
-* 
+*
+* Standard change file (same bug as before..)
+*   cd gitlive
+*     commit etc.. (with bug no..)
+*   cd featuredir
+*     git pull origin gitlive
+*     git push
+*   cd gitlive
+*     git push
+*     
+*  Change to new bug number..
+*  cd featuredir
+*     git push origin origin:refs/heads/feature_XXX
+*     git checkout feature_XXX
+*   cd gitlive
+*     commit etc. (with new bug number) 
+*    cd featuredir
+*     git pull origin gitlive
+*     git push
+*   cd gitlive
+*     git push
 * 
 */
 
