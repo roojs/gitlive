@@ -145,18 +145,25 @@ var monitor = new Monitor({
             switch( cmd.action ) {
                 case 'add':
                     readResult(Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file ));
-                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit',  src.file, { message: src.file}  ));
+                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit',  src.file, { message: cmd.file}  ));
                     break;
                     
                 case 'rm':
                     readResult(Git.run(gitlive + '/' + cmd.repo, 'rm',  cmd.file ));
-                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit',  { all: true, message: src.file}  ));
+                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit',  { all: true, message: cmd.file}  ));
                     break;
-                    
-                      //    [ src.gitpath, 'rm' , src.vpath ],
-        //    [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
+                     
                 case 'update':
-                
+                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit', cmd.file  , {   message: cmd.file}  ));
+                    break;
+                    //this.queue.push( 
+                   //     [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
+                   // );
+                    this.action_queue.push({
+                        action: 'update',
+                        repo : src.repo,
+                        file : src.vpath
+                    });
                 case 'mv':
                 
                 
