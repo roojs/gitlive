@@ -54,6 +54,8 @@ Tickets = {
         var status = session.send_message(request); 
         
         var data = request.response_body.data;
+        
+        print(data);
         return JSON.parse(data).data;
         
     }
