@@ -31,10 +31,10 @@
                             "pack": "pack_start,false,true,3",
                             "items": [
                                 {
-                                    "|xns": "Gtk",
-                                    "xtype": "Label",
+                                    "label": "Project type :",
                                     "pack": "pack_start,false,true,3",
-                                    "label": "Project type :"
+                                    "xtype": "Label",
+                                    "|xns": "Gtk"
                                 },
                                 {
                                     "|xns": "Gtk",
