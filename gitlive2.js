@@ -15,8 +15,8 @@
 *    -- currently when we switch from one feature to another..
 *
 * CURRENT HEAD?   
-* git log -n 1
-* --pretty=format:%H BRANCHNAME
+* git log -n 1 --pretty=format:%H BRANCHNAME
+* 
 * 
 *
 * Notes on feature branch implementation
@@ -143,6 +143,13 @@ var monitor = new Monitor({
         notification.set_timeout(2000);
         notification.show();   
     },
+    
+    initRepo : function(src) {
+        print("INIT REPO " + src);  
+        
+    },
+    
+    
     /**
      * run the queue.
      * - pulls the items off the queue 
