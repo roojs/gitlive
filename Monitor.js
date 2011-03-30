@@ -65,17 +65,23 @@ Monitor.prototype = {
     },
     /**
      * monitor a file or directory (privatish)
+     *
+     * initially called with ~/gitlive  null 0 (effectvely)
      * 
      * 
      */
     monitor : function(path, fn, depth)
     {
         var _this = this;
+        
         depth = depth  ? depth *1 : 0;
+        
+        
         fn = fn || function (fm, f, of, event_type, uh) {
             _this.onEvent(fm, f, of, event_type, uh);
         }
        
+        // if we are not at top level.. and there is a .git directory  (it's a submodule .. ignore) 
         if (depth > 0 && GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR)) {
             return;
         }
@@ -96,7 +102,7 @@ Monitor.prototype = {
             Gio.FileQueryInfoFlags.NONE,
             null);
         
-        //print("ADD path " + depth + ' ' + path);
+        print("ADD path " + depth + ' ' + path);
         
         while ((next_file = file_enum.next_file(null)) != null) {
          
