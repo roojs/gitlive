@@ -61,6 +61,11 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "|xns": "Gtk",
+                            "xtype": "Entry",
+                            "pack": false
                         }
                     ]
                 },
