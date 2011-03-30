@@ -324,9 +324,16 @@ var monitor = new Monitor({
             return;
         }
         this.lastAdd = new Date();
+        
+        
         this.queue.push( 
             [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
         );
+        this.action_queue.push({
+            action: 'update',
+            repo : src.repo,
+            file : src.vpath
+        });
  
     
     },
@@ -356,7 +363,15 @@ var monitor = new Monitor({
             [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
                 { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
         );
-         
+        
+        this.action_queue.push({
+            action: 'mv',
+            repo : src.repo,
+            file : src.vpath,
+            target : dest.vpath
+            
+        });
+        
     }
           
     
