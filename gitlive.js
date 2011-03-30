@@ -126,7 +126,8 @@ var monitor = new Monitor({
             
             switch( cmd.action ) {
                 case 'add':
-                    Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file ])
+                    Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file );
+                    
                     
                 case 'rm':
                     
