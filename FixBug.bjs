@@ -100,14 +100,14 @@
                 {
                     "|xns": "Gtk",
                     "xtype": "Button",
-                    "pack": "add_action_widget,1",
-                    "label": "OK"
+                    "pack": "add_action_widget,0",
+                    "label": "Cancel"
                 },
                 {
                     "|xns": "Gtk",
                     "xtype": "Button",
-                    "pack": "add_action_widget,0",
-                    "label": "Cancel"
+                    "pack": "add_action_widget,1",
+                    "label": "OK"
                 }
             ]
         }
