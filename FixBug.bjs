@@ -98,10 +98,12 @@
                     ]
                 },
                 {
-                    "|xns": "Gtk",
-                    "xtype": "Button",
+                    "label": "Cancel",
                     "pack": "add_action_widget,0",
-                    "label": "Cancel"
+                    "xtype": "Button",
+                    "|xns": "Gtk",
+                    "id": "",
+                    "listeners": {}
                 },
                 {
                     "|xns": "Gtk",
