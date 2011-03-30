@@ -46,7 +46,8 @@ var monitor = new Monitor({
     queue : [],
     queueRunning : false,
      
-    start: function() {
+    start: function()
+    {
         var _this = this;
         this.lastAdd = new Date();
          
@@ -177,7 +178,14 @@ var monitor = new Monitor({
         
     },
     
-    parsePath: function(f) {
+    /**
+     * set gitpath and vpath
+     *
+     * 
+     */
+    
+    parsePath: function(f)
+    {
            
         var vpath_ar = f.path.substring(gitlive.length +1).split('/');
         
