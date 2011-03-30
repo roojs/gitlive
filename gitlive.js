@@ -140,26 +140,28 @@ var monitor = new Monitor({
                 //    Git.run(cmd.repos , 'pull'); // pull before we push!
             }
             
-            
+            var gp  = gitlive + '/' + cmd.repo;
             
             switch( cmd.action ) {
                 case 'add':
-                    readResult(Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file ));
-                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit',  src.file, { message: cmd.file}  ));
+                    readResult(Git.run(gp, 'add',  cmd.file ));
+                    readResult(Git.run(gp, 'commit',  src.file, { message: cmd.file}  ));
                     break;
                     
                 case 'rm':
-                    readResult(Git.run(gitlive + '/' + cmd.repo, 'rm',  cmd.file ));
-                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit',  { all: true, message: cmd.file}  ));
+                    readResult(Git.run(gp, 'rm',  cmd.file ));
+                    readResult(Git.run(gp, 'commit',  { all: true, message: cmd.file}  ));
                     break;
                      
                 case 'update':
-                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit', cmd.file  , {   message: cmd.file}  ));
+                    readResult(Git.run(gp, 'commit', cmd.file  , {   message: cmd.file}  ));
                     break;
                     
                 case 'mv':
-                
-                
+                    readResult(Git.run(gp, 'mv', cmd.file , cmd.target));
+                    readResult(Git.run(gp, 'commit', cmd.file  , cmd.target,
+                            {   message: 'MOVED ' + src.file +' to ' + dest.target }  ));
+                    break; 
             }
             
              
