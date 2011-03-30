@@ -72,6 +72,7 @@
                             "id": "RightEditor",
                             "items": [
                                 {
+                                    "editable": false,
                                     "id": "view",
                                     "indent_width": 4,
                                     "pack": "add",
@@ -81,8 +82,6 @@
                                     "|load": "function(str) {\n\n// show the help page for the active node..\n \n\n\n \n    this.el.get_buffer().set_text(str, str.length);\n \n    \n     var buf = this.el.get_buffer();\n     \n     \n    \n}",
                                     "|show_line_numbers": true,
                                     "|xns": "Gtk",
-                                    "editable": true,
-                                    "listeners": {},
                                     "items": [
                                         {
                                             "listeners": {
