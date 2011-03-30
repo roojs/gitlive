@@ -156,14 +156,7 @@ var monitor = new Monitor({
                 case 'update':
                     readResult(Git.run(gitlive + '/' + cmd.repo, 'commit', cmd.file  , {   message: cmd.file}  ));
                     break;
-                    //this.queue.push( 
-                   //     [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
-                   // );
-                    this.action_queue.push({
-                        action: 'update',
-                        repo : src.repo,
-                        file : src.vpath
-                    });
+                    
                 case 'mv':
                 
                 
