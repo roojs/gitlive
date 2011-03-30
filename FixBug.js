@@ -55,10 +55,11 @@ FixBug=new XObject({
         this.el.show_all();
         
         // block until we return.
-        this.el.run();
+        var run_ret = this.el.run();
+        print("RUN RETURN : " + run_ret);
         
-        print(JSON.stringify(this.get('bug').getValue()));
-        
+        //print(JSON.stringify(this.get('bug').getValue()));
+        return this.get('bug').getValue();
         //this.success = c.success;
     },
     items : [
