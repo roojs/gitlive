@@ -133,7 +133,7 @@ var monitor = new Monitor({
                 return;
             }
             done.push(JSON.stringify(cmd));
-            // --- what does this do?????
+            // --- we keep a list of repositories that will be pushed to at the end..
             
             if (repos.indexOf(cmd.repos) < 0) {
                 repos.push(cmd.repos);
@@ -145,12 +145,16 @@ var monitor = new Monitor({
             switch( cmd.action ) {
                 case 'add':
                     readResult(Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file ));
-                    readResult(Git.run(gitlive + '/' + cmd.repo, 'add',  cmd.file ));
-                    
+                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit',  src.file, { message: src.file}  ));
+                    break;
                     
                 case 'rm':
+                    readResult(Git.run(gitlive + '/' + cmd.repo, 'rm',  cmd.file ));
+                    readResult(Git.run(gitlive + '/' + cmd.repo, 'commit',  { all: true, message: src.file}  ));
+                    break;
                     
-                    
+                      //    [ src.gitpath, 'rm' , src.vpath ],
+        //    [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
                 case 'update':
                 
                 case 'mv':
@@ -158,21 +162,7 @@ var monitor = new Monitor({
                 
             }
             
-            
-            var sp = Git.run.apply(Git,cmd);
              
-            switch (sp.result * 1) {
-                case 0: // success:
-                    success.push(sp.args.join(' '));
-                    if (sp.output.length) success.push(sp.output + '');
-                  // if (sp.stderr.length) success.push(sp.stderr + '');
-                    break;
-                default: 
-                    failure.push(sp.args.join(' '));
-                    if (sp.output.length) failure.push(sp.output);
-                    if (sp.stderr.length) failure.push(sp.stderr);
-                    break;
-            }
             
         });
          
