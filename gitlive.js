@@ -102,7 +102,7 @@ var monitor = new Monitor({
             cmds.push(q);
         });
         this.queue = []; // empty queue!
-        
+        this.action_queue = [];
         var success = [];
         var failure = [];
         var repos = [];
@@ -239,12 +239,11 @@ var monitor = new Monitor({
                 [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
                 
             );
-            this.action_queue.push(
-                {
-                    action: 'add',
-                    repo : src.repo,
-                    file : src.vpath
-                })
+            this.action_queue.push({
+                action: 'add',
+                repo : src.repo,
+                file : src.vpath
+            });
             
             
          
@@ -255,9 +254,13 @@ var monitor = new Monitor({
             [ src.gitpath,  'add', src.vpath ],
             [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ]
 
-            
         );
-       
+        this.action_queue.push({
+            action: 'add',
+            repo : src.repo,
+            file : src.vpath
+        });
+        
 
     },
     onDeleted : function(src) 
