@@ -49,9 +49,6 @@ var monitor = new Monitor({
      *  repo : 'gitlive'
      *  file : XXXXX
      *
-     *
-     *
-     *  
      * 
      *
      */
