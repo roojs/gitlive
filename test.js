@@ -62,7 +62,10 @@ Gtk.init(Seed.argv);
 imports.searchPath.push('/'); // allow global paths..
 // error checking todo..
  
-imports.FixBug.FixBug.show(); 
+var ret = imports.FixBug.FixBug.show();
+print(JSON.stringify(ret,null, 4));
+
+
            
 Gtk.main();
  
