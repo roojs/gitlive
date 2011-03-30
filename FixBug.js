@@ -42,17 +42,16 @@ FixBug=new XObject({
     deletable : true,
     modal : true,
     show : function(c) {
-           c = c || { name : '' , xtype : '' };
-        this.project  = c;
+        
         if (!this.el) {
             this.init();
         }
         var _this = this;
-        [ 'xtype'  ].forEach(function(k) {
+        /*[ 'xtype'  ].forEach(function(k) {
             _this.get(k).setValue(typeof(c[k]) == 'undefined' ? '' : c[k]);
         });
     	// shouild set path..
-        
+        */
         this.el.show_all();
         this.success = c.success;
     },
@@ -116,7 +115,7 @@ FixBug=new XObject({
                                                 
                                                 
                                             ] );
-                                            var Ticket = imports.test.tickets.Ticket;
+                                            var Ticket = imports.tests.tickets.Ticket;
                                             
                                             var data = Tickets.fetchBugs("http://www.roojs.com/mtrack/index.php/Gitlive/web.hex");
                                     /*        this.data = [
