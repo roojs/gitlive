@@ -63,6 +63,7 @@ imports.searchPath.push('/'); // allow global paths..
 // error checking todo..
  
 var ret = imports.FixBug.FixBug.show();
+print("show returned\n");
 print(JSON.stringify(ret,null, 4));
 
 
