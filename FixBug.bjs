@@ -4,20 +4,7 @@
     "parent": "",
     "title": false,
     "path": "/home/alan/gitlive/gitlive/FixBug.bjs",
-    "items": [
-        {
-            "|xns": "Gtk",
-            "xtype": "Dialog",
-            "items": [
-                {
-                    "label": "OK",
-                    "pack": false,
-                    "xtype": "Button",
-                    "|xns": "Gtk"
-                }
-            ]
-        }
-    ],
+    "items": [],
     "permname": "",
     "modOrder": "0"
 }
