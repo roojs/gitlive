@@ -48,10 +48,12 @@
 *  Change to new bug number..
 *  cd featuredir
 *    git checkout -b master origin/master
-*    git pull origin gitlive
+*    git checkout master <<< make sure
+*    git pull --squash origin gitlive
+*    git commit -m 'done with old bug number'
+*    git push
 *  cd gitlive
 *    git push
-*    
 *  cd featuredir
 *     git push origin origin:refs/heads/feature_XXX
 *     git checkout feature_XXX
