@@ -137,7 +137,7 @@ FixBug=new XObject({
                                                     
                                                      
                                                     el.set_value(iter, 0, p.id);
-                                                    el.set_value(iter, 1, '#' + p.id + ' - ' + p.summmary );
+                                                    el.set_value(iter, 1, '#' + p.id + ' - ' + p.summary );
                                                     
                                                 });
                                                   
