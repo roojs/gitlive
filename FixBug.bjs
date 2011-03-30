@@ -6,19 +6,19 @@
     "path": "/home/alan/gitlive/gitlive/FixBug.bjs",
     "items": [
         {
-            "|xns": "Gtk",
-            "xtype": "Dialog",
-            "default_height": 500,
-            "default_width": 600,
-            "|deletable": true,
-            "|modal": true,
-            "border_width": 3,
-            "title": "Project Properties",
-            "|show": "function(c) {\n       c = c || { name : '' , xtype : '' };\n    this.project  = c;\n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    [ 'xtype'  ].forEach(function(k) {\n        _this.get(k).setValue(typeof(c[k]) == 'undefined' ? '' : c[k]);\n    });\n\t// shouild set path..\n    \n    this.el.show_all();\n    this.success = c.success;\n}\n",
             "listeners": {
                 "destroy_event": "function (self, event) {\n     this.el.hide();\n                return false;\n}",
                 "response": "function (self, id) {\n if (id < 1) {\n            this.el.hide();\n            return;\n        }\n        if (!this.get('xtype').getValue().length) {\n            this.get('/StandardErrorDialog').show(\"You have to set Project type\");             \n            return;\n        }\n        if (!this.get('dir').el.get_filename().length) {\n            this.get('/StandardErrorDialog').show(\"You have to select a folder\");             \n            return;\n        }\n\n        this.el.hide();\n        \n        \n        var fn = this.get('dir').el.get_filename();\n        \n        this.project.name  = GLib.basename(fn);\n        this.project.xtype  = this.get('xtype').getValue();\n        this.project.paths = {};\n        this.project.paths[fn] =  'dir' ;\n        \n        var pr = imports.Builder.Provider.ProjectManager.ProjectManager.update(this.project);\n        \n        this.success(pr);\n        Seed.print(id);\n}"
             },
+            "border_width": 3,
+            "default_height": 500,
+            "default_width": 600,
+            "title": "Project Properties",
+            "xtype": "Dialog",
+            "|deletable": true,
+            "|modal": true,
+            "|show": "function(c) {\n       c = c || { name : '' , xtype : '' };\n    this.project  = c;\n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    [ 'xtype'  ].forEach(function(k) {\n        _this.get(k).setValue(typeof(c[k]) == 'undefined' ? '' : c[k]);\n    });\n\t// shouild set path..\n    \n    this.el.show_all();\n    this.success = c.success;\n}\n",
+            "|xns": "Gtk",
             "items": [
                 {
                     "|xns": "Gtk",
