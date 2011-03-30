@@ -21,7 +21,7 @@
 *     git branch issue_XXX
 *     git checkout issue_XXX
 *    
-* run this on the feature branch
+* run this on the feature branch it merges and commits..
 *  git pull origin master << or gitlive..
 *  
 * 
