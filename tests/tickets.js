@@ -67,5 +67,8 @@ Tickets = {
 
 //print ( JSON.stringify(Tickets.machines) );
 
-Tickets.fetchBugs("http://www.roojs.com/mtrack/index.php/Gitlive/web.hex");
+
+
+
+//Tickets.fetchBugs("http://www.roojs.com/mtrack/index.php/Gitlive/web.hex");
  
