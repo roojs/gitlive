@@ -53,7 +53,7 @@ FixBug=new XObject({
     	// shouild set path..
         */
         this.el.show_all();
-        this.success = c.success;
+        //this.success = c.success;
     },
     items : [
         {
