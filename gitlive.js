@@ -17,6 +17,9 @@
 * 
 *
 * Notes on feature branch implementation
+* We need to add a gitlive branch on the remote server..
+*   git branch gitlive (in the repo..)
+* 
 * we clone directory into gitlive_feature/XXXXX
 *     git branch issue_XXX
 *     git checkout issue_XXX
