@@ -22,11 +22,7 @@
 *     git checkout issue_XXX
 *    
 * 
-*
-
-
-
-
+* 
 * 
 */
 
