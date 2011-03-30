@@ -102,7 +102,6 @@
                     "pack": "add_action_widget,0",
                     "xtype": "Button",
                     "|xns": "Gtk",
-                    "id": "",
                     "listeners": {}
                 },
                 {
