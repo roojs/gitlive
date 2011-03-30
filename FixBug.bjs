@@ -38,7 +38,7 @@
                                 },
                                 {
                                     "listeners": {
-                                        "changed": "function (self) {\n\n}"
+                                        "changed": "function (self) {\n    var d = this.getValue();\n    this.get('/view').load(d.description);\n}"
                                     },
                                     "id": "bug",
                                     "pack": "pack_end,true,true,3",
