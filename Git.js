@@ -3,7 +3,8 @@
 Gio      = imports.gi.Gio;
 GLib      = imports.gi.GLib;
 
-Spawn = imports.Spawn.Spawn;
+Spawn   = imports.Spawn.Spawn;
+File    = imports.File.File;
 /**
  * @namespace Git
  * 
@@ -54,14 +55,16 @@ Git.prototype = {
     repo : '',
     /**
      * @method run
-     * 
      * @arg command {String} command to run
      * @arg arguments.... {String|Object}  arguments to send to command
-     * 
+     * { xxxx : yyyy} -> --xxxx YYYYY
+     * { x : yyyy} -> -x  yyyy
      * 
      */
     run : function() {
+        //print("GIT RUN");
         var args = ['git'];
+        
         
         for (var i=0;i< arguments.length;i++) {
             if (typeof(arguments[i]) == 'string') {
@@ -71,7 +74,9 @@ Git.prototype = {
             if (typeof(arguments[i]) == 'object') {
                 for(var k in arguments[i]) {
                     var v = arguments[i][k];
-                    args.push('--' + k);
+                    
+                    args.push(k.length > 1 ? ('--' + k) : ('-' + k));
+                    
                     if (v === true) {
                         continue;
                     }
@@ -80,9 +85,17 @@ Git.prototype = {
             }
              
         }
+        var env =  [  "HOME=" + GLib.get_home_dir() ];
         
+        if (File.exists(this.repo + '/.git/config')) {
+            env.push("GITPATH=" + this.repo );
+        }
+        
+        
+        //print(args.join( ' '));
         var sp = new Spawn({
-            env : [ "GITPATH=" + this.repo , "HOME=" + GLib.get_home_dir() ],
+            //env : [ "GITPATH=" + this.repo , "HOME=" + GLib.get_home_dir() ],
+            env : env,
             cwd : this.repo,
             args: args,
             debug: true,
@@ -105,11 +118,12 @@ Git.prototype = {
  */
 
 function run() {
+    //print("Git.run()");
     var args = Array.prototype.slice.call(arguments);
-  
+    //print(JSON.stringify(args));
     var repo = args.shift(args);
     var x = new Git(repo);
-    
+    //print(JSON.stringify(args));
     return x.run.apply(x, args);
     
 }

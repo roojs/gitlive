@@ -81,6 +81,8 @@ Spawn       = imports.Spawn;
 Git         = imports.Git;
 StatusIcon  = imports.StatusIcon.StatusIcon;
 Monitor     = imports.Monitor.Monitor;
+File        = imports.File.File;
+
 
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
@@ -114,6 +116,15 @@ var monitor = new Monitor({
      
     start: function()
     {
+        
+        
+        
+        this.dot_gitlive = GLib.get_home_dir() + "/.gitlive";
+        if (!File.exists(this.dot_gitlive)) {
+            File.mkdir(this.dot_gitlive);
+        }
+        
+        
         var _this = this;
         this.lastAdd = new Date();
          
@@ -144,8 +155,49 @@ var monitor = new Monitor({
         notification.show();   
     },
     
-    initRepo : function(src) {
-        print("INIT REPO " + src);  
+    initRepo : function(src)
+    {
+        print("INIT REPO " + src);
+        
+        function logrun(sp) {
+            print("LOGRUN?" + typeof(sp));
+            switch (sp.result * 1) {
+                case 0: // success:
+                    print(sp.args.join(' '));
+                    if (sp.output.length) print(sp.output + '');
+                  // if (sp.stderr.length) success.push(sp.stderr + '');
+                    break;
+                default: 
+                    print(sp.args.join(' '));
+                    if (sp.output.length) print(sp.output);
+                    if (sp.stderr.length) print(sp.stderr);
+                    break;
+            }
+        }
+        
+        // make hour mirrored directory
+        var rname = src.split('/').pop();
+        var dotdir = this.dot_gitlive + '/' + rname;
+        
+        print("CHECK WORKING CACHE " + dotdir);
+
+        if (!File.isDirectory(dotdir)) {
+           // print("Not a dir?");
+            logrun(Git.run(this.dot_gitlive, 'clone', src  , {   shared :  true }  ));
+        }
+        // refresh - always..
+        logrun(Git.run(src, 'pull'));
+        
+        // create and checkout gitlive branch.
+        logrun(Git.run(src, 'push', 'origin', 'origin:refs/heads/gitlive'));
+        logrun(Git.run(src, 'checkout', { track : true ,  'b'  : 'gitlive' } , 'origin/gitlive'));
+        
+        
+        
+         
+        
+        
+        
         
     },
     
