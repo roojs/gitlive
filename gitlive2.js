@@ -256,12 +256,22 @@ var monitor = new Monitor({
                 //    Git.run(cmd.repos , 'pull'); // pull before we push!
             }
             
-            var gp  = gitlive + '/' + cmd.repo;
             
+            // at this point we need to know the issue number...
+            
+            
+            var gp  = gitlive + '/' + cmd.repo;
+            var dotdir = this.dot_gitlive + '/' + rname;
+
+            // create feature branch. - if it's a new feature..
+            readResult(Git.run(dotdir, 'push', 'origin', 'origin:refs/heads/feature_XXX'));
+            readResult(Git.run(dotdir, 'checkout', 'feature_XXX'));
+
             switch( cmd.action ) {
                 case 'add':
                     readResult(Git.run(gp, 'add',  cmd.file ));
                     readResult(Git.run(gp, 'commit',  src.file, { message: cmd.file}  ));
+                    
                     break;
                     
                 case 'rm':
@@ -279,7 +289,9 @@ var monitor = new Monitor({
                             {   message: 'MOVED ' + src.file +' to ' + dest.target }  ));
                     break; 
             }
-            
+            // duplicate the changes into the feature dir, and push it back into the data..
+            readResult(Git.run(dotdir, 'pull',  'origin', 'gitlive'));
+            readResult(Git.run(dotdir, 'push'));
              
             
         });
