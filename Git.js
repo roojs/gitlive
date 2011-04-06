@@ -118,12 +118,12 @@ Git.prototype = {
  */
 
 function run() {
-    print("Git.run()");
+  //  print("Git.run()");
     var args = Array.prototype.slice.call(arguments);
-    print(JSON.stringify(args));
+    //print(JSON.stringify(args));
     var repo = args.shift(args);
     var x = new Git(repo);
-    print(JSON.stringify(args));
+   // print(JSON.stringify(args));
     return x.run.apply(x, args);
     
 }
