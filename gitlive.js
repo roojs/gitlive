@@ -122,8 +122,8 @@ var monitor = new Monitor({
         
         // then start our queue runner..
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
-            //TIMEOUT", _this.queue.length , _this.queueRunning].join(', '));
-            if (!_this.queue.length || _this.queueRunning) {
+            //TIMEOUT", _this.action_queue.length , _this.queueRunning].join(', '));
+            if (!_this.action_queue.length || _this.queueRunning) {
                 return 1;
             }
             var last = Math.floor(((new Date()) - this.lastAdd) / 100);
@@ -202,7 +202,7 @@ var monitor = new Monitor({
             switch( cmd.action ) {
                 case 'add':
                     readResult(Git.run(gp, 'add',  cmd.file ));
-                    readResult(Git.run(gp, 'commit',  src.file, { message: cmd.file}  ));
+                    readResult(Git.run(gp, 'commit',  cmd.file, { message: cmd.file}  ));
                     break;
                     
                 case 'rm':
@@ -217,7 +217,7 @@ var monitor = new Monitor({
                 case 'mv':
                     readResult(Git.run(gp, 'mv', cmd.file , cmd.target));
                     readResult(Git.run(gp, 'commit', cmd.file  , cmd.target,
-                            {   message: 'MOVED ' + src.file +' to ' + dest.target }  ));
+                            {   message: 'MOVED ' + cmd.file +' to ' + dest.target }  ));
                     break; 
             }
             
