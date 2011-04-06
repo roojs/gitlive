@@ -192,8 +192,8 @@ var monitor = new Monitor({
             done.push(JSON.stringify(cmd));
             // --- we keep a list of repositories that will be pushed to at the end..
             
-            if (repos.indexOf(cmd.repos) < 0) {
-                repos.push(cmd.repos);
+            if (repos.indexOf(cmd.repo) < 0) {
+                repos.push(cmd.repo);
                 //    Git.run(cmd.repos , 'pull'); // pull before we push!
             }
             
@@ -221,7 +221,6 @@ var monitor = new Monitor({
                     break; 
             }
             
-             
             
         });
          
