@@ -70,6 +70,7 @@
 GI      = imports.gi.GIRepository
 GLib        = imports.gi.GLib;
 
+print(JSON.stringify(GI, null,4));
 // we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
 GI.IRepository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
 
@@ -217,9 +218,10 @@ var monitor = new Monitor({
                 case 'mv':
                     readResult(Git.run(gp, 'mv', cmd.file , cmd.target));
                     readResult(Git.run(gp, 'commit', cmd.file  , cmd.target,
-                            {   message: 'MOVED ' + cmd.file +' to ' + dest.target }  ));
+                            {   message: 'MOVED ' + cmd.file +' to ' + cmd.target }  ));
                     break; 
             }
+            
             
             
         });
