@@ -1,9 +1,9 @@
 ///<script type="text/javascript">
 
-Gio      = imports.gi.Gio;
-GLib      = imports.gi.GLib;
+var Gio      = imports.gi.Gio;
+var GLib      = imports.gi.GLib;
 
-Spawn = imports.Spawn.Spawn;
+var Spawn = imports.Spawn.Spawn;
 /**
  * @namespace Git
  * 

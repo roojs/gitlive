@@ -25,6 +25,43 @@ var GLib      = imports.gi.GLib;
 *   }
 *  });
 * 
+*
+*
+*  CRITICAL - needs this change to gir in GLib-2.0.gir g_spawn_async_with_pipes
+*
+    <parameter name="argv" transfer-ownership="none">
+         <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </parameter>
+        <parameter name="envp" transfer-ownership="none" allow-none="1">
+          <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </parameter>
+*
+*
+*<method name="read_line"
+              c:identifier="g_io_channel_read_line"
+              throws="1">
+        <return-value transfer-ownership="none">
+          <type name="IOStatus" c:type="GIOStatus"/>
+        </return-value>
+        <parameters>
+          <parameter name="str_return" transfer-ownership="full" direction="out">
+            <type name="utf8" c:type="gchar**"/>
+          </parameter>
+          <parameter name="length" transfer-ownership="none" direction="out">
+            <type name="gsize" c:type="gsize*"/>
+          </parameter>
+          <parameter name="terminator_pos" transfer-ownership="none"  direction="out">
+            <type name="gsize" c:type="gsize*"/>
+          </parameter>
+        </parameters>
+      </method>
+*
+*
+*
 * 
 */
 
@@ -67,7 +104,7 @@ Spawn.prototype = {
     cwd: false,
     args: false,
     exceptions : false,
-    debug : false,
+    debug : true,
     /**
      * @property output {String} resulting output
      */
@@ -119,13 +156,14 @@ Spawn.prototype = {
         var ret = {};
         
         if (this.debug) {
-            print("spawn : " + this.args.join(" "));
+	    print("cd " + this.cwd +";" + this.args.join(" "));
         }
         
         GLib.spawn_async_with_pipes(this.cwd, this.args, this.env, 
             GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
             null, null, ret);
             
+	print(JSON.stringify(ret));    
         this.pid = ret.child_pid;
         
         if (this.debug) {
@@ -154,11 +192,20 @@ Spawn.prototype = {
         }
         
         
+        this.in_ch = GLib.io_channel_unix_new(ret.standard_input);
+        this.out_ch = GLib.io_channel_unix_new(ret.standard_output);
+        this.err_ch = GLib.io_channel_unix_new(ret.standard_error);
+        
+        // make everything non-blocking!
+        this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
+        this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
+        this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
+        
         
         GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
             _this.result = result;
             if (_this.debug) {
-                print("result: " + result);
+                print("child_watch_add : result: " + result);
             }
             _this.read(_this.out_ch);
             _this.read(_this.err_ch);
@@ -175,14 +222,7 @@ Spawn.prototype = {
         });
         
         
-        this.in_ch = GLib.io_channel_unix_new(ret.standard_input);
-        this.out_ch = GLib.io_channel_unix_new(ret.standard_output);
-        this.err_ch = GLib.io_channel_unix_new(ret.standard_error);
        
-        // make everything non-blocking!
-        this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
-        this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
-        this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
 
       
         // add handlers for output and stderr.
@@ -228,6 +268,7 @@ Spawn.prototype = {
             if (this.debug) {
                 print("starting main loop");
             }
+	    
             ctx = new GLib.MainLoop.c_new (null, false);
             ctx.run(false); // wait fore exit?
             
@@ -272,19 +313,26 @@ Spawn.prototype = {
     read: function(ch) 
     {
         var prop = ch == this.out_ch ? 'output' : 'stderr';
+	print("prop: " + prop);
         var _this = this;
+        
+        //print(JSON.stringify(ch, null,4));
         while (true) {
-            var x = new GLib.String();
-            var status = ch.read_line_string( x);
+            var x = {};
+            var status = ch.read_line(x);
+	    //print("READ LINE STRING STATUS: " + status);
+             //print("got: " + JSON.stringify(x, null,4));
+
             switch(status) {
                 case GLib.IOStatus.NORMAL:
+		
                     //write(fn, x.str);
                     if (this.listeners[prop]) {
-                        this.listeners[prop].call(this, x.str);
+                        this.listeners[prop].call(this, x.str_return);
                     }
-                    _this[prop] += x.str;
+                    _this[prop] += x.str_return;
                     if (_this.debug) {
-                        print(prop + ':' + x.str);
+                        print(prop + ':' + x.str_return);
                     }
                    continue;
                 case GLib.IOStatus.AGAIN:   
@@ -313,13 +361,22 @@ function run(cfg) {
     var ret = s.run();
     return s.output;
 }
-
+ /*
 // test
+try { 
+    Seed.print(run({
+        args: ['ls', '/tmp'],
+        debug : true
+    }));
+} catch (e) { print(JSON.stringify(e)); }
+ 
+var secs = (new Date()).getSeconds() 
 
+try {      
+Seed.print(run({
+    args: ['/bin/touch', '/tmp/spawntest-' + secs ],
+    debug : true
+}));
+} catch (e) { print( 'Error: ' + JSON.stringify(e)); }
 
-//Seed.print(run({
-//    args: ['ls', '/tmp'],
-//    //debug : true
-//}));
-
-     
+ */
