@@ -1,5 +1,9 @@
 <?php
 
+// A script to create komodo projects for all git repos.. need to work out how to do it for
+// remote list..
+
+
 $ar = explode("\n", 
  
 ");
