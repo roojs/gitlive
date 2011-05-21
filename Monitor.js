@@ -65,30 +65,46 @@ Monitor.prototype = {
     },
     /**
      * monitor a file or directory (privatish)
+     *
+     * initially called with ~/gitlive  null 0 (effectvely)
      * 
      * 
      */
     monitor : function(path, fn, depth)
     {
         var _this = this;
-        depth = depth  ? depth *1 : 0;
+        
+        
+        depth = typeof(depth) == 'number'  ? depth *1 : 0;
+        
+        
         fn = fn || function (fm, f, of, event_type, uh) {
             _this.onEvent(fm, f, of, event_type, uh);
         }
        
-        if (depth > 0 && GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR)) {
+        // if we are not at top level.. and there is a .git directory  (it's a submodule .. ignore) 
+        if (depth > 1 && GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR)) {
             return;
         }
             
        
        
-       
+        
         var f = Gio.file_new_for_path(path);
-        //var cancel = new Gio.Cancellable ();
-        var fm = f.monitor(2,null); //Gio.FileMonitorFlags.SEND_MOVED
-        fm.signal.changed.connect(fn);
-        this.monitors.push(fm);
+            //var cancel = new Gio.Cancellable ();
+        if (depth > 0) {     
+            var fm = f.monitor(2,null); //Gio.FileMonitorFlags.SEND_MOVED
+            fm.signal.changed.connect(fn);
+            this.monitors.push(fm);
+            // print("ADD path " + depth + ' ' + path);
+        }
         // iterate children?
+        
+        if (GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR) && this.initRepo) {
+            
+            this.initRepo(path);
+        }
+        
         
         var file_enum = f.enumerate_children(
             Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME + ','+ 
@@ -96,7 +112,7 @@ Monitor.prototype = {
             Gio.FileQueryInfoFlags.NONE,
             null);
         
-        //print("ADD path " + depth + ' ' + path);
+       
         
         while ((next_file = file_enum.next_file(null)) != null) {
          
@@ -175,7 +191,7 @@ Monitor.prototype = {
     },
     
     /** override these to do stuff.. */
-     
+    initRepo : function(src) { }, // called on startup at the top level repo dir.
     onChanged : function(src) { },
     onChangesDoneHint : function(src) { },
     onDeleted : function(src) { },
