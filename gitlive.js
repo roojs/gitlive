@@ -11,11 +11,12 @@
 */
 
 
+ 
 GI = imports.gi.GIRepository;
 GLib        = imports.gi.GLib;
 
 // we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
-//#GI.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
+GI.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.2');
 
 
 var Gio      = imports.gi.Gio;
