@@ -6,6 +6,11 @@ cd gitlive
 git clone git://github.com/roojs/gir-1.2-gtk-3.0.git gir-1.2
 sh install1.2.sh
 
+# - since GLib still has a few bugs..
+sudo cp ~/.Builder/girepository-1.2/GLib-2.0.gir /usr/lib/girepository-1.0/
+
 seed gitlive.js
+
+
 
 
