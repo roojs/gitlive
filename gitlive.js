@@ -67,12 +67,13 @@
 * 
 */
 
-GI      = imports.gi.GIRepository
+GIRepository      = imports.gi.GIRepository
 GLib        = imports.gi.GLib;
 
-print(JSON.stringify(GI, null,4));
+//print(JSON.stringify(GI, null,4));
 // we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
-GI.IRepository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
+//GI.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
+GIRepository.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.2');
 
 Gio         = imports.gi.Gio;
 Gtk         = imports.gi.Gtk;
@@ -138,7 +139,8 @@ var monitor = new Monitor({
         
         var notification = new Notify.Notification({
             summary: "Git Live",
-            body : gitlive + "\nMonitoring " + this.monitors.length + " Directories"
+            body : gitlive + "\nMonitoring " + this.monitors.length + " Directories",
+            timeout : 200
         });
 
         notification.set_timeout(2000);
