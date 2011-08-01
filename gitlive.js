@@ -328,11 +328,6 @@ var monitor = new Monitor({
         
         
         
-        
-        
-        
-        
-        
         var add_it = false;
         if (typeof(this.just_created[src.path]) !='undefined') {
             delete this.just_created[src.path];
