@@ -313,8 +313,6 @@ var monitor = new Monitor({
     
     /**
      *  results in  git add  + git commit..
-     *  
-     *
      *
      */
     
