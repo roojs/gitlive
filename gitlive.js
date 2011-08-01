@@ -253,7 +253,8 @@ var monitor = new Monitor({
         
             var notification = new Notify.Notification({
                 summary: "Git Live ERROR!!",
-                body : failure.join("\n")
+                body : failure.join("\n"),
+                timeout : 200
                 
             });
 
