@@ -140,10 +140,10 @@ var monitor = new Monitor({
         var notification = new Notify.Notification({
             summary: "Git Live",
             body : gitlive + "\nMonitoring " + this.monitors.length + " Directories",
-            timeout : 200
+            timeout : 20
         });
 
-        notification.set_timeout(2000);
+        notification.set_timeout(20);
         notification.show();   
     },
     /**
