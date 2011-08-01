@@ -140,10 +140,10 @@ var monitor = new Monitor({
         var notification = new Notify.Notification({
             summary: "Git Live",
             body : gitlive + "\nMonitoring " + this.monitors.length + " Directories",
-            timeout : 20
+            timeout : 5
         });
 
-        notification.set_timeout(20);
+        notification.set_timeout(5);
         notification.show();   
     },
     /**
@@ -242,11 +242,11 @@ var monitor = new Monitor({
             var notification = new Notify.Notification({
                 summary: "Git Live Commited",
                 body : success.join("\n"),
-                timeout : 20
+                timeout : 5
                 
             });
 
-            notification.set_timeout(20);
+            notification.set_timeout(5);
             notification.show();   
         }
         if (failure.length) {
@@ -254,11 +254,11 @@ var monitor = new Monitor({
             var notification = new Notify.Notification({
                 summary: "Git Live ERROR!!",
                 body : failure.join("\n"),
-                timeout : 20
+                timeout : 5
                 
             });
 
-            notification.set_timeout(20); // show errros for longer
+            notification.set_timeout(5); // show errros for longer
             notification.show();   
         }
         this.queueRunning = false;
