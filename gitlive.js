@@ -143,7 +143,6 @@ var monitor = new Monitor({
             timeout : 20
         });
 
-
         notification.set_timeout(20);
         notification.show();   
     },
