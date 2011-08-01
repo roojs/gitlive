@@ -136,16 +136,20 @@ var monitor = new Monitor({
             return 1;
         },null,null);
         
-        
-        var notification = new Notify.Notification({
-            summary: "Git Live",
-            body : gitlive + "\nMonitoring " + this.monitors.length + " Directories",
-            timeout : 5
-        });
-
-        notification.set_timeout(5);
-        notification.show();   
+        try { 
+            var notification = new Notify.Notification({
+                summary: "Git Live",
+                body : gitlive + "\nMonitoring " + this.monitors.length + " Directories",
+                timeout : 5
+            });
+    
+            notification.set_timeout(5);
+            notification.show();
+        } catch(e) {
+            print(e.toString());
+        }
     },
+    
     /**
      * run the queue.
      * - pulls the items off the queue 
@@ -236,30 +240,37 @@ var monitor = new Monitor({
             }
             
         });
-        
-        if (success.length) {
-            print(success.join("\n"));
-            var notification = new Notify.Notification({
-                summary: "Git Live Commited",
-                body : success.join("\n"),
-                timeout : 5
+        try {
+            // catch notification failures.. so we can carry on..
+            if (success.length) {
+                print(success.join("\n"));
                 
-            });
-
-            notification.set_timeout(5);
-            notification.show();   
-        }
-        if (failure.length) {
-        
-            var notification = new Notify.Notification({
-                summary: "Git Live ERROR!!",
-                body : failure.join("\n"),
-                timeout : 5
-                
-            });
-
-            notification.set_timeout(5); // show errros for longer
-            notification.show();   
+                var notification = new Notify.Notification({
+                    summary: "Git Live Commited",
+                    body : success.join("\n"),
+                    timeout : 5
+                    
+                });
+    
+                notification.set_timeout(5);
+                notification.show();   
+            }
+            
+            if (failure.length) {
+            
+                var notification = new Notify.Notification({
+                    summary: "Git Live ERROR!!",
+                    body : failure.join("\n"),
+                    timeout : 5
+                    
+                });
+    
+                notification.set_timeout(5); // show errros for longer
+                notification.show();   
+            }
+        } catch(e) {
+            print(e.toString());
+            
         }
         this.queueRunning = false;
     },
@@ -323,8 +334,7 @@ var monitor = new Monitor({
             return;
         }
         
-        
-        
+       
         var add_it = false;
         if (typeof(this.just_created[src.path]) !='undefined') {
             delete this.just_created[src.path];
