@@ -175,6 +175,8 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
+                                            "id": "patchview",
+                                            "pack": "add",
                                             "xtype": "WebView",
                                             "|xns": "WebKit"
                                         }
