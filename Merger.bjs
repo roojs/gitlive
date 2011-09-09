@@ -36,9 +36,8 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "|xns": "Gtk",
                                     "xtype": "ToolButton",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 }
                             ]
                         },
