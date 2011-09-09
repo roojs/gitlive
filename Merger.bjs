@@ -30,7 +30,6 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "pack": false,
                                     "xtype": "HPaned",
                                     "|xns": "Gtk",
                                     "items": [
