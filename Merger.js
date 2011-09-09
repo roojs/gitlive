@@ -236,6 +236,7 @@ Merger=new XObject({
                                                 },
                                                 {
                                                     xtype: Gtk.TreeViewColumn,
+                                                    min_width : 50,
                                                     pack : "append_column",
                                                     title : "Removed",
                                                     width : 50,
