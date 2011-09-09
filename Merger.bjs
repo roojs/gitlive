@@ -31,9 +31,8 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "|xns": "Gtk",
                                     "xtype": "Button",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 }
                             ]
                         },
