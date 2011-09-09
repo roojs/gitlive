@@ -7,8 +7,6 @@ GObject = imports.gi.GObject;
 GtkSource = imports.gi.GtkSource;
 WebKit = imports.gi.WebKit;
 Vte = imports.gi.Vte;
-GtkClutter = imports.gi.GtkClutter;
-Gdl = imports.gi.Gdl;
 console = imports.console;
 XObject = imports.XObject.XObject;
 Merger=new XObject({
@@ -52,8 +50,7 @@ Merger=new XObject({
         });
     	// shouild set path..
         */
-    
-        
+     
         this.el.show_all();
         this.get('/ok_button').el.set_sensitive(false);
         
