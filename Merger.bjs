@@ -45,7 +45,7 @@
                             ]
                         },
                         {
-                            "pack": "pack_end,true,true,true",
+                            "pack": "pack_end,true,true,0",
                             "position": 400,
                             "xtype": "VPaned",
                             "|xns": "Gtk",
