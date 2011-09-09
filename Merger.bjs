@@ -26,6 +26,7 @@
                     "|pack": " function(p,e) {\n            p.el.get_content_area().add(e.el)\n        }\n",
                     "items": [
                         {
+                            "position": 400,
                             "xtype": "VPaned",
                             "|xns": "Gtk",
                             "items": [
