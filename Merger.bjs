@@ -21,9 +21,9 @@
             "|xns": "Gtk",
             "items": [
                 {
-                    "|xns": "Gtk",
                     "xtype": "VBox",
-                    "|pack": " function(p,e) {\n            p.el.get_content_area().add(e.el)\n        }\n",
+                    "|pack": " function(p,e) {\n            p.el.get_content_area().pack_start(e.el,true,true,0)\n        }\n",
+                    "|xns": "Gtk",
                     "items": [
                         {
                             "pack": "pack_start,false,true",
