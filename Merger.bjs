@@ -33,7 +33,14 @@
                                 {
                                     "|xns": "Gtk",
                                     "xtype": "HPaned",
-                                    "pack": false
+                                    "pack": false,
+                                    "items": [
+                                        {
+                                            "|xns": "Gtk",
+                                            "xtype": "ScrolledWindow",
+                                            "pack": false
+                                        }
+                                    ]
                                 }
                             ]
                         }
