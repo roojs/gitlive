@@ -32,11 +32,6 @@
                             "items": [
                                 {
                                     "label": "select branch",
-                                    "xtype": "MenuToolButton",
-                                    "|xns": "Gtk"
-                                },
-                                {
-                                    "label": "select branch",
                                     "pack": "add",
                                     "xtype": "ToolButton",
                                     "|xns": "Gtk"
