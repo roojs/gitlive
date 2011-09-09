@@ -31,9 +31,8 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "|xns": "Gtk",
                                     "xtype": "MenuToolButton",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 }
                             ]
                         },
