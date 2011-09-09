@@ -87,6 +87,7 @@
                                                             "|xns": "Gtk"
                                                         },
                                                         {
+                                                            "min_width": 200,
                                                             "pack": "append_column",
                                                             "title": "Filename",
                                                             "xtype": "TreeViewColumn",
