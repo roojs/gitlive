@@ -36,6 +36,8 @@
                                     "|xns": "Gtk"
                                 },
                                 {
+                                    "label": "select branch",
+                                    "pack": "add",
                                     "xtype": "ToolButton",
                                     "|xns": "Gtk"
                                 }
