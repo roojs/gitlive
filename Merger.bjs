@@ -31,6 +31,7 @@
                             "items": [
                                 {
                                     "pack": "add",
+                                    "position": 200,
                                     "xtype": "HPaned",
                                     "|xns": "Gtk",
                                     "items": [
