@@ -28,7 +28,14 @@
                         {
                             "pack": "pack_start,false,false",
                             "xtype": "Toolbar",
-                            "|xns": "Gtk"
+                            "|xns": "Gtk",
+                            "items": [
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "MenuToolButton",
+                                    "pack": false
+                                }
+                            ]
                         },
                         {
                             "position": 400,
