@@ -34,7 +34,6 @@
                             "position": 400,
                             "xtype": "VPaned",
                             "|xns": "Gtk",
-                            "pack": false,
                             "items": [
                                 {
                                     "pack": "add",
