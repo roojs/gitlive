@@ -67,7 +67,14 @@
                                                 {
                                                     "|xns": "Gtk",
                                                     "xtype": "TreeView",
-                                                    "pack": false
+                                                    "pack": false,
+                                                    "items": [
+                                                        {
+                                                            "|xns": "Gtk",
+                                                            "xtype": "ListStore",
+                                                            "pack": false
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
