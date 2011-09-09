@@ -26,9 +26,8 @@
                     "|pack": " function(p,e) {\n            p.el.get_content_area().add(e.el)\n        }\n",
                     "items": [
                         {
-                            "|xns": "Gtk",
                             "xtype": "Toolbar",
-                            "pack": false
+                            "|xns": "Gtk"
                         },
                         {
                             "position": 400,
