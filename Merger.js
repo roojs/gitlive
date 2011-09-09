@@ -222,7 +222,6 @@ Merger=new XObject({
                                                     min_width : 50,
                                                     pack : "append_column",
                                                     title : "Added",
-                                                    width : 50,
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
                                                         this.el.add_attribute(this.items[0].el , 'markup', 0 );
