@@ -58,10 +58,11 @@ imports.searchPath.push('/'); // allow global paths..
 // error checking todo..
  
 var ret = imports.Merger.Merger.show();
+
 print("show returned\n");
 print(JSON.stringify(ret,null, 4));
 
 
            
-Gtk.main();
+//Gtk.main();
  
