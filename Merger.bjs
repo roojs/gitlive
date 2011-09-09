@@ -13,7 +13,7 @@
             "border_width": 3,
             "default_height": 400,
             "default_width": 600,
-            "title": "Select Active Bug",
+            "title": "Merger",
             "xtype": "Dialog",
             "|deletable": true,
             "|modal": true,
