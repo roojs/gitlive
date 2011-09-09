@@ -6,64 +6,7 @@
 * inotify hooks for ~/gitlive
 * that commit and push any changes made.
 * Bit like a revision controled backed up file system!?
-*
-*
-* The aims of this
-* A) have a gitlive branch - where all our commits go.. - so they can be replicated on the server 
-* B) HEAD branch - where things get merged to..
-*    -- eventually on closing issues..
-*    -- currently when we switch from one feature to another..
-*
-* CURRENT HEAD?   
-* git log -n 1
-* --pretty=format:%H BRANCHNAME
 * 
-*
-* Notes on feature branch implementation
-* We need to add a gitlive branch on the remote server..
-*   git push origin origin:refs/heads/gitlive 
-*   git checkout --track -b gitlive origin/gitlive << means pull will use both branches..
-*
-*
-* On our feature tree..  
-*   git push origin origin:refs/heads/feature_2
-* 
-* we clone directory into gitlive_feature/XXXXX
-*     git branch issue_XXX
-*     git checkout issue_XXX
-*    
-* run this on the feature branch it merges and commits..
-*  git pull origin master << or gitlive..
-*  
-*
-* Standard change file (same bug as before..)
-*   cd gitlive
-*     commit etc.. (with bug no..)
-*   cd featuredir
-*     git pull origin gitlive
-*     git push
-*   cd gitlive
-*     git push
-*     
-*  Change to new bug number..
-*  cd featuredir
-*    git checkout -b master origin/master
-*    git checkout master <<< make sure
-*    git pull --squash origin gitlive
-*    git commit -m 'done with old bug number'
-*    git push
-*  cd gitlive
-*    git push
-*  cd featuredir
-*     git push origin origin:refs/heads/feature_XXX
-*     git checkout feature_XXX
-*   cd gitlive
-*     commit etc. (with new bug number) 
-*    cd featuredir
-*     git pull origin gitlive
-*     git push
-*   cd gitlive
-*     git push
 * 
 */
 
@@ -75,14 +18,14 @@ GLib        = imports.gi.GLib;
 //GI.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
 GIRepository.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.2');
 
-Gio         = imports.gi.Gio;
-Gtk         = imports.gi.Gtk;
-Notify      = imports.gi.Notify;
+var Gio      = imports.gi.Gio;
+var Gtk      = imports.gi.Gtk;
+var Notify = imports.gi.Notify;
 
-Spawn       = imports.Spawn;
-Git         = imports.Git;
-StatusIcon  = imports.StatusIcon.StatusIcon;
-Monitor     = imports.Monitor.Monitor;
+var Spawn = imports.Spawn;
+var Git = imports.Git;
+var StatusIcon = imports.StatusIcon.StatusIcon;
+var Monitor = imports.Monitor.Monitor;
 
 
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
@@ -101,31 +44,17 @@ if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
 
  
 var monitor = new Monitor({
-    /**
-     *
-     * queue objects
-     *  action: 'add' | rm | update
-     *  repo : 'gitlive'
-     *  file : XXXXX
-     *
-     * 
-     *
-     */
-    action_queue : [],
+    
+    queue : [],
     queueRunning : false,
      
-    start: function()
-    {
+    start: function() {
         var _this = this;
         this.lastAdd = new Date();
          
-        // start monitoring first..
-        Monitor.prototype.start.call(this);
-        
-        // then start our queue runner..
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
-            //TIMEOUT", _this.action_queue.length , _this.queueRunning].join(', '));
-            if (!_this.action_queue.length || _this.queueRunning) {
+            //TIMEOUT", _this.queue.length , _this.queueRunning].join(', '));
+            if (!_this.queue.length || _this.queueRunning) {
                 return 1;
             }
             var last = Math.floor(((new Date()) - this.lastAdd) / 100);
@@ -148,6 +77,7 @@ var monitor = new Monitor({
         } catch(e) {
             print(e.toString());
         }
+
     },
     
     /**
@@ -162,21 +92,28 @@ var monitor = new Monitor({
     {
         this.queueRunning = true;
         var cmds = [];
-        //this.queue.forEach(function (q) {
-        //    cmds.push(q);
-        //});
-        
-        this.action_queue.forEach(function (q) {
+        this.queue.forEach(function (q) {
             cmds.push(q);
         });
-        //this.queue = []; // empty queue!
-        this.action_queue = [];
+        this.queue = []; // empty queue!
+        
         var success = [];
         var failure = [];
         var repos = [];
         var done = [];
-        
-        function readResult(sp) {
+        cmds.forEach(function(cmd) {
+            // prevent duplicate calls..
+            if (done.indexOf(cmd.join(',')) > -1) {
+                return;
+            }
+            done.push(cmd.join(','));
+            
+            if (repos.indexOf(cmd[0]) < 0) {
+                repos.push(cmd[0]);
+                Git.run(cmd[0] , 'pull'); // pull before we push!
+            }
+            var sp = Git.run.apply(Git,cmd);
+             
             switch (sp.result * 1) {
                 case 0: // success:
                     success.push(sp.args.join(' '));
@@ -189,52 +126,12 @@ var monitor = new Monitor({
                     if (sp.stderr.length) failure.push(sp.stderr);
                     break;
             }
-        }
-            
-        cmds.forEach(function(cmd) {
-            // prevent duplicate calls..
-            if (done.indexOf(JSON.stringify(cmd)) > -1) {
-                return;
-            }
-            done.push(JSON.stringify(cmd));
-            // --- we keep a list of repositories that will be pushed to at the end..
-            
-            if (repos.indexOf(cmd.repo) < 0) {
-                repos.push(cmd.repo);
-                //    Git.run(cmd.repos , 'pull'); // pull before we push!
-            }
-            
-            var gp  = gitlive + '/' + cmd.repo;
-            
-            switch( cmd.action ) {
-                case 'add':
-                    readResult(Git.run(gp, 'add',  cmd.file ));
-                    readResult(Git.run(gp, 'commit',  cmd.file, { message: cmd.file}  ));
-                    break;
-                    
-                case 'rm':
-                    readResult(Git.run(gp, 'rm',  cmd.file ));
-                    readResult(Git.run(gp, 'commit',  { all: true, message: cmd.file}  ));
-                    break;
-                     
-                case 'update':
-                    readResult(Git.run(gp, 'commit', cmd.file  , {   message: cmd.file}  ));
-                    break;
-                    
-                case 'mv':
-                    readResult(Git.run(gp, 'mv', cmd.file , cmd.target));
-                    readResult(Git.run(gp, 'commit', cmd.file  , cmd.target,
-                            {   message: 'MOVED ' + cmd.file +' to ' + cmd.target }  ));
-                    break; 
-            }
-            
-            
             
         });
          
         // push upstream.
         repos.forEach(function(r) {
-            var sp = Git.run(gitlive + '/' +r , 'push', { all: true } );
+            var sp = Git.run(r , 'push', { all: true } );
             if (sp.length) {
                 success.push(sp);
             }
@@ -297,18 +194,11 @@ var monitor = new Monitor({
         
     },
     
-    /**
-     * set gitpath and vpath
-     * 
-     * 
-     */
-    
-    parsePath: function(f)
-    {
+    parsePath: function(f) {
            
         var vpath_ar = f.path.substring(gitlive.length +1).split('/');
-        f.repo = vpath_ar.shift();
-        f.gitpath = gitlive + '/' + f.repo;
+        
+        f.gitpath = gitlive + '/' + vpath_ar.shift();
         f.vpath =  vpath_ar.join('/');
         
         
@@ -321,12 +211,15 @@ var monitor = new Monitor({
         return; // always ignore this..?
         //this.parsePath(src);
     },
+<<<<<<< HEAD
     
     /**
      *  results in  git add  + git commit..
      *
      */
     
+=======
+>>>>>>> a198afafefd3a4f8857af843a2a8433158ee8720
     onChangesDoneHint : function(src) 
     { 
         this.parsePath(src);
@@ -339,34 +232,22 @@ var monitor = new Monitor({
         if (typeof(this.just_created[src.path]) !='undefined') {
             delete this.just_created[src.path];
             this.lastAdd = new Date();
-            //this.queue.push( 
-            //    [ src.gitpath,  'add', src.vpath ],
-            //    [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
-            //    
-            //);
-            this.action_queue.push({
-                action: 'add',
-                repo : src.repo,
-                file : src.vpath
-            });
-            
-            
+            this.queue.push( 
+                [ src.gitpath,  'add', src.vpath ],
+                [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
+                
+            );
          
             return;
         }
         this.lastAdd = new Date();
-        //this.queue.push( 
-        //    [ src.gitpath,  'add', src.vpath ],
-        //    [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ]
-        //
-        //);
-        
-        this.action_queue.push({
-            action: 'add',
-            repo : src.repo,
-            file : src.vpath
-        });
-        
+        this.queue.push( 
+            [ src.gitpath,  'add', src.vpath ],
+            [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ]
+
+            
+        );
+       
 
     },
     onDeleted : function(src) 
@@ -379,16 +260,12 @@ var monitor = new Monitor({
         // it should also check if it was a directory.. - so we dont have to commit all..
         
         this.lastAdd = new Date();
-        //this.queue.push( 
-        //    [ src.gitpath, 'rm' , src.vpath ],
-        //    [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
-        //    
-        //);
-        this.action_queue.push({
-            action: 'rm',
-            repo : src.repo,
-            file : src.vpath
-        });
+        this.queue.push( 
+            [ src.gitpath, 'rm' , src.vpath ],
+            [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
+            
+        );
+    
         
     },
     onCreated : function(src) 
@@ -404,23 +281,12 @@ var monitor = new Monitor({
         }
         // director has bee created
         this.monitor(src.path);
-        
-        /*
-          since git does not really handle directory adds...
-         
         this.lastAdd = new Date();
-        this.action_queue.push({
-            action: 'add',
-            repo : src.repo,
-            file : src.vpath
-        });
-        
         this.queue.push( 
             [ src.gitpath, 'add' , src.vpath,  { all: true } ],
             [ src.gitpath, 'commit' , { all: true, message: src.vpath} ]
             
         );
-        */
         
         
     },
@@ -430,16 +296,9 @@ var monitor = new Monitor({
             return;
         }
         this.lastAdd = new Date();
-        
-        
-        //this.queue.push( 
-       //     [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
-       // );
-        this.action_queue.push({
-            action: 'update',
-            repo : src.repo,
-            file : src.vpath
-        });
+        this.queue.push( 
+            [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
+        );
  
     
     },
@@ -464,20 +323,12 @@ var monitor = new Monitor({
             return;
         }
         this.lastAdd = new Date();
-       // this.queue.push( 
-       //     [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
-       //     [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
-       //         { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
-       // );
-        
-        this.action_queue.push({
-            action: 'mv',
-            repo : src.repo,
-            file : src.vpath,
-            target : dest.vpath
-            
-        });
-        
+        this.queue.push( 
+            [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
+            [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
+                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
+        );
+         
     }
           
     

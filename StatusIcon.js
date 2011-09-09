@@ -30,8 +30,13 @@ var StatusIcon  = new XObject({
     
     paused : false, // on!
     xtype : Gtk.StatusIcon,
+    title : 'gitlive',
     stock : Gtk.STOCK_MEDIA_PLAY,
     tooltip_text : 'GitLive',
+        init : function() {
+        XObject.prototype.init.call(this);
+        this.el.set_name('gitlive');
+    },
     listeners : {
         //'popup-menu' : function( w, event, event_time) {
         'activate' : function( w, event, event_time) {

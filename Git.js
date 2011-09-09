@@ -1,11 +1,11 @@
 ///<script type="text/javascript">
 
-Gio      = imports.gi.Gio;
-GLib      = imports.gi.GLib;
+const Gio      = imports.gi.Gio;
+const GLib      = imports.gi.GLib;
 
-Spawn   = imports.Spawn.Spawn;
-File    = imports.File.File;
-/**
+const Spawn = imports.Spawn.Spawn;
+const File    = imports.File.File;
+ /**
  * @namespace Git
  * 
  * Class to handle git operations..???
@@ -131,6 +131,4 @@ function run() {
 // test.
 
 //print(run('/home/alan/gitlive/gitlive', 'log'));
-
  
-   

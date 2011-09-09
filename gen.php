@@ -1,60 +1,11 @@
 <?php
 
+// A script to create komodo projects for all git repos.. need to work out how to do it for
+// remote list..
+
+
 $ar = explode("\n", 
-"app.Builder.js
-app.MailArchiver
-app.Mailer
-app.MailfortTools
-etc.FlexySpam
-etc.Texon
-gitlive
-netsuite.bloomgrow
-pear
-Pman.Admin
-Pman.Base
-Pman.Builder
-Pman.Cash
-Pman.Cms
-Pman.Core
-Pman.Dav
-Pman.Documents
-Pman.Fax
-Pman.Ftp
-Pman.Git
-Pman.Mail
-Pman.MTrack
-Pman.Signup
-Pman.Timesheet
-roojs1
-txt.MailfortNotes
-web.annerley
-web.aspencart
-web.aspengbic
-web.Aviation
-web.bloomandgrowasia.com
-web.Builder
-web.Dealflow
-web.facebook1
-web.FlexyShop
-web.FlexyShop2
-web.FlexySpam
-web.greenpeace.skype
-web.hex
-web.hex.new
-web.hhyc_membership_system
-web.Iconstruction
-web.intimateplay.com
-web.iris
-web.MediaOutreach
-web.mtrack
-web.Netsuite
-web.oxfam_translators
-web.Pman
-web.Ris
-web.roojsolutions
-web.seedling
-web.storkboxes
-web.Texon
+ 
 ");
 
 
