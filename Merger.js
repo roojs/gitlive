@@ -57,7 +57,7 @@ Merger=new XObject({
         // block until we return.
         var run_ret = this.el.run();
         if (run_ret < 1 ) {
-            return false;
+            return  "DONE";
         }
         print("RUN RETURN : " + run_ret);
         return "DONE";
