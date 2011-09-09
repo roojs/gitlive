@@ -26,9 +26,8 @@
                     "|pack": " function(p,e) {\n            p.el.get_content_area().add(e.el)\n        }\n",
                     "items": [
                         {
-                            "|xns": "Gtk",
                             "xtype": "HBox",
-                            "pack": false
+                            "|xns": "Gtk"
                         },
                         {
                             "pack": "pack_start,false,false",
