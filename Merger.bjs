@@ -42,7 +42,6 @@
                                             "items": [
                                                 {
                                                     "xtype": "TreeView",
-                                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n  \n}\n",
                                                     "|xns": "Gtk",
                                                     "items": [
                                                         {
