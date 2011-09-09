@@ -48,6 +48,7 @@
                                                     "|xns": "Gtk",
                                                     "items": [
                                                         {
+                                                            "pack": "set_model",
                                                             "xtype": "TreeStore",
                                                             "|xns": "Gtk"
                                                         },
