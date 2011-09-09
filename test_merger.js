@@ -31,7 +31,7 @@ GIRepository = imports.gi.GIRepository;
 GLib        = imports.gi.GLib;
 
 // we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
-GIRepository.IRepository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.2');
+GIRepository.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.2');
 //print(JSON.stringify(GIRepository.IRepository.get_search_path()));
 
 Gtk         = imports.gi.Gtk;
@@ -62,7 +62,7 @@ Gtk.init(Seed.argv);
 imports.searchPath.push('/'); // allow global paths..
 // error checking todo..
  
-var ret = imports.FixBug.FixBug.show();
+var ret = imports.Merger.Merger.show();
 print("show returned\n");
 print(JSON.stringify(ret,null, 4));
 
