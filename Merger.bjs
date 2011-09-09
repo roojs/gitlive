@@ -60,6 +60,7 @@
                                                             "|xns": "Gtk",
                                                             "items": [
                                                                 {
+                                                                    "pack": "pack_start",
                                                                     "xtype": "CellRendererText",
                                                                     "|xns": "Gtk"
                                                                 }
