@@ -31,19 +31,6 @@
                             "|xns": "Gtk"
                         },
                         {
-                            "pack": "pack_start,false,false",
-                            "xtype": "Toolbar",
-                            "|xns": "Gtk",
-                            "items": [
-                                {
-                                    "label": "select branch",
-                                    "pack": "add",
-                                    "xtype": "ToolButton",
-                                    "|xns": "Gtk"
-                                }
-                            ]
-                        },
-                        {
                             "position": 400,
                             "xtype": "VPaned",
                             "|xns": "Gtk",
