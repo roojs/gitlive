@@ -18,10 +18,10 @@ Merger=new XObject({
         },
         response : function (self, id) {
           // hide
-             if (id < 1) {
+             //if (id < 1) {
                 this.el.hide();
                 return;
-            }
+            //}
             if (typeof(this.get('bug').getValue()) != 'object') {
                 print("ERROR");
                 return;
