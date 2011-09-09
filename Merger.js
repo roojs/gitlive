@@ -74,7 +74,7 @@ Merger=new XObject({
             items : [
                 {
                     xtype: Gtk.HBox,
-                    pack : "pack_start,false,false",
+                    pack : "pack_start,false,true",
                     items : [
                         {
                             xtype: Gtk.Button,
