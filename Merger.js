@@ -90,7 +90,7 @@ Merger=new XObject({
                 },
                 {
                     xtype: Gtk.VPaned,
-                    pack : "pack_end,true,true,true",
+                    pack : "pack_end,true,true,0",
                     position : 400,
                     items : [
                         {
