@@ -60,7 +60,7 @@ Merger=new XObject({
             return false;
         }
         print("RUN RETURN : " + run_ret);
-        
+        return "DONE";
         //print(JSON.stringify(this.get('bug').getValue()));
         return this.get('bug').getValue();
         //this.success = c.success;
