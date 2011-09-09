@@ -31,6 +31,8 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
+                                    "label": "Select Branch",
+                                    "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
                                 }
