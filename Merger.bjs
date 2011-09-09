@@ -23,7 +23,14 @@
                 {
                     "|xns": "Gtk",
                     "xtype": "VBox",
-                    "|pack": " function(p,e) {\n            p.el.get_content_area().add(e.el)\n        }\n"
+                    "|pack": " function(p,e) {\n            p.el.get_content_area().add(e.el)\n        }\n",
+                    "items": [
+                        {
+                            "|xns": "Gtk",
+                            "xtype": "VPaned",
+                            "pack": false
+                        }
+                    ]
                 },
                 {
                     "label": "Cancel",
