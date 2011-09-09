@@ -49,6 +49,11 @@
                                                             "|xns": "Gtk",
                                                             "xtype": "TreeStore",
                                                             "pack": false
+                                                        },
+                                                        {
+                                                            "|xns": "Gtk",
+                                                            "xtype": "TreeViewColumn",
+                                                            "pack": false
                                                         }
                                                     ]
                                                 }
