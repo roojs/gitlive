@@ -135,7 +135,7 @@ Repo = XObject.define(
             
             
             if (object !== false) {
-                rev = this.resolveRevision(null, object, ident); // from scm...
+                rev = this.resolveRevision(false, object, ident); // from scm...
                 args.push( '' + rev);  
             } else {
                 args.push( "master" );
