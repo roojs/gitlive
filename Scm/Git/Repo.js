@@ -197,13 +197,10 @@ Repo = XObject.define(
             var res = [];
             print(JSON.stringify(commits,null,4));
             commits.forEach(commits, function(commit) {
-                try {
-                    print(typeof(Event));
+                     print(typeof(Event));
                     var ev = new Event( {commit : commit, repo: this });
                     res.push(ev);
-                } catch (e) {
-                    print(e);
-                }
+                  
             });
             // close 'fp'
             return res;
