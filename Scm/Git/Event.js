@@ -118,7 +118,7 @@ Event = XObject.define(
                     // 3d71edf6512035846d8164c3b28818de0062335a M      web/MTrackWeb/DataObjects/Changes.php
                     info = line.substr(1).split(/\s+/);
                    // print_r(info);
-                    f = new MTrackSCMFileEvent; //generic..
+                    f = {}; //new MTrackSCMFileEvent; //generic..
                    
                     f.oldperm = info.unshift();
                     f.newperm = info.unshift();
