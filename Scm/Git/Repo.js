@@ -17,7 +17,7 @@ Repo = XObject.define(
         Repo.superclass.constructor.call(this,cfg);
         
     },
-    imports.ScmBase.Repo.Repo, // or Object
+    imports.Scm.Repo.Repo, // or Object
     {
         branches : false,
         tags : false,
