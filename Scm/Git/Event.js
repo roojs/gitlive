@@ -40,9 +40,9 @@ Event = XObject.define(
         {
             
             var ent = this;
-            ent.commit = commit;
-            ent.repo = repo;
-            var lines = commit.split("\n"); 
+            
+             
+            var lines = this.commit.split("\n"); 
             var line = lines.shift();
         
             if (!line.match(/^commit\s+(\S+)/)) {
