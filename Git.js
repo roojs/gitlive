@@ -33,7 +33,7 @@ const File    = imports.File.File;
  * 
  */
 //var prototypeInit = false;
-function Git( repo) {
+function Git( repo ) {
     
     if (!GLib.file_test(repo, GLib.FileTest.IS_DIR)) {
         throw "Repo does not exist";
