@@ -562,7 +562,7 @@ XObject.extend(XObject,
      * members on an instance.
      *
      * usage:
-     * MyObject = Object.define(
+     * MyObject = XObject.define(
      *     function(...) {
      *          ....
      *     },

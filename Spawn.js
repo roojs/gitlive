@@ -24,7 +24,10 @@ var GLib      = imports.gi.GLib;
 *       input : function() { return 'xxx' },
 *   }
 *  });
-* 
+*
+*
+*
+
 *
 *
 *  CRITICAL - needs this change to gir in GLib-2.0.gir g_spawn_async_with_pipes
