@@ -263,7 +263,7 @@ Repo = XObject.define(
         {
             // convert arguments.
             
-            //print(JSON.stringify(args_in,null,4));
+            print(JSON.stringify(args_in,null,4));
             args_in.shift( {
                 'git-dir' : this.gitdir,
                 'no-pager' : true 
