@@ -258,7 +258,7 @@ Repo = XObject.define(
             // convert arguments.
             
             var args_in = Array.prototype.slice.call(arguments);
-             
+            print(JSON.stringify(args_in,null,4));
             args_in.shift( {
                 'git-dir' : this.gitdir,
                 'no-pager' : true 
@@ -296,7 +296,8 @@ Repo = XObject.define(
                 //env.push("GITPATH=" + this.repo );
             //}
             
-            
+            print(JSON.stringify(args,null,4));
+            Seed.quit();
             var sp = new Spawn({
                 cwd : this.repopath,
                 args : args,
