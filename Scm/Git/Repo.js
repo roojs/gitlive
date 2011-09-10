@@ -195,7 +195,7 @@ Repo = XObject.define(
                 commits.push( commit );
             }
             var res = [];
-                     
+            print(JSON.stringify(commits,null,4));
             commits.forEach(commits, function(commit) {
                 try {
                     print(typeof(Event));
