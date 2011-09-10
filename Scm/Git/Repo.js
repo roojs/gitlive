@@ -201,7 +201,9 @@ Repo = XObject.define(
                     print(typeof(Event));
                     var ev = new Event( {commit : commit, repo: this });
                     res.push(ev);
-                } catch (e) {}
+                } catch (e) {
+                    print(e);
+                }
             });
             // close 'fp'
             return res;
