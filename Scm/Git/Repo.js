@@ -256,12 +256,12 @@ Repo = XObject.define(
         {
             // convert arguments.
             
-            args_in = Array.prototype.splice.call(arguments)
-     
-            var args = ['git' , { 'git-dir' : this.gitdir } ];
+            var args_in = Array.prototype.splice.call(arguments);
+            args_in.shift( { 'git-dir' : this.gitdir });
+            var args = ['git' ];
             
-             if (this.gitdir != this.repopath) {
-                args.push( { "work-tree" :  this.repopath } ); 
+            if (this.gitdir != this.repopath) {
+                args_in.push( { "work-tree" :  this.repopath } ); 
             }
             args_in.forEach(function(arg)) { 
                  if (typeof(arg) == 'string') {
