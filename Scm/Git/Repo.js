@@ -254,22 +254,23 @@ Repo = XObject.define(
         
         git: function()
         {
-             
-          
+            // convert arguments.
+            
+            args_in = arguments.
+     
             var args = ['git' , { 'git-dir' : this.gitdir } ];
             
              if (this.gitdir != this.repopath) {
                 args.push( { "work-tree" :  this.repopath } ); 
             }
-            
-            for (var i=0;i< arguments.length;i++) {
-                if (typeof(arguments[i]) == 'string') {
-                    args.push(arguments[i]);
+            args_in.forEach(function(arg)) { 
+                 if (typeof(arg) == 'string') {
+                    args.push(arg);
                     continue;
                 }
-                if (typeof(arguments[i]) == 'object') {
-                    for(var k in arguments[i]) {
-                        var v = arguments[i][k];
+                if (typeof(arg) == 'object') {
+                    for(var k in arg) {
+                        var v = arg[k];
                         
                         args.push(k.length > 1 ? ('--' + k) : ('-' + k));
                         
@@ -279,7 +280,7 @@ Repo = XObject.define(
                         args.push(v);
                     }
                 }
-            }  
+            })
             if(this.debug) {
                 print("git " + args.join(" ")); 
             }
