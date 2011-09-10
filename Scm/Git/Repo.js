@@ -264,7 +264,6 @@ Repo = XObject.define(
         {
             // convert arguments.
             
-            var args_in = Array.prototype.slice.call(arguments);
             print(JSON.stringify(args_in,null,4));
             args_in.shift( {
                 'git-dir' : this.gitdir,
