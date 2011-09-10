@@ -53,11 +53,11 @@ Event = XObject.define(
                 M.push(va);
             });
                  
-            ent.rev = M[1];
+            this.rev = M[1];
         
-            ent.branches    = []; // FIXME
-            ent.tags        = []; // FIXME
-            ent.files       = [];
+            this.branches    = []; // FIXME
+            this.tags        = []; // FIXME
+            this.files       = [];
         
             while (lines.length) {
                 line = lines.shift();
@@ -75,12 +75,12 @@ Event = XObject.define(
         
                     switch (k) {
                         case 'Author':
-                          ent.changeby = v;
+                          this.changeby = v;
                           break;
                         
                         case 'Date':
                           //var ts = strtotime(v);
-                          ent.ctime = v; //MTrackDB::unixtime(ts);
+                          this.ctime = v; //MTrackDB::unixtime(ts);
                           break;
                     }
                 }
