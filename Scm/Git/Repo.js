@@ -313,6 +313,7 @@ Repo = XObject.define(
                 async : false
             });
             var out = sp.run().output;
+            print("GOT: " + output)
             // parse output for some commands ?
             return out;
         }
