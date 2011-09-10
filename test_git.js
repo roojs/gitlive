@@ -1,7 +1,12 @@
 var Gtk = imports.gi.Gtk;
 
+var Repo = imports.Scm.Git.Repo.Repo;
+
+
 Gtk.init(Seed.argv);
 
+var repo = new Repo('/home/alan/gitlive/roojs1');
+var hist = repo.history('github..master');
 
 /*
 
