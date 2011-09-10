@@ -2,6 +2,10 @@ var Gtk = imports.gi.Gtk;
 
 Gtk.init(Seed.argv);
 
+
+/*
+
+
 var Git = imports.Git.Git;
 var git = new Git('/home/alan/gitlive/roojs1');
 git.async = true;
@@ -15,5 +19,6 @@ var out = git.run(
    { 'date' : 'rfc' }  
 );
 print(out);
+*/
 
 Gtk.main();
