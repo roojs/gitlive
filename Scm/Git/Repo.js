@@ -150,7 +150,7 @@ Repo = XObject.define(
                 if (typeof(limit) == 'number') {
                     arg['max-count'] =  limit;
                 } else if (typeof(limit) == 'object') {
-                    arg.skip=' + limit[0];
+                    arg.skip=  limit[0];
                     arg['max-count']=  limit[1];
      
                 } else {
