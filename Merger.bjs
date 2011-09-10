@@ -31,6 +31,9 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
+                                    "listeners": {
+                                        "clicked": "function (self) {\n    \n    print(\"running git\");\n    var Git = imports.Git.Git;\n    var git = new Git('/home/alan/gitlive/roojs1');\n    git.async = true;\n    var out = git.run(\n       { 'no-pager' : true },  \n        'log',\n        'github..master',\n        { 'no-color' : true },\n        { 'raw' : true },\n        { 'numstat' : true },\n        { 'date' : 'rfc' }  \n       \n    );\n    print(out);\n        \n    \n    \n}"
+                                    },
                                     "label": "Select Branch",
                                     "pack": "add",
                                     "xtype": "Button",

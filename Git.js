@@ -52,6 +52,8 @@ function Git( repo) {
     
 }
 Git.prototype = {
+    async : false,
+    
     repo : '',
     /**
      * @method run
@@ -100,7 +102,7 @@ Git.prototype = {
             args: args,
             debug: true,
             exceptions : false,
-            async : false
+            async : this.async,
         });
         var out = sp.run();
         // parse output for some commands ?

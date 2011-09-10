@@ -145,13 +145,16 @@ var StatusIcon  = new XObject({
                                 
                                 var res = Git.run(fn,  'pull' );
                                 if (res.result * 1  == 0) {
-                                        
-                                    var notification = new Notify.Notification({
-                                        summary: "Updated " + fn,
-                                        body : res.output
-                                    });
-                                    notification.set_timeout(1000);
-                                    notification.show();
+                                    try {
+                                        var notification = new Notify.Notification({
+                                            summary: "Updated " + fn,
+                                            body : res.output
+                                        });
+                                        notification.set_timeout(20);
+                                        notification.show();
+                                    } catch(e) {
+                                        print("notification - probably to many in queue..");
+                                    }
                                     continue;
                                 }
                                 imports.gitlive.errorDialog(res.stderr);
