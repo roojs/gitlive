@@ -11,9 +11,10 @@ Repo = XObject.define(
     function(cfg) {
         // cal parent?
         XObject.extend(this,cfg);
-        this.gitdir = cfg.repopath;
-        if (File.isDirectory(cfg.repodir + '/.git')) {
-            this.gitdir += "/.git";
+        this.gitdir = cfg.repopath + "/.git";
+        
+        if (File.isDirectory(cfg.gitdir)) {
+            this.gitdir = this.repopath;
         }
         //Repo.superclass.constructor.call(this,cfg);
         
