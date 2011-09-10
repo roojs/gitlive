@@ -138,27 +138,27 @@ Repo = XObject.define(
                 args.push( "master" );
             }
            
-        
-            if (limit !== false) {
-                if (typeof(limit) == 'number') {
-                    args.push('--max-count=' + limit);
-                } else if (typeof(limit) == 'object') {
-                    args.push('--skip=' + limit[0]);
-                    args.push('--max-count=' + limit[1]);
-     
-                } else {
-                    args.push('--since=' + limit);
-                }
-            }
-            
-            args.push({
+            var arg = {
                 "no-color" : true, 
             //args.push("--name-status";
                 "raw" : true,
                 "no-abbrev" : true,
-                "numstat" : true
-                "date" : rfc
-            });
+                "numstat" : true,
+                "date" : 'rfc'
+            };
+            if (limit !== false) {
+                if (typeof(limit) == 'number') {
+                    arg['max-count'] =  limit;
+                } else if (typeof(limit) == 'object') {
+                    arg.skip=' + limit[0];
+                    arg['max-count']=  limit[1];
+     
+                } else {
+                    arg.since = limit;
+                }
+            }
+            
+            args.push(arg);
             
             
             
