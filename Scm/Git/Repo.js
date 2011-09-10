@@ -13,7 +13,7 @@ Repo = XObject.define(
         XObject.extend(this,cfg);
         this.gitdir = cfg.repopath + "/.git";
         
-        if (!File.isDirectory(cfg.gitdir)) {
+        if (!File.isDirectory(this.gitdir)) {
             this.gitdir = this.repopath;
         }
         //Repo.superclass.constructor.call(this,cfg);
