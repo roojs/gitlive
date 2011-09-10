@@ -4,6 +4,7 @@ const GLib   = imports.gi.GLib;
 const XObject = imports.XObject.XObject;
 const Event  = imports.Scm.Git.Event.Event;
 const Spawn  = imports.Spawn.Spawn;
+const File  = imports.File.File;
 
 
 Repo = XObject.define(
