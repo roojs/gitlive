@@ -270,7 +270,7 @@ Repo = XObject.define(
             args_in.forEach(function(arg) { 
                  if (typeof(arg) == 'string') {
                     args.push(arg);
-                    continue;
+                    return;
                 }
                 if (typeof(arg) == 'object') {
                     for(var k in arg) {
@@ -279,7 +279,7 @@ Repo = XObject.define(
                         args.push(k.length > 1 ? ('--' + k) : ('-' + k));
                         
                         if (v === true) {
-                            continue;
+                            return;
                         }
                         args.push(v);
                     }
