@@ -272,7 +272,7 @@ Repo = XObject.define(
             var args = ['git' ];
             
             if (this.gitdir != this.repopath) {
-                args_in.push( { "work-tree" :  this.repopath } ); 
+                args_in.shift( { "work-tree" :  this.repopath } ); 
             }
             args_in.forEach(function(arg) { 
                  if (typeof(arg) == 'string') {
