@@ -98,7 +98,7 @@ Event = XObject.define(
                     lines.unshift( line );
                     break;
                 }
-                line = substr(line, 4);
+                line = substring(line, 4);
                 this.changelog += line + "\n";
             }
         
@@ -116,7 +116,7 @@ Event = XObject.define(
                     // it's our stat line..:
                     // :100755 100755 fde93abd1a71accd3aa7e97b29c1eecfb43095d7 
                     // 3d71edf6512035846d8164c3b28818de0062335a M      web/MTrackWeb/DataObjects/Changes.php
-                    info = line.substr(1).split(/\s+/);
+                    info = line.substring(1).split(/\s+/);
                    // print_r(info);
                     f = {}; //new MTrackSCMFileEvent; //generic..
                    
@@ -130,7 +130,7 @@ Event = XObject.define(
                     return;
                 }
              
-                info = line.substr(1).split(/\s+/); // 3 only..
+                info = line.substring(1).split(/\s+/); // 3 only..
                 //print_r(info);
                 var added = info.unshift();
                 var removed = info.unshift();
