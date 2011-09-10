@@ -145,8 +145,7 @@ Event = XObject.define(
                 this.branches.push(  'master' );
             }
         
-            return ent;
-        }
+         }
     }
 );
 
