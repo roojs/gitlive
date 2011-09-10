@@ -169,7 +169,7 @@ Repo = XObject.define(
             
             
             //   print_R(array($args, '--' ,$path));exit;
-            var fp = this.git('log', args, '--', path).split("\n");
+            var fp = this.git('log', args, { '' : true } , path).split("\n");
     
             var commits = [];
             var commit = false;
