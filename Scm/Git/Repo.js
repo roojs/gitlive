@@ -131,8 +131,7 @@ Repo = XObject.define(
             ident = ident || false; 
             var res = [];
             var args = [ 'log' ];
-            
-            
+             
             
             if (object !== false) {
                 rev = this.resolveRevision(false, object, ident); // from scm...
@@ -303,7 +302,7 @@ Repo = XObject.define(
                 //env.push("GITPATH=" + this.repo );
             //}
             
-            //print(JSON.stringify(args,null,4));  Seed.quit();
+            print(JSON.stringify(args,null,4));  Seed.quit();
             var sp = new Spawn({
                 cwd : this.repopath,
                 args : args,
