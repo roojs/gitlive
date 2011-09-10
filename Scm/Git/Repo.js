@@ -191,7 +191,7 @@ Repo = XObject.define(
                 res.push(Event.newFromCommit(commit,this));
             });
             // close 'fp'
-            return $res;
+            return res;
         },
         diff : function(path, from, to)
         {
