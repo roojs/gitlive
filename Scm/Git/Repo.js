@@ -151,12 +151,14 @@ Repo = XObject.define(
                 }
             }
             
-            args.push("--no-color");
+            args.push({
+                "no-color" : true, 
             //args.push("--name-status";
-            args.push("--raw");
-            args.push("--no-abbrev");
-            args.push("--numstat");
-            args.push("--date=rfc");
+                "raw" : true,
+                "no-abbrev" : true,
+                "numstat" : true
+                "date" : rfc
+            });
             
             
             
