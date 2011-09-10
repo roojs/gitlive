@@ -51,6 +51,8 @@ var monitor = new Monitor({
     start: function() {
         var _this = this;
         this.lastAdd = new Date();
+        
+        this.top.forEach(this.monitor, this);
          
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
             //TIMEOUT", _this.queue.length , _this.queueRunning].join(', '));
@@ -211,15 +213,14 @@ var monitor = new Monitor({
         return; // always ignore this..?
         //this.parsePath(src);
     },
-<<<<<<< HEAD
+    
+    
+    
     
     /**
      *  results in  git add  + git commit..
      *
      */
-    
-=======
->>>>>>> a198afafefd3a4f8857af843a2a8433158ee8720
     onChangesDoneHint : function(src) 
     { 
         this.parsePath(src);

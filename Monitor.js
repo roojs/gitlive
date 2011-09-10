@@ -74,6 +74,7 @@ Monitor.prototype = {
     {
         var _this = this;
         
+       // print("ADD: " + path)
         
         depth = typeof(depth) == 'number'  ? depth *1 : 0;
         
