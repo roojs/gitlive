@@ -165,7 +165,7 @@ Spawn.prototype = {
             GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
             null, null, ret);
             
-    	print(JSON.stringify(ret));    
+    	//print(JSON.stringify(ret));    
         this.pid = ret.child_pid;
         
         if (this.debug) {
