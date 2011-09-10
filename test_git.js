@@ -7,7 +7,7 @@ Gtk.init(Seed.argv);
 
 var repo = new Repo('/home/alan/gitlive/roojs1');
  
-var hist = repo.history('/', false, 'github..master');
+var hist = repo.history('/', false, 'rev', 'github..master');
 /*
 
 
