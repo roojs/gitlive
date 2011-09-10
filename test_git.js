@@ -6,8 +6,7 @@ var Repo = imports.Scm.Git.Repo.Repo;
 Gtk.init(Seed.argv);
 
 var repo = new Repo('/home/alan/gitlive/roojs1');
-print("RUN HISTORY");
-
+ 
 var hist = repo.history('/', false, 'github..master');
 /*
 
