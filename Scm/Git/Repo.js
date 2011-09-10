@@ -194,6 +194,7 @@ Repo = XObject.define(
             if (commit !== false) {
                 commits.push( commit );
             }
+            var res = [];
                      
             commits.forEach(commits, function(commit) {
                 res.push(Event.newFromCommit(commit,this));
