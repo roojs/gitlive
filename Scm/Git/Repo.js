@@ -129,7 +129,10 @@ Repo = XObject.define(
             limit = limit || false;
             object = object || false;
             ident = ident || false; 
-            var res = [], args = [];
+            var res = [];
+            var args = [ 'log' ];
+            
+            
             
             if (object !== false) {
                 rev = this.resolveRevision(null, object, ident); // from scm...
@@ -167,9 +170,11 @@ Repo = XObject.define(
             //echo '<PRE>';print_r($args);echo '</PRE>';
             path = path[0] == '/' ? path.substring(1) : path; 
             
+            args.push({ '' : true });
+            args.push(path);
             
             //   print_R(array($args, '--' ,$path));exit;
-            var fp = this.git('log', args, { '' : true } , path).split("\n");
+            var fp = this.git(args).split("\n");
     
             var commits = [];
             var commit = false;
