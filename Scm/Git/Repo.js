@@ -282,7 +282,7 @@ Repo = XObject.define(
                 }
             })
             if(this.debug) {
-                print("git " + args.join(" ")); 
+                print( args.join(" ")); 
             }
             
             var env =  [  "HOME=" + GLib.get_home_dir() ];
