@@ -329,10 +329,6 @@ Spawn.prototype = {
         var _this = this;
         
 	
-	var start_status = ch.get_buffer_condition();
-	
-        print(JSON.stringify(start_status, null,4));
-	
         //print(JSON.stringify(ch, null,4));
         while (true) {
  
