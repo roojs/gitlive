@@ -188,7 +188,7 @@ Spawn.prototype = {
                 _this.ctx.quit();
             }
             tidyup();
-	    print("DONE TIDYUP");
+	    //print("DONE TIDYUP");
             if (_this.listeners.finish) {
                 _this.listeners.finish.call(this, _this.result);
             }
