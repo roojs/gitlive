@@ -1,10 +1,9 @@
 
+const GLib   = imports.gi.GLib;
 
 const XObject = imports.XObject.XObject;
-
-const Event = imports.Git.Event.Event;
-const GLib      = imports.gi.GLib;
-const Spawn = imports.Spawn.Spawn;
+const Event  = imports.Scm.Git.Event.Event;
+const Spawn  = imports.Spawn.Spawn;
 
 
 Repo = XObject.define(
