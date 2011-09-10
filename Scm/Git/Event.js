@@ -149,9 +149,4 @@ Event = XObject.define(
     }
 );
 
-/**
- * this is based on the output from git --raw --numstat
- */
-Event.
-  
  
