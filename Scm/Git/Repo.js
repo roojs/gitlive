@@ -260,7 +260,7 @@ Repo = XObject.define(
         
          
         
-        git: function()
+        git: function(args_in)
         {
             // convert arguments.
             
