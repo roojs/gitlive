@@ -292,7 +292,7 @@ Repo = XObject.define(
             
             
             var sp = new Spawn({
-                cwd : this.repodir,
+                cwd : this.repopath,
                 args : args,
                 env : env, // optional
                 debug: true,
