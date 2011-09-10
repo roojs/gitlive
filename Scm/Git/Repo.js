@@ -313,11 +313,11 @@ Repo = XObject.define(
                 async : false
             });
             sp.run();
-            print(JSON.stringify(sp,null,4));  Seed.quit();
+            //print(JSON.stringify(sp,null,4));  Seed.quit();
 
-            print("GOT: " + output)
+            //print("GOT: " + output)
             // parse output for some commands ?
-            return sp.ouput;
+            return sp.output;
         }
   
    
