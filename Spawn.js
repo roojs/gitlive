@@ -126,7 +126,6 @@ Spawn.prototype = {
      */
     pid : false,
     
-   
     
     /**
      * @property in_ch {GLib.IOChannel} input io channel
@@ -156,7 +155,6 @@ Spawn.prototype = {
         
         var err_src = false;
         var out_src = false;
-        var ctx = false; 
         var ret = {};
         
         if (this.debug) {
@@ -175,6 +173,7 @@ Spawn.prototype = {
         }
         
         
+	
         GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
             _this.result = result;
             if (_this.debug) {
@@ -185,10 +184,11 @@ Spawn.prototype = {
             
             GLib.spawn_close_pid(_this.pid);
             _this.pid = false;
-            if (ctx) {
-                ctx.quit();
+            if (_this.ctx) {
+                _this.ctx.quit();
             }
             tidyup();
+	    print("DONE TIDYUP");
             if (_this.listeners.finish) {
                 _this.listeners.finish.call(this, _this.result);
             }
@@ -328,6 +328,11 @@ Spawn.prototype = {
        // print("prop: " + prop);
         var _this = this;
         
+	
+	var start_status = ch.get_buffer_condition();
+	
+        print(JSON.stringify(start_status, null,4));
+	
         //print(JSON.stringify(ch, null,4));
         while (true) {
  
