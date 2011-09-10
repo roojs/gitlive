@@ -284,7 +284,7 @@ Repo = XObject.define(
                         args.push(v);
                     }
                 }
-            })
+            });
             if(this.debug) {
                 print( args.join(" ")); 
             }
