@@ -308,7 +308,7 @@ Repo = XObject.define(
                 cwd : this.repopath,
                 args : args,
                 env : env, // optional
-                debug: true,
+                debug: false,
                 exceptions : false,
                 async : false
             });
