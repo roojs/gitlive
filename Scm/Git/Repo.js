@@ -256,7 +256,7 @@ Repo = XObject.define(
         {
             // convert arguments.
             
-            args_in = arguments.
+            args_in = Arraay.prototype.splice.call(arguments)
      
             var args = ['git' , { 'git-dir' : this.gitdir } ];
             
