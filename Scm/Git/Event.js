@@ -41,6 +41,7 @@ Event = XObject.define(
             
             var ent = this;
             
+            this.files=[];
              
             var lines = this.commit.split("\n"); 
             var line = lines.shift();
