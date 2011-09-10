@@ -98,7 +98,7 @@ Event = XObject.define(
                     lines.unshift( line );
                     break;
                 }
-                line = substring(line, 4);
+                line = line.substring( 4);
                 this.changelog += line + "\n";
             }
         
