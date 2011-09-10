@@ -279,7 +279,7 @@ Repo = XObject.define(
                     for(var k in arg) {
                         var v = arg[k];
                         
-                        args.push(k.length > 1 ? ('--' + k) : ('-' + k));
+                        args.push(k.length != 1 ? ('--' + k) : ('-' + k));
                         
                         if (v === true) {
                             return;
