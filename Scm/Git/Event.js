@@ -36,7 +36,7 @@ Event = XObject.define(
         
         
         
-        parseCommit  = function()
+        parseCommit  : function()
         {
             
             var ent = this;
