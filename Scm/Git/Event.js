@@ -46,7 +46,7 @@ Event = XObject.define(
             var line = lines.shift();
         
             if (!line.match(/^commit\s+(\S+)/)) {
-                return false;
+                throw "Invalid commit line";
             }
             var M = [];
             line.replace(/^commit\s+(\S+)/, function(v,va) {
