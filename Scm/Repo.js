@@ -1,3 +1,4 @@
+var XObject = imports.XObject.XObject;
 
 
 // mix of SCM and Repo class from mtrack.
