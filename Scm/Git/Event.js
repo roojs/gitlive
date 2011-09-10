@@ -4,7 +4,7 @@ var XObject = imports.XObject.XObject;
 Event = XObject.define( 
     function (cfg) {
         // do nothing?? universal ctr ?
-        Roo.apply(this,cfg);
+        XObject.apply(this,cfg);
         if (cfg.commit) {
             this.parseCommit();
         }
