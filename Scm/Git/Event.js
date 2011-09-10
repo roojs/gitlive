@@ -86,7 +86,7 @@ Event = XObject.define(
                 }
             }
         
-            ent.changelog = "";
+            this.changelog = "";
         
             if (lines[0] == '') {
                 lines.shift();
@@ -99,7 +99,7 @@ Event = XObject.define(
                     break;
                 }
                 line = substr(line, 4);
-                ent.changelog += line + "\n";
+                this.changelog += line + "\n";
             }
         
             if (lines[0] == '') {
@@ -141,8 +141,8 @@ Event = XObject.define(
                 
             });
             // fixme..
-            if (!ent.branches.length) {
-                ent.branches.push(  'master' );
+            if (!this.branches.length) {
+                this.branches.push(  'master' );
             }
         
             return ent;
