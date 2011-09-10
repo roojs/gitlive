@@ -286,7 +286,7 @@ Repo = XObject.define(
                         args.push(k.length != 1 ? ('--' + k) : ('-' + k));
                         
                         if (v === true) {
-                            return;
+                            continue;;
                         }
                         args.push(v);
                     }
