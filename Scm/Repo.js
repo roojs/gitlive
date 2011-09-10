@@ -245,7 +245,7 @@ Repo = XObject.define(
         throw new Exception("no implementation for commitLogToEvent");
     }
     */
-}
+});
 
 
 /*
@@ -284,4 +284,4 @@ Repo = XObject.define(
         }
         return $ret;
     }  
-*/  
+*/
