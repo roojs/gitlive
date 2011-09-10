@@ -264,14 +264,14 @@ Repo = XObject.define(
             // convert arguments.
             
             print(JSON.stringify(args_in,null,4));
-            args_in.shift( {
+            args_in.unshift( {
                 'git-dir' : this.gitdir,
                 'no-pager' : true 
             });
             var args = ['git' ];
             
             if (this.gitdir != this.repopath) {
-                args_in.shift( { "work-tree" :  this.repopath } ); 
+                args_in.unshift( { "work-tree" :  this.repopath } ); 
             }
             
             args_in.forEach(function(arg) { 
