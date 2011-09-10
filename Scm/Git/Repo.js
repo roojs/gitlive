@@ -15,7 +15,7 @@ Repo = XObject.define(
         if (File.isDirectory(cfg.repodir + '/.git')) {
             this.gitdir += "/.git";
         }
-        Repo.superclass.constructor.call(this,cfg);
+        //Repo.superclass.constructor.call(this,cfg);
         
     },
     imports.Scm.Repo.Repo, // or Object
@@ -274,6 +274,7 @@ Repo = XObject.define(
             if (this.gitdir != this.repopath) {
                 args_in.shift( { "work-tree" :  this.repopath } ); 
             }
+            
             args_in.forEach(function(arg) { 
                  if (typeof(arg) == 'string') {
                     args.push(arg);
