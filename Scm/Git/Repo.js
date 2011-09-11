@@ -386,16 +386,28 @@ Repo = XObject.define(
             
             var diff = this.diff(files, from, to);
              
-            // make  a temporay diff file.. 
-            
-            //var_dump($patch);
-            $patch = System::which('patch');
-            chdir($wd->dir);
-            $cmd = "$patch -p1 < " . $patchfile;
-            `$cmd`;  //eg . patch -p1 < /var/lib/php5/MTrackTMPgZFeAN.txt
-        } else { 
-            $wd->git('merge', '--squash' , $rev);
-        }
+             
+               var sp = new Spawn({
+                cwd : this.repopath,
+                args : [ 'patch' , '-p1' ] ,
+                env :  [  "HOME=" + GLib.get_home_dir() ];
+                debug: false,
+                exceptions : false,
+                async : false,
+                listeners : {
+                    input : function() {
+                        return diff;
+                    }
+                }
+            });
+            sp.run(); 
+             
+              ;  //eg . patch -p1 < /var/lib/php5/MTrackTMPgZFeAN.txt
+        } else {
+            // if no files -- it means all?/
+            // although we should check to see if this is valid..
+            this.git([' merge', { 'squash' : true }, rev ]);
+       }
           
         //echo $cmd;
         
