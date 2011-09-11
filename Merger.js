@@ -152,7 +152,7 @@ Merger=new XObject({
                                                     xtype: Gtk.TreeStore,
                                                     id : "historyTreeStore",
                                                     pack : "set_model",
-                                                     : function(tr,iter)
+                                                    load : function(tr,iter)
                                                     {
                                                         //this.insert(citer,iter,0);
                                                     
