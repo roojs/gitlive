@@ -257,7 +257,8 @@ Merger=new XObject({
                                                     
                                                        files.push( model.get_value(iter, 0).value.get_string());
                                                      
-                                                    }); 
+                                                    });
+                                                    this.get('/patchview').showDiff(files); 
                                                     //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
                                                      //print("OUT?" + value);// id..
                                                     // load the list in the right grid..
