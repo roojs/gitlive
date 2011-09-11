@@ -200,7 +200,7 @@
                                                     "|xns": "Gtk"
                                                 },
                                                 {
-                                                    "label": "Commit diff (no merge)",
+                                                    "label": "Commit diff (merge after)",
                                                     "xtype": "Button",
                                                     "|xns": "Gtk"
                                                 }
