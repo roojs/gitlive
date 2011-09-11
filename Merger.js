@@ -249,7 +249,7 @@ Merger=new XObject({
                                                         return;
                                                     }
                                                         var ret = {};         
-                                                    var model = this.get('/changeFileStore');
+                                                    var model = this.get('/changedFileStore');
                                                 
                                                      var s = this.el.get_selection();
                                                     s.get_selected_rows(ret);
