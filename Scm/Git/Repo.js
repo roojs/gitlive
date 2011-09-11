@@ -147,7 +147,7 @@ Repo = XObject.define(
                 "raw" : true,
                 "no-abbrev" : true,
                 "numstat" : true,
-                "date" : 'rfc'
+                "date" : 'iso8601'
             };
             if (limit !== false) {
                 if (typeof(limit) == 'number') {
@@ -233,6 +233,84 @@ Repo = XObject.define(
             return $this->git('diff', "$from^..$from", '--', $path);
             */
         },
+        
+        
+        
+        dayTree: function (path, limit , object, ident)
+        {
+            
+            var ar = this.history(path, limit , object, ident);
+            
+            // the point of this is to extract all the revisions, and group them.
+            
+            
+            
+            //echo '<PRE>';print_R($ar);
+            
+            // need to get a 2 dimensional array of
+            // files along top, and commints down.
+            var cfiles = []
+            var rows = [];
+            
+            var days = {};
+            
+            ar.forEach(function( commit) {
+                
+                var files = commit.files;
+                var day = commit.cday;
+                if (typeof(days[day]) == 'undefined') { 
+                    days[day] = {
+                        'text' : day,
+                        'rev' : day,
+                        'children' : {}
+                    }
+                }
+                var time= commit.ctime;
+                if (typeof(days[day]['children'][time]) == 'undefined' ) { 
+                    days[day]['children'][time] = {
+                        'text' : time,
+                        'rev' : day + ' ' + time,
+                        'children' : [] 
+                    };
+                }
+                days[day]['children'][time]['children'].push( {
+                    'text' : commit.changelog,
+                    'rev' : commit.rev,
+                    'leaf' :  true
+                });
+            });
+            var out = [];
+            
+            for(var d in days) {
+                var dr = days[d];
+                dcn = dr['children'];
+                dr['children'] = [];
+                for(var t in dcn) {
+                    var to = dcn[t];
+                    to['rev']  = to['children'][0]['rev'];
+                    dr['children'].push( to);
+                }
+                dr['rev'] = dr['children'][0]['rev'];
+                out.push( dr);
+            }
+            
+            return out;            
+             
+            
+        },
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     /*
         public function getWorkingCopy()
         {

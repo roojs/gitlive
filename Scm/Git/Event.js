@@ -77,10 +77,16 @@ Event = XObject.define(
                         
                         case 'Date':
                           //var ts = strtotime(v);
-                          this.ctime = v; //MTrackDB::unixtime(ts);
+                          
+                            var Date = imports.Date.Date;
+                            //var pd = imports.Date.Date.pqqqarseDate;
+                            this.changed_raw =  v;
+                            this.changed  =  Date.parseDate(v, "Y-m-d h:i:s O");
+                            this.cday = this.changed.format("Y-m-d");
+                            this.ctime  = this.changed.format("H:i:s");
                           break;
                     }
-                }
+                }1
             }
         
             this.changelog = "";
