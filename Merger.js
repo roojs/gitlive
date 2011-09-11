@@ -398,7 +398,16 @@ Merger=new XObject({
                                     pack : "add",
                                     showDiff : function(files) {
                                         
+                                         var Repo = imports.Scm.Git.Repo.Repo;
                                         
+                                        
+                                        
+                                        var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
+                                     
+                                     
+                                        var diff = repo.diff('/',  'rev', 'github..master', files);
+                                        
+                                            
                                         
                                         
                                         
