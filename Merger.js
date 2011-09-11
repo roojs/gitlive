@@ -180,6 +180,13 @@ Merger=new XObject({
                                                     xtype: Gtk.TreeStore,
                                                     id : "historyTreeStore",
                                                     pack : "set_model",
+                                                    init : function() {
+                                                        XObject.prototype.init.call(this);
+                                                        this.el.set_column_types ( 3, [
+                                                           GObject.TYPE_STRING, // title 
+                                                          GObject.TYPE_STRING, // rev 
+                                                      ] );
+                                                    },
                                                     load : function(tr,iter)
                                                     {
                                                         //this.insert(citer,iter,0);
@@ -201,13 +208,6 @@ Merger=new XObject({
                                                                 this.load(tr[i].children, ret.iter);
                                                             }
                                                         }     
-                                                    },
-                                                    init : function() {
-                                                        XObject.prototype.init.call(this);
-                                                        this.el.set_column_types ( 3, [
-                                                           GObject.TYPE_STRING, // title 
-                                                          GObject.TYPE_STRING, // rev 
-                                                      ] );
                                                     }
                                                 },
                                                 {
