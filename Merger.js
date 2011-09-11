@@ -398,6 +398,10 @@ Merger=new XObject({
                                     pack : "add",
                                     showDiff : function(files) {
                                         
+                                        
+                                        
+                                        
+                                        
                                     }
                                 }
                             ]
