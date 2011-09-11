@@ -286,7 +286,7 @@ Merger=new XObject({
                                                               
                                                             this.el.set_value(ret.iter, 0, ''  +  tr[i].filename );
                                                             this.el.set_value(ret.iter, 1, '' + tr[i].added  );
-                                                            this.el.set_value(ret.iter, 1, '' + tr[i].remove  );
+                                                            this.el.set_value(ret.iter, 2, '' + tr[i].remove  );
                                                      
                                                             
                                                         }     
