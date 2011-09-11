@@ -264,7 +264,7 @@ Merger=new XObject({
                                                     xtype: Gtk.ListStore,
                                                     id : "changedFilesStore",
                                                     pack : "set_model",
-                                                     : function(tr)
+                                                    load : function(tr)
                                                     {
                                                         //this.insert(citer,iter,0);
                                                     
