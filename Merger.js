@@ -256,8 +256,7 @@ Merger=new XObject({
                                                     s.selected_foreach(function(model,p,iter) {
                                                     
                                                        files.push( model.get_value(iter, 0).value.get_string());
-                                                    
-                                                        print(fn);
+                                                     
                                                     }); 
                                                     //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
                                                      //print("OUT?" + value);// id..
