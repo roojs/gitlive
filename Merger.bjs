@@ -195,6 +195,7 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
+                                                    "label": "Commit diff (no merge)",
                                                     "xtype": "Button",
                                                     "|xns": "Gtk"
                                                 }
