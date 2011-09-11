@@ -32,7 +32,7 @@
                             "items": [
                                 {
                                     "listeners": {
-                                        "clicked": "function (self) {\n    \n    \n    var Repo = imports.Scm.Git.Repo.Repo;\n    \n    \n    \n    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });\n \n \nvar hist = repo.dayTree('/', false, 'rev', 'github..master');\n   this.get('/historyTreeStore').load(hist);\n        \n       \n    \n    \n}"
+                                        "clicked": "function (self) {\n    \n    \n    var Repo = imports.Scm.Git.Repo.Repo;\n    \n    \n    \n    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });\n \n \n    var hist = repo.dayTree('/', false, 'rev', 'github..master');\n    this.get('/historyTreeStore').load(hist);\n        \n       \n    \n    \n}"
                                     },
                                     "label": "Select Branch",
                                     "pack": "add",
