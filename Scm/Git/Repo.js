@@ -334,8 +334,14 @@ Repo = XObject.define(
             // need to do a git diff.. and just get a list of files..
             var rows = [];
             var res = this.git(args).split("\n"); 
-            res.forEach( function(line) { 
+            res.forEach( function(line) {
+                
+                
+                
                 var ar = line.split("\t"); 
+                if (ar.length !=3 ) {
+                    return;
+                }
                 rows.push({ 
                     'added' : ar[0],
                     'removed' : ar[1],
