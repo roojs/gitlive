@@ -40,11 +40,13 @@ Repo = XObject.define(
                 return this.branches;
             }
             this.branches = {};
+            
             var bl = this.git([ 'branch', {
                 'no-color' : true,
                 'verbose' : true,
                 'a' : true
             }]).split("\n");
+            
             bl.forEach(function(line) {
                   // * master 61e7e7d oneliner
                 var active = line[0]=='*';
