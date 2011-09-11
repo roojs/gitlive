@@ -362,6 +362,77 @@ Repo = XObject.define(
         
         
         
+    merge : function(branch_from, branch_to, rev, files, use_merge)
+    {
+        
+        var mi = this.history("/", 1, "rev", rev);
+       // echo '<PRE>';print_R($mi);exit;
+        
+        // pause gitlive!!!!
+        this.git([ 'checkout', { 'b': true }, to]);
+        //$wd->git('checkout', '-b', $this->release, 'remotes/origin/'. $this->release);
+        
+        
+        
+        //$patchfile = $this->tempName('txt');
+         
+        
+        if (files !== false) {
+            
+            
+            
+        }
+        if (is_array($files)) { 
+            
+            var diff = this.diff(files, from, to);
+             
+            // make  a temporay diff file.. 
+            
+            //var_dump($patch);
+            $patch = System::which('patch');
+            chdir($wd->dir);
+            $cmd = "$patch -p1 < " . $patchfile;
+            `$cmd`;  //eg . patch -p1 < /var/lib/php5/MTrackTMPgZFeAN.txt
+        } else { 
+            $wd->git('merge', '--squash' , $rev);
+        }
+          
+        //echo $cmd;
+        
+        $commit = (object) array(
+            'when' =>  $mi[0]->ctime,
+            'reason' => $_REQUEST['message'],
+            'name'  => $this->authUser->name,
+            'email' => $this->authUser->email,
+        );
+        
+        $res = $wd->commit($commit);
+        if (!is_array($files)) {
+            // we do an actually merge commit seperatly from the merge diff, so that
+            // our logs show a nice history in each of those commits.
+            // not sure if this is a good idea or not..
+            $wd->git('merge', '-m', "Merge Commit with working branch (no code changed)" , $rev);
+        }
+        
+        
+        $res .= $wd->push();
+        $this->jok($res);
+        
+       // $wd->checkout($this->release);
+        // generate the patch
+        // apply the patch
+        // commit with message..
+        // push
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
         
         
         
