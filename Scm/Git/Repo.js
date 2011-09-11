@@ -239,6 +239,7 @@ Repo = XObject.define(
             }
             
             args.push(from+'..'+to);
+            args.push( { '' : true });
             if (typeof(path) != 'string') {
                 path.forEach(function(p) { args.push(p); })
             }
