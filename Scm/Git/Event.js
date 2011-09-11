@@ -5,9 +5,10 @@ Event = XObject.define(
     function (cfg) {
         // do nothing?? universal ctr ?
         XObject.extend(this,cfg);
-        if (cfg.commit) {
+        if (this.commit.length) {
             this.parseCommit();
         }
+        //print(JSON.stringify(this, null,4)); Seed.quit();
     },
     Object,
     {
@@ -41,39 +42,34 @@ Event = XObject.define(
             
             var ent = this;
             
-            this.files=[];
-             
-            var lines = this.commit.split("\n"); 
-            var line = lines.shift();
+            this.branches    = []; // FIXME
+            this.tags        = []; // FIXME
+            this.files       = {};
         
+         
+             
+            var lines = this.commit.split("\n");
+            
+            // print ('--->'+ lines.join("\n"));
+
+            var line = lines.shift();
             if (!line.match(/^commit\s+(\S+)/)) {
                 throw "Invalid commit line";
             }
-            var M = [];
-            line.replace(/^commit\s+(\S+)/, function(v,va) {
-                M.push(va);
-            });
-                 
-            this.rev = M[1];
-        
-            this.branches    = []; // FIXME
-            this.tags        = []; // FIXME
-            this.files       = [];
-        
+            this.rev = line.replace(/^commit\s+/,'');
+            
             while (lines.length) {
                 line = lines.shift();
                 if (!line.length) {
                     break; //  empty line = STOP?
                 }
                 if (line.match(/^(\S+):\s+(.*)\s*/)) {
-                    M = [];
+                    var k,v
                     line.replace(/^(\S+):\s+(.*)\s*/, function(m,ma,mb) {
-                        M.push(ma);
-                        M.push(mb);
+                        k = ma;
+                        v = mb;
                     }) 
-                    var k = M[1];
-                    var v = M[2];
-        
+                   
                     switch (k) {
                         case 'Author':
                           this.changeby = v;
@@ -107,6 +103,8 @@ Event = XObject.define(
                 lines.shift();
             }
             var info;
+            
+            
             // this should only be the last set of lines..
             lines.forEach(function(line) { 
                 if (!line.length) {
@@ -117,29 +115,38 @@ Event = XObject.define(
                     // it's our stat line..:
                     // :100755 100755 fde93abd1a71accd3aa7e97b29c1eecfb43095d7 
                     // 3d71edf6512035846d8164c3b28818de0062335a M      web/MTrackWeb/DataObjects/Changes.php
-                    info = line.substring(1).split(/\s+/);
+                    var lr = line.split(/\t/);
+                    var info = lr[0].substring(1).split(/\s+/);
+                    
+                      
                    // print_r(info);
-                    f = {}; //new MTrackSCMFileEvent; //generic..
+                    var f = {}; //new MTrackSCMFileEvent; //generic..
                    
-                    f.oldperm = info.unshift();
-                    f.newperm = info.unshift();
-                    f.oldver  = info.unshift();
-                    f.newver  = info.unshift();;
-                    f.status  = info.unshift();
-                    f.name = info.join(' '); // not the right way to do this!!! - does not handle names correclty.
+                    f.oldperm = info.shift();
+                    f.newperm = info.shift();
+                    f.oldver  = info.shift();
+                    f.newver  = info.shift();;
+                    f.status  = info.shift();
+                    f.name = lr[1]; // not the right way to do this!!! - does not handle names correclty.
                     ent.files[f.name] = f;
+                     
                     return;
                 }
              
-                info = line.substring(1).split(/\s+/); // 3 only..
+                var info = line.substring(1).split(/\t/); // 3 only..
                 //print_r(info);
-                var added = info.unshift();
-                var removed = info.unshift();
+                var added = info.shift();
+                var removed = info.shift();
                 
-                name = info.join(" ");
-                ent.files[name].added   = added;            
-                ent.files[name].removed = removed;
+                var name = info.join("\t");
                 
+                ent.files[name] = XObject.extend(
+                    typeof(ent.files[name]) == 'undefined' ? {}  : ent.files[name],
+                    {
+                         added   : added,
+                         removed : removed
+                    }
+                );                
             });
             // fixme..
             if (!this.branches.length) {
