@@ -429,7 +429,7 @@ Merger=new XObject({
                                                // remove..
                                                 var s  = "document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);";
                                                 s += "pre.textContent =  " +
-                                                         JSON.stringify(repo.lastCmd) + '+ "\n" + ' + 
+                                                         JSON.stringify(repo.lastCmd + "\n") + '+  ' + 
                                                        JSON.stringify(diff) + ";";
                                                 print(s);
                                                     
