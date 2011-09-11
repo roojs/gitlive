@@ -241,7 +241,7 @@ Repo = XObject.define(
             if (typeof(path) != 'string') {
                 path.forEach(function(p) { args.push(p); })
             }
-            this.git(args); 
+            return this.git(args); 
         },
         
         
@@ -317,7 +317,7 @@ Repo = XObject.define(
              object = object || false;
             ident = ident || false; 
             var res = [];
-            var args = [ 'diff', { 'numstat' : true}  , { 'w' : true }];
+            var args = [ 'diff', { 'numstat' : true}  , { 'w' : true } ];
              
             
             if (object !== false) {
