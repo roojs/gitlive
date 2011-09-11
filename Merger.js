@@ -394,11 +394,11 @@ Merger=new XObject({
                                 },
                                 {
                                     xtype: Gtk.ScrolledWindow,
+                                    pack : false,
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                           this.el.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
                                     },
-                                    pack : false,
                                     items : [
                                         {
                                             xtype: WebKit.WebView,
