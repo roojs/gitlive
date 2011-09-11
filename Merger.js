@@ -252,10 +252,9 @@ Merger=new XObject({
                                                     var model = this.get('/changedFilesStore');
                                                 
                                                      var s = this.el.get_selection();
-                                                    s.get_selected_rows(ret);
-                                                    
-                                                    print(ret.value.length);
-                                                 
+                                                    s.selected_foreach(function(e) {
+                                                        print(typeof(e) + e);
+                                                    }); 
                                                     //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
                                                      //print("OUT?" + value);// id..
                                                     // load the list in the right grid..
