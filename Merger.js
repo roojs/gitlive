@@ -273,17 +273,12 @@ Merger=new XObject({
                                                  this.selection = this.el.get_selection();
                                                   this.selection.set_mode( Gtk.SelectionMode.MULTIPLE);
                                                 var _this = this;
-                                                /*
-                                             780                                                                     
-                                             781                                                                         // is this really needed??
-                                             782                                                                         this.selection.signal['changed'].connect(function() {
-                                             783                                                                                 _this.get('/LeftTree.view').listeners.cursor_changed.apply(
-                                             784                                                                                     _this.get('/LeftTree.view'), [ _this.get('/LeftTree.view'), '']
-                                             785                                                                                 );
-                                             786                                                                         });
-                                             787                                                                         
-                                             */
-                                             },
+                                              this.selection.signal['changed'].connect(function() {
+                                                 _this.get('/changedFilesStore').listeners.cursor_changed.apply(
+                                                      _this.get('/LeftTree.view'), [ _this.get('/LeftTree.view'), '']
+                                                   );
+                                                         });
+                                              },
                                             items : [
                                                 {
                                                     xtype: Gtk.ListStore,
