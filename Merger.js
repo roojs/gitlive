@@ -279,7 +279,7 @@ Merger=new XObject({
                                                 var _this = this;
                                               this.selection.signal['changed'].connect(function() {
                                                  _this.listeners.cursor_changed.apply(
-                                                      _this.get('/LeftTree.view'), [ _this.get('/LeftTree.view'), '']
+                                                      _this, [ _this, '']
                                                    );
                                                          });
                                               },
