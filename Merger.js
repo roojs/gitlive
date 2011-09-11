@@ -246,7 +246,7 @@ Merger=new XObject({
                                                  this.el.modify_font(description);
                                             
                                                  this.selection = this.el.get_selection();
-                                                  this.selection.set_mode( Gtk.SelectionMode.SINGLE);
+                                                  this.selection.set_mode( Gtk.SelectionMode.MULTIPLE);
                                                 var _this = this;
                                                 /*
                                              780                                                                     
