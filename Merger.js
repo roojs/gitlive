@@ -386,43 +386,6 @@ Merger=new XObject({
                             ]
                         },
                         {
-                            xtype: Gtk.ScrolledWindow,
-                            init : function() {
-                                XObject.prototype.init.call(this);
-                                  this.el.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-                            },
-                            items : [
-                                {
-                                    xtype: WebKit.WebView,
-                                    id : "patchview",
-                                    pack : "add",
-                                    showDiff : function(files) {
-                                        
-                                         var Repo = imports.Scm.Git.Repo.Repo;
-                                        
-                                        
-                                        
-                                        var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
-                                     
-                                     
-                                        var diff = repo.diff(files, 'github', 'master');
-                                        
-                                       // remove..
-                                        var s  = "document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);";
-                                        s += "pre.textContent =  " +  JSON.stringify(diff) + ";";
-                                        print(s);
-                                            
-                                        this.el.execute_script(s);
-                                            
-                                            
-                                        
-                                        
-                                        
-                                    }
-                                }
-                            ]
-                        },
-                        {
                             xtype: Gtk.VBox,
                             pack : false,
                             items : [
