@@ -395,7 +395,10 @@ Merger=new XObject({
                                 {
                                     xtype: WebKit.WebView,
                                     id : "patchview",
-                                    pack : "add"
+                                    pack : "add",
+                                    showDiff : function() {
+                                        
+                                    }
                                 }
                             ]
                         }
