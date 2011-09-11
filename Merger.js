@@ -264,6 +264,14 @@ Merger=new XObject({
                                                     xtype: Gtk.ListStore,
                                                     id : "changedFilesStore",
                                                     pack : "set_model",
+                                                    init : function() {
+                                                        XObject.prototype.init.call(this);
+                                                        this.el.set_column_types ( 3, [
+                                                           GObject.TYPE_STRING, // file  
+                                                          GObject.TYPE_STRING, // added
+                                                          GObject.TYPE_STRING, // removed
+                                                      ] );
+                                                    },
                                                     load : function(tr)
                                                     {
                                                         //this.insert(citer,iter,0);
@@ -282,13 +290,6 @@ Merger=new XObject({
                                                      
                                                             
                                                         }     
-                                                    },
-                                                    init : function() {
-                                                        XObject.prototype.init.call(this);
-                                                        this.el.set_column_types ( 3, [
-                                                           GObject.TYPE_STRING, // title 
-                                                          GObject.TYPE_STRING, // rev 
-                                                      ] );
                                                     }
                                                 },
                                                 {
