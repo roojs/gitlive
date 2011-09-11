@@ -74,6 +74,7 @@
                                                             "id": "historyTreeStore",
                                                             "pack": "set_model",
                                                             "xtype": "TreeStore",
+                                                            "|": "function(tr,iter)\n{\n    //this.insert(citer,iter,0);\n\n    for(var i =0 ; i < tr.length; i++) {\n        var ret = {  };\n        if (iter) {\n            this.el.insert(ret ,iter,-1);\n        } else {\n            this.el.append(ret);\n        }\n        //print(JSON.stringify(ret,null,4));\n         \n         print(body);\n      \n        this.el.set_value(ret.iter, 0, ''  +  tr[i].text );\n        this.el.set_value(ret.iter, 1, '' + tr[i].rev  );\n \n        if (tr[i].children && tr[i].children.length) {\n            this.load(tr[i].children, ret.iter);\n        }\n    }     \n}",
                                                             "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.set_column_types ( 3, [\n       GObject.TYPE_STRING, // title \n      GObject.TYPE_STRING, // rev \n  ] );\n}\n",
                                                             "|xns": "Gtk"
                                                         },
