@@ -300,6 +300,48 @@ Repo = XObject.define(
         },
         
         
+    
+    
+         changedFiles :function(path,  object, ident)
+        {
+            limit = limit || false;
+            object = object || false;
+            ident = ident || false; 
+            var res = [];
+            var args = [ 'diff', { 'numstat' : true}  ];
+             
+            
+            if (object !== false) {
+                rev = this.resolveRevision(false, object, ident); // from scm...
+                args.push( '' + rev);  
+            } else {
+                args.push( "master" );
+            }
+            path = path[0] == '/' ? path.substring(1) : path; 
+            
+            args.push({ '' : true });
+            args.push(path);
+              // in theory you could click a number of them and only merge those changes..
+            // need to do a git diff.. and just get a list of files..
+            
+            var res = this.git(args); 
+            
+            while (false !== ($line = fgets($fh))) {
+                //var_Dump($line);
+                $ar = explode("\t", trim($line));
+                $rows[] = array(
+                    'added' => $ar[0],
+                    'removed' => $ar[1],
+                    'filename' => $ar[2],
+                );
+                
+                
+            }
+            fclose($fh);
+            $this->jdata($rows);
+             
+    
+        }
         
         
         
