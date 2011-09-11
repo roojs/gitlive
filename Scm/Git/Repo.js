@@ -323,23 +323,19 @@ Repo = XObject.define(
             args.push(path);
               // in theory you could click a number of them and only merge those changes..
             // need to do a git diff.. and just get a list of files..
-            
-            var res = this.git(args); 
-            
-            while (false !== ($line = fgets($fh))) {
-                //var_Dump($line);
-                $ar = explode("\t", trim($line));
-                $rows[] = array(
-                    'added' => $ar[0],
-                    'removed' => $ar[1],
-                    'filename' => $ar[2],
-                );
+            var rows = [];
+            var res = this.git(args).split("\n"); 
+            res.forEach( function(line) { 
+                var ar = line.split("\t"); 
+                rows.push({ 
+                    'added' : ar[0],
+                    'removed' : ar[1],
+                    'filename' : ar[2]
+                });
                 
                 
-            }
-            fclose($fh);
-            $this->jdata($rows);
-             
+            });
+            return rows;  
     
         }
         
