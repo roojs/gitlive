@@ -243,7 +243,7 @@ Merger=new XObject({
                                             xtype: Gtk.TreeView,
                                             listeners : {
                                                 cursor_changed : function (self) {
-                                                
+                                                  // SEE SELECTION.CHANGED
                                                     if (this.el.get_selection().count_selected_rows() < 1) {
                                                         //nothing? - clea it?
                                                         return;
