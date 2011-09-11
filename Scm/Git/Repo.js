@@ -431,6 +431,7 @@ Repo = XObject.define(
                 }
             });
             if(this.debug) {
+                this.lastCmd = args.join(" ");
                 print( args.join(" ")); 
             }
             
