@@ -302,7 +302,7 @@ Repo = XObject.define(
         
     
     
-         changedFiles :function(path,  object, ident)
+        changedFiles :function(path,  object, ident)
         {
             limit = limit || false;
             object = object || false;
