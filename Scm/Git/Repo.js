@@ -317,7 +317,7 @@ Repo = XObject.define(
              object = object || false;
             ident = ident || false; 
             var res = [];
-            var args = [ 'diff', { 'numstat' : true}  ];
+            var args = [ 'diff', { 'numstat' : true}  , { 'w' : true }];
              
             
             if (object !== false) {
