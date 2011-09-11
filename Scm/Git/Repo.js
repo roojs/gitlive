@@ -229,6 +229,7 @@ Repo = XObject.define(
                 
             }
             */
+            // diff ignoring white space..
             args = [ 'diff' , { 'w' : true} ]
         
             if (to == false) {
