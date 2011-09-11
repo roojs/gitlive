@@ -198,6 +198,12 @@
                                                     "label": "Commit diff (no merge)",
                                                     "xtype": "Button",
                                                     "|xns": "Gtk"
+                                                },
+                                                {
+                                                    "label": "Commit diff (no merge)",
+                                                    "xtype": "Button",
+                                                    "|xns": "Gtk",
+                                                    "pack": false
                                                 }
                                             ]
                                         },
