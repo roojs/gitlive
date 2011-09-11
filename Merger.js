@@ -253,7 +253,9 @@ Merger=new XObject({
                                                 
                                                      var s = this.el.get_selection();
                                                     s.get_selected_rows(ret);
-                                                    print(JSON.stringify(ret,null,4));
+                                                    
+                                                    print(ret.value.length);
+                                                 
                                                     //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
                                                      //print("OUT?" + value);// id..
                                                     // load the list in the right grid..
