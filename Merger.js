@@ -33,7 +33,7 @@ Merger=new XObject({
              //   Seed.print(val);
         }
     },
-    ' modal' : false,
+    ' modal' : true,
     border_width : 3,
     default_height : 700,
     default_width : 800,
