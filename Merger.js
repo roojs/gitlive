@@ -83,15 +83,15 @@ Merger=new XObject({
                                     
                                     
                                     var Repo = imports.Scm.Git.Repo.Repo;
-                                
+                                    
+                                    
                                     
                                     var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
                                  
                                  
                                 var hist = repo.dayTree('/', false, 'rev', 'github..master');
-                                 
-                                    print(out);
-                                       
+                                   this.get('/historyTreeStore').load(hist);
+                                        
                                        
                                     
                                     
