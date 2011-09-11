@@ -389,7 +389,8 @@ Merger=new XObject({
                             xtype: Gtk.VBox,
                             items : [
                                 {
-                                    xtype: Gtk.HBox
+                                    xtype: Gtk.HBox,
+                                    pack : "pack_start,false,false,0"
                                 },
                                 {
                                     xtype: Gtk.ScrolledWindow,
