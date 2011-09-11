@@ -252,8 +252,11 @@ Merger=new XObject({
                                                     var model = this.get('/changedFilesStore');
                                                 
                                                      var s = this.el.get_selection();
-                                                    s.selected_foreach(function(e) {
-                                                        print(typeof(e) + e);
+                                                    s.selected_foreach(function(model,p,iter) {
+                                                    
+                                                        var fn = model.get_value(iter, 0).value.get_string();
+                                                    
+                                                        print(fn);
                                                     }); 
                                                     //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
                                                      //print("OUT?" + value);// id..
