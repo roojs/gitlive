@@ -39,7 +39,7 @@ Repo = XObject.define(
             if (this.branches !== false) {
                 return this.branches;
             }
-            this.branchesh = [];
+            this.branches = {};
             var bl = this.git([ 'branch', {
                 'no-color' : true,
                 'verbose' : true,
