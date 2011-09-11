@@ -337,7 +337,7 @@ Repo = XObject.define(
             });
             return rows;  
     
-        }
+        },
         
         
         
