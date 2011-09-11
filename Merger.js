@@ -408,8 +408,8 @@ Merger=new XObject({
                                         var diff = repo.diff(files, 'github', 'master');
                                         
                                        // remove..
-                                        var s  = "var pre  = document.createElement('pre'); document.body.appendChild(pre);";
-                                        s += "pre.textContents =  " +  JSON.stringify(diff) + ";";
+                                        var s  = "document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);";
+                                        s += "pre.textContent =  " +  JSON.stringify(diff) + ";";
                                         print(s);
                                             
                                         this.el.execute_script(s);
