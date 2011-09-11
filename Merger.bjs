@@ -201,9 +201,9 @@
                                                 },
                                                 {
                                                     "label": "Commit diff (no merge)",
+                                                    "pack": false,
                                                     "xtype": "Button",
-                                                    "|xns": "Gtk",
-                                                    "pack": false
+                                                    "|xns": "Gtk"
                                                 }
                                             ]
                                         },
