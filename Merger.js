@@ -193,6 +193,7 @@ Merger=new XObject({
                                                         if (!iter) {
                                                             this.el.clear();
                                                         }
+                                                        
                                                         for(var i =0 ; i < tr.length; i++) {
                                                             var ret = {  };
                                                             if (iter) {
