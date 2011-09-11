@@ -278,7 +278,7 @@ Merger=new XObject({
                                                   this.selection.set_mode( Gtk.SelectionMode.MULTIPLE);
                                                 var _this = this;
                                               this.selection.signal['changed'].connect(function() {
-                                                 _this.get('/changedFilesStore').listeners.cursor_changed.apply(
+                                                 _thislisteners.cursor_changed.apply(
                                                       _this.get('/LeftTree.view'), [ _this.get('/LeftTree.view'), '']
                                                    );
                                                          });
