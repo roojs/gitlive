@@ -34,24 +34,34 @@ Repo = XObject.define(
                 
             };
         },
-                /* LATER...
-                getBranches: function() {
-                      if ($this->branches !== null) {
-                      
-            if ($this->branches !== null) {
-                 return $this->branches;
+        getBranches : function()
+        {
+            if (this.branches !== false) {
+                return this.branches;
             }
-            $this->branches = array();
-            $fp = $this->git('branch', '--no-color', '--verbose');
-            while ($line = fgets($fp)) {
-              // * master 61e7e7d oneliner
-              $line = substr($line, 2);
-              list($branch, $rev) = preg_split('/\s+/', $line);
-              $this->branches[$branch] = $rev;
-            }
-            $fp = null;
-            return $this->branches;
-          }
+            this.branchesh = [];
+            var bl = this.git([ 'branch', {
+                'no-color' : true,
+                'verbose' : true,
+                'a' : true
+            }]).split("\n");
+            bl.forEach(function(line) {
+                  // * master 61e7e7d oneliner
+                var active = line[0]=='*';
+                line = line.substring(2);
+                
+                var parts = line.split(/\s+/);
+                if (parts[0] == '->') {
+                    return; // it's an alias like  remotes/origin/HEAD    -> origin/master
+                }
+                this.branches[parts[0]] = parts[1];
+                if (active) {
+                    this.curBranch = parts[0];
+                }
+            });
+            return this.branches;
+          },
+          /*
         
           public function getTags()
           {
@@ -444,7 +454,7 @@ Repo = XObject.define(
         
         
         
-    }
+    },
         
         
         
