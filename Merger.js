@@ -241,6 +241,31 @@ Merger=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.TreeView,
+                                            listeners : {
+                                                cursor_changed : function (self) {
+                                                
+                                                    if (this.el.get_selection().count_selected_rows() < 1) {
+                                                        //nothing? - clea it?
+                                                        return;
+                                                    }
+                                                        var ret = {};        
+                                                     var s = this.el.get_selection();
+                                                    s.get_selected_rows(ret);
+                                                    
+                                                    
+                                                    var model = this.get('/changeFileStore');
+                                                
+                                                     var s = this.el.get_selection();
+                                                    s.get_selected_rows(ret);
+                                                    print(JSON.stringify(ret,null,4));
+                                                    //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
+                                                     //print("OUT?" + value);// id..
+                                                    // load the list in the right grid..
+                                                     
+                                                    return true;
+                                                
+                                                }
+                                            },
                                             pack : "add",
                                             init : function() {
                                                 XObject.prototype.init.call(this);
