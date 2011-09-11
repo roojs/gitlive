@@ -275,7 +275,7 @@ Merger=new XObject({
                                                     load : function(tr)
                                                     {
                                                         //this.insert(citer,iter,0);
-                                                    
+                                                        this.el.clear();
                                                         for(var i =0 ; i < tr.length; i++) {
                                                             var ret = {  };
                                                            
