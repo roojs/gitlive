@@ -266,6 +266,7 @@ Merger=new XObject({
                                                 
                                                 }
                                             },
+                                            id : "changedFilesView",
                                             pack : "add",
                                             init : function() {
                                                 XObject.prototype.init.call(this);
