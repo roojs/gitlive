@@ -304,8 +304,7 @@ Repo = XObject.define(
     
         changedFiles :function(path,  object, ident)
         {
-            limit = limit || false;
-            object = object || false;
+             object = object || false;
             ident = ident || false; 
             var res = [];
             var args = [ 'diff', { 'numstat' : true}  ];
