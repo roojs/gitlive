@@ -405,7 +405,7 @@ Merger=new XObject({
                                         var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
                                      
                                      
-                                        var diff = repo.diff('/',  'rev', 'github..master', files);
+                                        var diff = repo.diff('github', 'master',  files);
                                         
                                             
                                         
