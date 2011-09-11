@@ -410,7 +410,7 @@ Repo = XObject.define(
        }
           
         //echo $cmd;
-        
+        /*
         $commit = (object) array(
             'when' =>  $mi[0]->ctime,
             'reason' => $_REQUEST['message'],
@@ -437,7 +437,7 @@ Repo = XObject.define(
         // push
         
         
-        
+        */
         
         
         
