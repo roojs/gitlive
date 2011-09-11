@@ -190,7 +190,9 @@ Merger=new XObject({
                                                     load : function(tr,iter)
                                                     {
                                                         //this.insert(citer,iter,0);
-                                                    
+                                                        if (!iter) {
+                                                            this.el.clear();
+                                                        }
                                                         for(var i =0 ; i < tr.length; i++) {
                                                             var ret = {  };
                                                             if (iter) {
