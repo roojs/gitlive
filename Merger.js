@@ -148,7 +148,7 @@ Merger=new XObject({
                                                     var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
                                                  
                                                  
-                                                    var files = repo.changedFiles('/',   'rev', 'github..' + values);
+                                                    var files = repo.changedFiles('/',   'rev', 'github..' + value);
                                                     this.get('/changedFilesStore').load(files);
                                                     return true;
                                                 
