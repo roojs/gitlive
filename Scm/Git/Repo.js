@@ -212,13 +212,7 @@ Repo = XObject.define(
             to = to || false;
             from = from || false;
             
-            
-        $fh = $this->repo->impl()->git('diff', "-w", "{$this->release}..{$rev}", '--', $files);
-        echo "<PRE> Commit: " . $rev ."</PRE>";
-        echo '<PRE>' . htmlspecialchars(stream_get_contents($fh)) . '</PRE>';
-        fclose($fh);
-        exit;
-         
+             
             
             
             /*
