@@ -194,7 +194,7 @@
                                             "id": "patchview",
                                             "pack": "add",
                                             "xtype": "WebView",
-                                            "|showDiff": "function() {\n    \n}\n",
+                                            "|showDiff": "function(files) {\n    \n}\n",
                                             "|xns": "WebKit"
                                         }
                                     ]
