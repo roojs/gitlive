@@ -128,37 +128,21 @@ Merger=new XObject({
                                             xtype: Gtk.TreeView,
                                             listeners : {
                                                 cursor_changed : function (self) {
-                                                var ret = {};        
-                                                if (this.el.get_selection().count_selected_rows() < 1) {
-                                                //XN.get('Builder.LeftTree.model').
-                                                this.get('/LeftTree.model').load( false);
                                                 
-                                                return;
-                                                }
-                                                var model = this.get('/LeftProjectTree.model');
-                                                //console.log('changed');
-                                                var s = this.selection;
-                                                s.get_selected(ret);
-                                                var value = ''+ ret.model.get_value(ret.iter, 2).value.get_string();
-                                                //console.log(JSON.stringify(value,null,4));// id..
-                                                console.log("OUT?" + value);// id..
-                                                var file = this.get('/LeftProjectTree').project.getById(value);
+                                                    if (this.el.get_selection().count_selected_rows() < 1) {
+                                                        //nothing?
+                                                        return;
+                                                    }
+                                                    var model = this.get('/historyTreeStore');
+                                                    var ret = {};        
+                                                     var s = this.el.get_selection();
+                                                    s.get_selected(ret);
+                                                    
+                                                    var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
+                                                     print("OUT?" + value);// id..
+                                                    // load the list in the right grid..
                                                 
-                                                file.items = false;
-                                                console.log(file);
-                                                
-                                                
-                                                
-                                                var nb = this.get('/LeftTopPanel.expander');
-                                                nb.el.expanded = false;
-                                                nb.onCollapse();
-                                                //nb.listeners.activate.call(nb);
-                                                //_expander.el.set_expanded(false);
-                                                
-                                                var ltm = this.get('/LeftTree.model');
-                                                ltm.loadFile(file);
-                                                
-                                                return true;
+                                                    return true;
                                                 
                                                 }
                                             },
