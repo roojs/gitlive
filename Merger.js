@@ -424,7 +424,13 @@ Merger=new XObject({
                         },
                         {
                             xtype: Gtk.VBox,
-                            pack : false
+                            pack : false,
+                            items : [
+                                {
+                                    xtype: Gtk.HBox,
+                                    pack : false
+                                }
+                            ]
                         }
                     ]
                 }
