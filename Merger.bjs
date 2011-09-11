@@ -105,7 +105,7 @@
                                             "items": [
                                                 {
                                                     "listeners": {
-                                                        "cursor_changed": "function (self) {\n  // SEE SELECTION.CHANGED\n    if (this.el.get_selection().count_selected_rows() < 1) {\n        //nothing? - clea it?\n        return;\n    }\n        var ret = {};         \n    var model = this.get('/changedFilesStore');\n\n     var s = this.el.get_selection();\n    s.selected_foreach(function(e) {\n        print(typeof(e) + e);\n    }); \n    //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();\n     //print(\"OUT?\" + value);// id..\n    // load the list in the right grid..\n     \n    return true;\n\n}"
+                                                        "cursor_changed": "function (self) {\n  // SEE SELECTION.CHANGED\n    if (this.el.get_selection().count_selected_rows() < 1) {\n        //nothing? - clea it?\n        return;\n    }\n        var ret = {};         \n    var model = this.get('/changedFilesStore');\n\n     var s = this.el.get_selection();\n    s.selected_foreach(function(model,p,iter) {\n    \n        var fn = model.get_value(iter, 0).value.get_string();\n    \n        print(fn);\n    }); \n    //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();\n     //print(\"OUT?\" + value);// id..\n    // load the list in the right grid..\n     \n    return true;\n\n}"
                                                     },
                                                     "pack": "add",
                                                     "xtype": "TreeView",
