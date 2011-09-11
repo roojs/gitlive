@@ -394,6 +394,7 @@ Merger=new XObject({
                                 },
                                 {
                                     xtype: Gtk.ScrolledWindow,
+                                    pack : "pack_end,true,true,0",
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                           this.el.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
