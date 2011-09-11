@@ -126,6 +126,12 @@ Merger=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.TreeView,
+                                            listeners : {
+                                                cursor_changed : function (self) {
+                                                
+                                                
+                                                }
+                                            },
                                             pack : "add",
                                             init : function() {
                                                 XObject.prototype.init.call(this);
