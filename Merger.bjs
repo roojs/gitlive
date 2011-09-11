@@ -194,7 +194,7 @@
                                             "id": "patchview",
                                             "pack": "add",
                                             "xtype": "WebView",
-                                            "|showDiff": "function(files) {\n    \n     var Repo = imports.Scm.Git.Repo.Repo;\n    \n    \n    \n    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });\n \n \n    var diff = repo.diff(files, 'github', 'master');\n    \n   // remove..\n    var s  = \"var pre  = document.createElement('pre'); document.body.appendChild(pre);\";\n    s += \"pre.textContents =  \" +  JSON.stringify(diff) + \";\";\n    print(s);\n        \n    this.el.execute_script(s);\n        \n        \n    \n    \n    \n}\n",
+                                            "|showDiff": "function(files) {\n    \n     var Repo = imports.Scm.Git.Repo.Repo;\n    \n    \n    \n    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });\n \n \n    var diff = repo.diff(files, 'github', 'master');\n    \n   // remove..\n    var s  = \"document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);\";\n    s += \"pre.textContent =  \" +  JSON.stringify(diff) + \";\";\n    print(s);\n        \n    this.el.execute_script(s);\n        \n        \n    \n    \n    \n}\n",
                                             "|xns": "WebKit"
                                         }
                                     ]
