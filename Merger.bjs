@@ -10,7 +10,7 @@
                 "destroy_event": "function (self, event) {\n     this.el.hide();\n                return false;\n}",
                 "response": "function (self, id) {\n  // hide\n     //if (id < 1) {\n        this.el.hide();\n        return;\n    //}\n    if (typeof(this.get('bug').getValue()) != 'object') {\n        print(\"ERROR\");\n        return;\n    }\n \n    this.el.hide();\n        \n    //var val = this.get('bug').getValue();\n     //   Seed.print(val);\n}"
             },
-            " modal": false,
+            " modal": true,
             "border_width": 3,
             "default_height": 700,
             "default_width": 800,
