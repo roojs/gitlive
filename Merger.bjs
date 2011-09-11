@@ -194,7 +194,7 @@
                                             "id": "patchview",
                                             "pack": "add",
                                             "xtype": "WebView",
-                                            "|showDiff": "function(files) {\n    \n    \n    \n    \n    \n}\n",
+                                            "|showDiff": "function(files) {\n    \n     var Repo = imports.Scm.Git.Repo.Repo;\n    \n    \n    \n    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });\n \n \n    var diff = repo.diff('/',  'rev', 'github..master', files);\n    \n        \n    \n    \n    \n}\n",
                                             "|xns": "WebKit"
                                         }
                                     ]
