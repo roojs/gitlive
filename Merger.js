@@ -264,6 +264,27 @@ Merger=new XObject({
                                                     xtype: Gtk.ListStore,
                                                     id : "changedFilesStore",
                                                     pack : "set_model",
+                                                     : function(tr,iter)
+                                                    {
+                                                        //this.insert(citer,iter,0);
+                                                    
+                                                        for(var i =0 ; i < tr.length; i++) {
+                                                            var ret = {  };
+                                                            if (iter) {
+                                                                this.el.insert(ret ,iter,-1);
+                                                            } else {
+                                                                this.el.append(ret);
+                                                            }
+                                                            //print(JSON.stringify(ret,null,4));
+                                                             
+                                                              
+                                                            this.el.set_value(ret.iter, 0, ''  +  tr[i].filename );
+                                                            this.el.set_value(ret.iter, 1, '' + tr[i].added  );
+                                                            this.el.set_value(ret.iter, 1, '' + tr[i].remove  );
+                                                     
+                                                            
+                                                        }     
+                                                    },
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
                                                         this.el.set_column_types ( 3, [
