@@ -141,7 +141,15 @@ Merger=new XObject({
                                                     var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
                                                      print("OUT?" + value);// id..
                                                     // load the list in the right grid..
-                                                
+                                                    var Repo = imports.Scm.Git.Repo.Repo;
+                                                    
+                                                    
+                                                    
+                                                    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
+                                                 
+                                                 
+                                                    var files = repo.changedFiles('/',   'rev', 'github..' + out);
+                                                    this.get('/filesStore').load(hist);
                                                     return true;
                                                 
                                                 }
