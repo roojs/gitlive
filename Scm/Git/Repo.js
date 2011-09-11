@@ -212,6 +212,15 @@ Repo = XObject.define(
             to = to || false;
             from = from || false;
             
+            
+        $fh = $this->repo->impl()->git('diff', "-w", "{$this->release}..{$rev}", '--', $files);
+        echo "<PRE> Commit: " . $rev ."</PRE>";
+        echo '<PRE>' . htmlspecialchars(stream_get_contents($fh)) . '</PRE>';
+        fclose($fh);
+        exit;
+         
+            
+            
             /*
             if ($path instanceof MTrackSCMFile) {
                 if ($from === null) {
@@ -225,13 +234,19 @@ Repo = XObject.define(
                 return $this->git('log', '--max-count=1', '--format=format:', '--patch', $from, '--', $path->name);
                 
             }
-            
-            
-            if ($to !== null) {
-              return $this->git('diff', "$from..$to", '--', $path);
-            }
-            return $this->git('diff', "$from^..$from", '--', $path);
             */
+            args = [ 'diff' , { 'w' : true} ]
+        
+            if (to == false) {
+                to = from;
+                from = from + '^';
+            }
+            
+            args.push(from+'..'+to);
+            if (typeof(path) != 'string') {
+                path.forEach(function(p) { args.push(p); })
+            }
+            this.git(args); 
         },
         
         
