@@ -192,7 +192,14 @@
                                         {
                                             "pack": "pack_start,false,false,0",
                                             "xtype": "HBox",
-                                            "|xns": "Gtk"
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "|xns": "Gtk",
+                                                    "xtype": "Button",
+                                                    "pack": false
+                                                }
+                                            ]
                                         },
                                         {
                                             "pack": "pack_end,true,true,0",
