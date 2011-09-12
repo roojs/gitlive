@@ -43,7 +43,7 @@
                                     "listeners": {
                                         "clicked": "function (self) {\n    \n    \n \n       \n    \n    \n}"
                                     },
-                                    "label": "Add Clone",
+                                    "label": "Add Branch",
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
