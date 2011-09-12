@@ -262,6 +262,23 @@ Clones=new XObject({
                                 },
                                 {
                                     xtype: Gtk.TreeViewColumn,
+                                    min_width : 50,
+                                    pack : "append_column",
+                                    title : "Auto Commit",
+                                    init : function() {
+                                        XObject.prototype.init.call(this);
+                                        this.el.add_attribute(this.items[0].el , 'active', 4 );
+                                    
+                                    },
+                                    items : [
+                                        {
+                                            xtype: Gtk.CellRendererToggle,
+                                            pack : "pack_start"
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: Gtk.TreeViewColumn,
                                     min_width : 200,
                                     pack : "append_column",
                                     resizable : true,
