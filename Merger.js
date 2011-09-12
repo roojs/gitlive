@@ -45,14 +45,17 @@ Merger=new XObject({
             this.init();
         }
         var _this = this;
-        /*[ 'xtype'  ].forEach(function(k) {
-            _this.get(k).setValue(typeof(c[k]) == 'undefined' ? '' : c[k]);
-        });
-    	// shouild set path..
-        */
-      // this.el.set_modal(true);
-          this.el.set_title("Merger - ??? ");
+         
+          //this.el.set_title("Merger - ??? ");
     //   this.el.set_title("Merger - " + this.repo.repopath);
+    
+    
+    
+         /// load up branches
+         this.get('/workingList').load(Merger.repos.branches);
+         
+    
+    
         this.el.show_all();
         //this.get('/ok_button').el.set_sensitive(false);
         
