@@ -410,7 +410,7 @@ Merger=new XObject({
                                             showDiff : function(files) {
                                                 
                                              
-                                                var diff = this.repo.diff(files, 'github', 'master');
+                                                var diff = Merger.repo.diff(files, 'github', 'master');
                                                 
                                                // remove..
                                                 var s  = "document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);";
