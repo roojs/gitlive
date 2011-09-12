@@ -295,11 +295,12 @@ Repo.list = function()
         return Repo._list;
     }
     Repo._list  = [];
-    var ar = File.list( GLib.get_home_dir() + '/gitlive');
+    var dir = GLib.get_home_dir() + '/gitlive';
+    var ar = File.list(dir );
     print(JSON.stringify(ar));
     ar.forEach(function(f) {
-        if (File.exists(f +'/.git')) {
-            Repo._list.push(new imports.Scm.Git.Repo.Repo({repopath : f }))
+        if (File.exists(dir + '/' + f +'/.git')) {
+            Repo._list.push(new imports.Scm.Git.Repo.Repo({repopath : dir  +'/' + f }))
             
         }
         
