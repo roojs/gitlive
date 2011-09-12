@@ -112,6 +112,7 @@
                                     "|xns": "Gtk"
                                 },
                                 {
+                                    "id": "commitMsg",
                                     "xtype": "TextView",
                                     "|xns": "Gtk"
                                 },
