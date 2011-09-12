@@ -184,7 +184,7 @@ Commit=new XObject({
                         },
                         {
                             xtype: Gtk.Entry,
-                            id : "remoteName"
+                            id : "commitDate"
                         }
                     ]
                 }
