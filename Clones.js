@@ -527,7 +527,7 @@ Clones=new XObject({
         {
             xtype: Gtk.Button,
             id : "ok_button",
-            label : "OK",
+            label : "Close",
             pack : "add_action_widget,1"
         }
     ]
