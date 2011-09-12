@@ -98,6 +98,7 @@ Repo = XObject.define(
                 { format :  '%(refname:short):remotes/%(upstream:short)' },
                 'refs/heads'
             ]).split("\n");
+            print(this.lastCmd);
             
             print(JSON.stringify(bl,null,4));
             
