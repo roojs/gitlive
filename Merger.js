@@ -602,11 +602,12 @@ Merger=new XObject({
                                                     print("History" + JSON.stringify(history, null,4));
                                                     
                                                     Commit = imports.Commit.Commit;
-                                                    Commit.repo = Merger.repo;
+                                                
                                                     Commit.el.set_modal(true);
                                                     Commit.el.set_transient_for(Merger.el);
                                                 
                                                     Commit.show({
+                                                        repo : Merger.repo,
                                                         files : files,
                                                         release : model.release,
                                                         rev : model.rev,
