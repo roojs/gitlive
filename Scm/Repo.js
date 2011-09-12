@@ -301,7 +301,7 @@ Repo.list = function()
             
         }
         
-    }
+    });
     return Repo._list;
     
     
