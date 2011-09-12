@@ -96,7 +96,7 @@
                                             "id": "changedFilesStore",
                                             "pack": "set_model",
                                             "xtype": "ListStore",
-                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.set_column_types ( 3, [\n       GObject.TYPE_STRING, // file  \n      GObject.TYPE_STRING, // added\n      GObject.TYPE_STRING, // removed\n       GObject.TYPE_BOOLEAN, // removed\n        GObject.TYPE_BOOLEAN // removed\n  ] );\n}\n",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.set_column_types ( 3, [\n       GObject.TYPE_STRING, // repo  \n      GObject.TYPE_STRING, // current branch\n      GObject.TYPE_STRING, // all branch      \n      GObject.TYPE_STRING, // updated\n       GObject.TYPE_BOOLEAN, // auto-commit\n        GObject.TYPE_BOOLEAN // auto-push\n  ] );\n}\n",
                                             "|load": "function(tr)\n{\n    //this.insert(citer,iter,0);\n    this.el.clear();\n    for(var i =0 ; i < tr.length; i++) {\n        var ret = {  };\n       \n        this.el.append(ret);\n        \n        //print(JSON.stringify(ret,null,4));\n         \n          \n        this.el.set_value(ret.iter, 0, ''  +  tr[i].filename );\n        this.el.set_value(ret.iter, 1, '' + tr[i].added  );\n        this.el.set_value(ret.iter, 2, '' + tr[i].removed  );\n \n        \n    }     \n}",
                                             "|xns": "Gtk"
                                         },
