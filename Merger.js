@@ -439,7 +439,7 @@ Merger=new XObject({
                                                 }
                                             
                                                 var ret = {};         
-                                                var model = this.get('/changedFilesStore');
+                                             
                                             
                                                  var s = this.el.get_selection();
                                                  var files = [];
