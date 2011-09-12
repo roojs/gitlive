@@ -633,11 +633,6 @@ Merger=new XObject({
         },
         {
             xtype: Gtk.Button,
-            label : "Cancel",
-            pack : "add_action_widget,0"
-        },
-        {
-            xtype: Gtk.Button,
             id : "ok_button",
             label : "OK",
             pack : "add_action_widget,1"
