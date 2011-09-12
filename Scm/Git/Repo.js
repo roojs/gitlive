@@ -62,15 +62,17 @@ Repo = XObject.define(
                 }
             });
             return this.branches;
-          },
-          
-          autocommit: function() {
-                return true;
-          },
-          
-          autopush: function() {
-                return true;
-          },
+        },
+        lastupdated: function() {
+            return 'tbc';
+        },
+        autocommit: function() {
+            return true;
+        },
+        
+        autopush: function() {
+            return true;
+        },
           /*
         
           public function getTags()
