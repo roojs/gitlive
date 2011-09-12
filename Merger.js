@@ -569,13 +569,26 @@ Merger=new XObject({
                                             xtype: Gtk.Button,
                                             listeners : {
                                                 clicked : function (self) {
+                                                    
+                                                     
+                                                     var model = this.get('/historyTreeStore');
+                                                    
+                                                    if (model.release === false) {
+                                                        return;
+                                                    }
+                                                    
+                                                    var diff = Merger.repo.diff(files, model.release, model.rev);
+                                                    
+                                                    
                                                     Commit = imports.Commit.Commit;
                                                     Commit.repo = Merger.repo;
                                                     Commit.el.set_modal(true);
                                                     Commit.el.set_transient_for(Merger.el);
                                                 
                                                     Commit.show({
-                                                        files : this.get('/changedFilesView').files()
+                                                        files : this.get('/changedFilesView').files(),
+                                                        release : model.release,
+                                                        rev : model.rev
                                                     
                                                     });
                                                 
