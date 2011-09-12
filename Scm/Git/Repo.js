@@ -78,7 +78,7 @@ Repo = XObject.define(
                 
                 var url = Repo.parseURL(cfg.url);
                 if ((cfg.scheme == 'http://' || cfg.scheme == 'https://' )
-                    && cfg.username.length) {
+                    && cfg.user.length) {
                     // remove username - as it confuses netrc..
                     cfg.url = cfg.scheme + cfg.host + '/' + cfg.path;
                     
