@@ -77,10 +77,10 @@ Repo = XObject.define(
                 this._remotes = false; // reset so we can query it..
                 
                 var url = Repo.parseURL(cfg.url);
-                if ((cfg.scheme == 'http://' || cfg.scheme == 'https://' )
-                    && cfg.user.length) {
+                if ((url.scheme == 'http://' || url.scheme == 'https://' )
+                    && url.user.length) {
                     // remove username - as it confuses netrc..
-                    cfg.url = cfg.scheme + cfg.host + '/' + cfg.path;
+                    cfg.url = url.scheme + url.host + '/' +url.path;
                     
                 }
                 
