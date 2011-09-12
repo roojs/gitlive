@@ -222,6 +222,62 @@ Commit=new XObject({
                             pack : "add"
                         }
                     ]
+                },
+                {
+                    xtype: Gtk.ScrolledWindow,
+                    pack : "pack_end,true,true,0",
+                    init : function() {
+                        XObject.prototype.init.call(this);
+                          this.el.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+                    },
+                    items : [
+                        {
+                            xtype: WebKit.WebView,
+                            id : "patchview",
+                            pack : "add",
+                            clear : function() {
+                                
+                                
+                                
+                                 
+                               // remove..
+                                var s  = "document.body.textContent='';"
+                                    
+                                this.el.execute_script(s);
+                                    
+                                    
+                                
+                                
+                                
+                            },
+                            showDiff : function(files) {
+                                this.clear();
+                                
+                                
+                                 var model = this.get('/historyTreeStore');
+                                
+                                if (model.release === false) {
+                                    return;
+                                }
+                                
+                                var diff = Merger.repo.diff(files, model.release, model.rev);
+                                
+                               // remove..
+                                var s  = "var pre  = document.createElement('pre'); document.body.appendChild(pre);";
+                                s += "pre.textContent =  " +
+                                         JSON.stringify(Merger.repo.lastCmd + "\n") + '+  ' + 
+                                       JSON.stringify(diff) + ";";
+                                print(s);
+                                    
+                                this.el.execute_script(s);
+                                    
+                                    
+                                
+                                
+                                
+                            }
+                        }
+                    ]
                 }
             ]
         },
