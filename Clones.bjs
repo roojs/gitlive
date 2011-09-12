@@ -50,7 +50,7 @@
                                 },
                                 {
                                     "listeners": {
-                                        "clicked": "function (self) {\n    \n    \n    \n    var Merger =     imports.Merger.Merger;\n    \n    \n    \n    \n    Merger.repo = new Repo('/home/alan/gitlive/roojs1');\n    Merger.show();\n\n       \n    \n    \n}"
+                                        "clicked": "function (self) {\n\n    var rv = this.get('/reposView');\n    \n    if (rv.el.get_selection().count_selected_rows() != 1) {\n        //nothing?\n        // error condition.\n        return;\n    }\n\n    \n \n    var ret = {};        \n     var s = rv.el.get_selection();\n    s.get_selected(ret);\n    \n    \n    \n    var Merger =     imports.Merger.Merger;\n    \n    \n    \n    \n    Merger.repo = new Repo('/home/alan/gitlive/roojs1');\n    Merger.show();\n\n       \n    \n    \n}"
                                     },
                                     "label": "Run Merger",
                                     "pack": "add",
