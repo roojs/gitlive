@@ -47,8 +47,8 @@ Commit=new XObject({
         }
         var _this = this;
         //this.get('/remotesStore').load();
-        this.get('/remoteURL').el.get_child().set_text('');
-        this.get('/remoteName').el.set_text('');
+       // this.get('/remoteURL').el.get_child().set_text('');
+        //this.get('/remoteName').el.set_text('');
         
         
         this.el.show_all();
@@ -57,11 +57,11 @@ Commit=new XObject({
         if (run_ret < 1 ) {
             return false;
         }
-        var ret=  {
-            url :  this.get('/remoteURL').el.get_child().get_text(),
-            name :  this.get('/remoteName').el.get_text()
-        };
-        
+        //var ret=  {
+        //    url :  this.get('/remoteURL').el.get_child().get_text(),
+        //    name :  this.get('/remoteName').el.get_text()
+        //};
+        return true;
         return ret;
         
         
