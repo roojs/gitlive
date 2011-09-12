@@ -110,10 +110,11 @@ Merger=new XObject({
                             init : function() {
                                 this.el = new Gtk.ComboBox.with_entry();
                                 
-                                XObject.prototype.init.call(this);
+                            
                                 this.model  = new XObject(this.model);
                                 
                                 this.el.set_model(this.model.el);
+                                    XObject.prototype.init.call(this);
                                 
                             },
                             model : {
