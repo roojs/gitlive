@@ -112,6 +112,7 @@
                                     "|xns": "Gtk"
                                 },
                                 {
+                                    "height_request": 100,
                                     "id": "commitMsg",
                                     "pack": "add",
                                     "xtype": "TextView",
