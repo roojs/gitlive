@@ -108,8 +108,7 @@ Merger=new XObject({
                         {
                             xtype: Gtk.ComboBoxEntry,
                             model : {
-                                xtype: Gtk.ListStore,
-                                pack : false
+                                xtype: Gtk.ListStore
                             }
                         }
                     ]
