@@ -293,6 +293,17 @@ Clones=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.CellRendererToggle,
+                                            listeners : {
+                                                toggled : function (self, path) {
+                                                    var ret ={} ;
+                                                    var store = this.get('/reposStore');
+                                                    store.el.get_iter_from_string(ret, path);
+                                                                                                                 
+                                                    var value =   store.el.get_value(ret.iter, 2).value.get_boolean();
+                                                                                                                 
+                                                    
+                                                }
+                                            },
                                             pack : "pack_start",
                                             mode : Gtk.CellRendererMode.ACTIVATABLE
                                         }
