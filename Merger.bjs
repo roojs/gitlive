@@ -7,11 +7,17 @@
     "items": [
         {
             "listeners": {
-                "clicked": "function (self) {\n    \n    \n \n    var hist = Merger.repo.dayTree('/', false, 'rev', 'github..master');\n    this.get('/historyTreeStore').load(hist);\n         \n    \n}"
+                "destroy_event": "function (self, event) {\n     this.el.hide();\n                return false;\n}",
+                "response": "function (self, id) {\n  // hide\n     //if (id < 1) {\n        this.el.hide();\n        return;\n    //}\n    if (typeof(this.get('bug').getValue()) != 'object') {\n        print(\"ERROR\");\n        return;\n    }\n \n    this.el.hide();\n        \n    //var val = this.get('bug').getValue();\n     //   Seed.print(val);\n}"
             },
-            "label": "Select Branch",
-            "pack": "add",
-            "xtype": "Button",
+            "border_width": 3,
+            "default_height": 700,
+            "default_width": 800,
+            "id": "Merger",
+            "title": "Merger",
+            "xtype": "Dialog",
+            "|deletable": true,
+            "|show": "function(c) {\n    \n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n     \n      //this.el.set_title(\"Merger - ??? \");\n//   this.el.set_title(\"Merger - \" + this.repo.repopath);\n\n\n\n     /// load up branches\n     this.get('/workingCombo').load(Merger.repo.branches);\n     \n     this.get('/releaseCombo').load(Merger.repo.branches);\n\n    this.el.show_all();\n    //this.get('/ok_button').el.set_sensitive(false);\n    \n    // block until we return.\n    var run_ret = this.el.run();\n    if (run_ret < 1 ) {\n        return  \"DONE\";\n    }\n    print(\"RUN RETURN : \" + run_ret);\n    return \"DONE\";\n    //print(JSON.stringify(this.get('bug').getValue()));\n   // return this.get('bug').getValue();\n    //this.success = c.success;\n}\n",
             "|xns": "Gtk",
             "items": [
                 {
