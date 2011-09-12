@@ -51,7 +51,7 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "xtype": "ComboBoxEntry",
+                                    "xtype": "ComboBox",
                                     "|init": "function() {\n    this.el = new Gtk.ComboBoxEntry.c_new();\n    \n    XObject.prototype.init.call(this);\n    this.el.set_model(this.model.el);\n    \n}\n",
                                     "|xns": "Gtk",
                                     "items": [
