@@ -84,15 +84,51 @@ Clones=new XObject({
                             xtype: Gtk.Button,
                             listeners : {
                                 clicked : function (self) {
-                                    
+                                
+                                    var rv = this.get('/reposView');
+                                    var rs = this.get('/reposStore');
+                                    if (rv.el.get_selection().count_selected_rows() != 1) {
+                                        //nothing?
+                                        // error condition.
+                                        return;
+                                    }
+                                    var Remotes =     imports.Remotes.Remotes;
                                     
                                  
+                                    var ret = {};       
+                                    var s = rv.el.get_selection();
+                                    var path = '';
+                                    s.selected_foreach(function(model,p,iter) {
+                                                                                    
+                                       path = model.get_value(iter, 6).value.get_string();
+                                     
+                                    }); 
+                                
+                                    var repo = false;
+                                    rs.repos.forEach(function(r) {
+                                        if (r.repopath == path) {
+                                            repo = r;
+                                        
+                                        }
+                                    
+                                    });
+                                    Remotes.repo = repo;
+                                    Remotes.el.set_transient_for(Clones.el);
+                                    Clones.el.set_title("Manage Clones - " + repo.repopath);
+                                    Remotes.show();
+                                    Clones.el.set_title("Manage Clones");
+                                
+                                     
+                                    
+                                    
+                                    
+                                
                                        
                                     
                                     
                                 }
                             },
-                            label : "Add Clone",
+                            label : "Remotes / Clones",
                             pack : "add"
                         },
                         {
@@ -107,7 +143,7 @@ Clones=new XObject({
                                     
                                 }
                             },
-                            label : "Add Branch",
+                            label : "Branches",
                             pack : "add"
                         },
                         {
