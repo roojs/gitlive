@@ -1,6 +1,6 @@
 var XObject = imports.XObject.XObject;
 
-
+var GLib  = imports.gi.GLib;
 // mix of SCM and Repo class from mtrack.
 
 //var SCM = imports.SCM.SCM;
@@ -286,9 +286,23 @@ Repo = XObject.define(
     }  
 */
 
-
+Repo._list  = false;
 Repo.list = function()
 {
+    
+    if (Repo.list !== false) {
+        return Repo.list;
+    }
+    Repo._list  = [];
+    var ar = File.list( GLib.get_home_dir() + '/gitlive');
+    ar.forEach(function(f) {
+        if (File.exists(f +'/.git')) {
+            Repo._list.push(new imports.Scm.Git.Repo.Repo({repopath : f }))
+            
+        }
+        
+        
+    }
     
     
     
