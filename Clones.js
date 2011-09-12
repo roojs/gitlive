@@ -222,7 +222,7 @@ Clones=new XObject({
                                     pack : "set_model",
                                     init : function() {
                                         XObject.prototype.init.call(this);
-                                        this.el.set_column_types ( 3, [
+                                        this.el.set_column_types ( 7, [
                                            GObject.TYPE_STRING, // repo  
                                           GObject.TYPE_STRING, // current branch
                                           GObject.TYPE_STRING, // all branch      
