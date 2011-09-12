@@ -166,6 +166,11 @@ Merger=new XObject({
                         },
                         {
                             xtype: Gtk.ComboBox,
+                            listeners : {
+                                changed : function (self) {
+                                   this.get('/historyTreeStore').loadTree();
+                                }
+                            },
                             id : "releaseCombo",
                             init : function() {
                                 this.el = new Gtk.ComboBox.with_entry();
