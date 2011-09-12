@@ -58,7 +58,7 @@ Repo = XObject.define(
                   // * master 61e7e7d oneliner
                 var active = line[0]=='*';
                 line = line.substring(2);
-                
+                print(JSON.stringify(linel));
                 var parts = line.split(/\s+/);
                 if (parts[0] == '->') {
                     return; // it's an alias like  remotes/origin/HEAD    -> origin/master
