@@ -194,7 +194,7 @@ Commit=new XObject({
                     items : [
                         {
                             xtype: Gtk.Label,
-                            label : "Date",
+                            label : "Author",
                             pack : "pack_start,false,false,10",
                             width_request : 50,
                             xalign : 1
