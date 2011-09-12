@@ -52,7 +52,7 @@ Merger=new XObject({
     
     
          /// load up branches
-         this.get('/workingList').load(Merger.repos.branches);
+         this.get('/workingCombo').model.load(Merger.repos.branches);
          
     
     
