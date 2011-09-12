@@ -218,7 +218,7 @@ Branches=new XObject({
                                     min_width : 70,
                                     pack : "append_column",
                                     resizable : true,
-                                    title : "Type",
+                                    title : "Remote",
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                         this.el.add_attribute(this.items[0].el , 'markup', 2 );
