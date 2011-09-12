@@ -63,6 +63,14 @@ Repo = XObject.define(
             });
             return this.branches;
           },
+          
+          autocommit: function() {
+                return true;
+          },
+          
+          autopush: function() {
+                return true;
+          },
           /*
         
           public function getTags()
