@@ -295,6 +295,7 @@ Repo.list = function()
     }
     Repo._list  = [];
     var ar = File.list( GLib.get_home_dir() + '/gitlive');
+    print(JSON.stringify(ar));
     ar.forEach(function(f) {
         if (File.exists(f +'/.git')) {
             Repo._list.push(new imports.Scm.Git.Repo.Repo({repopath : f }))
@@ -302,6 +303,7 @@ Repo.list = function()
         }
         
     });
+    
     return Repo._list;
     
     
