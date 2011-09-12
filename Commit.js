@@ -190,7 +190,7 @@ Commit=new XObject({
                 },
                 {
                     xtype: Gtk.HBox,
-                    pack : "pack_start,false,true,10",
+                    pack : "pack_start,false,true,5",
                     items : [
                         {
                             xtype: Gtk.Label,
