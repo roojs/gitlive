@@ -60,7 +60,7 @@
                                 },
                                 {
                                     "listeners": {
-                                        "changed": "function (self) {\n   var val = this.el.get_child().get_active_text();\n   \n   if (!val.length) {\n       return;\n   }\n   \n   var name = this.get('/remoteName').el.get_text();\n   if (name.length) {\n       return;\n   }\n   // fill in name\n   imports.Scm.Git.Repo.Repo.parseURL(val);\n   if ((typeof(val.host) != 'undefined') && val.host.length) {\n        this.get('/remoteName').el.set_text(val.host);\n   }\n    \n   \n}"
+                                        "changed": "function (self) {\n   var val = this.el.get_child().get_text();\n   \n   if (!val.length) {\n       return;\n   }\n   \n   var name = this.get('/remoteName').el.get_text();\n   if (name.length) {\n       return;\n   }\n   // fill in name\n   imports.Scm.Git.Repo.Repo.parseURL(val);\n   if ((typeof(val.host) != 'undefined') && val.host.length) {\n        this.get('/remoteName').el.set_text(val.host);\n   }\n    \n   \n}"
                                     },
                                     "id": "remoteURL",
                                     "xtype": "ComboBox",
