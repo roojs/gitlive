@@ -243,9 +243,10 @@ Clones=new XObject({
                                     {
                                         //this.insert(citer,iter,0);
                                         print("getting list");
-                                        var tr = imports.Scm.Repo.Repo.list();
-                                        
+                                        this.repos = imports.Scm.Repo.Repo.list();
+                                        var tr= this.repos;
                                         this.el.clear();
+                                        
                                         for(var i =0 ; i < tr.length; i++) {
                                             var ret = {  };
                                            
