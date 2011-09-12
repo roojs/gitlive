@@ -49,6 +49,11 @@
                                     "label": "Working Branch",
                                     "xtype": "Label",
                                     "|xns": "Gtk"
+                                },
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "ComboBoxEntry",
+                                    "pack": false
                                 }
                             ]
                         },
