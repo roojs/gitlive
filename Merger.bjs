@@ -55,10 +55,9 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
-                                            "|xns": "Gtk",
-                                            "xtype": "ListStore",
                                             "*prop": "model",
-                                            "pack": false
+                                            "xtype": "ListStore",
+                                            "|xns": "Gtk"
                                         }
                                     ]
                                 }
