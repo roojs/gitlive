@@ -219,10 +219,6 @@ Commit=new XObject({
                         {
                             xtype: Gtk.TextView,
                             id : "commitMsg"
-                        },
-                        {
-                            xtype: Gtk.Entry,
-                            id : "commitDate"
                         }
                     ]
                 }
