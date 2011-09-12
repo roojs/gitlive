@@ -1,6 +1,7 @@
 var XObject = imports.XObject.XObject;
 
 var GLib  = imports.gi.GLib;
+var File = imports.File.File;
 // mix of SCM and Repo class from mtrack.
 
 //var SCM = imports.SCM.SCM;
