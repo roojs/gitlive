@@ -192,6 +192,10 @@ Merger=new XObject({
                                 
                                 for(var i =0 ; i < tr.length; i++) {
                                     var ret = {  };
+                                    if (!tr[i].name.length) {
+                                        continue;
+                                    }
+                                    
                                     this.model.el.append(ret);
                                     //print(JSON.stringify(ret,null,4));
                                     if (tr[i].name == 'master') {
@@ -199,7 +203,8 @@ Merger=new XObject({
                                     }
                                     if (tr[i].name == 'release') {
                                         release = i;
-                                    }          
+                                    }
+                                     
                                     this.model.el.set_value(ret.iter, 0, '' + tr[i].name );
                                     this.model.el.set_value(ret.iter, 1, '' + tr[i].rev  );
                              
