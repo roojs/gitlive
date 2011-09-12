@@ -217,8 +217,7 @@ Commit=new XObject({
                             xalign : 1
                         },
                         {
-                            xtype: Gtk.TextView,
-                            pack : false
+                            xtype: Gtk.TextView
                         },
                         {
                             xtype: Gtk.Entry,
