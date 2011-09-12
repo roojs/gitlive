@@ -106,7 +106,11 @@ Merger=new XObject({
                             label : "Working Branch"
                         },
                         {
-                            xtype: Gtk.ComboBoxEntry
+                            xtype: Gtk.ComboBoxEntry,
+                            model : {
+                                xtype: Gtk.ListStore,
+                                pack : false
+                            }
                         }
                     ]
                 },
