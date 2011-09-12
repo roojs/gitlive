@@ -177,9 +177,9 @@
                                             ]
                                         },
                                         {
-                                            "resizable": false,
                                             "min_width": 50,
                                             "pack": "append_column",
+                                            "resizable": false,
                                             "title": "All Branches",
                                             "xtype": "TreeViewColumn",
                                             "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 2 );\n\n}\n",
