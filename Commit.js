@@ -209,7 +209,7 @@ Commit=new XObject({
                         },
                         {
                             xtype: Gtk.Entry,
-                            id : "commitDate"
+                            id : "commitAuthor"
                         }
                     ]
                 },
