@@ -594,7 +594,7 @@ Merger=new XObject({
                                                     if (!file.length) {
                                                         return; // error.!
                                                     }
-                                                    
+                                                    print(JSON.stringify(files));
                                                     
                                                     var log =  Merger.repo.history(files, 1, 'rev', model.rev + '..' + model.release);
                                                     
