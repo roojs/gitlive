@@ -153,7 +153,7 @@ Merger=new XObject({
                         },
                         {
                             xtype: Gtk.ComboBox,
-                            id : "workingCombo",
+                            id : "releaseCombo",
                             init : function() {
                                 this.el = new Gtk.ComboBox.with_entry();
                                 
