@@ -568,8 +568,15 @@ Merger=new XObject({
                                             pack : "add",
                                             showDiff : function(files) {
                                                 
-                                             
-                                                var diff = Merger.repo.diff(files, 'github', 'master');
+                                                
+                                                
+                                                 var model = this.get('/historyTreeStore');
+                                                
+                                                if (model.release === false) {
+                                                    return;
+                                                }
+                                                
+                                                var diff = Merger.repo.diff(files, model.release, 'master');
                                                 
                                                // remove..
                                                 var s  = "document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);";
