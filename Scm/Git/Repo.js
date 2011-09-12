@@ -96,7 +96,7 @@ Repo = XObject.define(
                 // we should always have a local version of it.
                 bmap[lname].remote = rname;
                 // flag it for not adding..
-                bname[rname].name = lname;
+                bmap[rname].name = lname;
             });
             // add any remotes that do not have name..
             remotes.forEach(function(r) {
