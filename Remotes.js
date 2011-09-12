@@ -80,9 +80,11 @@ Remotes=new XObject({
                                 
                                     var res =  RemoteEdit.show();
                                     
-                                    Remotes.repo.remotes(res);
+                                    if (res != false) {
+                                        Remotes.repo.remotes(res);
+                                    }
                                     
-                                    
+                                    this.get('/remotesStore').load();
                                 
                                     
                                 }
