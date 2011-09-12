@@ -597,7 +597,7 @@ Merger=new XObject({
                                                    print("history?");
                                                    
                                                     
-                                                    var history =  Merger.repo.history(files, 1, 'rev', model.rev + '..' + model.release);
+                                                    var history =  Merger.repo.history(files, 1, 'rev', model.rev);
                                                     
                                                     print("History" + JSON.stringify(history));
                                                     
