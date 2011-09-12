@@ -83,14 +83,8 @@ Merger=new XObject({
                                 clicked : function (self) {
                                     
                                     
-                                    var Repo = imports.Scm.Git.Repo.Repo;
-                                    
-                                    
-                                    
-                                    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
                                  
-                                 
-                                    var hist = repo.dayTree('/', false, 'rev', 'github..master');
+                                    var hist = this.repo.dayTree('/', false, 'rev', 'github..master');
                                     this.get('/historyTreeStore').load(hist);
                                         
                                        
@@ -145,11 +139,8 @@ Merger=new XObject({
                                                     var Repo = imports.Scm.Git.Repo.Repo;
                                                     
                                                     
-                                                    
-                                                    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
-                                                 
-                                                 
-                                                    var files = repo.changedFiles('/',   'rev', 'github..' + value);
+                                                   
+                                                    var files = this.repo.changedFiles('/',   'rev', 'github..' + value);
                                                     this.get('/changedFilesStore').load(files);
                                                     return true;
                                                 
@@ -417,14 +408,8 @@ Merger=new XObject({
                                             pack : "add",
                                             showDiff : function(files) {
                                                 
-                                                 var Repo = imports.Scm.Git.Repo.Repo;
-                                                
-                                                
-                                                
-                                                var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
                                              
-                                             
-                                                var diff = repo.diff(files, 'github', 'master');
+                                                var diff = this.repo.diff(files, 'github', 'master');
                                                 
                                                // remove..
                                                 var s  = "document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);";
