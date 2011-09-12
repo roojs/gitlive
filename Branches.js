@@ -235,7 +235,7 @@ Branches=new XObject({
                                     xtype: Gtk.TreeViewColumn,
                                     min_width : 200,
                                     pack : "append_column",
-                                    title : "URL",
+                                    title : "Status",
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                         this.el.add_attribute(this.items[0].el , 'markup', 1 );
