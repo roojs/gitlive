@@ -112,7 +112,7 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "cursor_visable": false,
+                                    "cursor_visible": false,
                                     "id": "commitMsg",
                                     "pack": "add",
                                     "xtype": "TextView",
