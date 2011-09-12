@@ -115,7 +115,15 @@ Merger=new XObject({
                                 
                             },
                             model : {
-                                xtype: Gtk.ListStore
+                                xtype: Gtk.ListStore,
+                                init : function() {
+                                    XObject.prototype.init.call(this);
+                                    this.el.set_column_types ( 3, [
+                                           GObject.TYPE_STRING, // file  
+                                          GObject.TYPE_STRING, // added
+                                          GObject.TYPE_STRING, // removed
+                                      ] );
+                                }
                             }
                         }
                     ]
