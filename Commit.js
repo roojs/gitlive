@@ -243,7 +243,7 @@ Commit=new XObject({
                     items : [
                         {
                             xtype: WebKit.WebView,
-                            id : "patchview",
+                            id : "commitPatch",
                             pack : "add",
                             clear : function() {
                                 
