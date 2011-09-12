@@ -611,7 +611,7 @@ Merger=new XObject({
                                                         files : files,
                                                         release : model.release,
                                                         rev : model.rev,
-                                                        author : history[0].changedby,
+                                                        author : history[0].changeby,
                                                         changed : history[0].changed_raw
                                                         
                                                     
