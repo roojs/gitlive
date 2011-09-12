@@ -216,11 +216,12 @@ Clones=new XObject({
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                         this.el.set_column_types ( 3, [
-                                           GObject.TYPE_STRING, // file  
-                                          GObject.TYPE_STRING, // added
-                                          GObject.TYPE_STRING, // removed
-                                           GObject.TYPE_BOOLEAN, // removed
-                                            GObject.TYPE_BOOLEAN // removed
+                                           GObject.TYPE_STRING, // repo  
+                                          GObject.TYPE_STRING, // current branch
+                                          GObject.TYPE_STRING, // all branch      
+                                          GObject.TYPE_STRING, // updated
+                                           GObject.TYPE_BOOLEAN, // auto-commit
+                                            GObject.TYPE_BOOLEAN // auto-push
                                       ] );
                                     },
                                     load : function(tr)
