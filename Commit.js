@@ -46,10 +46,18 @@ Commit=new XObject({
             this.init();
         }
         var _this = this;
-        //this.get('/remotesStore').load();
-       // this.get('/remoteURL').el.get_child().set_text('');
-        //this.get('/remoteName').el.set_text('');
         
+        
+        this.files = c.files;
+        this.release = c.release;
+        this.rev = c.rev;
+        
+            
+    
+        this.get('/commitDate').el.set_text(c.changed);
+        this.get('/commitAuthor').el.set_text(c.author);
+        
+        this.get('/commitPatch').load(c.files);
         
         this.el.show_all();
         
