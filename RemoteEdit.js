@@ -55,10 +55,16 @@ RemoteEdit=new XObject({
         
         var run_ret = this.el.run();
         if (run_ret < 1 ) {
-            return  "DONE";
+            return false;
         }
-        print("RUN RETURN : " + run_ret);
-        return "DONE";
+        var ret=  {
+            url :  this.get('/remoteURL').el.get_child().get_text(),
+            name :  this.get('/remoteName').el.get_text()
+        };
+        
+        return ret;
+        
+        
         
     },
     items : [
