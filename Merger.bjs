@@ -31,11 +31,6 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "label": "Working Branch",
-                                    "xtype": "Label",
-                                    "|xns": "Gtk"
-                                },
-                                {
                                     "listeners": {
                                         "changed": "function (self) {\n   this.get('/historyTreeStore').loadTree();\n}"
                                     },
