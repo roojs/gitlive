@@ -211,7 +211,7 @@ Clones=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.ListStore,
-                                    id : "changedFilesStore",
+                                    id : "reposStore",
                                     pack : "set_model",
                                     init : function() {
                                         XObject.prototype.init.call(this);
