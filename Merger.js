@@ -271,7 +271,12 @@ Merger=new XObject({
                                                     
                                                     
                                                    
-                                                    var files = Merger.repo.changedFiles('/',   'rev', 'github..' + value);
+                                                    if (model.release === false) {
+                                                        return;
+                                                    }
+                                                   
+                                                   
+                                                    var files = Merger.repo.changedFiles('/',   'rev', model.release + '..' + value);
                                                     this.get('/changedFilesStore').load(files);
                                                     return true;
                                                 
