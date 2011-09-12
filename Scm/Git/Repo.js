@@ -76,6 +76,15 @@ Repo = XObject.define(
             if (cfg) {
                 this._remotes = false; // reset so we can query it..
                 
+                var url = Repo.parseURL(cfg.url);
+                if ((cfg.scheme == 'http://' || cfg.scheme == 'https://' )
+                    && cfg.username.length) {
+                    // remove username - as it confuses netrc..
+                    cfg.url = cfg.scheme + cfg.host + '/' + cfg.path;
+                    
+                }
+                
+                
                 this.git([
                     'remote',
                     'add',
@@ -84,6 +93,9 @@ Repo = XObject.define(
                 ]);
                 
                 
+                
+                //print(this.lastCmd);
+
             }
             
             
