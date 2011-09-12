@@ -134,15 +134,18 @@ Clones=new XObject({
                                      
                                     }); 
                                 
-                                
+                                    var repo = false;
                                     rs.repos.forEach(function(r) {
                                         if (r.repopath == path) {
-                                            Merger.repo = r;
-                                            Merger.show();
+                                            repo = r;
                                         
                                         }
                                     
                                     });
+                                    Merger.repo = repo;
+                                    Merger.show();
+                                    Merger.el.set_transient_for(Clones.el);
+                                
                                     
                                     
                                 
