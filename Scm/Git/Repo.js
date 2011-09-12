@@ -45,6 +45,7 @@ Repo = XObject.define(
             var bl = this.git([ 'branch', {
                 'no-color' : true,
                 'verbose' : true,
+                'no-abbrev'  : true,
                 'a' : true
             }]).split("\n");
             
@@ -247,7 +248,7 @@ Repo = XObject.define(
                 "no-color" : true, 
             //args.push("--name-status";
                 "raw" : true,
-                "no-abbrev" : true,
+                 
                 "numstat" : true,
                 "date" : 'iso8601'
             };
