@@ -48,7 +48,7 @@ Repo = XObject.define(
                 'no-abbrev'  : true,
                 'a' : true
             }]).split("\n");
-            
+            var bmap = {};
             var _this=this;
             bl.forEach(function(line) {
                   // * master 61e7e7d oneliner
@@ -59,14 +59,45 @@ Repo = XObject.define(
                 if (parts[0] == '->') {
                     return; // it's an alias like  remotes/origin/HEAD    -> origin/master
                 }
-                _this.branches.push( {
-                    name: parts[0],
-                    lastrev :  parts[1]
-                });
+                var br = {
+                    lastrev :  parts[1],
+                    name : '',
+                    remote : ''
+                };
+                if (parts[0].match(/^remotes\//)) {
+                    br.remote = parts[0];
+                } else { 
+                    br.name = parts[0];
+                }
+                
+                
+                _this.branches.push(br);
+                
                 if (active) {
                     _this.currentBranch = parts[0];
                 }
             });
+            
+            // overlay tracking informaion
+            bl = this.git([
+                'for-each-ref ',
+                { format :  '%(refname:short):remotes/%(upstream:short)' },
+                'refs/heads'
+            ]).split("\n");
+            
+            bl.forEach(function(line) {
+                var ar = line.split(':remotes/');
+                var 
+                  // * master 61e7e7d oneliner
+                var active = line[0]=='*';
+                line = line.substring(2);
+                
+                var parts = line.split(/\s+/);
+            
+            
+            
+            
+            
             return this.branches;
         },
         _remotes : false,
