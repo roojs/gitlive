@@ -118,6 +118,23 @@ Merger=new XObject({
                             model : {
                                 xtype: Gtk.ListStore,
                                 id : "workingList",
+                                 : function(tr)
+                                {
+                                    //this.insert(citer,iter,0);
+                                    this.el.clear();
+                                    
+                                    for(var i =0 ; i < tr.length; i++) {
+                                        var ret = {  };
+                                        this.el.append(ret);
+                                        //print(JSON.stringify(ret,null,4));
+                                         
+                                          
+                                        this.el.set_value(ret.iter, 0, ''  +  tr[i].name );
+                                        this.el.set_value(ret.iter, 1, '' + tr[i].rev  );
+                                 
+                                        
+                                    }     
+                                },
                                 init : function() {
                                     XObject.prototype.init.call(this);
                                     this.el.set_column_types ( 3, [
