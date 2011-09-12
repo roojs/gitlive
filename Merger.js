@@ -304,7 +304,24 @@ Merger=new XObject({
                                                     id : "historyTreeStore",
                                                     pack : "set_model",
                                                     loadTree : function() {
-                                                        
+                                                       
+                                                       var wid = this.get('workingCombo').el.get_active();
+                                                       var rid = this.get('releaseCombo').el.get_active();
+                                                       if (wid < 0 || rid < 0 || rid == wid) {
+                                                        return;
+                                                       }
+                                                       
+                                                       var w = Merger.repo.branches[wid];
+                                                       var r = Merger.repo.branches[rid];
+                                                       
+                                                       var rev = r.name + '..' + w.name;
+                                                    
+                                                    
+                                                    
+                                                        var hist = Merger.repo.dayTree('/', false, 'rev', rev);
+                                                        this.get('/historyTreeStore').load(hist);
+                                                            
+                                                           
                                                     },
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
