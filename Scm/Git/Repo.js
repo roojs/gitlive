@@ -71,7 +71,7 @@ Repo = XObject.define(
                     lastrev :  parts[1],
                     name :      '',
                     remote :    '',
-                    remoterev : '',
+                    remoterev : ''
                 };
                 if (parts[0].match(/^remotes\//)) {
                     br.remote = parts[0];
