@@ -106,24 +106,7 @@ Clones=new XObject({
                                 }
                             },
                             label : "Add Branch",
-                            pack : "add",
-                            items : [
-                                {
-                                    xtype: Gtk.Button,
-                                    listeners : {
-                                        clicked : function (self) {
-                                            
-                                            
-                                         
-                                               
-                                            
-                                            
-                                        }
-                                    },
-                                    label : "Add Clone",
-                                    pack : "add"
-                                }
-                            ]
+                            pack : "add"
                         },
                         {
                             xtype: Gtk.Button,
