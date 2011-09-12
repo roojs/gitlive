@@ -82,24 +82,6 @@ Merger=new XObject({
                     pack : "pack_start,false,true",
                     items : [
                         {
-                            xtype: Gtk.Button,
-                            listeners : {
-                                clicked : function (self) {
-                                    
-                                    
-                                 
-                                    var hist = Merger.repo.dayTree('/', false, 'rev', 'github..master');
-                                    this.get('/historyTreeStore').load(hist);
-                                        
-                                       
-                                    
-                                    
-                                }
-                            },
-                            label : "Select Branch",
-                            pack : "add"
-                        },
-                        {
                             xtype: Gtk.Label,
                             label : "Working Branch"
                         },
