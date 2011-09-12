@@ -114,7 +114,7 @@ Merger=new XObject({
                                 this.model  = new XObject(this.model);
                                 
                                 this.el.set_model(this.model.el);
-                                    XObject.prototype.init.call(this);
+                                 XObject.prototype.init.call(this);
                                 
                             },
                             model : {
