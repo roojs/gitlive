@@ -109,6 +109,7 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
+                                                    "activatable": false,
                                                     "pack": "pack_start",
                                                     "xtype": "CellRendererToggle",
                                                     "|xns": "Gtk"
