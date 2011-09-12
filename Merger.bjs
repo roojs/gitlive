@@ -216,7 +216,7 @@
                                                     "id": "patchview",
                                                     "pack": "add",
                                                     "xtype": "WebView",
-                                                    "|showDiff": "function(files) {\n    \n \n    var diff = this.repo.diff(files, 'github', 'master');\n    \n   // remove..\n    var s  = \"document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);\";\n    s += \"pre.textContent =  \" +\n             JSON.stringify(repo.lastCmd + \"\\n\") + '+  ' + \n           JSON.stringify(diff) + \";\";\n    print(s);\n        \n    this.el.execute_script(s);\n        \n        \n    \n    \n    \n}\n",
+                                                    "|showDiff": "function(files) {\n    \n \n    var diff = Merger.repo.diff(files, 'github', 'master');\n    \n   // remove..\n    var s  = \"document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);\";\n    s += \"pre.textContent =  \" +\n             JSON.stringify(repo.lastCmd + \"\\n\") + '+  ' + \n           JSON.stringify(diff) + \";\";\n    print(s);\n        \n    this.el.execute_script(s);\n        \n        \n    \n    \n    \n}\n",
                                                     "|xns": "WebKit"
                                                 }
                                             ]
