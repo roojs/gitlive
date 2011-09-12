@@ -301,8 +301,8 @@ Repo.list = function()
             
         }
         
-        
     }
+    return Repo.list;
     
     
     
