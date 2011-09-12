@@ -85,7 +85,7 @@ Merger=new XObject({
                                     
                                     
                                  
-                                    var hist = this.repo.dayTree('/', false, 'rev', 'github..master');
+                                    var hist = Merger.repo.dayTree('/', false, 'rev', 'github..master');
                                     this.get('/historyTreeStore').load(hist);
                                         
                                        
