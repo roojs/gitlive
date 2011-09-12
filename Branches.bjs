@@ -100,7 +100,7 @@
                                         {
                                             "min_width": 200,
                                             "pack": "append_column",
-                                            "title": "URL",
+                                            "title": "Status",
                                             "xtype": "TreeViewColumn",
                                             "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 1 );\n\n}\n",
                                             "|xns": "Gtk",
