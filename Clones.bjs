@@ -50,7 +50,7 @@
                                 },
                                 {
                                     "listeners": {
-                                        "clicked": "function (self) {\n   var Merger =     imports.Merger.Merger;\n    Merger.repo = new Repo('/home/alan/gitlive/roojs1');\n    imports.Merger.Merger.show();\n\n       \n    \n    \n}"
+                                        "clicked": "function (self) {\n   var Merger =     imports.Merger.Merger;\n    Merger.repo = new Repo('/home/alan/gitlive/roojs1');\n    Merger.show();\n\n       \n    \n    \n}"
                                     },
                                     "label": "Run Merger",
                                     "pack": "add",
