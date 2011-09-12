@@ -370,10 +370,19 @@ Repo = XObject.define(
        
             
             //echo '<PRE>';print_r($args);echo '</PRE>';
-            path = path[0] == '/' ? path.substring(1) : path; 
+            
+            
             
             args.push({ '' : true });
-            args.push(path);
+            if (typeof(path) == 'string') {
+                path = path[0] == '/' ? path.substring(1) : path;
+                args.push(path);
+            } else {
+                path.forEach(function(p) {
+                        args.push(p);
+                })
+            }
+            
             
             //   print_R(array($args, '--' ,$path));exit;
             var fp = this.git(args).split("\n");
