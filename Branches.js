@@ -73,7 +73,7 @@ Branches=new XObject({
                             listeners : {
                                 clicked : function (self) {
                                 
-                                        
+                                     return;
                                     var RemoteEdit=    imports.RemoteEdit.RemoteEdit
                                      RemoteEdit.repo = Remotes.repo;
                                     RemoteEdit.el.set_transient_for(Remotes.el);
