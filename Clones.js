@@ -228,7 +228,8 @@ Clones=new XObject({
                                           GObject.TYPE_STRING, // all branch      
                                           GObject.TYPE_STRING, // updated
                                            GObject.TYPE_BOOLEAN, // auto-commit
-                                            GObject.TYPE_BOOLEAN // auto-push
+                                            GObject.TYPE_BOOLEAN, // auto-push
+                                               GObject.TYPE_BOOLEAN // active
                                       ] );
                                     },
                                     load : function()
