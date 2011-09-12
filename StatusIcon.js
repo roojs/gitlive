@@ -184,7 +184,7 @@ var StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                             
+                             var ret = imports.Clones.Clones.show();
                             
                         }
                     }
