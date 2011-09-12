@@ -136,7 +136,7 @@ Clones=new XObject({
                                     
                                 }
                             },
-                            label : "Add Clone",
+                            label : "Switch Branch",
                             pack : "add"
                         }
                     ]
