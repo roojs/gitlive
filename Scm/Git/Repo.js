@@ -749,6 +749,7 @@ Repo = XObject.define(
             sp.run();
             //print(JSON.stringify(sp,null,4));  Seed.quit();
             if (typeof(sp.stderr) == 'string' && sp.stderr.length) {
+                print(this.lastCmd);
                 print(sp.stderr);
             }
             //print("GOT: " + output)
