@@ -200,12 +200,14 @@ Clones=new XObject({
                             init : function() {
                                 XObject.prototype.init.call(this);
                                     var description = new Pango.FontDescription.c_new();
-                               description.set_size(8000);
+                               description.set_size(10000);
                                  this.el.modify_font(description);
                             
                                  this.selection = this.el.get_selection();
                                   this.selection.set_mode( Gtk.SelectionMode.MULTIPLE);
                                 var _this = this;
+                                
+                                
                               this.selection.signal['changed'].connect(function() {
                                  _this.listeners.cursor_changed.apply(
                                       _this, [ _this, '']
