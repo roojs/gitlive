@@ -57,7 +57,11 @@ Repo = XObject.define(
             bl.forEach(function(line) {
                   // * master 61e7e7d oneliner
                 var active = line[0]=='*';
+                if (!line.length) {
+                    return;
+                }
                 line = line.substring(2);
+                
                 print(JSON.stringify(line));
                 var parts = line.split(/\s+/);
                 if (parts[1] == '->') {
