@@ -106,9 +106,6 @@ Merger=new XObject({
                         {
                             xtype: Gtk.ComboBox,
                             id : "workingCombo",
-                            load : function() {
-                                
-                            },
                             init : function() {
                                 this.el = new Gtk.ComboBox.with_entry();
                                 
@@ -118,6 +115,25 @@ Merger=new XObject({
                                 this.el.set_model(this.model.el);
                                 this.el.set_entry_text_column (0);
                                  XObject.prototype.init.call(this);
+                                
+                            },
+                            load : function(tr)
+                            {
+                                //this.insert(citer,iter,0);
+                                this.model.el.clear();
+                                
+                                for(var i =0 ; i < tr.length; i++) {
+                                    var ret = {  };
+                                    this.model.el.append(ret);
+                                    //print(JSON.stringify(ret,null,4));
+                                     
+                                      
+                                    this.model.el.set_value(ret.iter, 0, '' + tr[i].name );
+                                    this.model.el.set_value(ret.iter, 1, '' + tr[i].rev  );
+                             
+                                    
+                                }     
+                                
                                 
                             },
                             model : {
