@@ -47,6 +47,7 @@ Repo = XObject.define(
                 'a' : true
             }]).split("\n");
             
+            var _this=this;
             bl.forEach(function(line) {
                   // * master 61e7e7d oneliner
                 var active = line[0]=='*';
@@ -56,12 +57,12 @@ Repo = XObject.define(
                 if (parts[0] == '->') {
                     return; // it's an alias like  remotes/origin/HEAD    -> origin/master
                 }
-                this.branches.push( {
+                _this.branches.push( {
                     name: parts[0],
                     lastrev :  parts[1]
                 });
                 if (active) {
-                    this.curBranch = parts[0];
+                    _this.curBranch = parts[0];
                 }
             });
             return this.branches;
