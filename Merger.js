@@ -581,10 +581,6 @@ Merger=new XObject({
                                                 }
                                             },
                                             label : "Commit diff (no merge)"
-                                        },
-                                        {
-                                            xtype: Gtk.Button,
-                                            label : "Commit diff (merge after)"
                                         }
                                     ]
                                 },
