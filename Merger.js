@@ -572,7 +572,7 @@ Merger=new XObject({
                                                     Commit = imports.Commit.Commit;
                                                     Commit.repo = Merger.repo;
                                                     Commit.el.set_modal(true);
-                                                    Merger.el.set_transient_for(Commit.el);
+                                                    Commit.el.set_transient_for(Merger.el);
                                                 
                                                     Commit.show({
                                                         files : this.get('/changedFilesView').files()
