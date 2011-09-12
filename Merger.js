@@ -585,12 +585,12 @@ Merger=new XObject({
                                                         return;
                                                     }
                                                     
-                                                
-                                                    
-                                                    var diff = Merger.repo.diff(files, model.release, model.rev);
-                                                    
+                                                 
                                                     var files = this.get('/changedFilesView').files();
                                                     
+                                                    
+                                                    var diff = Merger.repo.diff(files, model.release, model.rev);
+                                                   
                                                     if (!files.length) {
                                                         return; // error.!
                                                     }
