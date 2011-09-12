@@ -114,6 +114,7 @@
                                                     "|xns": "Gtk",
                                                     "items": [
                                                         {
+                                                            "release": false,
                                                             "id": "historyTreeStore",
                                                             "pack": "set_model",
                                                             "xtype": "TreeStore",
