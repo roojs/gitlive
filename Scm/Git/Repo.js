@@ -89,7 +89,8 @@ Repo = XObject.define(
             
             print(JSON.stringify(local));
             print(JSON.stringify(remotes));
-            
+            print(JSON.stringify(br,null,4));
+
             
             // overlay tracking informaion
             bl = this.git([
