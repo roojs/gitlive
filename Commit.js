@@ -211,7 +211,7 @@ Commit=new XObject({
                     items : [
                         {
                             xtype: Gtk.Label,
-                            label : "Author",
+                            label : "Commit Message",
                             pack : "pack_start,false,false,10",
                             width_request : 50,
                             xalign : 1
