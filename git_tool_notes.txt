@@ -16,3 +16,29 @@ C) get diff etc...
 
 Lets' start with the Repo directory.
 
+
+Design
+
+Top bar:
+- select repo (done by manage repos)
+- select "Release Branch" 
+- select "Working Branch"
+
+
+
+
+
+
+----
+Other dialogs
+
+Manage Repos
+-> list of repo's
+
+Actions:
+-> Merger
+-> Pull branches (from remote)
+-> Add?
+-> Flag 'auto-commit'
+-> Flag 'auto-push'
+-> Switch Branch
