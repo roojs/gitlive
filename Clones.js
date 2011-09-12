@@ -144,7 +144,7 @@ Clones=new XObject({
                                     });
                                     Merger.repo = repo;
                                     Merger.el.set_transient_for(Clones.el);
-                                    Merger.el.set_title("Merge commits for " + path);
+                                
                                     Merger.show();
                                     
                                 
