@@ -263,7 +263,6 @@ Clones=new XObject({
                                 },
                                 {
                                     xtype: Gtk.TreeViewColumn,
-                                    clickable : true,
                                     min_width : 50,
                                     pack : "append_column",
                                     title : "Auto Commit",
