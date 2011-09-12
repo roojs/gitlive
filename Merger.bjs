@@ -263,13 +263,6 @@
                     ]
                 },
                 {
-                    "label": "Cancel",
-                    "pack": "add_action_widget,0",
-                    "xtype": "Button",
-                    "|xns": "Gtk",
-                    "listeners": {}
-                },
-                {
                     "id": "ok_button",
                     "label": "OK",
                     "pack": "add_action_widget,1",
