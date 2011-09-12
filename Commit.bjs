@@ -92,7 +92,7 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "id": "commitDate",
+                                    "id": "commitAuthor",
                                     "xtype": "Entry",
                                     "|xns": "Gtk"
                                 }
