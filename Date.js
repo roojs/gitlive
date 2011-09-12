@@ -729,6 +729,7 @@ Date.prototype.clearTime = function(clone){
 
 // private
 // safari setMonth is broken
+/*
 if(Roo.isSafari){
     Date.brokenSetMonth = Date.prototype.setMonth;
 	Date.prototype.setMonth = function(num){
@@ -743,6 +744,7 @@ if(Roo.isSafari){
 		}
 	};
 }
+*/
 
 /** Date interval constant 
 * @static 
