@@ -234,11 +234,14 @@ Clones=new XObject({
                                             this.el.append(ret);
                                             
                                             //print(JSON.stringify(ret,null,4));
-                                             
+                                             tr[i].getBranches();
                                               
-                                            this.el.set_value(ret.iter, 0, ''  +  tr[i].filename );
-                                            this.el.set_value(ret.iter, 1, '' + tr[i].added  );
-                                            this.el.set_value(ret.iter, 2, '' + tr[i].removed  );
+                                            this.el.set_value(ret.iter, 0, '' +  tr[i].repopath.split('/').pop() );
+                                            this.el.set_value(ret.iter, 1, '' + tr[i].currentBranch   );
+                                            this.el.set_value(ret.iter, 2, '' + tr[i].branches.join(', ')  );
+                                            this.el.set_value(ret.iter, 3, '' + 'tbc' );        
+                                            this.el.set_value(ret.iter, 4, tr[i].autocommit() );                
+                                            this.el.set_value(ret.iter, 4, tr[i].autopush() );                        
                                      
                                             
                                         }     
