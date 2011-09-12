@@ -191,7 +191,7 @@ Clones=new XObject({
                                 
                                 }
                             },
-                            id : "changedFilesView",
+                            id : "reposView",
                             pack : "add",
                             init : function() {
                                 XObject.prototype.init.call(this);
