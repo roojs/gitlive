@@ -205,9 +205,10 @@
                                                     "|xns": "Gtk"
                                                 },
                                                 {
-                                                    "|xns": "Gtk",
+                                                    "label": "Working Branch",
+                                                    "pack": false,
                                                     "xtype": "Label",
-                                                    "pack": false
+                                                    "|xns": "Gtk"
                                                 }
                                             ]
                                         },
