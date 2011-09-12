@@ -297,7 +297,7 @@ Clones=new XObject({
                                 },
                                 {
                                     xtype: Gtk.TreeViewColumn,
-                                    expandable : false,
+                                    resizable : false,
                                     min_width : 50,
                                     pack : "append_column",
                                     title : "All Branches",
