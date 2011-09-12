@@ -76,7 +76,7 @@ Commit=new XObject({
             items : [
                 {
                     xtype: Gtk.HBox,
-                    pack : "pack_start,false,true,10",
+                    pack : "pack_start,false,true,2",
                     items : [
                         {
                             xtype: Gtk.Label,
