@@ -625,6 +625,7 @@ Repo.parseURL = function(url)
     }
     url = url.replace(/^[a-z]+:\/\//, function(v) {
         ret.scheme = v;
+        return '';
     });
     var parts = url.split(ret.scheme == 'ssh://' ? ':' : "/");
     var login_host  = parts.shift().split('@');
