@@ -18,7 +18,7 @@
             "xtype": "Dialog",
             "|deletable": true,
             "|modal": true,
-            "|show": "function(c) {\n    \n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    this.get('/branchView').load();\n    this.el.show_all();\n    \n    var run_ret = this.el.run();\n    if (run_ret < 1 ) {\n        return  \"DONE\";\n    }\n    print(\"RUN RETURN : \" + run_ret);\n    return \"DONE\";\n    \n}\n",
+            "|show": "function(c) {\n    \n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    this.get('/branchStore').load();\n    this.el.show_all();\n    \n    var run_ret = this.el.run();\n    if (run_ret < 1 ) {\n        return  \"DONE\";\n    }\n    print(\"RUN RETURN : \" + run_ret);\n    return \"DONE\";\n    \n}\n",
             "|xns": "Gtk",
             "items": [
                 {
