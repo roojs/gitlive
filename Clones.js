@@ -33,7 +33,7 @@ Clones=new XObject({
              //   Seed.print(val);
         },
         show : function (self) {
-            this.get('/reposStore').load();
+        
         }
     },
     border_width : 3,
