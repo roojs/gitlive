@@ -140,7 +140,16 @@ Repo = XObject.define(
                 r.remoterev = r.lastrev;
                 //r.name = name;
                 local.push(r);
-                return;
+                
+                if (typeof(bmap[name]) != 'undefined') {
+                    // already got aremote of that name.
+                    // skip it...
+                    r.remoterev = r.lastrev;
+                    local.push(r);
+                    return;
+                    
+                }
+                
                 
                 _this.git([ 
                     'branch',
