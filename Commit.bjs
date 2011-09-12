@@ -97,6 +97,26 @@
                                     "|xns": "Gtk"
                                 }
                             ]
+                        },
+                        {
+                            "pack": "pack_start,false,true,2",
+                            "xtype": "HBox",
+                            "|xns": "Gtk",
+                            "items": [
+                                {
+                                    "label": "Author",
+                                    "pack": "pack_start,false,false,10",
+                                    "width_request": 50,
+                                    "xalign": 1,
+                                    "xtype": "Label",
+                                    "|xns": "Gtk"
+                                },
+                                {
+                                    "id": "commitDate",
+                                    "xtype": "Entry",
+                                    "|xns": "Gtk"
+                                }
+                            ]
                         }
                     ]
                 },
