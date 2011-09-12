@@ -411,20 +411,7 @@ Merger=new XObject({
                                             listeners : {
                                                 cursor_changed : function (self) {
                                                   // SEE SELECTION.CHANGED
-                                                    if (this.el.get_selection().count_selected_rows() < 1) {
-                                                        //nothing? - clea it?
-                                                        return;
-                                                    }
-                                                        var ret = {};         
-                                                    var model = this.get('/changedFilesStore');
-                                                
-                                                     var s = this.el.get_selection();
-                                                     var files = [];
-                                                    s.selected_foreach(function(model,p,iter) {
-                                                    
-                                                       files.push( model.get_value(iter, 0).value.get_string());
-                                                     
-                                                    });
+                                                    var files = this.files();
                                                     this.get('/patchview').showDiff(files); 
                                                     //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();
                                                      //print("OUT?" + value);// id..
