@@ -123,6 +123,8 @@ Repo = XObject.define(
                 if (r.name.length) {
                     return;
                 }
+                r.remoterev = r.lastrev;
+                r.lastrev = '';
                 local.push(r);
             });
             
