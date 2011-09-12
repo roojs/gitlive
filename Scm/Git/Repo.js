@@ -145,6 +145,7 @@ Repo = XObject.define(
                     // already got aremote of that name.
                     // skip it...
                     r.remoterev = r.lastrev;
+                    r.lastrev = '';
                     local.push(r);
                     return;
                     
