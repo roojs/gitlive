@@ -111,7 +111,7 @@ RemoteEdit=new XObject({
                                        var host = val.host;
                                        // need to add github owner...
                                         if (host.match(/github.com$/)) {
-                                          host += '.' + host.path.split('/').shift();
+                                          host += '.' + val.path.split('/').shift();
                                         }
                                    
                                    
