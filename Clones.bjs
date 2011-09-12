@@ -121,7 +121,7 @@
                                             "pack": "append_column",
                                             "title": "Auto Push",
                                             "xtype": "TreeViewColumn",
-                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'active', 5 );\n    this.el.add_attribute(this.items[0].el , 'activatable', 6 );\n}\n",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'active', 5 );\n      this.items[0].el.set_activatable(true);\n}\n",
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
