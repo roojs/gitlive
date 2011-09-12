@@ -132,7 +132,7 @@ Branches=new XObject({
                                 
                                 }
                             },
-                            id : "remotesView",
+                            id : "branchView",
                             pack : "add",
                             init : function() {
                                 XObject.prototype.init.call(this);
