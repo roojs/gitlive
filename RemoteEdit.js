@@ -108,7 +108,14 @@ RemoteEdit=new XObject({
                                    // fill in name
                                    var val = imports.Scm.Git.Repo.Repo.parseURL(val);
                                    if ((typeof(val.host) != 'undefined') && val.host.length) {
-                                        this.get('/remoteName').el.set_text(val.host);
+                                       var host = val.host;
+                                       // need to add github owner...
+                                        if (host.match(/github.com$/)) {
+                                          host += '.' + host.path.split('/').shift();
+                                        }
+                                   
+                                   
+                                        this.get('/remoteName').el.set_text(host);
                                    }
                                     
                                    
