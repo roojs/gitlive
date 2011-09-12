@@ -585,7 +585,16 @@ Merger=new XObject({
                                                         return;
                                                     }
                                                     
+                                                
+                                                    
                                                     var diff = Merger.repo.diff(files, model.release, model.rev);
+                                                    
+                                                    var files = this.get('/changedFilesView').files();
+                                                    
+                                                    if (!file.length) {
+                                                        return; // error.!
+                                                    }
+                                                    
                                                     
                                                     var log =  Merger.repo.history(files, 1, 'rev', model.rev + '..' + model.release);
                                                     
@@ -597,7 +606,7 @@ Merger=new XObject({
                                                     Commit.el.set_transient_for(Merger.el);
                                                 
                                                     Commit.show({
-                                                        files : this.get('/changedFilesView').files(),
+                                                        files : files,
                                                         release : model.release,
                                                         rev : model.rev
                                                     
