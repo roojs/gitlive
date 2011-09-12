@@ -187,6 +187,23 @@ Commit=new XObject({
                             id : "commitDate"
                         }
                     ]
+                },
+                {
+                    xtype: Gtk.HBox,
+                    pack : "pack_start,false,true,10",
+                    items : [
+                        {
+                            xtype: Gtk.Label,
+                            label : "Date",
+                            pack : "pack_start,false,false,10",
+                            width_request : 50,
+                            xalign : 1
+                        },
+                        {
+                            xtype: Gtk.Entry,
+                            id : "commitDate"
+                        }
+                    ]
                 }
             ]
         },
