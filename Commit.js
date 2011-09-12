@@ -35,7 +35,7 @@ Commit=new XObject({
     },
     ' modal' : true,
     border_width : 3,
-    default_height : 150,
+    default_height : 300,
     default_width : 800,
     title : "Commit",
     deletable : true,
