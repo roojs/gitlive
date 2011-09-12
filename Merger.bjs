@@ -214,16 +214,6 @@
                                                     "label": "Commit diff (merge after)",
                                                     "xtype": "Button",
                                                     "|xns": "Gtk"
-                                                },
-                                                {
-                                                    "label": "Working Branch",
-                                                    "xtype": "Label",
-                                                    "|xns": "Gtk"
-                                                },
-                                                {
-                                                    "|xns": "Gtk",
-                                                    "xtype": "ComboBox",
-                                                    "pack": false
                                                 }
                                             ]
                                         },
