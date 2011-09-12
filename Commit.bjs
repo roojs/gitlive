@@ -112,9 +112,8 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "|xns": "Gtk",
                                     "xtype": "TextView",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 },
                                 {
                                     "id": "commitDate",
