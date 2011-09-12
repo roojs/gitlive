@@ -105,7 +105,7 @@ Clones=new XObject({
                                     
                                 }
                             },
-                            label : "Add Clone",
+                            label : "Add Branch",
                             pack : "add"
                         },
                         {
