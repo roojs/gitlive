@@ -100,7 +100,7 @@
                         },
                         {
                             "pack": "pack_start,false,true,2",
-                            "xtype": "VBox",
+                            "xtype": "HBox",
                             "|xns": "Gtk",
                             "items": [
                                 {
