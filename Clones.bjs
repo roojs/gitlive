@@ -186,9 +186,8 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
-                                                    "|xns": "Gtk",
                                                     "xtype": "CellRendererToggle",
-                                                    "pack": false
+                                                    "|xns": "Gtk"
                                                 }
                                             ]
                                         }
