@@ -304,6 +304,7 @@ Merger=new XObject({
                                                     id : "historyTreeStore",
                                                     pack : "set_model",
                                                     loadTree : function() {
+                                                    
                                                        this.rev = false;
                                                        
                                                        var wid = this.get('workingCombo').el.get_active();
