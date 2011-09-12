@@ -91,6 +91,15 @@ Repo = XObject.define(
                     cfg.name,
                     cfg.url
                 ]);
+                this.branches = false;
+                
+                this.git([
+                    'fetch',
+                    cfg.name,
+                    { 'a' : true }
+                ]);
+                
+                
                 
                 
                 
