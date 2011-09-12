@@ -65,8 +65,8 @@ Repo = XObject.define(
                 }
                 var br = {
                     lastrev :  parts[1],
-                    name : '',
-                    remote : ''
+                    name :      '',
+                    remote :    ''
                 };
                 if (parts[0].match(/^remotes\//)) {
                     br.remote = parts[0];
@@ -82,6 +82,10 @@ Repo = XObject.define(
                     _this.currentBranch = parts[0];
                 }
             });
+            
+            print(JSON.stringify(local));
+            print(JSON.stringify(remotes));
+            
             
             // overlay tracking informaion
             bl = this.git([
