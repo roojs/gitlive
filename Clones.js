@@ -287,7 +287,7 @@ Clones=new XObject({
                                             this.el.set_value(ret.iter, 3, '' + 'tbc' );        
                                             this.el.set_value(ret.iter, 4, tr[i].autocommit() );                
                                             this.el.set_value(ret.iter, 5, tr[i].autopush() );                        
-                                            this.el.set_value(ret.iter, 6, true );      
+                                            this.el.set_value(ret.iter, 6,  tr[i].repopath );      
                                             
                                         }     
                                     }
