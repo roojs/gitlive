@@ -114,6 +114,7 @@ Merger=new XObject({
                             },
                             model : {
                                 xtype: Gtk.ListStore,
+                                id : "workingList",
                                 init : function() {
                                     XObject.prototype.init.call(this);
                                     this.el.set_column_types ( 3, [
