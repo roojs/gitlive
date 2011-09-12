@@ -189,7 +189,7 @@ Branches=new XObject({
                                               
                                             this.el.set_value(ret.iter, 0, ''  +  tr[i].name );
                                             this.el.set_value(ret.iter, 1, '' + tr[i].remote );
-                                           this.el.set_value(ret.iter, 2, '' + lastrev );
+                                            this.el.set_value(ret.iter, 2, '' + lastrev );
                                      
                                             
                                         }     
