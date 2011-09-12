@@ -95,7 +95,7 @@ RemoteEdit=new XObject({
                             xtype: Gtk.ComboBox,
                             listeners : {
                                 changed : function (self) {
-                                   var val = this.el.get_active_text();
+                                   var val = this.el.get_child().get_active_text();
                                    
                                    if (!val.length) {
                                        return;
