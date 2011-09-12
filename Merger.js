@@ -579,6 +579,8 @@ Merger=new XObject({
                                                     
                                                     var diff = Merger.repo.diff(files, model.release, model.rev);
                                                     
+                                                    var log =  Merger.repo.log(files, model.release, model.rev);
+                                                    
                                                     
                                                     Commit = imports.Commit.Commit;
                                                     Commit.repo = Merger.repo;
