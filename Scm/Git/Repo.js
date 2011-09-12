@@ -148,7 +148,6 @@ Repo = XObject.define(
                     r.lastrev = '';
                     local.push(r);
                     return;
-                    
                 }
                 
                 
