@@ -337,7 +337,7 @@ Merger=new XObject({
                                                     },
                                                     loadTree : function() {
                                                     
-                                                       this.rev = false;
+                                                           this.working = false;
                                                        
                                                        var wid = this.get('workingCombo').el.get_active();
                                                        var rid = this.get('releaseCombo').el.get_active();
@@ -350,8 +350,8 @@ Merger=new XObject({
                                                        
                                                     
                                                     
-                                                       this.rev = r.name + '..' + w.name;
-                                                    
+                                                        var rev = r.name + '..' + w.name;
+                                                        this.working = r.name;
                                                     
                                                         var hist = Merger.repo.dayTree('/', false, 'rev', rev);
                                                         this.load(hist);
