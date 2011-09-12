@@ -165,7 +165,6 @@ Merger=new XObject({
                                  XObject.prototype.init.call(this);
                                 
                             },
-                            pack : false,
                             model : {
                                 xtype: Gtk.ListStore,
                                 id : "workingList",
