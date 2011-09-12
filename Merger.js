@@ -591,7 +591,7 @@ Merger=new XObject({
                                                     
                                                     var files = this.get('/changedFilesView').files();
                                                     
-                                                    if (!file.length) {
+                                                    if (!files.length) {
                                                         return; // error.!
                                                     }
                                                     print(JSON.stringify(files));
