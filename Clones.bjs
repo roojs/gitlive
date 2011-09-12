@@ -52,7 +52,7 @@
                                     "listeners": {
                                         "clicked": "function (self) {\n    \n    \n \n       \n    \n    \n}"
                                     },
-                                    "label": "Add Clone",
+                                    "label": "Run Merger",
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
