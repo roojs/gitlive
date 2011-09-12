@@ -37,10 +37,8 @@ Merger=new XObject({
     default_height : 700,
     default_width : 800,
     id : "Merger",
-    modal : true,
     title : "Merger",
     deletable : true,
-    modal : true,
     show : function(c) {
         
         if (!this.el) {
