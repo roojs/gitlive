@@ -132,6 +132,7 @@
                                             ]
                                         },
                                         {
+                                            "expandable": false,
                                             "min_width": 50,
                                             "pack": "append_column",
                                             "title": "All Branches",
