@@ -339,8 +339,7 @@ Clones=new XObject({
                                     },
                                     items : [
                                         {
-                                            xtype: Gtk.CellRendererToggle,
-                                            pack : false
+                                            xtype: Gtk.CellRendererToggle
                                         }
                                     ]
                                 },
