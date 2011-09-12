@@ -54,7 +54,7 @@ Merger=new XObject({
          /// load up branches
          this.get('/workingCombo').model.load(Merger.repo.branches);
          
-    
+         this.get('/releaseCombo').model.load(Merger.repo.branches);
     
         this.el.show_all();
         //this.get('/ok_button').el.set_sensitive(false);
