@@ -103,8 +103,7 @@ Merger=new XObject({
                         },
                         {
                             xtype: Gtk.Label,
-                            label : "Working Branch",
-                            pack : false
+                            label : "Working Branch"
                         },
                         {
                             xtype: Gtk.ComboBox,
