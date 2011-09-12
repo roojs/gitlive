@@ -52,7 +52,7 @@
                                 },
                                 {
                                     "xtype": "ComboBox",
-                                    "|init": "function() {\n    this.el = new Gtk.ComboBox.new_with_model_and_entry();\n    \n    XObject.prototype.init.call(this);\n    this.el.set_model(this.model.el);\n    \n}\n",
+                                    "|init": "function() {\n    this.el = new Gtk.ComboBox.with_model_and_entry();\n    \n    XObject.prototype.init.call(this);\n    this.el.set_model(this.model.el);\n    \n}\n",
                                     "|xns": "Gtk",
                                     "items": [
                                         {
