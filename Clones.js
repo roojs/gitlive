@@ -120,7 +120,7 @@ Clones=new XObject({
                                     
                                 }
                             },
-                            label : "Add Clone",
+                            label : "Run Merger",
                             pack : "add"
                         },
                         {
