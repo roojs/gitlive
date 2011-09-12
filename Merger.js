@@ -613,6 +613,7 @@ Merger=new XObject({
                                                     });
                                                 
                                                 
+                                                
                                                 }
                                             },
                                             label : "Commit diff (no merge)"
