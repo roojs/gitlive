@@ -238,7 +238,7 @@ Branches=new XObject({
                                     title : "Status",
                                     init : function() {
                                         XObject.prototype.init.call(this);
-                                        this.el.add_attribute(this.items[0].el , 'markup', 1 );
+                                        this.el.add_attribute(this.items[0].el , 'markup', 2 );
                                     
                                     },
                                     items : [
