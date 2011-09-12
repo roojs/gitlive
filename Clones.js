@@ -113,6 +113,20 @@ Clones=new XObject({
                             xtype: Gtk.Button,
                             listeners : {
                                 clicked : function (self) {
+                                
+                                    var rv = this.get('/reposView');
+                                    
+                                    if (rv.el.get_selection().count_selected_rows() != 1) {
+                                        //nothing?
+                                        // error condition.
+                                        return;
+                                    }
+                                
+                                    
+                                 
+                                    var ret = {};        
+                                     var s = rv.el.get_selection();
+                                    s.get_selected(ret);
                                     
                                     
                                     
