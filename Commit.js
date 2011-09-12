@@ -264,20 +264,18 @@ Commit=new XObject({
                                 this.clear();
                                 
                                 
-                                 var model = this.get('/historyTreeStore');
                                 
-                                if (model.release === false) {
+                                if (Commit.release === false) {
                                     return;
                                 }
                                 
-                                var diff = Merger.repo.diff(files, model.release, model.rev);
+                                var diff = Commit.repo.diff(files, Commit.release, Commit.rev);
                                 
                                // remove..
                                 var s  = "var pre  = document.createElement('pre'); document.body.appendChild(pre);";
                                 s += "pre.textContent =  " +
-                                         JSON.stringify(Merger.repo.lastCmd + "\n") + '+  ' + 
-                                       JSON.stringify(diff) + ";";
-                                print(s);
+                                         JSON.stringify(Commit.repo.lastCmd + "\n") + '+  ' + 
+                                         JSON.stringify(diff) + ";";
                                     
                                 this.el.execute_script(s);
                                     
