@@ -167,6 +167,17 @@ Merger=new XObject({
                         {
                             xtype: Gtk.ComboBox,
                             id : "releaseCombo",
+                            init : function() {
+                                this.el = new Gtk.ComboBox.with_entry();
+                                
+                                
+                                this.model  = new XObject(this.model);
+                                this.model.init();
+                                this.el.set_model(this.model.el);
+                                this.el.set_entry_text_column (0);
+                                 XObject.prototype.init.call(this);
+                                
+                            },
                             load : function(tr)
                             {
                                 //this.insert(citer,iter,0);
@@ -183,7 +194,7 @@ Merger=new XObject({
                                         master = id;
                                     }
                                     if (tr[i].name == 'release') {
-                                        master = id;
+                                        release = id;
                                     }          
                                     this.model.el.set_value(ret.iter, 0, '' + tr[i].name );
                                     this.model.el.set_value(ret.iter, 1, '' + tr[i].rev  );
@@ -196,17 +207,6 @@ Merger=new XObject({
                                 if (release !== false) {
                                     this.el.set_active(release);
                                 }
-                                
-                            },
-                            init : function() {
-                                this.el = new Gtk.ComboBox.with_entry();
-                                
-                                
-                                this.model  = new XObject(this.model);
-                                this.model.init();
-                                this.el.set_model(this.model.el);
-                                this.el.set_entry_text_column (0);
-                                 XObject.prototype.init.call(this);
                                 
                             },
                             model : {
