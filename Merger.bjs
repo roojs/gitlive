@@ -31,6 +31,12 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
+                                    "label": "Release Branch",
+                                    "xtype": "Label",
+                                    "|xns": "Gtk",
+                                    "pack": false
+                                },
+                                {
                                     "listeners": {
                                         "changed": "function (self) {\n   this.get('/historyTreeStore').loadTree();\n}"
                                     },
