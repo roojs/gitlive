@@ -299,8 +299,9 @@ Clones=new XObject({
                                                     var store = this.get('/reposStore');
                                                     store.el.get_iter_from_string(ret, path);
                                                                                                                  
-                                                    var value =   store.el.get_value(ret.iter, 2).value.get_boolean();
+                                                    var value =   store.el.get_value(ret.iter,5).value.get_boolean();
                                                                                                                  
+                                                    print(JSON.stringify(value));
                                                     
                                                 }
                                             },
