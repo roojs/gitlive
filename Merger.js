@@ -561,6 +561,20 @@ Merger=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.Button,
+                                            listeners : {
+                                                clicked : function (self) {
+                                                    Commit = imports.Commit.Commit;
+                                                    Commit.repo = Merger.repo;
+                                                    Merger.el.set_transient_for(Commit.el);
+                                                
+                                                    Commit.show({
+                                                        files : []
+                                                    
+                                                    });
+                                                
+                                                
+                                                }
+                                            },
                                             label : "Commit diff (no merge)"
                                         },
                                         {
