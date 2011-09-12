@@ -303,29 +303,6 @@ Merger=new XObject({
                                                     xtype: Gtk.TreeStore,
                                                     id : "historyTreeStore",
                                                     pack : "set_model",
-                                                    loadTree : function() {
-                                                    
-                                                       this.rev = false;
-                                                       
-                                                       var wid = this.get('workingCombo').el.get_active();
-                                                       var rid = this.get('releaseCombo').el.get_active();
-                                                       if (wid < 0 || rid < 0 || rid == wid) {
-                                                        return;
-                                                       }
-                                                       
-                                                       var w = Merger.repo.branches[wid];
-                                                       var r = Merger.repo.branches[rid];
-                                                       
-                                                    
-                                                    
-                                                       this.rev = r.name + '..' + w.name;
-                                                    
-                                                    
-                                                        var hist = Merger.repo.dayTree('/', false, 'rev', rev);
-                                                        this.get('/historyTreeStore').load(hist);
-                                                            
-                                                           
-                                                    },
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
                                                         this.el.set_column_types ( 3, [
@@ -357,6 +334,29 @@ Merger=new XObject({
                                                                 this.load(tr[i].children, ret.iter);
                                                             }
                                                         }     
+                                                    },
+                                                    loadTree : function() {
+                                                    
+                                                       this.rev = false;
+                                                       
+                                                       var wid = this.get('workingCombo').el.get_active();
+                                                       var rid = this.get('releaseCombo').el.get_active();
+                                                       if (wid < 0 || rid < 0 || rid == wid) {
+                                                        return;
+                                                       }
+                                                       
+                                                       var w = Merger.repo.branches[wid];
+                                                       var r = Merger.repo.branches[rid];
+                                                       
+                                                    
+                                                    
+                                                       this.rev = r.name + '..' + w.name;
+                                                    
+                                                    
+                                                        var hist = Merger.repo.dayTree('/', false, 'rev', rev);
+                                                        this.load(hist);
+                                                            
+                                                           
                                                     }
                                                 },
                                                 {
