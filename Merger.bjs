@@ -62,7 +62,6 @@
                                 },
                                 {
                                     "label": "Release Branch",
-                                    "pack": false,
                                     "xtype": "Label",
                                     "|xns": "Gtk"
                                 }
