@@ -48,8 +48,7 @@
                                 {
                                     "label": "Working Branch",
                                     "xtype": "Label",
-                                    "|xns": "Gtk",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 },
                                 {
                                     "|xns": "Gtk",
