@@ -97,11 +97,6 @@ Merger=new XObject({
                             pack : "add"
                         },
                         {
-                            xtype: Gtk.Button,
-                            label : "Select Branch",
-                            pack : "add"
-                        },
-                        {
                             xtype: Gtk.Label,
                             label : "Working Branch"
                         },
