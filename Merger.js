@@ -323,8 +323,8 @@ Merger=new XObject({
                                                     
                                                            this.working = false;
                                                        
-                                                       var wid = this.get('workingCombo').el.get_active();
-                                                       var rid = this.get('releaseCombo').el.get_active();
+                                                       var wid = this.get('/workingCombo').el.get_active();
+                                                       var rid = this.get('/releaseCombo').el.get_active();
                                                        if (wid < 0 || rid < 0 || rid == wid) {
                                                         return;
                                                        }
