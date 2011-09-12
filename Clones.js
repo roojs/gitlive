@@ -33,7 +33,7 @@ Clones=new XObject({
              //   Seed.print(val);
         }
     },
-    ' modal' : true,
+    modal : true,
     border_width : 3,
     default_height : 700,
     default_width : 800,
