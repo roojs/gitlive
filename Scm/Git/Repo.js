@@ -68,6 +68,46 @@ Repo = XObject.define(
             });
             return this.branches;
         },
+        _remotes : false,
+        
+        remotes: function()
+        {
+            if (this._remotes!== false) {
+                return this._remotes;
+            }
+            this._remotes = [];
+            
+            var bl = this.git([ 'remote', {
+            //    'no-color' : true,
+                'verbose' : true
+            }]).split("\n");
+            
+            var _this=this;
+            bl.forEach(function(line) {
+                if (!line.length) {
+                    return;
+                  // * master 61e7e7d oneliner
+                }
+               // print(JSON.stringify( line));
+                var parts = line.split(/\t/);
+                var type = false;
+                parts[1] = parts[1].replace(/\([a-z]+\)$/, function( a) {
+                    type = a.substr(1,a.length-2);
+                    return '';
+                });
+                
+                _this._remotes.push( {
+                    name: parts[0],
+                    url : parts[1],
+                    type:  type
+                });
+                
+            });
+            return this._remotes;
+        },
+        
+        
+        
         lastupdated: function() {
             return 'tbc';
         },
@@ -574,3 +614,27 @@ Repo = XObject.define(
    
 });
 
+Repo.parseURL = function(url)
+{
+    
+    // git : git://github.com/roojs/roojs1.git
+    // http https://roojs@github.com/roojs/roojs1.git
+    // ssh  git@github.com:roojs/roojs1.git
+    var ret = {
+       scheme : 'ssh://'
+    }
+    url = url.replace(/^[a-z]+:\/\//, function(v) {
+        ret.scheme = v;
+    });
+    var parts = url.split("/");
+    var login_host  = parts.shift().split('@');
+    var user_pass  = (login_host.length == 2 ? login_host.shift() : '').split(':');
+    ret.user = user_pass[0];
+    ret.pass = user_pass.length == 2 ? user_pass[1] : ''; 
+    
+    ret.host = login_host.shift();
+    ret.path = parts.join('/');
+    return ret;
+    
+    
+}
