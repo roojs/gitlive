@@ -37,7 +37,7 @@ Commit=new XObject({
     border_width : 3,
     default_height : 150,
     default_width : 500,
-    title : "Remotes",
+    title : "Commit",
     deletable : true,
     modal : true,
     show : function(c) {
