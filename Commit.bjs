@@ -14,7 +14,7 @@
             "border_width": 3,
             "default_height": 150,
             "default_width": 500,
-            "title": "Remotes",
+            "title": "Commit",
             "xtype": "Dialog",
             "|deletable": true,
             "|modal": true,
