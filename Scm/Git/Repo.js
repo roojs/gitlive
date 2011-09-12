@@ -39,7 +39,7 @@ Repo = XObject.define(
             if (this.branches !== false) {
                 return this.branches;
             }
-            this.branches = {};
+            this.branches = [];
             
             var bl = this.git([ 'branch', {
                 'no-color' : true,
@@ -56,7 +56,10 @@ Repo = XObject.define(
                 if (parts[0] == '->') {
                     return; // it's an alias like  remotes/origin/HEAD    -> origin/master
                 }
-                this.branches[parts[0]] = parts[1];
+                this.branches.push( {
+                    name: parts[0],
+                    lastrev :  parts[1]
+                });
                 if (active) {
                     this.curBranch = parts[0];
                 }
