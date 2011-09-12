@@ -52,12 +52,12 @@ Commit=new XObject({
         this.release = c.release;
         this.rev = c.rev;
         
-            
+        this.repo = c.repo;
     
         this.get('/commitDate').el.set_text(c.changed);
         this.get('/commitAuthor').el.set_text(c.author);
         
-        this.get('/commitPatch').load(c.files);
+        this.get('/commitPatch').showDiff(c.files);
         
         this.el.show_all();
         
