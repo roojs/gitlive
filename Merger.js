@@ -571,6 +571,7 @@ Merger=new XObject({
                                                 clicked : function (self) {
                                                     Commit = imports.Commit.Commit;
                                                     Commit.repo = Merger.repo;
+                                                    Commit.el.set_modal(true);
                                                     Merger.el.set_transient_for(Commit.el);
                                                 
                                                     Commit.show({
