@@ -291,8 +291,8 @@ Repo._list  = false;
 Repo.list = function()
 {
     
-    if (Repo.list !== false) {
-        return Repo.list;
+    if (Repo._list !== false) {
+        return Repo._list;
     }
     Repo._list  = [];
     var ar = File.list( GLib.get_home_dir() + '/gitlive');
