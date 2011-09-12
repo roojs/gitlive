@@ -53,7 +53,8 @@ Merger=new XObject({
     	// shouild set path..
         */
        this.el.set_modal(true);
-       this.el.set_title("Merger - " + this.repo.repopath);
+          this.el.set_title("Merger - ??? ");
+    //   this.el.set_title("Merger - " + this.repo.repopath);
         this.el.show_all();
         //this.get('/ok_button').el.set_sensitive(false);
         
