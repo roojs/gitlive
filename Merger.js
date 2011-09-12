@@ -119,7 +119,7 @@ Merger=new XObject({
                             model : {
                                 xtype: Gtk.ListStore,
                                 id : "workingList",
-                                 : function(tr)
+                                load : function(tr)
                                 {
                                     //this.insert(citer,iter,0);
                                     this.el.clear();
