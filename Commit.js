@@ -217,7 +217,8 @@ Commit=new XObject({
                             xalign : 1
                         },
                         {
-                            xtype: Gtk.TextView
+                            xtype: Gtk.TextView,
+                            id : "commitMsg"
                         },
                         {
                             xtype: Gtk.Entry,
