@@ -609,7 +609,10 @@ Merger=new XObject({
                                                     Commit.show({
                                                         files : files,
                                                         release : model.release,
-                                                        rev : model.rev
+                                                        rev : model.rev,
+                                                        author : history[0].changedby,
+                                                        changed : history[0].changed_raw
+                                                        
                                                     
                                                     });
                                                 
