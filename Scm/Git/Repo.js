@@ -90,6 +90,9 @@ Repo = XObject.define(
             ]).split("\n");
             
             bl.forEach(function(line) {
+                if (!line.length) {
+                    return;
+                }
                 var ar = line.split(':remotes/');
                 var lname= ar[0];
                 var rname = 'remotes/' + ar[1];
