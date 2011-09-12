@@ -316,6 +316,7 @@ Merger=new XObject({
                                                        
                                                        var rev = r.name + '..' + w.name;
                                                     
+                                                       this.rev = r.name + '..' + w.name;
                                                     
                                                     
                                                         var hist = Merger.repo.dayTree('/', false, 'rev', rev);
