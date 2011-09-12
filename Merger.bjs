@@ -264,7 +264,7 @@
                 },
                 {
                     "id": "ok_button",
-                    "label": "OK",
+                    "label": "Close",
                     "pack": "add_action_widget,1",
                     "xtype": "Button",
                     "|xns": "Gtk"
