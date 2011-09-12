@@ -128,7 +128,6 @@
                                             "items": [
                                                 {
                                                     "activatable": true,
-                                                    "|mode": "",
                                                     "pack": "pack_start",
                                                     "xtype": "CellRendererToggle",
                                                     "|xns": "Gtk"
