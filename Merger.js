@@ -112,6 +112,7 @@ Merger=new XObject({
                                 
                                 XObject.prototype.init.call(this);
                                 this.el.set_model(this.model.el);
+                                
                             },
                             model : {
                                 xtype: Gtk.ListStore
