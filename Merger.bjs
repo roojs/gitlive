@@ -75,7 +75,6 @@
                                             "*prop": "model",
                                             "xtype": "ListStore",
                                             "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.set_column_types ( 3, [\n           GObject.TYPE_STRING, // file  \n          GObject.TYPE_STRING, // added\n          GObject.TYPE_STRING, // removed\n      ] );\n}\n",
-                                            "|load": "function(tr)\n{\n    //this.insert(citer,iter,0);\n    this.el.clear();\n    \n    for(var i =0 ; i < tr.length; i++) {\n        var ret = {  };\n        this.el.append(ret);\n        //print(JSON.stringify(ret,null,4));\n         \n          \n        this.el.set_value(ret.iter, 0, ''  +  tr[i].name );\n        this.el.set_value(ret.iter, 1, '' + tr[i].rev  );\n \n        \n    }     \n}",
                                             "|xns": "Gtk"
                                         }
                                     ]
