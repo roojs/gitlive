@@ -115,7 +115,7 @@ Clones=new XObject({
                                 clicked : function (self) {
                                 
                                     var rv = this.get('/reposView');
-                                    
+                                    var rs = this.get('/reposStore');
                                     if (rv.el.get_selection().count_selected_rows() != 1) {
                                         //nothing?
                                         // error condition.
@@ -134,7 +134,7 @@ Clones=new XObject({
                                     }); 
                                 
                                 
-                                    rv.repos.forEach(function(r) {
+                                    rs.repos.forEach(function(r) {
                                         if (r.repopath == path) {
                                             Merger.repo = r;
                                             Merger.show();
