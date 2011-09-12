@@ -151,7 +151,7 @@ Clones=new XObject({
                                     
                                 }
                             },
-                            label : "Add Clone",
+                            label : "Pull",
                             pack : "add"
                         }
                     ]
