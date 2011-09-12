@@ -306,6 +306,7 @@ Merger=new XObject({
                                             items : [
                                                 {
                                                     xtype: Gtk.TreeStore,
+                                                    release : false,
                                                     id : "historyTreeStore",
                                                     pack : "set_model",
                                                     init : function() {
