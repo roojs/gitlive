@@ -112,7 +112,7 @@ Clones=new XObject({
                             xtype: Gtk.Button,
                             listeners : {
                                 clicked : function (self) {
-                                   var Merger =     imports.Merger.Merger;
+                                    var Merger =     imports.Merger.Merger;
                                     Merger.repo = new Repo('/home/alan/gitlive/roojs1');
                                     Merger.show();
                                 
