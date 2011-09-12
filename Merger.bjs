@@ -40,12 +40,6 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "label": "Select Branch",
-                                    "pack": "add",
-                                    "xtype": "Button",
-                                    "|xns": "Gtk"
-                                },
-                                {
                                     "label": "Working Branch",
                                     "xtype": "Label",
                                     "|xns": "Gtk"
