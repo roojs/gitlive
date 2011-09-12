@@ -143,7 +143,7 @@ Clones=new XObject({
                                         // error condition.
                                         return;
                                     }
-                                    var Remotes =     imports.Remotes.Remotes;
+                                    var Branches =     imports.Branches.Branches;
                                     
                                  
                                     var ret = {};       
