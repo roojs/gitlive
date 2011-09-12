@@ -436,6 +436,9 @@ Merger=new XObject({
                                             },
                                             id : "changedFilesView",
                                             pack : "add",
+                                            files : function() {
+                                                
+                                            },
                                             init : function() {
                                                 XObject.prototype.init.call(this);
                                                     var description = new Pango.FontDescription.c_new();
