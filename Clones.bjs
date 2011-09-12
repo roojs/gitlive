@@ -21,6 +21,7 @@
             "|xns": "Gtk",
             "items": [
                 {
+                    "id": "Clones",
                     "xtype": "VBox",
                     "|pack": " function(p,e) {\n        p.el.get_content_area().pack_start(e.el,true,true,0)\n    }\n",
                     "|xns": "Gtk",
