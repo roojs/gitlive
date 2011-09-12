@@ -302,7 +302,7 @@ Repo.list = function()
         }
         
     }
-    return Repo.list;
+    return Repo._list;
     
     
     
