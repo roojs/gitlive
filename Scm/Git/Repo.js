@@ -133,7 +133,9 @@ Repo = XObject.define(
                 }
                 
                 // create a tracking branch..
-                var name = r.remote.replace(/^remotes\//, '' ).replace('/', '.');
+                var name = r.remote.replace(/^remotes\//, '' ).replace('^origin/').replace('/', '.');
+                
+                
                 
                 r.remoterev = r.lastrev;
                 //r.name = name;
