@@ -162,6 +162,21 @@
                                             ]
                                         },
                                         {
+                                            "min_width": 50,
+                                            "pack": "append_column",
+                                            "title": "Last updated",
+                                            "xtype": "TreeViewColumn",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 3 );\n\n}\n",
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "pack": "pack_start",
+                                                    "xtype": "CellRendererText",
+                                                    "|xns": "Gtk"
+                                                }
+                                            ]
+                                        },
+                                        {
                                             "resizable": false,
                                             "min_width": 50,
                                             "pack": "append_column",
