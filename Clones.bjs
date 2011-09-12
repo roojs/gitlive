@@ -101,7 +101,7 @@
                                             "|xns": "Gtk"
                                         },
                                         {
-                                            "clickable": false,
+                                            "clickable": true,
                                             "min_width": 50,
                                             "pack": "append_column",
                                             "title": "Auto Commit",
