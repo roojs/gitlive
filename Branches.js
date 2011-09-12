@@ -167,7 +167,7 @@ Branches=new XObject({
                                         //this.insert(citer,iter,0);
                                         this.el.clear();
                                         
-                                        var tr = Remotes.repo.getBranches();
+                                        var tr = Branches.repo.getBranches();
                                         
                                         
                                         for(var i =0 ; i < tr.length; i++) {
