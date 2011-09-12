@@ -138,7 +138,7 @@ Merger=new XObject({
                                         //print(JSON.stringify(ret,null,4));
                                          
                                           
-                                        this.el.set_value(ret.iter, 0, '' +  tr[i].name );
+                                        this.el.set_value(ret.iter, 0, '' + tr[i].name );
                                         this.el.set_value(ret.iter, 1, '' + tr[i].rev  );
                                  
                                         
