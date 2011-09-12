@@ -219,6 +219,8 @@ Clones=new XObject({
                                            GObject.TYPE_STRING, // file  
                                           GObject.TYPE_STRING, // added
                                           GObject.TYPE_STRING, // removed
+                                           GObject.TYPE_BOOLEAN, // removed
+                                            GObject.TYPE_BOOLEAN // removed
                                       ] );
                                     },
                                     load : function(tr)
