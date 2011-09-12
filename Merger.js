@@ -82,10 +82,6 @@ Merger=new XObject({
                     pack : "pack_start,false,true",
                     items : [
                         {
-                            xtype: Gtk.Label,
-                            label : "Working Branch"
-                        },
-                        {
                             xtype: Gtk.ComboBox,
                             listeners : {
                                 changed : function (self) {
