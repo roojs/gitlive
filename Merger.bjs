@@ -51,9 +51,8 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "|xns": "Gtk",
                                     "xtype": "ComboBoxEntry",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 }
                             ]
                         },
