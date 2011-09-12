@@ -129,25 +129,6 @@ Merger=new XObject({
                                           GObject.TYPE_STRING, // added
                                           GObject.TYPE_STRING, // removed
                                       ] );
-                                },
-                                load : function(tr)
-                                {
-                                    //this.insert(citer,iter,0);
-                                    this.el.clear();
-                                    
-                                    for(var i =0 ; i < tr.length; i++) {
-                                        var ret = {  };
-                                        this.el.append(ret);
-                                        //print(JSON.stringify(ret,null,4));
-                                         
-                                          
-                                        this.el.set_value(ret.iter, 0, '' + tr[i].name );
-                                        this.el.set_value(ret.iter, 1, '' + tr[i].rev  );
-                                 
-                                        
-                                    }     
-                                    
-                                    
                                 }
                             }
                         },
