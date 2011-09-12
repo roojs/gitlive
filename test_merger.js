@@ -57,6 +57,7 @@ Gtk.init(Seed.argv);
 imports.searchPath.push('/'); // allow global paths..
 // error checking todo..
  //var ret = imports.Clones.Clones.show();
+ imports.Merger.Merger.repo = new imports.Scm.Git.Repo.Repo('/home/alan/gitlive/roojs1');
 var ret = imports.Merger.Merger.show();
 
 print("show returned\n");
