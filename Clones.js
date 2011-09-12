@@ -356,7 +356,8 @@ Clones=new XObject({
                                     },
                                     items : [
                                         {
-                                            xtype: Gtk.CellRendererToggle
+                                            xtype: Gtk.CellRendererToggle,
+                                            pack : "pack_start"
                                         }
                                     ]
                                 }
