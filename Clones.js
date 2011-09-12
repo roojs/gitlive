@@ -71,6 +71,7 @@ Clones=new XObject({
     items : [
         {
             xtype: Gtk.VBox,
+            id : "Clones",
             pack : function(p,e) {
                     p.el.get_content_area().pack_start(e.el,true,true,0)
                 },
