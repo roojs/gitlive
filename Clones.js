@@ -292,6 +292,23 @@ Clones=new XObject({
                                             pack : "pack_start"
                                         }
                                     ]
+                                },
+                                {
+                                    xtype: Gtk.TreeViewColumn,
+                                    min_width : 50,
+                                    pack : "append_column",
+                                    title : "Last updated",
+                                    init : function() {
+                                        XObject.prototype.init.call(this);
+                                        this.el.add_attribute(this.items[0].el , 'markup', 2 );
+                                    
+                                    },
+                                    items : [
+                                        {
+                                            xtype: Gtk.CellRendererText,
+                                            pack : "pack_start"
+                                        }
+                                    ]
                                 }
                             ]
                         },
