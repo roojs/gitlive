@@ -218,6 +218,7 @@ Commit=new XObject({
                         },
                         {
                             xtype: Gtk.TextView,
+                            height_request : 100,
                             id : "commitMsg",
                             pack : "add"
                         }
