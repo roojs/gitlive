@@ -68,9 +68,8 @@ Repo = XObject.define(
                     br.remote = parts[0];
                 } else { 
                     br.name = parts[0];
+                    bmap[br.name] = br;
                 }
-                
-                
                 _this.branches.push(br);
                 
                 if (active) {
