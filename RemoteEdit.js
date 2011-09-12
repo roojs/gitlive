@@ -46,7 +46,11 @@ RemoteEdit=new XObject({
             this.init();
         }
         var _this = this;
-        this.get('/remotesStore').load();
+        //this.get('/remotesStore').load();
+        this.get('/remoteURL').el.get_child().set_text('');
+        this.get('/remoteName').el.set_text('');
+        
+        
         this.el.show_all();
         
         var run_ret = this.el.run();
