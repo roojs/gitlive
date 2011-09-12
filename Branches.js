@@ -167,7 +167,7 @@ Branches=new XObject({
                                         //this.insert(citer,iter,0);
                                         this.el.clear();
                                         
-                                        var tr = Remotes.repo.remotes();
+                                        var tr = Remotes.repo.getBranches();
                                         
                                         
                                         for(var i =0 ; i < tr.length; i++) {
@@ -176,11 +176,21 @@ Branches=new XObject({
                                             this.el.append(ret);
                                             
                                             //print(JSON.stringify(ret,null,4));
+                                            var lastrev = tr[i].lastrev;
+                                            var remoterev = tr[i].remoterev;
+                                            
+                                            var lastrev = lastrev.length ? lastrev : remoterev;
+                                            
+                                            if (lastrev != remoterev) {
+                                                lastrev = "Out of sync: remote=" + remoterev + ", local=" + lastrev;
+                                            }
+                                            
+                                             var insync = name.length && 
                                              
                                               
                                             this.el.set_value(ret.iter, 0, ''  +  tr[i].name );
-                                            this.el.set_value(ret.iter, 1, '' + tr[i].url );
-                                           this.el.set_value(ret.iter, 2, '' + tr[i].type );
+                                            this.el.set_value(ret.iter, 1, '' + tr[i].remote );
+                                           this.el.set_value(ret.iter, 2, '' + lastrev );
                                      
                                             
                                         }     
