@@ -320,7 +320,7 @@ Clones=new XObject({
                                     title : "Auto Commit",
                                     init : function() {
                                         XObject.prototype.init.call(this);
-                                        this.el.add_attribute(this.items[0].el , 'markup', 2 );
+                                        this.el.add_attribute(this.items[0].el , 'markup', 4 );
                                     
                                     },
                                     items : [
