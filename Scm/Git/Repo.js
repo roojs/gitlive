@@ -76,6 +76,12 @@ Repo = XObject.define(
             if (cfg) {
                 this._remotes = false; // reset so we can query it..
                 
+                this.git([
+                    'remote'
+                    'add',
+                    cfg.name,
+                    cfg.url
+                ]);
                 
                 
                 
