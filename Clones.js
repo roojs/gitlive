@@ -90,7 +90,7 @@ Clones=new XObject({
                                     
                                 }
                             },
-                            label : "Select Branch",
+                            label : "Add Clone",
                             pack : "add"
                         },
                         {
