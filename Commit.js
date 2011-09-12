@@ -80,7 +80,7 @@ Commit=new XObject({
                     items : [
                         {
                             xtype: Gtk.Label,
-                            label : "URL :",
+                            label : "Fixes",
                             pack : "pack_start,false,false,10",
                             width_request : 50
                         },
