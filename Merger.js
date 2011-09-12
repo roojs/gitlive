@@ -588,14 +588,13 @@ Merger=new XObject({
                                                  
                                                     var files = this.get('/changedFilesView').files();
                                                     
-                                                    
-                                                    var diff = Merger.repo.diff(files, model.release, model.rev);
-                                                   
-                                                    if (!files.length) {
+                                                     if (!files.length) {
                                                         return; // error.!
                                                     }
-                                                    print("Files: " + JSON.stringify(files));
-                                                    return;
+                                                    var diff = Merger.repo.diff(files, model.release, model.rev);
+                                                   
+                                                   
+                                                 
                                                     
                                                     var log =  Merger.repo.history(files, 1, 'rev', model.rev + '..' + model.release);
                                                     
