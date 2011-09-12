@@ -82,45 +82,6 @@
                                     "items": [
                                         {
                                             "xtype": "ScrolledWindow",
-                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n     this.el.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)\n}\n",
-                                            "|xns": "Gtk",
-                                            "items": [
-                                                {
-                                                    "listeners": {
-                                                        "cursor_changed": "function (self) {\n\n    if (this.el.get_selection().count_selected_rows() < 1) {\n        //nothing?\n        return;\n    }\n    var model = this.get('/historyTreeStore');\n    var ret = {};        \n     var s = this.el.get_selection();\n    s.get_selected(ret);\n    \n    var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();\n     print(\"OUT?\" + value);// id..\n    // load the list in the right grid..\n    var Repo = imports.Scm.Git.Repo.Repo;\n    \n    \n    \n    var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });\n \n \n    var files = repo.changedFiles('/',   'rev', 'github..' + value);\n    this.get('/changedFilesStore').load(files);\n    return true;\n\n}"
-                                                    },
-                                                    "pack": "add",
-                                                    "xtype": "TreeView",
-                                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n        var description = new Pango.FontDescription.c_new();\n   description.set_size(8000);\n     this.el.modify_font(description);\n\n     this.selection = this.el.get_selection();\n      this.selection.set_mode( Gtk.SelectionMode.SINGLE);\n    var _this = this;\n    /*\n 780                                                                     \n 781                                                                         // is this really needed??\n 782                                                                         this.selection.signal['changed'].connect(function() {\n 783                                                                                 _this.get('/LeftTree.view').listeners.cursor_changed.apply(\n 784                                                                                     _this.get('/LeftTree.view'), [ _this.get('/LeftTree.view'), '']\n 785                                                                                 );\n 786                                                                         });\n 787                                                                         \n */\n }\n",
-                                                    "|xns": "Gtk",
-                                                    "items": [
-                                                        {
-                                                            "id": "historyTreeStore",
-                                                            "pack": "set_model",
-                                                            "xtype": "TreeStore",
-                                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.set_column_types ( 3, [\n       GObject.TYPE_STRING, // title \n      GObject.TYPE_STRING, // rev \n  ] );\n}\n",
-                                                            "|load": "function(tr,iter)\n{\n    //this.insert(citer,iter,0);\n    if (!iter) {\n        this.el.clear();\n    }\n    \n    for(var i =0 ; i < tr.length; i++) {\n        var ret = {  };\n        if (iter) {\n            this.el.insert(ret ,iter,-1);\n        } else {\n            this.el.append(ret);\n        }\n        //print(JSON.stringify(ret,null,4));\n         \n          \n        this.el.set_value(ret.iter, 0, ''  +  tr[i].text );\n        this.el.set_value(ret.iter, 1, '' + tr[i].rev  );\n \n        if (tr[i].children && tr[i].children.length) {\n            this.load(tr[i].children, ret.iter);\n        }\n    }     \n}",
-                                                            "|xns": "Gtk"
-                                                        },
-                                                        {
-                                                            "pack": "append_column",
-                                                            "xtype": "TreeViewColumn",
-                                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 0 );\n\n}\n",
-                                                            "|xns": "Gtk",
-                                                            "items": [
-                                                                {
-                                                                    "pack": "pack_start",
-                                                                    "xtype": "CellRendererText",
-                                                                    "|xns": "Gtk"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "xtype": "ScrolledWindow",
                                             "|init": "function() {\n    XObject.prototype.init.call(this);\n      this.el.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)\n}\n",
                                             "|xns": "Gtk",
                                             "items": [
