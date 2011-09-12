@@ -437,7 +437,22 @@ Merger=new XObject({
                                             id : "changedFilesView",
                                             pack : "add",
                                             files : function() {
+                                                 if (this.el.get_selection().count_selected_rows() < 1) {
+                                                    //nothing? - clea it?
+                                                    return [];
+                                                }
+                                            
+                                                var ret = {};         
+                                                var model = this.get('/changedFilesStore');
+                                            
+                                                 var s = this.el.get_selection();
+                                                 var files = [];
+                                                  s.selected_foreach(function(model,p,iter) {
                                                 
+                                                   files.push( model.get_value(iter, 0).value.get_string());
+                                                 
+                                                });
+                                                return files;
                                             },
                                             init : function() {
                                                 XObject.prototype.init.call(this);
