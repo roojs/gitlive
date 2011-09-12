@@ -34,7 +34,7 @@ Clones=new XObject({
         }
     },
     border_width : 3,
-    default_height : 700,
+    default_height : 500,
     default_width : 600,
     title : "Manage Clones",
     deletable : true,
