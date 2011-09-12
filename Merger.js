@@ -150,6 +150,51 @@ Merger=new XObject({
                         {
                             xtype: Gtk.Label,
                             label : "Release Branch"
+                        },
+                        {
+                            xtype: Gtk.ComboBox,
+                            id : "workingCombo",
+                            init : function() {
+                                this.el = new Gtk.ComboBox.with_entry();
+                                
+                                
+                                this.model  = new XObject(this.model);
+                                this.model.init();
+                                this.el.set_model(this.model.el);
+                                this.el.set_entry_text_column (0);
+                                 XObject.prototype.init.call(this);
+                                
+                            },
+                            pack : false,
+                            model : {
+                                xtype: Gtk.ListStore,
+                                id : "workingList",
+                                load : function(tr)
+                                {
+                                    //this.insert(citer,iter,0);
+                                    this.el.clear();
+                                    
+                                    for(var i =0 ; i < tr.length; i++) {
+                                        var ret = {  };
+                                        this.el.append(ret);
+                                        //print(JSON.stringify(ret,null,4));
+                                         
+                                          
+                                        this.el.set_value(ret.iter, 0, ''  +  tr[i].name );
+                                        this.el.set_value(ret.iter, 1, '' + tr[i].rev  );
+                                 
+                                        
+                                    }     
+                                },
+                                init : function() {
+                                    XObject.prototype.init.call(this);
+                                    this.el.set_column_types ( 3, [
+                                           GObject.TYPE_STRING, // file  
+                                          GObject.TYPE_STRING, // added
+                                          GObject.TYPE_STRING, // removed
+                                      ] );
+                                }
+                            }
                         }
                     ]
                 },
