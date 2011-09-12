@@ -61,10 +61,10 @@
                                     ]
                                 },
                                 {
-                                    "label": "Working Branch",
+                                    "label": "Release Branch",
+                                    "pack": false,
                                     "xtype": "Label",
-                                    "|xns": "Gtk",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 }
                             ]
                         },
