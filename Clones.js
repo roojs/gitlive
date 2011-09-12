@@ -37,7 +37,7 @@ Clones=new XObject({
     border_width : 3,
     default_height : 700,
     default_width : 800,
-    title : "Merger",
+    title : "Manage Clones",
     deletable : true,
     modal : true,
     show : function(c) {
