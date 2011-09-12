@@ -306,9 +306,9 @@ Merger=new XObject({
                                             items : [
                                                 {
                                                     xtype: Gtk.TreeStore,
-                                                    release : false,
                                                     id : "historyTreeStore",
                                                     pack : "set_model",
+                                                    release : false,
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
                                                         this.el.set_column_types ( 3, [
@@ -357,7 +357,7 @@ Merger=new XObject({
                                                     
                                                     
                                                         var rev = r.name + '..' + w.name;
-                                                        this.working = r.name;
+                                                        this.release = r.name;
                                                     
                                                         var hist = Merger.repo.dayTree('/', false, 'rev', rev);
                                                         this.load(hist);
