@@ -379,7 +379,7 @@ Repo = XObject.define(
                 args.push(path);
             } else {
                 path.forEach(function(p) {
-                        args.push(p);
+                     args.push(p);
                 })
             }
             
