@@ -46,7 +46,7 @@ Branches=new XObject({
             this.init();
         }
         var _this = this;
-        this.get('/remotesStore').load();
+        this.get('/branchList').load();
         this.el.show_all();
         
         var run_ret = this.el.run();
