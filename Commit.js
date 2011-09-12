@@ -226,6 +226,7 @@ Commit=new XObject({
                 },
                 {
                     xtype: Gtk.ScrolledWindow,
+                    height_request : 200,
                     pack : "pack_end,true,true,0",
                     init : function() {
                         XObject.prototype.init.call(this);
