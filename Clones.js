@@ -31,6 +31,9 @@ Clones=new XObject({
                 
             //var val = this.get('bug').getValue();
              //   Seed.print(val);
+        },
+        show : function (self) {
+            this.get('/reposStore').load();
         }
     },
     border_width : 3,
