@@ -594,11 +594,12 @@ Merger=new XObject({
                                                     var diff = Merger.repo.diff(files, model.release, model.rev);
                                                    
                                                    
-                                                 
+                                                   print("history?");
+                                                   
                                                     
-                                                    var log =  Merger.repo.history(files, 1, 'rev', model.rev + '..' + model.release);
+                                                    var history =  Merger.repo.history(files, 1, 'rev', model.rev + '..' + model.release);
                                                     
-                                                    print(JSON.stringify(log));
+                                                    print("History" + JSON.stringify(history));
                                                     
                                                     Commit = imports.Commit.Commit;
                                                     Commit.repo = Merger.repo;
