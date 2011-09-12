@@ -22,6 +22,7 @@ Repo = XObject.define(
     imports.Scm.Repo.Repo, // or Object
     {
         branches : false,
+        currentBranch : false,
         tags : false,
         gitdir : false,
         debug : false,
@@ -62,7 +63,7 @@ Repo = XObject.define(
                     lastrev :  parts[1]
                 });
                 if (active) {
-                    _this.curBranch = parts[0];
+                    _this.curentBranch = parts[0];
                 }
             });
             return this.branches;
