@@ -31,15 +31,6 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "listeners": {
-                                        "clicked": "function (self) {\n    \n    \n \n    var hist = Merger.repo.dayTree('/', false, 'rev', 'github..master');\n    this.get('/historyTreeStore').load(hist);\n        \n       \n    \n    \n}"
-                                    },
-                                    "label": "Select Branch",
-                                    "pack": "add",
-                                    "xtype": "Button",
-                                    "|xns": "Gtk"
-                                },
-                                {
                                     "label": "Working Branch",
                                     "xtype": "Label",
                                     "|xns": "Gtk"
