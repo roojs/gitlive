@@ -149,8 +149,7 @@ Merger=new XObject({
                         },
                         {
                             xtype: Gtk.Label,
-                            label : "Release Branch",
-                            pack : false
+                            label : "Release Branch"
                         }
                     ]
                 },
