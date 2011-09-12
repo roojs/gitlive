@@ -71,6 +71,7 @@ Repo = XObject.define(
                 if (parts[0].match(/^remotes\//)) {
                     br.remote = parts[0];
                     bmap[br.remote] = br;
+                    remotes.push(br);
                 } else { 
                     br.name = parts[0];
                     bmap[br.name] = br;
