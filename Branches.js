@@ -152,7 +152,7 @@ Branches=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.ListStore,
-                                    id : "remotesStore",
+                                    id : "branchStore",
                                     pack : "set_model",
                                     init : function() {
                                         XObject.prototype.init.call(this);
