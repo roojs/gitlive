@@ -302,6 +302,7 @@ Clones=new XObject({
                                                     var value =   store.el.get_value(ret.iter,5).value.get_boolean();
                                                                                                                  
                                                     print(JSON.stringify(value));
+                                                    store.el.set_value(ret.iter,5, !value);
                                                     
                                                 }
                                             },
