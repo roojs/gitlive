@@ -143,8 +143,9 @@ Clones=new XObject({
                                     
                                     });
                                     Merger.repo = repo;
-                                    Merger.show();
                                     Merger.el.set_transient_for(Clones.el);
+                                    Merger.show();
+                                    
                                 
                                     
                                     
