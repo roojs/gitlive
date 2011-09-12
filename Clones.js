@@ -144,9 +144,9 @@ Clones=new XObject({
                                     });
                                     Merger.repo = repo;
                                     Merger.el.set_transient_for(Clones.el);
-                                
+                                    Clones.el.set_title("Manage Clones - " + repo.repopath);
                                     Merger.show();
-                                    
+                                    Clones.el.set_title("Manage Clones");
                                 
                                     
                                     
