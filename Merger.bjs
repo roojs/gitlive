@@ -32,7 +32,6 @@
                             "items": [
                                 {
                                     "label": "Working Branch",
-                                    "pack": false,
                                     "xtype": "Label",
                                     "|xns": "Gtk"
                                 },
