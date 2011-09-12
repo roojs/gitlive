@@ -31,10 +31,10 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "label": "Release Branch",
+                                    "label": "Working Branch",
+                                    "pack": false,
                                     "xtype": "Label",
-                                    "|xns": "Gtk",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 },
                                 {
                                     "listeners": {
