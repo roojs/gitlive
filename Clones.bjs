@@ -70,7 +70,7 @@
                                     "listeners": {
                                         "clicked": "function (self) {\n    \n    \n \n       \n    \n    \n}"
                                     },
-                                    "label": "Add Clone",
+                                    "label": "Pull",
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
