@@ -224,9 +224,11 @@ Clones=new XObject({
                                             GObject.TYPE_BOOLEAN // auto-push
                                       ] );
                                     },
-                                    load : function(tr)
+                                    load : function()
                                     {
                                         //this.insert(citer,iter,0);
+                                        var tr = imports.Scm.Repo.Repo.list();
+                                        
                                         this.el.clear();
                                         for(var i =0 ; i < tr.length; i++) {
                                             var ret = {  };
