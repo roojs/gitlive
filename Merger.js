@@ -141,7 +141,7 @@ Merger=new XObject({
                                                     
                                                     
                                                    
-                                                    var files = this.repo.changedFiles('/',   'rev', 'github..' + value);
+                                                    var files = Merger.repo.changedFiles('/',   'rev', 'github..' + value);
                                                     this.get('/changedFilesStore').load(files);
                                                     return true;
                                                 
