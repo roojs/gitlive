@@ -576,7 +576,7 @@ Merger=new XObject({
                                                     return;
                                                 }
                                                 
-                                                var diff = Merger.repo.diff(files, model.release, 'master');
+                                                var diff = Merger.repo.diff(files, model.release, model.rev);
                                                 
                                                // remove..
                                                 var s  = "document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);";
