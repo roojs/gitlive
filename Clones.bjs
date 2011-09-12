@@ -186,6 +186,7 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
+                                                    "pack": "pack_start",
                                                     "xtype": "CellRendererToggle",
                                                     "|xns": "Gtk"
                                                 }
