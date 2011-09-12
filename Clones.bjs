@@ -170,6 +170,11 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
+                                                    "|xns": "Gtk",
+                                                    "xtype": "CellRendererToggle",
+                                                    "pack": false
+                                                },
+                                                {
                                                     "pack": "pack_start",
                                                     "xtype": "CellRendererText",
                                                     "|xns": "Gtk"
