@@ -10,20 +10,66 @@ Vte = imports.gi.Vte;
 console = imports.console;
 XObject = imports.XObject.XObject;
 Merger=new XObject({
-    xtype: Gtk.Button,
+    xtype: Gtk.Dialog,
     listeners : {
-        clicked : function (self) {
-            
-            
+        destroy_event : function (self, event) {
+             this.el.hide();
+                        return false;
+        },
+        response : function (self, id) {
+          // hide
+             //if (id < 1) {
+                this.el.hide();
+                return;
+            //}
+            if (typeof(this.get('bug').getValue()) != 'object') {
+                print("ERROR");
+                return;
+            }
          
-            var hist = Merger.repo.dayTree('/', false, 'rev', 'github..master');
-            this.get('/historyTreeStore').load(hist);
-                 
-            
+            this.el.hide();
+                
+            //var val = this.get('bug').getValue();
+             //   Seed.print(val);
         }
     },
-    label : "Select Branch",
-    pack : "add",
+    border_width : 3,
+    default_height : 700,
+    default_width : 800,
+    id : "Merger",
+    title : "Merger",
+    deletable : true,
+    show : function(c) {
+        
+        if (!this.el) {
+            this.init();
+        }
+        var _this = this;
+         
+          //this.el.set_title("Merger - ??? ");
+    //   this.el.set_title("Merger - " + this.repo.repopath);
+    
+    
+    
+         /// load up branches
+         this.get('/workingCombo').load(Merger.repo.branches);
+         
+         this.get('/releaseCombo').load(Merger.repo.branches);
+    
+        this.el.show_all();
+        //this.get('/ok_button').el.set_sensitive(false);
+        
+        // block until we return.
+        var run_ret = this.el.run();
+        if (run_ret < 1 ) {
+            return  "DONE";
+        }
+        print("RUN RETURN : " + run_ret);
+        return "DONE";
+        //print(JSON.stringify(this.get('bug').getValue()));
+       // return this.get('bug').getValue();
+        //this.success = c.success;
+    },
     items : [
         {
             xtype: Gtk.VBox,
