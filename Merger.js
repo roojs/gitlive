@@ -54,8 +54,8 @@ Merger=new XObject({
          /// load up branches
          
          this.get('/historyTreeStore').el.clear();
-        this.get('/changedFilesStore').el.clear();
-        this.get('/patchview').clear();
+         this.get('/changedFilesStore').el.clear();
+         this.get('/patchview').clear();
         
          
          
