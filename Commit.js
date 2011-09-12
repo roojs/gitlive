@@ -206,7 +206,7 @@ Commit=new XObject({
                     ]
                 },
                 {
-                    xtype: Gtk.VBox,
+                    xtype: Gtk.HBox,
                     pack : "pack_start,false,true,2",
                     items : [
                         {
