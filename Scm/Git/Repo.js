@@ -87,9 +87,9 @@ Repo = XObject.define(
                 }
             });
             
-            print(JSON.stringify(local));
-            print(JSON.stringify(remotes));
-            print(JSON.stringify(bmap,null,4));
+            //print(JSON.stringify(local));
+            //print(JSON.stringify(remotes));
+            //print(JSON.stringify(bmap,null,4));
 
             
             // overlay tracking informaion
@@ -98,9 +98,9 @@ Repo = XObject.define(
                 { format :  '%(refname:short):remotes/%(upstream:short)' },
                 'refs/heads'
             ]).split("\n");
-            print(this.lastCmd);
+            //print(this.lastCmd);
             
-            print(JSON.stringify(bl,null,4));
+            //print(JSON.stringify(bl,null,4));
             
             bl.forEach(function(line) {
                 if (!line.length) {
