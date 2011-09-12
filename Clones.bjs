@@ -113,7 +113,7 @@
                                                     "activatable": true,
                                                     "pack": "pack_start",
                                                     "xtype": "CellRendererToggle",
-                                                    "|": "Gtk.CellRendererMode.ACTIVATABLE",
+                                                    "|mode": "Gtk.CellRendererMode.ACTIVATABLE",
                                                     "|xns": "Gtk"
                                                 }
                                             ]
