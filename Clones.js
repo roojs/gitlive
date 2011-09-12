@@ -122,6 +122,21 @@ Clones=new XObject({
                             },
                             label : "Add Clone",
                             pack : "add"
+                        },
+                        {
+                            xtype: Gtk.Button,
+                            listeners : {
+                                clicked : function (self) {
+                                    
+                                    
+                                 
+                                       
+                                    
+                                    
+                                }
+                            },
+                            label : "Add Clone",
+                            pack : "add"
                         }
                     ]
                 },
