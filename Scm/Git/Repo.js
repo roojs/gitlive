@@ -50,6 +50,10 @@ Repo = XObject.define(
             }]).split("\n");
             var bmap = {};
             var _this=this;
+            
+            var local = [];
+            var remote = [];
+            
             bl.forEach(function(line) {
                   // * master 61e7e7d oneliner
                 var active = line[0]=='*';
@@ -66,11 +70,12 @@ Repo = XObject.define(
                 };
                 if (parts[0].match(/^remotes\//)) {
                     br.remote = parts[0];
+                    bmap[br.remote] = br;
                 } else { 
                     br.name = parts[0];
                     bmap[br.name] = br;
+                    local.push(br);
                 }
-                _this.branches.push(br);
                 
                 if (active) {
                     _this.currentBranch = parts[0];
@@ -86,14 +91,22 @@ Repo = XObject.define(
             
             bl.forEach(function(line) {
                 var ar = line.split(':remotes/');
-                var 
-                  // * master 61e7e7d oneliner
-                var active = line[0]=='*';
-                line = line.substring(2);
-                
-                var parts = line.split(/\s+/);
+                var lname= ar[0];
+                var rname = 'remotes/' + ar[1];
+                // we should always have a local version of it.
+                bmap[lname].remote = rname;
+                // flag it for not adding..
+                bname[rname].name = lname;
+            });
+            // add any remotes that do not have name..
+            remotes.forEach(function(r) {
+                if (r.name.length) {
+                    return;
+                }
+                local.push(r);
+            });
             
-            
+            this.branches = local;
             
             
             
