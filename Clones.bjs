@@ -1,5 +1,5 @@
 {
-    "id": "file-gtk-3",
+    "id": "file-gtk-1",
     "name": "Clones",
     "parent": "",
     "title": false,
@@ -33,9 +33,9 @@
                             "items": [
                                 {
                                     "listeners": {
-                                        "clicked": "function (self) {\n    \n    \n \n       \n    \n    \n}"
+                                        "clicked": "function (self) {\n\n    var rv = this.get('/reposView');\n    var rs = this.get('/reposStore');\n    if (rv.el.get_selection().count_selected_rows() != 1) {\n        //nothing?\n        // error condition.\n        return;\n    }\n    var Remotes =     imports.Remotes.Remotes;\n    \n \n    var ret = {};       \n    var s = rv.el.get_selection();\n    var path = '';\n    s.selected_foreach(function(model,p,iter) {\n                                                    \n       path = model.get_value(iter, 6).value.get_string();\n     \n    }); \n\n    var repo = false;\n    rs.repos.forEach(function(r) {\n        if (r.repopath == path) {\n            repo = r;\n        \n        }\n    \n    });\n    Remotes.repo = repo;\n    Remotes.el.set_transient_for(Clones.el);\n    Clones.el.set_title(\"Manage Clones - \" + repo.repopath);\n    Remotes.show();\n    Clones.el.set_title(\"Manage Clones\");\n\n     \n    \n    \n    \n\n       \n    \n    \n}"
                                     },
-                                    "label": "Add Clone",
+                                    "label": "Remotes / Clones",
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
@@ -44,7 +44,7 @@
                                     "listeners": {
                                         "clicked": "function (self) {\n    \n    \n \n       \n    \n    \n}"
                                     },
-                                    "label": "Add Branch",
+                                    "label": "Branches",
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
@@ -237,5 +237,5 @@
         }
     ],
     "permname": "",
-    "modOrder": "0"
+    "modOrder": ""
 }
