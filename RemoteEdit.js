@@ -106,7 +106,7 @@ RemoteEdit=new XObject({
                                        return;
                                    }
                                    // fill in name
-                                   imports.Scm.Git.Repo.Repo.parseURL(val);
+                                   var val = imports.Scm.Git.Repo.Repo.parseURL(val);
                                    if ((typeof(val.host) != 'undefined') && val.host.length) {
                                         this.get('/remoteName').el.set_text(val.host);
                                    }
