@@ -303,6 +303,9 @@ Merger=new XObject({
                                                     xtype: Gtk.TreeStore,
                                                     id : "historyTreeStore",
                                                     pack : "set_model",
+                                                    loadTree : function() {
+                                                        
+                                                    },
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
                                                         this.el.set_column_types ( 3, [
