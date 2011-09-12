@@ -122,18 +122,30 @@ Merger=new XObject({
                                 //this.insert(citer,iter,0);
                                 this.model.el.clear();
                                 
+                                var master = false;
+                                var working = false;
+                                
                                 for(var i =0 ; i < tr.length; i++) {
                                     var ret = {  };
                                     this.model.el.append(ret);
                                     //print(JSON.stringify(ret,null,4));
-                                     
-                                      
+                                    if (tr[i].name == 'master') {
+                                        master = id;
+                                    }
+                                    if (tr[i].name == 'release') {
+                                        master = id;
+                                    }          
                                     this.model.el.set_value(ret.iter, 0, '' + tr[i].name );
                                     this.model.el.set_value(ret.iter, 1, '' + tr[i].rev  );
                              
                                     
                                 }     
-                                
+                                if (master !== false) {
+                                    this.el.set_active(master);
+                                }
+                                if (release !== false) {
+                                    this.el.set_active(release);
+                                }
                                 
                             },
                             model : {
