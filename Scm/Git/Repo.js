@@ -25,7 +25,7 @@ Repo = XObject.define(
         currentBranch : false,
         tags : false,
         gitdir : false,
-        debug : true,
+        debug : false,
         lastCmd : false, 
         
         getMetaData : function() {
