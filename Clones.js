@@ -31,9 +31,6 @@ Clones=new XObject({
                 
             //var val = this.get('bug').getValue();
              //   Seed.print(val);
-        },
-        show : function (self) {
-        
         }
     },
     border_width : 3,
