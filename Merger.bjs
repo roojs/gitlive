@@ -59,6 +59,12 @@
                                             "|xns": "Gtk"
                                         }
                                     ]
+                                },
+                                {
+                                    "label": "Working Branch",
+                                    "xtype": "Label",
+                                    "|xns": "Gtk",
+                                    "pack": false
                                 }
                             ]
                         },
