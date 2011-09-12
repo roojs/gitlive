@@ -573,7 +573,7 @@ Merger=new XObject({
                                                     Merger.el.set_transient_for(Commit.el);
                                                 
                                                     Commit.show({
-                                                        files : []
+                                                        files : this.get('/chnageFilesStore').files()
                                                     
                                                     });
                                                 
