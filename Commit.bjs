@@ -113,6 +113,7 @@
                                 },
                                 {
                                     "id": "commitMsg",
+                                    "pack": "add",
                                     "xtype": "TextView",
                                     "|xns": "Gtk"
                                 }
