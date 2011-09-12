@@ -269,7 +269,7 @@ Clones=new XObject({
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                         this.el.add_attribute(this.items[0].el , 'active', 4 );
-                                        this.el.add_attribute(this.items[0].el , 'activatable', 6 );
+                                        this.items[0].el.set_activatable(true);
                                     
                                     },
                                     items : [
