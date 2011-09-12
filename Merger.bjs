@@ -231,7 +231,7 @@
                                             "items": [
                                                 {
                                                     "listeners": {
-                                                        "clicked": "function (self) {\n    Commit = imports.Commit.Commit;\n    Commit.repo = Merger.repo;\n    Merger.el.set_transient_for(Commit.el);\n\n    Commit.show({\n        files : this.get('/chnageFilesStore').files()\n    \n    });\n\n\n}"
+                                                        "clicked": "function (self) {\n    Commit = imports.Commit.Commit;\n    Commit.repo = Merger.repo;\n    Merger.el.set_transient_for(Commit.el);\n\n    Commit.show({\n        files : this.get('/changedFilesStore').files()\n    \n    });\n\n\n}"
                                                     },
                                                     "label": "Commit diff (no merge)",
                                                     "xtype": "Button",
