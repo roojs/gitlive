@@ -132,6 +132,11 @@ Repo = XObject.define(
                 // create a tracking branch..
                 var name = r.remote.replace(/^remotes\//, '' ).replace('/', '.');
                 
+                r.remoterev = r.lastrev;
+                //r.name = name;
+                local.push(r);
+                return;
+                
                 _this.git([ 
                     'branch',
                     {
