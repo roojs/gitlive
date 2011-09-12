@@ -50,11 +50,23 @@ Merger=new XObject({
     //   this.el.set_title("Merger - " + this.repo.repopath);
     
     
-    
+         Merger.loading = true; // stop change firing on combos.
          /// load up branches
+         
+         this.get('/historyTreeStore').el.clear();
+        this.get('/changedFilesStore').el.clear();
+        this.get('/patchview').clear();
+        
+         
+         
          this.get('/workingCombo').load(Merger.repo.branches);
          
          this.get('/releaseCombo').load(Merger.repo.branches);
+    
+    
+    
+    
+         Merger.loading = false;
     
         this.el.show_all();
         //this.get('/ok_button').el.set_sensitive(false);
@@ -325,12 +337,16 @@ Merger=new XObject({
                                                     },
                                                     loadTree : function() {
                                                     
-                                                           this.working = false;
+                                                       this.working = false;
+                                                       if (Merger.loading) {
+                                                            return;
+                                                       }
+                                                       
                                                        
                                                        var wid = this.get('/workingCombo').el.get_active();
                                                        var rid = this.get('/releaseCombo').el.get_active();
                                                        if (wid < 0 || rid < 0 || rid == wid) {
-                                                        return;
+                                                            return;
                                                        }
                                                        
                                                        var w = Merger.repo.branches[wid];
@@ -340,8 +356,24 @@ Merger=new XObject({
                                                     
                                                         var rev = r.name + '..' + w.name;
                                                         this.release = r.name;
+                                                        
+                                                        // this takes some time, lets. try and dialog it..
+                                                    
+                                                        
+                                                        
+                                                        
+                                                        var msg = new Gtk.MessageDialog( {
+                                                            buttons : Gtk.ButtonsType.NONE,
+                                                            text: "Loading History"
+                                                            
+                                                        });
+                                                        
+                                                        msg.set_transient_for(Merger.el);
+                                                        msg.show_all();
                                                     
                                                         var hist = Merger.repo.dayTree('/', false, 'rev', rev);
+                                                        msg.hide();
+                                                        
                                                         this.load(hist);
                                                             
                                                            
@@ -549,8 +581,23 @@ Merger=new XObject({
                                             xtype: WebKit.WebView,
                                             id : "patchview",
                                             pack : "add",
-                                            showDiff : function(files) {
+                                            clear : function() {
                                                 
+                                                
+                                                
+                                                 
+                                               // remove..
+                                                var s  = "document.body.textContent='';"
+                                                    
+                                                this.el.execute_script(s);
+                                                    
+                                                    
+                                                
+                                                
+                                                
+                                            },
+                                            showDiff : function(files) {
+                                                this.clear();
                                                 
                                                 
                                                  var model = this.get('/historyTreeStore');
@@ -562,7 +609,7 @@ Merger=new XObject({
                                                 var diff = Merger.repo.diff(files, model.release, model.rev);
                                                 
                                                // remove..
-                                                var s  = "document.body.textContent='';var pre  = document.createElement('pre'); document.body.appendChild(pre);";
+                                                var s  = "var pre  = document.createElement('pre'); document.body.appendChild(pre);";
                                                 s += "pre.textContent =  " +
                                                          JSON.stringify(Merger.repo.lastCmd + "\n") + '+  ' + 
                                                        JSON.stringify(diff) + ";";

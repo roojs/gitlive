@@ -122,13 +122,28 @@ Repo = XObject.define(
                 
                 bmap[rname].name = lname;
             });
+            var _this =this;
             // add any remotes that do not have name..
             remotes.forEach(function(r) {
                 if (r.name.length) {
                     return;
                 }
+                
+                // create a tracking branch..
+                var name = r.remote.replace(/^remotes\//, '' ).replace('/', '.');
+                
+                _this.git([ 
+                    'branch',
+                    {
+                        f : true,
+                        track : true
+                    },
+                    name,
+                    r.remote
+                ]);
+                
                 r.remoterev = r.lastrev;
-                r.lastrev = '';
+                r.name = name;
                 local.push(r);
             });
             

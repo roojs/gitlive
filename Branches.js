@@ -89,7 +89,7 @@ Branches=new XObject({
                                     
                                 }
                             },
-                            label : "Add",
+                            label : "Pull",
                             pack : "add"
                         }
                     ]

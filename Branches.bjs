@@ -35,7 +35,7 @@
                                     "listeners": {
                                         "clicked": "function (self) {\n\n     return;\n    var RemoteEdit=    imports.RemoteEdit.RemoteEdit\n     RemoteEdit.repo = Remotes.repo;\n    RemoteEdit.el.set_transient_for(Remotes.el);\n\n    var res =  RemoteEdit.show();\n    \n    if (res != false) {\n        Remotes.repo.remotes(res);\n    }\n    \n    this.get('/remotesStore').load();\n\n    \n}"
                                     },
-                                    "label": "Add",
+                                    "label": "Pull",
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
