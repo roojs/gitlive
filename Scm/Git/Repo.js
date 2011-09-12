@@ -93,6 +93,7 @@ Repo = XObject.define(
                 var ar = line.split(':remotes/');
                 var lname= ar[0];
                 var rname = 'remotes/' + ar[1];
+                print(rname);
                 // we should always have a local version of it.
                 bmap[lname].remote = rname;
                 // flag it for not adding..
