@@ -63,7 +63,7 @@ Repo = XObject.define(
                     lastrev :  parts[1]
                 });
                 if (active) {
-                    _this.curentBranch = parts[0];
+                    _this.currentBranch = parts[0];
                 }
             });
             return this.branches;
