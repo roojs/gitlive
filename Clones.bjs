@@ -40,7 +40,10 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "label": "Select Branch",
+                                    "listeners": {
+                                        "clicked": "function (self) {\n    \n    \n \n       \n    \n    \n}"
+                                    },
+                                    "label": "Add Clone",
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
