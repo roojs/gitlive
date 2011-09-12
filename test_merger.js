@@ -56,8 +56,8 @@ Gtk.init(Seed.argv);
 
 imports.searchPath.push('/'); // allow global paths..
 // error checking todo..
- var ret = imports.Clones.Clones.show();
-//var ret = imports.Merger.Merger.show();
+ //var ret = imports.Clones.Clones.show();
+var ret = imports.Merger.Merger.show();
 
 print("show returned\n");
 print(JSON.stringify(ret,null, 4));
