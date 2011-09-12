@@ -121,22 +121,31 @@ Clones=new XObject({
                                         // error condition.
                                         return;
                                     }
-                                
+                                    var Merger =     imports.Merger.Merger;
                                     
                                  
                                     var ret = {};        
                                      var s = rv.el.get_selection();
                                     s.get_selected(ret);
+                                
+                                    var path = ''+ ret.model.get_value(ret.iter, 6).value.get_string();
+                                    rv.repos.forEach(function(r) {
+                                        if (r.repopath == path) {
+                                            Merger.repo = r;
+                                            Merger.show();
+                                        
+                                        }
+                                    
+                                    });
+                                    
+                                    
+                                
+                                    
+                                
                                     
                                     
                                     
-                                    var Merger =     imports.Merger.Merger;
                                     
-                                    
-                                    
-                                    
-                                    Merger.repo = new Repo('/home/alan/gitlive/roojs1');
-                                    Merger.show();
                                 
                                        
                                     
