@@ -96,7 +96,7 @@ Repo = XObject.define(
             bl = this.git([
                 'for-each-ref ',
                 { format :  '%(refname:short):remotes/%(upstream:short)' },
-                'refs/heads'
+                'ref/heads'
             ]).split("\n");
             print(this.lastCmd);
             
