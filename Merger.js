@@ -368,7 +368,7 @@ Merger=new XObject({
                                                             
                                                         });
                                                         
-                                                        msg.set_transient_for(Merger.el);
+                                                        Merger.el.set_transient_for(msg);
                                                         msg.show_all();
                                                     
                                                         var hist = Merger.repo.dayTree('/', false, 'rev', rev);
