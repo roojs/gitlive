@@ -114,7 +114,7 @@ Commit=new XObject({
                                    
                                 }
                             },
-                            id : "remoteURL",
+                            id : "commitFixes",
                             init : function() {
                                 this.el = new Gtk.ComboBox.with_entry();
                                 
