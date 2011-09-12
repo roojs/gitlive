@@ -70,7 +70,8 @@ Repo = XObject.define(
                 var br = {
                     lastrev :  parts[1],
                     name :      '',
-                    remote :    ''
+                    remote :    '',
+                    remoterev
                 };
                 if (parts[0].match(/^remotes\//)) {
                     br.remote = parts[0];
@@ -113,6 +114,7 @@ Repo = XObject.define(
                 //print(rname);
                 // we should always have a local version of it.
                 bmap[lname].remote = rname;
+                bmap[lname].remoterev =  bmap[rname].lastrev;
                 // flag it for not adding..
                 bmap[rname].name = lname;
             });
