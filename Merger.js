@@ -125,6 +125,9 @@ Merger=new XObject({
                                 var working = false;
                                 
                                 for(var i =0 ; i < tr.length; i++) {
+                                    if (!tr[i].name.length) {
+                                        continue;
+                                    }
                                     var ret = {  };
                                     this.model.el.append(ret);
                                     //print(JSON.stringify(ret,null,4));
