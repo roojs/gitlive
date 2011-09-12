@@ -132,8 +132,8 @@ Merger=new XObject({
                                     if (tr[i].name == 'master') {
                                         master = id;
                                     }
-                                    if (tr[i].name == 'release') {
-                                        master = id;
+                                    if (tr[i].name == 'working') {
+                                        working = id;
                                     }          
                                     this.model.el.set_value(ret.iter, 0, '' + tr[i].name );
                                     this.model.el.set_value(ret.iter, 1, '' + tr[i].rev  );
@@ -143,8 +143,8 @@ Merger=new XObject({
                                 if (master !== false) {
                                     this.el.set_active(master);
                                 }
-                                if (release !== false) {
-                                    this.el.set_active(release);
+                                if (working !== false) {
+                                    this.el.set_active(working);
                                 }
                                 
                             },
