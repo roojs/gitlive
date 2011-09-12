@@ -37,7 +37,7 @@ Branches=new XObject({
     border_width : 3,
     default_height : 300,
     default_width : 500,
-    title : "Remotes",
+    title : "Branches",
     deletable : true,
     modal : true,
     show : function(c) {
