@@ -96,7 +96,7 @@ RemoteEdit=new XObject({
                             listeners : {
                                 changed : function (self) {
                                    var val = this.el.get_child().get_text();
-                                   
+                                   print(JSON.stringify(val));
                                    if (!val.length) {
                                        return;
                                    }
