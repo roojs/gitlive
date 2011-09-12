@@ -70,8 +70,19 @@ Repo = XObject.define(
         },
         _remotes : false,
         
-        remotes: function()
+        remotes: function(cfg)
         {
+            
+            if (cfg) {
+                this._remotes = false; // reset so we can query it..
+                
+                
+                
+                
+                
+            }
+            
+            
             if (this._remotes!== false) {
                 return this._remotes;
             }
