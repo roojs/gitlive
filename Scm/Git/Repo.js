@@ -52,7 +52,7 @@ Repo = XObject.define(
             var _this=this;
             
             var local = [];
-            var remote = [];
+            var remotes = [];
             
             bl.forEach(function(line) {
                   // * master 61e7e7d oneliner
