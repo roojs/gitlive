@@ -50,6 +50,11 @@
                                     "xtype": "Label",
                                     "|xns": "Gtk",
                                     "pack": false
+                                },
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "ComboBox",
+                                    "pack": false
                                 }
                             ]
                         },
