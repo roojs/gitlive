@@ -114,8 +114,12 @@ Repo = XObject.define(
                 //print(rname);
                 // we should always have a local version of it.
                 bmap[lname].remote = rname;
+                if (typeof(bmap[rname]) == 'undefined') {
+                    return;
+                }
                 bmap[lname].remoterev =  bmap[rname].lastrev;
                 // flag it for not adding..
+                
                 bmap[rname].name = lname;
             });
             // add any remotes that do not have name..
