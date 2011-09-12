@@ -72,7 +72,7 @@
                                     "|xns": "Gtk"
                                 },
                                 {
-                                    "id": "remoteName",
+                                    "id": "commitDate",
                                     "xtype": "Entry",
                                     "|xns": "Gtk"
                                 }
