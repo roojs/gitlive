@@ -114,7 +114,7 @@ Clones=new XObject({
                                 clicked : function (self) {
                                    var Merger =     imports.Merger.Merger;
                                     Merger.repo = new Repo('/home/alan/gitlive/roojs1');
-                                    imports.Merger.Merger.show();
+                                    Merger.show();
                                 
                                        
                                     
