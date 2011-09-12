@@ -120,6 +120,34 @@ Date.parseRegexes = [];
 // private
 Date.formatFunctions = {count:0};
 
+
+
+Date.escape  = function(string) {
+        return string.replace(/('|\\)/g, "\\$1");
+};
+
+  
+Date.leftPad = function (val, size, ch) {
+    var result = new String(val);
+    if(ch === null || ch === undefined || ch === '') {
+        ch = " ";
+    }
+    while (result.length < size) {
+        result = ch + result;
+    }
+    return result;
+}
+
+
+
+
+
+
+
+
+
+
+
 // private
 Date.prototype.dateFormat = function(format) {
     if (Date.formatFunctions[format] == null) {
@@ -152,7 +180,7 @@ Date.createNewFormat = function(format) {
         }
         else if (special) {
             special = false;
-            code += "'" + String.escape(ch) + "' + ";
+            code += "'" + Date.escape(ch) + "' + ";
         }
         else {
             code += Date.getFormatCode(ch);
@@ -166,7 +194,7 @@ Date.createNewFormat = function(format) {
 Date.getFormatCode = function(character) {
     switch (character) {
     case "d":
-        return "String.leftPad(this.getDate(), 2, '0') + ";
+        return "Date.leftPad(this.getDate(), 2, '0') + ";
     case "D":
         return "Date.dayNames[this.getDay()].substring(0, 3) + ";
     case "j":
@@ -184,7 +212,7 @@ Date.getFormatCode = function(character) {
     case "F":
         return "Date.monthNames[this.getMonth()] + ";
     case "m":
-        return "String.leftPad(this.getMonth() + 1, 2, '0') + ";
+        return "Date.leftPad(this.getMonth() + 1, 2, '0') + ";
     case "M":
         return "Date.monthNames[this.getMonth()].substring(0, 3) + ";
     case "n":
@@ -206,13 +234,13 @@ Date.getFormatCode = function(character) {
     case "G":
         return "this.getHours() + ";
     case "h":
-        return "String.leftPad((this.getHours() % 12) ? this.getHours() % 12 : 12, 2, '0') + ";
+        return "Date.leftPad((this.getHours() % 12) ? this.getHours() % 12 : 12, 2, '0') + ";
     case "H":
-        return "String.leftPad(this.getHours(), 2, '0') + ";
+        return "Date.leftPad(this.getHours(), 2, '0') + ";
     case "i":
-        return "String.leftPad(this.getMinutes(), 2, '0') + ";
+        return "Date.leftPad(this.getMinutes(), 2, '0') + ";
     case "s":
-        return "String.leftPad(this.getSeconds(), 2, '0') + ";
+        return "Date.leftPad(this.getSeconds(), 2, '0') + ";
     case "O":
         return "this.getGMTOffset() + ";
     case "P":
@@ -222,7 +250,7 @@ Date.getFormatCode = function(character) {
     case "Z":
         return "(this.getTimezoneOffset() * -60) + ";
     default:
-        return "'" + String.escape(character) + "' + ";
+        return "'" + Date.escape(character) + "' + ";
     }
 };
 
@@ -286,7 +314,7 @@ Date.createParser = function(format) {
         }
         else if (special) {
             special = false;
-            regex += String.escape(ch);
+            regex += Date.escape(ch);
         }
         else {
             var obj = Date.formatCodeToRegex(ch, currentGroup);
@@ -426,7 +454,7 @@ Date.formatCodeToRegex = function(character, currentGroup) {
                 "var hr = o.substring(1,3)*1 + Math.floor(o.substring(3,5) / 60);\n", // get hours (performs minutes-to-hour conversion also)
                 "var mn = o.substring(3,5) % 60;\n", // get minutes
                 "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n", // -12hrs <= GMT offset <= 14hrs
-                "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
+                "    (sn + Date.leftPad(hr, 2, 0) + Date.leftPad(mn, 2, 0)) : null;\n"
             ].join(""),
             s:"([+\-]\\d{4})"};
     case "P":
@@ -437,7 +465,7 @@ Date.formatCodeToRegex = function(character, currentGroup) {
     		   "var hr = o.substring(1,3)*1 + Math.floor(o.substring(4,6) / 60);\n",
     		   "var mn = o.substring(4,6) % 60;\n",
     		   "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n",
-    	                "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
+    	                "    (sn + Date.leftPad(hr, 2, 0) + Date.leftPad(mn, 2, 0)) : null;\n"
             ].join(""),
             s:"([+\-]\\d{4})"};
     case "T":
@@ -452,7 +480,7 @@ Date.formatCodeToRegex = function(character, currentGroup) {
     default:
         return {g:0,
             c:null,
-            s:String.escape(character)};
+            s:Date.escape(character)};
     }
 };
 
@@ -470,8 +498,8 @@ Date.prototype.getTimezone = function() {
  */
 Date.prototype.getGMTOffset = function() {
     return (this.getTimezoneOffset() > 0 ? "-" : "+")
-        + String.leftPad(Math.abs(Math.floor(this.getTimezoneOffset() / 60)), 2, "0")
-        + String.leftPad(this.getTimezoneOffset() % 60, 2, "0");
+        + Date.leftPad(Math.abs(Math.floor(this.getTimezoneOffset() / 60)), 2, "0")
+        + Date.leftPad(this.getTimezoneOffset() % 60, 2, "0");
 };
 
 /**
@@ -481,9 +509,9 @@ Date.prototype.getGMTOffset = function() {
  */
 Date.prototype.getGMTColonOffset = function() {
 	return (this.getTimezoneOffset() > 0 ? "-" : "+")
-		+ String.leftPad(Math.abs(Math.floor(this.getTimezoneOffset() / 60)), 2, "0")
+		+ Date.leftPad(Math.abs(Math.floor(this.getTimezoneOffset() / 60)), 2, "0")
 		+ ":"
-		+ String.leftPad(this.getTimezoneOffset() %60, 2, "0");
+		+ Date.leftPad(this.getTimezoneOffset() %60, 2, "0");
 }
 
 /**
@@ -510,7 +538,7 @@ Date.prototype.getWeekOfYear = function() {
     // Find the first Thursday of the year
     var jan1 = new Date(this.getFullYear(), 0, 1);
     var then = (7 - jan1.getDay() + 4);
-    return String.leftPad(((now - then) / 7) + 1, 2, "0");
+    return Date.leftPad(((now - then) / 7) + 1, 2, "0");
 };
 
 /**
@@ -802,3 +830,4 @@ Date.prototype.add = function(interval, value){
   }
   return d;
 };
+ 
