@@ -53,6 +53,7 @@ Clones=new XObject({
      
         this.el.show_all();
         // load clones..
+            this.get('/reposStore').load();
         
         //this.get('/ok_button').el.set_sensitive(false);
         
