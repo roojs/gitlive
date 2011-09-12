@@ -94,7 +94,7 @@ Repo = XObject.define(
             
             // overlay tracking informaion
             bl = this.git([
-                'for-each-ref ',
+                'for-each-ref',
                 { format :  '%(refname:short):remotes/%(upstream:short)' },
                 'refs/heads'
             ]).split("\n");
