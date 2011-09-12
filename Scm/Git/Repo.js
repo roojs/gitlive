@@ -123,6 +123,9 @@ Repo = XObject.define(
                 bmap[rname].name = lname;
             });
             var _this =this;
+            
+            
+            
             // add any remotes that do not have name..
             remotes.forEach(function(r) {
                 if (r.name.length) {
