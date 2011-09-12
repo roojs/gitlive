@@ -70,23 +70,6 @@ RemoteEdit=new XObject({
                     items : [
                         {
                             xtype: Gtk.Label,
-                            label : "Name : ",
-                            pack : "pack_start,false,false,10",
-                            width_request : 50,
-                            xalign : 1
-                        },
-                        {
-                            xtype: Gtk.Entry,
-                            id : "remoteName"
-                        }
-                    ]
-                },
-                {
-                    xtype: Gtk.HBox,
-                    pack : "pack_start,false,true,10",
-                    items : [
-                        {
-                            xtype: Gtk.Label,
                             label : "URL :",
                             pack : "pack_start,false,false,10",
                             width_request : 50
