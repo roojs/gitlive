@@ -249,7 +249,7 @@ Clones=new XObject({
                                             this.el.set_value(ret.iter, 2, '' + tr[i].branches.join(', ')  );
                                             this.el.set_value(ret.iter, 3, '' + 'tbc' );        
                                             this.el.set_value(ret.iter, 4, tr[i].autocommit() );                
-                                            this.el.set_value(ret.iter, 4, tr[i].autopush() );                        
+                                            this.el.set_value(ret.iter, 5, tr[i].autopush() );                        
                                      
                                             
                                         }     
