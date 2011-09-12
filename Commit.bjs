@@ -115,11 +115,6 @@
                                     "id": "commitMsg",
                                     "xtype": "TextView",
                                     "|xns": "Gtk"
-                                },
-                                {
-                                    "id": "commitDate",
-                                    "xtype": "Entry",
-                                    "|xns": "Gtk"
                                 }
                             ]
                         }
