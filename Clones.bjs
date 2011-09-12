@@ -206,6 +206,92 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "xtype": "ScrolledWindow",
+                            "|init": "function() {\n    XObject.prototype.init.call(this);\n      this.el.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)\n}\n",
+                            "|xns": "Gtk",
+                            "pack": false,
+                            "items": [
+                                {
+                                    "listeners": {
+                                        "cursor_changed": "function (self) {\n  // SEE SELECTION.CHANGED\n    if (this.el.get_selection().count_selected_rows() < 1) {\n        //nothing? - clea it?\n        return;\n    }\n        var ret = {};         \n    var model = this.get('/changedFilesStore');\n\n     var s = this.el.get_selection();\n     var files = [];\n    s.selected_foreach(function(model,p,iter) {\n    \n       files.push( model.get_value(iter, 0).value.get_string());\n     \n    });\n    this.get('/patchview').showDiff(files); \n    //var value = ''+ ret.model.get_value(ret.iter, 1).value.get_string();\n     //print(\"OUT?\" + value);// id..\n    // load the list in the right grid..\n     \n    return true;\n\n}"
+                                    },
+                                    "id": "changedFilesView",
+                                    "pack": "add",
+                                    "xtype": "TreeView",
+                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n        var description = new Pango.FontDescription.c_new();\n   description.set_size(8000);\n     this.el.modify_font(description);\n\n     this.selection = this.el.get_selection();\n      this.selection.set_mode( Gtk.SelectionMode.MULTIPLE);\n    var _this = this;\n  this.selection.signal['changed'].connect(function() {\n     _this.listeners.cursor_changed.apply(\n          _this, [ _this, '']\n       );\n             });\n  }\n",
+                                    "|xns": "Gtk",
+                                    "items": [
+                                        {
+                                            "id": "changedFilesStore",
+                                            "pack": "set_model",
+                                            "xtype": "ListStore",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.set_column_types ( 3, [\n       GObject.TYPE_STRING, // file  \n      GObject.TYPE_STRING, // added\n      GObject.TYPE_STRING, // removed\n  ] );\n}\n",
+                                            "|load": "function(tr)\n{\n    //this.insert(citer,iter,0);\n    this.el.clear();\n    for(var i =0 ; i < tr.length; i++) {\n        var ret = {  };\n       \n        this.el.append(ret);\n        \n        //print(JSON.stringify(ret,null,4));\n         \n          \n        this.el.set_value(ret.iter, 0, ''  +  tr[i].filename );\n        this.el.set_value(ret.iter, 1, '' + tr[i].added  );\n        this.el.set_value(ret.iter, 2, '' + tr[i].removed  );\n \n        \n    }     \n}",
+                                            "|xns": "Gtk"
+                                        },
+                                        {
+                                            "resizable": true,
+                                            "min_width": 200,
+                                            "pack": "append_column",
+                                            "title": "Filename",
+                                            "xtype": "TreeViewColumn",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 0 );\n\n}\n",
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "pack": "pack_start",
+                                                    "xtype": "CellRendererText",
+                                                    "|xns": "Gtk"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "min_width": 50,
+                                            "pack": "append_column",
+                                            "title": "Added",
+                                            "xtype": "TreeViewColumn",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 1 );\n\n}\n",
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "pack": "pack_start",
+                                                    "xtype": "CellRendererText",
+                                                    "|xns": "Gtk"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "min_width": 50,
+                                            "pack": "append_column",
+                                            "title": "Removed",
+                                            "xtype": "TreeViewColumn",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 2 );\n\n}\n",
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "pack": "pack_start",
+                                                    "xtype": "CellRendererText",
+                                                    "|xns": "Gtk"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "TreeView",
+                                    "pack": false,
+                                    "items": [
+                                        {
+                                            "|xns": "Gtk",
+                                            "xtype": "ListStore",
+                                            "pack": false
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
