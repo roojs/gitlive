@@ -135,12 +135,8 @@ Repo = XObject.define(
                 // create a tracking branch..
                 var name = r.remote.replace(/^remotes\//, '' ).replace(/^origin\//,'').replace('/', '.');
                 
-                
-                
-                r.remoterev = r.lastrev;
-                //r.name = name;
-                local.push(r);
-                
+                 
+              
                 if (typeof(bmap[name]) != 'undefined') {
                     // already got aremote of that name.
                     // skip it...
