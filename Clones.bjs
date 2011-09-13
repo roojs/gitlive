@@ -15,8 +15,8 @@
             "default_width": 600,
             "title": "Manage Clones",
             "xtype": "Dialog",
-            "|deletable": true,
-            "|modal": true,
+            "|deletable": "true",
+            "|modal": "true",
             "|show": "function(c) {\n    \n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    /*[ 'xtype'  ].forEach(function(k) {\n        _this.get(k).setValue(typeof(c[k]) == 'undefined' ? '' : c[k]);\n    });\n\t// shouild set path..\n    */\n \n    this.el.show_all();\n    // load clones..\n        this.get('/reposStore').load();\n    \n    //this.get('/ok_button').el.set_sensitive(false);\n    \n    // block until we return.\n    var run_ret = this.el.run();\n    if (run_ret < 1 ) {\n        return  \"DONE\";\n    }\n    print(\"RUN RETURN : \" + run_ret);\n    return \"DONE\";\n    //print(JSON.stringify(this.get('bug').getValue()));\n   // return this.get('bug').getValue();\n    //this.success = c.success;\n}\n",
             "|xns": "Gtk",
             "items": [
