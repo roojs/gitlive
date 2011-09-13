@@ -606,7 +606,7 @@ Merger=new XObject({
                                                     Commit.el.set_modal(true);
                                                     Commit.el.set_transient_for(Merger.el);
                                                 
-                                                    Commit.show({
+                                                    var ce = Commit.show({
                                                         repo : Merger.repo,
                                                         files : files,
                                                         release : model.release,
@@ -616,7 +616,10 @@ Merger=new XObject({
                                                         
                                                     
                                                     });
-                                                
+                                                    if (ce === false ) {
+                                                        return;
+                                                    }
+                                                    print(JSON.stringify(ce,null,4));
                                                 
                                                 
                                                 }
