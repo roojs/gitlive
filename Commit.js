@@ -65,11 +65,12 @@ Commit=new XObject({
         if (run_ret < 1 ) {
             return false;
         }
-        //var ret=  {
-        //    url :  this.get('/remoteURL').el.get_child().get_text(),
-        //    name :  this.get('/remoteName').el.get_text()
-        //};
-        return true;
+        var ret=  {
+            date :  this.get('/commitDate').el.get_text(),
+            author :  this.get('/commitAuthor').el.get_text(),
+            message :  this.get('/commitMsg').el.get_text()
+        };
+     
         return ret;
         
         
