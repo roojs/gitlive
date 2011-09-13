@@ -634,6 +634,12 @@ Merger=new XObject({
                                                     
                                                     // add all the files..
                                                     Merger.repo.add(files);
+                                                    Merger.repo.commit({
+                                                        author : ce.author,
+                                                        changed : ce.changed,
+                                                        message : ce.message
+                                                        
+                                                    });
                                                     
                                                     Merger.repo.checkout(model.working);
                                                     
