@@ -84,7 +84,7 @@ Repo = XObject.define(
                 }
                 
                 if (active) {
-                    _this.currentBranch = parts[0];
+                    _this.currentBranch = br;
                 }
             });
             
