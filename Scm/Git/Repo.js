@@ -593,7 +593,15 @@ Repo = XObject.define(
             sp.run();
             return sp.output;
         } ,
-        
+        add : function (files )
+        {
+            var ar = [
+                'add'
+                { '': true }
+            ];
+            files.forEach(function(f) { ar.push(f); })
+            this.git(ar); 
+        },
         commit : function( cfg )
         {
             
