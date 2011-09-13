@@ -601,8 +601,10 @@ Repo = XObject.define(
                 'add',
                 { '': true }
             ];
-            files.forEach(function(f) { ar.push(f); })
-            this.git(ar); 
+            var _t = this;
+            files.forEach(function(f) {
+                _t.git([ 'add', { '': true }, f ]);
+            });  
         },
         commit : function( cfg )
         {
