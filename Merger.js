@@ -620,6 +620,15 @@ Merger=new XObject({
                                                         return;
                                                     }
                                                     print(JSON.stringify(ce,null,4));
+                                                    //.... commit!!!
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
                                                 
                                                 
                                                 }
