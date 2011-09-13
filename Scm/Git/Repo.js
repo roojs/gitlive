@@ -595,6 +595,8 @@ Repo = XObject.define(
         } ,
         add : function (files )
         {
+            // should really find out if these are untracked files each..
+            
             var ar = [
                 'add',
                 { '': true }
