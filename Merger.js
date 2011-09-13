@@ -622,7 +622,11 @@ Merger=new XObject({
                                                     print(JSON.stringify(ce,null,4));
                                                     //.... commit!!!
                                                     
+                                                    imports.gitlive.monitor.pause();
                                                     
+                                                    
+                                                    
+                                                    imports.gitlive.monitor.resume();
                                                     
                                                     
                                                     
