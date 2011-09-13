@@ -65,12 +65,18 @@ Monitor.prototype = {
         this.monitors = [];
     },
     /**
-     * stop / pause monitoring
-     * 
+     * pause monitoring - without changing what's monitored 
      */
     pause : function()
     {
         this.paused = true;
+    },
+    /**
+     * resume monitoring - without changing what's monitored 
+     */
+    pause : function()
+    {
+        this.paused = false;
     },
     /**
      * monitor a file or directory (privatish)
