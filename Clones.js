@@ -361,6 +361,9 @@ Clones=new XObject({
                                             
                                             //print(JSON.stringify(ret,null,4));
                                              tr[i].getBranches();
+                                             
+                                             var hi = tr[i].history('/', 1, 'branch', tr[i].currentBranch.name );
+                                             print(JSON.stringify(hi));
                                               
                                             this.el.set_value(ret.iter, 0, '' +  tr[i].repopath.split('/').pop() );
                                             this.el.set_value(ret.iter, 1, '' + tr[i].currentBranch.name   );
