@@ -185,11 +185,11 @@ Repo = XObject.define(
                     // technically we should check it exists..
                     rev = ident;
                     break;
-                    var branches = this.getBranches();
-                    
+                    //var branches = this.getBranches();
+                    // branches is now an array - not a map.
                      
-                    rev = typeof(branches[ident]) == 'undefined' ? false : branches[ident];
-                    break;
+                    //rev = typeof(branches[ident]) == 'undefined' ? false : branches[ident];
+                    //break;
                 
                 case 'tag':
                     tags = this.getTags();
