@@ -593,7 +593,12 @@ Repo = XObject.define(
             sp.run();
             return sp.output;
         } ,
-              
+        
+        commit : function( cfg )
+        {
+            
+            
+        },
         
         
         
