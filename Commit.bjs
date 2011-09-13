@@ -1,5 +1,5 @@
 {
-    "id": "file-gtk-7",
+    "id": "file-gtk-3",
     "name": "Commit",
     "parent": "",
     "title": false,
@@ -16,9 +16,9 @@
             "default_width": 800,
             "title": "Commit",
             "xtype": "Dialog",
-            "|deletable": true,
-            "|modal": true,
-            "|show": "function(c) {\n    \n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    \n    \n    this.files = c.files;\n    this.release = c.release;\n    this.rev = c.rev;\n    \n    this.repo = c.repo;\n\n    this.get('/commitDate').el.set_text(c.changed);\n    this.get('/commitAuthor').el.set_text(c.author);\n    \n    this.get('/commitPatch').showDiff(c.files);\n    \n    this.el.show_all();\n    \n    var run_ret = this.el.run();\n    if (run_ret < 1 ) {\n        return false;\n    }\n    //var ret=  {\n    //    url :  this.get('/remoteURL').el.get_child().get_text(),\n    //    name :  this.get('/remoteName').el.get_text()\n    //};\n    return true;\n    return ret;\n    \n    \n    \n}\n",
+            "|deletable": "true",
+            "|modal": "true",
+            "|show": "function(c) {\n    \n    if (!this.el) {\n        this.init();\n    }\n    var _this = this;\n    \n    \n    this.files = c.files;\n    this.release = c.release;\n    this.rev = c.rev;\n    \n    this.repo = c.repo;\n\n    this.get('/commitDate').el.set_text(c.changed);\n    this.get('/commitAuthor').el.set_text(c.author);\n    \n    this.get('/commitPatch').showDiff(c.files);\n    \n    this.el.show_all();\n    \n    var run_ret = this.el.run();\n    if (run_ret < 1 ) {\n        return false;\n    }\n    var ret=  {\n        date :  this.get('/commitDate').el.get_text(),\n        author :  this.get('/commitAuthor').el.get_text(),\n        message :  this.get('/commitMsg').el.get_text()\n    };\n \n    return ret;\n    \n    \n    \n}\n",
             "|xns": "Gtk",
             "items": [
                 {
@@ -157,5 +157,5 @@
         }
     ],
     "permname": "",
-    "modOrder": "0"
+    "modOrder": ""
 }
