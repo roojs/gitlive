@@ -155,7 +155,16 @@ Repo = XObject.define(
         
         
         getBrowseRootName   : _abstract, 
-        
+        /***
+         *
+         * resolve Revision
+         *
+         * @param {string} rev - a fixed revision - always returns this if it is not false;
+         * @param {string} object [rev|branch|tag]- object type
+         * @param {ident} object id (eg. rev nun, branch name, tag name)
+         *
+         *
+         */
         resolveRevision :function(rev, object, ident)
         {
             if (rev !== false) {
