@@ -74,7 +74,7 @@ Monitor.prototype = {
     /**
      * resume monitoring - without changing what's monitored 
      */
-    pause : function()
+    resume : function()
     {
         this.paused = false;
     },
