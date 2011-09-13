@@ -578,10 +578,6 @@ Repo = XObject.define(
             
         applyPatch : function( diff )
         {
-              
-            
-             
-             
             var sp = new Spawn({
                 cwd : this.repopath,
                 args : [ 'patch' , '-p1' ] ,
