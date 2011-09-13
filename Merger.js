@@ -619,6 +619,10 @@ Merger=new XObject({
                                                     if (ce === false ) {
                                                         return;
                                                     }
+                                                    
+                                                    var diff = Merger.repo.diff(files, model.release, model.rev);
+                                                    
+                                                    
                                                     print(JSON.stringify(ce,null,4));
                                                     //.... commit!!!
                                                     
@@ -626,6 +630,7 @@ Merger=new XObject({
                                                     
                                                     Merger.repo.checkout(model.release);
                                                     
+                                                    Merget.repo.applyPatch(diff);
                                                     
                                                     Merger.repo.checkout(model.working);
                                                     
