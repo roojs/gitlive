@@ -469,7 +469,7 @@ Clones=new XObject({
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                         this.el.add_attribute(this.items[0].el , 'markup', 1 );
-                                         this.el.add_attribute(this.items[0].el , 'background-color', 7 );
+                                         this.el.add_attribute(this.items[0].el , 'cell-background', 7 );
                                     
                                     },
                                     items : [
