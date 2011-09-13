@@ -374,6 +374,7 @@ Clones=new XObject({
                                             this.el.set_value(ret.iter, 6,  tr[i].repopath );  
                                             // highlight color.
                                             var cb = tr[i].currentBranch;
+                                            print(JSON.stringify(cb,null,4));
                                             var col = cb.lastrev == cb.remoterev ? '#ff0000' : '#ffffff';
                                             this.el.set_value(ret.iter, 7, col  );      
                                             
