@@ -596,7 +596,7 @@ Repo = XObject.define(
         add : function (files )
         {
             var ar = [
-                'add'
+                'add',
                 { '': true }
             ];
             files.forEach(function(f) { ar.push(f); })
