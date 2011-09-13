@@ -56,7 +56,7 @@ Commit=new XObject({
     
         this.get('/commitDate').el.set_text(c.changed);
         this.get('/commitAuthor').el.set_text(c.author);
-        
+        this.get('/commitMsg').el.get_buffer().set_text('');
         this.get('/commitPatch').showDiff(c.files);
         
         this.el.show_all();
