@@ -160,7 +160,7 @@
                                             "pack": "append_column",
                                             "title": "Current Branch",
                                             "xtype": "TreeViewColumn",
-                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 1 );\n     this.el.add_attribute(this.items[0].el , 'background-color', 7 );\n\n}\n",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 1 );\n     this.el.add_attribute(this.items[0].el , 'cell-background', 7 );\n\n}\n",
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
