@@ -567,95 +567,99 @@ Repo = XObject.define(
         },
         
         
-        
-        
-        
-        
-        
-    merge : function(branch_from, branch_to, rev, files, use_merge)
-    {
-        
-        var mi = this.history("/", 1, "rev", rev);
-       // echo '<PRE>';print_R($mi);exit;
-        
-        // pause gitlive!!!!
-        this.git([ 'checkout', { 'b': true }, to]);
-        //$wd->git('checkout', '-b', $this->release, 'remotes/origin/'. $this->release);
-        
-        
-        
-        //$patchfile = $this->tempName('txt');
-         
-        
-        if (files !== false) {
-            
-            
+        checkout : function(branch)
+        {
+             this.git([' checkout', branch ]);
             
         }
-        if (is_array($files)) { 
+        
+        
+        
             
-            var diff = this.diff(files, from, to);
+        merge : function(branch_from, branch_to, rev, files, use_merge)
+        {
+            
+            var mi = this.history("/", 1, "rev", rev);
+           // echo '<PRE>';print_R($mi);exit;
+            
+            // pause gitlive!!!!
+            this.git([ 'checkout', { 'b': true }, to]);
+            //$wd->git('checkout', '-b', $this->release, 'remotes/origin/'. $this->release);
+            
+            
+            
+            //$patchfile = $this->tempName('txt');
              
-             
-               var sp = new Spawn({
-                cwd : this.repopath,
-                args : [ 'patch' , '-p1' ] ,
-                env :  [  "HOME=" + GLib.get_home_dir() ],
-                debug: false,
-                exceptions : false,
-                async : false,
-                listeners : {
-                    input : function() {
-                        return diff;
+            
+            if (files !== false) {
+                
+                
+                
+            }
+            if (is_array($files)) { 
+                
+                var diff = this.diff(files, from, to);
+                 
+                 
+                   var sp = new Spawn({
+                    cwd : this.repopath,
+                    args : [ 'patch' , '-p1' ] ,
+                    env :  [  "HOME=" + GLib.get_home_dir() ],
+                    debug: false,
+                    exceptions : false,
+                    async : false,
+                    listeners : {
+                        input : function() {
+                            return diff;
+                        }
                     }
-                }
-            });
-            sp.run(); 
-             
-              ;  //eg . patch -p1 < /var/lib/php5/MTrackTMPgZFeAN.txt
-        } else {
-            // if no files -- it means all?/
-            // although we should check to see if this is valid..
-            this.git([' merge', { 'squash' : true }, rev ]);
-       }
-          
-        //echo $cmd;
-        /*
-        $commit = (object) array(
-            'when' =>  $mi[0]->ctime,
-            'reason' => $_REQUEST['message'],
-            'name'  => $this->authUser->name,
-            'email' => $this->authUser->email,
-        );
-        
-        $res = $wd->commit($commit);
-        if (!is_array($files)) {
-            // we do an actually merge commit seperatly from the merge diff, so that
-            // our logs show a nice history in each of those commits.
-            // not sure if this is a good idea or not..
-            $wd->git('merge', '-m', "Merge Commit with working branch (no code changed)" , $rev);
-        }
-        
-        
-        $res .= $wd->push();
-        $this->jok($res);
-        
-       // $wd->checkout($this->release);
-        // generate the patch
-        // apply the patch
-        // commit with message..
-        // push
-        
-        
-        */
-        
-        
-        
-        
-        
-        
-    },
-        
+                });
+                sp.run(); 
+                 
+                  ;  //eg . patch -p1 < /var/lib/php5/MTrackTMPgZFeAN.txt
+            } else {
+                // if no files -- it means all?/
+                // although we should check to see if this is valid..
+                this.git([' merge', { 'squash' : true }, rev ]);
+           }
+              
+            //echo $cmd;
+            /*
+            $commit = (object) array(
+                'when' =>  $mi[0]->ctime,
+                'reason' => $_REQUEST['message'],
+                'name'  => $this->authUser->name,
+                'email' => $this->authUser->email,
+            );
+            
+            $res = $wd->commit($commit);
+            if (!is_array($files)) {
+                // we do an actually merge commit seperatly from the merge diff, so that
+                // our logs show a nice history in each of those commits.
+                // not sure if this is a good idea or not..
+                $wd->git('merge', '-m', "Merge Commit with working branch (no code changed)" , $rev);
+            }
+            
+            
+            $res .= $wd->push();
+            $this->jok($res);
+            
+           // $wd->checkout($this->release);
+            // generate the patch
+            // apply the patch
+            // commit with message..
+            // push
+            
+            
+            */
+            
+            
+            
+            
+            
+            
+        },
+            
         
         
         
