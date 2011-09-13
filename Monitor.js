@@ -38,6 +38,7 @@ Monitor.prototype = {
     
     monitors : false, // Array of GioFileMonitors
     top : false, // list of top level directories..
+    paused : false,
     /**
      * add a directory or file to monitor
      */
@@ -62,6 +63,14 @@ Monitor.prototype = {
             m.cancel();
         })
         this.monitors = [];
+    },
+    /**
+     * stop / pause monitoring
+     * 
+     */
+    pause : function()
+    {
+        this.paused = true;
     },
     /**
      * monitor a file or directory (privatish)
