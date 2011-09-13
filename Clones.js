@@ -361,10 +361,11 @@ Clones=new XObject({
                                             
                                             //print(JSON.stringify(ret,null,4));
                                              tr[i].getBranches();
+                                             var hi;
                                              try {
-                                                 tr[i].debug=1;
-                                                 var hi = tr[i].history('/', 1, 'branch', tr[i].currentBranch.name );
-                                                 print(JSON.stringify(hi,null,4));
+                                                 //tr[i].debug=1;
+                                                  hi = tr[i].history('/', 1, 'branch', tr[i].currentBranch.name );
+                                    //             print(JSON.stringify(hi,null,4));
                                              } catch(e) { print(e);}
                                               
                                             this.el.set_value(ret.iter, 0, '' +  tr[i].repopath.split('/').pop() );
@@ -373,7 +374,7 @@ Clones=new XObject({
                                                             function(e) { return e.name; 
                                                         }).join(', ') 
                                              );
-                                            this.el.set_value(ret.iter, 3, '' + 'tbc' );        
+                                            this.el.set_value(ret.iter, 3, '' +  (!hi  ? '??' : hi[0].changed_raw));        
                                             this.el.set_value(ret.iter, 4, tr[i].autocommit() );                
                                             this.el.set_value(ret.iter, 5, tr[i].autopush() );                        
                                             this.el.set_value(ret.iter, 6,  tr[i].repopath );  
