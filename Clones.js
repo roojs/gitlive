@@ -363,7 +363,7 @@ Clones=new XObject({
                                              tr[i].getBranches();
                                               
                                             this.el.set_value(ret.iter, 0, '' +  tr[i].repopath.split('/').pop() );
-                                            this.el.set_value(ret.iter, 1, '' + tr[i].currentBranch   );
+                                            this.el.set_value(ret.iter, 1, '' + tr[i].currentBranch.name   );
                                             this.el.set_value(ret.iter, 2, '' + tr[i].branches.map(
                                                             function(e) { return e.name; 
                                                         }).join(', ') 
@@ -371,6 +371,8 @@ Clones=new XObject({
                                             this.el.set_value(ret.iter, 3, '' + 'tbc' );        
                                             this.el.set_value(ret.iter, 4, tr[i].autocommit() );                
                                             this.el.set_value(ret.iter, 5, tr[i].autopush() );                        
+                                            this.el.set_value(ret.iter, 6,  tr[i].repopath );  
+                                            // highlight color.
                                             this.el.set_value(ret.iter, 6,  tr[i].repopath );      
                                             
                                         }     
