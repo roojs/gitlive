@@ -50,7 +50,7 @@ Clones=new XObject({
         });
     	// shouild set path..
         */
-     
+        this.el.set_deletable(false);
         this.el.show_all();
         // load clones..
             this.get('/reposStore').load();
