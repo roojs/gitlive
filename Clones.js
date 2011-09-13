@@ -362,7 +362,7 @@ Clones=new XObject({
                                             //print(JSON.stringify(ret,null,4));
                                              tr[i].getBranches();
                                              try {
-                                                tr[i].debug=1;
+                                                 tr[i].debug=1;
                                                  var hi = tr[i].history('/', 1, 'branch', tr[i].currentBranch.name );
                                                  print(JSON.stringify(hi.null,4));
                                              } catch(e) { }
