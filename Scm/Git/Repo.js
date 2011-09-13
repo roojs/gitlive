@@ -163,7 +163,7 @@ Repo = XObject.define(
             });
             
             this.branches = local;
-            
+             print(JSON.stringify(local,null,4));
             
             
             return this.branches;
