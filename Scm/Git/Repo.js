@@ -576,53 +576,28 @@ Repo = XObject.define(
         
         
             
-        merge : function(branch_from, branch_to, rev, files, use_merge)
+        applyPatch : function( diff )
         {
-            
-            var mi = this.history("/", 1, "rev", rev);
-           // echo '<PRE>';print_R($mi);exit;
-            
-            // pause gitlive!!!!
-            this.git([ 'checkout', { 'b': true }, to]);
-            //$wd->git('checkout', '-b', $this->release, 'remotes/origin/'. $this->release);
-            
-            
-            
-            //$patchfile = $this->tempName('txt');
-             
-            
-            if (files !== false) {
-                
-                
-                
-            }
-            if (is_array($files)) { 
-                
-                var diff = this.diff(files, from, to);
-                 
-                 
-                   var sp = new Spawn({
-                    cwd : this.repopath,
-                    args : [ 'patch' , '-p1' ] ,
-                    env :  [  "HOME=" + GLib.get_home_dir() ],
-                    debug: false,
-                    exceptions : false,
-                    async : false,
-                    listeners : {
-                        input : function() {
-                            return diff;
-                        }
-                    }
-                });
-                sp.run(); 
-                 
-                  ;  //eg . patch -p1 < /var/lib/php5/MTrackTMPgZFeAN.txt
-            } else {
-                // if no files -- it means all?/
-                // although we should check to see if this is valid..
-                this.git([' merge', { 'squash' : true }, rev ]);
-           }
               
+            
+             
+             
+            var sp = new Spawn({
+                cwd : this.repopath,
+                args : [ 'patch' , '-p1' ] ,
+                env :  [  "HOME=" + GLib.get_home_dir() ],
+                debug: false,
+                exceptions : false,
+                async : false,
+                listeners : {
+                    input : function() {
+                        return diff;
+                    }
+                }
+            });
+            sp.run();
+            return sp.output;
+        }   
             //echo $cmd;
             /*
             $commit = (object) array(
