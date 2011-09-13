@@ -151,6 +151,9 @@ Monitor.prototype = {
     
     onEvent : function(fm, f, of, event_type, uh)
     {
+        if (this.paused) {
+            return;
+        }
         var src = {
             name : f.get_basename(),
             path : f.get_path(),
