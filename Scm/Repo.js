@@ -191,7 +191,7 @@ Repo = XObject.define(
                     break;
             }
             if (rev === false) {
-                throw   "don't know which revision to use (rev,object,ident)";
+                throw   "don't know which revision to use (rev,object,ident) got" + object;
             }
             return rev;
         }
