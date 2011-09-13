@@ -593,44 +593,8 @@ Repo = XObject.define(
             });
             sp.run();
             return sp.output;
-        }   
-            //echo $cmd;
-            /*
-            $commit = (object) array(
-                'when' =>  $mi[0]->ctime,
-                'reason' => $_REQUEST['message'],
-                'name'  => $this->authUser->name,
-                'email' => $this->authUser->email,
-            );
-            
-            $res = $wd->commit($commit);
-            if (!is_array($files)) {
-                // we do an actually merge commit seperatly from the merge diff, so that
-                // our logs show a nice history in each of those commits.
-                // not sure if this is a good idea or not..
-                $wd->git('merge', '-m', "Merge Commit with working branch (no code changed)" , $rev);
-            }
-            
-            
-            $res .= $wd->push();
-            $this->jok($res);
-            
-           // $wd->checkout($this->release);
-            // generate the patch
-            // apply the patch
-            // commit with message..
-            // push
-            
-            
-            */
-            
-            
-            
-            
-            
-            
-        },
-            
+        } ,
+              
         
         
         
