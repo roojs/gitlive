@@ -624,7 +624,10 @@ Merger=new XObject({
                                                     
                                                     imports.gitlive.monitor.pause();
                                                     
+                                                    Merger.repo.checkout(model.release);
                                                     
+                                                    
+                                                    Merger.repo.checkout(model.working);
                                                     
                                                     imports.gitlive.monitor.resume();
                                                     
