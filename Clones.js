@@ -13,8 +13,8 @@ Clones=new XObject({
     xtype: Gtk.Dialog,
     listeners : {
         destroy_event : function (self, event) {
-             this.el.hide();
-                        return false;
+              
+             return true;
         },
         response : function (self, id) {
           // hide
