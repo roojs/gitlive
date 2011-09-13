@@ -630,7 +630,10 @@ Merger=new XObject({
                                                     
                                                     Merger.repo.checkout(model.release);
                                                     
-                                                    Merget.repo.applyPatch(diff);
+                                                    Merger.repo.applyPatch(diff);
+                                                    
+                                                    // add all the files..
+                                                    Merger.repo.add(files);
                                                     
                                                     Merger.repo.checkout(model.working);
                                                     
