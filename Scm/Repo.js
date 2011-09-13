@@ -181,7 +181,12 @@ Repo = XObject.define(
                     break;
                 
                 case 'branch':
-                    var branches = this.getBranches(ident);
+                    
+                    // technically we should check it exists..
+                    rev = ident;
+                    var branches = this.getBranches();
+                    
+                    for(var i in )
                     rev = typeof(branches[ident]) == 'undefined' ? false : branches[ident];
                     break;
                 
