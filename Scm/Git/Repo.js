@@ -605,6 +605,24 @@ Repo = XObject.define(
         commit : function( cfg )
         {
             
+            var args= [
+                'commit',
+                {
+                    'author' : cfg.name + ' <' + cfg.email + '>'
+                },
+                { 'm' : (cfg.reason ? cfg.reason : 'Changed') },
+                { '': true }
+            ];
+            cfg.files.forEach(function(f) { args.push(f); })
+            
+             
+            this.git(args, 
+                [ 
+                    "GIT_AUTHOR_DATE= " + cfg.changed ,
+                    "GIT_COMMITTER_NAME" + cfg.name,
+                    "GIT_COMMITTER_EMAIL" + cfg.email,
+                ]);
+       
             
         },
         
