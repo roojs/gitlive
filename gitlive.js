@@ -150,55 +150,18 @@ var monitor = new Monitor({
             });
             repo.add(add_files);
             repo.remove(remove_files);
-            repo.commit({
+            success.push(repo.commit({
                 reason : messages.join("\n"),
                 files : add_files  
-            });
-            repo.push();
+            }));
+            success.push(repo.push());
             
             
             
         }
         
         // finally merge all the commit messages.
-        
-        
-        cmds.forEach(function(cmd) {
-            // prevent duplicate calls..
-            if (done.indexOf(cmd.join(',')) > -1) {
-                return;
-            }
-            done.push(cmd.join(','));
-            
-            if (repos.indexOf(cmd[0]) < 0) {
-                repos.push(cmd[0]);
-                //Git.run(cmd[0] , 'pull'); // pull before we push!
-            }
-            var sp = Git.run.apply(Git,cmd);
-             
-            switch (sp.result * 1) {
-                case 0: // success:
-                    success.push(sp.args.join(' '));
-                    if (sp.output.length) success.push(sp.output + '');
-                  // if (sp.stderr.length) success.push(sp.stderr + '');
-                    break;
-                default: 
-                    failure.push(sp.args.join(' '));
-                    if (sp.output.length) failure.push(sp.output);
-                    if (sp.stderr.length) failure.push(sp.stderr);
-                    break;
-            }
-            
-        });
          
-        // push upstream.
-        repos.forEach(function(r) {
-            var sp = Git.run(r , 'push', { all: true } );
-            if (sp.length) {
-                success.push(sp);
-            }
-            
-        });
         try {
             // catch notification failures.. so we can carry on..
             if (success.length) {
