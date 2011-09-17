@@ -756,8 +756,16 @@ Repo = XObject.define(
             //print("GOT: " + output)
             // parse output for some commands ?
             return sp.output;
-        }
+        },
   
+  
+  
+        parseAuthor : function(author)
+        {
+            
+            
+            
+        }
    
 });
 
