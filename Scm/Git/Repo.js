@@ -658,7 +658,20 @@ Repo = XObject.define(
        
             
         },
-        
+        /**
+         * pull:
+         * Fetch and merge remote repo changes into current branch..
+         *
+         * At present we just need this to update the current working branch..
+         * -- maybe later it will have a few options and do more stuff..
+         *
+         */
+        pull : function ()
+        {
+            // should 
+            
+            
+        }
         
         
     /*
@@ -773,8 +786,10 @@ Repo = XObject.define(
                 email : author.substring(0, author.length-1).substring(lp+1)
             };
             
-            
         }
+        
+        
+        
    
 });
 
