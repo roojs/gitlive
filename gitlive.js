@@ -133,7 +133,8 @@ var monitor = new Monitor({
                     case 'rm':
                         remove_files.push(cmd.shift());
                         break;
-                    
+                    case 'commit' :
+                        
                         
                 }
                 
@@ -347,8 +348,10 @@ var monitor = new Monitor({
             return;
         }
         this.lastAdd = new Date();
-        this.queue.push( 
-            [ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
+        this.queue.push(
+                        
+            //[ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
+            [ src.gitpath, 'add' ,  src.vpath, { message: "Attribute Changed :" + src.vpath} ]
         );
  
     
@@ -379,8 +382,9 @@ var monitor = new Monitor({
              [ src.gitpath, 'add',    dest.vpath ],
              [ src.gitpath, 'rm',    src.vpath ],
              
-            [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
-                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
+            [ src.gitpath, 'commit' , 
+                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ],
+            
         );
          
     }
