@@ -124,26 +124,37 @@ var monitor = new Monitor({
         for (var gitpath in repo_list) {
             var repo = repo_list[gitpath];
             var add_files = [];
+            var remove_files = [];
+            var messages = [];
             repo.cmds.forEach(function(cmd) {
                 var name = cmd.shift();
                 var arg = cmd.shift();
+                
                 switch(name) {
                     case 'add' :
                         if (add_files.indexOf(arg) > -1) break;
                         add_files.push(arg);
                         break;
+                    
                     case 'rm':
                         remove_files.push(arg);
                         break;
+                    
                     case 'commit' :
-                        messages.push(arg)
+                        messages.push(arg.message);
+                        break;
                         
                 }
                 
                 
             });
-            
-            
+            repo.add(add_files);
+            repo.remove(remove_files);
+            repo.commit({
+                
+                
+                
+            })
             
             
             
