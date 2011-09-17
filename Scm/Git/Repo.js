@@ -674,17 +674,17 @@ Repo = XObject.define(
             
         },
         /**
-         * pull:
-         * Fetch and merge remote repo changes into current branch..
+         * push:
+         * Send local changes to remote repo(s)
          *
          * At present we just need this to update the current working branch..
          * -- maybe later it will have a few options and do more stuff..
          *
          */
-        pull : function ()
+        push : function ()
         {
             // should 
-            this.git([ 'pull' ]);
+            this.git([ 'push' ]);
             
         },
         
