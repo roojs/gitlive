@@ -700,7 +700,7 @@ Repo = XObject.define(
                 print( args.join(" ")); 
             }
             env = env || [];
-            var env.push(  "HOME=" + GLib.get_home_dir() );
+            env.push(  "HOME=" + GLib.get_home_dir() );
             // do not need to set gitpath..
             //if (File.exists(this.repo + '/.git/config')) {
                 //env.push("GITPATH=" + this.repo );
