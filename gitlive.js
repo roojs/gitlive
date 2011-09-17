@@ -110,7 +110,7 @@ var monitor = new Monitor({
         // pull and group.
         
         cmds.forEach(function(cmd) {
-            var gitpath = cmd[0]; 
+            var gitpath = cmd.shift(); 
             if (typeof(repo_list[gitpath] != 'undefined')) {
                 repo_list[gitpath] = new imports.Scm.Git.Repo.Repo( { repopath : gitpath });
                 repo_list[gitpath].cmds = [];
