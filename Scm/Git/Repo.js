@@ -604,6 +604,7 @@ Repo = XObject.define(
         },
         /**
          * commit:
+         * perform a commit.
          *
          * @argument {Object} cfg commit configuration
          * @property {String} name
