@@ -103,6 +103,24 @@ var monitor = new Monitor({
         var failure = [];
         var repos = [];
         var done = [];
+        
+        // first build a array of repo's to work with
+        var repo_list = {};
+        
+        // pull and group.
+        
+        cmds.forEach(function(cmd) {
+            var gitpath = cmd[0]; 
+            if (typeof(repo_list[gitpath] != 'undefined')) {
+                repo_list[gitpath] = new imports.Scm.Git.Repo.Repo( { repopath : gitpath });
+                repo_list[gitpath].cmds = [];
+                repo_list[gitpath].pull();
+            }
+            repo_list[gitpath].cmds.push(cmd);
+        });
+        
+        
+        
         cmds.forEach(function(cmd) {
             // prevent duplicate calls..
             if (done.indexOf(cmd.join(',')) > -1) {
@@ -208,7 +226,7 @@ var monitor = new Monitor({
         
         f.gitpath = gitlive + '/' + vpath_ar.shift();
         f.vpath =  vpath_ar.join('/');
-        f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
+        //f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
         
         
     },
