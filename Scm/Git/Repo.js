@@ -765,8 +765,8 @@ Repo = XObject.define(
             var lp = author.indexOf('<');
              
             return {
-                name : author.substring(1, lp),
-                email : author.substring(lp)
+                name : author.substring(0, lp-1).replace(/\s+$/,''),
+                email : author.substring(0, author.length-1).substring(lp+1)
             };
             
             
