@@ -762,7 +762,12 @@ Repo = XObject.define(
   
         parseAuthor : function(author)
         {
-            
+            var lp = author.indexOf('<');
+             
+            return {
+                name : author.substring(1, lp),
+                email : author.substring(lp)
+            };
             
             
         }
