@@ -119,6 +119,10 @@ var monitor = new Monitor({
             repo_list[gitpath].cmds.push(cmd);
         });
         
+        // do add // remove
+        
+        
+        // finally merge all the commit messages.
         
         
         cmds.forEach(function(cmd) {
