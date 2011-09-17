@@ -15,6 +15,14 @@ const File  = imports.File.File;
  *
  */
 Repo = XObject.define(
+    /**
+     * constructor:
+     * 
+     * @param {Object} cfg - Configuration
+     *     (basically repopath is currently only critical one.)
+     *
+     */
+    
     function(cfg) {
         // cal parent?
         XObject.extend(this,cfg);
