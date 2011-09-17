@@ -629,7 +629,8 @@ Repo = XObject.define(
          * 
          * @property {String} name
          * @property {String} email 
-         * @property {String} changed (date) 
+         * @property {String} changed (date)
+         * @property {String} reason
          * @property {Array} files - the files that have changed. 
          * 
          */
