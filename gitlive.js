@@ -151,10 +151,9 @@ var monitor = new Monitor({
             repo.add(add_files);
             repo.remove(remove_files);
             repo.commit({
-                
-                
-                
-            })
+                reason : messages.join("\n"),
+                files : add_files  
+            });
             
             
             
