@@ -646,18 +646,34 @@ Repo = XObject.define(
         commit : function( cfg )
         {
             
-            var args= [
-                'commit',
-                {
+            
+            
+            
+            var args= [  'commit'  ];
+            var env = [];
+            
+            if (typeof(cfg.name) != 'undefined') {
+                args.push( {
                     'author' : cfg.name + ' <' + cfg.email + '>'
-                },
+                });
+                env.push(
+                    "GIT_COMMITTER_NAME" + cfg.name,
+                    "GIT_COMMITTER_EMAIL" + cfg.email
+                );
+            }
+            if (typeof(cfg.changed)) {
+                env.push(
+                
+                
+            }
+            args.push( 
                 { 'm' : (cfg.reason ? cfg.reason : 'Changed') },
                 { '': true }
-            ];
+            );
             
             cfg.files.forEach(function(f) { args.push(f); })
              
-            this.git(args, 
+            this.git(args, env);
                 [ 
                     "GIT_AUTHOR_DATE= " + cfg.changed ,
                     "GIT_COMMITTER_NAME" + cfg.name,
