@@ -134,12 +134,16 @@ var monitor = new Monitor({
                         remove_files.push(cmd.shift());
                         break;
                     case 'commit' :
-                        
+                        messages.push(cmd.shift().message )
                         
                 }
                 
                 
-            }
+            });
+            
+            
+            
+            
             
             
         }
