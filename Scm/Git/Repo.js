@@ -668,11 +668,25 @@ Repo = XObject.define(
          */
         pull : function ()
         {
+            // should probably hand error conditions better... 
+            this.git([ 'pull' ]);
+            
+            
+        },
+        /**
+         * pull:
+         * Fetch and merge remote repo changes into current branch..
+         *
+         * At present we just need this to update the current working branch..
+         * -- maybe later it will have a few options and do more stuff..
+         *
+         */
+        pull : function ()
+        {
             // should 
+            this.git([ 'pull' ]);
             
-            
-        }
-        
+        },
         
     /*
         public function getWorkingCopy()
