@@ -605,7 +605,8 @@ Repo = XObject.define(
         add : function ( files )
         {
             // should really find out if these are untracked files each..
-     
+            // we run multiple versions to make sure that if one failes, it does not ignore the whole lot..
+            // not sure if that is how git works.. but just be certian.
             var _t = this;
             files.forEach(function(f) {
                 _t.git([ 'add', { '': true }, f ]);
