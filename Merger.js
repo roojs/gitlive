@@ -637,11 +637,11 @@ Merger=new XObject({
                                                     // add all the files..
                                                     Merger.repo.add(files);
                                                     Merger.repo.commit({
-                                                        name : author.name,
-                                                        email : author.email,
-                                                        author : ce.author,
+                                                        name    : author.name,
+                                                        email   : author.email,
+                                                        author  : ce.author,
                                                         changed : ce.changed,
-                                                        message : ce.message
+                                                        reason  : ce.message
                                                         
                                                     });
                                                     
