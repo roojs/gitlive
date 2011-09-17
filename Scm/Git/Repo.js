@@ -757,8 +757,15 @@ Repo = XObject.define(
             // parse output for some commands ?
             return sp.output;
         },
-  
-  
+        /**
+         * parseAuthor:
+         * break author string with name and email into parts
+         * @argument {String} author
+         * @returns {Object} with 'name' and 'email' properties.
+         *
+         * 
+         *
+         */ 
   
         parseAuthor : function(author)
         {
