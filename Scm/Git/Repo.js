@@ -636,8 +636,8 @@ Repo = XObject.define(
                 { 'm' : (cfg.reason ? cfg.reason : 'Changed') },
                 { '': true }
             ];
-            cfg.files.forEach(function(f) { args.push(f); })
             
+            cfg.files.forEach(function(f) { args.push(f); })
              
             this.git(args, 
                 [ 
