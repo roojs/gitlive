@@ -351,7 +351,8 @@ var monitor = new Monitor({
         this.queue.push(
                         
             //[ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
-            [ src.gitpath, 'add' ,  src.vpath, { message: "Attribute Changed :" + src.vpath} ]
+            [ src.gitpath, 'add' ,  src.vpath ],
+             [ src.gitpath, 'commit' ,    {  message: "Attribute Changed :" + src.vpath} ]
         );
  
     
