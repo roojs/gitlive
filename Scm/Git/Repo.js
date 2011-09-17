@@ -602,6 +602,17 @@ Repo = XObject.define(
                 _t.git([ 'add', { '': true }, f ]);
             });  
         },
+        /**
+         * commit:
+         *
+         * @argument {Object} cfg commit configuration
+         * @property {String} name
+         * @property {String} email 
+         * @property {String} changed (date) 
+         * @property {Array} files - the files that have changed. 
+         * 
+         */
+         
         commit : function( cfg )
         {
             
