@@ -593,6 +593,15 @@ Repo = XObject.define(
             sp.run();
             return sp.output;
         } ,
+        /**
+         * add:
+         * add files to track.
+         *
+         * @argument {Array} files the files to add.
+         *
+         *
+         */
+        
         add : function ( files )
         {
             // should really find out if these are untracked files each..
