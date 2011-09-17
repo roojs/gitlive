@@ -154,7 +154,7 @@ var monitor = new Monitor({
                 reason : messages.join("\n"),
                 files : add_files  
             });
-            
+            repo.push();
             
             
             
