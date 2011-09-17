@@ -632,9 +632,13 @@ Merger=new XObject({
                                                     
                                                     Merger.repo.applyPatch(diff);
                                                     
+                                                    var author = Merger.repo.parseAuthor(ce.author);
+                                                    
                                                     // add all the files..
                                                     Merger.repo.add(files);
                                                     Merger.repo.commit({
+                                                        name : author.name,
+                                                        email : author.email,
                                                         author : ce.author,
                                                         changed : ce.changed,
                                                         message : ce.message
