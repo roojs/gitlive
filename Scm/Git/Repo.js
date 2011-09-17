@@ -6,7 +6,14 @@ const Event  = imports.Scm.Git.Event.Event;
 const Spawn  = imports.Spawn.Spawn;
 const File  = imports.File.File;
 
-
+/**
+ * @class Scm.Git.Repo
+ *
+ * @extends Scm.Repo
+ * 
+ *
+ *
+ */
 Repo = XObject.define(
     function(cfg) {
         // cal parent?
@@ -314,6 +321,8 @@ Repo = XObject.define(
           }
        */
         /**
+         * history:
+         * Get the log/history about repo or specific file(s)
          * 
          * @param  string path (can be empty - eg. '')
          * @param  {number|date} limit  how many to fetch
