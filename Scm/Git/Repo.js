@@ -677,7 +677,7 @@ Repo = XObject.define(
          * push:
          * Send local changes to remote repo(s)
          *
-         * At present we just need this to update the current working branch..
+         * At present we just need this to push the current branch.
          * -- maybe later it will have a few options and do more stuff..
          *
          */
