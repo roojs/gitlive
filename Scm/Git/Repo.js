@@ -635,10 +635,10 @@ Repo = XObject.define(
          *
          * @argument {Object} cfg commit configuration
          * 
-         * @property {String} name
-         * @property {String} email 
-         * @property {String} changed (date)
-         * @property {String} reason
+         * @property {String} name (optional)
+         * @property {String} email (optional)
+         * @property {String} changed (date) (optional)
+         * @property {String} reason (optional)
          * @property {Array} files - the files that have changed. 
          * 
          */
