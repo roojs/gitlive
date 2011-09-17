@@ -196,12 +196,19 @@ var monitor = new Monitor({
         
     },
     
-    parsePath: function(f) {
+    /**
+     * parsePath:
+     * Fill in gitlive, vpath and repo  
+     * 
+     */
+    parsePath: function(f)
+    {
            
         var vpath_ar = f.path.substring(gitlive.length +1).split('/');
         
         f.gitpath = gitlive + '/' + vpath_ar.shift();
         f.vpath =  vpath_ar.join('/');
+        f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
         
         
     },
