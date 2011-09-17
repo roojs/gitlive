@@ -662,8 +662,7 @@ Repo = XObject.define(
                 );
             }
             if (typeof(cfg.changed)) {
-                env.push(
-                
+                env.push("GIT_AUTHOR_DATE= " + cfg.changed )
                 
             }
             args.push( 
@@ -674,12 +673,7 @@ Repo = XObject.define(
             cfg.files.forEach(function(f) { args.push(f); })
              
             this.git(args, env);
-                [ 
-                    "GIT_AUTHOR_DATE= " + cfg.changed ,
-                    "GIT_COMMITTER_NAME" + cfg.name,
-                    "GIT_COMMITTER_EMAIL" + cfg.email,
-                ]);
-       
+                 
             
         },
         /**
