@@ -126,15 +126,17 @@ var monitor = new Monitor({
             var add_files = [];
             repo.cmds.forEach(function(cmd) {
                 var name = cmd.shift();
+                var arg = cmd.shift();
                 switch(name) {
                     case 'add' :
-                        add_files.push(cmd.shift());
+                        if (add_files.indexOf(arg) > -1) break;
+                        add_files.push(arg);
                         break;
                     case 'rm':
-                        remove_files.push(cmd.shift());
+                        remove_files.push(arg);
                         break;
                     case 'commit' :
-                        messages.push(cmd.shift().message )
+                        messages.push(arg)
                         
                 }
                 
