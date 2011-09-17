@@ -120,7 +120,28 @@ var monitor = new Monitor({
         });
         
         // do add // remove
-        
+         
+        for (var gitpath in repo_list) {
+            var repo = repo_list[gitpath];
+            var add_files = [];
+            repo.cmds.forEach(function(cmd) {
+                var name = cmd.shift();
+                switch(name) {
+                    case 'add' :
+                        add_files.push(cmd.shift());
+                        break;
+                    case 'rm':
+                        remove_files.push(cmd.shift());
+                        break;
+                    
+                        
+                }
+                
+                
+            }
+            
+            
+        }
         
         // finally merge all the commit messages.
         
@@ -354,7 +375,10 @@ var monitor = new Monitor({
         }
         this.lastAdd = new Date();
         this.queue.push( 
-            [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
+           // [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
+             [ src.gitpath, 'add',    dest.vpath ],
+             [ src.gitpath, 'rm',    src.vpath ],
+             
             [ src.gitpath, 'commit' ,  src.vpath, dest.vpath ,
                 { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ]
         );
