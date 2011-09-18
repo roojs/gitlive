@@ -809,7 +809,7 @@ Repo = XObject.define(
             
             if (!sp.result) {
                 throw {
-                    name : "SpawnError",
+                    name    : "SpawnError",
                     message : sp.stderr
                 }; 
  
