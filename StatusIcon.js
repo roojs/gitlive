@@ -206,7 +206,7 @@ var StatusIcon  = new XObject({
                         activate : function () {
                             var msg = new Gtk.AboutDialog({
                                 program_name : "Git Live",
-                                version: '0.1',
+                                version: '0.3',
                                 website: 'http://www.roojs.org/index.php/projects/gitlive.html',
                                 website_label: 'RooJS Consulting',
                                 license : 'LGPL'
