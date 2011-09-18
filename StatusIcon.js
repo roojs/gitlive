@@ -42,7 +42,7 @@ var StatusIcon  = new XObject({
         'activate' : function( w, event, event_time) {
             print(Array.prototype.slice.call(arguments).join(','));
             
-            menu = this.get('menu');
+            var menu = this.get('menu');
             
             menu.el.show_all();
             
