@@ -323,8 +323,8 @@ Spawn.prototype = {
         if (res != GLib.IOStatus.NORMAL) {
             throw "Write failed";
         }
-        return ret.value;
-        //return str.length;
+        //return ret.value;
+        return str.length;
         
     },
     
