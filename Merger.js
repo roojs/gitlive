@@ -364,6 +364,7 @@ Merger=new XObject({
                                                     
                                                         var rev = r.name + '..' + w.name;
                                                         this.release = r.name;
+                                                        this.working = w.name;
                                                         
                                                         // this takes some time, lets. try and dialog it..
                                                     
@@ -653,7 +654,7 @@ Merger=new XObject({
                                                             
                                                         });
                                                         
-                                                        Merger.repo.checkout(model.working);
+                                                       
                                                     } catch (e) {
                                                      //message..
                                                           
@@ -664,9 +665,10 @@ Merger=new XObject({
                                                         });
                                                         msg.run();
                                                         msg.destroy();
+                                                        Merger.repo.stash(); // revert change.. - so we can go back...
                                                     }
-                                                 
-                                                   imports.GitMonitor.GitMonitor.resume();
+                                                    Merger.repo.checkout(model.working);
+                                                    imports.GitMonitor.GitMonitor.resume();
                                                     
                                                     
                                                     
