@@ -27,11 +27,13 @@ var GitMonitor = new Monitor({
      
     pause : function() {
         this.paused = true;
+        this.queue = [];
         imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
     },
     
     resume : function() {
         this.paused = false;
+        this.queue = [];
         imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
         
         
