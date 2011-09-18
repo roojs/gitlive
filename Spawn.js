@@ -303,14 +303,19 @@ Spawn.prototype = {
         if (!this.in_ch) {
             return 0; // input is closed
         }
-        var ret = {};
-        var res = this.in_ch.write_chars(str, str.length,ret);
-	print("write_char retunred:" + JSON.stringify(res) + JSON.stringify(ret));
+	print("write: " + str);
+	// gir is broken, last value is a return..
+	//var ret = {};
+        //var res = this.in_ch.write_chars(str, str.length,ret);
+	var res = this.in_ch.write_chars(str, str.length);
+	
+	print("write_char retunred:" + JSON.stringify(res));
 	
         if (res != GLib.IOStatus.NORMAL) {
             throw "Write failed";
         }
-        return ret.bytes_written;
+        //return ret.bytes_written;
+        return str.length;
         
     },
     

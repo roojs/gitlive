@@ -5,9 +5,13 @@ var Repo = imports.Scm.Git.Repo.Repo;
 
 Gtk.init(Seed.argv);
 
-var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
+File = imports.File.File;
+
+var repo = new Repo({ repopath : '/home/alan/gitlive/gitlive' });
+
+repo.applyPatch(File.read('/tmp/test1.txt'));
  
-var hist = repo.history('/', false, 'rev', 'github..master');
+//var hist = repo.history('/', false, 'rev', 'github..master');
 //var hist = repo.getBranches();
 
 //var hist = repo.changedFiles('/',   'rev', 'github..master');

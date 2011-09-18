@@ -596,7 +596,7 @@ Repo = XObject.define(
         {
             var sp = new Spawn({
                 cwd : this.repopath,
-                args : [ 'patch' , '-p1' ] ,
+                args : [ 'patch' , '-p1' , '-f' ] ,
                 env :  [  "HOME=" + GLib.get_home_dir() ],
                 debug: true,
                 exceptions : false,
