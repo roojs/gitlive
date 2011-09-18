@@ -109,9 +109,11 @@ var monitor = new Monitor({
         
         // pull and group.
         
+        print(JSON.stringify(cmds));
+        
         cmds.forEach(function(cmd) {
             var gitpath = cmd.shift(); 
-            if (typeof(repo_list[gitpath] != 'undefined')) {
+            if (typeof(repo_list[gitpath]) == 'undefined') {
                 repo_list[gitpath] = new imports.Scm.Git.Repo.Repo( { repopath : gitpath });
                 repo_list[gitpath].cmds = [];
                 repo_list[gitpath].pull();
@@ -119,7 +121,8 @@ var monitor = new Monitor({
             repo_list[gitpath].cmds.push(cmd);
         });
         
-        // do add // remove
+        // build add, remove and commit message list..
+        
          
         for (var gitpath in repo_list) {
             var repo = repo_list[gitpath];
@@ -127,6 +130,7 @@ var monitor = new Monitor({
             var remove_files = [];
             var messages = [];
             repo.cmds.forEach(function(cmd) {
+                print(JSON.stringify(cmd));
                 var name = cmd.shift();
                 var arg = cmd.shift();
                 
@@ -142,13 +146,10 @@ var monitor = new Monitor({
                     
                     case 'commit' :
                         messages.push(arg.message);
-                        break;
-                        
-                }
-                
-                
+                        break;    
+                } 
             });
-            
+            repo.debug = 1;
             repo.add(add_files);
             repo.remove(remove_files);
             
@@ -157,8 +158,7 @@ var monitor = new Monitor({
                 files : add_files  
             }));
             success.push(repo.push());
-            
-            
+             
             
         }
         
@@ -267,7 +267,7 @@ var monitor = new Monitor({
             this.lastAdd = new Date();
             this.queue.push( 
                 [ src.gitpath,  'add', src.vpath ],
-                [ src.gitpath,  'commit',  src.vpath, { message: src.vpath} ] 
+                [ src.gitpath,  'commit',    { message: src.vpath} ] 
                 
             );
          
@@ -276,12 +276,10 @@ var monitor = new Monitor({
         this.lastAdd = new Date();
         this.queue.push( 
             [ src.gitpath,  'add', src.vpath ],
-            [ src.gitpath,  'commit', src.vpath, {  message: src.vpath} ]
+            [ src.gitpath,  'commit',  {  message: src.vpath} ]
 
             
         );
-       
-
     },
     onDeleted : function(src) 
     { 
@@ -365,8 +363,8 @@ var monitor = new Monitor({
              [ src.gitpath, 'rm',    src.vpath ],
              
             [ src.gitpath, 'commit' , 
-                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath} ],
-            
+                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath}
+            ]
         );
          
     }
