@@ -809,8 +809,9 @@ Repo = XObject.define(
             
             if (!sp.result) {
                 throw {
-                    name    : "SpawnError",
-                    message : sp.stderr
+                    name    : "RepoSpawnError",
+                    message : sp.stderr,
+                    spawn   : sp
                 };                
             }
             //print(JSON.stringify(sp,null,4));  Seed.quit();
