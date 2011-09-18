@@ -588,7 +588,15 @@ Repo = XObject.define(
         {
             this.git(['checkout', branch ]);
         },
-        
+        /**
+         * stash:
+         * Very basic stash the current changes (normally so you can checkout
+         * another branch..)
+         */
+        stash: function()
+        {
+            this.git(['stash' ]);
+        },
         
         
             
