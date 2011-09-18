@@ -643,7 +643,9 @@ Repo = XObject.define(
             // not sure if that is how git works.. but just be certian.
             var _t = this;
             files.forEach(function(f) {
-                _t.git([ 'rm', { f: true } , { '': true }, f ]);
+                try {
+                    _t.git([ 'rm', { f: true } , { '': true }, f ]);
+                } catch(e) {} // ingore errors..
             });  
         },
         
