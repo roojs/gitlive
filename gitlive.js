@@ -20,28 +20,28 @@ GIRepository.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/gir
 
 var Gio      = imports.gi.Gio;
 var Gtk      = imports.gi.Gtk;
-var Notify = imports.gi.Notify;
+var Notify   = imports.gi.Notify;
  
  
-var StatusIcon = imports.StatusIcon.StatusIcon;
-var Monitor = imports.Monitor.Monitor;
+var StatusIcon  = imports.StatusIcon.StatusIcon;
+var Monitor     = imports.Monitor.Monitor;
+var GitMonitor  = imports.GitMonitor.GitMonitor;
 
 
 Gtk.init (null, null);
 
 // sanity check...
 
-var gitlive = GLib.get_home_dir() + "/gitlive";
+// where is everything..
+GitMonitor.gitlive =  GLib.get_home_dir() + "/gitlive";
 
-if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
+if (!GLib.file_test(GitMonitor.gitlive, GLib.FileTest.IS_DIR)) {
     var msg = new Gtk.MessageDialog({message_type:
         Gtk.MessageType.INFO, buttons : Gtk.ButtonsType.OK, text: "GIT Live - ~/gitlive does not exist."});
     msg.run();
     msg.destroy();
-    
     Seed.quit();
 }
-
  
 // I'm lost...
 
@@ -66,9 +66,9 @@ StatusIcon.init();
 
 Notify.init("gitlive");
 
-imports.GitMonitor.GitMonitor.add(GLib.get_home_dir() + "/gitlive");
-imports.GitMonitor.GitMonitor.start();
+GitMonitor.add(GitMonitor.gitlive);
+GitMonitor.start();
 
 Gtk.main();
-//icon.signal["activate"].connect(on_left_click);
+vv//icon.signal["activate"].connect(on_left_click);
  
