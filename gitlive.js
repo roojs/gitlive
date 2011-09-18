@@ -109,7 +109,7 @@ var monitor = new Monitor({
         
         // pull and group.
         
-        print(JSON.stringify(cmds));
+        //print(JSON.stringify(cmds));
         
         cmds.forEach(function(cmd) {
             var gitpath = cmd.shift(); 
@@ -130,7 +130,7 @@ var monitor = new Monitor({
             var remove_files = [];
             var messages = [];
             repo.cmds.forEach(function(cmd) {
-                print(JSON.stringify(cmd));
+                //print(JSON.stringify(cmd));
                 var name = cmd.shift();
                 var arg = cmd.shift();
                 
@@ -149,7 +149,7 @@ var monitor = new Monitor({
                         break;    
                 } 
             });
-            repo.debug = 1;
+            //repo.debug = 1;
             repo.add(add_files);
             repo.remove(remove_files);
             
