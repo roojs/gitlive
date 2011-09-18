@@ -56,8 +56,6 @@ function errorDialog(data) {
     msg.destroy();
 }
 
- 
-
 
 
 //
