@@ -44,7 +44,7 @@ if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
 }
 
  
-  
+// I'm lost...
 
 function errorDialog(data) {
     var msg = new Gtk.MessageDialog({
