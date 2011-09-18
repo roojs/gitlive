@@ -30,6 +30,8 @@ var Monitor = imports.Monitor.Monitor;
 //File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
 Gtk.init (null, null);
 
+// sanity check...
+
 var gitlive = GLib.get_home_dir() + "/gitlive";
 
 if (!GLib.file_test(gitlive, GLib.FileTest.IS_DIR)) {
@@ -67,8 +69,9 @@ StatusIcon.init();
 
 Notify.init("gitlive");
 
-monitor.add(GLib.get_home_dir() + "/gitlive");
-monitor.start();
+imports.GitMonitor.GitMonitor.add(GLib.get_home_dir() + "/gitlive");
+imports.GitMonitor.GitMonitor.start();
+
 Gtk.main();
 //icon.signal["activate"].connect(on_left_click);
  
