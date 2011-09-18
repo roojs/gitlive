@@ -668,12 +668,21 @@ Merger=new XObject({
                                                         Merger.repo.stash(); // revert change.. - so we can go back...
                                                     }
                                                     Merger.repo.checkout(model.working);
+                                                    
+                                                    
+                                                    // if gitlive was previously running warn the user that it is now paused..
+                                                    
+                                                    var cmsg = new Gtk.MessageDialog({
+                                                            message_type: Gtk.MessageType.ERROR, 
+                                                            buttons : Gtk.ButtonsType.OK, 
+                                                            text: "Git Live is now paused "
+                                                    });
+                                                    cmsg.run();
+                                                    cmsg.destroy();
+                                                    
                                                     imports.GitMonitor.GitMonitor.resume();
                                                     
-                                                    
-                                                    
-                                                    
-                                                    
+                                                     
                                                     
                                                 
                                                 
