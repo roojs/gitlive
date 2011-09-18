@@ -811,18 +811,19 @@ Repo = XObject.define(
             });
             sp.run();
             
-            if (!sp.result) {
+            if (sp.result) {
+                print(JSON.stringify(sp.result));
+                
+                print(JSON.stringify(sp.args));
+                print(JSON.stringify(sp.stderr));
+                
                 throw {
                     name    : "RepoSpawnError",
                     message : sp.stderr,
                     spawn   : sp
                 };                
             }
-            //print(JSON.stringify(sp,null,4));  Seed.quit();
-            if (typeof(sp.stderr) == 'string' && sp.stderr.length) {
-                print(this.lastCmd);
-                print(sp.stderr);
-            }
+             
             //print("GOT: " + output)
             // parse output for some commands ?
             return sp.output;
@@ -843,10 +844,7 @@ Repo = XObject.define(
             };
             
         }
-        
-        
-        
-   
+          
 });
 
 Repo.parseURL = function(url)
