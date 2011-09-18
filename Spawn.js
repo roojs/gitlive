@@ -225,9 +225,8 @@ Spawn.prototype = {
         
       
         if ( this.async) {
-            // this seems to hang our  input.
+            // using NONBLOCKING this seems to hang our  input.
             this.in_ch.set_flags (GLib.IOFlags.SET_MASK);
-        
             this.out_ch.set_flags (GLib.IOFlags.SET_MASK);
             this.err_ch.set_flags (GLib.IOFlags.SET_MASK);
         }
