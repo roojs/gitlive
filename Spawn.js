@@ -125,8 +125,6 @@ Spawn.prototype = {
      * @property pid {Number} pid of child process (of false if it's not running)
      */
     pid : false,
-    
-    
     /**
      * @property in_ch {GLib.IOChannel} input io channel
      */
