@@ -137,15 +137,14 @@ Spawn.prototype = {
      * @property err_ch {GLib.IOChannel} stderr io channel
      */
     err_ch : false,
-    
     /**
      * 
      * @method run
      * Run the configured command.
+     * result is applied to object properties (eg. 'output' or 'stderr')
+     * @returns {Object} self.
      * 
      */
-    
-    
     run : function()
     {
         
