@@ -23,7 +23,6 @@ var Gtk      = imports.gi.Gtk;
 var Notify = imports.gi.Notify;
 
 var Spawn = imports.Spawn;
-var Git = imports.Git;
 var StatusIcon = imports.StatusIcon.StatusIcon;
 var Monitor = imports.Monitor.Monitor;
 
@@ -164,9 +163,7 @@ var monitor = new Monitor({
             } catch(e) {
                 failure.push(e.message);
                 
-            }
-             
-            
+            }   
         }
         
         // finally merge all the commit messages.
