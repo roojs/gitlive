@@ -5,16 +5,17 @@ var Repo = imports.Scm.Git.Repo.Repo;
 
 Gtk.init(Seed.argv);
 
-var repo = new Repo({ repopath : '/home/alan/gitlive/gitlive' });
+var repo = new Repo({ repopath : '/home/alan/gitlive/roojs1' });
  
-//var hist = repo.history('/', false, 'rev', 'github..master');
-var hist = repo.getBranches();
+var hist = repo.history('/', false, 'rev', 'github..master');
+//var hist = repo.getBranches();
 
 //var hist = repo.changedFiles('/',   'rev', 'github..master');
 
-print(JSON.stringify(hist,null,4));
-/*
 
+print(JSON.stringify(hist,null,4));
+ 
+/*
 
 var Git = imports.Git.Git;
 var git = new Git('/home/alan/gitlive/roojs1');
@@ -29,6 +30,6 @@ var out = git.run(
    { 'date' : 'rfc' }  
 );
 print(out);
+ 
 */
-
-//Gtk.main();
+Gtk.main();
