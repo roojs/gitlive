@@ -224,13 +224,12 @@ Spawn.prototype = {
         
         
       
-        if ( this.async) {
-            // using NONBLOCKING this seems to hang our  input.
-            this.in_ch.set_flags (GLib.IOFlags.SET_MASK);
-            this.out_ch.set_flags (GLib.IOFlags.SET_MASK);
-            this.err_ch.set_flags (GLib.IOFlags.SET_MASK);
-        }
-       
+         // using NONBLOCKING only works if io_add_watch
+	//returns true/false in right conditions
+	this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
+	this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
+	this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
+         
 
       
         // add handlers for output and stderr.
@@ -282,7 +281,7 @@ Spawn.prototype = {
             this.ctx = new GLib.MainLoop.c_new (null, false);
             this.ctx.run(false); // wait fore exit?
             
-            print("main_loop done!");
+            //print("main_loop done!");
         } else {
             tidyup(); // tidyup get's called in main loop. 
         }
@@ -333,8 +332,8 @@ Spawn.prototype = {
  
             var x =   {};
             var status = ch.read_line( x);
-            //print(JSON.stringify(status));
-           // print(JSON.stringify(x));
+            // print('status: '  +JSON.stringify(status));
+            // print(JSON.stringify(x));
              switch(status) {
                 case GLib.IOStatus.NORMAL:
 		
@@ -358,10 +357,13 @@ Spawn.prototype = {
                     
                     //this.ctx.iteration(true);
                    continue;
-                case GLib.IOStatus.AGAIN:   
+                case GLib.IOStatus.AGAIN:
+		    //print("Should be called again.. waiting for more data..");
+		    return true;
                     break;
                 case GLib.IOStatus.ERROR:    
-                case GLib.IOStatus.EOF:   
+                case GLib.IOStatus.EOF:
+		    return false;
                    break;
                 
             }
@@ -369,7 +371,7 @@ Spawn.prototype = {
         }
        
         //print("RETURNING");
-         return true;
+         return false; // allow it to be called again..
     }
     
 };
