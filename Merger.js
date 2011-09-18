@@ -620,6 +620,7 @@ Merger=new XObject({
                                                         return;
                                                     }
                                                     
+                                                    
                                                     var diff = Merger.repo.diff(files, model.release, model.rev);
                                                     
                                                     

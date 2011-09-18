@@ -672,7 +672,7 @@ Repo = XObject.define(
             
             cfg.files.forEach(function(f) { args.push(f); })
              
-            this.git(args, env);
+            return this.git(args, env);
                  
             
         },
@@ -702,7 +702,7 @@ Repo = XObject.define(
         push : function ()
         {
             // should 
-            this.git([ 'push' ]);
+            return this.git([ 'push' ]);
             
         },
         
