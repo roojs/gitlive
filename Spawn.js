@@ -254,6 +254,15 @@ Spawn.prototype = {
 		print("Trying to call listeners");
                 try {
                     this.write(this.listeners.input.call(this));
+		     // this probably needs to be a bit smarter...
+		    //but... let's close input now..
+		    this.in_ch.close();
+		    _this.in_ch = false;
+		   
+		    
+		    
+		    
+		    
                 } catch (e) {
                     tidyup();
                     throw e;
@@ -304,18 +313,18 @@ Spawn.prototype = {
             return 0; // input is closed
         }
 	print("write: " + str);
-	// gir is broken, last value is a return..
-	//var ret = {};
-        //var res = this.in_ch.write_chars(str, str.length,ret);
-	var res = this.in_ch.write_chars(str, str.length);
+	// NEEDS GIR FIX! for return value..
+	var ret = {};
+        var res = this.in_ch.write_chars(str, str.length, ret);
+	//var res = this.in_ch.write_chars(str, str.length);
 	
-	print("write_char retunred:" + JSON.stringify(res));
+	print("write_char retunred:" + JSON.stringify(res) +  ' ' +JSON.stringify(ret)  );
 	
         if (res != GLib.IOStatus.NORMAL) {
             throw "Write failed";
         }
-        //return ret.bytes_written;
-        return str.length;
+        return ret.value;
+        //return str.length;
         
     },
     
