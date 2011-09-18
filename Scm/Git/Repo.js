@@ -603,6 +603,7 @@ Repo = XObject.define(
                 async : false,
                 listeners : {
                     input : function() {
+                        print("sedning patch!");
                         return diff;
                     }
                 }

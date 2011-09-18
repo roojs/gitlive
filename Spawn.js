@@ -251,6 +251,7 @@ Spawn.prototype = {
         if (this.pid !== false) {
             // child can exit before we get this far..
             if (this.listeners.input) {
+		print("Trying to call listeners");
                 try {
                     this.write(this.listeners.input.call(this));
                 } catch (e) {
@@ -303,7 +304,9 @@ Spawn.prototype = {
             return 0; // input is closed
         }
         var ret = {};
-        var res = this.in_ch.write_chars(str, str.length);
+        var res = this.in_ch.write_chars(str, str.length,ret);
+	print("write_char retunred:" + JSON.stringify(res) + JSON.stringify(ret));
+	
         if (res != GLib.IOStatus.NORMAL) {
             throw "Write failed";
         }
