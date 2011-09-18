@@ -806,6 +806,16 @@ Repo = XObject.define(
                 async : false
             });
             sp.run();
+            
+            if (!sp.result) {
+                throw {
+                    name "SpawnError",
+                    message : sp.stderr
+                }; 
+
+                }
+                
+            }
             //print(JSON.stringify(sp,null,4));  Seed.quit();
             if (typeof(sp.stderr) == 'string' && sp.stderr.length) {
                 print(this.lastCmd);
