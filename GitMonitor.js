@@ -23,6 +23,21 @@ var GitMonitor = new Monitor({
     queue : [],
     queueRunning : false,
      
+     
+     
+    pause : function() {
+        this.paused = true;
+        imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+    },
+    
+    resume : function() {
+        this.paused = false;
+        imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
+        
+        
+    },
+    
+    
     start: function() {
         var _this = this;
         this.lastAdd = new Date();
@@ -67,6 +82,10 @@ var GitMonitor = new Monitor({
      */
     runQueue: function()
     {
+        
+        if (this.paused) {
+            return;
+        }
         this.queueRunning = true;
         var cmds = [];
         this.queue.forEach(function (q) {
@@ -181,6 +200,10 @@ var GitMonitor = new Monitor({
     
     shouldIgnore: function(f)
     {
+        
+        if (this.paused) {
+            return true;
+        }
         if (f.name[0] == '.') {
             // except!
             if (f.name == '.htaccess') {
