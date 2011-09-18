@@ -628,31 +628,43 @@ Merger=new XObject({
                                                     //.... commit!!!
                                                     
                                                     imports.GitMonitor.GitMonitor.pause();
-                                                    
-                                                    Merger.repo.checkout(model.release);
-                                                    
-                                                    print("Call apply patch");
-                                                    
-                                                    Merger.repo.applyPatch(diff);
-                                                    
-                                                    var author = Merger.repo.parseAuthor(ce.author);
-                                                    
-                                                    print("Add new files.");
-                                                    // add all the files..
-                                                    Merger.repo.add(files);
-                                                    
-                                                    print("Commit changes.");
-                                                    Merger.repo.commit({
-                                                        name    : author.name,
-                                                        email   : author.email,
-                                                        author  : ce.author,
-                                                        changed : ce.changed,
-                                                        reason  : ce.message
+                                                    try { 
                                                         
-                                                    });
-                                                    
-                                                    Merger.repo.checkout(model.working);
-                                                    
+                                                        Merger.repo.checkout(model.release);
+                                                        
+                                                        print("Call apply patch");
+                                                        
+                                                        Merger.repo.applyPatch(diff);
+                                                        
+                                                        var author = Merger.repo.parseAuthor(ce.author);
+                                                        
+                                                        print("Add new files.");
+                                                        // add all the files..
+                                                        Merger.repo.add(files);
+                                                        
+                                                        print("Commit changes.");
+                                                        Merger.repo.commit({
+                                                            name    : author.name,
+                                                            email   : author.email,
+                                                            author  : ce.author,
+                                                            changed : ce.changed,
+                                                            reason  : ce.message
+                                                            
+                                                        });
+                                                        
+                                                        Merger.repo.checkout(model.working);
+                                                    } catch (e) {
+                                                     //message..
+                                                          
+                                                        var msg = new Gtk.MessageDialog({
+                                                                message_type: Gtk.MessageType.ERROR, 
+                                                                buttons : Gtk.ButtonsType.OK, 
+                                                                text: e.message
+                                                        });
+                                                        msg.run();
+                                                        msg.destroy();
+                                                    }
+                                                 
                                                    imports.GitMonitor.GitMonitor.resume();
                                                     
                                                     

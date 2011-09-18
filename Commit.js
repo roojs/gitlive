@@ -70,10 +70,11 @@ Commit=new XObject({
         var s = {};
         buf.get_start_iter(s);
         buf.get_end_iter(e);
+        
         var ret=  {
             date :  this.get('/commitDate').el.get_text(),
             author :  this.get('/commitAuthor').el.get_text(),
-            message : buf.get_text(s.value, e.value1, false)
+            message : buf.get_text(s.value, e.value, false)
         };
      
         return ret;

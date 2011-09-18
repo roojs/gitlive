@@ -586,7 +586,7 @@ Repo = XObject.define(
         
         checkout : function(branch)
         {
-            this.git([' checkout', branch ]);
+            this.git(['checkout', branch ]);
         },
         
         
