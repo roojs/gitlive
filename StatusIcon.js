@@ -211,7 +211,7 @@ var StatusIcon  = new XObject({
                                 website_label: 'RooJS Consulting',
                                 license : 'LGPL'
                             });
-                            msg.set_authors([ "Alan Knowles <alan@akbkhome.com>" ]);
+                            msg.set_authors([ "Alan Knowles <alan@roojs.com>" ]);
                             msg.run();
                             msg.destroy();
                         }
