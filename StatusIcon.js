@@ -207,8 +207,8 @@ var StatusIcon  = new XObject({
                             var msg = new Gtk.AboutDialog({
                                 program_name : "Git Live",
                                 version: '0.1',
-                                website: 'http://git.akbkhome.com',
-                                website_label: 'AK BK Consulting (git repo)',
+                                website: 'http://www.roojs.org/index.php/projects/gitlive.html',
+                                website_label: 'RooJS Consulting',
                                 license : 'LGPL'
                             });
                             msg.set_authors([ "Alan Knowles <alan@akbkhome.com>" ]);
