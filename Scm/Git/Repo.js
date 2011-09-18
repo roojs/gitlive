@@ -625,7 +625,7 @@ Repo = XObject.define(
             files.forEach(function(f) {
                 try { 
                     _t.git([ 'add', { '': true }, f ]);
-                } catch(e) {} // ingore errors..
+                } catch(e) {} // ignore errors..
             });  
         },
         
@@ -645,7 +645,7 @@ Repo = XObject.define(
             files.forEach(function(f) {
                 try {
                     _t.git([ 'rm', { f: true } , { '': true }, f ]);
-                } catch(e) {} // ingore errors..
+                } catch(e) {} // ignore errors..
             });  
         },
         
