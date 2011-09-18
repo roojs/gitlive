@@ -20,7 +20,6 @@ var Gio      = imports.gi.Gio;
 var GLib     = imports.gi.GLib;
 var Notify   = imports.gi.Notify;
 
-var Git = imports.Git;
 var XObject = imports.XObject.XObject;
 
 //var gitlive = imports.gitlive;
