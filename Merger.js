@@ -648,7 +648,8 @@ Merger=new XObject({
                                                             email   : author.email,
                                                             author  : ce.author,
                                                             changed : ce.changed,
-                                                            reason  : ce.message
+                                                            reason  : ce.message,
+                                                            files : files
                                                             
                                                         });
                                                         
