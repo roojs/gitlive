@@ -598,7 +598,7 @@ Repo = XObject.define(
                 cwd : this.repopath,
                 args : [ 'patch' , '-p1' ] ,
                 env :  [  "HOME=" + GLib.get_home_dir() ],
-                debug: false,
+                debug: true,
                 exceptions : false,
                 async : false,
                 listeners : {
