@@ -142,22 +142,25 @@ var StatusIcon  = new XObject({
                                     continue;
                                 }
                                 
-                                
-                                var res = Git.run(fn,  'pull' );
-                                if (res.result * 1  == 0) {
-                                    try {
-                                        var notification = new Notify.Notification({
-                                            summary: "Updated " + fn,
-                                            body : res.output
-                                        });
-                                        notification.set_timeout(20);
-                                        notification.show();
-                                    } catch(e) {
-                                        print("notification - probably to many in queue..");
-                                    }
-                                    continue;
+                                var repo = new imports.Scm.Git.Repo.Repo({
+                                    repopath : fn
+                                });
+                                try { 
+                                    var str = repo.pull(); 
+                                    var notification = new Notify.Notification({
+                                       summary: "Updated " + fn,
+                                       body : res.output
+                                   });
+                                   notification.set_timeout(20);
+                                   notification.show();
+                                   
+                                } catch(e) {
+                                    print(JSON.stringify(e));
+                                    print("notification or push errror- probably to many in queue..");
+                                    imports.gitlive.errorDialog(e.message);
+
                                 }
-                                imports.gitlive.errorDialog(res.stderr);
+                                
                                     // should also update modules ideally.
                                 
                             }
