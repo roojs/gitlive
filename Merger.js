@@ -627,7 +627,7 @@ Merger=new XObject({
                                                     print(JSON.stringify(ce,null,4));
                                                     //.... commit!!!
                                                     
-                                                    imports.gitlive.monitor.pause();
+                                                    imports.GitMonitor.GitMonitor.pause();
                                                     
                                                     Merger.repo.checkout(model.release);
                                                     
@@ -648,7 +648,7 @@ Merger=new XObject({
                                                     
                                                     Merger.repo.checkout(model.working);
                                                     
-                                                    imports.gitlive.monitor.resume();
+                                                   imports.GitMonitor.GitMonitor.resume();
                                                     
                                                     
                                                     
