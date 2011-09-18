@@ -15,19 +15,18 @@ GLib        = imports.gi.GLib;
 
 //print(JSON.stringify(GI, null,4));
 // we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
-//GI.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.1');
+// see the install instructions on how to override the default gir's
 GIRepository.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.2');
 
 var Gio      = imports.gi.Gio;
 var Gtk      = imports.gi.Gtk;
 var Notify = imports.gi.Notify;
-
-var Spawn = imports.Spawn;
+ 
+ 
 var StatusIcon = imports.StatusIcon.StatusIcon;
 var Monitor = imports.Monitor.Monitor;
 
 
-//File = imports[__script_path__+'/../introspection-doc-generator/File.js'].File
 Gtk.init (null, null);
 
 // sanity check...
