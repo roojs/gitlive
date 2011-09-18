@@ -1,6 +1,3 @@
-//<script type="text/javascript">
-
-
 /**
  * Status icon and menu for component of gitlive.
  * 
@@ -128,7 +125,7 @@ var StatusIcon  = new XObject({
                         activate : function () {
                             imports.gitlive.monitor.stop();
                             
-                            var f = Gio.file_new_for_path(imports.gitlive.gitlive);
+                            var f = Gio.file_new_for_path(imports.GitMonitor.GitMonitor.gitlive);
                             var file_enum = f.enumerate_children(
                                 Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME, Gio.FileQueryInfoFlags.NONE, null);
 
@@ -136,7 +133,7 @@ var StatusIcon  = new XObject({
                             
                             while ((next_file = file_enum.next_file(null)) != null) {
                                 
-                                var fn = imports.gitlive.gitlive + '/' + next_file.get_display_name();
+                                var fn = imports.GitMonitor.GitMonitor.gitlive + '/' + next_file.get_display_name();
                                 if (! GLib.file_test(fn + '/.git', GLib.FileTest.IS_DIR)) {
                                     continue;
                                 }
@@ -168,7 +165,7 @@ var StatusIcon  = new XObject({
                             file_enum.close(null);
 
                             
-                            imports.gitlive.monitor.start();
+                            imports.GitMonitor.GitMonitor.start();
                             
                         }
                     }
