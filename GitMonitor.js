@@ -1,14 +1,24 @@
 
 var Gio      = imports.gi.Gio;
 var Gtk      = imports.gi.Gtk;
-var Notify = imports.gi.Notify;
+var Notify   = imports.gi.Notify;
+var GLib     = imports.gi.GLib;
 
 var Spawn = imports.Spawn;
 var StatusIcon = imports.StatusIcon.StatusIcon;
 var Monitor = imports.Monitor.Monitor;
 
 
-GitMonitor = new Monitor({
+
+var GitMonitor = new Monitor({
+    
+    /**
+     * @property {String} the "gitlive" directory, normally ~/gitlive
+     *  dset by OWNER... - we should do this as a CTOR.
+     *  
+     */
+    gitlive : false,
+    
     
     queue : [],
     queueRunning : false,
@@ -35,7 +45,7 @@ GitMonitor = new Monitor({
         try { 
             var notification = new Notify.Notification({
                 summary: "Git Live",
-                body : gitlive + "\nMonitoring " + this.monitors.length + " Directories",
+                body : this.gitlive + "\nMonitoring " + this.monitors.length + " Directories",
                 timeout : 5
             });
     
@@ -188,7 +198,6 @@ GitMonitor = new Monitor({
         }
         
         return false;
-        
     },
     
     /**
@@ -199,9 +208,9 @@ GitMonitor = new Monitor({
     parsePath: function(f)
     {
            
-        var vpath_ar = f.path.substring(gitlive.length +1).split('/');
+        var vpath_ar = f.path.substring(this.gitlive.length +1).split('/');
         
-        f.gitpath = gitlive + '/' + vpath_ar.shift();
+        f.gitpath = this.gitlive + '/' + vpath_ar.shift();
         f.vpath =  vpath_ar.join('/');
         //f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
         
