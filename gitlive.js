@@ -151,7 +151,7 @@ var monitor = new Monitor({
             });
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
-            try {  repo.add(add_files); } catch(e) { }
+            repo.add(add_files); 
             repo.remove(remove_files);
             
             success.push(repo.commit({
