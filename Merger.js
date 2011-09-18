@@ -631,12 +631,17 @@ Merger=new XObject({
                                                     
                                                     Merger.repo.checkout(model.release);
                                                     
+                                                    print("Call apply patch");
+                                                    
                                                     Merger.repo.applyPatch(diff);
                                                     
                                                     var author = Merger.repo.parseAuthor(ce.author);
                                                     
+                                                    print("Add new files.");
                                                     // add all the files..
                                                     Merger.repo.add(files);
+                                                    
+                                                    print("Commit changes.");
                                                     Merger.repo.commit({
                                                         name    : author.name,
                                                         email   : author.email,
