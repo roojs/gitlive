@@ -615,10 +615,7 @@ Repo = XObject.define(
          * add files to track.
          *
          * @argument {Array} files the files to add.
-         *
-         *
          */
-        
         add : function ( files )
         {
             // should really find out if these are untracked files each..
@@ -629,6 +626,25 @@ Repo = XObject.define(
                 _t.git([ 'add', { '': true }, f ]);
             });  
         },
+        
+          /**
+         * remove:
+         * remove files to track.
+         *
+         * @argument {Array} files the files to add.
+         */
+        remove : function ( files )
+        {
+            // this may fail if files do not exist..
+            // should really find out if these are untracked files each..
+            // we run multiple versions to make sure that if one failes, it does not ignore the whole lot..
+            // not sure if that is how git works.. but just be certian.
+            var _t = this;
+            files.forEach(function(f) {
+                _t.git([ 'rm', { f: true } , { '': true }, f ]);
+            });  
+        },
+        
         /**
          * commit:
          * perform a commit.
@@ -646,9 +662,6 @@ Repo = XObject.define(
         commit : function( cfg )
         {
             
-            
-            
-            
             var args= [  'commit'  ];
             var env = [];
             
@@ -661,7 +674,7 @@ Repo = XObject.define(
                     "GIT_COMMITTER_EMAIL" + cfg.email
                 );
             }
-            if (typeof(cfg.changed)) {
+            if (typeof(cfg.changed) != 'undefined') {
                 env.push("GIT_AUTHOR_DATE= " + cfg.changed )
                 
             }
@@ -673,9 +686,8 @@ Repo = XObject.define(
             cfg.files.forEach(function(f) { args.push(f); })
              
             return this.git(args, env);
-                 
-            
         },
+        
         /**
          * pull:
          * Fetch and merge remote repo changes into current branch..
