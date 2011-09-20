@@ -678,6 +678,8 @@ Merger=new XObject({
                                                                 buttons : Gtk.ButtonsType.OK, 
                                                                 text: e.message
                                                         });
+                                                        emsg.set_transient_for(Merger.el);
+                                                        emsg.set_modal(true);
                                                         emsg.run();
                                                         emsg.destroy();
                                                         Merger.repo.stash(); // revert change.. - so we can go back...
