@@ -1,6 +1,3 @@
-//<script type="text/javascript">
-
-
 /**
  * Status icon and menu for component of gitlive.
  * 
@@ -20,7 +17,6 @@ var Gio      = imports.gi.Gio;
 var GLib     = imports.gi.GLib;
 var Notify   = imports.gi.Notify;
 
-var Git = imports.Git;
 var XObject = imports.XObject.XObject;
 
 //var gitlive = imports.gitlive;
@@ -84,7 +80,7 @@ var StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             this.parent.parent.paused = true;
-                            imports.gitlive.monitor.stop();
+                            imports.GitMonitor.GitMonitor.stop();
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
                             
@@ -106,7 +102,7 @@ var StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             this.parent.parent.paused = false;
-                            imports.gitlive.monitor.start();
+                             imports.GitMonitor.GitMonitor.start();
                             //var status = this.el.label == 'Pause' ? 1 : 0
                            // this.el.label  = status ? 'Resume' : 'Pause';
                             this.parent.parent.el.set_from_stock(   Gtk.STOCK_MEDIA_PLAY);
@@ -129,7 +125,7 @@ var StatusIcon  = new XObject({
                         activate : function () {
                             imports.gitlive.monitor.stop();
                             
-                            var f = Gio.file_new_for_path(imports.gitlive.gitlive);
+                            var f = Gio.file_new_for_path(imports.GitMonitor.GitMonitor.gitlive);
                             var file_enum = f.enumerate_children(
                                 Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME, Gio.FileQueryInfoFlags.NONE, null);
 
@@ -137,24 +133,30 @@ var StatusIcon  = new XObject({
                             
                             while ((next_file = file_enum.next_file(null)) != null) {
                                 
-                                var fn = imports.gitlive.gitlive + '/' + next_file.get_display_name();
+                                var fn = imports.GitMonitor.GitMonitor.gitlive + '/' + next_file.get_display_name();
                                 if (! GLib.file_test(fn + '/.git', GLib.FileTest.IS_DIR)) {
                                     continue;
                                 }
                                 
-                                
-                                var res = Git.run(fn,  'pull' );
-                                if (res.result * 1  == 0) {
-                                        
+                                var repo = new imports.Scm.Git.Repo.Repo({
+                                    repopath : fn
+                                });
+                                try { 
+                                    var str = repo.pull(); 
                                     var notification = new Notify.Notification({
                                         summary: "Updated " + fn,
                                         body : res.output
                                     });
-                                    notification.set_timeout(1000);
+                                   notification.set_timeout(20);
                                     notification.show();
-                                    continue;
+                                   
+                                } catch(e) {
+                                    print(JSON.stringify(e));
+                                    print("notification or push errror- probably to many in queue..");
+                                    imports.gitlive.errorDialog(e.message);
+
                                 }
-                                imports.gitlive.errorDialog(res.stderr);
+                                
                                     // should also update modules ideally.
                                 
                             }
@@ -163,7 +165,7 @@ var StatusIcon  = new XObject({
                             file_enum.close(null);
 
                             
-                            imports.gitlive.monitor.start();
+                            imports.GitMonitor.GitMonitor.start();
                             
                         }
                     }
@@ -181,7 +183,7 @@ var StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                             
+                             var ret = imports.Clones.Clones.show();
                             
                         }
                     }
@@ -201,12 +203,12 @@ var StatusIcon  = new XObject({
                         activate : function () {
                             var msg = new Gtk.AboutDialog({
                                 program_name : "Git Live",
-                                version: '0.1',
-                                website: 'http://git.akbkhome.com',
-                                website_label: 'AK BK Consulting (git repo)',
+                                version: '0.3',
+                                website: 'http://www.roojs.org/index.php/projects/gitlive.html',
+                                website_label: 'RooJS Consulting',
                                 license : 'LGPL'
                             });
-                            msg.set_authors([ "Alan Knowles <alan@akbkhome.com>" ]);
+                            msg.set_authors([ "Alan Knowles <alan@roojs.com>" ]);
                             msg.run();
                             msg.destroy();
                         }
