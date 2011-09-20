@@ -38,6 +38,7 @@ Monitor.prototype = {
     
     monitors : false, // Array of GioFileMonitors
     top : false, // list of top level directories..
+    paused : false,
     /**
      * add a directory or file to monitor
      */
@@ -64,6 +65,20 @@ Monitor.prototype = {
         this.monitors = [];
     },
     /**
+     * pause monitoring - without changing what's monitored 
+     */
+    pause : function()
+    {
+        this.paused = true;
+    },
+    /**
+     * resume monitoring - without changing what's monitored 
+     */
+    resume : function()
+    {
+        this.paused = false;
+    },
+    /**
      * monitor a file or directory (privatish)
      *
      * initially called with ~/gitlive  null 0 (effectvely)
@@ -74,6 +89,7 @@ Monitor.prototype = {
     {
         var _this = this;
         
+       // print("ADD: " + path)
         
         depth = typeof(depth) == 'number'  ? depth *1 : 0;
         
@@ -135,6 +151,9 @@ Monitor.prototype = {
     
     onEvent : function(fm, f, of, event_type, uh)
     {
+        if (this.paused) {
+            return;
+        }
         var src = {
             name : f.get_basename(),
             path : f.get_path(),
