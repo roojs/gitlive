@@ -703,7 +703,7 @@ Merger=new XObject({
                                                     GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 5, function() {
                                                          imports.GitMonitor.GitMonitor.resume();
                                                          msg.hide();
-                                                         msg.show_all();
+                                                         msg.destroy();
                                                           _t.get('/historyTreeStore').loadTree();
                                                            this.get('/changedFilesStore').el.clear();
                                                           this.get('/patchview').showDiff(files); 
