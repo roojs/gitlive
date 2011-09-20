@@ -671,7 +671,7 @@ Merger=new XObject({
                                                     
                                                     
                                                     // if gitlive was previously running warn the user that it is now paused..
-                                                    
+                                                    /*
                                                     var cmsg = new Gtk.MessageDialog({
                                                             message_type: Gtk.MessageType.ERROR, 
                                                             buttons : Gtk.ButtonsType.OK, 
@@ -679,6 +679,7 @@ Merger=new XObject({
                                                     });
                                                     cmsg.run();
                                                     cmsg.destroy();
+                                                    */
                                                     GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 5, function() {
                                                          imports.GitMonitor.GitMonitor.resume();
                                                          return false; //only once.
