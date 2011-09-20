@@ -683,6 +683,7 @@ Merger=new XObject({
                                                         Merger.repo.stash(); // revert change.. - so we can go back...
                                                     }
                                                     msg.show_all();
+                                                    msg.set_markup("Changing to previous branch");
                                                     Merger.repo.checkout(model.working);
                                                     
                                                     
