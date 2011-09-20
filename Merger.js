@@ -683,7 +683,6 @@ Merger=new XObject({
                                                     var _t = this;
                                                     GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 5, function() {
                                                          imports.GitMonitor.GitMonitor.resume();
-                                                         
                                                           _t.get('/historyTreeStore').loadTree();
                                                          return false; //only once.
                                                     });
