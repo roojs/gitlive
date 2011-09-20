@@ -705,8 +705,8 @@ Merger=new XObject({
                                                          msg.hide();
                                                          msg.destroy();
                                                           _t.get('/historyTreeStore').loadTree();
-                                                           this.get('/changedFilesStore').el.clear();
-                                                          this.get('/patchview').showDiff(files); 
+                                                          _.get('/changedFilesStore').el.clear();
+                                                          _.get('/patchview').showDiff(files); 
                                                          return false; //only once.
                                                     });
                                                      
