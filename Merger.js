@@ -684,7 +684,7 @@ Merger=new XObject({
                                                     }
                                                     msg.show_all();
                                                     Merger.repo.checkout(model.working);
-                                                    msg.hide();
+                                                    
                                                     
                                                     // if gitlive was previously running warn the user that it is now paused..
                                                     /*
@@ -699,7 +699,8 @@ Merger=new XObject({
                                                     var _t = this;
                                                     GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 5, function() {
                                                          imports.GitMonitor.GitMonitor.resume();
-                                                          
+                                                         msg.hide();
+                                                         msg.show_all();
                                                           _t.get('/historyTreeStore').loadTree();
                                                            this.get('/changedFilesStore').el.clear();
                                                           this.get('/patchview').showDiff(files); 
