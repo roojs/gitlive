@@ -2,6 +2,10 @@
 /**
  * log desktop actions..
  * 
+ * a potential add-on to gitlive....
+ * - basically tracks what applications are being worked on when, allowing you to
+ * use it to generate time tracking (eg. invoices...) later..
+ * 
  * mouse:
  * xdotool getmouselocation
  *
