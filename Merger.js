@@ -685,7 +685,8 @@ Merger=new XObject({
                                                          imports.GitMonitor.GitMonitor.resume();
                                                           
                                                           _t.get('/historyTreeStore').loadTree();
-                                                           this.get('/changedFilesStore').clear();
+                                                           this.get('/changedFilesStore').el.clear();
+                                                          this.get('/patchview').showDiff(files); 
                                                          return false; //only once.
                                                     });
                                                      
