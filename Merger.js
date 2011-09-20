@@ -681,7 +681,7 @@ Merger=new XObject({
                                                     cmsg.destroy();
                                                     GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 15, function() {
                                                          imports.GitMonitor.GitMonitor.resume();
-                                                         return false;
+                                                         return false; //only once.
                                                     });
                                                      
                                                     
