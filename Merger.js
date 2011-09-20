@@ -629,6 +629,20 @@ Merger=new XObject({
                                                     //.... commit!!!
                                                     
                                                     imports.GitMonitor.GitMonitor.pause();
+                                                    
+                                                    
+                                                    
+                                                    var msg = new Gtk.MessageDialog( {
+                                                        buttons : Gtk.ButtonsType.NONE,
+                                                        text: "Committing Changes"
+                                                    });
+                                                    
+                                                    msg.set_transient_for(Merger.el);
+                                                    msg.set_modal(true);
+                                                    msg.show_all();
+                                                
+                                                     
+                                                    
                                                     try { 
                                                         
                                                         Merger.repo.checkout(model.release);
@@ -654,21 +668,23 @@ Merger=new XObject({
                                                             
                                                         });
                                                         
-                                                       
+                                                      
                                                     } catch (e) {
                                                      //message..
-                                                          
-                                                        var msg = new Gtk.MessageDialog({
+                                                        msg.hide();
+                                                         
+                                                        var emsg = new Gtk.MessageDialog({
                                                                 message_type: Gtk.MessageType.ERROR, 
                                                                 buttons : Gtk.ButtonsType.OK, 
                                                                 text: e.message
                                                         });
-                                                        msg.run();
-                                                        msg.destroy();
+                                                        emsg.run();
+                                                        emsg.destroy();
                                                         Merger.repo.stash(); // revert change.. - so we can go back...
                                                     }
+                                                    msg.show_all();
                                                     Merger.repo.checkout(model.working);
-                                                    
+                                                    msg.hide();
                                                     
                                                     // if gitlive was previously running warn the user that it is now paused..
                                                     /*
