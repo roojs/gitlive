@@ -123,7 +123,7 @@ var StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                            imports.gitlive.monitor.stop();
+                            imports.GitMonitor.GitMonitor.stop();
                             
                             var f = Gio.file_new_for_path(imports.GitMonitor.GitMonitor.gitlive);
                             var file_enum = f.enumerate_children(
