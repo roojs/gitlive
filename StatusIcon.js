@@ -145,7 +145,7 @@ var StatusIcon  = new XObject({
                                     var str = repo.pull(); 
                                     var notification = new Notify.Notification({
                                        summary: "Updated " + fn,
-                                       body : res.output
+                                       body : str
                                    });
                                    notification.set_timeout(20);
                                    notification.show();
