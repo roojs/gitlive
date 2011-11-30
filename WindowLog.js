@@ -61,7 +61,7 @@ WindowLog = {
         
     getStatus : function() {
         
-        var output = imports.xorg.screensaverinfo_get_idletime();
+        var output =  xorg.screensaverinfo_get_idletime();
         //print(output);
          
         if (output * 1 > 10000) {
