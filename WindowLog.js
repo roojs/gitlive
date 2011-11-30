@@ -44,6 +44,7 @@ File  = imports.File.File;
 GLib        = imports.gi.GLib;
 //Gtk.init(Seed.argv);
 xDate = imports.Date;
+xorg = imports.xorg;
 
 WindowLog = {
     
@@ -60,10 +61,7 @@ WindowLog = {
         
     getStatus : function() {
         
-        var output = Spawn.run({
-           cwd : __script_path__ + '/tests',
-           args : [ __script_path__ + '/tests/xidletime'  ] 
-        });
+        var output = imports.xorg.screensaverinfo_get_idletime();
         //print(output);
          
         if (output * 1 > 10000) {
