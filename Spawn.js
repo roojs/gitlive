@@ -108,7 +108,7 @@ Spawn.prototype = {
     cwd: false,
     args: false,
     exceptions : false,
-    debug : true,
+    debug : false,
     /**
      * @property output {String} resulting output
      */
