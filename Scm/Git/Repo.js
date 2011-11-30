@@ -712,7 +712,7 @@ Repo = XObject.define(
         pull : function ()
         {
             // should probably hand error conditions better... 
-            this.git([ 'pull' ]);
+            return this.git([ 'pull' ]);
             
             
         },

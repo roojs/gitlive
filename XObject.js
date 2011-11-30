@@ -111,8 +111,8 @@ XObject.prototype = {
      /**
      * @property config {Object} the construction configuration.
      */
+     
      /**
-      * @method init
       * Initializes the Element (el) hooks up all the listeners
       * and packs the children.
       * you can override this, in child objects, then 
@@ -252,7 +252,7 @@ XObject.prototype = {
       * @method addItem
       * Adds an item to the object using a new XObject
       * uses pack property to determine how to add it.
-      * @arg cfg {Object} same as XObject constructor.
+      * @param {Object} cfg  same as XObject constructor.
       */
     addItem : function(o) {
         if (typeof(o) == 'undefined') {

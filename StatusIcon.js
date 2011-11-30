@@ -142,7 +142,12 @@ var StatusIcon  = new XObject({
                                     repopath : fn
                                 });
                                 try { 
-                                    var str = repo.pull(); 
+                                    var str = repo.pull();
+                                    // do not care if it's already in sycn..
+                                    if (str.match(/Already up-to-date/)) {
+                                        continue;
+                                    }
+                                    
                                     var notification = new Notify.Notification({
                                        summary: "Updated " + fn,
                                        body : str
