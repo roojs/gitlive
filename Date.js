@@ -833,3 +833,7 @@ Date.prototype.add = function(interval, value){
   return d;
 };
  
+ 
+function newDate() {
+    return new Date();
+}
