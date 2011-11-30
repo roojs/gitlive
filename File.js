@@ -194,9 +194,16 @@ var File = {
      * FIXME - needs perms setting..
      * 
      * @arg  directory  {String} Directory to make
+     * @arg  recursive {Boolean}
      */
 
-    mkdir : function (destPath) {
+    mkdir : function (destPath, rec) {
+        //print("mkdir: " + destPath);
+        rec = rec || false;
+        if (rec && !File.isDirectory(GLib.path_get_dirname(destPath))) {
+            File.mkdir(GLib.path_get_dirname(destPath),true);
+        }
+    
         var dest = Gio.file_new_for_path(String(destPath));
         return dest.make_directory(null);
     },
