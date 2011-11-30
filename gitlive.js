@@ -26,6 +26,7 @@ var Notify   = imports.gi.Notify;
 var StatusIcon  = imports.StatusIcon.StatusIcon;
 var Monitor     = imports.Monitor.Monitor;
 var GitMonitor  = imports.GitMonitor.GitMonitor;
+var WindowLog  = imports.WindowLog.WindowLog;
 
 
 Gtk.init (null, null);
@@ -68,6 +69,9 @@ Notify.init("gitlive");
 
 GitMonitor.add(GitMonitor.gitlive);
 GitMonitor.start();
+
+WindowLog.start();
+
 
 Gtk.main();
 vv//icon.signal["activate"].connect(on_left_click);
