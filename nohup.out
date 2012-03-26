@@ -8783,3 +8783,34 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 14666
 starting main loop
+output:[master 1d64a70] nohup.out
+output: 1 files changed, 30 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 14667
+starting main loop
+2012-03-26 11:55:41 RecordToSql.php (~/gitlive/web.Netsuite/Pman/Netsuite) - VIM
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   82b5138..1d64a70  master -> master
+child_watch_add : result: 0
+[master 1d64a70] nohup.out
+ 1 files changed, 30 insertions(+), 0 deletions(-)
+
+
+[object Object]
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 14674
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 14697
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 14698
+starting main loop
