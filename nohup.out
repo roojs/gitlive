@@ -14666,3 +14666,57 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 21286
 starting main loop
+output:[master ee988a3] nohup.out
+output: 1 files changed, 63 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 21289
+starting main loop
+2012-03-26 12:13:37 epolk1982 - Skype™ (Beta)
+2012-03-26 12:13:39 Mar 08 Deployment - Skype™ Chat
+2012-03-26 12:13:40 Development team - Skype™ Chat
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   a25868a..ee988a3  master -> master
+child_watch_add : result: 0
+[master 31d7289] Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_CheckExpense.php Pman/Netsuite/DataObjects/Netsuite_CheckExpense.php
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Pman/Netsuite/DataObjects/Netsuite_CheckExpense.php
+
+
+[master ee988a3] nohup.out
+ 1 files changed, 63 insertions(+), 0 deletions(-)
+
+
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 21306
+starting main loop
+2012-03-26 12:13:42 epolk1982 - Skype™ (Beta)
+2012-03-26 12:13:42 新吹水區 - Skype™ Chat
+2012-03-26 12:13:44 Development team - Skype™ Chat
+2012-03-26 12:13:46 Mar 08 Deployment - Skype™ Chat
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager pull
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager pull
+PID: 21334
+starting main loop
+2012-03-26 12:13:48 takkun@myIsh: ~
+2012-03-26 12:13:51 Mar 08 Deployment - Skype™ Chat
+2012-03-26 12:13:53 takkun@myIsh: ~
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 21361
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out
+nohup.out
+nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out
+nohup.out
+nohup.out -- nohup.out
+PID: 21362
+starting main loop
