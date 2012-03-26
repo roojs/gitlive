@@ -14054,3 +14054,67 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 20509
 starting main loop
+output:[master 14b249f] nohup.out
+output: 1 files changed, 39 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 20510
+starting main loop
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   8a3d6d6..14b249f  master -> master
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/notes.txt
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/notes.txt
+PID: 20544
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager commit -m Pman/Netsuite/notes.txt -- Pman/Netsuite/notes.txt
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager commit -m Pman/Netsuite/notes.txt -- Pman/Netsuite/notes.txt
+PID: 20545
+starting main loop
+output:[master 7f028a4] Pman/Netsuite/notes.txt
+output: 1 files changed, 9 insertions(+), 0 deletions(-)
+output: create mode 100644 Pman/Netsuite/notes.txt
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager push
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager push
+PID: 20546
+starting main loop
+stderr:remote: From /home/git/private/web.Netsuite        
+stderr:remote:    2d193e6..7f028a4  master     -> origin/master        
+stderr:remote: Updating 2d193e6..7f028a4        
+stderr:remote: Fast-forward        
+stderr:remote:  Pman/Netsuite/notes.txt |    9 +++++++++        
+stderr:remote:  1 files changed, 9 insertions(+), 0 deletions(-)        
+stderr:remote:  create mode 100644 Pman/Netsuite/notes.txt        
+child_watch_add : result: 0
+stderr:To http://git.roojs.com:8081/web.Netsuite
+stderr:   2d193e6..7f028a4  master -> master
+[master 14b249f] nohup.out
+ 1 files changed, 39 insertions(+), 0 deletions(-)
+
+
+[master 7f028a4] Pman/Netsuite/notes.txt
+ 1 files changed, 9 insertions(+), 0 deletions(-)
+ create mode 100644 Pman/Netsuite/notes.txt
+
+
+[object Object]
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 20553
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 20586
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out
+nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out
+nohup.out -- nohup.out
+PID: 20587
+starting main loop
