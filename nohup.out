@@ -5801,3 +5801,35 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 11156
 starting main loop
+output:[master 0ccd2ec] nohup.out
+output: 1 files changed, 31 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 11157
+starting main loop
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   f73713f..0ccd2ec  master -> master
+child_watch_add : result: 0
+[master 0ccd2ec] nohup.out
+ 1 files changed, 31 insertions(+), 0 deletions(-)
+
+
+[object Object]
+2012-03-26 11:46:47 Alan Knowles (and 1 other)
+2012-03-26 11:46:50 takkun@myIsh: ~
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 11164
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 11190
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 11191
+starting main loop
