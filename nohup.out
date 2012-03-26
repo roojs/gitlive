@@ -5833,3 +5833,39 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 11191
 starting main loop
+output:[master 488c254] nohup.out
+output: 1 files changed, 32 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 11192
+starting main loop
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   0ccd2ec..488c254  master -> master
+child_watch_add : result: 0
+[master 488c254] nohup.out
+ 1 files changed, 32 insertions(+), 0 deletions(-)
+
+
+2012-03-26 11:46:52 Alan Knowles (and 1 other)
+2012-03-26 11:46:53 takkun@myIsh: ~
+2012-03-26 11:46:54 Alan Knowles (and 1 other)
+2012-03-26 11:46:56 takkun@myIsh: ~
+2012-03-26 11:46:59 Import MySQL Dumpfile, SQL Datafile Into My Database - Google Chrome
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 11211
+starting main loop
+2012-03-26 11:46:59 MySQL :: MySQL 5.0 Reference Manual :: 12.1.6 CREATE DATABASE Syntax - Google Chrome
+2012-03-26 11:47:00 How to remove MySQL root password - Stack Overflow - Google Chrome
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 11236
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 11237
+starting main loop
