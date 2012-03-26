@@ -5523,3 +5523,40 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 10860
 starting main loop
+output:[master 53cdf19] nohup.out
+output: 1 files changed, 29 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 10861
+starting main loop
+2012-03-26 11:45:58 MySQL :: MySQL 5.0 Reference Manual :: 12.1.6 CREATE DATABASE Syntax - Google Chrome
+2012-03-26 11:45:59 Gmail - Inbox - takkun@gmail.com - Google Chrome
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   1a9fb24..53cdf19  master -> master
+child_watch_add : result: 0
+[master 53cdf19] nohup.out
+ 1 files changed, 29 insertions(+), 0 deletions(-)
+
+
+[object Object]
+2012-03-26 11:45:59 Google+ - Google Chrome
+2012-03-26 11:46:00 Google Translate - Google Chrome
+2012-03-26 11:46:00 New Tab - Google Chrome
+2012-03-26 11:46:02 mysql import sql dump - Google Search - Google Chrome
+2012-03-26 11:46:03 Import MySQL Dumpfile, SQL Datafile Into My Database - Google Chrome
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 10868
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 10891
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 10892
+starting main loop
