@@ -1,0 +1,61 @@
+init: ID:undefined typeof(xtype): object
+obj?paused,title,stock,tooltip_text,listeners
+init: ID:undefined typeof(el):[object GtkStatusIcon]
+MAKE GtkStatusIcon
+init: ID:menu typeof(xtype): object
+obj?
+init: ID:menu typeof(el):[object GtkMenu]
+MAKE GtkMenu
+init: ID:pause typeof(xtype): undefined
+init: ID:pause typeof(el):[object GtkImageMenuItem]
+MAKE 
+Add signal activate
+append[[object GtkImageMenuItem]]
+init: ID:resume typeof(xtype): undefined
+init: ID:resume typeof(el):[object GtkImageMenuItem]
+MAKE 
+Add signal activate
+append[[object GtkImageMenuItem]]
+init: ID:undefined typeof(xtype): undefined
+init: ID:undefined typeof(el):[object GtkImageMenuItem]
+MAKE 
+Add signal activate
+append[[object GtkImageMenuItem]]
+init: ID:undefined typeof(xtype): undefined
+init: ID:undefined typeof(el):[object GtkImageMenuItem]
+MAKE 
+Add signal activate
+append[[object GtkImageMenuItem]]
+init: ID:undefined typeof(xtype): undefined
+init: ID:undefined typeof(el):[object GtkImageMenuItem]
+MAKE 
+Add signal activate
+append[[object GtkImageMenuItem]]
+init: ID:undefined typeof(xtype): undefined
+init: ID:undefined typeof(el):[object GtkImageMenuItem]
+MAKE 
+Add signal activate
+append[[object GtkImageMenuItem]]
+Add signal activate
+
+** (seed:1961): WARNING **: ArgumentError - probably due to incorrect gir file (which may be fixed upstream) argument 4 must not be null for function: timeout_add 
+
+
+** (seed:1961): WARNING **: ArgumentError - probably due to incorrect gir file (which may be fixed upstream) argument 5 must not be null for function: timeout_add 
+
+2012-03-26 11:15:12 takkun@myIsh: ~
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 1996
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 2022
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 2023
+starting main loop
