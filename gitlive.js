@@ -74,5 +74,5 @@ WindowLog.start();
 
 
 Gtk.main();
-vv//icon.signal["activate"].connect(on_left_click);
+//icon.signal["activate"].connect(on_left_click);
  
