@@ -8476,3 +8476,39 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 14237
 starting main loop
+output:[master 92e5722] nohup.out
+output: 1 files changed, 30 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 14238
+starting main loop
+2012-03-26 11:54:24 MySQL Query Browser - root@localhost via socket
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   985184a..92e5722  master -> master
+child_watch_add : result: 0
+[master 92e5722] nohup.out
+ 1 files changed, 30 insertions(+), 0 deletions(-)
+
+
+[object Object]
+2012-03-26 11:54:25 takkun@myIsh: ~
+2012-03-26 11:54:25 takkun@myIsh: ~/gitlive
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 14251
+starting main loop
+2012-03-26 11:54:33 takkun@myIsh: ~/gitlive/web.Netsuite
+2012-03-26 11:54:37 takkun@myIsh: ~/gitlive/web.Netsuite/Pman
+2012-03-26 11:54:43 takkun@myIsh: ~/gitlive/web.Netsuite/Pman/Netsuite
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 14349
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 14350
+starting main loop
