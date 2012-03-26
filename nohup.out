@@ -230,3 +230,38 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 4604
 starting main loop
+output:[master ddb203c] nohup.out
+output: 1 files changed, 36 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 4605
+starting main loop
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   e5b2ba7..ddb203c  master -> master
+child_watch_add : result: 0
+[master ddb203c] nohup.out
+ 1 files changed, 36 insertions(+), 0 deletions(-)
+
+
+2012-03-26 11:31:32 Alan Knowles (and 1 other)
+2012-03-26 11:31:33 takkun@myIsh: ~
+2012-03-26 11:31:34 Alan Knowles (and 1 other)
+2012-03-26 11:31:35 Nicole Polk (and 1 other)
+2012-03-26 11:31:35 Alan Knowles (and 1 other)
+2012-03-26 11:31:36 takkun@myIsh: ~
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 4612
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 4635
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 4636
+starting main loop
