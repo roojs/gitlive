@@ -11404,3 +11404,73 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 17603
 starting main loop
+output:[master d8fe69c] nohup.out
+output: 1 files changed, 37 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 17604
+starting main loop
+child_watch_add : result: 0
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   d286af4..d8fe69c  master -> master
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/4913
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/4913
+PID: 17611
+starting main loop
+stderr:fatal: pathspec 'Pman/Netsuite/4913' did not match any files
+child_watch_add : result: 32768
+32768
+["git","--work-tree","/home/takkun/gitlive/web.Netsuite","--git-dir","/home/takkun/gitlive/web.Netsuite/.git","--no-pager","add","--","Pman/Netsuite/4913"]
+"fatal: pathspec 'Pman/Netsuite/4913' did not match any files\n"
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/Dump.php
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/Dump.php
+PID: 17612
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager rm -f -- Pman/Netsuite/4913
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager rm -f -- Pman/Netsuite/4913
+PID: 17613
+starting main loop
+stderr:fatal: pathspec 'Pman/Netsuite/4913' did not match any files
+child_watch_add : result: 32768
+32768
+["git","--work-tree","/home/takkun/gitlive/web.Netsuite","--git-dir","/home/takkun/gitlive/web.Netsuite/.git","--no-pager","rm","-f","--","Pman/Netsuite/4913"]
+"fatal: pathspec 'Pman/Netsuite/4913' did not match any files\n"
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager commit -m Attribute Changed :Pman/Netsuite/4913
+Pman/Netsuite/4913
+Pman/Netsuite/4913
+Pman/Netsuite/Dump.php
+Attribute Changed :Pman/Netsuite/Dump.php -- Pman/Netsuite/4913 Pman/Netsuite/Dump.php
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager commit -m Attribute Changed :Pman/Netsuite/4913
+Pman/Netsuite/4913
+Pman/Netsuite/4913
+Pman/Netsuite/Dump.php
+Attribute Changed :Pman/Netsuite/Dump.php -- Pman/Netsuite/4913 Pman/Netsuite/Dump.php
+PID: 17614
+starting main loop
+child_watch_add : result: 256
+stderr:error: pathspec 'Pman/Netsuite/4913' did not match any file(s) known to git.
+256
+["git","--work-tree","/home/takkun/gitlive/web.Netsuite","--git-dir","/home/takkun/gitlive/web.Netsuite/.git","--no-pager","commit","-m","Attribute Changed :Pman/Netsuite/4913\nPman/Netsuite/4913\nPman/Netsuite/4913\nPman/Netsuite/Dump.php\nAttribute Changed :Pman/Netsuite/Dump.php","--","Pman/Netsuite/4913","Pman/Netsuite/Dump.php"]
+"error: pathspec 'Pman/Netsuite/4913' did not match any file(s) known to git.\n"
+[master d8fe69c] nohup.out
+ 1 files changed, 37 insertions(+), 0 deletions(-)
+
+
+[object Object]
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 17615
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 17638
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 17639
+starting main loop
