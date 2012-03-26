@@ -14794,3 +14794,77 @@ nohup.out
 nohup.out -- nohup.out
 PID: 21480
 starting main loop
+output:[master 81aaad6] nohup.out nohup.out nohup.out nohup.out
+output: 1 files changed, 74 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 21481
+starting main loop
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   c2d8854..81aaad6  master -> master
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php
+PID: 21496
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+PID: 21497
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager commit -m Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php
+Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php
+Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php -- Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager commit -m Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php
+Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php
+Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php -- Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+PID: 21498
+starting main loop
+child_watch_add : result: 0
+output:[master 53ee262] Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+output: 0 files changed, 0 insertions(+), 0 deletions(-)
+output: create mode 100644 Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php
+output: create mode 100644 Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager push
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager push
+PID: 21499
+starting main loop
+stderr:remote: From /home/git/private/web.Netsuite        
+stderr:remote:    5f46a07..53ee262  master     -> origin/master        
+stderr:remote: Updating 5f46a07..53ee262        
+stderr:remote: Fast-forward        
+stderr:remote:  0 files changed, 0 insertions(+), 0 deletions(-)        
+stderr:remote:  create mode 100644 Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php        
+stderr:remote:  create mode 100644 Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php        
+stderr:To http://git.roojs.com:8081/web.Netsuite
+stderr:   5f46a07..53ee262  master -> master
+child_watch_add : result: 0
+[master 81aaad6] nohup.out nohup.out nohup.out nohup.out
+ 1 files changed, 74 insertions(+), 0 deletions(-)
+
+
+[master 53ee262] Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Pman/Netsuite/DataObjects/Netsuite_CustomerRefund.php
+ create mode 100644 Pman/Netsuite/DataObjects/Netsuite_DepositApplication.php
+
+
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 21506
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 21529
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 21530
+starting main loop
