@@ -14475,3 +14475,72 @@ git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitl
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 PID: 21012
 starting main loop
+output:[master 89a5002] nohup.out
+output: 1 files changed, 30 insertions(+), 0 deletions(-)
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager push
+PID: 21013
+starting main loop
+stderr:To http://git.roojs.com:8081/gitlive
+stderr:   8df0b4a..89a5002  master -> master
+child_watch_add : result: 0
+[master 89a5002] nohup.out
+ 1 files changed, 30 insertions(+), 0 deletions(-)
+
+
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager pull
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager pull
+PID: 21030
+starting main loop
+child_watch_add : result: 0
+output:Already up-to-date.
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/DataObjects/Netsuite_Check.php
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager add -- Pman/Netsuite/DataObjects/Netsuite_Check.php
+PID: 21053
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager commit -m Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_Check.php
+Pman/Netsuite/DataObjects/Netsuite_Check.php -- Pman/Netsuite/DataObjects/Netsuite_Check.php
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager commit -m Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_Check.php
+Pman/Netsuite/DataObjects/Netsuite_Check.php -- Pman/Netsuite/DataObjects/Netsuite_Check.php
+PID: 21054
+starting main loop
+output:[master 4489c4d] Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_Check.php Pman/Netsuite/DataObjects/Netsuite_Check.php
+output: 0 files changed, 0 insertions(+), 0 deletions(-)
+output: create mode 100644 Pman/Netsuite/DataObjects/Netsuite_Check.php
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager push
+cd /home/takkun/gitlive/web.Netsuite;git --work-tree /home/takkun/gitlive/web.Netsuite --git-dir /home/takkun/gitlive/web.Netsuite/.git --no-pager push
+PID: 21055
+starting main loop
+stderr:remote: From /home/git/private/web.Netsuite        
+stderr:remote:    7f028a4..4489c4d  master     -> origin/master        
+stderr:remote: Updating 7f028a4..4489c4d        
+stderr:remote: Fast-forward        
+child_watch_add : result: 0
+stderr:remote:  0 files changed, 0 insertions(+), 0 deletions(-)        
+stderr:remote:  create mode 100644 Pman/Netsuite/DataObjects/Netsuite_Check.php        
+stderr:To http://git.roojs.com:8081/web.Netsuite
+stderr:   7f028a4..4489c4d  master -> master
+[master 4489c4d] Attribute Changed :Pman/Netsuite/DataObjects/Netsuite_Check.php Pman/Netsuite/DataObjects/Netsuite_Check.php
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Pman/Netsuite/DataObjects/Netsuite_Check.php
+
+
+[object Object]
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
+PID: 21080
+starting main loop
+output:Already up-to-date.
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
+PID: 21103
+starting main loop
+child_watch_add : result: 0
+git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
+PID: 21104
+starting main loop
