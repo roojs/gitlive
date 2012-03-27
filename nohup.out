@@ -38,24 +38,24 @@ Add signal activate
 append[[object GtkImageMenuItem]]
 Add signal activate
 
-** (seed:29354): WARNING **: ArgumentError - probably due to incorrect gir file (which may be fixed upstream) argument 4 must not be null for function: timeout_add 
+** (seed:29425): WARNING **: ArgumentError - probably due to incorrect gir file (which may be fixed upstream) argument 4 must not be null for function: timeout_add 
 
 
-** (seed:29354): WARNING **: ArgumentError - probably due to incorrect gir file (which may be fixed upstream) argument 5 must not be null for function: timeout_add 
+** (seed:29425): WARNING **: ArgumentError - probably due to incorrect gir file (which may be fixed upstream) argument 5 must not be null for function: timeout_add 
 
-2012-03-27 15:01:27 takkun@myIsh: ~
+2012-03-27 15:01:54 takkun@myIsh: ~
 git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager pull
-PID: 29375
+PID: 29441
 starting main loop
 output:Already up-to-date.
 child_watch_add : result: 0
 git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager add -- nohup.out
-PID: 29399
+PID: 29465
 starting main loop
 child_watch_add : result: 0
 git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
 cd /home/takkun/gitlive/gitlive;git --work-tree /home/takkun/gitlive/gitlive --git-dir /home/takkun/gitlive/gitlive/.git --no-pager commit -m nohup.out -- nohup.out
-PID: 29400
+PID: 29466
 starting main loop
