@@ -173,9 +173,14 @@ var GitMonitor = new Monitor({
             print("REMOVE : "  + JSON.stringify(remove_files));
             
             repo.add(add_files);
+            
+            // make sure monitoring is paused so it does not recursively pick up
+            // deletions
             this.paused = true;
             repo.remove(remove_files);
             this.paused = false;
+            
+            
             try { 
                 success.push(repo.commit({
                     reason : messages.join("\n"),
