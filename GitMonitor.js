@@ -150,7 +150,7 @@ var GitMonitor = new Monitor({
                         // if file does not exist.. s,ip
                         
                         //if (!GLib.file_test(arg, GLib.FileTest.EXISTS)) {
-                            
+                             
                         //    break;
                          // }
         
