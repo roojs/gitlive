@@ -135,6 +135,11 @@ Monitor.prototype = {
             if (next_file.get_file_type() != Gio.FileType.DIRECTORY) {
                 continue;
             }
+            
+            if (next_file.get_file_type() != Gio.FileType.SYMBOLIC_LINK) {
+                continue;
+            }
+            
             if (next_file.get_display_name()[0] == '.') {
                 continue;
             }
