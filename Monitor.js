@@ -161,8 +161,9 @@ Monitor.prototype = {
             return;
         }
         print("WAS: " + f.get_path() + "\n");
+        var rp = imports.os.realpath(f.get_path());
+        var can = rp ? Gio.file_new_for_path(rp) : f;   
         
-        var can =  Gio.file_new_for_path(imports.os.realpath(f.get_path()));   
         print("NOW: " + can.get_path() + "\n");
         var src = {
             name : can.get_basename(),
