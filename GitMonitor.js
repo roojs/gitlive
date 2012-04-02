@@ -196,9 +196,9 @@ var GitMonitor = new Monitor({
             
             // -- DO STUFF..
             
-            //repo.add(add_files);
+            repo.add(add_files);
             
-            //repo.remove(remove_files);
+            repo.remove(remove_files);
             this.paused = false;
             
             
