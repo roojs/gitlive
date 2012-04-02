@@ -174,7 +174,8 @@ Monitor.prototype = {
         var dest = false;
         
         if (of) {
-            can = Gio.file_new_for_path(imports.os.realpath(f.get_path())); 
+            rp = imports.os.realpath(of.get_path());
+            var can = rp ? Gio.file_new_for_path(rp) : of;   
             dest =  {
                 name : can.get_basename(),
                 path : can.get_path(),
