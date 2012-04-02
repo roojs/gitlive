@@ -155,6 +155,32 @@ Monitor.prototype = {
     
     
     
+    realpath : function(file)
+    {
+        if (!file) {
+            return file;
+        }
+        
+        if (GLib.file_test(file.get_path(), GLib.FileTest.EXISTS)) {
+            var rp = imports.os.realpath(file.get_path());
+        
+            return Gio.file_new_for_path(rp);  
+            
+            
+        }
+        // file does not currently exist..
+        // check parent.
+        var bn = file.basename();
+        var ar = file.get_path().split('/');
+        ar.pop();
+        var dirname = ar.join('/');
+        var rp = imports.os.realpath(dirname);
+        return Gio.file_new_for_path(rp + '/' + bn);
+        
+        
+    },
+    
+    
     onEvent : function(fm, f, of, event_type, uh)
     {
         if (this.paused) {
