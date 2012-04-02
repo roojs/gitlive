@@ -160,11 +160,11 @@ Monitor.prototype = {
         if (this.paused) {
             return;
         }
-        print("WAS: " + f.get_path() + "\n");
+        
         var rp = imports.os.realpath(f.get_path());
         var can = rp ? Gio.file_new_for_path(rp) : f;   
         
-        print("NOW: " + can.get_path() + "\n");
+        print(event_type +  " : " + can.get_path() + "\n");
         var src = {
             name : can.get_basename(),
             path : can.get_path(),
