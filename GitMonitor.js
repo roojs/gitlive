@@ -112,17 +112,19 @@ var GitMonitor = new Monitor({
         // pull and group.
         
         //print(JSON.stringify(cmds));
-        
+        this.paused = true;
         cmds.forEach(function(cmd) {
             var gitpath = cmd.shift(); 
             if (typeof(repo_list[gitpath]) == 'undefined') {
                 repo_list[gitpath] = new imports.Scm.Git.Repo.Repo( { repopath : gitpath });
                 repo_list[gitpath].cmds = [];
+                
+                
                 repo_list[gitpath].pull();
             }
             repo_list[gitpath].cmds.push(cmd);
         });
-        
+        this.paused = false;
         // build add, remove and commit message list..
         
          
@@ -182,7 +184,7 @@ var GitMonitor = new Monitor({
             
             // make sure monitoring is paused so it does not recursively pick up
             // deletions
-            this.paused = true;
+          
             repo.remove(remove_files);
             this.paused = false;
             
