@@ -295,6 +295,7 @@ var GitMonitor = new Monitor({
      */
     onChangesDoneHint : function(src) 
     { 
+        this.lastAdd = new Date();
         this.parsePath(src);
         if (this.shouldIgnore(src)) {
             return;
@@ -304,7 +305,7 @@ var GitMonitor = new Monitor({
         var add_it = false;
         if (typeof(this.just_created[src.path]) !='undefined') {
             delete this.just_created[src.path];
-            this.lastAdd = new Date();
+            
             this.queue.push( 
                 [ src.gitpath,  'add', src.vpath ],
                 [ src.gitpath,  'commit',    { message: src.vpath} ] 
@@ -313,7 +314,7 @@ var GitMonitor = new Monitor({
          
             return;
         }
-        this.lastAdd = new Date();
+        
         this.queue.push( 
             [ src.gitpath,  'add', src.vpath ],
             [ src.gitpath,  'commit',  {  message: src.vpath} ]
@@ -323,6 +324,7 @@ var GitMonitor = new Monitor({
     },
     onDeleted : function(src) 
     { 
+        this.lastAdd = new Date();
         this.parsePath(src);
         if (this.shouldIgnore(src)) {
             return;
@@ -330,7 +332,7 @@ var GitMonitor = new Monitor({
         // should check if monitor needs removing..
         // it should also check if it was a directory.. - so we dont have to commit all..
         
-        this.lastAdd = new Date();
+        
         this.queue.push( 
             [ src.gitpath, 'rm' , src.vpath ],
             [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
@@ -341,6 +343,7 @@ var GitMonitor = new Monitor({
     },
     onCreated : function(src) 
     { 
+        this.lastAdd = new Date();
         this.parsePath(src);
         if (this.shouldIgnore(src)) {
             return;
@@ -352,7 +355,7 @@ var GitMonitor = new Monitor({
         }
         // director has bee created
         this.monitor(src.path);
-        this.lastAdd = new Date();
+        
         this.queue.push( 
             [ src.gitpath, 'add' , src.vpath,  { all: true } ],
             [ src.gitpath, 'commit' , { all: true, message: src.vpath} ]
@@ -361,12 +364,14 @@ var GitMonitor = new Monitor({
         
         
     },
-    onAttributeChanged : function(src) { 
+    onAttributeChanged : function(src)
+    { 
+        this.lastAdd = new Date();
         this.parsePath(src);
         if (this.shouldIgnore(src)) {
             return;
         }
-        this.lastAdd = new Date();
+        
         this.queue.push(
                         
             //[ src.gitpath, 'commit' ,  src.vpath, { message: src.vpath} ]
@@ -379,6 +384,7 @@ var GitMonitor = new Monitor({
     
     onMoved : function(src,dest)
     { 
+        this.lastAdd = new Date();
         this.parsePath(src);
         this.parsePath(dest);
         
@@ -396,7 +402,7 @@ var GitMonitor = new Monitor({
         if (this.shouldIgnore(dest)) {
             return;
         }
-        this.lastAdd = new Date();
+        
         this.queue.push( 
            // [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
              [ src.gitpath, 'add',    dest.vpath ],
