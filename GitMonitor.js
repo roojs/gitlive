@@ -133,7 +133,7 @@ var GitMonitor = new Monitor({
             var add_files = [];
             var remove_files = [];
             var messages = [];
-            print(JSON.stringify(repo.cmds,null,4));
+            //print(JSON.stringify(repo.cmds,null,4));
             
             repo.cmds.forEach(function(cmd) {
                 
