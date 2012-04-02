@@ -159,16 +159,24 @@ Monitor.prototype = {
         if (this.paused) {
             return;
         }
+        var can = f.resolve_relative_path('');
+        
         var src = {
-            name : f.get_basename(),
-            path : f.get_path(),
-            dir   : GLib.path_get_dirname(f.get_path())
+            name : can.get_basename(),
+            path : can.get_path(),
+            dir   : GLib.path_get_dirname(can.get_path())
         };
-        var dest = of ? {
-            name : of.get_basename(),
-            path : of.get_path(),
-            dir   : GLib.path_get_dirname(of.get_path())
-        } : false;
+        
+        var dest = false;
+        
+        if (of) {
+            can = of.resolve_relative_path('');
+            dest =  {
+                name : can.get_basename(),
+                path : can.get_path(),
+                dir   : GLib.path_get_dirname(can.get_path())
+            }
+        }
         
         
         for(var i in Gio.FileMonitorEvent) {
