@@ -165,7 +165,7 @@ Monitor.prototype = {
         if (event_type != Gio.FileMonitorEvent.DELETED &&
             event_type !=  Gio.FileMonitorEvent.MOVED) {
             // it's not moved or deleted, and the file does not actually exist.
-            if (!GLib.file_test(.get_path(), GLib.FileTest.EXISTS)) {
+            if (!GLib.file_test(f.get_path(), GLib.FileTest.EXISTS)) {
                 return;
             }
             
