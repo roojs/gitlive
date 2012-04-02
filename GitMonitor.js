@@ -55,9 +55,12 @@ var GitMonitor = new Monitor({
             
             print("LAST RUN?" + last);
             
-            if (last < 4) { // wait 1/2 a seconnd before running.
+            if (last < 30) { // wait 1/2 a seconnd before running.
                 return 1;
             }
+            //_this.lastAdd = new Date();
+            //return 1;
+        
             _this.runQueue();
             return 1;
         },null,null);
