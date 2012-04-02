@@ -53,9 +53,9 @@ var GitMonitor = new Monitor({
             }
             var last = Math.floor(((new Date()) - _this.lastAdd) / 100);
             
-            print("LAST RUN?" + last);
+            //print("LAST RUN?" + last);
             
-            if (last < 30) { // wait 1/2 a seconnd before running.
+            if (last < 20) { // wait 1/2 a seconnd before running.
                 return 1;
             }
             //_this.lastAdd = new Date();
@@ -118,8 +118,6 @@ var GitMonitor = new Monitor({
             if (typeof(repo_list[gitpath]) == 'undefined') {
                 repo_list[gitpath] = new imports.Scm.Git.Repo.Repo( { repopath : gitpath });
                 repo_list[gitpath].cmds = [];
-                
-                
                 repo_list[gitpath].pull();
             }
             repo_list[gitpath].cmds.push(cmd);
