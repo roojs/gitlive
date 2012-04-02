@@ -113,8 +113,8 @@ var File = {
      * @returns {String} the resolved path path.
      * 
      */
-    realpath :  function (path) { 
-        return this.canonical(path);
+    realpath :  function (path) {
+        return imports.os.realpath(path);
     },
     canonical : function (path) { 
         var f = Gio.file_new_for_path(String(path));
