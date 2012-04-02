@@ -52,6 +52,9 @@ var GitMonitor = new Monitor({
                 return 1;
             }
             var last = Math.floor(((new Date()) - _this.lastAdd) / 100);
+            
+            print("LAST RUN?");
+            
             if (last < 4) { // wait 1/2 a seconnd before running.
                 return 1;
             }
