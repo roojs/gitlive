@@ -163,9 +163,7 @@ Monitor.prototype = {
         
         if (GLib.file_test(file.get_path(), GLib.FileTest.EXISTS)) {
             var rp = imports.os.realpath(file.get_path());
-        
             return Gio.file_new_for_path(rp);  
-            
             
         }
         // file does not currently exist..
@@ -215,6 +213,7 @@ Monitor.prototype = {
                 event_name = i;
             }
         }
+        
         //print ("got event: " +event_name);
         //print ("got src: " + src.toString());
         //print ("got event: " + src.toString());
