@@ -181,43 +181,30 @@ Monitor.prototype = {
     },
     
     
-    onEvent : function(fm, f, of, event_type, uh)
+    onEvent : function(fm, f_orig, of_orig, event_type, uh)
     {
         if (this.paused) {
             return;
         }
         
-       
-        if (event_type != Gio.FileMonitorEvent.DELETED &&
-            event_type !=  Gio.FileMonitorEvent.MOVED) {
-            // it's not moved or deleted, and the file does not actually exist.
-            if (!GLib.file_test(f.get_path(), GLib.FileTest.EXISTS)) {
-                return;
-            }
-            
+        var f = this.realpath(f_orig);
         
-            
-        }
-         var rp = imports.os.realpath(f.get_path());
-        
-         var can = rp ? Gio.file_new_for_path(rp) : f;   
-       
-        print(event_type +  " : " + can.get_path() + "\n");
+        var of = this.realpath(of_orig);
+ 
         var src = {
-            name : can.get_basename(),
-            path : can.get_path(),
-            dir   : GLib.path_get_dirname(can.get_path())
+            name : f.get_basename(),
+            path : f.get_path(),
+            dir   : GLib.path_get_dirname(f.get_path())
         };
         
         var dest = false;
         
         if (of) {
-            rp = imports.os.realpath(of.get_path());
-            var can = rp ? Gio.file_new_for_path(rp) : of;   
+            
             dest =  {
-                name : can.get_basename(),
-                path : can.get_path(),
-                dir   : GLib.path_get_dirname(can.get_path())
+                name : of.get_basename(),
+                path : of.get_path(),
+                dir   : GLib.path_get_dirname(of.get_path())
             }
         }
         
