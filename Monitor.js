@@ -159,8 +159,10 @@ Monitor.prototype = {
         if (this.paused) {
             return;
         }
-        var can = f.resolve_relative_path('');
+        print("WAS: " + f.get_path() + "\n");
         
+        var can = f.resolve_relative_path('');
+        print("NOW: " + can.get_path() + "\n");
         var src = {
             name : can.get_basename(),
             path : can.get_path(),
