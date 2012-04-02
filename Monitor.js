@@ -136,7 +136,7 @@ Monitor.prototype = {
                 continue;
             }
             
-            if (next_file.get_file_type() != Gio.FileType.SYMBOLIC_LINK) {
+            if (next_file.get_file_type() == Gio.FileType.SYMBOLIC_LINK) {
                 continue;
             }
             
