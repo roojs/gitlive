@@ -133,8 +133,10 @@ var GitMonitor = new Monitor({
             var add_files = [];
             var remove_files = [];
             var messages = [];
+            print(JSON.stringify(repo.cmds,null,4));
+            
             repo.cmds.forEach(function(cmd) {
-                //print(JSON.stringify(cmd));
+                
                 var name = cmd.shift();
                 var arg = cmd.shift();
                 
@@ -170,6 +172,7 @@ var GitMonitor = new Monitor({
                         break;    
                 } 
             });
+            
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
             print("ADD : "  + JSON.stringify(add_files));
@@ -180,12 +183,15 @@ var GitMonitor = new Monitor({
             });
             print("REMOVE : "  + JSON.stringify(remove_files));
             
-            repo.add(add_files);
             
             // make sure monitoring is paused so it does not recursively pick up
             // deletions
-          
-            repo.remove(remove_files);
+            
+            // -- DO STUFF..
+            
+            //repo.add(add_files);
+            
+            //repo.remove(remove_files);
             this.paused = false;
             
             
