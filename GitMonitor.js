@@ -126,21 +126,38 @@ var GitMonitor = new Monitor({
             var remove_files = [];
             var messages = [];
             repo.cmds.forEach(function(cmd) {
-                //print(JSON.stringify(cmd));
+                print(JSON.stringify(cmd));
                 var name = cmd.shift();
                 var arg = cmd.shift();
                 
                 switch(name) {
                     case 'add' :
-                        if (add_files.indexOf(arg) > -1) break;
+                        
+                        if (add_files.indexOf(arg) > -1) {
+                            break;
+                        }
+                        
+                        // if file does not exist.. s,ip
+                        if (!GLib.file_test(arg, GLib.FileTest.EXISTS)) {
+                            break;
+                        }
+        
+                        
                         add_files.push(arg);
                         break;
                     
                     case 'rm':
+                        // if file exists, do not try and delete it.
+                        if (GLib.file_test(arg, GLib.FileTest.EXISTS)) {
+                            break;
+                        }
+                        
                         remove_files.push(arg);
                         break;
                     
                     case 'commit' :
+                        
+                        
                         messages.push(arg.message);
                         break;    
                 } 
