@@ -126,7 +126,7 @@ var GitMonitor = new Monitor({
             var remove_files = [];
             var messages = [];
             repo.cmds.forEach(function(cmd) {
-                print(JSON.stringify(cmd));
+                //print(JSON.stringify(cmd));
                 var name = cmd.shift();
                 var arg = cmd.shift();
                 
@@ -164,7 +164,13 @@ var GitMonitor = new Monitor({
             });
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
-            repo.add(add_files); 
+            repo.add(add_files);
+            
+            // make sure added files do not get removed..
+            remove_files  = remove_files.filter(function(v) {
+                return add_files.indexOf(v) < 0;
+            });
+            
             repo.remove(remove_files);
             
             try { 
