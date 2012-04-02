@@ -51,7 +51,7 @@ var GitMonitor = new Monitor({
             if (!_this.queue.length || _this.queueRunning) {
                 return 1;
             }
-            var last = Math.floor(((new Date()) - this.lastAdd) / 100);
+            var last = Math.floor(((new Date()) - _this.lastAdd) / 100);
             if (last < 4) { // wait 1/2 a seconnd before running.
                 return 1;
             }
