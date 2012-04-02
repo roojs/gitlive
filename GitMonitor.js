@@ -164,15 +164,18 @@ var GitMonitor = new Monitor({
             });
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
-            repo.add(add_files);
+            print("ADD : "  + JSON.stringify(add_files));
             
             // make sure added files do not get removed..
             remove_files  = remove_files.filter(function(v) {
                 return add_files.indexOf(v) < 0;
             });
+            print("REMOVE : "  + JSON.stringify(remove_files));
             
+            repo.add(add_files);
+            this.paused = true;
             repo.remove(remove_files);
-            
+            this.paused = false;
             try { 
                 success.push(repo.commit({
                     reason : messages.join("\n"),
@@ -232,7 +235,8 @@ var GitMonitor = new Monitor({
         // vim.. what a seriously brain dead program..
         if (f.name == '4913') {
             return true;
-        } 
+        }
+        
         if (f.name[0] == '.') {
             // except!
             if (f.name == '.htaccess') {
