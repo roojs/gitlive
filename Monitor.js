@@ -161,7 +161,7 @@ Monitor.prototype = {
         }
         print("WAS: " + f.get_path() + "\n");
         
-        var can = f.resolve_relative_path('');
+        var can =  Gio.file_new_for_path(File.realpath(f.get_path()));   
         print("NOW: " + can.get_path() + "\n");
         var src = {
             name : can.get_basename(),
@@ -172,7 +172,7 @@ Monitor.prototype = {
         var dest = false;
         
         if (of) {
-            can = of.resolve_relative_path('');
+            can = Gio.file_new_for_path(File.realpath(f.get_path()));   
             dest =  {
                 name : can.get_basename(),
                 path : can.get_path(),
