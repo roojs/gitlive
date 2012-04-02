@@ -169,7 +169,6 @@ Monitor.prototype = {
                 return;
             }
             
-            
         
             
         }
