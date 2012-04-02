@@ -231,7 +231,7 @@ var GitMonitor = new Monitor({
         }
         // vim.. what a seriously brain dead program..
         if (f.name == '4913') {
-            retun true;
+            return true;
         } 
         if (f.name[0] == '.') {
             // except!
