@@ -161,9 +161,22 @@ Monitor.prototype = {
             return;
         }
         
-        var rp = imports.os.realpath(f.get_path());
-        var can = rp ? Gio.file_new_for_path(rp) : f;   
+       
+        if (event_type != Gio.FileMonitorEvent.DELETED &&
+            event_type !=  Gio.FileMonitorEvent.MOVED) {
+            // it's not moved or deleted, and the file does not actually exist.
+            if (!GLib.file_test(.get_path(), GLib.FileTest.EXISTS)) {
+                return;
+            }
+            
+            
         
+            
+        }
+         var rp = imports.os.realpath(f.get_path());
+        
+         var can = rp ? Gio.file_new_for_path(rp) : f;   
+       
         print(event_type +  " : " + can.get_path() + "\n");
         var src = {
             name : can.get_basename(),
