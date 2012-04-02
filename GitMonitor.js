@@ -148,15 +148,22 @@ var GitMonitor = new Monitor({
                         }
                         
                         // if file does not exist.. s,ip
-                        if (!GLib.file_test(arg, GLib.FileTest.EXISTS)) {
-                            break;
-                        }
+                        
+                        //if (!GLib.file_test(arg, GLib.FileTest.EXISTS)) {
+                            
+                        //    break;
+                         // }
         
                         
                         add_files.push(arg);
                         break;
                     
                     case 'rm':
+                        
+                        if (add_files.indexOf(arg) > -1) {
+                            break;
+                        }
+                        
                         // if file exists, do not try and delete it.
                         if (GLib.file_test(arg, GLib.FileTest.EXISTS)) {
                             break;
