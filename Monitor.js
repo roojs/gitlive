@@ -181,6 +181,7 @@ Monitor.prototype = {
     },
     
     
+    
     onEvent : function(fm, f_orig, of_orig, event_type, uh)
     {
         if (this.paused) {
