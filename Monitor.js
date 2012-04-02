@@ -168,7 +168,7 @@ Monitor.prototype = {
         }
         // file does not currently exist..
         // check parent.
-        var bn = file.basename();
+        var bn = file.get_basename();
         var ar = file.get_path().split('/');
         ar.pop();
         var dirname = ar.join('/');
