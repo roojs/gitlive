@@ -214,7 +214,7 @@ Monitor.prototype = {
             }
         }
         
-        //print ("got event: " +event_name);
+        print (JSON.stringify([event_name , f.get_path(), of ? of.get_path() : false ] ));
         //print ("got src: " + src.toString());
         //print ("got event: " + src.toString());
         try {
