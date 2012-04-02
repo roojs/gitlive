@@ -128,6 +128,7 @@ var GitMonitor = new Monitor({
         // build add, remove and commit message list..
         
          
+         
         for (var gitpath in repo_list) {
             var repo = repo_list[gitpath];
             var add_files = [];
