@@ -173,8 +173,9 @@ var GitMonitor = new Monitor({
                     
                     case 'commit' :
                         
-                        
-                        messages.push(arg.message);
+                        if (messages.indexOf(arg.message) < 0) { 
+                            messages.push(arg.message);
+                        }
                         break;    
                 } 
             });
