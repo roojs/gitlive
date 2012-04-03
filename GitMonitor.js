@@ -39,7 +39,11 @@ var GitMonitor = new Monitor({
         
     },
     
-    
+    /**
+     * Start the monitoring
+     * and run the queue every 500 milliseconds..
+     *
+     */
     start: function() {
         var _this = this;
         this.lastAdd = new Date();
