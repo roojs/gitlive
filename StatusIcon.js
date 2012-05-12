@@ -43,6 +43,9 @@ var StatusIcon  = new XObject({
             menu.el.show_all();
             
             this.get(!this.paused ? 'resume' : 'pause' ).el.hide();
+            print("MENU EL: "  + menu.el);
+            print("POPUP: " + typeof(menu.el.popup));
+            
             
             menu.el.popup(null, null,Gtk.StatusIcon.position_menu , this.el , 1, Gtk.get_current_event_time());
             //menu.el.popup(null, null,null, null, 1, Gtk.get_current_event_time());
