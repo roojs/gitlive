@@ -1,6 +1,6 @@
 //<script type="text/javascript">
-var GIRepository = imports.gi.GIRepository;
-var GObject = imports.gi.GObject;
+GIRepository = imports.gi.GIRepository;
+GObject = imports.gi.GObject;
 /**
  * XObject
  * Yet another attempt to create a usable object construction library for seed..
@@ -28,33 +28,51 @@ var GObject = imports.gi.GObject;
  *  Xyz.init(); // create and show.
  * 
  * 
+ * use XObject.debug = 1 to turn on debugging
  * 
- * @arg xtype {String|Function} constructor or string.
- * @arg id {String}  (optional) id for registry
- * @arg xns {String|Object}   (optional) namespace eg. Gtk or 'Gtk' - used with xtype.
- * @arg items {Array}   (optional) list of child elements which will be constructed.. using XObject
- * @arg listeners {Object}   (optional) map Gobject signals to functions
- * @arg pack {Function|String|Array}   (optional) how this object gets added to it's parent
- * @arg el {Object}   (optional) premade GObject
- * 
- *  --- needs a xdebug option!
+ * If XObjectBase/[xns]/[xtype].js exists, it will use this to override properties..
  * 
  * 
  * He's some questions.
- * - should we generate ID's for all elements? (if so we probably need to garbage collect)
  * - should we have a special property to use as the constructor / gobject.properties rather
  *   than sending all basic types to this?
  * 
- * 
+ * @cfg xtype {String|Function} constructor or string.
+ * @cfg id {String}  (optional) id for registry
+ * @cfg xns {String|Object}   (optional) namespace eg. Gtk or 'Gtk' - used with xtype.
+ * @cfg items {Array}   (optional) list of child elements which will be constructed.. using XObject
+ * @cfg listeners {Object}   (optional) map Gobject signals to functions
+ * @cfg pack {Function|String|Array}   (optional) how this object gets added to it's parent
+ * @cfg el {Object}   (optional) premade GObject
+ *  
  */
 
 function XObject (cfg) {
     // first apply cfg if set.
       //print("new XOBJECT!!!");
-    this.config = {};
-    this.constructor = XObject;
+      
+    //print ("XObject ctr");
+      
+    this.config = {}; // used to initialize GObject
+    
+    this.cfg = XObject.extend({}, cfg); // used to store original configuration.. for referencing..
+    
+    // we could use this to determine if 
+    // we are actually inside a inherited class...
+    // as define() should actually set this up..
+    
+    if (!this.constructor) {
+        
+        this.constructor = XObject;
+        var base = XObject.baseXObject(cfg);
+        if (base) {
+            XObject.extend(this,base.prototype);
+        }
+        
+    }
     
     // copy down all elements into self..
+    // make an extra copy in this.config?? - which is the one used in the constructor later
     
     for (var i in cfg) {
         this[i] = cfg[i];
@@ -74,7 +92,11 @@ function XObject (cfg) {
         
         this.config[i] = cfg[i];
     }
+    
+    
     this.items = this.items || [];
+    
+    
     // pack can be false!
     if (typeof(this.pack) == 'undefined') {
         
@@ -90,7 +112,29 @@ function XObject (cfg) {
         
     }
     
+    // interesting question should we call constructor on items here...
+    // as the real work is done in init anyway..
+    var _this= this;
+ 
+    var items = []
+    for(var i = 0; i < this.items.length;i++) {
+   	items.push(this.items[i]);
+    }
+
+
+
+	this.items = [];
+    // create XObject for all the children.
+    for(var i = 0; i < items.length;i++) {
     
+        var base = XObject.baseXObject(items[i]);
+        base = base || XObject;
+        var item = (items[i].constructor == XObject) ? items[i] : new base(items[i]);
+        item.parent = _this;
+        _this.items.push(item);
+        //_this.addItem(i);
+    };
+     
     
 }
 
@@ -111,8 +155,8 @@ XObject.prototype = {
      /**
      * @property config {Object} the construction configuration.
      */
-     
      /**
+      * @method init
       * Initializes the Element (el) hooks up all the listeners
       * and packs the children.
       * you can override this, in child objects, then 
@@ -124,13 +168,13 @@ XObject.prototype = {
     init : function()
     {
          
-        var items = [];
-        this.items.forEach(function(i) {
-            items.push(i);
-        });
+       // var items = [];
+        //this.items.forEach(function(i) {
+        //    items.push(i);
+        //});
         // remove items.
         this.listeners = this.listeners || {}; 
-        this.items = [];
+        //this.items = [];
          
         // do we need to call 'beforeInit here?'
          
@@ -141,20 +185,14 @@ XObject.prototype = {
         var isSeed = typeof(Seed) != 'undefined';
          
         // xtype= Gtk.Menu ?? what about c_new stuff?
-        if (XObject.debug) print("init: ID:"+ this.id +" typeof(xtype): "  + typeof(this.xtype));
+        XObject.log("init: ID:"+ this.id +" typeof(xtype): "  + typeof(this.xtype));
         if (!this.el && typeof(this.xtype) == 'function') {
-            // gjs implements xtype as function in seed they are undefined..
-            if (XObject.debug) print("func?"  + XObject.keys(this.config).join(','));
-            try {
-                this.el = this.xtype(this.config);
-            } catch(e) {
-                this.el = false;
-            }
-            
+            XObject.log("func?"  + XObject.keys(this.config).join(','));
+            this.el = this.xtype(this.config);
            
         }
         if (!this.el && typeof(this.xtype) == 'object') {
-            if (XObject.debug) print("obj?"  + XObject.keys(this.config).join(','));
+            XObject.log("obj?"  + XObject.keys(this.config).join(','));
             this.el = new (this.xtype)(this.config);
       
         }
@@ -163,16 +201,16 @@ XObject.prototype = {
             
             var NS = imports.gi[this.xns];
             if (!NS) {
-                Seed.print('Invalid xns: ' + this.xns);
+                XObject.error('Invalid xns: ' + this.xns, true);
             }
             constructor = NS[this.xtype];
             if (!constructor) {
-                Seed.print('Invalid xtype: ' + this.xns + '.' + this.xtype);
+                XObject.error('Invalid xtype: ' + this.xns + '.' + this.xtype);
             }
             this.el  =   isSeed ? new constructor(this.config) : new constructor();
             
         }
-        if (XObject.debug) print("init: ID:"+ this.id +" typeof(el):" + this.el);
+        XObject.log("init: ID:"+ this.id +" typeof(el):" + this.el);
         
         // always overlay props..
         // check for 'write' on object..
@@ -215,74 +253,65 @@ XObject.prototype = {
          //   XObject.registry[o.xnsid][o.id] = this;
         //}
         
-        var type = this.xtype && this.xtype.type ? GObject.type_name(this.xtype.type) : '';
-        print("MAKE " + type);
-        
+        var type = this.xtype.type ? GObject.type_name(this.xtype.type) : '';
+        XObject.log("add children to " + type);
         
         var _this=this;
-        items.forEach(function(i,n) {
-            
-            if (type == 'GtkTable' && i.pack == 'add') {
-                var c = n % _this.config.n_columns;
-                var r = Math.floor(n/_this.config.n_columns);
-                i.pack = [ 'attach', c, c+1, r, r+1, 
-                        typeof(i.x_options) == 'undefined' ?  5 : i.x_options,
-                        typeof(i.y_options) == 'undefined' ?  5 : i.y_options,
-                        typeof(i.x_padding) == 'undefined' ?  0 : i.x_padding,
-                        typeof(i.x_padding) == 'undefined' ?  0 : i.x_padding
-                       
-                ]
-            }
-            
-            _this.addItem(i);
-        })
+        for (var i = 0; i < this.items.length;i++) { 
+            _this.addItem(this.items[i],i);
+        }
             
         
         for (var i in this.listeners) {
             this.addListener(i, this.listeners[i]);
         }
         
+        this.init = XObject.emptyFn;
+           
         // delete this.listeners ?
         // do again so child props work!
        
         // do we need to call 'init here?'
     },
       
+     
      /**
-      * @method addItem
       * Adds an item to the object using a new XObject
       * uses pack property to determine how to add it.
-      * @param {Object} cfg  same as XObject constructor.
+      * @arg cfg {Object} same as XObject constructor.
       */
-    addItem : function(o) {
-        if (typeof(o) == 'undefined') {
-            print("Invalid Item added to this!");
-            imports.console.dump(this);
+    addItem : function(item, pos) 
+    {
+        
+        if (typeof(item) == 'undefined') {
+            XObject.error("Invalid Item added to this!");
+            imports.console.dump(this.cfg);
             Seed.quit();
         }
         // what about extended items!?!?!?
-        var item = (o.constructor == XObject) ? o : new XObject(o);
-        item.parent = this;
-        this.items.push(item);
+       
         item.init();
         //print("CTR:PROTO:" + ( item.id ? item.id : '??'));
        // print("addItem - call init [" + item.pack.join(',') + ']');
         if (!item.el) {
-            print("NO EL!");
+            XObject.error("NO EL!");
             imports.console.dump(item);
             Seed.quit();
         }
-         
+        print(XObject.type(this.xtype) + ":pack=" + item.pack);
         
-        if (item.pack===false) {  // no 
+        if (item.pack===false) {  // no packing.. various items have this ..
             return;
         }
-        if (typeof(item.pack) == 'function') {
+        
+        if (typeof(item.pack) == 'function') { // pack is a function..
             // parent, child
             item.pack.apply(item, [ this , item  ]);
             item.parent = this;
             return;
         }
+        
+        // pack =  'add,x,y'
         var args = [];
         var pack_m  = false;
         if (typeof(item.pack) == 'string') {
@@ -311,17 +340,20 @@ XObject.prototype = {
                     
             }
            
-            
-            
-            
             return;
         }
         
         
+        // finally call the pack method 
         //Seed.print('Pack ' + this.el + '.'+ pack_m + '(' + item.el + ')');
-
+        
         args.unshift(item.el);
-        if (XObject.debug) print(pack_m + '[' + args.join(',') +']');
+        
+         
+        
+        
+        
+        XObject.log(pack_m + '[' + args.join(',') +']');
         //Seed.print('args: ' + args.length);
         if (pack_m) {
             this.el[pack_m].apply(this.el, args);
@@ -331,16 +363,15 @@ XObject.prototype = {
         
     },
     /**
-      * @method addListener
-      * Connects a method to a signal. (gjs/Seed aware)
-      * 
-      * @arg sig  {String} name of signal
-      * @arg fn  {Function} handler.
-      */
+    * Connects a method to a signal. (gjs/Seed aware)
+    * 
+    * @param {String} sig  name of signal
+    * @param {Function} fn  handler.
+    */
     addListener  : function(sig, fn) 
     {
  
-        if (XObject.debug) Seed.print("Add signal " + sig);
+        XObject.log("Add signal " + sig);
         fn.id= sig;
         var _li = XObject.createDelegate(fn,this);
         // private listeners that are not copied to GTk.
@@ -361,12 +392,12 @@ XObject.prototype = {
       * prefix with multiple '..' to look further up..
       * prefix with '/' to look from the top, eg. '^LeftTree.model'
       * 
-      * @arg name  {String} name of signal
-      * @return   {XObject|false} the object if found.
+      * @param {String} name name of signal
+      * @return  {XObject|false} the object if found.
       */
     get : function(xid)
     {
-        if (XObject.debug) print("SEARCH FOR " + xid + " in " + this.id);
+        XObject.log("SEARCH FOR " + xid + " in " + this.id);
         var ret=  false;
         var oid = '' + xid;
         if (!xid.length) {
@@ -462,7 +493,7 @@ XObject.prototype = {
                 return;
             }
             if (!ch.get) {
-                print("invalid item...");
+                XObject.error("invalid item...");
                 imports.console.dump(_this);
                 Seed.quit();
             }
@@ -495,7 +526,7 @@ XObject.prototype = {
 /**
  * Copies all the properties of config to obj.
  *
- * Pretty much the same as JQuery/Prototype..
+ * Pretty much the same as JQuery/Prototype.. or Roo.apply
  * @param {Object} obj The receiver of the properties
  * @param {Object} config The source of the properties
  * @param {Object} defaults A different object that will also be applied for default values
@@ -530,7 +561,48 @@ XObject.extend(XObject,
      * 
      */
     cache: { },
-    
+    /**
+     * Empty function
+     * 
+     */
+    emptyFn : function () { },
+      
+      
+      
+    /**
+     * Debug Logging
+     * @param {String|Object} output String to print.
+     */
+    log : function(output)
+    {
+        if (!this.debug) {
+            return;
+        }
+        print("LOG:" + output);  
+    },
+     
+    /**
+     * Error Logging
+     * @param {String|Object} output String to print.
+     */
+    error : function(output)
+    {
+        print("ERROR: " + output);  
+    },
+    /**
+     * fatal error
+     * @param {String|Object} output String to print.
+     */
+    fatal : function(output)
+    {
+        
+        throw {
+                name: "ArgumentError", 
+                message : output
+                    
+            }
+    },
+   
     /**
      * Copies all the properties of config to obj, if the do not exist.
      * @param {Object} obj The receiver of the properties
@@ -540,7 +612,8 @@ XObject.extend(XObject,
      */
 
 
-    extendIf : function(o, c){
+    extendIf : function(o, c)
+    {
 
         if(!o || !c || typeof c != 'object'){
             return o;
@@ -562,7 +635,7 @@ XObject.extend(XObject,
      * members on an instance.
      *
      * usage:
-     * MyObject = XObject.define(
+     * MyObject = Object.define(
      *     function(...) {
      *          ....
      *     },
@@ -577,7 +650,8 @@ XObject.extend(XObject,
      * @return {Function} constructor (eg. class
      * @method define
      */
-    define : function(){
+    define : function()
+    {
         // inline overrides
         var io = function(o){
             for(var m in o){
@@ -586,14 +660,14 @@ XObject.extend(XObject,
         };
         return function(constructor, parentClass, overrides) {
             if (typeof(parentClass) == 'undefined') {
-                print("XObject.define: Missing parentClass: when applying: " );
-                print(new String(constructor));
+                XObject.error("XObject.define: Missing parentClass: when applying: " );
+                XObject.error(new String(constructor));
                 Seed.quit(); 
             }
             if (typeof(parentClass.prototype) == 'undefined') {
-                print("Missing protype: when applying: " );
-                print(new String(constructor));
-                print(new String(parentClass));
+                XObject.error("Missing protype: when applying: " );
+                XObject.error(new String(constructor));
+                XObject.error(new String(parentClass));
                 Seed.quit(); 
             }
             var F = function(){};
@@ -634,7 +708,52 @@ XObject.extend(XObject,
         }
         return ret;
     },
-      
+    /**
+     * return the Gobject name of a constructor - does not appear to work on structs..
+     * @param {Object} gobject ctr
+     * @return {String} returns name
+     * @member XObject type
+     */
+    type : function(o)
+    {
+        if (typeof(o) == 'object') {
+            return GObject.type_name(o.type);
+           // print("GNAME:" +gname + " GTYPE:"+cfg.xtype.type);
+        }
+        return 'unknown';
+    },
+    /**
+     * return the XObjectBase class for a cfg (which includes an xtype)
+     * @param {Object} configuration.
+     * @return {function} constructor
+     * @member XObject baseXObject
+     */
+    baseXObject : function(cfg)
+    {
+          try {
+            // loocks for XObject/Gtk/TreeView.js [   TreeView = { .... } ]
+            // xns is not a string!!!?
+            var gname = false;
+            if (typeof(cfg.xtype) == 'object') {
+                gname = XObject.type(cfg.xtype);
+            
+            }
+            print("TRYING BASE OBJECT : " + gname);
+            // in the situation where we have been called and there is a base object
+            // defining the behavior..
+            // then we should copy the prototypes from the base object into this..
+            var base = gname  ? imports.XObjectBase[gname][gname] : false;
+            return base;
+            
+        } catch (e) {
+            // if debug?
+            XObject.log("error finding " + gname + " - " + e.toString());
+            return false;
+        }
+        
+        
+    },
+    
     /**
      * @member XObject createDelegate
      * creates a delage metdhod
@@ -648,7 +767,7 @@ XObject.extend(XObject,
     createDelegate : function(method, obj, args, appendArgs){
         
         return function() {
-            if (XObject.debug) print("CALL: " + obj.id + ':'+ method.id);
+            XObject.log("CALL: " + obj.id + ':'+ method.id);
             
             var callArgs = args || arguments;
             if(appendArgs === true){
