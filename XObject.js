@@ -253,7 +253,8 @@ XObject.prototype = {
          //   XObject.registry[o.xnsid][o.id] = this;
         //}
         
-        var type = this.xtype.type ? GObject.type_name(this.xtype.type) : '';
+
+        var type = this.xtype && this.xtype.type ? GObject.type_name(this.xtype.type) : '';
         XObject.log("add children to " + type);
         
         var _this=this;
