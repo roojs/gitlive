@@ -212,9 +212,9 @@ Spawn.prototype = {
         }
         
         
-        this.in_ch = GLib.io_channel_unix_new(ret.standard_input);
-        this.out_ch = GLib.io_channel_unix_new(ret.standard_output);
-        this.err_ch = GLib.io_channel_unix_new(ret.standard_error);
+        this.in_ch = new GLib.IOChannel.unix_new(ret.standard_input);
+        this.out_ch = new GLib.IOChannel.unix_new(ret.standard_output);
+        this.err_ch = new GLib.IOChannel.unix_new(ret.standard_error);
         
         // make everything non-blocking!
         
