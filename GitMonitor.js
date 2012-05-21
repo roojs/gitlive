@@ -278,6 +278,9 @@ var GitMonitor = new Monitor({
         if (f.name.match(/~$/)) {
             return true;
         }
+        if (f.name.match(/^nbproject/)) {
+            return true;
+        }
         // ignore anything in top level!!!!
         if (!f.vpath.length) {
             return true;
