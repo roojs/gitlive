@@ -62,7 +62,7 @@ Repo = XObject.define(
                 'porcelain' : true
             }]);
             //print(JSON.stringify(bl));
-            this.hasLocalChanges = bl.length > 0; 
+            this.hasLocalChanges = bl.length > 0 ? true : false; 
             
             
             
