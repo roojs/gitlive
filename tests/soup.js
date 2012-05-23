@@ -36,7 +36,7 @@ print(auth.authenticate);
 var authvals = authdata['git.roojs.com'];
 auth.authenticate(authvals.login ,authvals.password);
 var authmsg = auth.get_authorization(msg);
-
+print(authmsg);
 msg.request_headers.append('Authorization', authmsg + '==')
 
 //request.headers_append...
