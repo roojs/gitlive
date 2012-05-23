@@ -472,7 +472,6 @@ Clones=new XObject({
                                     xtype: Gtk.TreeViewColumn,
                                     min_width : 200,
                                     pack : "append_column",
-                                    resizable : "true",
                                     title : "Repo",
                                     init : function() {
                                         XObject.prototype.init.call(this);
