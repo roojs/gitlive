@@ -34,7 +34,8 @@ var msg = new Soup.Message({method:"GET", uri:uri});
 var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"");
 print(auth);
 print(auth.authenticate);
-auth.authenticate('aaaa','bbbb');
+var authvals = authdata['git.roojs.com'];
+auth.authenticate(authvals.login ,authvals.password);
 var authmsg = auth.get_authorization(msg);
 
 msg.request_headers.append('Authorization', authmsg + '==')
