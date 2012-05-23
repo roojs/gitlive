@@ -11,7 +11,7 @@ var session = new Soup.SessionSync();
 var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php");
 var msg = new Soup.Message({method:"GET", uri:uri});
 
-var auth = new Soap.Auth();
+var auth = new Soup.Auth();
 auth.authenticate('a','b');
 print(auth.get_authorization(msg));
 
