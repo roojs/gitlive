@@ -55,13 +55,11 @@ Repo = XObject.define(
         getStatus : function()
         {
             
-            // find out if we are up-to-date.   
-            var bl = this.git([ 'branch', {
-                'no-color' : true,
-                'verbose' : true,
-                'no-abbrev'  : true,
-                'a' : true
-            }]).split("\n");
+            // find out if we are up-to-date.
+            //git ls-remote origin -h refs/heads/master
+            var bl = this.git([ 'ls-remote ', 'origin', {
+                'h' : 'refs/head/master',
+            }]).split(/\s+/);
             
             
         }
