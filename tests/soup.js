@@ -23,7 +23,8 @@ netrc.split("\n").forEach(function(nl) {
         line[k] = kv
         k = false;
    });
-   
+        print(JSON.stringify(line));
+
    lines[line.machine] = line;
     
 });
