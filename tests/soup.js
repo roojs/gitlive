@@ -27,4 +27,4 @@ var status = session.send_message(msg);
 //)
 print(status);
 
-//print(msg.response_body.data);
+print(msg.response_body.data);
