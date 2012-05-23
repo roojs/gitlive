@@ -23,6 +23,7 @@ netrc.split("\n").foreach(function(nl) {
    lines[line.machine] = line;
     
 });
+print(JSON.encode(lines));
 
 // Soup.URI is a struct.
 var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person");
