@@ -41,7 +41,8 @@ Repo = XObject.define(
         tags : false,
         gitdir : false,
         debug : true,
-        lastCmd : false, 
+        lastCmd : false,
+        hasLocalChanges : false,
         
         getMetaData : function() {
             return {
