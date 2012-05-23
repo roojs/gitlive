@@ -61,7 +61,7 @@ Repo = XObject.define(
             var bl = this.git([ 'status', {
                 'porcelain' : true
             }]);
-            print(JSON.stringify(bl));
+            print(JSON.stringify(bl.length));
             this.hasLocalChanges = bl.length > 0 ? true : false; 
             
             
