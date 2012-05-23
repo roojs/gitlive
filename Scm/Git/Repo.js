@@ -62,7 +62,7 @@ Repo = XObject.define(
                 'porcelain' : true
             }]).split("\n");
             
-            this.hasChanges = bl.length > 0; 
+            this.hasLocalChanges = bl.length > 0; 
             
             
             
