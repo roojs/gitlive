@@ -25,8 +25,7 @@ netrc.split("\n").forEach(function(nl) {
    authdata[line.machine] = line;
     
 });
-print(JSON.stringify(lines));
-
+ 
 // Soup.URI is a struct.
 var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person");
 var msg = new Soup.Message({method:"GET", uri:uri});
