@@ -8,10 +8,10 @@ File  = imports['../File.js'].File;
 
 var netrc = File.read(GLib.get_home_dir() + "/.netrc");
 var lines = [];
-netrc.split("\n").foreach(function(nl) {
+netrc.split("\n").forEach(function(nl) {
    var line = {};
    var k = false;
-   nl.split(/\s+/).foreach(function(kv) {
+   nl.split(/\s+/).forEach(function(kv) {
         if (!k) {
             k = kv;
             return
