@@ -8,7 +8,7 @@ var session = new Soup.SessionSync();
 
 
 // Soup.URI is a struct.
-var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php");
+var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person");
 var msg = new Soup.Message({method:"GET", uri:uri});
 
 var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"");
