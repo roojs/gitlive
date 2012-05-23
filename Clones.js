@@ -361,7 +361,7 @@ Clones=new XObject({
                                             
                                             //print(JSON.stringify(ret,null,4));
                                              tr[i].getBranches();
-                                             tr[i].getStatus();
+                                             //tr[i].getStatus();
                                              var hi;
                                              try {
                                                  //tr[i].debug=1;
