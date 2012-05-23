@@ -58,7 +58,7 @@ Repo = XObject.define(
             // find out if we are up-to-date.
             //git ls-remote origin -h refs/heads/master
             var bl = this.git([ 'ls-remote ', 'origin', {
-                'h' : 'refs/head/master',
+                'h' : 'refs/heads/master',
             }]).split(/\s+/);
             var revid = bl[0];
             var ourid = File.read(this.gitdir + '/refs/head/master');
@@ -67,7 +67,7 @@ Repo = XObject.define(
             
             
             
-        }
+        },
         
         
         getBranches : function()
