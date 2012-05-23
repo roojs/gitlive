@@ -11,7 +11,7 @@ var lines = [];
 netrc.split("\n").forEach(function(nl) {
     var line = {};
     var k = false
-   print(JSON.stringify(nl));
+    print(JSON.stringify(nl));
 
     nl.replace(/\s+$/,'').replace(/^\s+/,'').split(/\s+/).forEach(function(kv) {
         print(JSON.stringify(kv));
