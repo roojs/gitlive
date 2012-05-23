@@ -346,7 +346,7 @@ Clones=new XObject({
                                            GObject.TYPE_BOOLEAN, // auto-commit
                                             GObject.TYPE_BOOLEAN, // auto-push
                                                GObject.TYPE_STRING, // repopath
-                                               GObject.TYPE_STRINGm, // color highighling 
+                                               GObject.TYPE_STRING, // color highighling 
                                                GObject.TYPE_STRING // uncommited. (tip) 
                                       ] );
                                     },
