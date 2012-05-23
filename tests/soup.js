@@ -7,7 +7,22 @@ var session = new Soup.SessionSync();
 File  = imports['../File.js'].File;
 
 var netrc = File.read(GLib.get_home_dir() + "/.netrc");
-print(netrc);
+var lines = [];
+netrc.split("\n").foreach(function(nl) {
+   var line = {};
+   var k = false;
+   nl.split(/\s+/).foreach(function(kv) {
+        if (!k) {
+            k = kv;
+            return
+        }
+        line[k] = kv
+        k = false;
+   });
+   
+   lines[line.machine] = line;
+    
+});
 
 // Soup.URI is a struct.
 var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person");
