@@ -7,7 +7,7 @@ var session = new Soup.SessionSync();
 File  = imports['../File.js'].File;
 
 var netrc = File.read(GLib.get_home_dir() + "/.netrc");
-var lines = [];
+var lines = {};
 netrc.split("\n").forEach(function(nl) {
     var line = {};
     var k = false
