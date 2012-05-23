@@ -90,7 +90,7 @@
                                     "id": "reposView",
                                     "pack": "add",
                                     "xtype": "TreeView",
-                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n        var description = new Pango.FontDescription.c_new();\n   description.set_size(10000);\n     this.el.modify_font(description);\n\n     this.selection = this.el.get_selection();\n      this.selection.set_mode( Gtk.SelectionMode.MULTIPLE);\n    var _this = this;\n    \n    \n  this.selection.signal['changed'].connect(function() {\n     _this.listeners.cursor_changed.apply(\n          _this, [ _this, '']\n       );\n             });\n  }\n",
+                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n        var description = new Pango.FontDescription.c_new();\n   description.set_size(10000);\n     this.el.modify_font(description);\n\n     this.selection = this.el.get_selection();\n      this.selection.set_mode( Gtk.SelectionMode.MULTIPLE);\n    var _this = this;\n    \n    \n  this.selection.signal['changed'].connect(function() {\n     _this.listeners.cursor_changed.apply(\n          _this, [ _this, '']\n       );\n             });\n             \n             \n   this.el.set_tooltip_column(7);          \n  }\n",
                                     "|xns": "Gtk",
                                     "items": [
                                         {
