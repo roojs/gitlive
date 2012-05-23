@@ -470,7 +470,7 @@ Clones=new XObject({
                                 },
                                 {
                                     xtype: Gtk.TreeViewColumn,
-                                    resizable : false,
+                                    resizable : true,
                                     min_width : 200,
                                     pack : "append_column",
                                     title : "Repo",
