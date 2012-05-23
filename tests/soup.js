@@ -1,10 +1,12 @@
 #!/usr/bin/env seed
 
 Soup = imports.gi.Soup;
+GLib = imports.gi.GLib;
 
 var session = new Soup.SessionSync();
+File  = imports['../File.js'].File;
 
-
+var netrc = File.read(GLib.get_home_dir() + "/.netrc");
 
 
 // Soup.URI is a struct.
