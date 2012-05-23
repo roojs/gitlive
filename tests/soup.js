@@ -9,9 +9,13 @@ File  = imports['../File.js'].File;
 var netrc = File.read(GLib.get_home_dir() + "/.netrc");
 var lines = [];
 netrc.split("\n").forEach(function(nl) {
-   var line = {};
-   var k = false;
-   nl.split(/\s+/).forEach(function(kv) {
+    var line = {};
+    var k = false
+   print(JSON.stringify(nl));
+
+    nl.split(/\s+/).forEach(function(kv) {
+        print(JSON.stringify(kv));
+
         if (!k) {
             k = kv;
             return
