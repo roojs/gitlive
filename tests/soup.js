@@ -35,8 +35,8 @@ var msg = new Soup.Message({method:"POST", uri:uri});
 
 // post..
 buftxt =  "remarks=test";
-var buf = new Soup.Buffer.c_new(buftxt, buftxt.length);
-msg.request_body.append_buffer(buf);
+ 
+msg.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, buftxt, buftxt.length)
 
 
 var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"");
