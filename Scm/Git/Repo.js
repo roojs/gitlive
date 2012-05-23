@@ -57,7 +57,7 @@ Repo = XObject.define(
             
             // find out if we are up-to-date.
             //git ls-remote origin -h refs/heads/master
-            var bl = this.git([ 'ls-remote ', 'origin', {
+            var bl = this.git([ 'ls-remote', 'origin', {
                 'h' : 'refs/heads/master',
             }]).split(/\s+/);
             var revid = bl[0];
