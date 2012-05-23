@@ -142,7 +142,7 @@
                                         {
                                             "min_width": 200,
                                             "pack": "append_column",
-                                            "resizable": true,
+                                            "resizable": "true",
                                             "title": "Repo",
                                             "xtype": "TreeViewColumn",
                                             "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 0 );\n\n}\n",
