@@ -31,6 +31,7 @@ WindowLog = {
  
     start  : function()
     {
+        
         this.outdir = GLib.get_home_dir() + "/.gitlog";
         this.screen = Wnck.Screen.get_default();
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() { return WindowLog.getStatus() } );
@@ -39,6 +40,7 @@ WindowLog = {
         
     getStatus : function() {
         
+         
         var output =  xorg.screensaverinfo_get_idletime();
         //print(output);
          
@@ -50,7 +52,9 @@ WindowLog = {
             this.win = false;
             return true;
         }
+        
         this.screen.force_update();
+       
         var aw = this.screen.get_active_window();
         if (aw) { 
             var win = aw.get_name();
