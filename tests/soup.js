@@ -28,7 +28,7 @@ netrc.split("\n").forEach(function(nl) {
  
 // Soup.URI is a struct.
 //var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person");
-var uri = new Soup.URI.c_new("http://www.roojs.com/headers.php");
+var uri = new Soup.URI.c_new("http://www.roojs.com/head.php");
 
 var msg = new Soup.Message({method:"GET", uri:uri});
 
@@ -39,7 +39,7 @@ var authvals = authdata['git.roojs.com'];
 auth.authenticate(authvals.login ,authvals.password);
 var authmsg = auth.get_authorization(msg);
 print(authmsg);
-msg.request_headers.append('Authorization', authmsg + '==')
+msg.request_headers.append('Authorization', authmsg)
 
 //request.headers_append...
 var status = session.send_message(msg);
