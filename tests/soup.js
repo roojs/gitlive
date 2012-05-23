@@ -14,7 +14,7 @@ var msg = new Soup.Message({method:"GET", uri:uri});
 var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"");
 print(auth);
 print(auth.authenticate);
-auth.authenticate('a','b');
+auth.authenticate('aaaa','bbbb');
 print(auth.get_authorization(msg));
 
 //request.headers_append...
