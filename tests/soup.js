@@ -31,6 +31,7 @@ var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person?limit=5"
 //var uri = new Soup.URI.c_new("http://www.roojs.com/head.php");
 
 var msg = new Soup.Message({method:"GET", uri:uri});
+// post..
 
 var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"");
 print(auth);
