@@ -11,11 +11,9 @@ var lines = {};
 netrc.split("\n").forEach(function(nl) {
     var line = {};
     var k = false
-    print(JSON.stringify(nl));
-
+     
     nl.replace(/\s+$/,'').replace(/^\s+/,'').split(/\s+/).forEach(function(kv) {
-        print(JSON.stringify(kv));
-
+      
         if (!k) {
             k = kv;
             return
@@ -23,8 +21,7 @@ netrc.split("\n").forEach(function(nl) {
         line[k] = kv
         k = false;
    });
-        print(JSON.stringify(line));
-
+       
    lines[line.machine] = line;
     
 });
