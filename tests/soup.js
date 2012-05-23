@@ -7,7 +7,7 @@ var session = new Soup.SessionSync();
 File  = imports['../File.js'].File;
 
 var netrc = File.read(GLib.get_home_dir() + "/.netrc");
-
+print(netrc);
 
 // Soup.URI is a struct.
 var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person");
