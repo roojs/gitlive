@@ -27,7 +27,9 @@ netrc.split("\n").forEach(function(nl) {
 });
  
 // Soup.URI is a struct.
-var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person");
+//var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person");
+var uri = new Soup.URI.c_new("http://www.roojs.com/header.php");
+
 var msg = new Soup.Message({method:"GET", uri:uri});
 
 var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"");
