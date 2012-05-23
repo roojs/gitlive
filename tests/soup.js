@@ -13,7 +13,7 @@ netrc.split("\n").forEach(function(nl) {
     var k = false
    print(JSON.stringify(nl));
 
-    nl.split(/\s+/).forEach(function(kv) {
+    nl.replace(/\s+$/,'').replace(/^/s+/,'').split(/\s+/).forEach(function(kv) {
         print(JSON.stringify(kv));
 
         if (!k) {
