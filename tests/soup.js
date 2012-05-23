@@ -7,7 +7,7 @@ var session = new Soup.SessionSync();
 File  = imports['../File.js'].File;
 
 var netrc = File.read(GLib.get_home_dir() + "/.netrc");
-var lines = {};
+var authdata = {};
 netrc.split("\n").forEach(function(nl) {
     var line = {};
     var k = false
@@ -22,7 +22,7 @@ netrc.split("\n").forEach(function(nl) {
         k = false;
    });
        
-   lines[line.machine] = line;
+   authdata[line.machine] = line;
     
 });
 print(JSON.stringify(lines));
