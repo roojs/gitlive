@@ -60,8 +60,8 @@ Repo = XObject.define(
             //git ls-remote origin -h refs/heads/master
             var bl = this.git([ 'status', {
                 'porcelain' : true
-            }]).split("\n");
-            print(JSON.stringify(bl));
+            }]);
+            //print(JSON.stringify(bl));
             this.hasLocalChanges = bl.length > 0; 
             
             
