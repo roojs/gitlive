@@ -60,6 +60,11 @@ Repo = XObject.define(
             var bl = this.git([ 'ls-remote ', 'origin', {
                 'h' : 'refs/head/master',
             }]).split(/\s+/);
+            var revid = bl[0];
+            var ourid = File.read(this.gitdir + '/refs/head/master');
+            print("ourid : " + ourid + ' , remote = ' + revid);
+            this.isUptoDate = revid == ourid;
+            
             
             
         }
