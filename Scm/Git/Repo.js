@@ -50,6 +50,23 @@ Repo = XObject.define(
                 
             };
         },
+        
+        
+        getStatus : function()
+        {
+            
+            // find out if we are up-to-date.   
+            var bl = this.git([ 'branch', {
+                'no-color' : true,
+                'verbose' : true,
+                'no-abbrev'  : true,
+                'a' : true
+            }]).split("\n");
+            
+            
+        }
+        
+        
         getBranches : function()
         {
             if (this.branches !== false) {
