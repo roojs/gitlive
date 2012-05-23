@@ -61,7 +61,7 @@ Repo = XObject.define(
                 'h' : 'refs/heads/master',
             }]).split(/\s+/);
             var revid = bl[0];
-            var ourid = File.read(this.gitdir + '/refs/head/master');
+            var ourid = File.read(this.gitdir + '/refs/heads/master');
             print("ourid : " + ourid + ' , remote = ' + revid);
             this.isUptoDate = revid == ourid;
             
