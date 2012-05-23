@@ -43,6 +43,7 @@ Repo = XObject.define(
         debug : true,
         lastCmd : false,
         hasLocalChanges : false,
+        localChanges : false,
         
         getMetaData : function() {
             return {
@@ -63,7 +64,7 @@ Repo = XObject.define(
             }]);
             print(JSON.stringify(bl.length));
             this.hasLocalChanges = bl.length > 0 ? true : false; 
-            
+            this.localChanges = bl;
             
             
         },
