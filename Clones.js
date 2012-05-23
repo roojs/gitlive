@@ -387,8 +387,12 @@ Clones=new XObject({
                                                 col =  '#ff0000';
                                             }
                                             if (tr[i].hasLocalChanges) {
-                                                col =  '#ff0000';
+                                                col =  '#0000ff';
                                             }
+                                            if  ((cb.lastrev != cb.remoterev) && (tr[i].hasLocalChanges)) {
+                                                col =  '#ff00ff';
+                                            }
+                                            
                                             this.el.set_value(ret.iter, 7, col  );      
                                             
                                         }     
