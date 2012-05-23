@@ -327,7 +327,9 @@ Clones=new XObject({
                                       _this, [ _this, '']
                                    );
                                          });
-                                         
+                                      
+                                      
+                                      //this.el.set_tooltip_column(8); 
                                          
                                         
                               },
