@@ -34,7 +34,7 @@ var msg = new Soup.Message({method:"POST", uri:uri});
 //var msg = new Soup.Message({method:"GET", uri:uri});
 
 // post..
-buftxt =  "remarks=test"
+buftxt =  "remarks=test";
 var buf = new Soup.Buffer.c_new(buftxt, buftxt.length);
 msg.request_body.append_buffer(buf);
 
