@@ -54,7 +54,7 @@ Repo = XObject.define(
         
         getStatus : function()
         {
-            git status --porcelain
+            //git status --porcelain
             // find out if we are up-to-date.
             //git ls-remote origin -h refs/heads/master
             var bl = this.git([ 'status', {
