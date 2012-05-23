@@ -54,16 +54,14 @@ Repo = XObject.define(
         
         getStatus : function()
         {
-            
+            git status --porcelain
             // find out if we are up-to-date.
             //git ls-remote origin -h refs/heads/master
-            var bl = this.git([ 'ls-remote', 'origin', {
-                'h' : 'refs/heads/master',
-            }]).split(/\s+/);
-            var revid = bl[0];
-            var ourid = File.read(this.gitdir + '/refs/heads/master');
-            print("ourid : " + ourid + ' , remote = ' + revid);
-            this.isUptoDate = revid == ourid;
+            var bl = this.git([ 'status', {
+                'porcelain' : true
+            }]).split("\n");
+            
+            this.hasChanges = bl.length > 0; 
             
             
             
