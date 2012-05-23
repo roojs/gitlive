@@ -383,7 +383,10 @@ Clones=new XObject({
                                             var cb = tr[i].currentBranch;
                                             //print(JSON.stringify(cb,null,4));
                                             var col = '#ffffff';
-                                            if ((cb.lastrev != cb.remoterev)  || tr[i].hasLocalChanges) {
+                                            if (cb.lastrev != cb.remoterev) {
+                                                col =  '#ff0000';
+                                            }
+                                            if (tr[i].hasLocalChanges) {
                                                 col =  '#ff0000';
                                             }
                                             this.el.set_value(ret.iter, 7, col  );      
