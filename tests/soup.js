@@ -27,11 +27,17 @@ netrc.split("\n").forEach(function(nl) {
 });
  
 // Soup.URI is a struct.
-var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/person?limit=5");
+var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Events");
 //var uri = new Soup.URI.c_new("http://www.roojs.com/head.php");
 
-var msg = new Soup.Message({method:"GET", uri:uri});
+var msg = new Soup.Message({method:"POST", uri:uri});
+//var msg = new Soup.Message({method:"GET", uri:uri});
+
 // post..
+
+var buf = new Soup.Buffer.c_new("remarks=test");
+msg.request_body.append_buffer(buf);
+
 
 var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"");
 print(auth);
