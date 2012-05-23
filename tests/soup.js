@@ -15,7 +15,9 @@ var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"")
 print(auth);
 print(auth.authenticate);
 auth.authenticate('aaaa','bbbb');
-print(auth.get_authorization(msg));
+var authmsg = auth.get_authorization(msg);
+
+msg.request_headers.append('Authorization', authmsg + '==')
 
 //request.headers_append...
 var status = session.send_message(msg);
