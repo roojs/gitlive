@@ -398,7 +398,7 @@ Clones=new XObject({
                                             }
                                             
                                             this.el.set_value(ret.iter, 7, col  );
-                                            this.el.set_value(ret.iter, 7, tr[i].localChanges  );      
+                                            this.el.set_value(ret.iter, 8, tr[i].localChanges  );      
                                             
                                         }     
                                     }
