@@ -7,8 +7,13 @@ Netrc = {
     
     forHost: function(name)
     {
-        return this.data[name];
-    }
+        try {
+            return this._data[name];
+        } catch(e) {
+            throw "Host " + name + " was not found in netrc file (or parser could not read file..)\n";
+        }
+    
+    },
     
     _data : {},
     /**
@@ -36,9 +41,9 @@ Netrc = {
            authdata[line.machine] = line;
             
         });
-        this.data = authdata;
+        this._data = authdata;
          
-    },
+    }
     
   
     
