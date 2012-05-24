@@ -1,30 +1,14 @@
 #!/usr/bin/env seed
 
 Soup = imports.gi.Soup;
+Netrc = imports['../Netrc.js'].Netrc;
+
 GLib = imports.gi.GLib;
 
 var session = new Soup.SessionSync();
 File  = imports['../File.js'].File;
 
-var netrc = File.read(GLib.get_home_dir() + "/.netrc");
-var authdata = {};
-netrc.split("\n").forEach(function(nl) {
-    var line = {};
-    var k = false
-     
-    nl.replace(/\s+$/,'').replace(/^\s+/,'').split(/\s+/).forEach(function(kv) {
-      
-        if (!k) {
-            k = kv;
-            return
-        }
-        line[k] = kv
-        k = false;
-   });
-       
-   authdata[line.machine] = line;
-    
-});
+Netrc.load();
  
 // Soup.URI is a struct.
 var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/Events");
