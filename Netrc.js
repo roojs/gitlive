@@ -33,7 +33,10 @@ Netrc = {
          
     }
     
-    forhost: function
+    forhost: function(name)
+    {
+        return this.data[name];
+    }
     
     
 }
