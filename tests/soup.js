@@ -40,3 +40,62 @@ var status = session.send_message(msg);
 print(status);
 
 print(msg.response_body.data);
+
+
+function XMLHttpRequest() {
+    
+    
+}
+
+XObject.extend(XMLHttpRequest,{ 
+    // event handlers
+    //onreadystatechange;
+    //onloadstart;
+    //onprogress;
+    //onabort;
+    //onerror;
+    //onload;
+    //ontimeout;
+    //onloadend;
+    
+    timeout : 0;
+    withCredentials : false,
+    
+    // states
+    UNSENT : 0,
+    OPENED : 1,
+    HEADERS_RECEIVED : 2,
+    LOADING : 3,
+    DONE : 4,
+    
+    readyState : 0,
+
+    // request
+    open : function ( method,  url, async, user, password) {
+        async = async || false;
+        user = user || false;
+        password = password || false;
+    },
+    
+    setRequestHeader : function ( header,  value);
+           
+    readonly attribute XMLHttpRequestUpload upload;
+    void send(data);
+    void send(ArrayBuffer data);
+    void send(Blob data);
+    void send(Document data);
+    void send(DOMString? data);
+    void send(FormData data);
+    void abort();
+    
+    // response
+    readonly attribute unsigned short status;
+    readonly attribute DOMString statusText;
+    DOMString getResponseHeader(DOMString header);
+    DOMString getAllResponseHeaders();
+    void overrideMimeType(DOMString mime);
+             attribute XMLHttpRequestResponseType responseType;
+    readonly attribute any response;
+    readonly attribute DOMString responseText;
+    readonly attribute Document responseXML;
+};
