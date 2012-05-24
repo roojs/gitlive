@@ -8,7 +8,6 @@ GLib = imports.gi.GLib;
 var session = new Soup.SessionSync();
 File  = imports['../File.js'].File;
 
-Netrc.load();
  
 // Soup.URI is a struct.
 var uri = new Soup.URI.c_new("http://www.roojs.com/admin.php/Roo/Events");
@@ -24,12 +23,12 @@ msg.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, buftxt
 
 
 var auth = new Soup.Auth.c_new(Soup.AuthBasic.type, msg, "Basic realm=\"Test\"");
-print(auth);
-print(auth.authenticate);
-var authvals = authdata['git.roojs.com'];
+ 
+var authvals = Netrc.forHost('git.roojs.com');
+
 auth.authenticate(authvals.login ,authvals.password);
 var authmsg = auth.get_authorization(msg);
-print(authmsg);
+//print(authmsg);
 msg.request_headers.append('Authorization', authmsg)
 
 //request.headers_append...
