@@ -6,8 +6,10 @@ const File  = imports['../File.js'].File;
 Netrc = {
     
     data : {},
-    
-    load : function()
+    /**
+     * private - called at the bottom..
+     */
+    _load : function()
     {
         
         var netrc = File.read(GLib.get_home_dir() + "/.netrc");
@@ -41,4 +43,4 @@ Netrc = {
     
 }
 //
-Netrc.load();
+Netrc._load();
