@@ -5,7 +5,12 @@ const File  = imports['../File.js'].File;
 
 Netrc = {
     
-    data : {},
+    forHost: function(name)
+    {
+        return this.data[name];
+    }
+    
+    _data : {},
     /**
      * private - called at the bottom..
      */
@@ -35,10 +40,7 @@ Netrc = {
          
     },
     
-    forhost: function(name)
-    {
-        return this.data[name];
-    }
+  
     
     
 }
