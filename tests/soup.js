@@ -68,8 +68,10 @@ XObject.extend(XMLHttpRequest,{
     LOADING : 3,
     DONE : 4,
     
+    // readonly..
     readyState : 0,
-
+    upload: null,
+    
     // request
     open : function ( method,  url, async, user, password) {
         async = async || false;
@@ -77,25 +79,38 @@ XObject.extend(XMLHttpRequest,{
         password = password || false;
     },
     
-    setRequestHeader : function ( header,  value);
+    setRequestHeader : function ( header,  value) {
            
-    readonly attribute XMLHttpRequestUpload upload;
-    void send(data);
-    void send(ArrayBuffer data);
-    void send(Blob data);
-    void send(Document data);
-    void send(DOMString? data);
-    void send(FormData data);
-    void abort();
+    },
+     overrideMimeType : function ( mime)
+    {
+        
+    },
+    send  : function(data)
+    {
+        
+    },
+    abort : function()
+    {
+        
+    },
     
-    // response
-    readonly attribute unsigned short status;
-    readonly attribute DOMString statusText;
-    DOMString getResponseHeader(DOMString header);
-    DOMString getAllResponseHeaders();
-    void overrideMimeType(DOMString mime);
-             attribute XMLHttpRequestResponseType responseType;
-    readonly attribute any response;
-    readonly attribute DOMString responseText;
-    readonly attribute Document responseXML;
+    // response (all readonly...)
+    status : false,
+    statusText : false,
+    //readonly attribute any response
+    responseText : false,
+    responseXML : false,
+    responseType : false, 
+    
+    // response - read
+    getResponseHeader : function(  header) {
+        
+    },
+    getAllResponseHeaders : function ()
+    {
+        
+    }
+   
+    
 };
