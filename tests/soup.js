@@ -58,7 +58,7 @@ XObject.extend(XMLHttpRequest,{
     //ontimeout;
     //onloadend;
     
-    timeout : 0;
+    timeout : 0,
     withCredentials : false,
     
     // states
