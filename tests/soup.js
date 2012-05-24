@@ -73,7 +73,8 @@ XObject.extend(XMLHttpRequest,{
     upload: null,
     
     // request
-    open : function ( method,  url, async, user, password) {
+    open : function ( method,  url, async, user, password)
+    {
         async = async || false;
         user = user || false;
         password = password || false;
