@@ -79,7 +79,8 @@ XObject.extend(XMLHttpRequest,{
         password = password || false;
     },
     
-    setRequestHeader : function ( header,  value) {
+    setRequestHeader : function ( header,  value)
+    {
            
     },
      overrideMimeType : function ( mime)
@@ -104,7 +105,8 @@ XObject.extend(XMLHttpRequest,{
     responseType : false, 
     
     // response - read
-    getResponseHeader : function(  header) {
+    getResponseHeader : function(  header)
+    {
         
     },
     getAllResponseHeaders : function ()
@@ -113,4 +115,4 @@ XObject.extend(XMLHttpRequest,{
     }
    
     
-};
+});
