@@ -5,7 +5,7 @@ const File  = imports['../File.js'].File;
 
 Netrc = {
     
-    var data = {};
+    data = {},
     
     load : function()
     {
