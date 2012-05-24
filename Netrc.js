@@ -31,7 +31,7 @@ Netrc = {
         });
         this.data = authdata;
          
-    }
+    },
     
     forhost: function(name)
     {
