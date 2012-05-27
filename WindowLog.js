@@ -62,7 +62,8 @@ WindowLog = {
             var app = aw.get_application();
             var pid = app.get_pid();
             //print("PID " + pid);
-            var cmd = File.realpath('/proc/'+ pid + '/exe');
+            //var cmd = File.realpath('/proc/'+ pid + '/exe');
+            var cmd = File.read('/proc/'+ pid + '/cmdline');
             
             if (!this.win || (this.win && win != this.win)) { 
         
