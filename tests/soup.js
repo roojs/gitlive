@@ -105,7 +105,17 @@ XObject.extend(XMLHttpRequest,{
     send  : function(data)
     {
         this._message.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, data, data.length)
-        _this.session.send_message(this._message);
+        
+        if (this._async) {
+            this._session.queue_message(this._message, function() {
+                // got some data... fire some evetns.
+            })
+            
+        }
+        var status = this._session.send_message(this._message);
+        this.responseText = msg.response_body.data;
+        this.status = 4;
+        return status;
 
     },
     abort : function()
