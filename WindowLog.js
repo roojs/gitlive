@@ -38,7 +38,8 @@ WindowLog = {
         
     },
         
-    getStatus : function() {
+    getStatus : function()
+    {
         
          
         var output =  xorg.screensaverinfo_get_idletime();
@@ -47,7 +48,7 @@ WindowLog = {
         if (output * 1 > 10000) {
             if (this.win != false) { 
                 print( (xDate.newDate()).format("Y-m-d H:i:s") + " IDLE");
-                this.write("IDLE");
+                this.write(false, "IDLE");
             }
             this.win = false;
             return true;
@@ -58,10 +59,15 @@ WindowLog = {
         var aw = this.screen.get_active_window();
         if (aw) { 
             var win = aw.get_name();
+            var app = aw.get_application();
+            var pid = app.get_pid();
+            //print("PID " + pid);
+            cmd = File.read('/proc/'+ pid + '/cmdline');
+            
             if (!this.win || (this.win && win != this.win)) { 
         
-                print((xDate.newDate()).format("Y-m-d H:i:s") + " " + win);
-                this.write(win);
+                print((xDate.newDate()).format("Y-m-d H:i:s") + " " + cmd + ' ' + win);
+                this.write(cmd, win);
                 this.win=win;
             }
         }
@@ -71,7 +77,7 @@ WindowLog = {
     },
     lastdir : false,
     
-    write : function (str) {
+    write : function (cmd , str) {
         
         var dir =  this.outdir + (xDate.newDate()).format("/Y/m");
         if (!this.lastdir || this.lastdir != dir) {
@@ -84,7 +90,7 @@ WindowLog = {
         var path = dir + (xDate.newDate()).format("/d") + ".log";
         var time = (xDate.newDate()).format("H:i:s ")
         
-        File.append (path, time +  str + "\n");
+        File.append (path, time + cmd + ' ' + str + "\n");
     }
     
 }
