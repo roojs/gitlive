@@ -100,7 +100,7 @@ XObject.extend(XMLHttpRequest,{
     },
     send  : function(data)
     {
-        msg.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, data, data.length)
+        this._message.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, data, data.length)
 
     },
     abort : function()
