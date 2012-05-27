@@ -72,19 +72,29 @@ XObject.extend(XMLHttpRequest,{
     readyState : 0,
     upload: null,
     
+    
+    _message : false,
+    
     // request
     open : function ( method,  url, async, user, password)
     {
         async = async || false;
         user = user || false;
         password = password || false;
+        
+        
+        var uri = new Soup.URI.c_new(url);
+        this._message = new Soup.Message({method: method, uri:uri});
+        
+
+        
     },
     
     setRequestHeader : function ( header,  value)
     {
            
     },
-     overrideMimeType : function ( mime)
+    overrideMimeType : function ( mime)
     {
         
     },
