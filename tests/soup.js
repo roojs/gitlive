@@ -86,7 +86,7 @@ XObject.extend(XMLHttpRequest,{
 
         var uri = new Soup.URI.c_new(url);
         this._message = new Soup.Message({method: method, uri:uri});
-        
+        _this.async = async;
 
         
     },
@@ -103,6 +103,7 @@ XObject.extend(XMLHttpRequest,{
     send  : function(data)
     {
         this._message.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, data, data.length)
+        _this.session.send_message(this._message);
 
     },
     abort : function()
