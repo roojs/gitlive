@@ -82,7 +82,8 @@ XObject.extend(XMLHttpRequest,{
         user = user || false;
         password = password || false;
         
-        
+        this._session = async ?  new Soup.SessionAsync() : new Soup.SessionSync();
+
         var uri = new Soup.URI.c_new(url);
         this._message = new Soup.Message({method: method, uri:uri});
         
