@@ -92,7 +92,8 @@ XObject.extend(XMLHttpRequest,{
     
     setRequestHeader : function ( header,  value)
     {
-           
+        _this.message.request_headers.append(headers, value)
+
     },
     overrideMimeType : function ( mime)
     {
