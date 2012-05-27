@@ -74,6 +74,8 @@ XObject.extend(XMLHttpRequest,{
     
     
     _message : false,
+    _session : false,
+    _async   : false,
     
     // request
     open : function ( method,  url, async, user, password)
@@ -86,7 +88,7 @@ XObject.extend(XMLHttpRequest,{
 
         var uri = new Soup.URI.c_new(url);
         this._message = new Soup.Message({method: method, uri:uri});
-        _this.async = async;
+        this._async = async;
 
         
     },
