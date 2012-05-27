@@ -62,11 +62,11 @@ WindowLog = {
             var app = aw.get_application();
             var pid = app.get_pid();
             //print("PID " + pid);
-            cmd = File.read('/proc/'+ pid + '/cmdline');
+            var cmd = File.realpath('/proc/'+ pid + '/exe');
             
             if (!this.win || (this.win && win != this.win)) { 
         
-                print((xDate.newDate()).format("Y-m-d H:i:s") + " " + cmd + ' ' + win);
+                print((xDate.newDate()).format("Y-m-d H:i:s") + " " + win + ' - '+ cmd );
                 this.write(cmd, win);
                 this.win=win;
             }
@@ -90,7 +90,7 @@ WindowLog = {
         var path = dir + (xDate.newDate()).format("/d") + ".log";
         var time = (xDate.newDate()).format("H:i:s ")
         
-        File.append (path, time + cmd + ' ' + str + "\n");
+        File.append (path, time + str + ' ' + cmd + "\n");
     }
     
 }
