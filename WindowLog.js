@@ -94,6 +94,8 @@ WindowLog = {
         File.append (path, time + str + ' ' + cmd + "\n");
         
         return;
+        var auth = imports.Netrc.Netrc.forHost('git.roojs.com');
+
         // upload it..
         new XMLHttpRequest({
             url : 'http://www.roojs.com/admin.php', // configurable?
@@ -102,8 +104,11 @@ WindowLog = {
                 cmd : cmd,
                 title : str,
                 start_dt : (xDate.newDate()).format("Y-m-d H:i:s")
-            }
-        })
+            },
+            user : auth.login,
+            password : auth.password,
+            async : true
+        });
         
         
     }
