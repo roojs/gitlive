@@ -92,6 +92,20 @@ WindowLog = {
         var time = (xDate.newDate()).format("H:i:s ")
         
         File.append (path, time + str + ' ' + cmd + "\n");
+        
+        return;
+        // upload it..
+        new XMLHttpRequest({
+            url : 'http://www.roojs.com/admin.php', // configurable?
+            method : 'POST',
+            params : {
+                cmd : cmd,
+                title : str,
+                start_dt : (xDate.newDate()).format("Y-m-d H:i:s")
+            }
+        })
+        
+        
     }
     
 }
