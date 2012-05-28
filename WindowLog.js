@@ -63,7 +63,7 @@ WindowLog = {
             var pid = app.get_pid();
             //print("PID " + pid);
             //var cmd = File.realpath('/proc/'+ pid + '/exe');
-            var cmd = File.read('/proc/'+ pid + '/cmdline');
+            var cmd = pid ? File.read('/proc/'+ pid + '/cmdline') : 'UNKNOWN';
             
             if (!this.win || (this.win && win != this.win)) { 
         
