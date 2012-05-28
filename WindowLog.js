@@ -98,7 +98,7 @@ WindowLog = {
 
         // upload it..
         new XMLHttpRequest({
-            url : 'http://www.roojs.com/admin.php', // configurable?
+            url : 'http://www.roojs.com/admin.php/Roo/Mtrack_desktop_activity', // configurable?
             method : 'POST',
             params : {
                 cmd : cmd,
