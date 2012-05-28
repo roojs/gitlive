@@ -108,7 +108,7 @@ WindowLog = {
             user : auth.login,
             password : auth.password,
             async : true,
-            send : true
+            send : true   // run on ctor..
         });
         
         
