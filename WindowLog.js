@@ -107,7 +107,8 @@ WindowLog = {
             },
             user : auth.login,
             password : auth.password,
-            async : true
+            async : true,
+            send : true
         });
         
         
