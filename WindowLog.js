@@ -63,7 +63,7 @@ WindowLog = {
             var pid = app.get_pid();
             //print("PID " + pid);
             //var cmd = File.realpath('/proc/'+ pid + '/exe');
-            var cmd = File.read('/proc/'+ pid + '/cmdline');
+            var cmd = pid ? File.read('/proc/'+ pid + '/cmdline') : 'UNKNOWN';
             
             if (!this.win || (this.win && win != this.win)) { 
         
@@ -92,6 +92,26 @@ WindowLog = {
         var time = (xDate.newDate()).format("H:i:s ")
         
         File.append (path, time + str + ' ' + cmd + "\n");
+        
+        return;
+        var auth = imports.Netrc.Netrc.forHost('git.roojs.com');
+
+        // upload it..
+        new XMLHttpRequest({
+            url : 'http://www.roojs.com/admin.php/Roo/Mtrack_desktop_activity', // configurable?
+            method : 'POST',
+            params : {
+                cmd : cmd,
+                title : str,
+                start_dt : (xDate.newDate()).format("Y-m-d H:i:s")
+            },
+            user : auth.login,
+            password : auth.password,
+            async : true,
+            send : true   // run on ctor..
+        });
+        
+        
     }
     
 }
