@@ -81,7 +81,6 @@ Clones=new XObject({
                     pack : "pack_start,false,true",
                     items : [
                         {
-                            xtype: Gtk.Button,
                             listeners : {
                                 clicked : function (self) {
                                 
@@ -127,9 +126,7 @@ Clones=new XObject({
                                     
                                     
                                 }
-                            },
-                            label : "Remotes / Clones",
-                            pack : "add"
+                            }
                         },
                         {
                             xtype: Gtk.Button,
@@ -327,6 +324,11 @@ Clones=new XObject({
                                       _this, [ _this, '']
                                    );
                                          });
+                                      
+                                      
+                                      this.el.set_tooltip_column(8); 
+                                         
+                                        
                               },
                             items : [
                                 {
@@ -335,7 +337,7 @@ Clones=new XObject({
                                     pack : "set_model",
                                     init : function() {
                                         XObject.prototype.init.call(this);
-                                        this.el.set_column_types ( 8, [
+                                        this.el.set_column_types ( 9, [
                                            GObject.TYPE_STRING, // repo  
                                           GObject.TYPE_STRING, // current branch
                                           GObject.TYPE_STRING, // all branch      
@@ -343,7 +345,8 @@ Clones=new XObject({
                                            GObject.TYPE_BOOLEAN, // auto-commit
                                             GObject.TYPE_BOOLEAN, // auto-push
                                                GObject.TYPE_STRING, // repopath
-                                               GObject.TYPE_STRING // color highighling 
+                                               GObject.TYPE_STRING, // color highighling 
+                                               GObject.TYPE_STRING // uncommited. (tip) 
                                       ] );
                                     },
                                     load : function()
@@ -393,7 +396,8 @@ Clones=new XObject({
                                                 col =  '#ff00ff';
                                             }
                                             
-                                            this.el.set_value(ret.iter, 7, col  );      
+                                            this.el.set_value(ret.iter, 7, col  );
+                                            this.el.set_value(ret.iter, 8, tr[i].localChanges  );      
                                             
                                         }     
                                     }
@@ -463,9 +467,9 @@ Clones=new XObject({
                                 },
                                 {
                                     xtype: Gtk.TreeViewColumn,
+                                    resizable : true,
                                     min_width : 200,
                                     pack : "append_column",
-                                    resizable : true,
                                     title : "Repo",
                                     init : function() {
                                         XObject.prototype.init.call(this);
