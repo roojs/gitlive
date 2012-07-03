@@ -384,8 +384,7 @@ XObject.prototype = {
 		if (!this.el) {
 			print('missing el?');
 			print(this.cfg);
-			print(this.init);
-		}
+		 	}
 		
 		
         if (typeof(Seed) != 'undefined') {
