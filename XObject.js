@@ -258,7 +258,7 @@ XObject.prototype = {
          //   XObject.registry[o.xnsid][o.id] = this;
         //}
         
-        var type = this.xtype.type ? GObject.type_name(this.xtype.type) : '';
+        var type = this.xtype && this.xtype.type ? GObject.type_name(this.xtype.type) : '';
         XObject.log("add children to " + type);
         
         var _this=this;
@@ -381,6 +381,12 @@ XObject.prototype = {
         var _li = XObject.createDelegate(fn,this);
         // private listeners that are not copied to GTk.
         
+		if (!this.el) {
+			print('missing el?');
+			print(JSON.stringify(this));
+		}
+		
+		
         if (typeof(Seed) != 'undefined') {
           //   Seed.print(typeof(_li));
             this.el.signal[sig].connect(_li);
