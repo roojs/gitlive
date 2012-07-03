@@ -383,7 +383,7 @@ XObject.prototype = {
         
 		if (!this.el) {
 			print('missing el?');
-			print(JSON.stringify(this));
+			print(this.xtype);
 		}
 		
 		
