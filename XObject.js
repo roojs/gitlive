@@ -383,7 +383,8 @@ XObject.prototype = {
         
 		if (!this.el) {
 			print('missing el?');
-			print(this.xtype);
+			print(this.cfg);
+			print(this.init);
 		}
 		
 		
