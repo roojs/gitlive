@@ -57,6 +57,11 @@ function XObject (cfg) {
     
     this.cfg = XObject.extend({}, cfg); // used to store original configuration.. for referencing..
     
+    // used by baseobject to create fake child elements on init..
+    if (cfg.el) {
+        this.el = cfg.el;
+    }
+    
     // we could use this to determine if 
     // we are actually inside a inherited class...
     // as define() should actually set this up..
@@ -66,7 +71,7 @@ function XObject (cfg) {
         this.constructor = XObject;
         var base = XObject.baseXObject(cfg);
         if (base) {
-            XObject.extend(this,base.prototype);
+            XObject.extend(this,  base.prototype);
         }
         
     }
@@ -123,7 +128,7 @@ function XObject (cfg) {
 
 
 
-	this.items = [];
+    this.items = [];
     // create XObject for all the children.
     for(var i = 0; i < items.length;i++) {
     
@@ -165,7 +170,7 @@ XObject.prototype = {
       * XObject.prototype.init.call(this); 
       * 
       */ 
-    init : function()
+    init : function(parent)
     {
          
        // var items = [];
@@ -253,8 +258,7 @@ XObject.prototype = {
          //   XObject.registry[o.xnsid][o.id] = this;
         //}
         
-
-        var type = this.xtype && this.xtype.type ? GObject.type_name(this.xtype.type) : '';
+        var type = this.xtype.type ? GObject.type_name(this.xtype.type) : '';
         XObject.log("add children to " + type);
         
         var _this=this;
@@ -291,7 +295,7 @@ XObject.prototype = {
         }
         // what about extended items!?!?!?
        
-        item.init();
+        item.init(this);
         //print("CTR:PROTO:" + ( item.id ? item.id : '??'));
        // print("addItem - call init [" + item.pack.join(',') + ']');
         if (!item.el) {
@@ -299,7 +303,7 @@ XObject.prototype = {
             imports.console.dump(item);
             Seed.quit();
         }
-        print(XObject.type(this.xtype) + ":pack=" + item.pack);
+        XObject.log(XObject.type(this.xtype) + ":pack=" + item.pack);
         
         if (item.pack===false) {  // no packing.. various items have this ..
             return;
@@ -739,10 +743,17 @@ XObject.extend(XObject,
                 gname = XObject.type(cfg.xtype);
             
             }
-            print("TRYING BASE OBJECT : " + gname);
+            if (typeof(cfg.xtype) == 'string') {
+                gname  = cfg.xtype;
+            }
+            
+            XObject.log("TRYING BASE OBJECT : " + gname);
             // in the situation where we have been called and there is a base object
             // defining the behavior..
             // then we should copy the prototypes from the base object into this..
+            
+            // see if file exists???
+            
             var base = gname  ? imports.XObjectBase[gname][gname] : false;
             return base;
             
