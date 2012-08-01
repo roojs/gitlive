@@ -148,7 +148,7 @@ for (var h in res) {
             print(h + ' ' + res[h][p].total/60000 +'m IDLE' );
             continue;
         }
-        print(h + ' ' + res[h][p].total/60000 +'m ' ); break;
+        print(h + ' ' + res[h][p].total/60000 +'m ' + p ); break;
         for (var k in res[h][p].items) {
             print( '     ' + res[h][p][k].span/60000 +'m ' + res[h][p][k].line );
                  
