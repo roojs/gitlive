@@ -10,7 +10,7 @@ GitLogParser = {
         this.date  = date;        
         var home  = GLib.get_home_dir();
         
-        var flines = File.read(  home + '/.gitlog' + date.format('/Y/M/d') + '.log').split("\n");
+        var flines = File.read(  home + '/.gitlog' + date.format('/Y/m/d') + '.log').split("\n");
         // first just convert them..
         // we had an old bug that did not put line breaks in there..
         // however 00:00:00: is pretty distinct, so let'st try and split on it..
