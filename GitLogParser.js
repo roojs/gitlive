@@ -52,7 +52,7 @@ GitLogParser = {
     },
     parseLine : function(l) 
     {
-        var ret = { cmd : false,  line : l };
+        var ret = { cmd : false,  line : l, span : 0 };
         var ar = l.split(/\s+/);
         //print(JSON.stringify(ar));
             
