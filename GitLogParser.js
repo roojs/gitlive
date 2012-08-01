@@ -26,7 +26,7 @@ GitLogParser = {
             var hour = hours[line].start.format('H');
             hours[hour] = (typeof(hours[hour]) == 'undefined') ? {} : hours[hour];
             hours[hour][project] = (typeof(hours[project]) == 'undefined') ? 
-                    { total : 0, items = [] } 
+                    { total : 0, items : [] } 
                     : hours[project];
             hours[hour][project].total += line.span;
             hours[hour][project].items.push(line);
