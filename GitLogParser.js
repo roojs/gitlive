@@ -144,9 +144,14 @@ GitLogParser = {
 var res = GitLogParser.parse(xDate.Date.parseDate('2012-07-31', 'Y-m-d'));
 for (var h in res) {
     for (var p in res[h]) {
-        switch(p) {
-            case 'IDLE':
-                print(h + ' ' + res[h].total/60000 +'m' + )
+        if (p == 'IDLE') {
+            print(h + ' ' + res[h][p].total/60000 +'m IDLE' );
+            continue;
+        }
+        print(h + ' ' + res[h][p].total/60000 +'m ' ); break;
+        for (res[h][p].items as k) {
+            print( '     ' + res[h][p][k].span/60000 +'m ' + res[h][p][k].line );
+                 
         }
         
         
