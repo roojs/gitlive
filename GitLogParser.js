@@ -149,7 +149,7 @@ for (var h in res) {
             continue;
         }
         print(h + ' ' + res[h][p].total/60000 +'m ' ); break;
-        for (res[h][p].items as k) {
+        for (var k in res[h][p].items) {
             print( '     ' + res[h][p][k].span/60000 +'m ' + res[h][p][k].line );
                  
         }
