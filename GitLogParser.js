@@ -85,6 +85,8 @@ GitLogParser = {
         
 
         if (typeof(this[ret.cmd])=='undefined') {
+             ret.project = 'Unknown';
+            return;
             print( "Unknown application: " + ret.line);
             throw { error : "TEST"};
         }
@@ -129,8 +131,8 @@ GitLogParser = {
          throw "Unknown match: " + ret.line;
     },
     'guake' : 'Local Terminal',
-    'mono' : 'mono?',
-
+    'mono' : 'mono?'
+    
 
 }
 
