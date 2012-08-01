@@ -36,7 +36,7 @@ GitLogParser = {
     },
     parseLine : function(l) 
     {
-        var ret = { cmd : false; line : l };
+        var ret = { cmd : false,  line : l };
         var ar = l.split(/\S+/);
         var time = ar.shift();
         ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
