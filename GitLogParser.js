@@ -125,10 +125,12 @@ GitLogParser = {
 
     },
     '/usr/lib/Komodo-Edit-7/lib/mozilla/komodo' : function(ret) {
-          var l = ret.title.match(/Project\s+(^\)+)/);
-          print(l);
-              
-         throw "Unknown match: " + ret.line;
+        var l = ret.title.match(/Project\s+(^\)+)/);
+        if (!l) {
+            ret.project="Unknown";
+            return;
+        }
+        throw "Unknown match: " + ret.line;
     },
     'guake' : 'Local Terminal',
     'mono' : 'mono?'
