@@ -22,7 +22,7 @@ GitLogParser = {
             var xl = flines[i].split(/([0-9]{2}:[0-9]{2}:[0-9]{2})/);
             for (var ii=1; ii< xl.length; ii+=2) {
                 var p = lines.length;
-                lines.push( this.parseLine(xl[ii] + ' ' + x[ii+1])); 
+                lines.push( this.parseLine(xl[ii] + ' ' + xl[ii+1])); 
                 if (p > 0) {
                     lines[p-1].span = lines[p].start - lines[p-1].start; // should be seconds..?
                 }
