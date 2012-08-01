@@ -129,6 +129,7 @@ GitLogParser = {
          throw "Unknown match: " + ret.line;
     },
     'guake' : 'Local Terminal',
+    'mono' : 'mono?',
 
 
 }
