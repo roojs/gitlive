@@ -108,7 +108,7 @@ GitLogParser = {
 
 }
 
-var res = GitLogParser.parse(xDate.parseDate('2012-07-31', 'Y-m-d'));
+var res = GitLogParser.parse(xDate.Date.parseDate('2012-07-31', 'Y-m-d'));
 print(JSON.stringify(res,null,4));
 
 // open file..
