@@ -145,7 +145,7 @@ var res = GitLogParser.parse(xDate.Date.parseDate('2012-07-31', 'Y-m-d'));
 for (var h in res) {
     for (var p in res[h]) {
         if (p == 'IDLE') {
-            print(h + ' ' + Math.floor(res[h][p].total/60000_ +') IDLE' );
+            print(h + ' ' + Math.floor(res[h][p].total/60000) +') IDLE' );
             continue;
         }
         print(h + ' ' + res[h][p].total/60000 +'m ' + p );  
