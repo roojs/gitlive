@@ -146,7 +146,7 @@ for (var h in res) {
     for (var p in res[h]) {
         switch(p) {
             case 'IDLE':
-                print(h + ' ' + res[h].total/600 +'m' + )
+                print(h + ' ' + res[h].total/6000 +'m' + )
         }
         
         
