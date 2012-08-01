@@ -20,7 +20,7 @@ GitLogParser = {
         lines = [];
         for (var i = 0; i < flines.length; i++) {
             var xl = flines[i].split(/([0-9]{2}:[0-9]{2}:[0-9]{2})/);
-            print(JSON.stringify(xl));
+            //print(JSON.stringify(xl));
             for (var ii=1; ii< xl.length; ii+=2) {
                 var p = lines.length;
                 lines.push( this.parseLine(xl[ii] + ' ' + xl[ii+1])); 
@@ -51,6 +51,8 @@ GitLogParser = {
     {
         var ret = { cmd : false,  line : l };
         var ar = l.split(/\S+/);
+        print(JSON.stringify(ar));
+            
         var time = ar.shift();
         ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
 
