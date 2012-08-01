@@ -148,7 +148,7 @@ for (var h in res) {
             print(h + ' ' + Math.floor(res[h][p].total/60000) +') IDLE' );
             continue;
         }
-        print(h + ' ' + res[h][p].total/60000 +'m ' + p );  
+        print(h + ' ' + Math.floor(res[h][p].total/60000) +'m ' + p );  
        
         for (var k in res[h][p].items) {
              
