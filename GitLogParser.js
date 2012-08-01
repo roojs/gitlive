@@ -32,7 +32,7 @@ GitLogParser = {
              
             
         };
-        //print(JSON.stringify(lines,null,4));
+        print(JSON.stringify(lines,null,4));
         
         // summarize data...
         var hours = {};
