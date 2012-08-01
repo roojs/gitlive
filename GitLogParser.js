@@ -32,6 +32,8 @@ GitLogParser = {
              
             
         };
+        print(JSON.stringify(lines);)
+        
         // summarize data...
         var hours = {};
         for (var i = 0; i < lines.length; i++) {
