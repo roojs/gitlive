@@ -57,26 +57,26 @@ GitLogParser = {
         //print(JSON.stringify(ar));
             
         var time = ar.shift();
-        print("time: " + time);
+        //print("time: " + time);
         
         ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
         
 
         while (ret.cmd === false) {
             var ta = ar.pop();
-            print("TA:"+ta)
+            //print("TA:"+ta)
             if (ta[0] !=  '-') { //hopfully withc catch stuff.
                 ret.cmd = ta;
                 break;
             }
             if (!ar.length) {
                 // just assume it's the last bit..
-                print(line);
+                //print(line);
                 throw "invalid line: " + l;
             }
 
         }
-        print(ret.cmd);
+        //print(ret.cmd);
         
         
         ret.title = ar.join(' ');
@@ -142,6 +142,17 @@ GitLogParser = {
 }
 
 var res = GitLogParser.parse(xDate.Date.parseDate('2012-07-31', 'Y-m-d'));
+for (var h in res) {
+    for (var p in res[h]) {
+        switch(p) {
+            case 'IDLE':
+                print(h + ' ' + res[h].total/6000 +'m' + )
+        }
+        
+        
+    }
+    
+}
 print(JSON.stringify(res,null,4));
 
 // open file..
