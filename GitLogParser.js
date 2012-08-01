@@ -57,7 +57,8 @@ GitLogParser = {
         print(time);
         
         ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
-
+print(ret.start);
+        
 
         while (ret.cmd !== false) {
             var ta = ar.pop();
