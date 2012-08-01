@@ -12,8 +12,17 @@ GitLogParser = {
         
         var lines = File.read(  home + '/.gitlog' + date.format('/Y/M/d') + 'txt').split("\n");
         // first just convert them..
+        // we had an old bug that did not put line breaks in there..
+        // however 00:00:00: is pretty distinct, so let'st try and split on it..
+        
+        
+        
         
         for (var i = 0; i < lines.length; i++) {
+            var xl = lines[i].split(/([0-9]{2}:[0-9]{2}:[0-9]{2})/);
+            
+            
+            
             lines[i] = this.parseLine(lines[i]);
             if (i > 0) {
                 lines[i-1].span = lines[i].start - lines[i-1].start; // should be seconds..?
