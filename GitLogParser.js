@@ -149,7 +149,7 @@ for (var h in res) {
             continue;
         }
         print(h + ' ' + res[h][p].total/60000 +'m ' + p ); break;
-        print(JSON.stringify(res[h][p]));
+        print("hp?"+JSON.stringify(res[h][p]));
 
         for (var k in res[h][p].items) {
             print(JSON.stringify(res[h][p].items[k]));
