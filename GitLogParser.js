@@ -10,23 +10,26 @@ GitLogParser = {
         this.date  = date;        
         var home  = GLib.get_home_dir();
         
-        var lines = File.read(  home + '/.gitlog' + date.format('/Y/M/d') + 'txt').split("\n");
+        var flines = File.read(  home + '/.gitlog' + date.format('/Y/M/d') + 'txt').split("\n");
         // first just convert them..
         // we had an old bug that did not put line breaks in there..
         // however 00:00:00: is pretty distinct, so let'st try and split on it..
         
         
         
-        
-        for (var i = 0; i < lines.length; i++) {
-            var xl = lines[i].split(/([0-9]{2}:[0-9]{2}:[0-9]{2})/);
+        lines = [];
+        for (var i = 0; i < flines.length; i++) {
+            var xl = flines[i].split(/([0-9]{2}:[0-9]{2}:[0-9]{2})/);
+            for (var ii=1; ii< xl.length; ii+=2) {
+                var p = lines.length;
+                lines.push( this.parseLine(xl[ii] + ' ' + x[ii+1])); 
+                if (p > 0) {
+                    lines[p-1].span = lines[p].start - lines[p-1].start; // should be seconds..?
+                }
             
-            
-            
-            lines[i] = this.parseLine(lines[i]);
-            if (i > 0) {
-                lines[i-1].span = lines[i].start - lines[i-1].start; // should be seconds..?
             }
+             
+            
         };
         // summarize data...
         var hours = {};
