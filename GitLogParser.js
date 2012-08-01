@@ -54,6 +54,8 @@ GitLogParser = {
         print(JSON.stringify(ar));
             
         var time = ar.shift();
+        print(time);
+        
         ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
 
 
@@ -70,6 +72,8 @@ GitLogParser = {
             }
 
         }
+        
+        
         ret.title = ar.join(' ');
         if (ret.title == 'IDLE') {
             ret.project = 'IDLE';
