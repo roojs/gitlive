@@ -59,7 +59,7 @@ GitLogParser = {
         ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
         
 
-        while (ret.cmd !== false) {
+        while (ret.cmd === false) {
             var ta = ar.pop();
             print("TA:"+ta)
             if (ta[0] !=  '-') { //hopfully withc catch stuff.
