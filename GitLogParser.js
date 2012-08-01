@@ -59,7 +59,7 @@ GitLogParser = {
 
         while (ret.cmd !== false) {
             var ta = ar.pop();
-            if (ta[0] !=  '-') {
+            if (ta[0] !=  '-') { //hopfully withc catch stuff.
                 ret.cmd = ta;
                 break;
             }
