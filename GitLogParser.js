@@ -18,7 +18,7 @@ GitLogParser = {
             if (i > 0) {
                 lines[i-1].span = lines[i].start - lines[i-1].start; // should be seconds..?
             }
-        });
+        };
         // summarize data...
         var hours = {};
         for (var i = 0; i < lines.length; i++) {
