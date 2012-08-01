@@ -64,6 +64,7 @@ GitLogParser = {
                 break;
             }
             if (!ar.length) {
+                // just assume it's the last bit..
                 throw "invalid line: " + l;
             }
 
