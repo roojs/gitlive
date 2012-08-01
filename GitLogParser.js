@@ -44,7 +44,7 @@ GitLogParser = {
 
         while (ret.cmd !== false) {
             var ta = ar.pop();
-            if (ta == 'false') || ta[0] == '/') {
+            if (ta == 'false'  || ta[0] == '/') {
                 ret.cmd = ta;
                 break;
             }
