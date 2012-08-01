@@ -86,7 +86,7 @@ GitLogParser = {
 
         if (typeof(this[ret.cmd])=='undefined') {
              ret.project = 'Unknown';
-            return;
+            return ret;
             print( "Unknown application: " + ret.line);
             throw { error : "TEST"};
         }
