@@ -8,7 +8,8 @@ GitLogParser = {
     parse : function(date)
     {
         this.date  = date;        
-        var home = '/home/alan';        
+        var home  = GLib.get_home_dir();
+        
         var lines = File.read(  home + '/.gitlog' + date.format('/Y/M/d') + 'txt').split("\n");
         // first just convert them..
         
