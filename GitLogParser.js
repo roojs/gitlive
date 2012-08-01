@@ -54,7 +54,7 @@ GitLogParser = {
         print(JSON.stringify(ar));
             
         var time = ar.shift();
-        print(time);
+        print("time:  + time);
         
         ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
         
