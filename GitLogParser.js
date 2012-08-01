@@ -1,5 +1,7 @@
 
 var File = imports.File.File;
+xDate = imports.Date;
+
 
 GitLogParser = { 
 
