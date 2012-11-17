@@ -19,10 +19,7 @@ window.add(Tabbed.browser);
 //window.show_all();
 //window.fullscreen();
 
-    var hot = new Hotkey.Info();
-    hot.application_id = "gtkhotkey-test";
-    hot.key_id =  "gtkhotkey-test-key";
-    hot.signature =  "<Control><Shift>1";  
+    var hot = new Hotkey.Info.c_new("gtkhotkey-test", "gtkhotkey-test-key","<Control><Shift>1" );  
 	
 	//g_signal_connect (hot, "notify::bound", G_CALLBACK(hotkey_bound_cb), NULL);
 	//hot.bind();
