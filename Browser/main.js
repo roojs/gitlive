@@ -16,7 +16,7 @@ window.signal.hide.connect(Gtk.main_quit);
 Tabbed.browser = new Tabbed.Browser.Tabbed();
 window.add(Tabbed.browser);
 
-//window.show_all();
+window.show_all();
 //window.fullscreen();
  GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
 
