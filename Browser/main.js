@@ -32,6 +32,6 @@ window.add(Tabbed.browser);
         print ("GOT hotkey test")
         
     }); 
- }
+ });
 
 Gtk.main();
