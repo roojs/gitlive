@@ -24,7 +24,7 @@ window.add(Tabbed.browser);
 	//g_signal_connect (hot, "notify::bound", G_CALLBACK(hotkey_bound_cb), NULL);
 	//hot.bind();
 	//error = NULL;
-    hot.bind(null);
+    //hot.bind(null);
 	//gtk_hotkey_info_bind (hot, &error);
 	hot.signal.activated.connect(function ( ) {
         print ("GOT hotkey test")
