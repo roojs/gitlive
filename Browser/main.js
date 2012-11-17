@@ -25,7 +25,7 @@ window.add(Tabbed.browser);
 	//hot.bind();
 	//error = NULL;
 	//gtk_hotkey_info_bind (hot, &error);
-	hot.signals.activated.connect(function ( ) {
+	hot.signal.activated.connect(function ( ) {
         print ("GOT hotkey test")
         
     }); 
