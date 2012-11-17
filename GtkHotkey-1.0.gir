@@ -1,0 +1,827 @@
+<?xml version="1.0"?>
+<!-- This file was automatically generated from C sources - DO NOT EDIT!
+To affect the contents of this file, edit the original C definitions,
+and/or use gtk-doc annotations.  -->
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
+  <include name="GLib" version="2.0"/>
+  <include name="GObject" version="2.0"/>
+  <namespace name="GtkHotkey"
+             version="1.0"
+             shared-library="libgtkhotkey.so.1"
+             c:identifier-prefixes="GtkHotkey"
+             c:symbol-prefixes="gtk_hotkey">
+    <class name="Info"
+           c:symbol-prefix="info"
+           c:type="GtkHotkeyInfo"
+           parent="GObject.Object"
+           glib:type-name="GtkHotkeyInfo"
+           glib:get-type="gtk_hotkey_info_get_type"
+           glib:type-struct="InfoClass">
+      <constructor name="new"
+                   c:identifier="gtk_hotkey_info_new"
+                   introspectable="0">
+        <return-value transfer-ownership="full">
+          <type name="Info" c:type="GtkHotkeyInfo*"/>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="key_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="signature" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="app_info" transfer-ownership="none">
+            <type c:type="GAppInfo*"/>
+          </parameter>
+        </parameters>
+      </constructor>
+      <method name="activated" c:identifier="gtk_hotkey_info_activated">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="event_time" transfer-ownership="none">
+            <type name="guint" c:type="guint"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="bind" c:identifier="gtk_hotkey_info_bind" throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+      </method>
+      <method name="equals" c:identifier="gtk_hotkey_info_equals">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="hotkey2" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+          <parameter name="sloppy_equals" transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_app_info"
+              c:identifier="gtk_hotkey_info_get_app_info"
+              introspectable="0">
+        <return-value>
+          <type c:type="GAppInfo*"/>
+        </return-value>
+      </method>
+      <method name="get_application_id"
+              c:identifier="gtk_hotkey_info_get_application_id">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_description"
+              c:identifier="gtk_hotkey_info_get_description">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_key_id" c:identifier="gtk_hotkey_info_get_key_id">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_signature"
+              c:identifier="gtk_hotkey_info_get_signature">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="is_bound" c:identifier="gtk_hotkey_info_is_bound">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+      </method>
+      <method name="set_description"
+              c:identifier="gtk_hotkey_info_set_description">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="description" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="unbind" c:identifier="gtk_hotkey_info_unbind" throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+      </method>
+      <property name="app-info"
+                introspectable="0"
+                writable="1"
+                construct-only="1"
+                transfer-ownership="none">
+        <type/>
+      </property>
+      <property name="application-id"
+                writable="1"
+                construct-only="1"
+                transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="bound" transfer-ownership="none">
+        <type name="gboolean"/>
+      </property>
+      <property name="description" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="key-id"
+                writable="1"
+                construct-only="1"
+                transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="signature"
+                writable="1"
+                construct-only="1"
+                transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <field name="parent">
+        <type name="GObject.Object" c:type="GObject"/>
+      </field>
+      <field name="priv">
+        <type name="InfoPrivate" c:type="GtkHotkeyInfoPrivate*"/>
+      </field>
+      <glib:signal name="activated" when="last">
+        <return-value transfer-ownership="none">
+          <type name="none"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="guint"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
+    </class>
+    <record name="InfoClass"
+            c:type="GtkHotkeyInfoClass"
+            glib:is-gtype-struct-for="Info">
+      <field name="parent">
+        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
+      </field>
+    </record>
+    <record name="InfoPrivate" c:type="GtkHotkeyInfoPrivate" disguised="1">
+    </record>
+    <class name="KeyFileRegistry"
+           c:symbol-prefix="key_file_registry"
+           c:type="GtkHotkeyKeyFileRegistry"
+           parent="Registry"
+           glib:type-name="GtkHotkeyKeyFileRegistry"
+           glib:get-type="gtk_hotkey_key_file_registry_get_type"
+           glib:type-struct="KeyFileRegistryClass">
+      <field name="parent">
+        <type name="Registry" c:type="GtkHotkeyRegistry"/>
+      </field>
+      <field name="priv">
+        <type name="KeyFileRegistryPrivate"
+              c:type="GtkHotkeyKeyFileRegistryPrivate*"/>
+      </field>
+    </class>
+    <record name="KeyFileRegistryClass"
+            c:type="GtkHotkeyKeyFileRegistryClass"
+            glib:is-gtype-struct-for="KeyFileRegistry">
+      <field name="parent">
+        <type name="RegistryClass" c:type="GtkHotkeyRegistryClass"/>
+      </field>
+    </record>
+    <record name="KeyFileRegistryPrivate"
+            c:type="GtkHotkeyKeyFileRegistryPrivate"
+            disguised="1">
+    </record>
+    <class name="Listener"
+           c:symbol-prefix="listener"
+           c:type="GtkHotkeyListener"
+           parent="GObject.Object"
+           abstract="1"
+           glib:type-name="GtkHotkeyListener"
+           glib:get-type="gtk_hotkey_listener_get_type"
+           glib:type-struct="ListenerClass">
+      <function name="error_quark"
+                c:identifier="gtk_hotkey_listener_error_quark">
+        <return-value transfer-ownership="none">
+          <type name="GLib.Quark" c:type="GQuark"/>
+        </return-value>
+      </function>
+      <function name="get_default"
+                c:identifier="gtk_hotkey_listener_get_default"
+                introspectable="0">
+        <return-value>
+          <type name="Listener" c:type="GtkHotkeyListener*"/>
+        </return-value>
+      </function>
+      <virtual-method name="bind_hotkey" invoker="bind_hotkey" throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="hotkey" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <virtual-method name="unbind_hotkey" invoker="unbind_hotkey" throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="hotkey" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <method name="activated" c:identifier="gtk_hotkey_listener_activated">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="hotkey" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+          <parameter name="event_time" transfer-ownership="none">
+            <type name="guint" c:type="guint"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="bind_hotkey"
+              c:identifier="gtk_hotkey_listener_bind_hotkey"
+              throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="hotkey" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="unbind_hotkey"
+              c:identifier="gtk_hotkey_listener_unbind_hotkey"
+              throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="hotkey" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <field name="parent">
+        <type name="GObject.Object" c:type="GObject"/>
+      </field>
+      <field name="priv">
+        <type name="ListenerPrivate" c:type="GtkHotkeyListenerPrivate*"/>
+      </field>
+      <glib:signal name="activated" when="last">
+        <return-value transfer-ownership="none">
+          <type name="none"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="Info"/>
+          </parameter>
+          <parameter name="p0" transfer-ownership="none">
+            <type name="guint"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
+    </class>
+    <record name="ListenerClass"
+            c:type="GtkHotkeyListenerClass"
+            glib:is-gtype-struct-for="Listener">
+      <field name="parent">
+        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
+      </field>
+      <field name="bind_hotkey">
+        <callback name="bind_hotkey" throws="1">
+          <return-value transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Listener" c:type="GtkHotkeyListener*"/>
+            </parameter>
+            <parameter name="hotkey" transfer-ownership="none">
+              <type name="Info" c:type="GtkHotkeyInfo*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+      <field name="unbind_hotkey">
+        <callback name="unbind_hotkey" throws="1">
+          <return-value transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Listener" c:type="GtkHotkeyListener*"/>
+            </parameter>
+            <parameter name="hotkey" transfer-ownership="none">
+              <type name="Info" c:type="GtkHotkeyInfo*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+    </record>
+    <enumeration name="ListenerError" c:type="GtkHotkeyListenerError">
+      <doc xml:whitespace="preserve">Error codes for #GError&lt;!-- --&gt;s related to #GtkHotkeyListener&lt;!-- --&gt;s</doc>
+      <member name="bind"
+              value="0"
+              c:identifier="GTK_HOTKEY_LISTENER_ERROR_BIND"/>
+      <member name="unbind"
+              value="1"
+              c:identifier="GTK_HOTKEY_LISTENER_ERROR_UNBIND"/>
+    </enumeration>
+    <record name="ListenerPrivate"
+            c:type="GtkHotkeyListenerPrivate"
+            disguised="1">
+    </record>
+    <class name="Registry"
+           c:symbol-prefix="registry"
+           c:type="GtkHotkeyRegistry"
+           parent="GObject.Object"
+           abstract="1"
+           glib:type-name="GtkHotkeyRegistry"
+           glib:get-type="gtk_hotkey_registry_get_type"
+           glib:type-struct="RegistryClass">
+      <function name="error_quark"
+                c:identifier="gtk_hotkey_registry_error_quark">
+        <return-value transfer-ownership="none">
+          <type name="GLib.Quark" c:type="GQuark"/>
+        </return-value>
+      </function>
+      <function name="get_default"
+                c:identifier="gtk_hotkey_registry_get_default"
+                introspectable="0">
+        <return-value>
+          <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+        </return-value>
+      </function>
+      <virtual-method name="delete_hotkey" invoker="delete_hotkey" throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="key_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <virtual-method name="get_all_hotkeys"
+                      invoker="get_all_hotkeys"
+                      introspectable="0">
+        <return-value>
+          <type name="GLib.List" c:type="GList*">
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </return-value>
+      </virtual-method>
+      <virtual-method name="get_application_hotkeys"
+                      invoker="get_application_hotkeys"
+                      introspectable="0"
+                      throws="1">
+        <return-value>
+          <type name="GLib.List" c:type="GList*">
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="char*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <virtual-method name="get_hotkey"
+                      invoker="get_hotkey"
+                      introspectable="0"
+                      throws="1">
+        <return-value>
+          <type name="Info" c:type="GtkHotkeyInfo*"/>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="char*"/>
+          </parameter>
+          <parameter name="key_id" transfer-ownership="none">
+            <type name="utf8" c:type="char*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <virtual-method name="has_hotkey" invoker="has_hotkey">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="key_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <virtual-method name="hotkey_deleted" invoker="hotkey_deleted">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="info" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <virtual-method name="hotkey_stored" invoker="hotkey_stored">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="info" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <virtual-method name="store_hotkey" invoker="store_hotkey" throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="info" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <method name="delete_hotkey"
+              c:identifier="gtk_hotkey_registry_delete_hotkey"
+              throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="key_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_all_hotkeys"
+              c:identifier="gtk_hotkey_registry_get_all_hotkeys"
+              introspectable="0">
+        <return-value>
+          <type name="GLib.List" c:type="GList*">
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </return-value>
+      </method>
+      <method name="get_application_hotkeys"
+              c:identifier="gtk_hotkey_registry_get_application_hotkeys"
+              introspectable="0"
+              throws="1">
+        <return-value>
+          <type name="GLib.List" c:type="GList*">
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="char*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_hotkey"
+              c:identifier="gtk_hotkey_registry_get_hotkey"
+              introspectable="0"
+              throws="1">
+        <return-value>
+          <type name="Info" c:type="GtkHotkeyInfo*"/>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="char*"/>
+          </parameter>
+          <parameter name="key_id" transfer-ownership="none">
+            <type name="utf8" c:type="char*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="has_hotkey" c:identifier="gtk_hotkey_registry_has_hotkey">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="app_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="key_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="hotkey_deleted"
+              c:identifier="gtk_hotkey_registry_hotkey_deleted">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="hotkey" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="hotkey_stored"
+              c:identifier="gtk_hotkey_registry_hotkey_stored">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="hotkey" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="store_hotkey"
+              c:identifier="gtk_hotkey_registry_store_hotkey"
+              throws="1">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="info" transfer-ownership="none">
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <field name="parent">
+        <type name="GObject.Object" c:type="GObject"/>
+      </field>
+      <field name="priv">
+        <type name="RegistryPrivate" c:type="GtkHotkeyRegistryPrivate*"/>
+      </field>
+      <glib:signal name="hotkey-deleted" when="last">
+        <return-value transfer-ownership="none">
+          <type name="none"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="GObject.Object"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
+      <glib:signal name="hotkey-stored" when="last">
+        <return-value transfer-ownership="none">
+          <type name="none"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="GObject.Object"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
+    </class>
+    <record name="RegistryClass"
+            c:type="GtkHotkeyRegistryClass"
+            glib:is-gtype-struct-for="Registry">
+      <field name="parent">
+        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
+      </field>
+      <field name="get_hotkey" introspectable="0">
+        <callback name="get_hotkey" introspectable="0" throws="1">
+          <return-value>
+            <type name="Info" c:type="GtkHotkeyInfo*"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+            </parameter>
+            <parameter name="app_id" transfer-ownership="none">
+              <type name="utf8" c:type="char*"/>
+            </parameter>
+            <parameter name="key_id" transfer-ownership="none">
+              <type name="utf8" c:type="char*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+      <field name="get_application_hotkeys" introspectable="0">
+        <callback name="get_application_hotkeys" introspectable="0" throws="1">
+          <return-value>
+            <type name="GLib.List" c:type="GList*">
+              <type name="gpointer" c:type="gpointer"/>
+            </type>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+            </parameter>
+            <parameter name="app_id" transfer-ownership="none">
+              <type name="utf8" c:type="char*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+      <field name="get_all_hotkeys" introspectable="0">
+        <callback name="get_all_hotkeys" introspectable="0">
+          <return-value>
+            <type name="GLib.List" c:type="GList*">
+              <type name="gpointer" c:type="gpointer"/>
+            </type>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+      <field name="store_hotkey">
+        <callback name="store_hotkey" throws="1">
+          <return-value transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+            </parameter>
+            <parameter name="info" transfer-ownership="none">
+              <type name="Info" c:type="GtkHotkeyInfo*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+      <field name="delete_hotkey">
+        <callback name="delete_hotkey" throws="1">
+          <return-value transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+            </parameter>
+            <parameter name="app_id" transfer-ownership="none">
+              <type name="utf8" c:type="gchar*"/>
+            </parameter>
+            <parameter name="key_id" transfer-ownership="none">
+              <type name="utf8" c:type="gchar*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+      <field name="has_hotkey">
+        <callback name="has_hotkey">
+          <return-value transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+            </parameter>
+            <parameter name="app_id" transfer-ownership="none">
+              <type name="utf8" c:type="gchar*"/>
+            </parameter>
+            <parameter name="key_id" transfer-ownership="none">
+              <type name="utf8" c:type="gchar*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+      <field name="hotkey_stored">
+        <callback name="hotkey_stored">
+          <return-value transfer-ownership="none">
+            <type name="none" c:type="void"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+            </parameter>
+            <parameter name="info" transfer-ownership="none">
+              <type name="Info" c:type="GtkHotkeyInfo*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+      <field name="hotkey_deleted">
+        <callback name="hotkey_deleted">
+          <return-value transfer-ownership="none">
+            <type name="none" c:type="void"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="Registry" c:type="GtkHotkeyRegistry*"/>
+            </parameter>
+            <parameter name="info" transfer-ownership="none">
+              <type name="Info" c:type="GtkHotkeyInfo*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+    </record>
+    <enumeration name="RegistryError" c:type="GtkHotkeyRegistryError">
+      <doc xml:whitespace="preserve">Error codes for #GError&lt;!-- --&gt;s related to #GtkHotkeyRegistry&lt;!-- --&gt;s</doc>
+      <member name="unknown_app"
+              value="0"
+              c:identifier="GTK_HOTKEY_REGISTRY_ERROR_UNKNOWN_APP"/>
+      <member name="unknown_key"
+              value="1"
+              c:identifier="GTK_HOTKEY_REGISTRY_ERROR_UNKNOWN_KEY"/>
+      <member name="malformed_medium"
+              value="2"
+              c:identifier="GTK_HOTKEY_REGISTRY_ERROR_MALFORMED_MEDIUM"/>
+      <member name="io" value="3" c:identifier="GTK_HOTKEY_REGISTRY_ERROR_IO"/>
+      <member name="unknown"
+              value="4"
+              c:identifier="GTK_HOTKEY_REGISTRY_ERROR_UNKNOWN"/>
+      <member name="bad_signature"
+              value="5"
+              c:identifier="GTK_HOTKEY_REGISTRY_ERROR_BAD_SIGNATURE"/>
+      <member name="missing_app"
+              value="6"
+              c:identifier="GTK_HOTKEY_REGISTRY_ERROR_MISSING_APP"/>
+    </enumeration>
+    <record name="RegistryPrivate"
+            c:type="GtkHotkeyRegistryPrivate"
+            disguised="1">
+    </record>
+    <class name="X11Listener"
+           c:symbol-prefix="x11_listener"
+           c:type="GtkHotkeyX11Listener"
+           parent="Listener"
+           glib:type-name="GtkHotkeyX11Listener"
+           glib:get-type="gtk_hotkey_x11_listener_get_type"
+           glib:type-struct="X11ListenerClass">
+      <field name="parent">
+        <type name="Listener" c:type="GtkHotkeyListener"/>
+      </field>
+      <field name="priv">
+        <type name="X11ListenerPrivate" c:type="GtkHotkeyX11ListenerPrivate*"/>
+      </field>
+    </class>
+    <record name="X11ListenerClass"
+            c:type="GtkHotkeyX11ListenerClass"
+            glib:is-gtype-struct-for="X11Listener">
+      <field name="parent">
+        <type name="ListenerClass" c:type="GtkHotkeyListenerClass"/>
+      </field>
+    </record>
+    <record name="X11ListenerPrivate"
+            c:type="GtkHotkeyX11ListenerPrivate"
+            disguised="1">
+    </record>
+    <function name="g_file_get_type"
+              c:identifier="gtk_hotkey_g_file_get_type"
+              introspectable="0">
+      <return-value>
+        <type c:type="GFileType"/>
+      </return-value>
+      <parameters>
+        <parameter name="file" transfer-ownership="none">
+          <type c:type="GFile*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="marshal_VOID__OBJECT_UINT"
+              c:identifier="gtk_hotkey_marshal_VOID__OBJECT_UINT">
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="closure" transfer-ownership="none">
+          <type name="GObject.Closure" c:type="GClosure*"/>
+        </parameter>
+        <parameter name="return_value" transfer-ownership="none">
+          <type name="GObject.Value" c:type="GValue*"/>
+        </parameter>
+        <parameter name="n_param_values" transfer-ownership="none">
+          <type name="guint" c:type="guint"/>
+        </parameter>
+        <parameter name="param_values" transfer-ownership="none">
+          <type name="GObject.Value" c:type="GValue*"/>
+        </parameter>
+        <parameter name="invocation_hint" transfer-ownership="none">
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+        <parameter name="marshal_data" transfer-ownership="none">
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </function>
+  </namespace>
+</repository>
