@@ -18,6 +18,7 @@ window.add(Tabbed.browser);
 
 //window.show_all();
 //window.fullscreen();
+ GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
 
     var hot = new Hotkey.Info.c_new("gtkhotkey-test", "gtkhotkey-test-key","<Control><Shift>2" );  
 	
@@ -31,6 +32,6 @@ window.add(Tabbed.browser);
         print ("GOT hotkey test")
         
     }); 
-
+ }
 
 Gtk.main();
