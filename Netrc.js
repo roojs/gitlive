@@ -2,7 +2,14 @@ const GLib = imports.gi.GLib;
 
 const File  = imports['../File.js'].File;
 
-
+/**
+ * usage:
+ * var cfg = Netrc.forHost('www.google.com');
+ * var uname = cfg.login
+ * var pass = cfg.password
+ *
+ *
+ */
 Netrc = {
     
     forHost: function(name)
