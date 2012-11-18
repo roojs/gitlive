@@ -10,8 +10,8 @@ Tabbed   = imports.Tabbed;
 Settings = imports.Settings;
 
 window = new Gtk.Window({title: "Browser"});
-window.resize(800, 600);
-window.signal.hide.connect(Gtk.main_quit);
+//window.resize(800, 600);
+//window.signal.hide.connect(Gtk.main_quit);
 
 Tabbed.browser = new Tabbed.Browser.Tabbed();
 window.add(Tabbed.browser);
