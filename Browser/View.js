@@ -121,6 +121,7 @@ Browser.View = new GType({
 						 request, // WebKitNetworkRequest
 						 response
 															   ) {
+				Roo.log("request starting")
 				Roo.log(request);
 			
 			
