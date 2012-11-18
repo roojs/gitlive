@@ -134,7 +134,7 @@ Browser.View = new GType({
  
 				
 	
-				auth.authenticate(user,password);
+				auth.authenticate(Settings.netrc.user,Settings.netrc.password);
 				var authmsg = auth.get_authorization(this._message);
 				//print(authmsg);
 				this._message.request_headers.append(
