@@ -4,6 +4,7 @@ Soup = imports.gi.Soup;
 
 Browser = {
 //    Tabbed : imports.Tabbed
+	Settings : imports.Settings
 }
 
         
