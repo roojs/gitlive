@@ -33,7 +33,6 @@ window.hide();
         
         if (!state) {
             window.show_all();
-            // the above triggers a
             window.fullscreen();
             
             
