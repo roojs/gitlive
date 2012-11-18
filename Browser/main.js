@@ -31,11 +31,14 @@ window.hide();
 	//gtk_hotkey_info_bind (hot, &error);
 	hot.signal.activated.connect(function ( ) {
         
+        
+        
         if (!state) {
             window.show_all();
-            window.fullscreen();
-            window.grab_focus();
-            
+            GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
+                window.fullscreen();
+                window.grab_focus();
+            }    
             
         } else {
             window.hide();
