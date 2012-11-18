@@ -9,3 +9,4 @@ if(imports.gi.Gtk.Entry.prototype.set_progress_fraction)
 {
 	have_progress_bar = true;
 }
+
