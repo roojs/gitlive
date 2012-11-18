@@ -13,8 +13,8 @@ window = new Gtk.Window({title: "Browser"});
 //window.resize(800, 600);
 //window.signal.hide.connect(Gtk.main_quit);
 
-Tabbed.browser = new Tabbed.Browser.Tabbed();
-window.add(Tabbed.browser);
+ var new_tab = new Browser.Tab({web_view: new_web_view});
+window.add(new_tab);
 
 var state = false;
 //window.show_all();
