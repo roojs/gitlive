@@ -3,8 +3,8 @@ Netrc = imports['../Netrc.js'].Netrc;
 var cfg = Netrc.forHost('git.roojs.com');
 var home_page = 'http://' +  encodeURIComponent(cfg.login) +
 	':' + encodeURIComponent(cfg.password) + '@www.roojs.com/admin.php';
-print(homepage);
-print(JSON.stringify(cfg,null,4));
+print(home_page);
+print(JSON.stringify(cfg,null,4))1;
  
 var select_new_tabs = false;
 
