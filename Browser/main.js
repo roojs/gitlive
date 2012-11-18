@@ -20,7 +20,7 @@ var state = false;
 //window.show_all();
 //window.fullscreen();
   
-    var hot = new Hotkey.Info.c_new("gtkhotkey-test", "gtkhotkey-test-key","<Control><Escape>" );  
+    var hot = new Hotkey.Info.c_new("gtkhotkey-test", "gtkhotkey-test-key","<Control><Esc>" );  
 	
 	//g_signal_connect (hot, "notify::bound", G_CALLBACK(hotkey_bound_cb), NULL);
 	//hot.bind();
