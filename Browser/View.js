@@ -1,9 +1,10 @@
 Gtk = imports.gi.Gtk;
 WebKit = imports.gi.WebKit;
-
+/*
 Browser = {
     Tabbed : imports.Tabbed
 }
+*/
         
 
 Browser.View = new GType({
