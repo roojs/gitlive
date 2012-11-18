@@ -31,8 +31,7 @@ window.hide();
 	//gtk_hotkey_info_bind (hot, &error);
 	hot.signal.activated.connect(function ( ) {
         
-        
-        
+         
         if (!state) {
             window.show_all();
             GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
