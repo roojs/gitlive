@@ -34,7 +34,7 @@ window.hide();
         if (!state) {
             window.show_all();
             window.fullscreen();
-            
+            window.grab_focus();
             
             
         } else {
