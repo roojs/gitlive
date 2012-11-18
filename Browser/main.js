@@ -17,7 +17,8 @@ Tabbed.browser = new Tabbed.Browser.Tabbed();
 window.add(Tabbed.browser);
 
 var state = false;
-//window.show_all();
+window.show_all();
+window.hide();
 //window.fullscreen();
   
     var hot = new Hotkey.Info.c_new("gtkhotkey-test", "gtkhotkey-test-key","<Control>Escape" );  
@@ -32,8 +33,11 @@ var state = false;
         
         if (!state) {
             window.show_all();
+            // the above triggers a
             window.fullscreen();
-           window.focus();
+            
+            
+            
         } else {
             window.hide();
         }
