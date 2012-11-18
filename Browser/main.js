@@ -33,6 +33,7 @@ var state = false;
         if (!state) {
             window.show_all();
             window.fullscreen();
+           window.focus();
         } else {
             window.hide();
         }
