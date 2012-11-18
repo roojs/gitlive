@@ -40,6 +40,7 @@ window.hide();
             });    
             
         } else {
+            window.unfullscreen();
             window.hide();
         }
         state= !state;
