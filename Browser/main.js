@@ -47,7 +47,7 @@ var state = false;
             //});    
             
         } else {
-            window.unfullscreen();
+//            window.unfullscreen();
             window.hide();
         }
         state= !state;
