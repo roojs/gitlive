@@ -1,5 +1,6 @@
 Gtk = imports.gi.Gtk;
 WebKit = imports.gi.WebKit;
+Soup = imports.gi.Soup;
 
 Browser = {
 //    Tabbed : imports.Tabbed
