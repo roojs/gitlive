@@ -98,7 +98,8 @@ Browser.View = new GType({
         };
 
         // Implementation
-        this.set_scroll_adjustments(null, null);
+		
+        //this.set_scroll_adjustments(null, null);
 
         //this.signal.title_changed.connect(update_title);
         this.signal.load_committed.connect(load_committed);
