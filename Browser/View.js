@@ -125,6 +125,6 @@ Browser.View = new GType({
 			
 			
 			
-		}))
+		});
     }
 });
