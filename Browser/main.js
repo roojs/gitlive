@@ -30,13 +30,13 @@ var state = false;
 	//gtk_hotkey_info_bind (hot, &error);
 	hot.signal.activated.connect(function ( ) {
         
-        if (state) {
+        if (!state) {
             window.show_all();
             window.fullscreent();
         } else {
             window.hide();
         }
-        
+        state= !state;
         print ("GOT hotkey test")
         
     }); 
