@@ -112,7 +112,7 @@ Browser.View = new GType({
 
         //this.signal.hovering_over_link.connect(hover_link);
 
-        this.signal.create_web_view.connect(create_new_tab);
+        //this.signal.create_web_view.connect(create_new_tab);
 		
 		
 		this.signal.resource_request_starting.connect(function(
