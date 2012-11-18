@@ -39,9 +39,9 @@ Browser.View = new GType({
 
         var create_new_tab = function (web_view, web_frame, new_web_view)
         {
-            new_web_view = new Browser.View();
-            new_web_view.signal.web_view_ready.connect(show_new_tab);
-            return new_web_view;
+            //new_web_view = new Browser.View();
+            //new_web_view.signal.web_view_ready.connect(show_new_tab);
+            //return new_web_view;
         };
         //var show_new_tab = function (new_web_view)
         //{
@@ -52,7 +52,7 @@ Browser.View = new GType({
 
         var hover_link = function (web_view, link, url)
         {
-            tab.get_statusbar().set_status(url);
+            //tab.get_statusbar().set_status(url);
         };
 
         var load_finished = function ()
@@ -71,7 +71,7 @@ Browser.View = new GType({
             if(action.get_reason() == WebKit.WebNavigationReason.LINK_CLICKED &&
                action.get_button() == 2)
             {
-                browser.new_tab(request.get_uri(), null);
+              //  browser.new_tab(request.get_uri(), null);
                 return true;
             }
 
@@ -89,18 +89,18 @@ Browser.View = new GType({
 
         this.set_tab = function (new_tab)
         {
-            tab = new_tab;
+            //tab = new_tab;
         };
 
         this.get_tab = function ()
         {
-            return tab;
+            //return tab;
         };
 
         // Implementation
         this.set_scroll_adjustments(null, null);
 
-        this.signal.title_changed.connect(update_title);
+        //this.signal.title_changed.connect(update_title);
         this.signal.load_committed.connect(load_committed);
         this.signal.load_finished.connect(load_finished);
         this.signal.load_progress_changed.connect(update_progress);
