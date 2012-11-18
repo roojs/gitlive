@@ -32,7 +32,7 @@ var state = false;
         
         if (!state) {
             window.show_all();
-            window.fullscreent();
+            window.fullscreen();
         } else {
             window.hide();
         }
