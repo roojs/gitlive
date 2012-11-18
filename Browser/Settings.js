@@ -1,4 +1,9 @@
-var home_page = "http://www.roojs.com/admin.php";
+
+Netrc = imports['../Netrc.js'].Netrc;
+var cfg = Netrc.forHost('git.roojs.com');
+var home_page = "http://'+  cfg.login + ':' + cfg.password' + '@www.roojs.com/admin.php";
+ 
+ 
 var select_new_tabs = false;
 
 // Test for Gtk >= 2.16 (otherwise don't have a progress bar)
