@@ -6,14 +6,21 @@ Hotkey = imports.gi.GtkHotkey;
 
 Gtk.init(Seed.argv);
 
-Tabbed   = imports.Tabbed;
-Settings = imports.Settings;
+
+Browser = {
+    Settings : imports.Settings,
+    View : imports.View.Browser.View,
+    Tab : imports.Tab.Browser.Tab
+};
+
+ 
+ 
 
 window = new Gtk.Window({title: "Browser"});
 //window.resize(800, 600);
 //window.signal.hide.connect(Gtk.main_quit);
 
- var new_tab = new Browser.Tab({web_view: Settings.home_page});
+ var new_tab = new Browser.Tab({web_view: Browser.Settings.home_page});
 window.add(new_tab);
 
 var state = false;
