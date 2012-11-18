@@ -1,6 +1,6 @@
 
 Netrc = imports['../Netrc.js'].Netrc;
-var auth_data=  = Netrc.forHost('git.roojs.com');
+var auth_data  = Netrc.forHost('git.roojs.com');
 var home_page = 'www.roojs.com/admin.php';
   
 var select_new_tabs = false;
