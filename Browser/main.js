@@ -40,6 +40,6 @@ var state = false;
         print ("GOT hotkey test")
         
     }); 
- });
+ 
 
 Gtk.main();
