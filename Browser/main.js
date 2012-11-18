@@ -16,11 +16,11 @@ window.signal.hide.connect(Gtk.main_quit);
 Tabbed.browser = new Tabbed.Browser.Tabbed();
 window.add(Tabbed.browser);
 
+var state = false;
 //window.show_all();
 //window.fullscreen();
- GLib.timeout_add(GLib.PRIORITY_LOW, 1500, function() {
-
-    var hot = new Hotkey.Info.c_new("gtkhotkey-test", "gtkhotkey-test-key","<Control><Shift>2" );  
+  
+    var hot = new Hotkey.Info.c_new("gtkhotkey-test", "gtkhotkey-test-key","<Control><Escape>" );  
 	
 	//g_signal_connect (hot, "notify::bound", G_CALLBACK(hotkey_bound_cb), NULL);
 	//hot.bind();
@@ -29,6 +29,14 @@ window.add(Tabbed.browser);
     print("BIND RETURNED" + x);
 	//gtk_hotkey_info_bind (hot, &error);
 	hot.signal.activated.connect(function ( ) {
+        
+        if (state) {
+            window.show_all();
+            window.fullscreent();
+        } else {
+            window.hide();
+        }
+        
         print ("GOT hotkey test")
         
     }); 
