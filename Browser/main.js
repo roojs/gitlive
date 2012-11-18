@@ -38,7 +38,7 @@ window.hide();
             GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
                 window.fullscreen();
                 window.grab_focus();
-            }    
+            });    
             
         } else {
             window.hide();
