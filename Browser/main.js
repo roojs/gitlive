@@ -13,7 +13,7 @@ window = new Gtk.Window({title: "Browser"});
 //window.resize(800, 600);
 //window.signal.hide.connect(Gtk.main_quit);
 
- var new_tab = new Browser.Tab({web_view: new_web_view});
+ var new_tab = new Browser.Tab({web_view: Settings.home_page});
 window.add(new_tab);
 
 var state = false;
