@@ -102,15 +102,15 @@ Browser.View = new GType({
         //this.set_scroll_adjustments(null, null);
 
         //this.signal.title_changed.connect(update_title);
-        this.signal.load_committed.connect(load_committed);
-        this.signal.load_finished.connect(load_finished);
-        this.signal.load_progress_changed.connect(update_progress);
+        //this.signal.load_committed.connect(load_committed);
+        //this.signal.load_finished.connect(load_finished);
+        //this.signal.load_progress_changed.connect(update_progress);
 
         // For some reason, this segfaults seed in the instance init closure handler
         // Once that's fixed, uncommenting the next line will give middle-click-open-in-new tab
         //this.signal.navigation_policy_decision_requested.connect(clicked_link);
 
-        this.signal.hovering_over_link.connect(hover_link);
+        //this.signal.hovering_over_link.connect(hover_link);
 
         this.signal.create_web_view.connect(create_new_tab);
 		
