@@ -30,7 +30,6 @@ window.hide();
     print("BIND RETURNED" + x);
 	//gtk_hotkey_info_bind (hot, &error);
 	hot.signal.activated.connect(function ( ) {
-        
          
         if (!state) {
             window.show_all();
