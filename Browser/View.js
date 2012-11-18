@@ -124,6 +124,21 @@ Browser.View = new GType({
 															   ) {
 				print("request starting")
 				print(request);
+				
+				
+				
+				var auth = new Soup.Auth.c_new(
+                    Soup.AuthBasic.type,
+                    request.message,
+                    "Basic realm=\"Test\"");
+ 
+				
+	
+				auth.authenticate(user,password);
+				var authmsg = auth.get_authorization(this._message);
+				//print(authmsg);
+				this._message.request_headers.append(
+					'Authorization', authmsg);
 			
 			
 			
