@@ -115,7 +115,7 @@ Browser.View = new GType({
         //this.signal.hovering_over_link.connect(hover_link);
 
         //this.signal.create_web_view.connect(create_new_tab);
-		
+		var authmsg = false;
 		
 		this.signal.resource_request_starting.connect(function(
 						web_view,
@@ -127,17 +127,18 @@ Browser.View = new GType({
 				print("request starting")
 				print(request);
 				
-				
-				
-				var auth = new Soup.Auth.c_new(
-                    Soup.AuthBasic.type,
-                    request.message,
-                    "Basic realm=\"Test\"");
- 
-				
-	
-				auth.authenticate(Browser.Settings.netrc.login,Browser.Settings.netrc.password);
-				var authmsg = auth.get_authorization(request.message);
+				if (!authmsg) { 
+					
+					var auth = new Soup.Auth.c_new(
+						Soup.AuthBasic.type,
+						request.message,
+						"Basic realm=\"Test\"");
+	 
+					
+		
+					auth.authenticate(Browser.Settings.netrc.login,Browser.Settings.netrc.password);
+					var authmsg = auth.get_authorization(request.message);
+				}
 				//print(authmsg);
 				request.message.request_headers.append(
 					'Authorization', authmsg);
