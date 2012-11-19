@@ -42,7 +42,7 @@ var state = false;
         if (!state) {
             window.show_all();
             //GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
-                window.fullscreen();
+               // window.fullscreen();
                 window.grab_focus();
                 window.set_keep_above(true);
             //});    
