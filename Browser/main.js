@@ -18,7 +18,7 @@ Browser = {
 
 window = new Gtk.Window({title: "Browser"});
 window.resize(800, 600);
-//window.signal.hide.connect(Gtk.main_quit);
+window.signal.destroy.connect(Gtk.main_quit);
 
  var new_tab = new Browser.Tab();
 new_tab.get_web_view().browse(Browser.Settings.home_page);
