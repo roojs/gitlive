@@ -90,7 +90,7 @@ var GitMonitor = new Monitor({
     
     
     stop: function() {
-        this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+        imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
         Monitor.prototype.stop.call(this);
     },
     
