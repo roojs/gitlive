@@ -65,7 +65,11 @@ Task = XObject.define(
             return;
         } 
         XObject.extend(cfg);
-         
+        
+        // fix up the values.
+        this.action_dt = Date.parseDate(this.action_dt,'Y-m-d H:i:s');
+        
+        
     },
     Object,
     {
