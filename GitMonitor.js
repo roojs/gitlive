@@ -45,6 +45,7 @@ var GitMonitor = new Monitor({
      *
      */
     start: function() {
+        imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_REFRESH );
         var _this = this;
         this.lastAdd = new Date();
         
@@ -81,7 +82,7 @@ var GitMonitor = new Monitor({
         } catch(e) {
             print(e.toString());
         }
-
+        imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
     },
     
     
