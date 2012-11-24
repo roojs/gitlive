@@ -73,9 +73,9 @@ Task = XObject.define(
          * This is similar to the cash_invoice_entry data..
          * 
          */
-        action_dt: "2012-11-23 11:00:00"
-        description: "QA on new site"
-        qtyvalue: "2.25"
+        action_dt: '', //"2012-11-23 11:00:00"
+        description: '', //"QA on new site"
+        qtyvalue: 0, //"2.25"
         
         hasExpired : function()
         {
