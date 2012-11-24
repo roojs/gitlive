@@ -40,7 +40,12 @@ Tasks = {
         }
         
         // do the request to get the task..
-        var r = XMLHttpRequest();
+        var r = XMLHttpRequest({
+            onreadystatechange : function() {
+                _this.curTask = new Task(JSON.parse(responseText));
+            }
+            
+        });
         var netrc  = Netrc.forHost('git.roojs.com');
         r.open('GET',
                "http://roojs.com/admin.php/Roo/cash_invoice_entry?_current_task=1"
