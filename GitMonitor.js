@@ -48,8 +48,11 @@ var GitMonitor = new Monitor({
         imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_REFRESH );
         var _this = this;
         this.lastAdd = new Date();
+        
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
-            this.top.forEach(this.monitor, this);
+            _this.top.forEach(_this.monitor, _this);
+            imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
+
         });
         
         GLib.timeout_add(GLib.PRIORITY_LOW, 1000, function() {
@@ -83,7 +86,12 @@ var GitMonitor = new Monitor({
         } catch(e) {
             print(e.toString());
         }
-        imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
+    },
+    
+    
+    stop: function() {
+        this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+        Monitor.prototype.stop.call(this);
     },
     
     
