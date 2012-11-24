@@ -324,4 +324,15 @@ Repo.list = function()
     return Repo._list;
       
 }
-
+Repo.get = function(path)
+{
+    var tr = Repo.list();
+    for (var i =0;i < tr.length; i++) {
+        if (tr[i].repopath == path) {
+            return tr[i];
+        }
+        
+    }
+    return false;
+    
+}
