@@ -333,18 +333,6 @@ Clones=new XObject({
                                     xtype: Gtk.ListStore,
                                     id : "reposStore",
                                     pack : "set_model",
-                                    pathToRepo : function(path) {
-                                    
-                                        var tr= this.repos;
-                                    
-                                        
-                                        for(var i =0 ; i < tr.length; i++) {
-                                            if (tr[i].repopath == path) {
-                                                return tr;
-                                            }
-                                        } 
-                                        return false; 
-                                    },
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                         this.el.set_column_types ( 8, [
@@ -408,6 +396,18 @@ Clones=new XObject({
                                             this.el.set_value(ret.iter, 7, col  );      
                                             
                                         }     
+                                    },
+                                    pathToRepo : function(path) {
+                                    
+                                        var tr= this.repos;
+                                    
+                                        
+                                        for(var i =0 ; i < tr.length; i++) {
+                                            if (tr[i].repopath == path) {
+                                                return tr[i];
+                                            }
+                                        } 
+                                        return false; 
                                     }
                                 },
                                 {
