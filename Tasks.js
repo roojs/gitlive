@@ -40,7 +40,15 @@ Tasks = {
         }
         
         
+    },
+    
+    verifyCommit : function()
+    {
+        // using curTask + lastCommit decide what to do.
+        
+        
     }
+    
     
     
     
