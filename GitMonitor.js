@@ -87,12 +87,25 @@ var GitMonitor = new Monitor({
     
     monitor : function(path, fn, depth)
     {
+        depth = typeof(depth) == 'number'  ? depth *1 : 0;
         
-        // check if the repo is to be monitored.
-        var repo = imports.Scm.Repo.Repo.get(path);
-        if (!repo.autocommit()) {
+         
+        // if we are not at top level.. and there is a .git directory  (it's a submodule .. ignore) 
+        if (depth > 1 && GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR)) {
             return;
         }
+        
+        if (depth == 1) {
+            var repo = imports.Scm.Repo.Repo.get(path);
+            if (!repo || !repo.autocommit()) {
+                return;
+            } 
+        }
+        
+        
+        // check if the repo is to be monitored.
+        //print("PATH : " + path);
+        
         
         Monitor.prototype.monitor.call(this, path,fn, depth);
     },
@@ -275,6 +288,8 @@ var GitMonitor = new Monitor({
         if (this.paused) {
             return true;
         }
+        
+        
         // vim.. what a seriously brain dead program..
         if (f.name == '4913') {
             return true;
