@@ -97,8 +97,8 @@ XMLHttpRequest.prototype = {
                 
                 //print("got queue callback");
                 //_t._session.unpause_message(this._message);
-                print("queue message");
-                print(_t._message.response_body.data)
+                //print("queue message");
+                //print(_t._message.response_body.data)
                 _t.responseText = _t._message.response_body.data;
                 _t.status = 4;
             
