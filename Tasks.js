@@ -79,7 +79,10 @@ Task = XObject.define(
         
         hasExpired : function()
         {
-            Date.parseDate(this.action_dt,'Y-m-d H:i:s');
+            
+            var exp = Date.parseDate(this.action_dt,'Y-m-d H:i:s').add(Date.HOUR, this.qtyvalue);
+            return (new Date()) > exp; // 
+            
         }
     }
 );
