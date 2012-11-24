@@ -16,6 +16,9 @@
 
 Tasks = {
     
+    curTask : false,
+    lastCommit : false;
+    
     notify : function(commit)
     {
         if (this.inQuery) {
@@ -32,6 +35,7 @@ Tasks = {
     {
         // have we got the status in the last 15 mins..
         // we should not need to get it again... - it's probably not changed.
+        
         
         
     }
