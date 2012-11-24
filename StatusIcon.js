@@ -131,7 +131,7 @@ var StatusIcon  = new XObject({
                             
                             var tr = imports.Scm.Repo.Repo.list();
                             for (var i= 0; i< tr.length;i++) {
-                                this.parent.parent.el.set_from_stock( i%2 ?  Gtk.STOCK_FULLSCREEN : Gtk.LEAVE_FULLSCREEN );
+                                this.parent.parent.el.set_from_stock( i%2 ?  Gtk.STOCK_FULLSCREEN : Gtk.STOCK_LEAVE_FULLSCREEN );
                                 
                                 
                                 var repo = tr[i];
@@ -154,6 +154,7 @@ var StatusIcon  = new XObject({
                                    notification.show();
                                    
                                 } catch(e) {
+                                    this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_RECORD );
                                     print(JSON.stringify(e));
                                     print("notification or push errror- probably to many in queue..");
                                     imports.gitlive.errorDialog(e.message);
