@@ -1,5 +1,9 @@
 #!/usr/bin/env seed
 
+// this appears to leak memory badly.. - actually seed+webkit is a bit of a mess...
+// and probably needs to be restarted every day.. 
+
+
 Gtk = imports.gi.Gtk;
 WebKit = imports.gi.WebKit;
 Hotkey = imports.gi.GtkHotkey;
