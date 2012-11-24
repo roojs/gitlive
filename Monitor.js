@@ -5,6 +5,9 @@ var GLib      = imports.gi.GLib;
 
 /**
  * Monitor class - handles monitor managment for a large tree...
+ *
+ *
+ * This 
  * 
  * usage : 
  * x = new Monitor({
@@ -98,14 +101,7 @@ Monitor.prototype = {
             _this.onEvent(fm, f, of, event_type, uh);
         }
        
-        // if we are not at top level.. and there is a .git directory  (it's a submodule .. ignore) 
-        if (depth > 1 && GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR)) {
-            return;
-        }
-            
-       
-       
-        
+          
         var f = Gio.file_new_for_path(path);
             //var cancel = new Gio.Cancellable ();
         if (depth > 0) {     
@@ -115,11 +111,11 @@ Monitor.prototype = {
             // print("ADD path " + depth + ' ' + path);
         }
         // iterate children?
-        
-        if (GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR) && this.initRepo) {
+        // - this is not used.
+        //if (GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR) && this.initRepo) {
             
-            this.initRepo(path);
-        }
+        //    this.initRepo(path);
+        //}
         
         
         var file_enum = f.enumerate_children(
