@@ -126,3 +126,4 @@ Task = XObject.define(
 Gtk = imports.gi.Gtk;
 Gtk.init(Seed.main);
 Tasks.notify(1);
+Gtk.main();
