@@ -21,4 +21,4 @@ Task = XObject.define(
     {
         
     }
-});
+);
