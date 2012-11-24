@@ -1,8 +1,32 @@
 
 
+/**
+ *
+ * Tasks
+ *
+ *  Flow
+ *
+ *    Commit
+ *      => Tasks.notify(commit)
+ *
+ *
+ *
+ *
+ */
 
-
-
+Tasks = {
+    
+    notify : function(commit)
+    {
+        
+        
+        
+        
+    }
+    
+    
+    
+}
 
 
 
