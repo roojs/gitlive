@@ -333,6 +333,18 @@ Clones=new XObject({
                                     xtype: Gtk.ListStore,
                                     id : "reposStore",
                                     pack : "set_model",
+                                    pathToRepo : function(path) {
+                                    
+                                        var tr= this.repos;
+                                    
+                                        
+                                        for(var i =0 ; i < tr.length; i++) {
+                                            if (tr[i].repopath == path) {
+                                                return tr;
+                                            }
+                                        } 
+                                        return false; 
+                                    },
                                     init : function() {
                                         XObject.prototype.init.call(this);
                                         this.el.set_column_types ( 8, [
@@ -423,6 +435,12 @@ Clones=new XObject({
                                                     //print(JSON.stringify(value));
                                                     store.el.set_value(ret.iter,4, !value);
                                                     
+                                                     var path =  this.el.set_value(ret.iter, 6).value.get_string();
+                                                     var repo = store.pathToRepo(path);
+                                                     repo.autocommit(!value);
+                                                     
+                                                    
+                                                    
                                                 }
                                             },
                                             pack : "pack_start",
@@ -453,7 +471,10 @@ Clones=new XObject({
                                                                                                                  
                                                     //print(JSON.stringify(value));
                                                     store.el.set_value(ret.iter,5, !value);
-                                                    
+                                                      var path =  this.el.set_value(ret.iter, 6).value.get_string();
+                                                     var repo = store.pathToRepo(path);
+                                                     repo.autopush(!value);
+                                                     
                                                 }
                                             },
                                             pack : "pack_start",
