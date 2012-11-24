@@ -165,7 +165,7 @@ var StatusIcon  = new XObject({
                              
                           
                             imports.GitMonitor.GitMonitor.start();
-                            
+                        }   
                     }
                 },
                 {

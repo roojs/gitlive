@@ -22,7 +22,7 @@ Repo = XObject.define(
      *     (basically repopath is currently only critical one.)
      *
      */
-    
+     
     function(cfg) {
         // cal parent?
         XObject.extend(this,cfg);
@@ -280,12 +280,48 @@ Repo = XObject.define(
         lastupdated: function() {
             return 'tbc';
         },
-        autocommit: function() {
-            return true;
+        autocommit: function(val) {
+            if (typeof(val) == 'undefined') {
+                
+                if (File.exists(this.gitdir + '/.gitlive-disable-autocommit')) {
+                    return false;
+                }
+                
+                return true;
+            }
+            if (val == this.autocommit()) {
+                return val;
+            }
+            if (!val) { // turn off
+                File.write(this.gitdir + '/.gitlive-disable-autocommit', '.');
+            } else {
+                File.remove(this.gitdir + '/.gitlive-disable-autocommit');
+            }
+            return val;
+            
         },
         
-        autopush: function() {
-            return true;
+        
+        
+        autopush: function(val) {
+            
+            if (typeof(val) == 'undefined') {
+                
+                if (File.exists(this.gitdir + '/.gitlive-disable-autopush')) {
+                    return false;
+                }
+                
+                return true;
+            }
+            if (val == this.autocommit()) {
+                return val;
+            }
+            if (!val) { // turn off
+                File.write(this.gitdir + '/.gitlive-disable-autopush', '.');
+            } else {
+                File.remove(this.gitdir + '/.gitlive-disable-autopush');
+            }
+            return val; 
         },
           /*
         
