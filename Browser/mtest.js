@@ -2,12 +2,12 @@ Gtk = imports.gi.Gtk;
 WebKit = imports.gi.WebKit;
 Gtk.init(null);
 
-let win = new Gtk.Window();
+var  win = new Gtk.Window();
 
-let sw = new Gtk.ScrolledWindow({});
+var  sw = new Gtk.ScrolledWindow({});
 win.add(sw);
 
-let view = new WebKit.WebView();
+var  view = new WebKit.WebView();
 view.load_uri("http://www.google.com/");
 sw.add(view);
 
