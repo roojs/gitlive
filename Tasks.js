@@ -1,6 +1,7 @@
 
 XObject = imports.XObject.XObject;
 XMLHttpRequest = imports.XMLHttpRequest.XMLHttpRequest;
+Netrc = imports.Netrc.Netrc;
 
 /**
  *
