@@ -1,6 +1,6 @@
 const GLib = imports.gi.GLib;
 
-const File  = imports['../File.js'].File;
+const File  = imports.File.File;
 
 /**
  * usage:
