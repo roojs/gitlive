@@ -1,6 +1,6 @@
 Gtk = imports.gi.Gtk;
 WebKit = imports.gi.WebKit;
-Gtk.init({});
+Gtk.init(Seed ? Seed.argv : null);
 
 var  win = new Gtk.Window({});
 
