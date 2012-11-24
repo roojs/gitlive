@@ -42,6 +42,9 @@ Tasks = {
         // do the request to get the task..
         var r = XMLHttpRequest({
             onreadystatechange : function() {
+                if (this.status ) {
+                    return;
+                }
                 _this.curTask = new Task(JSON.parse(responseText));
                 _this.verifyCommit();
             }
