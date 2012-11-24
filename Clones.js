@@ -471,7 +471,7 @@ Clones=new XObject({
                                                                                                                  
                                                     //print(JSON.stringify(value));
                                                     store.el.set_value(ret.iter,5, !value);
-                                                      var path =  this.el.get_value(ret.iter, 6).value.get_string();
+                                                      var path =  store.el.get_value(ret.iter, 6).value.get_string();
                                                      var repo = store.pathToRepo(path);
                                                      repo.autopush(!value);
                                                      
