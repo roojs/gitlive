@@ -124,6 +124,6 @@ Task = XObject.define(
 
 //-------------- testing
 Gtk = imports.gi.Gtk;
-Gtk.init(Seed.main);
+Gtk.init(Seed.argv);
 Tasks.notify(1);
 Gtk.main();
