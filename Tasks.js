@@ -38,11 +38,12 @@ Tasks = {
         if (this.curTask && !this.curTask.hasExpired()) {
             this.verifyCommit();
         }
-        
+        _this = this;
         // do the request to get the task..
         var r = XMLHttpRequest({
             onreadystatechange : function() {
                 _this.curTask = new Task(JSON.parse(responseText));
+                _this.verifyCommit();
             }
             
         });
