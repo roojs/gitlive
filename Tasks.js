@@ -42,7 +42,10 @@ Tasks = {
         // do the request to get the task..
         var r = XMLHttpRequest();
         var netrc  = Netrc.forHost('git.roojs.com');
-        r.open('GET', url, true, netrc.login, netrc.password  );
+        r.open('GET',
+               "http://roojs.com/admin.php/Roo/cash_invoice_entry?_current_task=1"
+               
+               ,true, netrc.login, netrc.password  );
         
         
     },
