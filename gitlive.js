@@ -67,11 +67,13 @@ StatusIcon.init();
 
 Notify.init("gitlive");
 
-GitMonitor.add(GitMonitor.gitlive);
-GitMonitor.start();
-
-WindowLog.start();
-
+GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
+    // this should start after we have shown the icon...
+    GitMonitor.add(GitMonitor.gitlive);
+    GitMonitor.start();
+    
+    WindowLog.start();
+});
 
 Gtk.main();
 //icon.signal["activate"].connect(on_left_click);
