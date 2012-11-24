@@ -23,7 +23,8 @@ Tasks = {
             // status is.
             return; 
         }
-        
+        this.lastCommit = commit;
+        this.getStatus();
         
         
     }
