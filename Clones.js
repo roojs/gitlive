@@ -436,8 +436,7 @@ Clones=new XObject({
                                                     store.el.set_value(ret.iter,4, !value);
                                                     
                                                      var path =  store.el.get_value(ret.iter, 6).value.get_string();
-                                                     print("VAL: " + store.el.get_value(ret.iter, 6).value);     
-                                                     print("PATH: " + path);
+                                                     
                                                      
                                                      
                                                      var repo = store.pathToRepo(path);
