@@ -40,7 +40,8 @@ Tasks = {
         }
         
         // do the request to get the task..
-        
+        var r = XMLHttpRequest();
+        r.open('GET', url, true, user, password);
         
         
     },
