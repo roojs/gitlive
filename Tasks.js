@@ -50,7 +50,7 @@ Tasks = {
                 if (this.status != 4) {
                     return;
                 }
-                _this.curTask = new Task(JSON.parse(responseText));
+                _this.curTask = new Task(JSON.parse(_this.responseText));
                 _this.verifyCommit();
             }
             
