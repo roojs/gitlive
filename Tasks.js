@@ -17,7 +17,7 @@
 Tasks = {
     
     curTask : false,
-    lastCommit : false;
+    lastCommit : false,
     
     notify : function(commit)
     {
