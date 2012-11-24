@@ -35,7 +35,7 @@ Tasks = {
     {
         // have we got the status in the last 15 mins..
         // we should not need to get it again... - it's probably not changed.
-        if (this.curTask && !this.curTask.expired()) {
+        if (this.curTask && !this.curTask.hasExpired()) {
             this.verifyCommit();
         }
         
@@ -69,6 +69,17 @@ Task = XObject.define(
     },
     Object,
     {
+        /**
+         * This is similar to the cash_invoice_entry data..
+         * 
+         */
+        action_dt: "2012-11-23 11:00:00"
+        description: "QA on new site"
+        qtyvalue: "2.25"
         
+        hasExpired : function()
+        {
+            Date.parseDate(this.action_dt,'Y-m-d H:i:s');
+        }
     }
 );
