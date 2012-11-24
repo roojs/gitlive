@@ -1,3 +1,4 @@
+imports.gi.versions.Gtk = '2.0';
 Gtk = imports.gi.Gtk;
 
 imports.gi.versions.WebKit = '1.0';
