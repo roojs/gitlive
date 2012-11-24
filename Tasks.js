@@ -44,7 +44,7 @@ Tasks = {
         }
         _this = this;
         // do the request to get the task..
-        var r = XMLHttpRequest({
+        var r = new XMLHttpRequest({
             onreadystatechange : function() {
                 if (this.status != 4) {
                     return;
