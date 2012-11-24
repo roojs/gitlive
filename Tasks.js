@@ -42,7 +42,7 @@ Tasks = {
         // do the request to get the task..
         var r = XMLHttpRequest({
             onreadystatechange : function() {
-                if (this.status ) {
+                if (this.status != 4) {
                     return;
                 }
                 _this.curTask = new Task(JSON.parse(responseText));
