@@ -54,7 +54,7 @@ Tasks = {
                 
                 
                 _this.curTask = res.success && res.data.length ? new Task(res.data[0]) : false;
-                print(_this.curTask);
+                print(JSON.stringify(_this.curTask,null,4));
                 _this.verifyCommit();
             }
             
