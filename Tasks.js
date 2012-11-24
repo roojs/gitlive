@@ -50,8 +50,10 @@ Tasks = {
                 if (this.status != 4) {
                     return;
                 }
+                var res = JSON.parse(this.responseText);
                 
-                _this.curTask = new Task(JSON.parse(this.responseText));
+                
+                _this.curTask = res.success && res.data.length ? new Task(res.data[0]) : false;
                 _this.verifyCommit();
             }
             
