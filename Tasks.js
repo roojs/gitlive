@@ -63,7 +63,7 @@ Tasks = {
         r.open('GET',
                "http://roojs.com/admin.php/Roo/cash_invoice_entry?_current_task=1"
                ,true, netrc.login, netrc.password  );
-    print("SEding request");        
+        //print("SEding request");        
         r.send();
         
     },
