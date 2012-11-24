@@ -439,7 +439,7 @@ Clones=new XObject({
                                                      
                                                      
                                                      
-                                                     var repo = store.pathToRepo(path);
+                                                          var repo = imports.Scm.Repo.Repo.get(path);
                                                      repo.autocommit(!value);
                                                      
                                                     

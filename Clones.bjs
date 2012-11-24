@@ -112,7 +112,7 @@
                                             "items": [
                                                 {
                                                     "listeners": {
-                                                        "toggled": "function (self, path) {\n    var ret ={} ;\n    var store = this.get('/reposStore');\n    store.el.get_iter_from_string(ret, path);\n                                                                 \n    var value =   store.el.get_value(ret.iter,4).value.get_boolean();\n                                                                 \n    //print(JSON.stringify(value));\n    store.el.set_value(ret.iter,4, !value);\n    \n     var path =  store.el.get_value(ret.iter, 6).value.get_string();\n     \n     \n     \n     var repo = store.pathToRepo(path);\n     repo.autocommit(!value);\n     \n    \n    \n}"
+                                                        "toggled": "function (self, path) {\n    var ret ={} ;\n    var store = this.get('/reposStore');\n    store.el.get_iter_from_string(ret, path);\n                                                                 \n    var value =   store.el.get_value(ret.iter,4).value.get_boolean();\n                                                                 \n    //print(JSON.stringify(value));\n    store.el.set_value(ret.iter,4, !value);\n    \n     var path =  store.el.get_value(ret.iter, 6).value.get_string();\n     \n     \n     \n          var repo = imports.Scm.Repo.Repo.get(path);\n     repo.autocommit(!value);\n     \n    \n    \n}"
                                                     },
                                                     "pack": "pack_start",
                                                     "xtype": "CellRendererToggle",
