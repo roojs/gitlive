@@ -127,7 +127,7 @@ var StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             imports.GitMonitor.GitMonitor.stop();
-                            this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+                           
                             
                             var tr = imports.Scm.Repo.Repo.list();
                             for (var i= 0; i< tr.length;i++) {
