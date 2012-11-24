@@ -84,6 +84,14 @@ var GitMonitor = new Monitor({
 
     },
     
+    
+    monitor : function(path, fn, depth)
+    {
+        
+        
+        Monitor.prototype.monitor.call(this, path,fn, depth);
+    },
+    
     /**
      * run the queue.
      * - pulls the items off the queue 
