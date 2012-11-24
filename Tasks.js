@@ -81,7 +81,7 @@ Task = XObject.define(
         {
             
             var exp = Date.parseDate(this.action_dt,'Y-m-d H:i:s').add(Date.HOUR, this.qtyvalue);
-            return (new Date()) > exp; // 
+            return (new Date()) > exp;  
             
         }
     }
