@@ -46,6 +46,7 @@ Tasks = {
         // do the request to get the task..
         var r = new XMLHttpRequest({
             onreadystatechange : function() {
+                print("Got result.");
                 if (this.status != 4) {
                     return;
                 }
@@ -55,6 +56,7 @@ Tasks = {
             
         });
         var netrc  = Netrc.forHost('git.roojs.com');
+        print("SEding request");
         r.open('GET',
                "http://roojs.com/admin.php/Roo/cash_invoice_entry?_current_task=1"
                ,true, netrc.login, netrc.password  );
