@@ -128,6 +128,17 @@ var StatusIcon  = new XObject({
                         activate : function () {
                             imports.GitMonitor.GitMonitor.stop();
                             
+                            
+                            var tr = imports.Scm.Git.Repo.Repo.list();
+                            for (var i= 0; i< tr.length;i++) {
+                                var repo = tr[i];
+                                if (!tr.autocommit()) {
+                                    //??? should we ignore ones not on autocommit..
+                                    continue;
+                                }
+                            }
+                            
+                            
                             var f = Gio.file_new_for_path(imports.GitMonitor.GitMonitor.gitlive);
                             var file_enum = f.enumerate_children(
                                 Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME, Gio.FileQueryInfoFlags.NONE, null);
