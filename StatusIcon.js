@@ -108,7 +108,7 @@ var StatusIcon  = new XObject({
                              imports.GitMonitor.GitMonitor.start();
                             //var status = this.el.label == 'Pause' ? 1 : 0
                            // this.el.label  = status ? 'Resume' : 'Pause';
-                            this.parent.parent.el.set_from_stock(   Gtk.STOCK_MEDIA_PLAY);
+                               
                             
                         }
                     }
@@ -127,12 +127,15 @@ var StatusIcon  = new XObject({
                     listeners : {
                         activate : function () {
                             imports.GitMonitor.GitMonitor.stop();
+                            this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
                             
-                            
-                            var tr = imports.Scm.Git.Repo.Repo.list();
+                            var tr = imports.Scm.Repo.Repo.list();
                             for (var i= 0; i< tr.length;i++) {
+                                this.parent.parent.el.set_from_stock( i%2 ?  Gtk.STOCK_FULLSCREEN : Gtk.LEAVE_FULLSCREEN );
+                                
+                                
                                 var repo = tr[i];
-                                if (!tr.autocommit()) {
+                                if (!repo.autocommit()) {
                                     //??? should we ignore ones not on autocommit..
                                     continue;
                                 }
