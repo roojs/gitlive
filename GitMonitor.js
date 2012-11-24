@@ -50,7 +50,8 @@ var GitMonitor = new Monitor({
         this.lastAdd = new Date();
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
             this.top.forEach(this.monitor, this);
-        }
+        });
+        
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
             //TIMEOUT", _this.queue.length , _this.queueRunning].join(', '));
             if (!_this.queue.length || _this.queueRunning) {
