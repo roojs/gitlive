@@ -41,7 +41,8 @@ Tasks = {
         
         // do the request to get the task..
         var r = XMLHttpRequest();
-        r.open('GET', url, true, user, password);
+        var netrc  = Netrc.forHost('git.roojs.com');
+        r.open('GET', url, true,netrc.login, netrc.password  );
         
         
     },
