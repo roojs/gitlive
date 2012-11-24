@@ -24,8 +24,12 @@ Tasks = {
             return; 
         }
         this.lastCommit = commit;
-        this.getStatus();
+        this.fetchStatus();
         
+        
+    },
+    fetchStatus : function()
+    {
         
     }
     
