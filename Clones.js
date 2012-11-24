@@ -436,10 +436,7 @@ Clones=new XObject({
                                                     store.el.set_value(ret.iter,4, !value);
                                                     
                                                      var path =  store.el.get_value(ret.iter, 6).value.get_string();
-                                                     
-                                                     
-                                                     
-                                                          var repo = imports.Scm.Repo.Repo.get(path);
+                                                     var repo = imports.Scm.Repo.Repo.get(path);
                                                      repo.autocommit(!value);
                                                      
                                                     
