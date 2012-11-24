@@ -1,4 +1,6 @@
 
+XObject = imports.XObject.XObject;
+XMLHttpRequest = imports.XMLHttpRequest.XMLHttpRequest;
 
 /**
  *
