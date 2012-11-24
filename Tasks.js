@@ -24,12 +24,15 @@ Tasks = {
             return; 
         }
         this.lastCommit = commit;
-        this.fetchStatus();
+        this.fetchTask();
         
         
     },
-    fetchStatus : function()
+    fetchTask: function()
     {
+        // have we got the status in the last 15 mins..
+        // we should not need to get it again... - it's probably not changed.
+        
         
     }
     
