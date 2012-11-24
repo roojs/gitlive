@@ -2,7 +2,7 @@ Gtk = imports.gi.Gtk;
 WebKit = imports.gi.WebKit;
 Gtk.init(null);
 
-var  win = new Gtk.Window();
+var  win = new Gtk.Window({});
 
 var  sw = new Gtk.ScrolledWindow({});
 win.add(sw);
