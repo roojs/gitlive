@@ -26,6 +26,7 @@ Tasks = {
             // status is.
             return; 
         }
+        this.inQuery = 1;
         this.lastCommit = commit;
         this.fetchTask();
         
@@ -62,6 +63,8 @@ Tasks = {
     {
         // using curTask + lastCommit decide what to do.
         
+        
+        this.inQuery = 0;
         
     }
     
