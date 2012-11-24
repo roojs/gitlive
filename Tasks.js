@@ -39,6 +39,9 @@ Tasks = {
             this.verifyCommit();
         }
         
+        // do the request to get the task..
+        
+        
         
     },
     
