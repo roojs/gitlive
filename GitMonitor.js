@@ -88,6 +88,11 @@ var GitMonitor = new Monitor({
     monitor : function(path, fn, depth)
     {
         
+        // check if the repo is to be monitored.
+        var repo = imports.Scm.Repo.Repo.get(path);
+        if (!repo.autocommit()) {
+            return;
+        }
         
         Monitor.prototype.monitor.call(this, path,fn, depth);
     },
