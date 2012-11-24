@@ -18,7 +18,11 @@ Tasks = {
     
     notify : function(commit)
     {
-        
+        if (this.inQuery) {
+            // ignore the notification.. we are currently checking what the current
+            // status is.
+            return; 
+        }
         
         
         
