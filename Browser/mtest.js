@@ -1,4 +1,6 @@
 Gtk = imports.gi.Gtk;
+
+imports.gi.versions.Webkit = '1.0';
 WebKit = imports.gi.WebKit;
 Gtk.init(typeof(Seed) == 'object' ? Seed.argv : null);
 
