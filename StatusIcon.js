@@ -27,7 +27,7 @@ var StatusIcon  = new XObject({
     paused : false, // on!
     xtype : Gtk.StatusIcon,
     title : 'gitlive',
-    stock : Gtk.STOCK_MEDIA_PLAY,
+    stock : Gtk.STOCK_REFRESH,
     tooltip_text : 'GitLive',
         init : function() {
         XObject.prototype.init.call(this);
