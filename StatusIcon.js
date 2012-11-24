@@ -164,7 +164,7 @@ var StatusIcon  = new XObject({
                              
                             
                             imports.GitMonitor.GitMonitor.start();
-                            
+                            this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
                         }
                     }
                 },
