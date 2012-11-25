@@ -88,7 +88,7 @@ XMLHttpRequest.prototype = {
     {
         data = data|| false;
         
-        if (typeof(date) == 'object') {
+        if (typeof(data) == 'object') {
             // params..
             data = this.urlEncode(data);
         }
