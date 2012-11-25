@@ -23,7 +23,7 @@ Tasks = {
     commitRepo : false, // the DB version of repo info..
     lastCommit : false,
     
-    lastPrompt : false, // time when the system last prompted a confirmation that a task is being worked on.
+    nextPrompt : false, // time when the system last prompted a confirmation that a task is being worked on.
     
     
     notifyIdle : function()
@@ -165,7 +165,7 @@ Tasks = {
             return;
             
         }
-        if (this.lastPrompt) {
+        if (this.lastPrompt > ) {
             
         }
         
@@ -178,7 +178,7 @@ Tasks = {
     promptForTask : function()
     {
         /// fixme...
-        
+        this.nextPrompt = (new Date()).add(Date.MINUTE, 60);
         
         
     }
