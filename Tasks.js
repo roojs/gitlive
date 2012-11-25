@@ -209,9 +209,9 @@ Tasks = {
         var reot = Date.parseDate(eot.format('Y-m-d H:') + (min ? min : '00') + ':00', 'Y-m-d H:i:s');
         
         // how long between start and reot...
-        var span = reot - this.curTask.active_datetime;
+        var hours = (reot - this.curTask.active_datetime) / (60*60 * 1000 );
         
-        
+        ((new Date()) - st) / (60*60 * 1000 )
         this.updateTask({ qtyvalue : 1 });
         
         
