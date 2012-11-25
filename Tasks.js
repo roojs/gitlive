@@ -106,7 +106,7 @@ Tasks = {
                   
                 var res = JSON.parse(this.responseText);
                 
-                //print(JSON.stringify(res,null,4))
+                print(JSON.stringify(res,null,4))
                 //print([ res.success , res.data.length ]);
                 _this.commitRepo = (res.success && res.data.length) ? currRepores.data[0] : false;
                 print(JSON.stringify(_this.commit))
