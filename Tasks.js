@@ -162,6 +162,9 @@ Tasks = {
         var now = new Date();
         
         if (!this.nextPrompt && this.curTask) {
+            //var use_start = this.curTask.active_datetime < now ? now : 
+            // if we have a task, then the next verification should be 1 hour after it started.
+            // even if we have only just seen it.. so we could already need verification.
             this.nextPrompt = this.curTask.active_datetime; // the start time recorded in the database.
         }
         
