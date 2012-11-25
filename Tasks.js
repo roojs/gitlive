@@ -160,6 +160,20 @@ Tasks = {
           
          */
         var now = new Date();
+        if ( this.curTask) {
+            var endoftask = this.activeTask.active_datetime.add(Date.HOUR, this.activeTask.qtyvalue);
+            var max_stretch = now.add(Date.HOUR, 1);
+            if (endoftask > max_stretch) {
+                this.fixEndCurrTask();
+            }
+            
+            
+        }
+        
+        
+        
+        
+
         
         if (!this.nextPrompt && this.curTask) {
             //var use_start = this.curTask.active_datetime < now ? now : 
