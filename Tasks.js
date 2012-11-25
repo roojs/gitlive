@@ -23,6 +23,12 @@ Tasks = {
     commitRepo : false, // the DB version of repo info..
     lastCommit : false,
     
+    
+    notifyIdle : function()
+    {
+        
+    },
+    
     notify : function(commit)
     {
         if (this.inQuery && this.inQuery > (new Date())) {
@@ -38,9 +44,10 @@ Tasks = {
         this.commitRepo = false;
         this.curTask = false;
         this.fetchTask();
-        
-        
     },
+    
+    
+    
     fetchTask: function()
     {
         // have we got the status in the last 15 mins..
@@ -82,13 +89,27 @@ Tasks = {
     {
         // using curTask + lastCommit decide what to do.
         
-        
-        
-        
+        //tests:::
+        this.verifyTaskTime();
+        this.verifyTaskProject();
+          
         
         this.inQuery = 0;
         
     },
+    
+    verifyTaskTime : function()
+    {
+        // check to see if current task is being planned for too long..
+        // you should only enter task, and allow it to span over an hour.
+        // if you do the whole day on a task, then it will need to verify with you every so often that you
+        // need to confirm that you are still working on it..
+        
+        
+        
+        
+    }
+    
     
     fetchRepo: function()
     {
