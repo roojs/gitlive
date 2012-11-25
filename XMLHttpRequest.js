@@ -87,6 +87,12 @@ XMLHttpRequest.prototype = {
     send  : function(data)
     {
         data = data|| false;
+        
+        if (typeof(date) == 'object') {
+            // params..
+            
+        }
+        
         if (data) {
             this._message.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, data, data.length)
         }
