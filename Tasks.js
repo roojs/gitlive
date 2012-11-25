@@ -160,7 +160,7 @@ Tasks = {
          
         // are we working on the same project!!!!
         if (this.currTask.project_id != this.commitRepo.project_id) {
-              this.promptForTask();
+            this.promptForTask();
             return;
         }
   
