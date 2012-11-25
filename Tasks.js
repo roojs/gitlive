@@ -222,7 +222,7 @@ Tasks = {
         var rounded =  Math.round(hours * 4) / 4.0;
         print("Rounded : "  + rounded);
         return;
-        this.updateTask({ qtyvalue : rounded });
+        this.update//Task({ qtyvalue : rounded });
         
         
     },
