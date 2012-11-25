@@ -98,7 +98,7 @@ Task = XObject.define(
             return;
         } 
         XObject.extend(this,cfg);
-        print("CFG not oboject?");
+ 
         // fix up the values.
         this.action_dt = Date.parseDate(this.action_dt,'Y-m-d H:i:s');
         
