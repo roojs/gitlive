@@ -208,7 +208,7 @@ Tasks = {
         
         
         
-    }
+    },
     
     promptForTask : function()
     {
