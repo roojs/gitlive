@@ -157,25 +157,31 @@ Tasks = {
             return;
         }
         
+         
+        // are we working on the same project!!!!
+        if (this.currTask.project_id != this.commitRepo.project_id) {
+              this.promptForTask();
+            return;
+        }
+  
+        
         
         
         var now = new Date();
-        if ( this.curTask) {
-            print(JSON.stringify(this.curTask));
-            
-            var endoftask = this.curTask.action_datetime.add(Date.HOUR, this.curTask.qtyvalue);
-            print("END OF TASK: " + endoftask);
-            
-            var max_stretch = now.add(Date.HOUR, 1);
-             print("Max stretch: " + max_stretch);
-            if (endoftask > max_stretch) {
-                this.fixEndCurrTask(); //
-                
-            }
-            // still needs to be verified..
+        
+        print(JSON.stringify(this.curTask));
+        
+        var endoftask = this.curTask.action_datetime.add(Date.HOUR, this.curTask.qtyvalue);
+        print("END OF TASK: " + endoftask);
+        
+        var max_stretch = now.add(Date.HOUR, 1);
+         print("Max stretch: " + max_stretch);
+        if (endoftask > max_stretch) {
+            this.fixEndCurrTask(); //
             
         }
-        
+        // still needs to be verified..
+       
         
         
         
