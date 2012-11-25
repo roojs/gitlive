@@ -162,7 +162,7 @@ Tasks = {
          */
         var now = new Date();
         if ( this.curTask) {
-            var endoftask = this.activeTask.active_datetime.add(Date.HOUR, this.activeTask.qtyvalue);
+            var endoftask = this.curTask.active_datetime.add(Date.HOUR, this.curTask.qtyvalue);
             print("END OF TASK: " + endoftask);
             
             var max_stretch = now.add(Date.HOUR, 1);
