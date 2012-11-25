@@ -88,21 +88,21 @@ Tasks = {
     repoProject: function(repo)
     {
         var r = new XMLHttpRequest({
-        onreadystatechange : function() {
-            print("Got result.");
-            if (this.status != 4) {
-                return;
+            onreadystatechange : function() {
+                print("Got result.");
+                if (this.status != 4) {
+                    return;
+                }
+                
+                  
+                var res = JSON.parse(this.responseText);
+                
+                //print(JSON.stringify(res,null,4))
+                //print([ res.success , res.data.length ]);
+                _this.currRepo = (res.success && res.data.length) ? currRepores.data[0] : false;
+                
+                _this.verifyCommit();
             }
-            
-              
-            var res = JSON.parse(this.responseText);
-            
-            //print(JSON.stringify(res,null,4))
-            //print([ res.success , res.data.length ]);
-            _this.currRepo = (res.success && res.data.length) ? currRepores.data[0] : false;
-            
-            _this.verifyCommit();
-        }
             
         });
         var netrc  = Netrc.forHost('git.roojs.com');
