@@ -164,7 +164,8 @@ Tasks = {
             var endoftask = this.activeTask.active_datetime.add(Date.HOUR, this.activeTask.qtyvalue);
             var max_stretch = now.add(Date.HOUR, 1);
             if (endoftask > max_stretch) {
-                this.fixEndCurrTask();
+                this.fixEndCurrTask(); //
+                 
             }
             
             
