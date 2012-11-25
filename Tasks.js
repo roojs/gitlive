@@ -218,7 +218,7 @@ Tasks = {
         this.nextPrompt = (new Date()).add(Date.MINUTE, 60);
         
         
-    }
+    },
     
      updateTask: function(setv)
     {
