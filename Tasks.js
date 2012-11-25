@@ -153,7 +153,8 @@ Tasks = {
          */
         
         if (!this.currTask) {
-            
+             this.promptForTask();
+            return;
         }
         
         
@@ -171,7 +172,7 @@ Tasks = {
                 this.fixEndCurrTask(); //
                 
             }
-            return;
+            // still needs to be verified..
             
         }
         
