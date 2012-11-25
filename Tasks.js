@@ -25,12 +25,15 @@ Tasks = {
     
     notify : function(commit)
     {
-        if (this.inQuery) {
+        if (this.inQuery && this.inQuery > (new Date())) {
             // ignore the notification.. we are currently checking what the current
             // status is.
+            
+            // we need to handle a WTF situation where something below failed... so
+            
             return; 
         }
-        this.inQuery = 1;
+        this.inQuery = (new Date()).add(Date.MINUTE, 5);
         this.lastCommit = commit;
         this.fetchTask();
         
