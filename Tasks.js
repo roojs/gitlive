@@ -182,5 +182,5 @@ Task = XObject.define(
 //-------------- testing
 Gtk = imports.gi.Gtk;
 Gtk.init(Seed.argv);
-Tasks.notify( { repo : imports.Scm.Repo.Repo.get('web.xtuple'); );
+Tasks.notify( { repo : imports.Scm.Repo.Repo.get('web.xtuple') } );
 Gtk.main();
