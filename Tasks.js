@@ -159,7 +159,7 @@ Tasks = {
                 
           
          */
-        if (!this.lastPrompt) {
+        if (!this.nextPrompt || (this.nextPrompt < (new Date())) {
             
             this.promptForTask();
             return;
