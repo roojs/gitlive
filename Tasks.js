@@ -162,8 +162,7 @@ Tasks = {
         
         if (!this.nextPrompt && this.curTask) {
             this.nextPrompt = this.curTask.active_datetime; // the start time recorded in the database.
-            
-            
+             
         }
         
         
