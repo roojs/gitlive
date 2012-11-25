@@ -130,13 +130,13 @@ Tasks = {
     verifyCommit : function()
     {
         // using curTask + lastCommit decide what to do.
-        
+        this.inQuery = 0;
         //tests:::
         this.verifyTaskTime();
         this.verifyTaskProject();
           
         
-        this.inQuery = 0;
+        
         
     },
     
