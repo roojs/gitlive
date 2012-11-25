@@ -259,8 +259,7 @@ Tasks = {
                 //print([ res.success , res.data.length ]);
                 _this.curTask = (res.success && res.data.length) ? (new Task(res.data[0])) : false;
                 print(JSON.stringify(_this.curTask,null,4));
-                _this.fetchRepo();
-            }
+             }
             
         });
         var netrc  = Netrc.forHost('git.roojs.com');
