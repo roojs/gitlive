@@ -208,6 +208,11 @@ Tasks = {
         var min = Math.round((eot.format('i')*1) / 15) * 15;
         var reot = Date.parseDate(eot.format('Y-m-d H:') + (min ? min : '00') + ':00', 'Y-m-d H:i:s');
         
+        // how long between start and reot...
+        var span = reot - this.curTask.active_datetime;
+        
+        
+        this.updateTask({ qtyvalue : 1 });
         
         
     },
