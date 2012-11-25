@@ -94,10 +94,11 @@ Task = XObject.define(
     function(cfg) {
         // cal parent?
         if (typeof(cfg) != 'object') {
+            print("CFG not oboject?");
             return;
         } 
-        XObject.extend(cfg);
-        
+        XObject.extend(this,cfg);
+        print("CFG not oboject?");
         // fix up the values.
         this.action_dt = Date.parseDate(this.action_dt,'Y-m-d H:i:s');
         
