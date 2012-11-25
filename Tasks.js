@@ -117,7 +117,7 @@ Tasks = {
         var netrc  = Netrc.forHost('git.roojs.com');
         
         r.open('GET',
-               "http://roojs.com/admin.php/Roo/mtrack_repo?name=" + repo.name
+               "http://roojs.com/admin.php/Roo/mtrack_repos?name=" + repo.name
                ,true, netrc.login, netrc.password  );
         //print("SEding request");        
         r.send();
