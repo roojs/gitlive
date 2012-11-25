@@ -23,7 +23,7 @@ Tasks = {
     commitRepo : false, // the DB version of repo info..
     lastCommit : false,
     
-    history : {},
+    startTimes : {}, // map of task, and when work started on it.
     
     
     notifyIdle : function()
