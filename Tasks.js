@@ -57,7 +57,7 @@ Tasks = {
                 //print(JSON.stringify(res,null,4))
                 //print([ res.success , res.data.length ]);
                 _this.curTask = (res.success && res.data.length) ? (new Task(res.data[0])) : false;
-               print(JSON.stringify(_this.curTask,null,4));
+                print(JSON.stringify(_this.curTask,null,4));
                 _this.verifyCommit();
             }
             
@@ -77,9 +77,45 @@ Tasks = {
         // using curTask + lastCommit decide what to do.
         
         
+        
+        
+        
         this.inQuery = 0;
         
+    },
+    
+    repoProject: function(repo)
+    {
+        var r = new XMLHttpRequest({
+        onreadystatechange : function() {
+            print("Got result.");
+            if (this.status != 4) {
+                return;
+            }
+            
+              
+            var res = JSON.parse(this.responseText);
+            
+            //print(JSON.stringify(res,null,4))
+            //print([ res.success , res.data.length ]);
+            _this.curTask = (res.success && res.data.length) ? (new Task(res.data[0])) : false;
+            print(JSON.stringify(_this.curTask,null,4));
+            _this.verifyCommit();
+        }
+            
+        });
+        var netrc  = Netrc.forHost('git.roojs.com');
+        
+        r.open('GET',
+               "http://roojs.com/admin.php/Roo/mtrack_repo?name=" + repo.name
+               ,true, netrc.login, netrc.password  );
+        //print("SEding request");        
+        r.send();
+        
+        
     }
+    
+    
     
     
     
