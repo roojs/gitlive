@@ -154,16 +154,16 @@ XMLHttpRequest.prototype = {
         }
         var buf = [];
         for(var key in o){
-            var ov = o[key], k = Roo.encodeURIComponent(key);
+            var ov = o[key], k = encodeURIComponent(key);
             var type = typeof ov;
             if(type == 'undefined'){
                 buf.push(k, "=&");
             }else if(type != "function" && type != "object"){
-                buf.push(k, "=", Roo.encodeURIComponent(ov), "&");
+                buf.push(k, "=", encodeURIComponent(ov), "&");
             }else if(ov instanceof Array){
                 if (ov.length) {
                     for(var i = 0, len = ov.length; i < len; i++) {
-                        buf.push(k, "=", Roo.encodeURIComponent(ov[i] === undefined ? '' : ov[i]), "&");
+                        buf.push(k, "=", encodeURIComponent(ov[i] === undefined ? '' : ov[i]), "&");
                     }
                 } else {
                     buf.push(k, "=&");
