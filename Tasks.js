@@ -23,7 +23,7 @@ Tasks = {
     commitRepo : false, // the DB version of repo info..
     lastCommit : false,
     
-    startTimes : {}, // map of task, and when work started on it.
+    lastPrompt : false, // map of task, and when work started on it.
     
     
     notifyIdle : function()
@@ -106,6 +106,19 @@ Tasks = {
         // you should only enter task, and allow it to span over an hour.
         // if you do the whole day on a task, then it will need to verify with you every so often that you
         // need to confirm that you are still working on it..
+        
+        /*
+          
+           Example:
+           
+            Start at 10am, marked working on it till 3pm.
+            
+            So:
+                at 11am, the system will pop up a warning - are you still working on it?
+                -> if yes pressed, then next warning will be at 11pm
+          
+          
+         */
         
         
         
