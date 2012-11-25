@@ -223,7 +223,7 @@ Tasks = {
         print("Rounded : "  + rounded);
         //return;
         this.updateTask({ qtyvalue : rounded });
-        
+        this.curTask.qtyvalue = rounded;
         
     },
     
