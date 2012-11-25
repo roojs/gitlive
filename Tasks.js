@@ -198,6 +198,18 @@ Tasks = {
     
     //---------- end verifying - now prompting..
     
+    
+    fixEndCurrTask: function()
+    {
+        // set the end time of the current task to be now + 1 hours at most...
+        var now = new Date();
+        var eot = now.add(Date.HOUR, 1);
+        // now round it down to nearest 15 minutes..
+        
+        
+        
+    }
+    
     promptForTask : function()
     {
         /// fixme...
