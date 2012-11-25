@@ -148,6 +148,30 @@ XMLHttpRequest.prototype = {
     {
         
     }
-   
+    urlEncode : function(o){
+        if(!o){
+            return "";
+        }
+        var buf = [];
+        for(var key in o){
+            var ov = o[key], k = Roo.encodeURIComponent(key);
+            var type = typeof ov;
+            if(type == 'undefined'){
+                buf.push(k, "=&");
+            }else if(type != "function" && type != "object"){
+                buf.push(k, "=", Roo.encodeURIComponent(ov), "&");
+            }else if(ov instanceof Array){
+                if (ov.length) {
+                    for(var i = 0, len = ov.length; i < len; i++) {
+                        buf.push(k, "=", Roo.encodeURIComponent(ov[i] === undefined ? '' : ov[i]), "&");
+                    }
+                } else {
+                    buf.push(k, "=&");
+                }
+            }
+        }
+        buf.pop();
+        return buf.join("");
+    },
     
 };
