@@ -108,7 +108,7 @@ Tasks = {
         
         
         
-    }
+    },
     
     
     fetchRepo: function()
