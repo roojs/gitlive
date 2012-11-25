@@ -133,13 +133,14 @@ var StatusIcon  = new XObject({
                             for (var i= 0; i< tr.length;i++) {
                                 this.parent.parent.el.set_from_stock( i%2 ?  Gtk.STOCK_FULLSCREEN : Gtk.STOCK_LEAVE_FULLSCREEN );
                                 
-                                
                                 var repo = tr[i];
                                 if (!repo.autocommit()) {
                                     //??? should we ignore ones not on autocommit..
                                     continue;
                                 }
-                                try { 
+                                try {
+                                    this.parent.parent.el.set_tooltip_text("pull: " + repo.name);
+                               
                                     var str = repo.pull();
                                     // do not care if it's already in sycn..
                                     if (str.match(/Already up-to-date/)) {
@@ -160,7 +161,8 @@ var StatusIcon  = new XObject({
 
                                 }
                             }
-                            
+                            this.parent.parent.el.set_tooltip_text(this.parent.parent.tooltip_text);
+                               
                             
                              
                           
