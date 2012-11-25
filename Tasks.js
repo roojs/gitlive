@@ -162,6 +162,8 @@ Tasks = {
          */
         var now = new Date();
         if ( this.curTask) {
+            print(this.curTask.active_datetime);
+            
             var endoftask = this.curTask.active_datetime.add(Date.HOUR, this.curTask.qtyvalue);
             print("END OF TASK: " + endoftask);
             
