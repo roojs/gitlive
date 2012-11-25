@@ -210,9 +210,7 @@ Tasks = {
         
         // how long between start and reot...
         var hours = (reot - this.curTask.active_datetime) / (60*60 * 1000 );
-        
-        ((new Date()) - st) / (60*60 * 1000 )
-        this.updateTask({ qtyvalue : 1 });
+                this.updateTask({ qtyvalue : 1 });
         
         
     },
