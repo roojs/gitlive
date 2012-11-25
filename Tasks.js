@@ -23,6 +23,8 @@ Tasks = {
     commitRepo : false, // the DB version of repo info..
     lastCommit : false,
     
+    history : [],
+    
     
     notifyIdle : function()
     {
@@ -104,6 +106,7 @@ Tasks = {
         // you should only enter task, and allow it to span over an hour.
         // if you do the whole day on a task, then it will need to verify with you every so often that you
         // need to confirm that you are still working on it..
+        
         
         
         
