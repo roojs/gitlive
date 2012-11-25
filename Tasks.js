@@ -165,7 +165,9 @@ Tasks = {
             return;
             
         }
-        if (this.lastPrompt)
+        if (this.lastPrompt) {
+            
+        }
         
         
         
