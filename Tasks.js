@@ -116,10 +116,14 @@ Tasks = {
             So:
                 at 11am, the system will pop up a warning - are you still working on it?
                 -> if yes pressed, then next warning will be at 11pm
-          
+                
           
          */
-        
+        if (!lastPrompt) {
+            
+            this.promptForTask();
+            
+        }
         
         
         
