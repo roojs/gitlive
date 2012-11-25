@@ -147,7 +147,7 @@ XMLHttpRequest.prototype = {
     getAllResponseHeaders : function ()
     {
         
-    }
+    },
     urlEncode : function(o){
         if(!o){
             return "";
