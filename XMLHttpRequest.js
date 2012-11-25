@@ -90,7 +90,7 @@ XMLHttpRequest.prototype = {
         
         if (typeof(date) == 'object') {
             // params..
-            
+            data = this.urlEncode(data);
         }
         
         if (data) {
