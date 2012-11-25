@@ -85,7 +85,7 @@ Tasks = {
         
     },
     
-    repoProject: function(repo)
+    fetchRepo: function(repo)
     {
          _this = this;
         var r = new XMLHttpRequest({
