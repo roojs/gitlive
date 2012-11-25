@@ -205,6 +205,8 @@ Tasks = {
         var now = new Date();
         var eot = now.add(Date.HOUR, 1);
         // now round it down to nearest 15 minutes..
+        var min = Math.round((eot.format('i')*1) / 15) * 15;
+        var reot = Date.parseDate(eot.format('Y-m-d H:') + (min ? min : '00') + ':00', 'Y-m-d H:i:s');
         
         
         
