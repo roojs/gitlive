@@ -164,7 +164,9 @@ Tasks = {
             return;
         }
   
-        
+        // has the ticket been closed...
+  
+        // now working on same project..
         
         
         var now = new Date();
