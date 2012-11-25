@@ -59,7 +59,7 @@ Tasks = {
                 //print([ res.success , res.data.length ]);
                 _this.curTask = (res.success && res.data.length) ? (new Task(res.data[0])) : false;
                 print(JSON.stringify(_this.curTask,null,4));
-                _this.verifyCommit();
+                _this.repoProject();
             }
             
         });
