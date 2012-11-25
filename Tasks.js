@@ -159,12 +159,13 @@ Tasks = {
                 
           
          */
-        if (!lastPrompt) {
+        if (!this.lastPrompt) {
             
             this.promptForTask();
+            return;
             
         }
-        
+        if (this.lastPrompt)
         
         
         
