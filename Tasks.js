@@ -108,7 +108,7 @@ Tasks = {
                 
                 print(JSON.stringify(res,null,4))
                 //print([ res.success , res.data.length ]);
-                _this.commitRepo = (res.success && res.data.length) ? currRepores.data[0] : false;
+                _this.commitRepo = (res.success && res.data.length) ? res.data[0] : false;
                 print(JSON.stringify(_this.commit))
                 _this.verifyCommit();
             }
@@ -117,7 +117,7 @@ Tasks = {
         var netrc  = Netrc.forHost('git.roojs.com');
         
         r.open('GET',
-               "http://roojs.com/admin.php/Roo/mtrack_repos?shortname=" + repo.name
+               "http://roojs.com/admin.php/Roo/mtrack_repos?short name=" + repo.name
                ,true, netrc.login, netrc.password  );
         //print("SEding request");        
         r.send();
