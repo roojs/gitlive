@@ -35,6 +35,8 @@ Tasks = {
         }
         this.inQuery = (new Date()).add(Date.MINUTE, 5);
         this.lastCommit = commit;
+        this.commitRepo = false;
+        this.curTask = false;
         this.fetchTask();
         
         
