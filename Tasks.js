@@ -99,8 +99,8 @@ Tasks = {
             
             //print(JSON.stringify(res,null,4))
             //print([ res.success , res.data.length ]);
-            _this.currRepo = (res.success && res.data.length) ? currRepores.data[0])) : false;
-            print(JSON.stringify(_this.curTask,null,4));
+            _this.currRepo = (res.success && res.data.length) ? currRepores.data[0] : false;
+            
             _this.verifyCommit();
         }
             
