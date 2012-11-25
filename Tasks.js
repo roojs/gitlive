@@ -238,7 +238,7 @@ Tasks = {
         args.id = _this.curTask.id;
         
         
-        print(JSON.stringify(args));
+        //print(JSON.stringify(args));
         //return;
     
     
