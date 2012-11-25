@@ -157,7 +157,11 @@ Tasks = {
             return;
         }
         
-         
+         if (!this.currTask.project_id) {
+            this.promptForTask();
+            return;
+        }
+        
         // are we working on the same project!!!!
         if (this.currTask.project_id != this.commitRepo.project_id) {
             this.promptForTask();
@@ -165,7 +169,20 @@ Tasks = {
         }
   
         // has the ticket been closed...
-  
+        
+        var is_project=  this.curTask.project_id_code[0] != '*' ;
+        // is there a ticket?
+        if (is_project && !this.currTask.ticket_id) {
+            this.promptForTask();
+            return;
+        }
+        if (is_project && this.currTask.ticket_status) {
+            //TODO - if status is closed.. then we need to prompt..
+            
+            
+        }
+        
+        
         // we now working on same project..
         
         
