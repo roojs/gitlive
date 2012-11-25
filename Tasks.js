@@ -20,7 +20,7 @@ Date = imports.Date.Date;
 Tasks = {
     
     curTask : false,
-    commitRepo : false,
+    commitRepo : false, // the DB version of repo info..
     lastCommit : false,
     
     notify : function(commit)
