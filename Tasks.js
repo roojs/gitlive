@@ -257,8 +257,7 @@ Tasks = {
                 
                 print(JSON.stringify(res,null,4))
                 //print([ res.success , res.data.length ]);
-                 print(JSON.stringify(_this.curTask,null,4));
-             }
+                  }
             
         });
         var netrc  = Netrc.forHost('git.roojs.com');
