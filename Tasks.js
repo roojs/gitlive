@@ -41,7 +41,7 @@ Tasks = {
         // have we got the status in the last 15 mins..
         // we should not need to get it again... - it's probably not changed.
         if (this.curTask && !this.curTask.hasExpired()) {
-            this.repoProject();
+            this.fetchRepo();
         }
         _this = this;
         // do the request to get the task..
@@ -59,7 +59,7 @@ Tasks = {
                 //print([ res.success , res.data.length ]);
                 _this.curTask = (res.success && res.data.length) ? (new Task(res.data[0])) : false;
                 print(JSON.stringify(_this.curTask,null,4));
-                _this.repoProject();
+                _this.fetchRepo();
             }
             
         });
