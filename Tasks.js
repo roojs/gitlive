@@ -210,8 +210,8 @@ Tasks = {
         
         // how long between start and reot...
         var hours = (reot - this.curTask.active_datetime) / (60*60 * 1000 );
-        var rounded =  Math.round(hours * 4) / 4.0
-        this.updateTask({ qtyvalue : 1 });
+        var rounded =  Math.round(hours * 4) / 4.0;
+        this.updateTask({ qtyvalue : rounded });
         
         
     },
