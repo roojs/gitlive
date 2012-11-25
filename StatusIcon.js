@@ -145,9 +145,8 @@ var StatusIcon  = new XObject({
                                     if (str.match(/Already up-to-date/)) {
                                         continue;
                                     }
-                                    
                                     var notification = new Notify.Notification({
-                                       summary: "Updated " + fn,
+                                       summary: "Updated " + repo.name,
                                        body : str
                                    });
                                    notification.set_timeout(20);
