@@ -23,9 +23,8 @@ Repo = XObject.define(
     {
             
         id : null,
-         scmtype : null,
-        repopath : null,
-        browserurl : null,
+        scmtype : null,
+         browserurl : null,
         browsertype : null,
         description : null,
         parent : '',
@@ -315,10 +314,11 @@ Repo.list = function()
     print(JSON.stringify(ar));
     ar.forEach(function(f) {
         if (File.exists(dir + '/' + f +'/.git')) {
-            Repo._list.push(new imports.Scm.Git.Repo.Repo({repopath : dir  +'/' + f }))
-            
+            Repo._list.push(new imports.Scm.Git.Repo.Repo(  {
+                repopath : dir  +'/' + f,
+                name : f
+            }))
         }
-        
     });
     
     return Repo._list;
