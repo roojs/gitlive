@@ -101,7 +101,7 @@ Task = XObject.define(
  
         // fix up the values.
         this.action_dt = Date.parseDate(this.action_dt,'Y-m-d H:i:s');
-       print("ACT DT: " + this.action_dt);
+      // print("ACT DT: " + this.action_dt);
         
     },
     Object,
