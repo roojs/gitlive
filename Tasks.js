@@ -165,7 +165,7 @@ Tasks = {
         
         
         
-    }
+    },
     
     //---------- end verifying - now prompting..
     
