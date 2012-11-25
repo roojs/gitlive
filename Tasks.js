@@ -165,6 +165,7 @@ Tasks = {
             print("END OF TASK: " + endoftask);
             
             var max_stretch = now.add(Date.HOUR, 1);
+             print("Max stretch: " + max_stretch);
             if (endoftask > max_stretch) {
                 this.fixEndCurrTask(); //
                  
