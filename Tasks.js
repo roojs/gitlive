@@ -237,6 +237,11 @@ Tasks = {
         XObject.extend(args,setv);
         args.id = _this.curTask.id;
         
+        
+        print(JSON.stringify(args));
+        return;
+    
+    
          _this = this;
          // do the request to get the task..
         var r = new XMLHttpRequest({
