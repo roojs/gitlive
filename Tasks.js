@@ -87,6 +87,7 @@ Tasks = {
     
     repoProject: function(repo)
     {
+         _this = this;
         var r = new XMLHttpRequest({
             onreadystatechange : function() {
                 print("Got result.");
@@ -99,8 +100,8 @@ Tasks = {
                 
                 //print(JSON.stringify(res,null,4))
                 //print([ res.success , res.data.length ]);
-                _this.currRepo = (res.success && res.data.length) ? currRepores.data[0] : false;
-                
+                _this.commitRepo = (res.success && res.data.length) ? currRepores.data[0] : false;
+                print(JSON.stringify(_this.commit))
                 _this.verifyCommit();
             }
             
