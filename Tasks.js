@@ -164,7 +164,7 @@ Tasks = {
         if ( this.curTask) {
             print(JSON.stringify(this.curTask));
             
-            var endoftask = this.curTask.active_datetime.add(Date.HOUR, this.curTask.qtyvalue);
+            var endoftask = this.curTask.action_datetime.add(Date.HOUR, this.curTask.qtyvalue);
             print("END OF TASK: " + endoftask);
             
             var max_stretch = now.add(Date.HOUR, 1);
@@ -183,10 +183,10 @@ Tasks = {
 
         
         if (!this.nextPrompt && this.curTask) {
-            //var use_start = this.curTask.active_datetime < now ? now : 
+            //var use_start = this.curTask.action_datetime < now ? now : 
             // if we have a task, then the next verification should be 1 hour after it started.
             // even if we have only just seen it.. so we could already need verification.
-            this.nextPrompt = this.curTask.active_datetime; // the start time recorded in the database.
+            this.nextPrompt = this.curTask.action_datetime; // the start time recorded in the database.
         }
         
         
@@ -215,7 +215,7 @@ Tasks = {
         var reot = Date.parseDate(eot.format('Y-m-d H:') + (min ? min : '00') + ':00', 'Y-m-d H:i:s');
         
         // how long between start and reot...
-        var hours = (reot - this.curTask.active_datetime) / (60*60 * 1000 );
+        var hours = (reot - this.curTask.action_datetime) / (60*60 * 1000 );
         var rounded =  Math.round(hours * 4) / 4.0;
         print("Rounded : "  + rounded);
        // this.updateTask({ qtyvalue : rounded });
