@@ -41,7 +41,7 @@ Tasks = {
         // have we got the status in the last 15 mins..
         // we should not need to get it again... - it's probably not changed.
         if (this.curTask && !this.curTask.hasExpired()) {
-            this.verifyCommit();
+            this.repoProject();
         }
         _this = this;
         // do the request to get the task..
