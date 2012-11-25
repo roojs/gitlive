@@ -100,7 +100,7 @@ Task = XObject.define(
         XObject.extend(this,cfg);
  
         // fix up the values.
-        this.action_dt = Date.parseDate(this.action_dt,'Y-m-d H:i:s');
+        this.action_datetime = Date.parseDate(this.action_dt,'Y-m-d H:i:s');
       // print("ACT DT: " + this.action_dt);
         
     },
@@ -117,7 +117,7 @@ Task = XObject.define(
         hasExpired : function()
         {
             
-            var exp = this.action_dt.add(Date.HOUR, this.qtyvalue);
+            var exp = this.action_datetime.add(Date.HOUR, this.qtyvalue);
             return (new Date()) > exp;  
             
         }
