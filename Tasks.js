@@ -246,7 +246,7 @@ Tasks = {
                     return;
                 }
                 
-                 print( this.responseText))
+                 print( this.responseText)
                  
                 var res = JSON.parse(this.responseText);
                 
