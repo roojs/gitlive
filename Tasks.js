@@ -212,7 +212,7 @@ Tasks = {
         var hours = (reot - this.curTask.active_datetime) / (60*60 * 1000 );
         var rounded =  Math.round(hours * 4) / 4.0;
         print("Rounded : "  + rounded);
-        this.updateTask({ qtyvalue : rounded });
+       // this.updateTask({ qtyvalue : rounded });
         
         
     },
