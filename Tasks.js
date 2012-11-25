@@ -215,7 +215,7 @@ Tasks = {
         var reot = Date.parseDate(eot.format('Y-m-d H:') + (min ? min : '00') + ':00', 'Y-m-d H:i:s');
         
         print("REAL END TIME" + reot.format('Y-m-d H:i:s'))
-        print("Current start time" + his.curTask.action_datetime.format('Y-m-d H:i:s'))
+        print("Current start time" + this.curTask.action_datetime.format('Y-m-d H:i:s'))
         
         // how long between start and reot...
         var hours = (reot - this.curTask.action_datetime) / (60*60 * 1000 );
