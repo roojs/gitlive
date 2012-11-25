@@ -222,7 +222,9 @@ Tasks = {
     
      updateTask: function(setv)
     {
-        
+        var args = {};
+        XObject.extend(args,setv);
+        args.id = _this.curTask.id;
         
          _this = this;
          // do the request to get the task..
