@@ -94,6 +94,7 @@ Tasks = {
     {
         
         var repo = this.lastCommit.repo;
+        
          _this = this;
         var r = new XMLHttpRequest({
             onreadystatechange : function() {
@@ -181,5 +182,5 @@ Task = XObject.define(
 //-------------- testing
 Gtk = imports.gi.Gtk;
 Gtk.init(Seed.argv);
-Tasks.notify(1);
+Tasks.notify( { repo : imports.Scm.Repo.Repo.get('web.xtuple'); );
 Gtk.main();
