@@ -90,8 +90,10 @@ Tasks = {
         
     },
     
-    fetchRepo: function(repo)
+    fetchRepo: function()
     {
+        
+        var repo = commit.reop;
          _this = this;
         var r = new XMLHttpRequest({
             onreadystatechange : function() {
