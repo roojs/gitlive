@@ -23,7 +23,7 @@ Tasks = {
     commitRepo : false, // the DB version of repo info..
     lastCommit : false,
     
-    history : [],
+    history : {},
     
     
     notifyIdle : function()
