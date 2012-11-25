@@ -133,16 +133,7 @@ Tasks = {
         // using curTask + lastCommit decide what to do.
         this.inQuery = 0;
         //tests:::
-        this.verifyTaskTime();
-        this.verifyTaskProject();
-          
-        
-        
-        
-    },
-    
-    verifyTaskTime : function()
-    {
+       
         // check to see if current task is being planned for too long..
         // you should only enter task, and allow it to span over an hour.
         // if you do the whole day on a task, then it will need to verify with you every so often that you
@@ -160,6 +151,13 @@ Tasks = {
                 
           
          */
+        
+        if (!this.currTask) {
+            
+        }
+        
+        
+        
         var now = new Date();
         if ( this.curTask) {
             print(JSON.stringify(this.curTask));
@@ -171,9 +169,9 @@ Tasks = {
              print("Max stretch: " + max_stretch);
             if (endoftask > max_stretch) {
                 this.fixEndCurrTask(); //
-                 
+                
             }
-            
+            return;
             
         }
         
@@ -197,10 +195,16 @@ Tasks = {
             
         }
         
+        // ok verified basic time...
+        //let's check to see if project matches..'
+        
         
         
         
     },
+    
+    
+    
     
     //---------- end verifying - now prompting..
     
