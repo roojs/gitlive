@@ -162,6 +162,8 @@ Tasks = {
         var now = new Date();
         if ( this.curTask) {
             var endoftask = this.activeTask.active_datetime.add(Date.HOUR, this.activeTask.qtyvalue);
+            print("END OF TASK: " + endoftask);
+            
             var max_stretch = now.add(Date.HOUR, 1);
             if (endoftask > max_stretch) {
                 this.fixEndCurrTask(); //
