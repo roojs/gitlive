@@ -166,7 +166,7 @@ Tasks = {
   
         // has the ticket been closed...
   
-        // now working on same project..
+        // we now working on same project..
         
         
         var now = new Date();
