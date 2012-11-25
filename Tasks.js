@@ -123,6 +123,9 @@ Tasks = {
         
     },
     
+        //---------- end fetching - now verifying..
+
+    
     
     verifyCommit : function()
     {
