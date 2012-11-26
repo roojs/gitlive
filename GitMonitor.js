@@ -52,6 +52,19 @@ var GitMonitor = new Monitor({
         GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
             _this.top.forEach(_this.monitor, _this);
             imports.StatusIcon.StatusIcon.el.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
+            
+            try { 
+                var notification = new Notify.Notification({
+                    summary: "Git Live",
+                    body : this.gitlive + "\nMonitoring " + this.monitors.length + " Directories",
+                    timeout : 5
+                });
+        
+                notification.set_timeout(5);
+                notification.show();
+            } catch(e) {
+                print(e.toString());
+            }
 
         });
         
@@ -74,18 +87,7 @@ var GitMonitor = new Monitor({
             return 1;
         },null,null);
         
-        try { 
-            var notification = new Notify.Notification({
-                summary: "Git Live",
-                body : this.gitlive + "\nMonitoring " + this.monitors.length + " Directories",
-                timeout : 5
-            });
-    
-            notification.set_timeout(5);
-            notification.show();
-        } catch(e) {
-            print(e.toString());
-        }
+      
     },
     
     
