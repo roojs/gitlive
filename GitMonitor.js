@@ -56,7 +56,7 @@ var GitMonitor = new Monitor({
             try { 
                 var notification = new Notify.Notification({
                     summary: "Git Live",
-                    body : this.gitlive + "\nMonitoring " + this.monitors.length + " Directories",
+                    body : this.gitlive + "\nMonitoring " + _this.monitors.length + " Directories",
                     timeout : 5
                 });
         
