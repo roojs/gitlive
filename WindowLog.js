@@ -93,6 +93,7 @@ WindowLog = {
         
         File.append (path, time + str + ' ' + cmd + "\n\n");
         
+
         return;
         var auth = imports.Netrc.Netrc.forHost('git.roojs.com');
 
