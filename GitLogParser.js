@@ -140,10 +140,14 @@ GitLogParser = {
     
 
 }
-print(Seed.argv[1]);Seed.exit();
+//print(Seed.argv[2]);Seed.quit();
+if (typeof(Seed.argv[2]) == 'undefined') {
+    print("pick a date");
+    Seed.quit();
+}
 
 
-var res = GitLogParser.parse(xDate.Date.parseDate('2012-07-31', 'Y-m-d'));
+var res = GitLogParser.parse(xDate.Date.parseDate(Seed.argv[2], 'Y-m-d'));
 for (var h in res) {
     for (var p in res[h]) {
         if (p == 'IDLE') {
