@@ -158,7 +158,7 @@ for (var h in res) {
        
         for (var k in res[h][p].items) {
              
-            print( '     ' + Math.floor(res[h][p].items[k].span/60000) +'m ' + res[h][p].items[k].line );
+            //print( '     ' + Math.floor(res[h][p].items[k].span/60000) +'m ' + res[h][p].items[k].line );
                  
         }
         
