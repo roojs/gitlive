@@ -169,7 +169,7 @@ for (var h in res) {
     
 }
 
-JSON.stringify(totals,null,4));
+print(JSON.stringify(totals,null,4));
 
 // open file..
 
