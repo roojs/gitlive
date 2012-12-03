@@ -140,7 +140,7 @@ GitLogParser = {
     
 
 }
-print(Seed.argv[1]);Seed.exit;
+print(Seed.argv[1]);Seed.exit();
 
 
 var res = GitLogParser.parse(xDate.Date.parseDate('2012-07-31', 'Y-m-d'));
