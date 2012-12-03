@@ -168,7 +168,8 @@ for (var h in res) {
     }
     
 }
-
+print("IDLE : " + Math.floor(total.idle/60) +"h\n" );
+print("Worked: " + Math.floor(total.work/60) +"h\n" );
 print(JSON.stringify(totals,null,4));
 
 // open file..
