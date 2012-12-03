@@ -148,14 +148,16 @@ if (typeof(Seed.argv[2]) == 'undefined') {
 
 
 var res = GitLogParser.parse(xDate.Date.parseDate(Seed.argv[2], 'Y-m-d'));
+var totals = { work : 0 , idle: 0}
 for (var h in res) {
     for (var p in res[h]) {
         if (p == 'IDLE') {
             print(h + ' ' + Math.floor(res[h][p].total/60000) +'m IDLE' );
+            totals.idle += Math.floor(res[h][p].total/60000) ;
             continue;
         }
         print(h + ' ' + Math.floor(res[h][p].total/60000) +'m ' + p );  
-       
+        totals.work += Math.floor(res[h][p].total/60000) ;
         for (var k in res[h][p].items) {
              
             //print( '     ' + Math.floor(res[h][p].items[k].span/60000) +'m ' + res[h][p].items[k].line );
@@ -166,7 +168,8 @@ for (var h in res) {
     }
     
 }
-//print(JSON.stringify(res,null,4));
+
+JSON.stringify(totals,null,4));
 
 // open file..
 
