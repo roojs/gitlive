@@ -168,8 +168,8 @@ for (var h in res) {
     }
     
 }
-print("IDLE : " + Math.floor(total.idle/60) +"h\n" );
-print("Worked: " + Math.floor(total.work/60) +"h\n" );
+print("IDLE : " + Math.floor(totals.idle/60) +"h\n" );
+print("Worked: " + Math.floor(totals.work/60) +"h\n" );
  
 
 // open file..
