@@ -140,6 +140,8 @@ GitLogParser = {
     
 
 }
+print(Seed.args);exit;
+
 
 var res = GitLogParser.parse(xDate.Date.parseDate('2012-07-31', 'Y-m-d'));
 for (var h in res) {
