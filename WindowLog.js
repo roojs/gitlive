@@ -91,7 +91,7 @@ WindowLog = {
         var path = dir + (xDate.newDate()).format("/d") + ".log";
         var time = (xDate.newDate()).format("H:i:s ")
         
-        File.append (path, time + str + ' ' + cmd + "\n\n");
+        File.append (path, "\n" +time + str + ' ' + cmd );
         
 
         return;
