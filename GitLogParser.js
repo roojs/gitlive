@@ -193,7 +193,7 @@ for (var h in res) {
     
 }
 print("\nLONGIDLE : " +(totals.idle/60).toFixed(2) +"h" );
-print("\nShort Idle : " +(totals.idle/60).toFixed(2) +"h" );
+print("\nShort Idle : " +(totals.shortidle/60).toFixed(2) +"h" );
 
 print("Worked: " + (totals.work/60).toFixed(2) +"h\n" );
  
