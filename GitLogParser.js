@@ -23,7 +23,9 @@ GitLogParser = {
         // read the lines, and fill in the 'spans'
         
         for (var i = 0; i < flines.length; i++) {
+            print("sl");
             var xl = flines[i].split(/([0-9]{2}:[0-9]{2}:[0-9]{2})/);
+            print("as");
             //print(JSON.stringify(xl));
             for (var ii=1; ii< xl.length; ii+=2) {
                 var p = lines.length;
