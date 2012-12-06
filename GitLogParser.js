@@ -152,8 +152,12 @@ var totals = { work : 0 , idle: 0}
 for (var h in res) {
     for (var p in res[h]) {
         if (p == 'IDLE') {
+            var idletime = Math.floor(res[h][p].total/60000) ;
             print(h + ' ' + Math.floor(res[h][p].total/60000) +'m IDLE' );
-            totals.idle += Math.floor(res[h][p].total/60000) ;
+            if (idletime > 5) {
+                totals.idle += idletime;
+            }
+             
             continue;
         }
         print(h + ' ' + Math.floor(res[h][p].total/60000) +'m ' + p );  
