@@ -128,6 +128,7 @@ GitLogParser = {
             ret.project = 'Unknown';
             return;
         }
+        return 'Unknown';
         throw "Unknown match: " + ret.line;
     },
     '/usr/lib/icedove/icedove-bin' : 'Checking Mail',
