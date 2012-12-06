@@ -18,6 +18,9 @@ GitLogParser = {
         
         
         lines = [];
+        
+        // read the lines, and fill in the 'spans'
+        
         for (var i = 0; i < flines.length; i++) {
             var xl = flines[i].split(/([0-9]{2}:[0-9]{2}:[0-9]{2})/);
             //print(JSON.stringify(xl));
@@ -40,6 +43,9 @@ GitLogParser = {
             var line = lines[i];
             var hour = line.start.format('H');
             var project = line.project;
+            
+            
+            
             hours[hour] = (typeof(hours[hour]) == 'undefined') ? {} : hours[hour];
             hours[hour][project] = (typeof(hours[hour][project]) == 'undefined') ? 
                     { total : 0, items : [] } 
