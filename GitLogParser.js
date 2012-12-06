@@ -45,10 +45,12 @@ GitLogParser = {
         for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
             var hour = line.start.format('H');
+            
+            if (line.project == 'IDLE' && line.spanMin > 5 ) {
+                line.project = 'LONGIDLE';
+            }
+            
             var project = line.project;
-            
-            
-            
             hours[hour] = (typeof(hours[hour]) == 'undefined') ? {} : hours[hour];
             hours[hour][project] = (typeof(hours[hour][project]) == 'undefined') ? 
                     { total : 0, items : [] } 
