@@ -69,7 +69,7 @@ GitLogParser = {
     {
         var ret = { cmd : false,  line : l, span : 0 };
         var ar = l.split(/\s+/);
-        //print(JSON.stringify(ar));
+        print(JSON.stringify(ar));
             
         var time = ar.shift();
         //print("time: " + time);
