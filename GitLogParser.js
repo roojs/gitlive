@@ -159,17 +159,27 @@ if (typeof(Seed.argv[2]) == 'undefined') {
 
 
 var res = GitLogParser.parse(xDate.Date.parseDate(Seed.argv[2], 'Y-m-d'));
-var totals = { work : 0 , idle: 0}
+var totals = { work : 0 , idle: 0, shortidle : 0}
 for (var h in res) {
     for (var p in res[h]) {
         if (p == 'LONGIDLE') {
             var idletime = Math.floor(res[h][p].total/60000) ;
-            print(h + ' ' + Math.floor(res[h][p].total/60000) +'m IDLE' );
+            print(h + ' ' + Math.floor(res[h][p].total/60000) +'m LONGIDLE' );
             totals.idle += idletime;
             
              
             continue;
         }
+        if (p == 'IDLE') {
+            var idletime = Math.floor(res[h][p].total/60000) ;
+            print(h + ' ' + Math.floor(res[h][p].total/60000) +'m SHORT IDLE' );
+            totals.shortidle += idletime;
+            
+             
+            continue;
+        }
+        
+        
         print(h + ' ' + Math.floor(res[h][p].total/60000) +'m ' + p );  
         totals.work += Math.floor(res[h][p].total/60000) ;
         for (var k in res[h][p].items) {
@@ -183,6 +193,8 @@ for (var h in res) {
     
 }
 print("\nLONGIDLE : " +(totals.idle/60).toFixed(2) +"h" );
+print("\nShort Idle : " +(totals.idle/60).toFixed(2) +"h" );
+
 print("Worked: " + (totals.work/60).toFixed(2) +"h\n" );
  
 
