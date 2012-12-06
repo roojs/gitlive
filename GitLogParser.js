@@ -108,6 +108,9 @@ GitLogParser = {
             print( "Unknown application: " + ret.line);
             throw { error : "TEST"};
         }
+        
+        print(ret.cmd);
+        print(ret.title);
         if (typeof(this[ret.cmd])=='string') {
             ret.project = this[ret.cmd]  
         } else {
