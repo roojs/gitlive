@@ -165,9 +165,8 @@ for (var h in res) {
         if (p == 'LONG') {
             var idletime = Math.floor(res[h][p].total/60000) ;
             print(h + ' ' + Math.floor(res[h][p].total/60000) +'m IDLE' );
-            if (idletime > 5) {
-                totals.idle += idletime;
-            }
+            totals.idle += idletime;
+            
              
             continue;
         }
@@ -183,7 +182,7 @@ for (var h in res) {
     }
     
 }
-print("\nIDLE : " +(totals.idle/60).toFixed(2) +"h" );
+print("\nLONGIDLE : " +(totals.idle/60).toFixed(2) +"h" );
 print("Worked: " + (totals.work/60).toFixed(2) +"h\n" );
  
 
