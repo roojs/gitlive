@@ -46,7 +46,7 @@ GitLogParser = {
             var line = lines[i];
             var hour = line.start.format('H');
             
-            if (line.project == 'IDLE' && line.spanMin > 5 ) {
+            if (line.project == 'IDLE' && line.spanMin >= 5 ) {
                 line.project = 'LONGIDLE';
             }
             
