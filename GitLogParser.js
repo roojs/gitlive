@@ -29,7 +29,7 @@ GitLogParser = {
                 lines.push( this.parseLine(xl[ii] + ' ' + xl[ii+1])); 
                 if (p > 0) {
                     lines[p-1].span = lines[p].start - lines[p-1].start; // should be seconds..?
-                    lines[p-1].spanMin = lines[p-1].span/60000
+                    lines[p-1].spanMin = lines[p-1].span/60000;
                     
                     
                 }
