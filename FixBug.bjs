@@ -188,26 +188,6 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "listeners": {
-                                        "button_press_event": "function (self, event) {\n \n    FixBug.el.hide();\n}"
-                                    },
-                                    "height_request": 90,
-                                    "label": "Not working on Project",
-                                    "pack": "add",
-                                    "xtype": "Button",
-                                    "|xns": "Gtk"
-                                },
-                                {
-                                    "listeners": {
-                                        "button_press_event": "function (self, event) {\n\n   FixBug.el.hide();\n}"
-                                    },
-                                    "id": "ok_button",
-                                    "label": "Working on Selected Ticket",
-                                    "pack": "add",
-                                    "xtype": "Button",
-                                    "|xns": "Gtk"
-                                },
-                                {
                                     "|xns": "Gtk",
                                     "xtype": "ComboBox",
                                     "pack": false

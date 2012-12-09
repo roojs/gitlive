@@ -303,30 +303,6 @@ FixBug=new XObject({
                     pack : "pack_end,false,true,3",
                     items : [
                         {
-                            xtype: Gtk.Button,
-                            listeners : {
-                                button_press_event : function (self, event) {
-                                 
-                                    FixBug.el.hide();
-                                }
-                            },
-                            height_request : 90,
-                            label : "Not working on Project",
-                            pack : "add"
-                        },
-                        {
-                            xtype: Gtk.Button,
-                            listeners : {
-                                button_press_event : function (self, event) {
-                                
-                                   FixBug.el.hide();
-                                }
-                            },
-                            id : "ok_button",
-                            label : "Working on Selected Ticket",
-                            pack : "add"
-                        },
-                        {
                             xtype: Gtk.ComboBox,
                             pack : false
                         },
