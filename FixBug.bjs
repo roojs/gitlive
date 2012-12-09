@@ -147,11 +147,10 @@
                     ]
                 },
                 {
-                    "label": "Cancel",
+                    "label": "Not working on Project",
                     "pack": "add_action_widget,0",
                     "xtype": "Button",
-                    "|xns": "Gtk",
-                    "listeners": {}
+                    "|xns": "Gtk"
                 },
                 {
                     "id": "ok_button",

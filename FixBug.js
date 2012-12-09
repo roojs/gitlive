@@ -282,7 +282,7 @@ FixBug=new XObject({
         },
         {
             xtype: Gtk.Button,
-            label : "Cancel",
+            label : "Not working on Project",
             pack : "add_action_widget,0"
         },
         {
