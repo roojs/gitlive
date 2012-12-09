@@ -158,6 +158,12 @@
                                             "pack": "pack_start,false,true,3",
                                             "xtype": "Entry",
                                             "|xns": "Gtk"
+                                        },
+                                        {
+                                            "label": "Since:",
+                                            "pack": "pack_start,false,true,3",
+                                            "xtype": "Label",
+                                            "|xns": "Gtk"
                                         }
                                     ]
                                 }
