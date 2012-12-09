@@ -111,6 +111,7 @@
                                             "|xns": "Gtk"
                                         },
                                         {
+                                            "pack": "pack_end,false,true,3",
                                             "xtype": "Button",
                                             "|xns": "Gtk"
                                         }
