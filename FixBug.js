@@ -294,6 +294,10 @@ FixBug=new XObject({
                                     xtype: Gtk.Label,
                                     label : "Until",
                                     pack : "pack_start,false,true,3"
+                                },
+                                {
+                                    xtype: Gtk.Entry,
+                                    pack : "pack_start,false,true,3"
                                 }
                             ]
                         }
