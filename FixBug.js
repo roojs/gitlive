@@ -321,7 +321,7 @@ FixBug=new XObject({
                         {
                             xtype: Gtk.Button,
                             label : "Not working on Project",
-                            pack : "add_action_widget,0"
+                            pack : "add"
                         },
                         {
                             xtype: Gtk.Button,
