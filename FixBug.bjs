@@ -189,11 +189,6 @@
                             "items": [
                                 {
                                     "|xns": "Gtk",
-                                    "xtype": "ComboBox",
-                                    "pack": false
-                                },
-                                {
-                                    "|xns": "Gtk",
                                     "xtype": "Label",
                                     "pack": false
                                 },

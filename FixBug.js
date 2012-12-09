@@ -303,10 +303,6 @@ FixBug=new XObject({
                     pack : "pack_end,false,true,3",
                     items : [
                         {
-                            xtype: Gtk.ComboBox,
-                            pack : false
-                        },
-                        {
                             xtype: Gtk.Label,
                             pack : false
                         },
