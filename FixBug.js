@@ -47,14 +47,14 @@ FixBug=new XObject({
         this.get('/ok_button').el.set_sensitive(false);
         
         // block until we return.
-        var run_ret = this.el.run();
-        if (run_ret < 1 ) {
-            return false;
-        }
-        print("RUN RETURN : " + run_ret);
+        //    var run_ret = this.el.run();
+        //    if (run_ret < 1 ) {
+        //        return false;
+        //    }
+        //    print("RUN RETURN : " + run_ret);
         
         //print(JSON.stringify(this.get('bug').getValue()));
-        return this.get('bug').getValue();
+        //return this.get('bug').getValue();
         //this.success = c.success;
     },
     items : [
