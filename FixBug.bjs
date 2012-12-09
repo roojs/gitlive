@@ -90,7 +90,7 @@
                             ]
                         },
                         {
-                            "pack": "pack_start,false,true,3",
+                            "pack": "pack_start,true,true,3",
                             "xtype": "VBox",
                             "|xns": "Gtk",
                             "items": [

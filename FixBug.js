@@ -187,7 +187,7 @@ FixBug=new XObject({
                 },
                 {
                     xtype: Gtk.VBox,
-                    pack : "pack_start,false,true,3",
+                    pack : "pack_start,true,true,3",
                     items : [
                         {
                             xtype: Gtk.HBox,
