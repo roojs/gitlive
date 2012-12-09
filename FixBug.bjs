@@ -185,7 +185,6 @@
                         {
                             "xtype": "HBox",
                             "|xns": "Gtk",
-                            "pack": false,
                             "items": [
                                 {
                                     "label": "Not working on Project",
