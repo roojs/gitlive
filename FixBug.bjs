@@ -62,7 +62,7 @@
                             ]
                         },
                         {
-                            "pack": "pack_start,true,true,3",
+                            "pack": "pack_end,true,true,3",
                             "xtype": "HBox",
                             "|xns": "Gtk",
                             "items": [
