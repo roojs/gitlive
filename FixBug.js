@@ -336,43 +336,6 @@ FixBug=new XObject({
                     ]
                 }
             ]
-        },
-        {
-            xtype: Gtk.HBox,
-            pack : "pack_end,false,true,3",
-            items : [
-                {
-                    xtype: Gtk.Label,
-                    label : "On this project:"
-                },
-                {
-                    xtype: Gtk.ComboBox
-                },
-                {
-                    xtype: Gtk.Button,
-                    listeners : {
-                        button_press_event : function (self, event) {
-                         
-                            FixBug.el.hide();
-                        }
-                    },
-                    height_request : 90,
-                    label : "Not working on Project",
-                    pack : "add"
-                },
-                {
-                    xtype: Gtk.Button,
-                    listeners : {
-                        button_press_event : function (self, event) {
-                        
-                           FixBug.el.hide();
-                        }
-                    },
-                    id : "ok_button",
-                    label : "Working on Selected Ticket",
-                    pack : "add"
-                }
-            ]
         }
     ]
 });
