@@ -19,7 +19,7 @@ FixBug=new XObject({
         show : function (self) {
         print("ON SHOW!");
         
-          //  this.el.fullscreen();
+            this.el.fullscreen();
             this.el.grab_focus();
             this.el.set_keep_above(true);
         }

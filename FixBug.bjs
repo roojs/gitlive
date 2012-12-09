@@ -8,7 +8,7 @@
         {
             "listeners": {
                 "destroy_event": "function (self, event) {\n     this.el.hide();\n                return false;\n}",
-                "show": "function (self) {\nprint(\"ON SHOW!\");\n\n  //  this.el.fullscreen();\n    this.el.grab_focus();\n    this.el.set_keep_above(true);\n}"
+                "show": "function (self) {\nprint(\"ON SHOW!\");\n\n    this.el.fullscreen();\n    this.el.grab_focus();\n    this.el.set_keep_above(true);\n}"
             },
             "border_width": 3,
             "default_height": 400,
