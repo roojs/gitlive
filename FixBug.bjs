@@ -109,12 +109,6 @@
                                             "pack": "pack_start,false,true,3",
                                             "xtype": "Entry",
                                             "|xns": "Gtk"
-                                        },
-                                        {
-                                            "pack": "pack_end,false,true,3",
-                                            "xtype": "Button",
-                                            "|use_stock": "true",
-                                            "|xns": "Gtk"
                                         }
                                     ]
                                 },
