@@ -175,7 +175,7 @@ var StatusIcon  = new XObject({
                         this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_SAVE);
                         XObject.prototype.init.call(this);
                     },
-                    label: 'Manage Clones',
+                    label: 'Update Timesheet',
                     always_show_image : true,
                     accel_group : null,
                     
