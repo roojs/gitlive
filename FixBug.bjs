@@ -179,9 +179,8 @@
                     ]
                 },
                 {
-                    "|xns": "Gtk",
                     "xtype": "HBox",
-                    "pack": false,
+                    "|xns": "Gtk",
                     "items": [
                         {
                             "label": "Not working on Project",
