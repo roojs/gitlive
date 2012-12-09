@@ -179,19 +179,6 @@
                     ]
                 },
                 {
-                    "label": "Not working on Project",
-                    "pack": "add_action_widget,0",
-                    "xtype": "Button",
-                    "|xns": "Gtk"
-                },
-                {
-                    "id": "ok_button",
-                    "label": "Working on Selected Ticket",
-                    "pack": "add_action_widget,1",
-                    "xtype": "Button",
-                    "|xns": "Gtk"
-                },
-                {
                     "|xns": "Gtk",
                     "xtype": "HBox",
                     "pack": false,
