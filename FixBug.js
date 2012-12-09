@@ -325,6 +325,10 @@ FixBug=new XObject({
                             id : "ok_button",
                             label : "Working on Selected Ticket",
                             pack : "add"
+                        },
+                        {
+                            xtype: Gtk.ComboBox,
+                            pack : false
                         }
                     ]
                 }

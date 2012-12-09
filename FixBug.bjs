@@ -206,6 +206,11 @@
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
+                                },
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "ComboBox",
+                                    "pack": false
                                 }
                             ]
                         }
