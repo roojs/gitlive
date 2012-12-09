@@ -101,7 +101,6 @@ FixBug=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.TreeView,
-                                    headers_visible : "",
                                     pack : "add",
                                     init : function() {
                                         XObject.prototype.init.call(this);
