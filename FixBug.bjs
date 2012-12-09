@@ -112,6 +112,7 @@
                                         },
                                         {
                                             "pack": "pack_end,false,true,3",
+                                            "use_stock": "true",
                                             "xtype": "Button",
                                             "|xns": "Gtk"
                                         }

@@ -249,7 +249,8 @@ FixBug=new XObject({
                                 },
                                 {
                                     xtype: Gtk.Button,
-                                    pack : "pack_end,false,true,3"
+                                    pack : "pack_end,false,true,3",
+                                    use_stock : "true"
                                 }
                             ]
                         }
