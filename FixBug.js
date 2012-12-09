@@ -323,7 +323,20 @@ FixBug=new XObject({
         },
         {
             xtype: Gtk.HBox,
-            pack : false
+            pack : false,
+            items : [
+                {
+                    xtype: Gtk.Button,
+                    label : "Not working on Project",
+                    pack : "add_action_widget,0"
+                },
+                {
+                    xtype: Gtk.Button,
+                    id : "ok_button",
+                    label : "Working on Selected Ticket",
+                    pack : "add_action_widget,1"
+                }
+            ]
         }
     ]
 });
