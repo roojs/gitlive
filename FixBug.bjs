@@ -120,6 +120,7 @@
                                     ]
                                 },
                                 {
+                                    "pack": "pack_start,false,true,3",
                                     "xtype": "ScrolledWindow",
                                     "|xns": "Gtk",
                                     "items": [
