@@ -107,6 +107,11 @@
                                     "items": [
                                         {
                                             "|xns": "Gtk",
+                                            "xtype": "Button",
+                                            "pack": false
+                                        },
+                                        {
+                                            "|xns": "Gtk",
                                             "xtype": "Entry",
                                             "pack": false
                                         }
