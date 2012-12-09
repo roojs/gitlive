@@ -106,9 +106,8 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
-                                            "|xns": "Gtk",
                                             "xtype": "Entry",
-                                            "pack": false
+                                            "|xns": "Gtk"
                                         },
                                         {
                                             "|xns": "Gtk",

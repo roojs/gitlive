@@ -244,8 +244,7 @@ FixBug=new XObject({
                             pack : "pack_start,false,true,3",
                             items : [
                                 {
-                                    xtype: Gtk.Entry,
-                                    pack : false
+                                    xtype: Gtk.Entry
                                 },
                                 {
                                     xtype: Gtk.Button,
