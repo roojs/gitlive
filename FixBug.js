@@ -329,10 +329,6 @@ FixBug=new XObject({
                         {
                             xtype: Gtk.ComboBox,
                             pack : false
-                        },
-                        {
-                            xtype: Gtk.ComboBox,
-                            pack : false
                         }
                     ]
                 }
