@@ -309,6 +309,11 @@ FixBug=new XObject({
                         },
                         {
                             xtype: Gtk.Button,
+                            listeners : {
+                                activate : function (self) {
+                                   _this.el.hide();
+                                }
+                            },
                             id : "ok_button",
                             label : "Working on Selected Ticket",
                             pack : "add"

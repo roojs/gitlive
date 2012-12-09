@@ -194,6 +194,9 @@
                                     "|xns": "Gtk"
                                 },
                                 {
+                                    "listeners": {
+                                        "activate": "function (self) {\n   _this.el.hide();\n}"
+                                    },
                                     "id": "ok_button",
                                     "label": "Working on Selected Ticket",
                                     "pack": "add",
