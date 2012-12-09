@@ -183,7 +183,7 @@ var StatusIcon  = new XObject({
                     pack:  'append',
                     listeners : {
                         activate : function () {
-                             var ret = imports.FixBug.FixBug.show();
+                            var ret = imports.FixBug.FixBug.show();
                             
                         }
                     }
