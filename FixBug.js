@@ -195,6 +195,7 @@ FixBug=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.Label,
+                                    label : "Short Description:",
                                     pack : "pack_start,false,true,3"
                                 },
                                 {
