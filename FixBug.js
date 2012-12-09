@@ -332,7 +332,13 @@ FixBug=new XObject({
                                             init : function() {
                                                 XObject.prototype.init.call(this);
                                                 this.el.add_attribute(this.items[0].el , 'markup', 0 );
-                                            }
+                                            },
+                                            items : [
+                                                {
+                                                    xtype: Gtk.CellRendererText,
+                                                    pack : false
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
