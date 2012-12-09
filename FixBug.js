@@ -306,8 +306,7 @@ FixBug=new XObject({
                             xtype: Gtk.Label
                         },
                         {
-                            xtype: Gtk.ComboBox,
-                            pack : false
+                            xtype: Gtk.ComboBox
                         },
                         {
                             xtype: Gtk.Button,
