@@ -31,6 +31,11 @@ FixBug=new XObject({
                 
             //var val = this.get('bug').getValue();
              //   Seed.print(val);
+        },
+        show : function (self) {
+             this.el.fullscreen();
+                this.el.grab_focus();
+                this.el.set_keep_above(true);
         }
     },
     border_width : 3,
