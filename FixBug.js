@@ -169,7 +169,7 @@ FixBug=new XObject({
                     items : [
                         {
                             xtype: Gtk.TextView,
-                            editable : "false",
+                            editable : false,
                             id : "view",
                             indent_width : 4,
                             pack : "add",
