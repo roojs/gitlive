@@ -288,7 +288,8 @@ FixBug=new XObject({
                                 },
                                 {
                                     xtype: Gtk.Entry,
-                                    pack : "pack_start,false,true,3"
+                                    pack : "pack_start,false,true,3",
+                                    width_request : 80
                                 },
                                 {
                                     xtype: Gtk.Label,

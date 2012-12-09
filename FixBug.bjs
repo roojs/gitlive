@@ -156,6 +156,7 @@
                                         },
                                         {
                                             "pack": "pack_start,false,true,3",
+                                            "width_request": 80,
                                             "xtype": "Entry",
                                             "|xns": "Gtk"
                                         },
