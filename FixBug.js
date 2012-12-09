@@ -325,6 +325,10 @@ FixBug=new XObject({
                                                           
                                                                                  
                                             }
+                                        },
+                                        {
+                                            xtype: Gtk.TreeViewColumn,
+                                            pack : false
                                         }
                                     ]
                                 }
