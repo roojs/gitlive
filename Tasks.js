@@ -88,6 +88,48 @@ Tasks = {
         
     },
     
+    list: function(repo, callback)
+    {
+        // have we got the status in the last 15 mins..
+        // we should not need to get it again... - it's probably not changed.
+         
+        _this = this;
+        // do the request to get the task..
+        var r = new XMLHttpRequest({
+            onreadystatechange : function() {
+                print("Got result.");
+                if (this.status != 4) {
+                    return;
+                }
+                
+                  
+                var res = JSON.parse(this.responseText);
+                
+                //print(JSON.stringify(res,null,4))
+                //print([ res.success , res.data.length ]);
+                if (!res.success || !res.data.length)  {
+                    print("NO tasks returned");
+                    callback([]);
+                    return;
+                }
+                
+                //print("Current task:" + JSON.stringify(_this.curTask,null,4));
+                callback(res.data);
+            }
+            
+        });
+        var netrc  = Netrc.forHost('git.roojs.com');
+        
+        r.open('GET',
+               "http://roojs.com/admin.php/Roo/cash_invoice_entry?_current_task=1"
+               ,true, netrc.login, netrc.password  );
+         print("Getting current task: "  +  "http://roojs.com/admin.php/Roo/cash_invoice_entry?_current_task=1");        
+        r.send();
+        
+    },
+    
+    
+    
     
     fetchRepo: function()
     {
