@@ -16,22 +16,6 @@ FixBug=new XObject({
              this.el.hide();
                         return false;
         },
-        response : function (self, id) {
-          // hide
-             if (id < 1) {
-                this.el.hide();
-                return;
-            }
-            if (typeof(this.get('bug').getValue()) != 'object') {
-                print("ERROR");
-                return;
-            }
-         
-            this.el.hide();
-                
-            //var val = this.get('bug').getValue();
-             //   Seed.print(val);
-        },
         show : function (self) {
         print("ON SHOW!");
         
