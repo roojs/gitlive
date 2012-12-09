@@ -100,9 +100,8 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
-                                            "|xns": "Gtk",
                                             "xtype": "Label",
-                                            "pack": false
+                                            "|xns": "Gtk"
                                         },
                                         {
                                             "pack": "pack_start,false,true,3",
