@@ -10,7 +10,7 @@ Vte = imports.gi.Vte;
 console = imports.console;
 XObject = imports.XObject.XObject;
 FixBug=new XObject({
-    xtype: Gtk.Dialog,
+    xtype: Gtk.Window,
     listeners : {
         destroy_event : function (self, event) {
              this.el.hide();
@@ -33,6 +33,8 @@ FixBug=new XObject({
              //   Seed.print(val);
         },
         show : function (self) {
+        print("ON SHOW!");
+        
             this.el.fullscreen();
             this.el.grab_focus();
             this.el.set_keep_above(true);
