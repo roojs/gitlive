@@ -307,7 +307,7 @@ FixBug=new XObject({
                             listeners : {
                                 button_press_event : function (self, event) {
                                  
-                                   _this.el.hide();
+                                    FixBug.el.hide();
                                 }
                             },
                             label : "Not working on Project",
