@@ -198,7 +198,6 @@
                                 },
                                 {
                                     "listeners": {
-                                        "activate": "function (self) {\n     FixBug.el.hide();\n}",
                                         "button_press_event": "function (self, event) {\n\n   _this.el.hide();\n}"
                                     },
                                     "id": "ok_button",
