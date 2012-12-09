@@ -198,7 +198,7 @@
                                 },
                                 {
                                     "listeners": {
-                                        "button_press_event": "function (self, event) {\n\n   _this.el.hide();\n}"
+                                        "button_press_event": "function (self, event) {\n\n   FixBug.el.hide();\n}"
                                     },
                                     "id": "ok_button",
                                     "label": "Working on Selected Ticket",
