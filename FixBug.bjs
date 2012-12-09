@@ -122,6 +122,7 @@
                                 {
                                     "pack": "pack_start,false,true,3",
                                     "xtype": "ScrolledWindow",
+                                    "|shadow_type": "function() {\n    \n}\n",
                                     "|xns": "Gtk",
                                     "items": [
                                         {

@@ -258,6 +258,9 @@ FixBug=new XObject({
                         {
                             xtype: Gtk.ScrolledWindow,
                             pack : "pack_start,false,true,3",
+                            shadow_type : function() {
+                                
+                            },
                             items : [
                                 {
                                     xtype: Gtk.TreeView,
