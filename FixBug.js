@@ -288,7 +288,7 @@ FixBug=new XObject({
         {
             xtype: Gtk.Button,
             id : "ok_button",
-            label : "OK",
+            label : "Working on Selected Ticket",
             pack : "add_action_widget,1"
         }
     ]
