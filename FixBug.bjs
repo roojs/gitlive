@@ -101,9 +101,8 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "|xns": "Gtk",
                                     "xtype": "HBox",
-                                    "pack": false,
+                                    "|xns": "Gtk",
                                     "items": [
                                         {
                                             "|xns": "Gtk",
