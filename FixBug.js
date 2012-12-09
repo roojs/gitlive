@@ -310,6 +310,7 @@ FixBug=new XObject({
                                     FixBug.el.hide();
                                 }
                             },
+                            height_request : 90,
                             label : "Not working on Project",
                             pack : "add"
                         },
