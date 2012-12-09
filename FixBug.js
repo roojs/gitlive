@@ -327,7 +327,8 @@ FixBug=new XObject({
             ]
         },
         {
-            xtype: Gtk.VBox
+            xtype: Gtk.VBox,
+            pack : "add"
         }
     ]
 });

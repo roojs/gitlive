@@ -198,6 +198,7 @@
                     ]
                 },
                 {
+                    "pack": "add",
                     "xtype": "VBox",
                     "|xns": "Gtk"
                 }
