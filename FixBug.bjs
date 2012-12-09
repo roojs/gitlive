@@ -103,7 +103,14 @@
                                 {
                                     "|xns": "Gtk",
                                     "xtype": "HBox",
-                                    "pack": false
+                                    "pack": false,
+                                    "items": [
+                                        {
+                                            "|xns": "Gtk",
+                                            "xtype": "Entry",
+                                            "pack": false
+                                        }
+                                    ]
                                 }
                             ]
                         }
