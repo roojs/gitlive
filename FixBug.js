@@ -320,7 +320,7 @@ FixBug=new XObject({
                                    _this.el.hide();
                                 },
                                 button_press_event : function (self, event) {
-                                 Roo.log("hide window");
+                                
                                    _this.el.hide();
                                 }
                             },
