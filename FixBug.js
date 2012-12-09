@@ -286,6 +286,9 @@ FixBug=new XObject({
                                             xtype: Gtk.ListStore,
                                             id : "model",
                                             pack : "set_model",
+                                            columns : function() {
+                                                
+                                            },
                                             init : function() {
                                                 XObject.prototype.init.call(this);
                                             
