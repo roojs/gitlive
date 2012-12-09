@@ -341,6 +341,18 @@ FixBug=new XObject({
                             height_request : 90,
                             label : "Not working on Project",
                             pack : "add"
+                        },
+                        {
+                            xtype: Gtk.Button,
+                            listeners : {
+                                button_press_event : function (self, event) {
+                                
+                                   FixBug.el.hide();
+                                }
+                            },
+                            id : "ok_button",
+                            label : "Working on Selected Ticket",
+                            pack : "add"
                         }
                     ]
                 }

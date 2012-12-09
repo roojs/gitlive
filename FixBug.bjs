@@ -221,6 +221,16 @@
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
+                                },
+                                {
+                                    "listeners": {
+                                        "button_press_event": "function (self, event) {\n\n   FixBug.el.hide();\n}"
+                                    },
+                                    "id": "ok_button",
+                                    "label": "Working on Selected Ticket",
+                                    "pack": "add",
+                                    "xtype": "Button",
+                                    "|xns": "Gtk"
                                 }
                             ]
                         }
