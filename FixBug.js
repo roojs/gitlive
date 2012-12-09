@@ -68,7 +68,7 @@ FixBug=new XObject({
     },
     items : [
         {
-            xtype: Gtk.VBox,
+            xtype: Gtk.HBox,
             pack : function(p,e) {
                         p.el.get_content_area().add(e.el)
                     },

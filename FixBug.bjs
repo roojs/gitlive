@@ -21,9 +21,9 @@
             "|xns": "Gtk",
             "items": [
                 {
-                    "|xns": "Gtk",
-                    "xtype": "VBox",
+                    "xtype": "HBox",
                     "|pack": " function(p,e) {\n            p.el.get_content_area().add(e.el)\n        }\n",
+                    "|xns": "Gtk",
                     "items": [
                         {
                             "|xns": "Gtk",
