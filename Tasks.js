@@ -121,9 +121,9 @@ Tasks = {
         var netrc  = Netrc.forHost('git.roojs.com');
         
         r.open('GET',
-               "http://roojs.com/admin.php/Roo/cash_invoice_entry?_current_task=1"
+               "http://roojs.com/admin.php/Roo/mtrack_ticket?repo_shortname=" + repo.name
                ,true, netrc.login, netrc.password  );
-         print("Getting current task: "  +  "http://roojs.com/admin.php/Roo/cash_invoice_entry?_current_task=1");        
+         print("Getting current task: "  +  "http://roojs.com/admin.php/Roo/mtrack_ticket?repo_shortname=" + repo.name);        
         r.send();
         
     },
