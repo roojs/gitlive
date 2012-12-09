@@ -257,7 +257,7 @@ FixBug=new XObject({
                         },
                         {
                             xtype: Gtk.ScrolledWindow,
-                            pack : "pack_end,false,true,3",
+                            pack : "pack_end,true,true,3",
                             shadow_type : Gtk.ShadowType.IN,
                             items : [
                                 {
