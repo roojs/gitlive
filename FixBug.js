@@ -335,8 +335,7 @@ FixBug=new XObject({
                                             },
                                             items : [
                                                 {
-                                                    xtype: Gtk.CellRendererText,
-                                                    pack : false
+                                                    xtype: Gtk.CellRendererText
                                                 }
                                             ]
                                         }
