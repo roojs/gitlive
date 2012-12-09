@@ -133,16 +133,12 @@ FixBug=new XObject({
                                                 
                                                 
                                             ] );
-                                            var Tickets = imports.Tickets.Tickets;
+                                    
+                                            var Repo = imports.Scm.Repo.Repo;
+                                            imports.Tasks.Tasks.list(Repo.get('web.hex'), function(res) { 
+                                                this.loadData(this.data);
+                                            });
                                             
-                                            this.data = Tickets.fetchBugs("http://www.roojs.com/mtrack/index.php/Gitlive/web.hex");
-                                    /*        this.data = [
-                                                { xtype: 'Roo', desc : "Roo Project" },
-                                                { xtype: 'Gtk', desc : "Gtk Project" },    
-                                                //{ xtype: 'JS', desc : "Javascript Class" }
-                                            ]
-                                      */      
-                                            this.loadData(this.data);
                                                                     
                                     },
                                     loadData : function (data) {
