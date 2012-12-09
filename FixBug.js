@@ -325,6 +325,9 @@ FixBug=new XObject({
                     pack : "add_action_widget,1"
                 }
             ]
+        },
+        {
+            xtype: Gtk.VBox
         }
     ]
 });
