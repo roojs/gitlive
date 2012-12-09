@@ -98,7 +98,14 @@
                         {
                             "|xns": "Gtk",
                             "xtype": "VBox",
-                            "pack": false
+                            "pack": false,
+                            "items": [
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "HBox",
+                                    "pack": false
+                                }
+                            ]
                         }
                     ]
                 },
