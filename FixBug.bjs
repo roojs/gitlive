@@ -22,25 +22,6 @@
             "|xns": "Gtk",
             "items": [
                 {
-                    "xtype": "HBox",
-                    "|xns": "Gtk",
-                    "items": [
-                        {
-                            "label": "Not working on Project",
-                            "pack": "add_action_widget,0",
-                            "xtype": "Button",
-                            "|xns": "Gtk"
-                        },
-                        {
-                            "id": "ok_button",
-                            "label": "Working on Selected Ticket",
-                            "pack": "add_action_widget,1",
-                            "xtype": "Button",
-                            "|xns": "Gtk"
-                        }
-                    ]
-                },
-                {
                     "pack": "add",
                     "xtype": "VBox",
                     "|xns": "Gtk",
@@ -199,6 +180,26 @@
                                             ]
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "xtype": "HBox",
+                            "|xns": "Gtk",
+                            "pack": false,
+                            "items": [
+                                {
+                                    "label": "Not working on Project",
+                                    "pack": "add_action_widget,0",
+                                    "xtype": "Button",
+                                    "|xns": "Gtk"
+                                },
+                                {
+                                    "id": "ok_button",
+                                    "label": "Working on Selected Ticket",
+                                    "pack": "add_action_widget,1",
+                                    "xtype": "Button",
+                                    "|xns": "Gtk"
                                 }
                             ]
                         }
