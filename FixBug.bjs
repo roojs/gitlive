@@ -56,6 +56,7 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
+                                            "headers_visible": "",
                                             "pack": "add",
                                             "xtype": "TreeView",
                                             "|init": "function() {\n    XObject.prototype.init.call(this);\n    var description = new Pango.FontDescription.c_new();\n    description.set_size(8000);\n    this.el.modify_font(description);\n\n    this.selection = this.el.get_selection();\n    this.selection.set_mode( Gtk.SelectionMode.SINGLE);\n    var _t = this;\n\n    // is this really needed??\n    this.selection.signal['changed'].connect(function() {\n        print('selection changed');\n    \n\n    });\n\n}\n",
