@@ -127,7 +127,17 @@
                                         {
                                             "|xns": "Gtk",
                                             "xtype": "TreeView",
-                                            "pack": false
+                                            "pack": false,
+                                            "items": [
+                                                {
+                                                    "id": "model",
+                                                    "pack": "set_model",
+                                                    "xtype": "ListStore",
+                                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n\n        this.el.set_column_types ( 2, [\n            GObject.TYPE_STRING,  // real key\n            GObject.TYPE_STRING // real type\n            \n            \n        ] );\n\n        var Repo = imports.Scm.Repo.Repo;\n        var t = this;\n        imports.Tasks.Tasks.list(Repo.get('gitlive'), function(res) { \n            t.loadData(res);\n        });\n        \n                                \n}\n",
+                                                    "|loadData": "function (data) {\n                                            \n            var iter = new Gtk.TreeIter();\n            var el = this.el;\n            data.forEach(function(p) {\n                \n                el.append(iter);\n                \n                 \n                el.set_value(iter, 0, p.id);\n                el.set_value(iter, 1, '#' + p.id + ' - ' + p.summary );\n                \n            });\n              \n                                     \n}\n",
+                                                    "|xns": "Gtk"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }

@@ -261,7 +261,48 @@ FixBug=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.TreeView,
-                                    pack : false
+                                    pack : false,
+                                    items : [
+                                        {
+                                            xtype: Gtk.ListStore,
+                                            id : "model",
+                                            pack : "set_model",
+                                            init : function() {
+                                                XObject.prototype.init.call(this);
+                                            
+                                                    this.el.set_column_types ( 2, [
+                                                        GObject.TYPE_STRING,  // real key
+                                                        GObject.TYPE_STRING // real type
+                                                        
+                                                        
+                                                    ] );
+                                            
+                                                    var Repo = imports.Scm.Repo.Repo;
+                                                    var t = this;
+                                                    imports.Tasks.Tasks.list(Repo.get('gitlive'), function(res) { 
+                                                        t.loadData(res);
+                                                    });
+                                                    
+                                                                            
+                                            },
+                                            loadData : function (data) {
+                                                                                        
+                                                        var iter = new Gtk.TreeIter();
+                                                        var el = this.el;
+                                                        data.forEach(function(p) {
+                                                            
+                                                            el.append(iter);
+                                                            
+                                                             
+                                                            el.set_value(iter, 0, p.id);
+                                                            el.set_value(iter, 1, '#' + p.id + ' - ' + p.summary );
+                                                            
+                                                        });
+                                                          
+                                                                                 
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         }
