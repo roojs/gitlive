@@ -198,7 +198,14 @@ XObject.prototype = {
         }
         if (!this.el && typeof(this.xtype) == 'object') {
             XObject.log("obj?"  + XObject.keys(this.config).join(','));
-            this.el = new (this.xtype)(this.config);
+            try {
+                this.el = new (this.xtype)(this.config);
+            } catch(e) {
+                 throw {
+                name: "ArgumentError", 
+                message :"Error creating object from xtype(object)";
+            }
+              
       
         }
         //print(this.el);
