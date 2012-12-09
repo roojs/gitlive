@@ -317,7 +317,7 @@ FixBug=new XObject({
                             xtype: Gtk.Button,
                             listeners : {
                                 activate : function (self) {
-                                   _this.el.hide();
+                                     FixBug.el.hide();
                                 },
                                 button_press_event : function (self, event) {
                                 
