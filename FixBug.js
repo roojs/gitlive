@@ -307,8 +307,10 @@ FixBug=new XObject({
                             listeners : {
                                 activate : function (self) {
                                 
-                                    Roo.log("hide window");
-                                   _this.el.hide();
+                                   
+                                },
+                                button_press_event : function (self, event) {
+                                
                                 }
                             },
                             label : "Not working on Project",

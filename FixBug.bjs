@@ -189,7 +189,8 @@
                             "items": [
                                 {
                                     "listeners": {
-                                        "activate": "function (self) {\n\n    Roo.log(\"hide window\");\n   _this.el.hide();\n}"
+                                        "activate": "function (self) {\n\n   \n}",
+                                        "button_press_event": "function (self, event) {\n\n}"
                                     },
                                     "label": "Not working on Project",
                                     "pack": "add",
