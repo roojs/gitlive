@@ -123,6 +123,70 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "pack": "pack_start,false,true,3",
+                            "xtype": "VBox",
+                            "|xns": "Gtk",
+                            "items": [
+                                {
+                                    "pack": "pack_start,false,true,3",
+                                    "xtype": "HBox",
+                                    "|xns": "Gtk",
+                                    "items": [
+                                        {
+                                            "pack": "pack_start,false,true,3",
+                                            "xtype": "Entry",
+                                            "|xns": "Gtk"
+                                        },
+                                        {
+                                            "label": "Search",
+                                            "pack": "pack_end,false,true,3",
+                                            "xtype": "Button",
+                                            "|use_stock": "true",
+                                            "|xns": "Gtk"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "pack": "pack_end,true,true,3",
+                                    "xtype": "ScrolledWindow",
+                                    "|shadow_type": "Gtk.ShadowType.IN",
+                                    "|xns": "Gtk",
+                                    "items": [
+                                        {
+                                            "pack": "add",
+                                            "xtype": "TreeView",
+                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    var description = new Pango.FontDescription.c_new();\n    description.set_size(8000);\n    this.el.modify_font(description);\n\n    this.selection = this.el.get_selection();\n    this.selection.set_mode( Gtk.SelectionMode.SINGLE);\n    var _t = this;\n\n    // is this really needed??\n    this.selection.signal['changed'].connect(function() {\n        print('selection changed');\n    \n\n    });\n\n}\n",
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "id": "model",
+                                                    "pack": "set_model",
+                                                    "xtype": "ListStore",
+                                                    "|columns": "  [\n        GObject.TYPE_STRING, // title \n        GObject.TYPE_STRING, // tip\n        GObject.TYPE_STRING // source..\n] ",
+                                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n\n        this.el.set_column_types ( 2, [\n            GObject.TYPE_STRING,  // real key\n            GObject.TYPE_STRING // real type\n            \n            \n        ] );\n\n        var Repo = imports.Scm.Repo.Repo;\n        var t = this;\n        imports.Tasks.Tasks.list(Repo.get('gitlive'), function(res) { \n            t.loadData(res);\n        });\n        \n                                \n}\n",
+                                                    "|loadData": "function (data) {\n                                            \n            var iter = new Gtk.TreeIter();\n            var el = this.el;\n            data.forEach(function(p) {\n                \n                el.append(iter);\n                \n                 \n                el.set_value(iter, 0, p.id);\n                el.set_value(iter, 1, '#' + p.id + ' - ' + p.summary );\n                \n            });\n              \n                                     \n}\n",
+                                                    "|xns": "Gtk"
+                                                },
+                                                {
+                                                    "pack": "append_column",
+                                                    "xtype": "TreeViewColumn",
+                                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 0 );\n}\n",
+                                                    "|xns": "Gtk",
+                                                    "items": [
+                                                        {
+                                                            "pack": "pack_start",
+                                                            "xtype": "CellRendererText",
+                                                            "|xns": "Gtk"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
