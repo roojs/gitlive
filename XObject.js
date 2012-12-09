@@ -205,6 +205,7 @@ XObject.prototype = {
                 print(JSON.stringify(e,null,4));
                 print(JSON.stringify(this.config,null,4));
                 print(e.stack);
+                
                  throw {
                     name: "ArgumentError", 
                     message :"Error creating object from xtype(object)"

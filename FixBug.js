@@ -70,10 +70,171 @@ FixBug=new XObject({
         {
             xtype: Gtk.HBox,
             pack : function(p,e) {
-                //p.el.get_content_area().add(e.el);
-                p.el.get_content_area().pack_start(e.el, true,true,3);
-            },
+                        p.el.get_content_area().add(e.el)
+                    },
             items : [
+                {
+                    xtype: Gtk.HBox,
+                    pack : "pack_start,false,true,3",
+                    items : [
+                        {
+                            xtype: Gtk.Label,
+                            label : "Select Active Bug:",
+                            pack : "pack_start,false,true,3"
+                        },
+                        {
+                            xtype: Gtk.ComboBox,
+                            listeners : {
+                                changed : function (self) {
+                                    var d = this.getValue();
+                                    this.get('/view').load(d.description);
+                                      this.get('/ok_button').el.set_sensitive(true);
+                                }
+                            },
+                            id : "bug",
+                            pack : "pack_end,true,true,3",
+                            getValue : function() {
+                                 var ix = this.el.get_active();
+                                if (ix < 0 ) {
+                                    return '';
+                                }
+                                return this.get('model').data[ix];
+                            },
+                            init : function() {
+                                XObject.prototype.init.call(this);
+                              this.el.add_attribute(this.items[0].el , 'markup', 1 );  
+                            },
+                            setValue : function(v)
+                                            {
+                                                var el = this.el;
+                                                el.set_active(-1);
+                                                this.get('model').data.forEach(function(n, ix) {
+                                                    if (v == n.xtype) {
+                                                        el.set_active(ix);
+                                                        return false;
+                                                    }
+                                                });
+                                            },
+                            items : [
+                                {
+                                    xtype: Gtk.CellRendererText,
+                                    pack : "pack_start"
+                                },
+                                {
+                                    xtype: Gtk.ListStore,
+                                    id : "model",
+                                    pack : "set_model",
+                                    init : function() {
+                                        XObject.prototype.init.call(this);
+                                    
+                                            this.el.set_column_types ( 2, [
+                                                GObject.TYPE_STRING,  // real key
+                                                GObject.TYPE_STRING // real type
+                                                
+                                                
+                                            ] );
+                                    
+                                            var Repo = imports.Scm.Repo.Repo;
+                                            var t = this;
+                                            imports.Tasks.Tasks.list(Repo.get('gitlive'), function(res) { 
+                                                t.loadData(res);
+                                            });
+                                            
+                                                                    
+                                    },
+                                    loadData : function (data) {
+                                                                                
+                                                var iter = new Gtk.TreeIter();
+                                                var el = this.el;
+                                                data.forEach(function(p) {
+                                                    
+                                                    el.append(iter);
+                                                    
+                                                     
+                                                    el.set_value(iter, 0, p.id);
+                                                    el.set_value(iter, 1, '#' + p.id + ' - ' + p.summary );
+                                                    
+                                                });
+                                                  
+                                                                         
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    xtype: Gtk.ScrolledWindow,
+                    pack : "add",
+                    id : "RightEditor",
+                    items : [
+                        {
+                            xtype: Gtk.TextView,
+                            editable : false,
+                            id : "view",
+                            indent_width : 4,
+                            pack : "add",
+                            auto_indent : true,
+                            init : function() {
+                                XObject.prototype.init.call(this);
+                                var description = Pango.font_description_from_string("monospace");
+                            
+                                description.set_size(8000);
+                                this.el.modify_font(description);
+                            
+                            },
+                            load : function(str) {
+                            
+                            // show the help page for the active node..
+                             
+                            
+                            
+                             
+                                this.el.get_buffer().set_text(str, str.length);
+                             
+                                
+                                 var buf = this.el.get_buffer();
+                                 
+                                 
+                                
+                            },
+                            show_line_numbers : true,
+                            items : [
+                                {
+                                    xtype: GtkSource.Buffer,
+                                    listeners : {
+                                        changed : function (self) {
+                                            /*
+                                            var s = new Gtk.TextIter();
+                                            var e = new Gtk.TextIter();
+                                            this.el.get_start_iter(s);
+                                            this.el.get_end_iter(e);
+                                            var str = this.el.get_text(s,e,true);
+                                            try {
+                                                Seed.check_syntax('var e = ' + str);
+                                            } catch (e) {
+                                                this.get('/RightEditor.view').el.modify_base(Gtk.StateType.NORMAL, new Gdk.Color({
+                                                    red: 0xFFFF, green: 0xCCCC , blue : 0xCCCC
+                                                   }));
+                                                //print("SYNTAX ERROR IN EDITOR");   
+                                                //print(e);
+                                                //console.dump(e);
+                                                return;
+                                            }
+                                            this.get('/RightEditor.view').el.modify_base(Gtk.StateType.NORMAL, new Gdk.Color({
+                                                    red: 0xFFFF, green: 0xFFFF , blue : 0xFFFF
+                                                   }));
+                                            
+                                             this.get('/LeftPanel.model').changed(  str , false);
+                                             */
+                                        }
+                                    },
+                                    pack : "set_buffer"
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
                     xtype: Gtk.VBox,
                     pack : "pack_start,false,true,3",
@@ -101,7 +262,6 @@ FixBug=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.TreeView,
-                                    headers_visible : false,
                                     pack : "add",
                                     init : function() {
                                         XObject.prototype.init.call(this);
@@ -185,111 +345,18 @@ FixBug=new XObject({
                             ]
                         }
                     ]
-                },
-                {
-                    xtype: Gtk.VBox,
-                    pack : "pack_start,true,true,3",
-                    items : [
-                        {
-                            xtype: Gtk.ScrolledWindow,
-                            pack : "add",
-                            id : "RightEditor",
-                            items : [
-                                {
-                                    xtype: Gtk.TextView,
-                                    editable : false,
-                                    id : "view",
-                                    indent_width : 4,
-                                    pack : "add",
-                                    auto_indent : true,
-                                    init : function() {
-                                        XObject.prototype.init.call(this);
-                                        var description = Pango.font_description_from_string("monospace");
-                                    
-                                        description.set_size(8000);
-                                        this.el.modify_font(description);
-                                    
-                                    },
-                                    load : function(str) {
-                                    
-                                    // show the help page for the active node..
-                                     
-                                    
-                                    
-                                     
-                                        this.el.get_buffer().set_text(str, str.length);
-                                     
-                                        
-                                         var buf = this.el.get_buffer();
-                                         
-                                         
-                                        
-                                    },
-                                    show_line_numbers : true,
-                                    items : [
-                                        {
-                                            xtype: GtkSource.Buffer,
-                                            listeners : {
-                                                changed : function (self) {
-                                                    /*
-                                                    var s = new Gtk.TextIter();
-                                                    var e = new Gtk.TextIter();
-                                                    this.el.get_start_iter(s);
-                                                    this.el.get_end_iter(e);
-                                                    var str = this.el.get_text(s,e,true);
-                                                    try {
-                                                        Seed.check_syntax('var e = ' + str);
-                                                    } catch (e) {
-                                                        this.get('/RightEditor.view').el.modify_base(Gtk.StateType.NORMAL, new Gdk.Color({
-                                                            red: 0xFFFF, green: 0xCCCC , blue : 0xCCCC
-                                                           }));
-                                                        //print("SYNTAX ERROR IN EDITOR");   
-                                                        //print(e);
-                                                        //console.dump(e);
-                                                        return;
-                                                    }
-                                                    this.get('/RightEditor.view').el.modify_base(Gtk.StateType.NORMAL, new Gdk.Color({
-                                                            red: 0xFFFF, green: 0xFFFF , blue : 0xFFFF
-                                                           }));
-                                                    
-                                                     this.get('/LeftPanel.model').changed(  str , false);
-                                                     */
-                                                }
-                                            },
-                                            pack : "set_buffer"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            xtype: Gtk.HBox,
-                            pack : "pack_start,false,true,3",
-                            items : [
-                                {
-                                    xtype: Gtk.Label,
-                                    label : "I am doing this:",
-                                    pack : "pack_start,false,true,3"
-                                },
-                                {
-                                    xtype: Gtk.Entry,
-                                    pack : "pack_start,true,true,3"
-                                }
-                            ]
-                        }
-                    ]
                 }
             ]
         },
         {
             xtype: Gtk.Button,
-            label : "Not working on Project",
+            label : "Cancel",
             pack : "add_action_widget,0"
         },
         {
             xtype: Gtk.Button,
             id : "ok_button",
-            label : "Working on Selected Ticket",
+            label : "OK",
             pack : "add_action_widget,1"
         }
     ]
