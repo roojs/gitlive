@@ -137,7 +137,7 @@ FixBug=new XObject({
                                             var Repo = imports.Scm.Repo.Repo;
                                             var t = this;
                                             imports.Tasks.Tasks.list(Repo.get('gitlive'), function(res) { 
-                                                t.loadData(this.data);
+                                                t.loadData(res);
                                             });
                                             
                                                                     
