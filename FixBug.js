@@ -300,6 +300,7 @@ FixBug=new XObject({
                 },
                 {
                     xtype: Gtk.HBox,
+                    pack : "pack_emd,false,true,3",
                     items : [
                         {
                             xtype: Gtk.Button,
