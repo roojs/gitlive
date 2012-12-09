@@ -76,14 +76,7 @@ FixBug=new XObject({
             items : [
                 {
                     xtype: Gtk.HBox,
-                    pack : "pack_start,false,true,3",
-                    items : [
-                        {
-                            xtype: Gtk.Label,
-                            label : "Select Active Bug:",
-                            pack : "pack_start,false,true,3"
-                        }
-                    ]
+                    pack : "pack_start,false,true,3"
                 },
                 {
                     xtype: Gtk.ScrolledWindow,

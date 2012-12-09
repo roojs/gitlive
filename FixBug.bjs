@@ -28,15 +28,7 @@
                         {
                             "|xns": "Gtk",
                             "xtype": "HBox",
-                            "pack": "pack_start,false,true,3",
-                            "items": [
-                                {
-                                    "label": "Select Active Bug:",
-                                    "pack": "pack_start,false,true,3",
-                                    "xtype": "Label",
-                                    "|xns": "Gtk"
-                                }
-                            ]
+                            "pack": "pack_start,false,true,3"
                         },
                         {
                             "|xns": "Gtk",
