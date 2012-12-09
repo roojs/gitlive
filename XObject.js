@@ -202,8 +202,9 @@ XObject.prototype = {
                 this.el = new (this.xtype)(this.config);
             } catch(e) {
                  throw {
-                name: "ArgumentError", 
-                message :"Error creating object from xtype(object)";
+                    name: "ArgumentError", 
+                    message :"Error creating object from xtype(object)"
+                 };
             }
               
       
