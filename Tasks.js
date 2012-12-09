@@ -399,7 +399,9 @@ Task = XObject.define(
 
 
 //-------------- testing
+/*
 Gtk = imports.gi.Gtk;
 Gtk.init(Seed.argv);
 Tasks.notify( { repo : imports.Scm.Repo.Repo.get('gitlive') } );
 Gtk.main();
+*/
