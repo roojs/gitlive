@@ -22,6 +22,7 @@
             "|xns": "Gtk",
             "items": [
                 {
+                    "pack": "pack_start,false,true,3",
                     "xtype": "HBox",
                     "|xns": "Gtk",
                     "items": [
