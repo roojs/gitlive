@@ -286,9 +286,11 @@ FixBug=new XObject({
                                             xtype: Gtk.ListStore,
                                             id : "model",
                                             pack : "set_model",
-                                            columns : function() {
-                                                
-                                            },
+                                            columns : [
+                                                    GObject.TYPE_STRING, // title 
+                                                    GObject.TYPE_STRING, // tip
+                                                    GObject.TYPE_STRING // source..
+                                            ],
                                             init : function() {
                                                 XObject.prototype.init.call(this);
                                             
