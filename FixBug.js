@@ -312,13 +312,7 @@ FixBug=new XObject({
                             },
                             height_request : 90,
                             label : "Not working on Project",
-                            pack : "add",
-                            items : [
-                                {
-                                    xtype: Gtk.ComboBox,
-                                    pack : false
-                                }
-                            ]
+                            pack : "add"
                         },
                         {
                             xtype: Gtk.Button,
@@ -331,6 +325,10 @@ FixBug=new XObject({
                             id : "ok_button",
                             label : "Working on Selected Ticket",
                             pack : "add"
+                        },
+                        {
+                            xtype: Gtk.ComboBox,
+                            pack : false
                         },
                         {
                             xtype: Gtk.ComboBox,
