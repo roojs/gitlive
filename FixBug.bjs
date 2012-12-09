@@ -195,7 +195,14 @@
                                     "label": "Not working on Project",
                                     "pack": "add",
                                     "xtype": "Button",
-                                    "|xns": "Gtk"
+                                    "|xns": "Gtk",
+                                    "items": [
+                                        {
+                                            "|xns": "Gtk",
+                                            "xtype": "ComboBox",
+                                            "pack": false
+                                        }
+                                    ]
                                 },
                                 {
                                     "listeners": {
@@ -206,6 +213,11 @@
                                     "pack": "add",
                                     "xtype": "Button",
                                     "|xns": "Gtk"
+                                },
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "ComboBox",
+                                    "pack": false
                                 },
                                 {
                                     "|xns": "Gtk",

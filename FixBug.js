@@ -312,7 +312,13 @@ FixBug=new XObject({
                             },
                             height_request : 90,
                             label : "Not working on Project",
-                            pack : "add"
+                            pack : "add",
+                            items : [
+                                {
+                                    xtype: Gtk.ComboBox,
+                                    pack : false
+                                }
+                            ]
                         },
                         {
                             xtype: Gtk.Button,
