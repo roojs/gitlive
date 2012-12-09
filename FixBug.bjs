@@ -149,7 +149,7 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
-                                            "label": "I am doing this:",
+                                            "label": "Since:",
                                             "pack": "pack_start,false,true,3",
                                             "xtype": "Label",
                                             "|xns": "Gtk"

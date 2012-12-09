@@ -283,7 +283,7 @@ FixBug=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.Label,
-                                    label : "I am doing this:",
+                                    label : "Since:",
                                     pack : "pack_start,false,true,3"
                                 },
                                 {
