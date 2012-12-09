@@ -244,11 +244,11 @@ FixBug=new XObject({
                             pack : false,
                             items : [
                                 {
-                                    xtype: Gtk.Button,
+                                    xtype: Gtk.Entry,
                                     pack : false
                                 },
                                 {
-                                    xtype: Gtk.Entry,
+                                    xtype: Gtk.Button,
                                     pack : false
                                 }
                             ]
