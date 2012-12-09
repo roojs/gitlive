@@ -197,12 +197,13 @@ XObject.prototype = {
            
         }
         if (!this.el && typeof(this.xtype) == 'object') {
-            print(JSON.stringify(this.config,null,4));
+            
             XObject.log("obj?"  + XObject.keys(this.config).join(','));
             try {
                 this.el = new (this.xtype)(this.config);
             } catch(e) {
                 print(JSON.stringify(e,null,4));
+                print(JSON.stringify(this.config,null,4));
                 print(e.stack);
                  throw {
                     name: "ArgumentError", 
