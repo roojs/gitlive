@@ -188,6 +188,9 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
+                                    "listeners": {
+                                        "activate": "function (self) {\n   _this.el.hide();\n}"
+                                    },
                                     "label": "Not working on Project",
                                     "pack": "add",
                                     "xtype": "Button",

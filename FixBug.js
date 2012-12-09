@@ -304,6 +304,11 @@ FixBug=new XObject({
                     items : [
                         {
                             xtype: Gtk.Button,
+                            listeners : {
+                                activate : function (self) {
+                                   _this.el.hide();
+                                }
+                            },
                             label : "Not working on Project",
                             pack : "add"
                         },
