@@ -22,7 +22,7 @@
             "items": [
                 {
                     "xtype": "HBox",
-                    "|pack": " function(p,e) {\n    //p.el.get_content_area().add(e.el);\n    p.el.get_content_area().pack_start(e.el, false,true,3);\n}\n",
+                    "|pack": " function(p,e) {\n    //p.el.get_content_area().add(e.el);\n    p.el.get_content_area().pack_start(e.el, true,true,3);\n}\n",
                     "|xns": "Gtk",
                     "items": [
                         {
