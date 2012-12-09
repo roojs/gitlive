@@ -263,6 +263,24 @@ FixBug=new XObject({
                                 {
                                     xtype: Gtk.TreeView,
                                     pack : "add",
+                                    init : function() {
+                                        XObject.prototype.init.call(this);
+                                        var description = new Pango.FontDescription.c_new();
+                                        description.set_size(8000);
+                                        this.el.modify_font(description);
+                                    
+                                        this.selection = this.el.get_selection();
+                                        this.selection.set_mode( Gtk.SelectionMode.SINGLE);
+                                        var _t = this;
+                                    
+                                        // is this really needed??
+                                        this.selection.signal['changed'].connect(function() {
+                                            print('selection changed');
+                                        
+                                    
+                                        });
+                                    
+                                    },
                                     items : [
                                         {
                                             xtype: Gtk.ListStore,
