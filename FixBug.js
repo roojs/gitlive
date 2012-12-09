@@ -135,7 +135,7 @@ FixBug=new XObject({
                                             ] );
                                     
                                             var Repo = imports.Scm.Repo.Repo;
-                                            imports.Tasks.Tasks.list(Repo.get('web.hex'), function(res) { 
+                                            imports.Tasks.Tasks.list(Repo.get('gitlive'), function(res) { 
                                                 this.loadData(this.data);
                                             });
                                             
