@@ -188,9 +188,8 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "|xns": "Gtk",
                                     "xtype": "Label",
-                                    "pack": false
+                                    "|xns": "Gtk"
                                 },
                                 {
                                     "|xns": "Gtk",
