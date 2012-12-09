@@ -141,9 +141,8 @@
                                                     "|xns": "Gtk"
                                                 },
                                                 {
-                                                    "|xns": "Gtk",
                                                     "xtype": "TreeViewColumn",
-                                                    "pack": false
+                                                    "|xns": "Gtk"
                                                 }
                                             ]
                                         }
