@@ -307,6 +307,14 @@ FixBug=new XObject({
                             pack : false
                         },
                         {
+                            xtype: Gtk.Label,
+                            pack : false
+                        },
+                        {
+                            xtype: Gtk.ComboBox,
+                            pack : false
+                        },
+                        {
                             xtype: Gtk.Button,
                             listeners : {
                                 button_press_event : function (self, event) {

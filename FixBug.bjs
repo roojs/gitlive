@@ -193,6 +193,16 @@
                                     "pack": false
                                 },
                                 {
+                                    "|xns": "Gtk",
+                                    "xtype": "Label",
+                                    "pack": false
+                                },
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "ComboBox",
+                                    "pack": false
+                                },
+                                {
                                     "listeners": {
                                         "button_press_event": "function (self, event) {\n \n    FixBug.el.hide();\n}"
                                     },
