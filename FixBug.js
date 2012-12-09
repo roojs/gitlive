@@ -327,7 +327,8 @@ FixBug=new XObject({
                                             }
                                         },
                                         {
-                                            xtype: Gtk.TreeViewColumn
+                                            xtype: Gtk.TreeViewColumn,
+                                            pack : "append_column"
                                         }
                                     ]
                                 }

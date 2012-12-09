@@ -141,6 +141,7 @@
                                                     "|xns": "Gtk"
                                                 },
                                                 {
+                                                    "pack": "append_column",
                                                     "xtype": "TreeViewColumn",
                                                     "|xns": "Gtk"
                                                 }
