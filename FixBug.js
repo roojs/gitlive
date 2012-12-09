@@ -306,7 +306,7 @@ FixBug=new XObject({
                             xtype: Gtk.Button,
                             listeners : {
                                 button_press_event : function (self, event) {
-                                 Roo.log("hide window");
+                                 
                                    _this.el.hide();
                                 }
                             },
