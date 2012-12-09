@@ -261,6 +261,7 @@ FixBug=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.TreeView,
+                                    pack : "add",
                                     items : [
                                         {
                                             xtype: Gtk.ListStore,

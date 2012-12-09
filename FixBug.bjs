@@ -125,6 +125,7 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
+                                            "pack": "add",
                                             "xtype": "TreeView",
                                             "|xns": "Gtk",
                                             "items": [
