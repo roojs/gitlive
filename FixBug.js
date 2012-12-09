@@ -275,6 +275,21 @@ FixBug=new XObject({
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            xtype: Gtk.HBox,
+                            pack : "pack_start,false,true,3",
+                            items : [
+                                {
+                                    xtype: Gtk.Label,
+                                    label : "Short Description:",
+                                    pack : "pack_start,false,true,3"
+                                },
+                                {
+                                    xtype: Gtk.Entry,
+                                    pack : "pack_start,true,true,3"
+                                }
+                            ]
                         }
                     ]
                 }
