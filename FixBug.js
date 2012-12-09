@@ -190,21 +190,6 @@ FixBug=new XObject({
                     pack : "pack_start,true,true,3",
                     items : [
                         {
-                            xtype: Gtk.HBox,
-                            pack : "pack_start,false,true,3",
-                            items : [
-                                {
-                                    xtype: Gtk.Label,
-                                    label : "Short Description:",
-                                    pack : "pack_start,false,true,3"
-                                },
-                                {
-                                    xtype: Gtk.Entry,
-                                    pack : "pack_start,true,true,3"
-                                }
-                            ]
-                        },
-                        {
                             xtype: Gtk.ScrolledWindow,
                             pack : "add",
                             id : "RightEditor",
@@ -282,7 +267,7 @@ FixBug=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.Label,
-                                    label : "Short Description:",
+                                    label : "I am doing this:",
                                     pack : "pack_start,false,true,3"
                                 },
                                 {

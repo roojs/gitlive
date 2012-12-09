@@ -95,24 +95,6 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
-                                    "pack": "pack_start,false,true,3",
-                                    "xtype": "HBox",
-                                    "|xns": "Gtk",
-                                    "items": [
-                                        {
-                                            "label": "Short Description:",
-                                            "pack": "pack_start,false,true,3",
-                                            "xtype": "Label",
-                                            "|xns": "Gtk"
-                                        },
-                                        {
-                                            "pack": "pack_start,true,true,3",
-                                            "xtype": "Entry",
-                                            "|xns": "Gtk"
-                                        }
-                                    ]
-                                },
-                                {
                                     "|xns": "Gtk",
                                     "xtype": "ScrolledWindow",
                                     "pack": "add",
@@ -148,7 +130,7 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
-                                            "label": "Short Description:",
+                                            "label": "I am doing this:",
                                             "pack": "pack_start,false,true,3",
                                             "xtype": "Label",
                                             "|xns": "Gtk"
