@@ -96,9 +96,8 @@
                             ]
                         },
                         {
-                            "|xns": "Gtk",
                             "xtype": "VBox",
-                            "pack": false,
+                            "|xns": "Gtk",
                             "items": [
                                 {
                                     "|xns": "Gtk",

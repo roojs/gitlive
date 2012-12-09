@@ -237,7 +237,6 @@ FixBug=new XObject({
                 },
                 {
                     xtype: Gtk.VBox,
-                    pack : false,
                     items : [
                         {
                             xtype: Gtk.HBox,
