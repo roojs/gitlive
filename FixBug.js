@@ -320,6 +320,10 @@ FixBug=new XObject({
             id : "ok_button",
             label : "Working on Selected Ticket",
             pack : "add_action_widget,1"
+        },
+        {
+            xtype: Gtk.HBox,
+            pack : false
         }
     ]
 });

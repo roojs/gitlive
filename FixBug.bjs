@@ -190,6 +190,11 @@
                     "pack": "add_action_widget,1",
                     "xtype": "Button",
                     "|xns": "Gtk"
+                },
+                {
+                    "|xns": "Gtk",
+                    "xtype": "HBox",
+                    "pack": false
                 }
             ]
         }
