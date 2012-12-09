@@ -329,6 +329,18 @@ FixBug=new XObject({
                         {
                             xtype: Gtk.ComboBox,
                             pack : false
+                        },
+                        {
+                            xtype: Gtk.Button,
+                            listeners : {
+                                button_press_event : function (self, event) {
+                                 
+                                    FixBug.el.hide();
+                                }
+                            },
+                            height_request : 90,
+                            label : "Not working on Project",
+                            pack : "add"
                         }
                     ]
                 }

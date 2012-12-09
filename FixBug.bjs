@@ -211,6 +211,16 @@
                                     "|xns": "Gtk",
                                     "xtype": "ComboBox",
                                     "pack": false
+                                },
+                                {
+                                    "listeners": {
+                                        "button_press_event": "function (self, event) {\n \n    FixBug.el.hide();\n}"
+                                    },
+                                    "height_request": 90,
+                                    "label": "Not working on Project",
+                                    "pack": "add",
+                                    "xtype": "Button",
+                                    "|xns": "Gtk"
                                 }
                             ]
                         }
