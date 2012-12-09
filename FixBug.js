@@ -254,6 +254,10 @@ FixBug=new XObject({
                                     use_stock : true
                                 }
                             ]
+                        },
+                        {
+                            xtype: Gtk.ScrolledWindow,
+                            pack : false
                         }
                     ]
                 }

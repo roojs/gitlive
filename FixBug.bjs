@@ -118,6 +118,11 @@
                                             "|xns": "Gtk"
                                         }
                                     ]
+                                },
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "ScrolledWindow",
+                                    "pack": false
                                 }
                             ]
                         }
