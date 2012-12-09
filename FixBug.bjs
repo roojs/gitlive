@@ -188,6 +188,7 @@
                             "|xns": "Gtk",
                             "items": [
                                 {
+                                    "label": "On this project:",
                                     "xtype": "Label",
                                     "|xns": "Gtk"
                                 },
