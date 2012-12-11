@@ -178,13 +178,14 @@ FixBug=new XObject({
                                                                                     
                                                     },
                                                     loadData : function (data) {
+                                                            print("loading data");
                                                                                         
                                                         var iter = new Gtk.TreeIter();
                                                         var el = this.el;
                                                         data.forEach(function(p) {
                                                             
                                                             el.append(iter);
-                                                            
+                                                            print("ADD " + p.name);
                                                              
                                                             el.set_value(iter, 0, p.id);
                                                             el.set_value(iter, 1,   p.code + ' - ' + p.name );
