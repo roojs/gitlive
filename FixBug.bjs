@@ -37,8 +37,8 @@
                                 },
                                 {
                                     "xtype": "ComboBox",
+                                    "|init": "function() {\n     this.el = new Gtk.ComboBox.with_entry();\n                                \n                                \n    this.model  = new XObject(this.model);\n    this.model.init();\n    this.el.set_model(this.model.el);\n    this.el.set_entry_text_column (0);\n    XObject.prototype.init.call(this);\n    \n     var t = this;\n    imports.Projects.Projects.fetch(  function(res) { \n         t.load(res);\n    });\n}\n",
                                     "|load": "function(tr) {\n      this.model.el.clear();\n                                \n         for(var i =0 ; i < tr.length; i++) {\n            var ret = {  };\n            this.model.el.append(ret);\n            //print(JSON.stringify(ret,null,4));\n           \n            this.model.el.set_value(ret.iter, 0, '' + tr[i].code + ' ' + tr[i].name );\n            this.model.el.set_value(ret.iter, 1, '' + tr[i].id  );\n     \n            \n        }     \n        \n}\n",
-                                    "|init": "function() {\n     this.el = new Gtk.ComboBox.with_entry();\n                                \n                                \n    this.model  = new XObject(this.model);\n    this.model.init();\n    this.el.set_model(this.model.el);\n    this.el.set_entry_text_column (0);\n    XObject.prototype.init.call(this);\n}\n",
                                     "|xns": "Gtk",
                                     "items": [
                                         {
