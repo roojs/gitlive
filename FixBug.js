@@ -71,7 +71,17 @@ FixBug=new XObject({
                             label : "On this project:"
                         },
                         {
-                            xtype: Gtk.ComboBox
+                            xtype: Gtk.ComboBox,
+                            init : function() {
+                                 this.el = new Gtk.ComboBox.with_entry();
+                                                            
+                                                            
+                                this.model  = new XObject(this.model);
+                                this.model.init();
+                                this.el.set_model(this.model.el);
+                                this.el.set_entry_text_column (0);
+                                XObject.prototype.init.call(this);
+                            }
                         },
                         {
                             xtype: Gtk.Button,

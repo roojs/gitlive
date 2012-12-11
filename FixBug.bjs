@@ -37,6 +37,7 @@
                                 },
                                 {
                                     "xtype": "ComboBox",
+                                    "|init": "function() {\n     this.el = new Gtk.ComboBox.with_entry();\n                                \n                                \n    this.model  = new XObject(this.model);\n    this.model.init();\n    this.el.set_model(this.model.el);\n    this.el.set_entry_text_column (0);\n    XObject.prototype.init.call(this);\n}\n",
                                     "|xns": "Gtk"
                                 },
                                 {
