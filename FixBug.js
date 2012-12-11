@@ -84,8 +84,7 @@ FixBug=new XObject({
                             },
                             items : [
                                 {
-                                    xtype: Gtk.ListStore,
-                                    pack : false
+                                    xtype: Gtk.ListStore
                                 }
                             ]
                         },
