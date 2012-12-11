@@ -56,7 +56,7 @@ Projects = {
         var netrc  = Netrc.forHost('git.roojs.com');
         
         r.open('GET',
-               "http://roojs.com/admin.php/Roo/Projects?sort=code&dir=ASC"
+               "http://roojs.com/admin.php/Roo/Projects?sort=code&dir=ASC&active=1"
                ,true, netrc.login, netrc.password  );
         // print("Getting current task: "  +  "http://roojs.com/admin.php/Roo/mtrack_ticket?repo_shortname=" + repo.name);        
         r.send();
