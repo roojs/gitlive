@@ -18,7 +18,7 @@ Projects = {
     // called on startup..??
     // clear list, and call again to refresh..
     
-    fetch: function(rep,callback)
+    fetch: function(callback)
     {
         // have we got the status in the last 15 mins..
         // we should not need to get it again... - it's probably not changed.
@@ -81,9 +81,9 @@ Projects = {
 
 
 //-------------- testing
-/*
+
 Gtk = imports.gi.Gtk;
 Gtk.init(Seed.argv);
-Tasks.notify( { repo : imports.Scm.Repo.Repo.get('gitlive') } );
+Projects.list( { repo : imports.Scm.Repo.Repo.get('gitlive') } );
 Gtk.main();
-*/
+ 
