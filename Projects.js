@@ -47,8 +47,9 @@ Projects = {
                     return;
                 }
                 Projects.list = res.data;
+                
                 //print("Current task:" + JSON.stringify(_this.curTask,null,4));
-                callback(res.data);
+                //callback(res.data);
             }
             
         });
