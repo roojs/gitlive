@@ -184,7 +184,7 @@ FixBug=new XObject({
                                                         data.forEach(function(p) {
                                                             var ret = {};
                                                             el.append(ret);
-                                                            print("ADD " + p.name);
+                                                           //print("ADD " + p.name);
                                                              
                                                             el.set_value(ret.iter, 0, p.id);
                                                             el.set_value(ret.iter, 1,   p.code + ' - ' + p.name );
