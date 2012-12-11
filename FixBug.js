@@ -72,8 +72,20 @@ FixBug=new XObject({
                         },
                         {
                             xtype: Gtk.ComboBox,
-                            load : function() {
-                                
+                            load : function(tr) {
+                                  this.model.el.clear();
+                                                            
+                                     for(var i =0 ; i < tr.length; i++) {
+                                        var ret = {  };
+                                        this.model.el.append(ret);
+                                        //print(JSON.stringify(ret,null,4));
+                                       
+                                        this.model.el.set_value(ret.iter, 0, '' + tr[i].code + ' ' + tr[i].name );
+                                        this.model.el.set_value(ret.iter, 1, '' + tr[i].id  );
+                                 
+                                        
+                                    }     
+                                    
                             },
                             init : function() {
                                  this.el = new Gtk.ComboBox.with_entry();
