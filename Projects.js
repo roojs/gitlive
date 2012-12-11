@@ -24,7 +24,7 @@ Projects = {
         // we should not need to get it again... - it's probably not changed.
         
         if (this.list.length) {
-            return this.list;
+            callback( this.list);
         }
         
         _this = this;
