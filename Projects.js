@@ -18,7 +18,7 @@ Projects = {
     // called on startup..??
     // clear list, and call again to refresh..
     
-    fetch: function(repo)
+    fetch: function(rep,callback)
     {
         // have we got the status in the last 15 mins..
         // we should not need to get it again... - it's probably not changed.
