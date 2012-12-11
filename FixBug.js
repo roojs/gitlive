@@ -73,7 +73,7 @@ FixBug=new XObject({
                         {
                             xtype: Gtk.ComboBox,
                             init : function() {
-                                 this.el = new Gtk.ComboBox();
+                                 this.el = new Gtk.ComboBox.with_entry();
                                                             
                                                             
                                 this.model  = new XObject(this.model);
