@@ -163,17 +163,17 @@ FixBug=new XObject({
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
                                                     
-                                                            this.el.set_column_types ( 2, [
-                                                                GObject.TYPE_STRING,  // real key
-                                                                GObject.TYPE_STRING // real type
-                                                                
-                                                                
-                                                            ] );
+                                                        this.el.set_column_types ( 2, [
+                                                            GObject.TYPE_STRING,  // real key
+                                                            GObject.TYPE_STRING // real type
+                                                            
+                                                            
+                                                        ] );
                                                     
-                                                             var t = this;
-                                                            imports.Projects.Projects.fetch(  function(res) { 
-                                                                t.loadData(res);
-                                                            });
+                                                         var t = this;
+                                                        imports.Projects.Projects.fetch(  function(res) { 
+                                                            t.loadData(res);
+                                                        });
                                                             
                                                                                     
                                                     },
