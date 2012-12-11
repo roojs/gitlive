@@ -170,8 +170,7 @@ FixBug=new XObject({
                                                                 
                                                             ] );
                                                     
-                                                            var Repo = imports.Scm.Repo.Repo;
-                                                            var t = this;
+                                                             var t = this;
                                                             imports.Projects.Projects.fetch(  function(res) { 
                                                                 t.loadData(res);
                                                             });
