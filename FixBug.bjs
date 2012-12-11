@@ -42,7 +42,7 @@
                                     "items": [
                                         {
                                             "xtype": "ListStore",
-                                            "*prop": "function() {\n    \n}\n",
+                                            "*prop": "model",
                                             "|xns": "Gtk"
                                         }
                                     ]
