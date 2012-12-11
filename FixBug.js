@@ -81,7 +81,13 @@ FixBug=new XObject({
                                 this.el.set_model(this.model.el);
                                 this.el.set_entry_text_column (0);
                                 XObject.prototype.init.call(this);
-                            }
+                            },
+                            items : [
+                                {
+                                    xtype: Gtk.ListStore,
+                                    pack : false
+                                }
+                            ]
                         },
                         {
                             xtype: Gtk.Button,
