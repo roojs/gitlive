@@ -206,10 +206,10 @@ FixBug=new XObject({
                                                             
                                                         ] );
                                                     
-                                                         var t = this;
-                                                        imports.Projects.Projects.fetch(  function(res) { 
-                                                            t.loadData(res);
-                                                        });
+                                                        // var t = this;
+                                                        //imports.Projects.Projects.fetch(  function(res) { 
+                                                        //    t.loadData(res);
+                                                       // });
                                                             
                                                                                     
                                                     },
