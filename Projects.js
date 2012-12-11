@@ -43,10 +43,10 @@ Projects = {
                 //print([ res.success , res.data.length ]);
                 if (!res.success || !res.data.length)  {
                     print("NO tasks returned");
-                    callback([]);
+                    Projects.list = []; //res.data;
                     return;
                 }
-                
+                Projects.list = res.data;
                 //print("Current task:" + JSON.stringify(_this.curTask,null,4));
                 callback(res.data);
             }
