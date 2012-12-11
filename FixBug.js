@@ -178,18 +178,18 @@ FixBug=new XObject({
                                                                                     
                                                     },
                                                     loadData : function (data) {
-                                                                                                
-                                                                var iter = new Gtk.TreeIter();
-                                                                var el = this.el;
-                                                                data.forEach(function(p) {
-                                                                    
-                                                                    el.append(iter);
-                                                                    
-                                                                     
-                                                                    el.set_value(iter, 0, p.id);
-                                                                    el.set_value(iter, 1,   p.code + ' - ' + p.name );
-                                                                    
-                                                                });
+                                                                                        
+                                                        var iter = new Gtk.TreeIter();
+                                                        var el = this.el;
+                                                        data.forEach(function(p) {
+                                                            
+                                                            el.append(iter);
+                                                            
+                                                             
+                                                            el.set_value(iter, 0, p.id);
+                                                            el.set_value(iter, 1,   p.code + ' - ' + p.name );
+                                                            
+                                                        });
                                                                   
                                                                                          
                                                     }
