@@ -95,7 +95,7 @@ FixBug=new XObject({
                                         this.model.el.append(ret);
                                         //print(JSON.stringify(ret,null,4));
                                        
-                                        this.model.el.set_value(ret.iter, 0, '' + tr[i].code + ' ' + tr[i].name );
+                                        this.model.el.set_value(ret.iter, 0, '' + tr[i].code + "\n" + tr[i].name );
                                         this.model.el.set_value(ret.iter, 1, '' + tr[i].id  );
                                  
                                         
