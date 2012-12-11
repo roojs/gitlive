@@ -84,6 +84,6 @@ Projects = {
 
 Gtk = imports.gi.Gtk;
 Gtk.init(Seed.argv);
-Projects.list( function(list) { print(JSON.stringify(list,null,4)); } );
+Projects.fetch( function(list) { print(JSON.stringify(list,null,4)); } );
 Gtk.main();
  
