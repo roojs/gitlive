@@ -82,11 +82,9 @@ FixBug=new XObject({
                                 this.el.set_entry_text_column (0);
                                 XObject.prototype.init.call(this);
                             },
-                            items : [
-                                {
-                                    xtype: Gtk.ListStore
-                                }
-                            ]
+                            'function() {\n    \n}\n' : {
+                                xtype: Gtk.ListStore
+                            }
                         },
                         {
                             xtype: Gtk.Button,
