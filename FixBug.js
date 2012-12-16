@@ -187,7 +187,7 @@ FixBug=new XObject({
                                             init : function() {
                                                 XObject.prototype.init.call(this);
                                                 var description = new Pango.FontDescription.c_new();
-                                                description.set_size(8000);
+                                                description.set_size(10000);
                                                 this.el.modify_font(description);
                                             
                                                 this.selection = this.el.get_selection();
