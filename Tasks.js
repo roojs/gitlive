@@ -135,7 +135,9 @@ Tasks = {
         r.open('GET',
                "http://roojs.com/admin.php/Roo/mtrack_ticket?" + r.urlEncode(params)
                ,true, netrc.login, netrc.password  );
-         print("Getting current task: "  +  "http://roojs.com/admin.php/Roo/mtrack_ticket?repo_shortname=" + repo.name);        
+         print("Getting current task: "  +
+               
+               "http://roojs.com/admin.php/Roo/mtrack_ticket?" + r.urlEncode(params));        
         r.send();
         
     },
