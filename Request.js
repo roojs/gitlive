@@ -31,16 +31,18 @@ Request = function(opts) {
             }
             
         });
+        
+        
         var netrc  = Netrc.forHost('git.roojs.com');
         
           
         
         r.open('GET',
-               "http://roojs.com/admin.php/Roo/mtrack_ticket?" + r.urlEncode(params)
+               'http://roojs.com/admin.php' + opts.url + '?' + r.urlEncode(opts.params)
                ,true, netrc.login, netrc.password  );
-         print("Getting current task: "  +
-               
-               "http://roojs.com/admin.php/Roo/mtrack_ticket?" + r.urlEncode(params));        
+        print("Getting current task: "  +
+                'http://roojs.com/admin.php' + opts.url + '?' + r.urlEncode(opts.params)
+             );        
         r.send();
         
     },
