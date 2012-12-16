@@ -290,7 +290,7 @@ FixBug=new XObject({
                             ]
                         },
                         {
-                            xtype: Gtk.VPaned,
+                            xtype: Gtk.VBox,
                             pack : "pack_start,true,true,3",
                             items : [
                                 {
