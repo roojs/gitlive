@@ -277,6 +277,7 @@ FixBug=new XObject({
                                                 {
                                                     xtype: Gtk.TreeViewColumn,
                                                     pack : "append_column",
+                                                    sizing : "",
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
                                                         this.el.add_attribute(this.items[0].el , 'markup', 1 );
