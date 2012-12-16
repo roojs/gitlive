@@ -255,7 +255,9 @@ FixBug=new XObject({
                                                         // or try with iter...
                                                         var res = {};
                                                          this.get('/project-select').el.get_active_iter(res);
-                                                           path = model.get_value(iter, 0).value.get_string();
+                                                         var model = this.get('/project-store').el;
+                                                         
+                                                           path = model.get_value(res.iter, 0).value.get_string();
                                                                                          
                                                          
                                                         
