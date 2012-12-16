@@ -251,8 +251,12 @@ FixBug=new XObject({
                                                      
                                                         var active_id = this.get('/project-select').el.get_active();
                                                          
-                                                        var real_id = this.get('/project-store').raw_data[active_id].id;
-                                                         
+                                                        var project_id = this.get('/project-store').raw_data[active_id].id;
+                                                        
+                                                        Tasks.list({
+                                                            project_id : project_id,
+                                                            'query[filter]' : 'me'
+                                                        });
                                                          
                                                         
                                                     }
