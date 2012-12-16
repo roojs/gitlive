@@ -236,6 +236,7 @@ FixBug=new XObject({
                                                             print("loading data");
                                                                                         
                                                         var el = this.el;
+                                                        this.el.clear();
                                                         data.forEach(function(p) {
                                                             var ret = {};
                                                             el.append(ret);
