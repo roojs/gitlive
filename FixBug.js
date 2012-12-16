@@ -445,6 +445,7 @@ FixBug=new XObject({
                         },
                         {
                             xtype: Gtk.HPaned,
+                            pack : "add",
                             items : [
                                 {
                                     xtype: Gtk.VBox,
