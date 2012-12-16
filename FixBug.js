@@ -260,7 +260,7 @@ FixBug=new XObject({
                                                             'query[filter]' : 'me'
                                                         }, function(res) { 
                                                             print(JSON.stringify(res,null,4));
-                                                            _this.loadData(res);
+                                                            _t.loadData(res);
                                                         });
                                                          
                                                         
