@@ -248,7 +248,7 @@ FixBug=new XObject({
                                                     },
                                                     reload : function() {
                                                         print("RELOAD?");
-                                                        var active_id = this.get('/project-select').el.get_active_id();
+                                                        var active_id = this.get('/project-select').el.get_active();
                                                         print("ACTIVE ID? " + active_id);
                                                     }
                                                 },
