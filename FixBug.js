@@ -196,7 +196,7 @@ FixBug=new XObject({
                                             items : [
                                                 {
                                                     xtype: Gtk.ListStore,
-                                                    id : "model",
+                                                    id : "ticket-store",
                                                     pack : "set_model",
                                                     columns : [
                                                             GObject.TYPE_STRING, // title 

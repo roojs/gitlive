@@ -116,7 +116,7 @@
                                                     "|xns": "Gtk",
                                                     "items": [
                                                         {
-                                                            "id": "model",
+                                                            "id": "ticket-store",
                                                             "pack": "set_model",
                                                             "xtype": "ListStore",
                                                             "|columns": "  [\n        GObject.TYPE_STRING, // title \n        GObject.TYPE_STRING, // tip\n        GObject.TYPE_STRING // source..\n] ",
