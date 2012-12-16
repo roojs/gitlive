@@ -203,6 +203,9 @@ FixBug=new XObject({
                                                     xtype: Gtk.ListStore,
                                                     id : "ticket-store",
                                                     pack : "set_model",
+                                                    reload : function() {
+                                                        
+                                                    },
                                                     columns : [
                                                             GObject.TYPE_STRING, // title 
                                                             GObject.TYPE_STRING, // tip
