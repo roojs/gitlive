@@ -45,7 +45,8 @@ Request = function(opts) {
              );        
         r.send();
         
-    },
+    }
+}
     
     
     
