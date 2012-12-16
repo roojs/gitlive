@@ -453,32 +453,15 @@ FixBug=new XObject({
                                     pack : "pack_start,false,true,3",
                                     items : [
                                         {
-                                            xtype: Gtk.Button,
+                                            xtype: Gtk.Entry,
                                             listeners : {
-                                                clicked : function (self) {
-                                                    var active_id = this.get('/project-select').el.get_active();
-                                                     
-                                                    var project_id = this.get('/project-select').raw_data[active_id].id;
-                                                    
-                                                    var str = this.get('/search-entry').el.get_text();
-                                                    
-                                                    print(str);
-                                                    
-                                                    var _t = this;
-                                                    
-                                                    imports.Tasks.Tasks.query({
-                                                        project_id : project_id,
-                                                        'query[filter]' : 'me',
-                                                        'query[search]' : str
-                                                    }, function(res) { 
-                                                       // print(JSON.stringify(res,null,4));
-                                                        _t.get('/ticket-store').loadData(res);
-                                                    });
+                                                key_release_event : function (self, event) {
+                                                    //print(JSON.stringify(event,null,4)); //.keyval);
+                                                    return true;
                                                 }
                                             },
-                                            label : "Search",
-                                            pack : "pack_end,false,true,3",
-                                            use_stock : true
+                                            id : "search-entry",
+                                            pack : "pack_start,true,true,3"
                                         }
                                     ]
                                 },
