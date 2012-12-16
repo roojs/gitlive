@@ -165,6 +165,11 @@ FixBug=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.Entry,
+                                            listeners : {
+                                                key_release_event : function (self, event) {
+                                                
+                                                }
+                                            },
                                             id : "search-entry",
                                             pack : "pack_start,true,true,3"
                                         },

@@ -93,6 +93,9 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
+                                                    "listeners": {
+                                                        "key_release_event": "function (self, event) {\n\n}"
+                                                    },
                                                     "id": "search-entry",
                                                     "pack": "pack_start,true,true,3",
                                                     "xtype": "Entry",
