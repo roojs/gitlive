@@ -155,7 +155,7 @@ FixBug=new XObject({
                     pack : "pack_end,true,true,3",
                     items : [
                         {
-                            xtype: Gtk.VBox,
+                            xtype: Gtk.VPaned,
                             pack : "pack_start,false,true,3",
                             items : [
                                 {
