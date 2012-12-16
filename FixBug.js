@@ -74,7 +74,10 @@ FixBug=new XObject({
                             xtype: Gtk.ComboBox,
                             listeners : {
                                 changed : function (self) {
+                                    print("store: active id = " + this.el.get_active_id());
                                     this.get('/ticket-store').reload();
+                                    
+                                    
                                 }
                             },
                             id : "project-select",

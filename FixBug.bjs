@@ -37,7 +37,7 @@
                                 },
                                 {
                                     "listeners": {
-                                        "changed": "function (self) {\n    this.get('/ticket-store').reload();\n}"
+                                        "changed": "function (self) {\n    print(\"store: active id = \" + this.el.get_active_id());\n    this.get('/ticket-store').reload();\n    \n    \n}"
                                     },
                                     "id": "project-select",
                                     "xtype": "ComboBox",
