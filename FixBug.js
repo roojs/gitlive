@@ -561,13 +561,19 @@ FixBug=new XObject({
                                                                 
                                                                 var _t = this;
                                                                 
-                                                                imports.Tasks.Tasks.query({
-                                                                    project_id : project_id,
-                                                                    'query[filter]' : 'me'
-                                                                }, function(res) { 
-                                                                    print(JSON.stringify(res,null,4));
-                                                                    _t.loadData(res);
+                                                                new imports.Request.Request( {
+                                                                   url : '/cash_invoice_entry',
+                                                                   params : {
+                                                                        for_day : (new imports.Date.Date()).format('Y-m-d')
+                                                                   },
+                                                                   success : function(res) {
+                                                                       this.loadData();
+                                                                   },
+                                                                   scope : this
+                                                                    
+                                                                    
                                                                 });
+                                                                 
                                                                  
                                                                 
                                                             }
