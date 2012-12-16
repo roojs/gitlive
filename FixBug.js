@@ -248,17 +248,10 @@ FixBug=new XObject({
                                                                                          
                                                     },
                                                     reload : function() {
-                                                        print("RELOAD?");
+                                                     
                                                         var active_id = this.get('/project-select').el.get_active();
-                                                        print("ACTIVE ID? " + active_id);
-                                                        
-                                                        // or try with iter...
-                                                        var res = {};
-                                                         this.get('/project-select').el.get_active_iter(res);
-                                                         var model = this.get('/project-store').el;
                                                          
-                                                           var tid = model.get_value(res.iter, 0).value.get_string();
-                                                                                        print("tid = "  + tid); 
+                                                         
                                                          
                                                         
                                                     }
