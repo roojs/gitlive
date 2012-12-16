@@ -250,7 +250,7 @@
                                             ]
                                         },
                                         {
-                                            "pack": "pack2,true,true",
+                                            "pack": "pack2,false,false",
                                             "width_request": 200,
                                             "xtype": "VBox",
                                             "|xns": "Gtk",

@@ -449,7 +449,7 @@ FixBug=new XObject({
                                 },
                                 {
                                     xtype: Gtk.VBox,
-                                    pack : "pack2,true,true",
+                                    pack : "pack2,false,false",
                                     width_request : 200,
                                     items : [
                                         {
