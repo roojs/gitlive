@@ -253,10 +253,10 @@ FixBug=new XObject({
                                                          
                                                         var project_id = this.get('/project-store').raw_data[active_id].id;
                                                         
-                                                        Tasks.list({
+                                                        Tasks.query({
                                                             project_id : project_id,
                                                             'query[filter]' : 'me'
-                                                        });
+                                                        }, function() { });
                                                          
                                                         
                                                     }
