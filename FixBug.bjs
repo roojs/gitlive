@@ -94,7 +94,7 @@
                                             "items": [
                                                 {
                                                     "listeners": {
-                                                        "key_release_event": "function (self, event) {\n\n}"
+                                                        "key_release_event": "function (self, event) {\n    print(event.keyval);\n}"
                                                     },
                                                     "id": "search-entry",
                                                     "pack": "pack_start,true,true,3",
