@@ -184,6 +184,8 @@ FixBug=new XObject({
                                                     
                                                     var str = this.get('/search-entry').el.get_text();
                                                     
+                                                    print(str);
+                                                    
                                                     var _t = this;
                                                     
                                                     imports.Tasks.Tasks.query({

@@ -103,7 +103,7 @@
                                                 },
                                                 {
                                                     "listeners": {
-                                                        "activate": "function (self) {\n    var active_id = this.get('/project-select').el.get_active();\n     \n    var project_id = this.get('/project-select').raw_data[active_id].id;\n    \n    var str = this.get('/search-entry').el.get_text();\n    \n    var _t = this;\n    \n    imports.Tasks.Tasks.query({\n        project_id : project_id,\n        'query[filter]' : 'me',\n        'query[search]' : str\n    }, function(res) { \n        print(JSON.stringify(res,null,4));\n        _t.loadData(res);\n    });\n     \n}"
+                                                        "activate": "function (self) {\n    var active_id = this.get('/project-select').el.get_active();\n     \n    var project_id = this.get('/project-select').raw_data[active_id].id;\n    \n    var str = this.get('/search-entry').el.get_text();\n    \n    print(str);\n    \n    var _t = this;\n    \n    imports.Tasks.Tasks.query({\n        project_id : project_id,\n        'query[filter]' : 'me',\n        'query[search]' : str\n    }, function(res) { \n        print(JSON.stringify(res,null,4));\n        _t.loadData(res);\n    });\n     \n}"
                                                     },
                                                     "label": "Search",
                                                     "pack": "pack_end,false,true,3",
