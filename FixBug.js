@@ -151,7 +151,7 @@ FixBug=new XObject({
                     ]
                 },
                 {
-                    xtype: Gtk.HPaned,
+                    xtype: Gtk.HBox,
                     pack : "pack_end,true,true,3",
                     items : [
                         {
