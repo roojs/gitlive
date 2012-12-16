@@ -245,9 +245,8 @@
                                     ]
                                 },
                                 {
-                                    "|xns": "Gtk",
                                     "xtype": "HPaned",
-                                    "pack": false,
+                                    "|xns": "Gtk",
                                     "items": [
                                         {
                                             "pack": "add",
