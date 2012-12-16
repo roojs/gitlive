@@ -181,7 +181,7 @@ FixBug=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.TreeView,
-                                            fixed_height_mode : "true",
+                                            fixed_height_mode : true,
                                             id : "ticket-view",
                                             pack : "add",
                                             headers_visible : false,
