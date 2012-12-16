@@ -149,7 +149,7 @@
                                     ]
                                 },
                                 {
-                                    "pack": "pack_start,true,true,3",
+                                    "pack": "add",
                                     "xtype": "VBox",
                                     "|xns": "Gtk",
                                     "items": [
