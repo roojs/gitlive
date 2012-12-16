@@ -22,6 +22,9 @@ FixBug=new XObject({
             this.el.fullscreen();
             this.el.grab_focus();
             this.el.set_keep_above(true);
+            
+            this.get('/today').load();
+            
         }
     },
     border_width : 3,
