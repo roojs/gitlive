@@ -83,7 +83,7 @@
                             "items": [
                                 {
                                     "pack": "pack_start,false,true,3",
-                                    "xtype": "VPaned",
+                                    "xtype": "VBox",
                                     "|xns": "Gtk",
                                     "items": [
                                         {
