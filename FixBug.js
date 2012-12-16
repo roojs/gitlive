@@ -450,7 +450,7 @@ FixBug=new XObject({
                                 {
                                     xtype: Gtk.VBox,
                                     pack : "add",
-                                    width_request : 400,
+                                    width_request : 200,
                                     items : [
                                         {
                                             xtype: Gtk.HBox,

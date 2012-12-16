@@ -251,7 +251,7 @@
                                         },
                                         {
                                             "pack": "add",
-                                            "width_request": 400,
+                                            "width_request": 200,
                                             "xtype": "VBox",
                                             "|xns": "Gtk",
                                             "items": [
