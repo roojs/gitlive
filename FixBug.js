@@ -585,6 +585,10 @@ FixBug=new XObject({
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            xtype: Gtk.HPaned,
+                            pack : false
                         }
                     ]
                 }

@@ -312,6 +312,11 @@
                                             ]
                                         }
                                     ]
+                                },
+                                {
+                                    "|xns": "Gtk",
+                                    "xtype": "HPaned",
+                                    "pack": false
                                 }
                             ]
                         }
