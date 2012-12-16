@@ -1,5 +1,20 @@
+/**
+ * a generic simple api for requests...
+ *
+ * new Request({
+       url :
+       params : {}
+       method : ?? not yet
+       success : function() { ... }
+    
+ });
+ *
+ *
+ */
 
 
+XMLHttpRequest = imports.XMLHttpRequest.XMLHttpRequest;
+Netrc = imports.Netrc.Netrc;
 
 Request = function(opts) {
 
