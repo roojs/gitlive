@@ -113,6 +113,7 @@ FixBug=new XObject({
                             },
                             model : {
                                 xtype: Gtk.ListStore,
+                                id : "project-store",
                                 init : function() {
                                     XObject.prototype.init.call(this);
                                     this.el.set_column_types ( 3, [
