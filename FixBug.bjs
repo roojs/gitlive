@@ -112,6 +112,7 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
+                                                    "fixed_height_mode": "true",
                                                     "id": "ticket-view",
                                                     "pack": "add",
                                                     "xtype": "TreeView",
