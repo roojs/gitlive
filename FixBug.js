@@ -250,6 +250,12 @@ FixBug=new XObject({
                                                         print("RELOAD?");
                                                         var active_id = this.get('/project-select').el.get_active();
                                                         print("ACTIVE ID? " + active_id);
+                                                        
+                                                        // or try with iter...
+                                                        var res = {};
+                                                         this.get('/project-select').el.get_active_iter(res);
+                                                         
+                                                        
                                                     }
                                                 },
                                                 {
