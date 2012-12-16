@@ -177,12 +177,25 @@ FixBug=new XObject({
                                         {
                                             xtype: Gtk.Button,
                                             listeners : {
-                                                activate : function (self) {
-                                                
-                                                     
-                                                },
                                                 clicked : function (self) {
-                                                
+                                                    var active_id = this.get('/project-select').el.get_active();
+                                                     
+                                                    var project_id = this.get('/project-select').raw_data[active_id].id;
+                                                    
+                                                    var str = this.get('/search-entry').el.get_text();
+                                                    
+                                                    print(str);
+                                                    
+                                                    var _t = this;
+                                                    
+                                                    imports.Tasks.Tasks.query({
+                                                        project_id : project_id,
+                                                        'query[filter]' : 'me',
+                                                        'query[search]' : str
+                                                    }, function(res) { 
+                                                       // print(JSON.stringify(res,null,4));
+                                                        _t.loadData(res);
+                                                    });
                                                 }
                                             },
                                             label : "Search",
