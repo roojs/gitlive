@@ -26,7 +26,7 @@ FixBug=new XObject({
     },
     border_width : 3,
     default_height : 400,
-    default_width : 900,
+    default_width : 1200,
     title : "Select Active Bug",
     deletable : true,
     modal : true,
