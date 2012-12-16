@@ -243,9 +243,11 @@ FixBug=new XObject({
                                                            //print("ADD " + p.name);
                                                              
                                                             el.set_value(ret.iter, 0, p.id);
-                                                            el.set_value(ret.iter, 1,   '#' + p.id + 
+                                                            el.set_value(ret.iter, 1,   '<b>#' + p.id + '</b>' + 
                                                                 '[' + p.status_name + '] <b>'   + p.summary  + "</b>\n"  +
-                                                                  p.description.split("\n").slice(0,3).join("\n")
+                                                                 '<span color="#666">' + p.description.split("\n").slice(0,3).join("\n") +
+                                                                 '</span>'
+                                                                 
                                                                   );
                                                             
                                                         });
