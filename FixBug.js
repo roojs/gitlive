@@ -172,8 +172,9 @@ FixBug=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.TreeView,
-                                            headers_visible : false,
+                                            id : "ticket-view",
                                             pack : "add",
+                                            headers_visible : false,
                                             init : function() {
                                                 XObject.prototype.init.call(this);
                                                 var description = new Pango.FontDescription.c_new();
