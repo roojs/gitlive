@@ -253,18 +253,7 @@
                                         {
                                             "pack": "pack_start,false,true,3",
                                             "xtype": "HBox",
-                                            "|xns": "Gtk",
-                                            "items": [
-                                                {
-                                                    "listeners": {
-                                                        "key_release_event": "function (self, event) {\n    //print(JSON.stringify(event,null,4)); //.keyval);\n    return true;\n}"
-                                                    },
-                                                    "id": "search-entry",
-                                                    "pack": "pack_start,true,true,3",
-                                                    "xtype": "Entry",
-                                                    "|xns": "Gtk"
-                                                }
-                                            ]
+                                            "|xns": "Gtk"
                                         },
                                         {
                                             "pack": "pack_end,true,true,3",

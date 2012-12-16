@@ -450,20 +450,7 @@ FixBug=new XObject({
                             items : [
                                 {
                                     xtype: Gtk.HBox,
-                                    pack : "pack_start,false,true,3",
-                                    items : [
-                                        {
-                                            xtype: Gtk.Entry,
-                                            listeners : {
-                                                key_release_event : function (self, event) {
-                                                    //print(JSON.stringify(event,null,4)); //.keyval);
-                                                    return true;
-                                                }
-                                            },
-                                            id : "search-entry",
-                                            pack : "pack_start,true,true,3"
-                                        }
-                                    ]
+                                    pack : "pack_start,false,true,3"
                                 },
                                 {
                                     xtype: Gtk.ScrolledWindow,
