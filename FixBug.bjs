@@ -317,6 +317,91 @@
                                                     ]
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "pack": "add",
+                                            "xtype": "VBox",
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "pack": "pack_start,false,true,3",
+                                                    "xtype": "HBox",
+                                                    "|xns": "Gtk",
+                                                    "items": [
+                                                        {
+                                                            "label": "I am doing this:",
+                                                            "pack": "pack_start,false,true,3",
+                                                            "xtype": "Label",
+                                                            "|xns": "Gtk"
+                                                        },
+                                                        {
+                                                            "pack": "pack_start,true,true,3",
+                                                            "xtype": "Entry",
+                                                            "|xns": "Gtk"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "pack": "pack_start,false,true,3",
+                                                    "xtype": "HBox",
+                                                    "|xns": "Gtk",
+                                                    "items": [
+                                                        {
+                                                            "label": "Since:",
+                                                            "pack": "pack_start,false,true,3",
+                                                            "xtype": "Label",
+                                                            "|xns": "Gtk"
+                                                        },
+                                                        {
+                                                            "pack": "pack_start,false,false,3",
+                                                            "xtype": "Entry",
+                                                            "|width_request": 80,
+                                                            "|xns": "Gtk"
+                                                        },
+                                                        {
+                                                            "label": "Until",
+                                                            "pack": "pack_start,false,true,3",
+                                                            "xtype": "Label",
+                                                            "|xns": "Gtk"
+                                                        },
+                                                        {
+                                                            "pack": "pack_start,true,true,3",
+                                                            "xtype": "Entry",
+                                                            "|xns": "Gtk"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "|xns": "Gtk",
+                                                    "xtype": "ScrolledWindow",
+                                                    "pack": "add",
+                                                    "id": "RightEditor",
+                                                    "items": [
+                                                        {
+                                                            "|editable": "false",
+                                                            "id": "view",
+                                                            "indent_width": 4,
+                                                            "pack": "add",
+                                                            "xtype": "TextView",
+                                                            "|auto_indent": true,
+                                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    var description = Pango.font_description_from_string(\"monospace\");\n\n    description.set_size(8000);\n    this.el.modify_font(description);\n\n}\n",
+                                                            "|load": "function(str) {\n\n// show the help page for the active node..\n \n\n\n \n    this.el.get_buffer().set_text(str, str.length);\n \n    \n     var buf = this.el.get_buffer();\n     \n     \n    \n}",
+                                                            "|show_line_numbers": true,
+                                                            "|xns": "Gtk",
+                                                            "items": [
+                                                                {
+                                                                    "listeners": {
+                                                                        "changed": "function (self) {\n    /*\n    var s = new Gtk.TextIter();\n    var e = new Gtk.TextIter();\n    this.el.get_start_iter(s);\n    this.el.get_end_iter(e);\n    var str = this.el.get_text(s,e,true);\n    try {\n        Seed.check_syntax('var e = ' + str);\n    } catch (e) {\n        this.get('/RightEditor.view').el.modify_base(Gtk.StateType.NORMAL, new Gdk.Color({\n            red: 0xFFFF, green: 0xCCCC , blue : 0xCCCC\n           }));\n        //print(\"SYNTAX ERROR IN EDITOR\");   \n        //print(e);\n        //console.dump(e);\n        return;\n    }\n    this.get('/RightEditor.view').el.modify_base(Gtk.StateType.NORMAL, new Gdk.Color({\n            red: 0xFFFF, green: 0xFFFF , blue : 0xFFFF\n           }));\n    \n     this.get('/LeftPanel.model').changed(  str , false);\n     */\n}"
+                                                                    },
+                                                                    "pack": "set_buffer",
+                                                                    "xtype": "Buffer",
+                                                                    "|xns": "GtkSource"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
