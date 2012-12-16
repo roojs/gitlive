@@ -72,6 +72,11 @@ FixBug=new XObject({
                         },
                         {
                             xtype: Gtk.ComboBox,
+                            listeners : {
+                                changed : function (self) {
+                                    this.get('/ticket-store').reload();
+                                }
+                            },
                             id : "project-select",
                             init : function() {
                                  this.el = new Gtk.ComboBox.with_entry();
