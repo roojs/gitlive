@@ -560,12 +560,20 @@ FixBug=new XObject({
                                                                 var project_id = this.get('/project-select').raw_data[active_id].id;
                                                                 
                                                                 var _t = this;
+                                                                 
+                                                                var DT = imports.Date.Date;
                                                                 
                                                                 new imports.Request.Request( {
                                                                    url : '/cash_invoice_entry',
                                                                    params : {
-                                                                        for_day : (new imports.Date.Date()).format('Y-m-d')
+                                                                        'query[action_dt_from]' : (new DT()).format('Y-m-d'),
+                                                                         'query[action_dt_to]' : (new DT()).add(DT.DAY,1).format('Y-m-d'),
+                                                                        limit: 999,
+                                                                        'sort' : 'action_dt',
+                                                                        dir : 'ASC',
+                                                                        action : 'Hours'
                                                                    },
+                                                                   
                                                                    success : function(res) {
                                                                        this.loadData();
                                                                    },
