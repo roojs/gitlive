@@ -203,7 +203,7 @@ FixBug=new XObject({
                                                     xtype: Gtk.ListStore,
                                                     id : "ticket-store",
                                                     pack : "set_model",
-                                                    reload : function() {
+                                                    reload : function(proj_id) {
                                                         print("RELOAD?");
                                                         var active_id = this.get('/project-select').el.get_active_id();
                                                         print("ACTIVE ID? " + active_id);
