@@ -98,7 +98,7 @@ FixBug=new XObject({
                             },
                             load : function(tr) {
                                   this.model.el.clear();
-                                                            
+                                  _this.raw_data = tr;                     
                                      for(var i =0 ; i < tr.length; i++) {
                                         var ret = {  };
                                         this.model.el.append(ret);
