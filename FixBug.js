@@ -165,7 +165,7 @@ FixBug=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.Entry,
-                                            pack : "pack_start,false,true,3"
+                                            pack : "pack_start,true,true,3"
                                         },
                                         {
                                             xtype: Gtk.Button,

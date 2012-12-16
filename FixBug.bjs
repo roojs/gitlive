@@ -93,7 +93,7 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
-                                                    "pack": "pack_start,false,true,3",
+                                                    "pack": "pack_start,true,true,3",
                                                     "xtype": "Entry",
                                                     "|xns": "Gtk"
                                                 },
