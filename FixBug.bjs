@@ -78,7 +78,7 @@
                         },
                         {
                             "pack": "pack_end,true,true,3",
-                            "xtype": "HBox",
+                            "xtype": "HPaned",
                             "|xns": "Gtk",
                             "items": [
                                 {
