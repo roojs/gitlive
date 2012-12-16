@@ -259,7 +259,7 @@ FixBug=new XObject({
                                                             project_id : project_id,
                                                             'query[filter]' : 'me'
                                                         }, function(res) { 
-                                                            print(res);
+                                                            print(JSON.stringify(res,null,4));
                                                             _this.loadData(res);
                                                         });
                                                          
