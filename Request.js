@@ -7,6 +7,7 @@ Request = function(opts) {
         _this = this;
         // do the request to get the task..
         var r = new XMLHttpRequest({
+            
             onreadystatechange : function()
             {
                 print("Got result.");
