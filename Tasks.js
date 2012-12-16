@@ -88,7 +88,7 @@ Tasks = {
         
     },
     
-    list: function(repo, callback)
+    list: function(params, callback)
     {
         // have we got the status in the last 15 mins..
         // we should not need to get it again... - it's probably not changed.
