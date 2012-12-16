@@ -243,6 +243,84 @@
                                             ]
                                         }
                                     ]
+                                },
+                                {
+                                    "pack": "add",
+                                    "width_request": 400,
+                                    "xtype": "VBox",
+                                    "|xns": "Gtk",
+                                    "items": [
+                                        {
+                                            "pack": "pack_start,false,true,3",
+                                            "xtype": "HBox",
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "listeners": {
+                                                        "key_release_event": "function (self, event) {\n    print(JSON.stringify(event,null,4)); //.keyval);\n    return true;\n}"
+                                                    },
+                                                    "id": "search-entry",
+                                                    "pack": "pack_start,true,true,3",
+                                                    "xtype": "Entry",
+                                                    "|xns": "Gtk"
+                                                },
+                                                {
+                                                    "listeners": {
+                                                        "clicked": "function (self) {\n    var active_id = this.get('/project-select').el.get_active();\n     \n    var project_id = this.get('/project-select').raw_data[active_id].id;\n    \n    var str = this.get('/search-entry').el.get_text();\n    \n    print(str);\n    \n    var _t = this;\n    \n    imports.Tasks.Tasks.query({\n        project_id : project_id,\n        'query[filter]' : 'me',\n        'query[search]' : str\n    }, function(res) { \n       // print(JSON.stringify(res,null,4));\n        _t.get('/ticket-store').loadData(res);\n    });\n}"
+                                                    },
+                                                    "label": "Search",
+                                                    "pack": "pack_end,false,true,3",
+                                                    "xtype": "Button",
+                                                    "|use_stock": "true",
+                                                    "|xns": "Gtk"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "pack": "pack_end,true,true,3",
+                                            "xtype": "ScrolledWindow",
+                                            "|shadow_type": "Gtk.ShadowType.IN",
+                                            "|xns": "Gtk",
+                                            "items": [
+                                                {
+                                                    "|fixed_height_mode": "true",
+                                                    "id": "ticket-view",
+                                                    "pack": "add",
+                                                    "xtype": "TreeView",
+                                                    "|can_focus": "true",
+                                                    "|headers_visible": "false",
+                                                    "|init": "function() {\n    XObject.prototype.init.call(this);\n    var description = new Pango.FontDescription.c_new();\n    description.set_size(10000);\n    this.el.modify_font(description);\n\n    this.selection = this.el.get_selection();\n    this.selection.set_mode( Gtk.SelectionMode.SINGLE);\n    var _t = this;\n\n    // is this really needed??\n    this.selection.signal['changed'].connect(function() {\n        print('selection changed');\n    \n\n    });\n\n}\n",
+                                                    "|xns": "Gtk",
+                                                    "items": [
+                                                        {
+                                                            "id": "ticket-store",
+                                                            "pack": "set_model",
+                                                            "xtype": "ListStore",
+                                                            "|columns": "  [\n        GObject.TYPE_STRING, // title \n        GObject.TYPE_STRING, // tip\n        GObject.TYPE_STRING // source..\n] ",
+                                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n\n    this.el.set_column_types ( 2, [\n        GObject.TYPE_STRING,  // real key\n        GObject.TYPE_STRING // real type\n        \n        \n    ] );\n\n\n    \n    // var t = this;\n    //imports.Projects.Projects.fetch(  function(res) { \n    //    t.loadData(res);\n   // });\n        \n                                \n}\n",
+                                                            "|loadData": "function (data) {\n        print(\"loading data\");\n                                    \n    var el = this.el;\n    this.el.clear();\n    data.forEach(function(p) {\n        var ret = {};\n        el.append(ret);\n       //print(\"ADD \" + p.name);\n         \n        el.set_value(ret.iter, 0, p.id);\n        el.set_value(ret.iter, 1,   '<b>#' + p.id + '</b>' + \n            '[' + p.status_name + '] <b>'   + p.summary  + \"</b>\\n\"  +\n             '<span color=\"#666\">' + p.description.split(\"\\n\").slice(0,3).join(\"\\n\") +\n             '</span>'\n             \n              );\n        \n    });\n              \n                                     \n}\n",
+                                                            "|reload": "function() {\n \n    var active_id = this.get('/project-select').el.get_active();\n     \n    var project_id = this.get('/project-select').raw_data[active_id].id;\n    \n    var _t = this;\n    \n    imports.Tasks.Tasks.query({\n        project_id : project_id,\n        'query[filter]' : 'me'\n    }, function(res) { \n        print(JSON.stringify(res,null,4));\n        _t.loadData(res);\n    });\n     \n    \n}\n",
+                                                            "|xns": "Gtk"
+                                                        },
+                                                        {
+                                                            "pack": "append_column",
+                                                            "xtype": "TreeViewColumn",
+                                                            "|sizing": "Gtk.TreeViewColumnSizing.FIXED",
+                                                            "|init": "function() {\n    XObject.prototype.init.call(this);\n    this.el.add_attribute(this.items[0].el , 'markup', 1 );\n}\n",
+                                                            "|xns": "Gtk",
+                                                            "items": [
+                                                                {
+                                                                    "pack": "pack_start",
+                                                                    "xtype": "CellRendererText",
+                                                                    "|xns": "Gtk"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
