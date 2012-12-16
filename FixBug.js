@@ -255,7 +255,7 @@ FixBug=new XObject({
                                                         
                                                         var _t = this;
                                                         
-                                                        Tasks.query({
+                                                        imports.Tasks.Tasks.query({
                                                             project_id : project_id,
                                                             'query[filter]' : 'me'
                                                         }, function(res) { 
