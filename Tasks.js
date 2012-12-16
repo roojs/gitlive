@@ -88,10 +88,20 @@ Tasks = {
         
     },
     
-    list: function(params, callback)
+    
+   
+    list: function(repo, callback)
     {
         // have we got the status in the last 15 mins..
         // we should not need to get it again... - it's probably not changed.
+         
+         
+        this.query({repo_shortname : repo.name }, callback);
+    },
+                
+         
+    query : function(params , callback)
+    {
          
         _this = this;
         // do the request to get the task..
@@ -120,8 +130,10 @@ Tasks = {
         });
         var netrc  = Netrc.forHost('git.roojs.com');
         
+          
+        
         r.open('GET',
-               "http://roojs.com/admin.php/Roo/mtrack_ticket?repo_shortname=" + repo.name
+               "http://roojs.com/admin.php/Roo/mtrack_ticket?" + r.urlEncode(params)
                ,true, netrc.login, netrc.password  );
          print("Getting current task: "  +  "http://roojs.com/admin.php/Roo/mtrack_ticket?repo_shortname=" + repo.name);        
         r.send();
