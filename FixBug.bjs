@@ -93,7 +93,7 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
-                                                    "id": "",
+                                                    "id": "search-entry",
                                                     "pack": "pack_start,true,true,3",
                                                     "xtype": "Entry",
                                                     "|xns": "Gtk"

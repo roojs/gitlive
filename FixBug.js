@@ -165,7 +165,7 @@ FixBug=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.Entry,
-                                            id : "",
+                                            id : "search-entry",
                                             pack : "pack_start,true,true,3"
                                         },
                                         {
