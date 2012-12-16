@@ -165,7 +165,7 @@
                                     "|xns": "Gtk",
                                     "items": [
                                         {
-                                            "pack": "pack1,false,false",
+                                            "pack": "pack1,true,true",
                                             "xtype": "VBox",
                                             "|xns": "Gtk",
                                             "items": [
