@@ -459,7 +459,7 @@ FixBug=new XObject({
                                                  
                                                 }
                                             },
-                                            label : "Search",
+                                            label : "Next/Back",
                                             pack : "pack_end,false,true,3",
                                             use_stock : true
                                         }
