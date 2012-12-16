@@ -251,6 +251,7 @@ FixBug=new XObject({
                                                      
                                                         var active_id = this.get('/project-select').el.get_active();
                                                          
+                                                        var real_id = this.get('/project-store').raw_data[active_id].id;
                                                          
                                                          
                                                         
