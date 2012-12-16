@@ -167,7 +167,8 @@ FixBug=new XObject({
                                             xtype: Gtk.Entry,
                                             listeners : {
                                                 key_release_event : function (self, event) {
-                                                    print(event.keyval);
+                                                    print(JSON.stringify(event,null,4)); //.keyval);
+                                                    return true;
                                                 }
                                             },
                                             id : "search-entry",
