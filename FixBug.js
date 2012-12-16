@@ -194,7 +194,7 @@ FixBug=new XObject({
                                                         'query[search]' : str
                                                     }, function(res) { 
                                                        // print(JSON.stringify(res,null,4));
-                                                        _t.loadData(res);
+                                                        _t.get('/ticket-store').loadData(res);
                                                     });
                                                 }
                                             },
