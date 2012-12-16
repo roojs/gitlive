@@ -150,7 +150,7 @@
                                 },
                                 {
                                     "pack": "pack_start,true,true,3",
-                                    "xtype": "VBox",
+                                    "xtype": "VPaned",
                                     "|xns": "Gtk",
                                     "items": [
                                         {
