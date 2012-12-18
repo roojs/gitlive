@@ -236,9 +236,9 @@ FixBug=new XObject({
                                             xtype: Gtk.TreeView,
                                             listeners : {
                                                 cursor_changed : function (self) {
-                                                    var s = this.selection;
+                                                    
                                                     var ret = {};
-                                                    s.get_selected(ret);
+                                                    this.selection.get_selected(ret);
                                                 
                                                     // var val = "";
                                                     var value = ''+ret.model.get_value(ret.iter, 0).value.get_string();
