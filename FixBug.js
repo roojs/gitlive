@@ -277,7 +277,8 @@ FixBug=new XObject({
                                                            //print("ADD " + p.name);
                                                              
                                                            var line =    '[' + p.status_name + '] <b>'   + p.summary  + "</b>\n"  +
-                                                                 '<span color="#666">' + p.description.split("\n").slice(0,3).join("\n") +
+                                                                 '<span color="#666">' + 
+                                                                 GLib.markup_escape_text(p.description.split("\n").slice(0,3).join("\n")) +
                                                                  '</span>';
                                                              print(line);
                                                              
