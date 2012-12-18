@@ -234,6 +234,17 @@ FixBug=new XObject({
                                     items : [
                                         {
                                             xtype: Gtk.TreeView,
+                                            listeners : {
+                                                cursor_changed : function (self) {
+                                                    var s = this.selection;
+                                                    var ret = {};
+                                                    s.get_selected(ret);
+                                                
+                                                    // var val = "";
+                                                    var value = ''+ret.model.get_value(ret.iter, 2).value.get_string();
+                                                
+                                                }
+                                            },
                                             id : "ticket-view",
                                             pack : "add",
                                             can_focus : true,

@@ -120,6 +120,9 @@
                                             "|xns": "Gtk",
                                             "items": [
                                                 {
+                                                    "listeners": {
+                                                        "cursor_changed": "function (self) {\n    var s = this.selection;\n    var ret = {};\n    s.get_selected(ret);\n\n    // var val = \"\";\n    var value = ''+ret.model.get_value(ret.iter, 2).value.get_string();\n\n}"
+                                                    },
                                                     "id": "ticket-view",
                                                     "pack": "add",
                                                     "xtype": "TreeView",
