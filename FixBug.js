@@ -303,7 +303,10 @@ FixBug=new XObject({
                                                     },
                                                     loadData : function (data) {
                                                             print("loading data");
-                                                                                        
+                                                        
+                                                        
+                                                        this.data = data;
+                                                                              
                                                         var el = this.el;
                                                         this.el.clear();
                                                         data.forEach(function(p) {
