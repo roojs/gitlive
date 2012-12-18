@@ -170,7 +170,10 @@ FixBug=new XObject({
                                             xtype: Gtk.Entry,
                                             listeners : {
                                                 key_release_event : function (self, event) {
-                                                    print(event.key.keyval); //.keyval);
+                                                    if (event.key.keyval == Gdk.KEY_Return) {;
+                                                    
+                                                        
+                                                    }
                                                     return true;
                                                 }
                                             },
