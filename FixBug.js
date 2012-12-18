@@ -170,7 +170,7 @@ FixBug=new XObject({
                                             xtype: Gtk.Entry,
                                             listeners : {
                                                 key_release_event : function (self, event) {
-                                                    print(JSON.stringify(event,null,4)); //.keyval);
+                                                    print(event.key.keyval); //.keyval);
                                                     return true;
                                                 }
                                             },
