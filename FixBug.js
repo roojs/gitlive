@@ -241,7 +241,9 @@ FixBug=new XObject({
                                                     s.get_selected(ret);
                                                 
                                                     // var val = "";
-                                                    var value = ''+ret.model.get_value(ret.iter, 2).value.get_string();
+                                                    var value = ''+ret.model.get_value(ret.iter, 0).value.get_string();
+                                                    
+                                                    print(value);
                                                 
                                                 }
                                             },
