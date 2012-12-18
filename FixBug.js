@@ -217,7 +217,7 @@ FixBug=new XObject({
                                             id : "ticket-view",
                                             pack : "add",
                                             can_focus : true,
-                                            fixed_height_mode : true,
+                                            fixed_height_mode : false,
                                             headers_visible : false,
                                             init : function() {
                                                 XObject.prototype.init.call(this);
