@@ -244,8 +244,14 @@ FixBug=new XObject({
                                                     var value = ''+ret.model.get_value(ret.iter, 0).value.get_string();
                                                     
                                                     print(value);
-                                                    
-                                                    
+                                                    var rec = false;
+                                                    this.get('/ticket-store').data.forEach( function(e) {
+                                                        if (e.id == value) {
+                                                            rec = e;
+                                                            return  false;
+                                                        }
+                                                    });
+                                                    print(rec);
                                                 
                                                 }
                                             },
