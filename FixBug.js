@@ -244,6 +244,8 @@ FixBug=new XObject({
                                                     var value = ''+ret.model.get_value(ret.iter, 0).value.get_string();
                                                     
                                                     print(value);
+                                                    
+                                                    
                                                 
                                                 }
                                             },
