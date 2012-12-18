@@ -278,7 +278,7 @@ FixBug=new XObject({
                                                              
                                                            var line =    '[' + p.status_name + '] <b>'   + p.summary  + "</b>\n"  +
                                                                  '<span color="#666">' + 
-                                                                 GLib.markup_escape_text(p.description.split("\n").slice(0,3).join("<br/>")) +
+                                                                 GLib.markup_escape_text(p.description.split("\n").slice(0,3).join(" ")) +
                                                                  '</span>';
                                                              print(line);
                                                              
