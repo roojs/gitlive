@@ -223,7 +223,7 @@ for (var h in res) {
     }
     
 }
-print(JSON.stringify(GitLogParser.shours,null,4);
+print(JSON.stringify(GitLogParser.shours,null,4));
 
 
 
