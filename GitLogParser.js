@@ -132,8 +132,8 @@ GitLogParser = {
             throw { error : "TEST"};
         }
         
-        print(ret.cmd);
-        print(ret.title);
+        //print(ret.cmd);
+        //print(ret.title);
         if (typeof(this[ret.cmd])=='string') {
             ret.project = this[ret.cmd]  
         } else {
