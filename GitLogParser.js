@@ -126,7 +126,7 @@ GitLogParser = {
     '/usr/bin/perl' : function(ret) {
         if (ret.title.match(/^PAC/)) {
             ret.project = 'Unknown';
-            return;
+            return  'Unknown';
         }
         return 'Unknown';
         throw "Unknown match: " + ret.line;
