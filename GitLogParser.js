@@ -232,7 +232,7 @@ for (var h in GitLogParser.shours) {
     print(h+':');
     hsum.forEach(function(r) {
         print ("  " + r.tot + "   : " + r.desc);
-    }
+    });
 }
 
 
