@@ -228,7 +228,7 @@ for (var h in GitLogParser.shours) {
     for (var desc in GitLogParser.shours[h]) {
         hsum.push({ desc : desc, tot : (GitLogParser.shours[h][desc]/60000).toFixed(2)*1 })
     }
-    hsum.sort(function(a,b) { if (a.tot == b.tot) { return 0; } return a.tot > b.tot ? 1 : -1 });
+    hsum.sort(function(a,b) { if (a.tot == b.tot) { return 0; } return a.tot < b.tot ? 1 : -1 });
     print(h+':');
     hsum.forEach(function(r) {
         print ("  " + r.tot + "   : " + r.desc);
