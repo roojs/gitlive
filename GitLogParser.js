@@ -3,6 +3,9 @@ var File = imports.File.File;
 xDate = imports.Date;
 
 
+
+
+
 GitLogParser = { 
 
     parse : function(date)
@@ -46,6 +49,12 @@ GitLogParser = {
         
         // summarize data...
         var hours = {};
+        var shours = {};
+        
+        // shours should be:
+        // hour : [ ]
+        
+        
         for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
             var hour = line.start.format('H');
@@ -69,9 +78,13 @@ GitLogParser = {
     {
         var ret = { cmd : false,  line : l, span : 0 };
         var ar = l.split(/\s+/);
-        print(JSON.stringify(ar));
+        //print(JSON.stringify(ar));
+        
             
         var time = ar.shift();
+        
+        ret.desc = ar.join(' ');
+        
         //print("time: " + time);
         
         ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
