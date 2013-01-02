@@ -62,6 +62,9 @@ GitLogParser = {
             if (line.project == 'IDLE' && line.spanMin >= 5 ) {
                 line.project = 'LONGIDLE';
             }
+            if (line.project == 'IDLE' || line.project == 'LONGIDLE') {
+                line.desc = line.project;
+            }
             
             var project = line.project;
             hours[hour] = (typeof(hours[hour]) == 'undefined') ? {} : hours[hour];
@@ -70,6 +73,10 @@ GitLogParser = {
                     : hours[hour][project];
             hours[hour][project].total += line.span;
             hours[hour][project].items.push(line);
+            
+            
+            
+            
         }
         return hours;
 
