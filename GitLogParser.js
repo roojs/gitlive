@@ -223,6 +223,10 @@ for (var h in res) {
     }
     
 }
+print(JSON.stringify(GitLogParser.shours,null,4);
+
+
+
 print("\nLONGIDLE : " +(totals.idle/60).toFixed(2) +"h" );
 print("\nShort Idle : " +(totals.shortidle/60).toFixed(2) +"h" );
 
