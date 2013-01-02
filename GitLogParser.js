@@ -6,7 +6,8 @@ xDate = imports.Date;
 
 
 
-GitLogParser = { 
+GitLogParser = {
+    shours : false,
 
     parse : function(date)
     {
