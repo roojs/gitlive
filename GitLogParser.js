@@ -79,6 +79,7 @@ GitLogParser = {
             shours[hour][line.desc] += line.span;
             
         }
+        this.shours = shours;
         return hours;
 
     },
