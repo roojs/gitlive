@@ -195,7 +195,7 @@ for (var h in res) {
     for (var p in res[h]) {
         if (p == 'LONGIDLE') {
             var idletime = Math.floor(res[h][p].total/60000) ;
-            print(h + ' ' + Math.floor(res[h][p].total/60000) +'m LONGIDLE' );
+            //print(h + ' ' + Math.floor(res[h][p].total/60000) +'m LONGIDLE' );
             totals.idle += idletime;
             
              
@@ -203,7 +203,7 @@ for (var h in res) {
         }
         if (p == 'IDLE') {
             var idletime = Math.floor(res[h][p].total/60000) ;
-            print(h + ' ' + Math.floor(res[h][p].total/60000) +'m SHORT IDLE' );
+            //print(h + ' ' + Math.floor(res[h][p].total/60000) +'m SHORT IDLE' );
             totals.shortidle += idletime;
             
              
@@ -211,7 +211,7 @@ for (var h in res) {
         }
         
         
-        print(h + ' ' + Math.floor(res[h][p].total/60000) +'m ' + p );  
+        //print(h + ' ' + Math.floor(res[h][p].total/60000) +'m ' + p );  
         totals.work += Math.floor(res[h][p].total/60000) ;
         for (var k in res[h][p].items) {
              
