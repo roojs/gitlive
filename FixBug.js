@@ -459,11 +459,14 @@ FixBug=new XObject({
                                                         
                                                     },
                                                     show : function(p) {
-                                                         var line =    '[' + p.status_name + '] <b>'   + 
-                                                                 GLib.markup_escape_text(p.summary, p.summary.length)  + "</b>\n"  +
-                                                                 '<span color="#666">' + 
-                                                                 GLib.markup_escape_text(p.description,p.description.length) +
-                                                                 '</span>';
+                                                         var line =  [
+                                                                'Status : ' +   p.status_name,
+                                                                'ID : ' +   p.id,
+                                                                '',
+                                                                'Summary :  ' +  p.summary,
+                                                                 '' + 
+                                                                 p.description,
+                                                             ].join("\n")   ;
                                                              print(line);
                                                              
                                                               this.el.get_buffer().set_text(line, line.length);
