@@ -465,6 +465,9 @@ FixBug=new XObject({
                                                                  GLib.markup_escape_text(p.description,p.description.length).split("\n").slice(0,3).join("\n") +
                                                                  '</span>';
                                                              print(line);
+                                                             
+                                                              this.el.get_buffer().set_text(line, line.length);
+                                                     
                                                     },
                                                     show_line_numbers : true,
                                                     items : [
