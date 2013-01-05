@@ -430,11 +430,14 @@ FixBug=new XObject({
                                             items : [
                                                 {
                                                     xtype: Gtk.TextView,
-                                                    editable : false,
                                                     id : "view",
                                                     indent_width : 4,
                                                     pack : "add",
+                                                    show : function() {
+                                                        
+                                                    },
                                                     auto_indent : true,
+                                                    editable : false,
                                                     init : function() {
                                                         XObject.prototype.init.call(this);
                                                         var description = Pango.font_description_from_string("monospace");
