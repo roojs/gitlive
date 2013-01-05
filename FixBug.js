@@ -469,6 +469,8 @@ FixBug=new XObject({
                                                              ].join("\n")   ;
                                                              print(line);
                                                              
+                                                             
+                                                             // can not do rich text due to so many missing features..
                                                               this.el.get_buffer().set_text(line, line.length);
                                                      
                                                     },
