@@ -121,7 +121,7 @@
                                             "items": [
                                                 {
                                                     "listeners": {
-                                                        "cursor_changed": "function (self) {\n    \n    var ret = {};\n    this.selection.get_selected(ret);\n\n    // var val = \"\";\n    var value = ''+ret.model.get_value(ret.iter, 0).value.get_string();\n    \n    print(value);\n    var rec = false;\n    this.get('/ticket-store').data.forEach( function(e) {\n        if (e.id == value) {\n            rec = e;\n            return  false;\n        }\n    });\n    // update the text box with the ticket data..\n    this.get('/ticket-textview').show(rec);\n    //print(rec);\n\n}"
+                                                        "cursor_changed": "function (self) {\n    \n    var ret = {};\n    this.selection.get_selected(ret);\n\n    // var val = \"\";\n    var value = ''+ret.model.get_value(ret.iter, 0).value.get_string();\n    \n    print(value);\n    var rec = false;\n    this.get('/ticket-store').data.forEach( function(e) {\n        if (e.id == value) {\n            rec = e;\n            return  false;\n        }\n    });\n    // update the text box with the ticket data..\n    this.get('/view').show(rec);\n    //print(rec);\n\n}"
                                                     },
                                                     "id": "ticket-view",
                                                     "pack": "add",
