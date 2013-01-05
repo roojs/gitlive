@@ -433,8 +433,13 @@ FixBug=new XObject({
                                                     id : "view",
                                                     indent_width : 4,
                                                     pack : "add",
-                                                    show : function() {
-                                                        
+                                                    show : function(p) {
+                                                         var line =    '[' + p.status_name + '] <b>'   + 
+                                                                 GLib.markup_escape_text(p.summary, p.summary.length)  + "</b>\n"  +
+                                                                 '<span color="#666">' + 
+                                                                 GLib.markup_escape_text(p.description,p.description.length).split("\n").slice(0,3).join("\n") +
+                                                                 '</span>';
+                                                             print(line);
                                                     },
                                                     auto_indent : true,
                                                     editable : false,

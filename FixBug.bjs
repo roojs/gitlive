@@ -230,7 +230,7 @@
                                                             "indent_width": 4,
                                                             "pack": "add",
                                                             "xtype": "TextView",
-                                                            "|show": "function() {\n    \n}\n",
+                                                            "|show": "function(p) {\n     var line =    '[' + p.status_name + '] <b>'   + \n             GLib.markup_escape_text(p.summary, p.summary.length)  + \"</b>\\n\"  +\n             '<span color=\"#666\">' + \n             GLib.markup_escape_text(p.description,p.description.length).split(\"\\n\").slice(0,3).join(\"\\n\") +\n             '</span>';\n         print(line);\n}\n",
                                                             "|auto_indent": true,
                                                             "|editable": "false",
                                                             "|init": "function() {\n    XObject.prototype.init.call(this);\n    var description = Pango.font_description_from_string(\"monospace\");\n\n    description.set_size(8000);\n    this.el.modify_font(description);\n\n}\n",
