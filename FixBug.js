@@ -252,8 +252,8 @@ FixBug=new XObject({
                                                         }
                                                     });
                                                     // update the text box with the ticket data..
-                                                    
-                                                    print(rec);
+                                                    this.get('/ticket-textview').show(rec);
+                                                    //print(rec);
                                                 
                                                 }
                                             },
