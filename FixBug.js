@@ -251,6 +251,8 @@ FixBug=new XObject({
                                                             return  false;
                                                         }
                                                     });
+                                                    // update the text box with the ticket data..
+                                                    
                                                     print(rec);
                                                 
                                                 }
