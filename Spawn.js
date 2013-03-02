@@ -31,7 +31,7 @@ var GLib      = imports.gi.GLib;
 *
 *
 *  CRITICAL - needs this change to gir in GLib-2.0.gir g_spawn_async_with_pipes
-*
+*  Fixed in Ubuntu 12.10
     <parameter name="argv" transfer-ownership="none">
          <array c:type="gchar**">
             <type name="utf8"/>
@@ -43,8 +43,9 @@ var GLib      = imports.gi.GLib;
           </array>
         </parameter>
 *
-*
-*<method name="read_line"
+*  ALSO in GLib-2.0.gir
+
+<method name="read_line"
               c:identifier="g_io_channel_read_line"
               throws="1">
         <return-value transfer-ownership="none">
@@ -63,7 +64,7 @@ var GLib      = imports.gi.GLib;
         </parameters>
       </method>
 *
-*
+* run g-ir-compile -o /usr/lib/girepostitory-1.0/GLib-2.0.typelib GLib-2.0.gir
 *
 * 
 */

@@ -78,7 +78,11 @@ WindowLog = {
     },
     lastdir : false,
     
-    write : function (cmd , str) {
+    
+    
+    
+    write : function (cmd , str)
+    {
         
         var dir =  this.outdir + (xDate.newDate()).format("/Y/m");
         if (!this.lastdir || this.lastdir != dir) {
@@ -87,31 +91,25 @@ WindowLog = {
             }
             this.lastdir = dir;
         }
-        
-        var path = dir + (xDate.newDate()).format("/d") + ".log";
-        var time = (xDate.newDate()).format("H:i:s ")
+        var ctime = xDate.newDate();
+        var fname = ctime.format("/d") + ".log";
+        var path  = dir + '/' + target;
+        var time  = ctime.format("H:i:s ")
         
         File.append (path, "\n" +time + str + ' ' + cmd );
         
-
-        return;
-        var auth = imports.Netrc.Netrc.forHost('git.roojs.com');
-
-        // upload it..
-        new XMLHttpRequest({
-            url : 'http://www.roojs.com/admin.php/Roo/Mtrack_desktop_activity', // configurable?
-            method : 'POST',
-            params : {
-                cmd : cmd,
-                title : str,
-                start_dt : (xDate.newDate()).format("Y-m-d H:i:s")
-            },
-            user : auth.login,
-            password : auth.password,
-            async : true,
-            send : true   // run on ctor..
-        });
-        
+        // copy to gitlive/gitlog (each user should check out their own gitlog!?
+        if (this.lastcopy && this.lastcopy > ctime.add(Date.HOUR, -1)) {
+            return;
+        }
+         
+        var cpdir = imports.GitMonitor.GitMonitor.gitlive +
+                    '/gitlog' +  (xDate.newDate()).format("/Y/m");
+                    
+        if (!File.isDirectory(cpdir)) {
+           File.mkdir(cpdir,true);
+        }
+        File.copy(path, cpdir + fname );
         
     }
     
