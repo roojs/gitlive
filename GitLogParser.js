@@ -8,16 +8,20 @@ xDate = imports.Date;
 
 GitLogParser = {
     shours : false,
-
+    date : false,
     parse : function(date)
     {
-        
+        var filename = date;
         if (typeof(date) == 'object') {
-        this.date  = date;        
-        var home  = GLib.get_home_dir();
-        print( "READING FILE");
-        var flines = File.read(  home + '/.gitlog' + date.format('/Y/m/d') + '.log').split("\n");
-        print("loaded");
+            this.date  = date;        
+            var home  = GLib.get_home_dir();
+            //print( "READING FILE");
+            filename = home + '/.gitlog' + date.format('/Y/m/d') + '.log';
+        
+        
+        }
+        var flines = File.read(  filename ).split("\n");        
+        //print("loaded");
         // first just convert them..
         // we had an old bug that did not put line breaks in there..
         // however 00:00:00: is pretty distinct, so let'st try and split on it..
