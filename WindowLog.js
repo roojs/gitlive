@@ -20,6 +20,8 @@ Gtk = imports.gi.Gtk ;
 Spawn = imports.Spawn;
 File  = imports.File.File;
 GLib        = imports.gi.GLib;
+Gio = imports.gi.Gio;
+
 //Gtk.init(Seed.argv);
 xDate = imports.Date;
 xorg = imports.xorg;
