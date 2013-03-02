@@ -230,6 +230,15 @@ for (var h in res) {
     }
     
 }
+
+
+print("\nLONGIDLE : " +(totals.idle/60).toFixed(2) +"h" );
+print("\nShort Idle : " +(totals.shortidle/60).toFixed(2) +"h" );
+
+print("Worked: " + (totals.work/60).toFixed(2) +"h\n" );
+ 
+
+
 for (var h in GitLogParser.shours) {
     var hsum = [];
     var htot = 0;
@@ -249,12 +258,6 @@ for (var h in GitLogParser.shours) {
 //print(JSON.stringify(GitLogParser.shours,null,4));
 
 
-
-print("\nLONGIDLE : " +(totals.idle/60).toFixed(2) +"h" );
-print("\nShort Idle : " +(totals.shortidle/60).toFixed(2) +"h" );
-
-print("Worked: " + (totals.work/60).toFixed(2) +"h\n" );
- 
 
 // open file..
 
