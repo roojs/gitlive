@@ -11,6 +11,8 @@ GitLogParser = {
 
     parse : function(date)
     {
+        
+        if (typeof(date) == 'object') {
         this.date  = date;        
         var home  = GLib.get_home_dir();
         print( "READING FILE");
@@ -97,8 +99,9 @@ GitLogParser = {
         
         //print("time: " + time);
         
-        ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
-        
+        //ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
+        ret.start = xDate.Date.parseDate((this.date ? this.date.format('Y-m-d')  : (new Date()).format('Y-m-d') +
+                                            ' ' + time, 'Y-m-d H:i:s');
 
         while (ret.cmd === false) {
             var ta = ar.pop();
@@ -187,9 +190,8 @@ if (typeof(Seed.argv[2]) == 'undefined') {
     print("pick a date");
     Seed.quit();
 }
-
-
-var res = GitLogParser.parse(xDate.Date.parseDate(Seed.argv[2], 'Y-m-d'));
+ 
+var res = GitLogParser.parse( Seed.argv[2][0] == '/' ? Seed.argv[2] : xDate.Date.parseDate(Seed.argv[2], 'Y-m-d'));
 var totals = { work : 0 , idle: 0, shortidle : 0}
 for (var h in res) {
     for (var p in res[h]) {
