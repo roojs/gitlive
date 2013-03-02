@@ -51,7 +51,7 @@ GitLogParser = {
              
             
         }
-        print("parsed");
+        //print("parsed");
         //print(JSON.stringify(lines,null,4));
         
         // summarize data...
