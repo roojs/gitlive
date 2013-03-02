@@ -109,7 +109,7 @@ WindowLog = {
         if (!File.isDirectory(cpdir)) {
            File.mkdir(cpdir,true);
         }
-        File.copy(path, cpdir + fname );
+        File.copy(path, cpdir + fname, Gio.FileCopyFlags.OVERWRITE );
         
         
     }
