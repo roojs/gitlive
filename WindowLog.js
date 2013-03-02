@@ -93,7 +93,7 @@ WindowLog = {
         }
         var ctime = xDate.newDate();
         var fname = ctime.format("/d") + ".log";
-        var path  = dir + '/' + target;
+        var path  = dir + '/' + fname;
         var time  = ctime.format("H:i:s ")
         
         File.append (path, "\n" +time + str + ' ' + cmd );
@@ -102,7 +102,7 @@ WindowLog = {
         if (this.lastcopy && this.lastcopy > ctime.add(Date.HOUR, -1)) {
             return;
         }
-         
+        this.lastcopy = ctime;
         var cpdir = imports.GitMonitor.GitMonitor.gitlive +
                     '/gitlog' +  (xDate.newDate()).format("/Y/m");
                     
@@ -110,6 +110,7 @@ WindowLog = {
            File.mkdir(cpdir,true);
         }
         File.copy(path, cpdir + fname );
+        
         
     }
     
