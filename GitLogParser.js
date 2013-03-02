@@ -104,8 +104,8 @@ GitLogParser = {
         //print("time: " + time);
         
         //ret.start = xDate.Date.parseDate(this.date.format('Y-m-d') + ' ' + time, 'Y-m-d H:i:s');
-        ret.start = xDate.Date.parseDate((
-                            this.date ? this.date.format('Y-m-d')  : (new Date()).format('Y-m-d')) +
+        ret.start = xDate.Date.parseDate(
+                            (this.date ? this.date.format('Y-m-d')  : (new Date()).format('Y-m-d')) +
                             ' ' + time, 'Y-m-d H:i:s');
 
         while (ret.cmd === false) {
