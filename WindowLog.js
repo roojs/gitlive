@@ -99,9 +99,10 @@ WindowLog = {
         var time  = ctime.format("H:i:s ")
         
         File.append (path, "\n" +time + str + ' ' + cmd );
-        
+
+ 
         // copy to gitlive/gitlog (each user should check out their own gitlog!?
-        if (this.lastcopy && this.lastcopy > ctime.add(Date.HOUR, -1)) {
+        if (this.lastcopy && this.lastcopy > ctime.add(xDate.Date.HOUR, -1)) {
             return;
         }
         this.lastcopy = ctime;
