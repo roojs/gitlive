@@ -47,7 +47,7 @@ var StatusIcon  = new XObject({
             print("POPUP: " + typeof(menu.el.popup));
             
             var pm = typeof(Seed) != 'undefined' ? Gtk.StatusIcon.position_menu  : function(in_menu,  out_values,  y,  push_in) {
-                                                                                            
+                print(JSON.stringify([out_values,y,push_in] ));                                                                          
             }; 
             
             menu.el.popup(null, null, pm , this.el , 1, Gtk.get_current_event_time());
