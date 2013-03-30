@@ -642,7 +642,11 @@ XObject.extend(XObject,
                     
             }
     },
-   
+	/**
+	 * usefull for compatibilyt.
+	 *
+	 */
+    isSeed : typeof(Seed) != 'undefined',
     /**
      * Copies all the properties of config to obj, if the do not exist.
      * @param {Object} obj The receiver of the properties
