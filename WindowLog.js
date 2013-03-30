@@ -24,7 +24,7 @@ const Gio = imports.gi.Gio;
 
 //Gtk.init(Seed.argv);
 const xDate = imports.Date;
-const xorg = imports.xorg;
+const xorg = typeof(Seed) != 'undefined' ? imports.xorg : false;
 
 WindowLog = {
     
