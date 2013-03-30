@@ -227,7 +227,7 @@ var StatusIcon  = new XObject({
             
                 {
                     init : function() {
-                              this.el = XObject.isSeed ?
+                        this.el = XObject.isSeed ?
                             new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_ABOUT)
                             : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_ABOUT, null);
                    
@@ -253,7 +253,11 @@ var StatusIcon  = new XObject({
                 
                 {
                     init : function() {
-                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_QUIT);
+                        
+                        this.el = XObject.isSeed ?
+                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_QUIT)
+                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_QUIT, null);
+                     
                         XObject.prototype.init.call(this);
                     },
                     label: 'Quit',
