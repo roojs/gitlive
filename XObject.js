@@ -202,6 +202,7 @@ XObject.prototype = {
            
         }
         if (!this.el && xtypeof == 'object') {
+            XObject.log(this.xtype.toString());
             
             XObject.log("obj?"  + XObject.keys(this.config).join(','));
             try {
