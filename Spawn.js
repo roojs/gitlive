@@ -158,17 +158,28 @@ Spawn.prototype = {
             print("cd " + this.cwd +";" + this.args.join(" "));
         }
         
-        GLib.spawn_async_with_pipes(this.cwd, this.args, this.env, 
+        var gret = GLib.spawn_async_with_pipes(this.cwd, this.args, this.env, 
             GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
             null, null, ret);
-            
-    	//print(JSON.stringify(ret));    
+        
+		var isSeed = true;
+		if (typeof(Seed) == 'undefined') {
+			ret = {
+				child_pid : gret[1],
+				standard_input : gret[2],
+			    standard_output: gret[3], 
+			    standard_error: gret[4]
+			};
+			isSeed = false;	
+		}
+		
+    	//print(JSON.stringify(gret));    
         this.pid = ret.child_pid;
         
         if (this.debug) {
             print("PID: " + this.pid);
         }
-        
+         
         
 	
         GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
@@ -179,6 +190,7 @@ Spawn.prototype = {
             _this.read(_this.out_ch);
             _this.read(_this.err_ch);
             
+			
             GLib.spawn_close_pid(_this.pid);
             _this.pid = false;
             if (_this.ctx) {
@@ -221,12 +233,12 @@ Spawn.prototype = {
         
         
       
-         // using NONBLOCKING only works if io_add_watch
-	//returns true/false in right conditions
-	this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
-	this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
-	this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
-         
+			// using NONBLOCKING only works if io_add_watch
+	   //returns true/false in right conditions
+	   this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
+	   this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
+	   this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
+			
 
       
         // add handlers for output and stderr.
@@ -250,9 +262,9 @@ Spawn.prototype = {
         
         // call input.. 
         if (this.pid !== false) {
-            // child can exit before we get this far..
+            // child can exit before 1we get this far..
             if (this.listeners.input) {
-		print("Trying to call listeners");
+				print("Trying to call listeners");
                 try {
                     this.write(this.listeners.input.call(this));
 		     // this probably needs to be a bit smarter...
@@ -276,8 +288,7 @@ Spawn.prototype = {
         if (this.async && this.pid) {
             return this;
         }
-        
-        
+         
         // start mainloop if not async..
         
         if (this.pid !== false) {
@@ -285,7 +296,7 @@ Spawn.prototype = {
                 print("starting main loop");
             }
 	    
-            this.ctx = new GLib.MainLoop.c_new (null, false);
+            this.ctx = isSeed ? new GLib.MainLoop.c_new (null, false) : GLib.MainLoop.new (null, false);;
             this.ctx.run(false); // wait fore exit?
             
             //print("main_loop done!");
