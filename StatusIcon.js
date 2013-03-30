@@ -47,7 +47,7 @@ var StatusIcon  = new XObject({
             print("POPUP: " + typeof(menu.el.popup));
             
             var isSeed = typeof(Seed) != 'undefined';
-            if (isSeed()) {  
+            if (isSeed) {  
                 menu.el.popup(null, null, Gtk.StatusIcon.position_menu , this.el , 1, Gtk.get_current_event_time());
             //menu.el.popup(null, null,null, null, 1, Gtk.get_current_event_time());
             
@@ -56,13 +56,13 @@ var StatusIcon  = new XObject({
              menu.el.popup(null, null, null,null, 1, Gtk.get_current_event_time());
            
             
-            var g = { };
-            var a = new Gdk.Rectangle();
+            //var g = { };
+            //var a = new Gdk.Rectangle();
             //  needs direction=inout setting in gir to work (in bugzilla @present)
-            this.el.get_geometry(g,a,null);
+            //this.el.get_geometry(g,a,null);
              
             // should check to see if @ top or bottom I guess..
-            menu.el.get_toplevel().move(a.x, a.y +a.height);
+            menu.el.get_toplevel().move(1, 1);
              
         }
     },
