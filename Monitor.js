@@ -134,21 +134,25 @@ Monitor.prototype = {
         while ((next_file = file_enum.next_file(null)) != null) {
          
             if (next_file.get_file_type() != Gio.FileType.DIRECTORY) {
+                next_file = null;
                 continue;
             }
             
             if (next_file.get_file_type() == Gio.FileType.SYMBOLIC_LINK) {
+                next_file = null;
                 continue;
             }
             
             if (next_file.get_display_name()[0] == '.') {
+                next_file = null;
                 continue;
             }
             var sp = path+'/'+next_file.get_display_name();
             // skip modules.
            
+            next_file = null;
+            this.monitor(sp, fn, depth + 1);
             
-            this.monitor(sp, fn, depth + 1)
         }
     
         file_enum.close(null);
