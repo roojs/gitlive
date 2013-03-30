@@ -192,7 +192,7 @@ XObject.prototype = {
         // xtype= Gtk.Menu ?? what about c_new stuff?
         XObject.log("init: ID:"+ this.id +" typeof(xtype): "  + typeof(this.xtype));
 		
-		var xtypeof = typeof('Seed') != 'undefined' ? typeof(this.xtype) :
+		var xtypeof = typeof(Seed) != 'undefined' ? typeof(this.xtype) :
 			// oterhwise it's gjs, which case ctors are functions, not objects...
 			( typeof(this.xtype) == 'function' ? 'object' : typeof(this.xtype) );
 		
