@@ -15,16 +15,16 @@
 
 
 
-Wnck = imports.gi.Wnck;
-Gtk = imports.gi.Gtk ;
-Spawn = imports.Spawn;
-File  = imports.File.File;
-GLib        = imports.gi.GLib;
-Gio = imports.gi.Gio;
+const Wnck = imports.gi.Wnck;
+const var Gtk = imports.gi.Gtk ;
+const Spawn = imports.Spawn;
+const File  = imports.File.File;
+const GLib        = imports.gi.GLib;
+const Gio = imports.gi.Gio;
 
 //Gtk.init(Seed.argv);
-xDate = imports.Date;
-xorg = imports.xorg;
+const xDate = imports.Date;
+const xorg = imports.xorg;
 
 WindowLog = {
     
