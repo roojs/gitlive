@@ -53,7 +53,12 @@ var StatusIcon  = new XObject({
             
                 return;
             }
-             menu.el.popup(null, null, null,null, 1, Gtk.get_current_event_time());
+            
+            Gtk.get_current_event_device ()
+            menu.el.popup_for_device(
+                    Gtk.get_current_event_device (),
+                        null, null,null, null, null,
+                         1, Gtk.get_current_event_time());
            
             
             //var g = { };
@@ -62,8 +67,9 @@ var StatusIcon  = new XObject({
             //this.el.get_geometry(g,a,null);
              
             // should check to see if @ top or bottom I guess..
-            menu.el.get_toplevel().move(1, 1);
-             
+            //menu.el.get_toplevel().move(a.x, a.y +a.height);
+            menu.el.get_toplevel().move(10,10);
+              
         }
     },
     items : [
