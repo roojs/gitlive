@@ -180,6 +180,7 @@ var StatusIcon  = new XObject({
                 },
                 {
                     init : function() {
+                        
                         this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_SAVE);
                         XObject.prototype.init.call(this);
                     },
@@ -200,8 +201,10 @@ var StatusIcon  = new XObject({
                 
                 {
                     init : function() {
-                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_RELOAD);
-                        XObject.prototype.init.call(this);
+                              this.el = XObject.isSeed ?
+                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_RELOAD)
+                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_RELOAD, null);
+                         XObject.prototype.init.call(this);
                     },
                     label: 'Manage Clones',
                     always_show_image : true,
@@ -222,7 +225,10 @@ var StatusIcon  = new XObject({
             
                 {
                     init : function() {
-                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_ABOUT);
+                              this.el = XObject.isSeed ?
+                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_ABOUT)
+                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_ABOUT, null);
+                   
                         XObject.prototype.init.call(this);
                     },
                     label: 'About GitLive',
