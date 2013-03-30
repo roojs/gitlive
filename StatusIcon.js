@@ -96,7 +96,9 @@ var StatusIcon  = new XObject({
                 
                 {
                     init : function() {
-                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PLAY);
+                        this.el = XObject.isSeed ?
+                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PLAY)
+                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_MEDIA_PLAY, null);
                         XObject.prototype.init.call(this);
                     },
                     label: 'Resume Commits',
@@ -119,7 +121,10 @@ var StatusIcon  = new XObject({
                 
                 {
                     init : function() {
-                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_RELOAD);
+                           this.el = XObject.isSeed ?
+                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_RELOAD)
+                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_RELOAD, null);
+                      
                         XObject.prototype.init.call(this);
                     },
                     label: 'Pull (Refresh) All',
