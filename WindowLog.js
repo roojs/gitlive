@@ -16,7 +16,7 @@
 
 
 const Wnck = imports.gi.Wnck;
-const var Gtk = imports.gi.Gtk ;
+const  Gtk = imports.gi.Gtk ;
 const Spawn = imports.Spawn;
 const File  = imports.File.File;
 const GLib        = imports.gi.GLib;
