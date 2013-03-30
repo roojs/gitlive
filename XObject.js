@@ -196,7 +196,7 @@ XObject.prototype = {
 			// oterhwise it's gjs, which case ctors are functions, not objects...
 			( typeof(this.xtype) == 'function' ? 'object' : typeof(this.xtype) );
 		
-        if (!this.el && xtypeof == 'function' && typeof('Seed) {
+        if (!this.el && xtypeof == 'function') {
             XObject.log("func?"  + XObject.keys(this.config).join(','));
             this.el = this.xtype(this.config);
            
