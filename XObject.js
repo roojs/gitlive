@@ -205,6 +205,11 @@ XObject.prototype = {
             
             XObject.log("obj?"  + XObject.keys(this.config).join(','));
             try {
+				if (!isSeed) {
+					var li = this.config.listeners;
+					delete this.config['listeners'];
+				}
+				
                 this.el = new (this.xtype)(this.config);
             } catch(e) {
                 print(JSON.stringify(e,null,4));
