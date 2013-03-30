@@ -209,12 +209,13 @@ XObject.prototype = {
 				if (!isSeed) {
 					// gjs does not like properties that do not exist..
 					
-					
-					var li = this.config.listeners;
-					delete this.config['listeners'];
-				}
+					this.el = new (this.xtype)();
+					XObject.extend(this.el, this.config)
+				 
+				} else {
 				
-                this.el = new (this.xtype)(this.config);
+					this.el = new (this.xtype)(this.config);
+				}
             } catch(e) {
                 print(JSON.stringify(e,null,4));
                 print(JSON.stringify(this.config,null,4));
