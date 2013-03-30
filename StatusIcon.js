@@ -46,12 +46,15 @@ var StatusIcon  = new XObject({
             print("MENU EL: "  + menu.el);
             print("POPUP: " + typeof(menu.el.popup));
             
-            var pm = typeof(Seed) != 'undefined' ? Gtk.StatusIcon.position_menu  :null;
-            
-            menu.el.popup(null, null, pm , this.el , 1, Gtk.get_current_event_time());
+            var isSeed = typeof(Seed) != 'undefined';
+            if (isSeed()) {  
+                menu.el.popup(null, null, Gtk.StatusIcon.position_menu , this.el , 1, Gtk.get_current_event_time());
             //menu.el.popup(null, null,null, null, 1, Gtk.get_current_event_time());
             
-            return;
+                return;
+            }
+             menu.el.popup(null, null, null,null, 1, Gtk.get_current_event_time());
+           
             
             var g = { };
             var a = new Gdk.Rectangle();
