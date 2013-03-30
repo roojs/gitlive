@@ -180,8 +180,10 @@ var StatusIcon  = new XObject({
                 },
                 {
                     init : function() {
-                        
-                        this.el = new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_SAVE);
+                        this.el = XObject.isSeed ?
+                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_SAVE)
+                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_SAVE, null);
+                         
                         XObject.prototype.init.call(this);
                     },
                     label: 'Update Timesheet',
@@ -201,7 +203,7 @@ var StatusIcon  = new XObject({
                 
                 {
                     init : function() {
-                              this.el = XObject.isSeed ?
+                        this.el = XObject.isSeed ?
                             new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_FULLSCREEN)
                             : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_FULLSCREEN, null);
                          XObject.prototype.init.call(this);
