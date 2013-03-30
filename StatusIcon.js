@@ -73,7 +73,7 @@ var StatusIcon  = new XObject({
                         
                         this.el = XObject.isSeed ?
                             new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE)
-                            : Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_MEDIA_PAUSE);
+                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_MEDIA_PAUSE);
                         XObject.prototype.init.call(this);
                     },
                     label: 'Pause Commits',
