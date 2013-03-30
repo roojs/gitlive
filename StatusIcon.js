@@ -122,8 +122,8 @@ var StatusIcon  = new XObject({
                 {
                     init : function() {
                         this.el = XObject.isSeed ?
-                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_RELOAD)
-                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_RELOAD, null);
+                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_FULLSCREEN)
+                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_FULLSCREEN, null);
                       
                         XObject.prototype.init.call(this);
                     },
