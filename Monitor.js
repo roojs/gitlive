@@ -1,7 +1,9 @@
 //<Script type="text/javascript">
-var Gio      = imports.gi.Gio;
-var GLib      = imports.gi.GLib;
+var Gio     = imports.gi.Gio;
+var GLib    = imports.gi.GLib;
 
+var XObject = imports.XObject.XObject;
+var File    = imports.File.File;
 
 /**
  * Monitor class - handles monitor managment for a large tree...
@@ -23,7 +25,6 @@ var GLib      = imports.gi.GLib;
  * 
  * 
  */
- 
  
 function Monitor(cfg){
     for (var i in cfg) {
@@ -54,7 +55,9 @@ Monitor.prototype = {
      */
     start : function()
     {
-        this.top.forEach(this.monitor, this);
+        for(var i =0;i < this.top.length; i++) {
+            this.monitor(this.top[i]);
+        }
     },
     /**
      * stop / pause monitoring
@@ -62,9 +65,10 @@ Monitor.prototype = {
      */
     stop : function()
     {
-        this.monitors.forEach(function(m) {
-            m.cancel();
-        })
+        
+        for(var i =0;i < this.montors.length; i++) {
+            this.monitors[i].cancel();
+        } 
         this.monitors = [];
     },
     /**
@@ -106,7 +110,8 @@ Monitor.prototype = {
             //var cancel = new Gio.Cancellable ();
         if (depth > 0) {     
             var fm = f.monitor(2,null); //Gio.FileMonitorFlags.SEND_MOVED
-            fm.signal.changed.connect(fn);
+            
+            XObject.isSeed ?  fm.signal.changed.connect(fn) : fm.connect('changed',fn);
             this.monitors.push(fm);
             // print("ADD path " + depth + ' ' + path);
         }
@@ -124,7 +129,7 @@ Monitor.prototype = {
             Gio.FileQueryInfoFlags.NONE,
             null);
         
-       
+       var next_file;
         
         while ((next_file = file_enum.next_file(null)) != null) {
          
@@ -158,7 +163,7 @@ Monitor.prototype = {
         }
         
         if (GLib.file_test(file.get_path(), GLib.FileTest.EXISTS)) {
-            var rp = imports.os.realpath(file.get_path());
+            var rp = File.realpath(file.get_path());
             return Gio.file_new_for_path(rp);  
             
         }
@@ -168,11 +173,12 @@ Monitor.prototype = {
         var ar = file.get_path().split('/');
         ar.pop();
         var dirname = ar.join('/');
-        var rp = imports.os.realpath(dirname);
+        var rp = File.realpath(dirname);
         return Gio.file_new_for_path(rp + '/' + bn);
         
-        
     },
+   
+    
     
     
     
@@ -202,7 +208,7 @@ Monitor.prototype = {
                 dir   : GLib.path_get_dirname(of.get_path())
             }
         }
-        
+        var event_name = 'UKNOWN';;
         
         for(var i in Gio.FileMonitorEvent) {
             if (Gio.FileMonitorEvent[i] == event_type) {
