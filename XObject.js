@@ -206,6 +206,9 @@ XObject.prototype = {
             XObject.log("obj?"  + XObject.keys(this.config).join(','));
             try {
 				if (!isSeed) {
+					// gjs does not like properties that do not exist..
+					
+					
 					var li = this.config.listeners;
 					delete this.config['listeners'];
 				}
