@@ -209,8 +209,8 @@ XObject.prototype = {
 				if (!isSeed) {
 					// gjs does not like properties that do not exist..
 					
-					this.el = new (this.xtype)();
-					XObject.extend(this.el, this.config)
+					this.el = new (this.xtype)({});
+					XObject.extend(this.el, this.config);
 				 
 				} else {
 				
