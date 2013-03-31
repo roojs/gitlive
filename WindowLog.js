@@ -36,17 +36,25 @@ WindowLog = {
         
         this.outdir = GLib.get_home_dir() + "/.gitlog";
         this.screen = Wnck.Screen.get_default();
-        GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() { return WindowLog.getStatus() } );
-        
+        // 
+        GLib.timeout_add(GLib.PRIORITY_LOW, 5000, function() {
+            return WindowLog.getStatus()
+        } );
+        this.screen.signal.active_window_changed.connect(function() {
+            WindowLog.windowChanged();
+        });
     },
-        
+    
+    
+    
+    
     getStatus : function()
     {
         
          
         var output =  xorg.screensaverinfo_get_idletime();
         //print(output);
-         
+        // more that 10 seconds?? - report idle..
         if (output * 1 > 10000) {
             if (this.win != false) { 
                 print( (xDate.newDate()).format("Y-m-d H:i:s") + " IDLE");
@@ -55,7 +63,10 @@ WindowLog = {
             this.win = false;
             return true;
         }
-        
+        return true;
+    },
+     windowChanged : function()
+    {
         this.screen.force_update();
        
         var aw = this.screen.get_active_window();
