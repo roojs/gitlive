@@ -66,7 +66,7 @@ Monitor.prototype = {
     stop : function()
     {
         
-        for(var i =0;i < this.montors.length; i++) {
+        for(var i =0;i < this.monitors.length; i++) {
             this.monitors[i].cancel();
         } 
         this.monitors = [];
