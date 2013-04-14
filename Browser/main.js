@@ -52,8 +52,9 @@ var state = false;
             //});    
             
         } else {
-//            window.unfullscreen();
-            window.hide();
+            window.unfullscreen();
+             window.set_keep_above(false);
+          window.hide();
         }
         state= !state;
         print ("GOT hotkey test")

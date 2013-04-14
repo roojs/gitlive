@@ -72,7 +72,7 @@ GLib.timeout_add(GLib.PRIORITY_LOW, 500, function() {
     GitMonitor.add(GitMonitor.gitlive);
     GitMonitor.start();
     
-    //WindowLog.start();
+    WindowLog.start();
 });
 
 Gtk.main();

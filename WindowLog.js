@@ -40,6 +40,7 @@ WindowLog = {
         GLib.timeout_add(GLib.PRIORITY_LOW, 5000, function() {
             return WindowLog.getStatus()
         } );
+        //Roo.log("Windowlog start");
         this.screen.signal.active_window_changed.connect(function() {
             WindowLog.windowChanged();
         });
@@ -68,7 +69,7 @@ WindowLog = {
      windowChanged : function()
     {
         this.screen.force_update();
-       
+        print("window changeD");
         var aw = this.screen.get_active_window();
         if (aw) { 
             var win = aw.get_name();

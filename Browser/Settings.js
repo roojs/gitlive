@@ -2,6 +2,7 @@
 Netrc = imports['../Netrc.js'].Netrc;
 var netrc  = Netrc.forHost('git.roojs.com');
 var home_page = 'www.roojs.com/admin.php';
+//var home_page = 'www.google.com';
   
 var select_new_tabs = false;
 
