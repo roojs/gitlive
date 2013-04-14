@@ -69,7 +69,7 @@ WindowLog = {
      windowChanged : function()
     {
         this.screen.force_update();
-        print("window changeD");
+       // print("window changeD");
         var aw = this.screen.get_active_window();
         if (aw) { 
             var win = aw.get_name();
