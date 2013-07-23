@@ -122,17 +122,18 @@ Monitor.prototype = {
         //    this.initRepo(path);
         //}
         
-        
-        var file_enum = f.enumerate_children(
+         var file_enum = f.enumerate_children(
             Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME + ','+ 
             Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
             Gio.FileQueryInfoFlags.NONE,
             null);
         
-       var next_file;
+        var next_file;
         
         while ((next_file = file_enum.next_file(null)) != null) {
          
+            //print("got a file " + next_file.sudo () + '?=' + Gio.FileType.DIRECTORY);
+            
             if (next_file.get_file_type() != Gio.FileType.DIRECTORY) {
                 next_file = null;
                 continue;
@@ -149,8 +150,12 @@ Monitor.prototype = {
             }
             var sp = path+'/'+next_file.get_display_name();
             // skip modules.
-           
+            //print("got a file : " + sp);
+         
             next_file = null;
+            
+            
+            
             this.monitor(sp, fn, depth + 1);
             
         }
