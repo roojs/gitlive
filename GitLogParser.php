@@ -55,16 +55,16 @@ class GitLogParser  {
         //print(JSON.stringify(lines,null,4));
         
         // summarize data...
-        var hours = {};
-        var shours = {};
+        $hours = {};
+        $shours = {};
         
         // shours should be:
         // hour : [ ]
         
         
-        for (var i = 0; i < lines.length; i++) {
-            var line = lines[i];
-            var hour = line.start.format('H');
+        for ($i = 0; $i < count($lines); $i++) {
+            $line = $lines[$i];
+            $hour = date('H', $line->start);
             
             if (line.project == 'IDLE' && line.spanMin >= 5 ) {
                 line.project = 'LONGIDLE';
