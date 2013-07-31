@@ -20,6 +20,9 @@ GitLogParser = {
         
         
         }
+        print(File);
+        print(File.read);
+        print(File.read(filename));
         var flines = File.read(  filename ).split("\n");        
         //print("loaded");
         // first just convert them..
