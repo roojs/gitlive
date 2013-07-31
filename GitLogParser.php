@@ -39,7 +39,7 @@ class GitLogParser  {
             //print(JSON.stringify(xl));
             for ($ii=1; $ii< count($xl); $ii+=2) {
                 $p = count($lines);
-                $lines[]   = $this->parseLine($xl[$ii] + ' ' + $xl[$ii+1])); 
+                $lines[]   = $this->parseLine($xl[$ii] . ' ' . $xl[$ii+1])); 
                 if ($p > 0) {
                     $lines[$p-1]->span = $lines[$p]->start - $lines[$p-1]->start; // should be seconds..?
                     $lines[$p-1]->spanMin = $lines[$p-1]->span/60000;
