@@ -65,6 +65,7 @@ var File = {
     read : function (path) {
         var out = {};
         GLib.file_get_contents(path, out, null, null);
+        print(JSON.stringify(out));
         return out['value'];
     },
 
@@ -93,8 +94,7 @@ var File = {
         file_enum.close(null);
 
         listing.sort();
-
-        return listing;
+         return listing;
     },
 
     mtime : function (path) {
