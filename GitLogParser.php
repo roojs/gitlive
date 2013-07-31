@@ -37,12 +37,12 @@ class GitLogParser  {
             $xl = preg_split('/([0-9]{2}:[0-9]{2}:[0-9]{2})/', $flines[$i]);
             
             //print(JSON.stringify(xl));
-            for (var ii=1; ii< xl.length; ii+=2) {
-                var p = lines.length;
-                lines.push( this.parseLine(xl[ii] + ' ' + xl[ii+1])); 
-                if (p > 0) {
-                    lines[p-1].span = lines[p].start - lines[p-1].start; // should be seconds..?
-                    lines[p-1].spanMin = lines[p-1].span/60000;
+            for ($ii=1; $ii< count($xl); $ii+=2) {
+                $p = count($lines);
+                $lines[]   = $this->parseLine($xl[$ii] + ' ' + $xl[$ii+1])); 
+                if ($p > 0) {
+                    $lines[$p-1]->span = $lines[$p]->start - $lines[$p-1]->start; // should be seconds..?
+                    $lines[$p-1]->spanMin = $lines[$p-1]->span/60000;
                     
                     
                 }
