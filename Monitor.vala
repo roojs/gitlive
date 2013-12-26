@@ -215,7 +215,7 @@ public class Monitor : Object
         ar.resize(ar.length-1);
         var dirname = string.joinv("/",ar );
         var rp = Posix.realpath(dirname);
-        return File.new_for_path(rp + '/' + bn);
+        return File.new_for_path(rp + "/" + bn);
         
     }
    
