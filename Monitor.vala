@@ -200,7 +200,7 @@ public class Monitor : Object
         }
         
         if (FileUtils.test(file.get_path(), FileTest.EXISTS)) {
-            var rp = FileUtils.realpath(file.get_path());
+            var rp = Posix.realpath(file.get_path());
             return File.new_for_path(rp);  
             
         }
@@ -212,7 +212,7 @@ public class Monitor : Object
         var ar = file.get_path().split('/');
         ar.pop();
         var dirname = ar.join('/');
-        var rp = FileUtils.realpath(dirname);
+        var rp = Posix.realpath(dirname);
         return File.new_for_path(rp + '/' + bn);
         
     }
