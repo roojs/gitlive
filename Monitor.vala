@@ -7,6 +7,8 @@
 
  
 using Gee; // for array list?
+using Posix;
+using Gio;
 
 static int main (string[] args) {
     // A reference to our file
