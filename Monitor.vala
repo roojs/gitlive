@@ -5,6 +5,8 @@
 //var XObject = imports.XObject.XObject;
 //var File    = imports.File.File;
 
+
+
  
 using Gee; // for array list?
 
@@ -209,7 +211,7 @@ public class Monitor : Object
         
 // FIX ME - string split?/? 
         var bn = file.get_basename();
-        var ar = file.get_path().split('/');
+        var ar = (new String(file.get_path())).split('/');
         ar.pop();
         var dirname = ar.join('/');
         var rp = Posix.realpath(dirname);
