@@ -212,8 +212,8 @@ public class Monitor : Object
 // FIX ME - string split?/? 
         var bn = file.get_basename();
         var ar =  file.get_path().split("/");
-        ar.pop();
-        var dirname = ar.join('/');
+        ar.resize(ar.length-1);
+        var dirname = ar.join("/");
         var rp = Posix.realpath(dirname);
         return File.new_for_path(rp + '/' + bn);
         
