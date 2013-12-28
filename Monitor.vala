@@ -84,7 +84,7 @@ public class Monitor : Object
     public void start()
     {
         for(int i = 0; i < this.monitors.size ; i++) {
-            this.monitor(this.top[i], "" , 0);
+            this.monitor(this.top[i]);
         }
     }
     /**
@@ -120,7 +120,7 @@ public class Monitor : Object
      * 
      * 
      */
-    public void monitor(string path, Callback fn, int depth)
+    public void monitor(string path, Callback fn = null, int depth = 0)
     {
          
        // print("ADD: " + path)
