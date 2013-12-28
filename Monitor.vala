@@ -83,7 +83,7 @@ public class Monitor : Object
      */
     public void start()
     {
-        foreach(var in in this.top) {
+        foreach(var i in this.top) {
             this.monitor(this.top[i]);
         }
     }
