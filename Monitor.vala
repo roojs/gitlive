@@ -241,7 +241,7 @@ public class Monitor : Object
             dest = new MonitorNamePathDir( of.get_basename(), of.get_path(),  Path.get_dirname(of.get_path()));
             
         }
-        string event_name = "UKNOWN";
+        //string event_name = "UKNOWN";
         
         
         // extract the event names ... - not sure if introspection is feasible in vala..
