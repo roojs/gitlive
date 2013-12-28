@@ -178,7 +178,7 @@ public class Monitor : Object
                 next_file = null;
                 continue;
             }
-            var sp = path+'/'+next_file.get_display_name();
+            var sp = path+"/"+next_file.get_display_name();
             // skip modules.
             //print("got a file : " + sp);
          
