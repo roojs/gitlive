@@ -257,27 +257,27 @@ public class Monitor : Object
         try {
                 
             switch(event_type) {
-                case Gio.FileMonitorEvent.CHANGED:
+                case FileMonitorEvent.CHANGED:
                     this.onChanged(src);
                     return; // ingore thise?? -wait for changes_done_htin?
                     
-                case Gio.FileMonitorEvent.CHANGES_DONE_HINT:
+                case FileMonitorEvent.CHANGES_DONE_HINT:
                     this.onChangesDoneHint(src);
                     return;
                     
-                case Gio.FileMonitorEvent.DELETED:
+                case FileMonitorEvent.DELETED:
                     this.onDeleted(src);
                     return;
                     
-                case Gio.FileMonitorEvent.CREATED:
+                case FileMonitorEvent.CREATED:
                     this.onCreated(src);
                     return;
                 
-                case Gio.FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
+                case FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
                     this.onAttributeChanged(src);
                     return;
                 
-                case Gio.FileMonitorEvent.MOVED: // eg. chmod/chatt
+                case FileMonitorEvent.MOVED: // eg. chmod/chatt
                     this.onMoved(src,dest);
                     return; 
                 
