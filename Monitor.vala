@@ -84,7 +84,7 @@ public class Monitor : Object
     public void start()
     {
         for(int i = 0; i < this.monitors.size ; i++) {
-            this.monitor(this.top[i]);
+            this.monitor(this.top[i], '' , 0);
         }
     }
     /**
