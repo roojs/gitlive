@@ -152,11 +152,11 @@ public class Monitor : Object
         //    this.initRepo(path);
         //}
         
-        var enumerator = f.enumerate_children (FILE_ATTRIBUTE_STANDARD_NAME, 0, null);
+        var enumerator = f.enumerate_children (FileAttribute.STANDARD_NAME, 0, null);
 
  
          var file_enum = f.enumerate_children(
-            FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME + ','+    FILE_ATTRIBUTE_STANDARD_TYPE,
+            FileAttribute.STANDARD_DISPLAY_NAME + ','+   FileAttribute.STANDARD_TYPE,
             0, // FileQueryInfoFlags.NONE,
             null);
         
