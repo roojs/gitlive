@@ -152,7 +152,7 @@ public class Monitor : Object
         //    this.initRepo(path);
         //}
         
-        var enumerator = directory.enumerate_children (FILE_ATTRIBUTE_STANDARD_NAME, 0, null);
+        var enumerator = f.enumerate_children (FILE_ATTRIBUTE_STANDARD_NAME, 0, null);
 
  
          var file_enum = f.enumerate_children(
