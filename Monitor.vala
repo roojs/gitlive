@@ -120,7 +120,7 @@ public class Monitor : Object
      * 
      * 
      */
-    public void monitor(string path, string fn, int depth)
+    public void monitor(string path, Callback fn, int depth)
     {
          
        // print("ADD: " + path)
