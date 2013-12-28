@@ -94,7 +94,7 @@ public class Monitor : Object
     public void stop()
     {
         
-        foreach(int i in  this.monitors) {
+        foreach(int i = 0; i < this.monitors.size ; i++) {
             this.monitors[i].cancel();
         } 
         this.monitors = new ArrayList<FileMonitor>(); // clean /destroy/ kill old?
