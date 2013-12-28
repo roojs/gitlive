@@ -296,7 +296,7 @@ public class Monitor : Object
     public void onDeleted(MonitorNamePathDir src) { }
     public void onCreated(MonitorNamePathDir src) { }
     public void onAttributeChanged(MonitorNamePathDir src) { }
-    public void onMoved(MonitorNamePathDir src) { }
+    public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
           
     
 }
