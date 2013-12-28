@@ -154,7 +154,7 @@ public class Monitor : Object
         
        
          var file_enum = f.enumerate_children(
-            FileAttribute.STANDARD_DISPLAY_NAME + ','+   FileAttribute.STANDARD_TYPE,
+            FileAttribute.STANDARD_DISPLAY_NAME + "," +   FileAttribute.STANDARD_TYPE,
             0, // FileQueryInfoFlags.NONE,
             null);
         
