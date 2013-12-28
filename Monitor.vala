@@ -18,7 +18,7 @@ static int main (string[] args) {
 }
 
 
-class  MonitorNamePathDir {
+public class  MonitorNamePathDir {
     
     public string name;
     public string path;
@@ -68,7 +68,7 @@ public class Monitor : Object
         this.paused = false;
     }
      
-    public ArrayList<FileMonitor> monitors;// Array of GioFileMonitors
+    public ArrayList<FileMonitor> monitors;// Array of MonitorNamePathDirileMonitors
     public ArrayList<string> top; // list of top level directories..
     public bool paused;
     /**
