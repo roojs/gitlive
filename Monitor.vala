@@ -234,11 +234,11 @@ public class Monitor : Object
  
         
  
-        MonitorNamePathDir src = new MonitorNamePathDir( f.get_basename(), f.get_path() , GLib.path_get_dirname(f.get_path()));
+        MonitorNamePathDir src = new MonitorNamePathDir( f.get_basename(), f.get_path() , Path.get_dirname(f.get_path()));
         MonitorNamePathDir dest = null;
         
         if (of) {
-            dest = new MonitorNamePathDir( of.get_basename(), of.get_path(),  GLib.path_get_dirname(of.get_path()));
+            dest = new MonitorNamePathDir( of.get_basename(), of.get_path(),  Path.get_dirname(of.get_path()));
             
         }
         string event_name = "UKNOWN";
