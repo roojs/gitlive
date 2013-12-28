@@ -123,7 +123,7 @@ public class Monitor : Object
      * 
      * 
      */
-    public void monitor(string path, Callback fn = null, int depth = 0)
+    public void monitor(string path, onEventHander fn = null, int depth = 0)
     {
          
        // print("ADD: " + path)
