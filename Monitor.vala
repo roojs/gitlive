@@ -164,12 +164,12 @@ public class Monitor : Object
          
             //print("got a file " + next_file.sudo () + '?=' + Gio.FileType.DIRECTORY);
             
-            if (next_file.get_file_type() != FILETYPE_DIRECTORY) {
+            if (next_file.get_file_type() != FileType.DIRECTORY) {
                 next_file = null;
                 continue;
             }
             
-            if (next_file.get_file_type() == FILETYPE_SYMBOLIC_LINK) {
+            if (next_file.get_file_type() ==FileType.SYMBOLIC_LINK) {
                 next_file = null;
                 continue;
             }
