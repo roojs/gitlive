@@ -87,7 +87,7 @@ public class Monitor : Object
     public void start()
     {
         for(int i = 0; i < this.monitors.size ; i++) {
-            this.monitor(this.top[i]);
+            this.monitor(this.top[i], ( fm,  f_orig,  of_orig,  event_type) => {} );
         }
     }
     /**
