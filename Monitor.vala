@@ -237,7 +237,7 @@ public class Monitor : Object
         MonitorNamePathDir src = new MonitorNamePathDir( f.get_basename(), f.get_path() , Path.get_dirname(f.get_path()));
         MonitorNamePathDir dest = null;
         
-        if (of) {
+        if (of != null) {
             dest = new MonitorNamePathDir( of.get_basename(), of.get_path(),  Path.get_dirname(of.get_path()));
             
         }
