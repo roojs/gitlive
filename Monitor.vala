@@ -142,7 +142,7 @@ public class Monitor : Object
             fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
                     this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
             });
-            this.monitors.add(fm);
+            this.monitors.add(fm, '', 0);
             // print("ADD path " + depth + ' ' + path);
         }
         // iterate children?
