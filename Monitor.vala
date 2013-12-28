@@ -33,6 +33,9 @@ public class  MonitorNamePathDir {
     }
 }
 
+static void onEventHander (FileMonitor fm, File f_orig, File of_orig, FileMonitorEvent event_type);
+
+
 /**
  * Monitor class - handles monitor managment for a large tree...
  *
@@ -140,6 +143,9 @@ public class Monitor : Object
             var fm = f.monitor(FileMonitorFlags.SEND_MOVED,null); //Gio.FileMonitorFlags.SEND_MOVED
             
             fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
+                    if (fn) {
+                        
+                    }
                     this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
             });
             this.monitors.add(fm);
