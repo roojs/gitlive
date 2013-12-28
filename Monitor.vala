@@ -83,7 +83,7 @@ public class Monitor : Object
      */
     public void start()
     {
-        foreach(var i in this.top) {
+        for(int i = 0; i < this.monitors.size ; i++) {
             this.monitor(this.top[i]);
         }
     }
@@ -94,7 +94,7 @@ public class Monitor : Object
     public void stop()
     {
         
-        foreach(int i = 0; i < this.monitors.size ; i++) {
+        for(int i = 0; i < this.monitors.size ; i++) {
             this.monitors[i].cancel();
         } 
         this.monitors = new ArrayList<FileMonitor>(); // clean /destroy/ kill old?
