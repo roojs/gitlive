@@ -33,7 +33,7 @@ public class  MonitorNamePathDir {
     }
 }
 
-static void onEventHander (FileMonitor fm, File f_orig, File of_orig, FileMonitorEvent event_type);
+delegate void onEventHander (FileMonitor fm, File f_orig, File of_orig, FileMonitorEvent event_type);
 
 
 /**
