@@ -145,7 +145,7 @@ public class Monitor : Object
             fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
                     //if (fn) {
                         fn (fm,  f_orig,  of_orig,  event_type ) ;
-                        return;
+                       // return;
                     //}
                     //this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
             });
