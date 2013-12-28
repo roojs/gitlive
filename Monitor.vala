@@ -140,7 +140,7 @@ public class Monitor : Object
             var fm = f.monitor(FileMonitorFlags.SEND_MOVED,null); //Gio.FileMonitorFlags.SEND_MOVED
             
             fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
-                    this.onEvent (fm,  f_orig,  of_orig,  event_type ) 
+                    this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
             });
             this.monitors.add(fm);
             // print("ADD path " + depth + ' ' + path);
