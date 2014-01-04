@@ -267,7 +267,7 @@ public class Spawn : Object
         if (this.pid > -1) {
             // child can exit before 1we get this far..
             if (this.cfg.input != null) {
-		print("Trying to call listeners");
+		if (this.cfg.debug) print("Trying to call listeners");
                 try {
                     this.write(this.cfg.input());
 		     // this probably needs to be a bit smarter...
@@ -292,7 +292,7 @@ public class Spawn : Object
         // start mainloop if not async..
         
         if (this.pid > -1) {
-            if (this.debug) {
+            if (this.cfg.debug) {
                 print("starting main loop");
             }
 	    
