@@ -291,7 +291,7 @@ public class Spawn : Object
          
         // start mainloop if not async..
         
-        if (this.pid !== false) {
+        if (this.pid > -1) {
             if (this.debug) {
                 print("starting main loop");
             }
