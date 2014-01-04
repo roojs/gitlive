@@ -62,7 +62,7 @@ struct SpawnConfig {
     public string[] args;
     public string[]  env;
     public boolean async;
-    public bookean exceptions;
+    public bookean exceptions; // fire exceptions.
     
     public SpawnOutput output
     public SpawnErr stderr;
