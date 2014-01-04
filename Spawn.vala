@@ -37,48 +37,36 @@ var GLib      = imports.gi.GLib;
 *
 *
 *
-
 *
 *
-*  CRITICAL - needs this change to gir in GLib-2.0.gir g_spawn_async_with_pipes
-*  Fixed in Ubuntu 12.10
-    <parameter name="argv" transfer-ownership="none">
-         <array c:type="gchar**">
-            <type name="utf8"/>
-          </array>
-        </parameter>
-        <parameter name="envp" transfer-ownership="none" allow-none="1">
-          <array c:type="gchar**">
-            <type name="utf8"/>
-          </array>
-        </parameter>
+*var output = Spawn.run( SpawnConfig() {
+    cwd = "/home",
+    args = {"ls", "-l" },
+    evn = {},
+    ouput  = (line) => { stdout.printf("%d\n", line); }
+    stderr  = (line) => { stdout.printf("%d\n", line); }
+    input  = () => { return "xxx"; }
+};
 *
-*  ALSO in GLib-2.0.gir
-
-<method name="read_line"
-              c:identifier="g_io_channel_read_line"
-              throws="1">
-        <return-value transfer-ownership="none">
-          <type name="IOStatus" c:type="GIOStatus"/>
-        </return-value>
-        <parameters>
-          <parameter name="str_return" transfer-ownership="full" direction="out">
-            <type name="utf8" c:type="gchar**"/>
-          </parameter>
-          <parameter name="length" transfer-ownership="none" direction="out">
-            <type name="gsize" c:type="gsize*"/>
-          </parameter>
-          <parameter name="terminator_pos" transfer-ownership="none"  direction="out">
-            <type name="gsize" c:type="gsize*"/>
-          </parameter>
-        </parameters>
-      </method>
 *
-* run g-ir-compile -o /usr/lib/girepostitory-1.0/GLib-2.0.typelib GLib-2.0.gir
-*
-* 
 */
+delegate void SpawnOutput(string line);
+delegate void SpawnErr(string line);
+delegate string SpawnInput();
 
+
+
+struct SpawnConfig
+struct SpawnConfig {
+    public string cwd;
+    public string[] args;
+    public string[]  env;
+    public SpawnOutput output
+    public SpawnErr stderr;
+    public SpawnInput input;
+    
+    
+}
 
 /**
  * @class Spawn
