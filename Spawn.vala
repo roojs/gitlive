@@ -300,7 +300,7 @@ public class Spawn : Object
             
             //print("main_loop done!");
         } else {
-            tidyup(); // tidyup get's called in main loop. 
+            this.tidyup(); // tidyup get's called in main loop. 
         }
         
         if (this.exceptions && this.result != 0) {
