@@ -168,7 +168,7 @@ public class Spawn : Object
      * result is applied to object properties (eg. 'output' or 'stderr')
      * @returns {Object} self.
      */
-    public run : function()
+    public  Spawn  run()
     {
         
          
@@ -305,7 +305,7 @@ public class Spawn : Object
         
         if (this.cfg.exceptions && this.result != 0) {
             //this.toString = function() { return this.stderr; };
-            throw this; // we throw self...
+            ///throw new Exception this; // we throw self...
         }
         
         // finally throw, or return self..
