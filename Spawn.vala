@@ -167,6 +167,19 @@ public class Spawn : Object
             print("cd " + this.cfg.cwd +";" + string.joinv(" ", this.cfg.args));
         }
         
+	Process.spawn_async_with_pipes (
+			this.cfg.cwd,
+			this.cfg.args,
+			this.cfg.env,
+			SpawnFlags.SEARCH_PATH | SpawnFlags.DO_NOT_REAP_CHILD,
+			null,
+			out this.pid,
+			out standard_input,
+			out standard_output,
+			out standard_error);
+
+		// stdout:
+	
         var gret = GLib.spawn_async_with_pipes(this.cwd, this.args, this.env, 
             GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
             null, null, ret);
