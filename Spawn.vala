@@ -118,37 +118,36 @@ public class Spawn : Object
     }
 
     
-    ctx : false, // the mainloop ctx.
-   
-    debug : false,
+    boolean ctx = false; // the mainloop ctx.
+    
     /**
      * @property output {String} resulting output
      */
-    output  : '',
+    string output  = "";
     /**
      * @property stderr {String} resulting output from stderr
      */
-    stderr  : '',
+    string stderr  = "";
      /**
      * @property result {Number} execution result.
      */
-    result: 0,
+    int result= 0;
     /**
      * @property pid {Number} pid of child process (of false if it's not running)
      */
-    pid : false,
+    int  pid = -1;
     /**
      * @property in_ch {GLib.IOChannel} input io channel
      */
-    in_ch : false,
+    IOChannel in_ch = null;
     /**
      * @property out_ch {GLib.IOChannel} output io channel
      */
-    out_ch : false,
+    IOChannel out_ch = false;
     /**
      * @property err_ch {GLib.IOChannel} stderr io channel
      */
-    err_ch : false,
+    IOChannel err_ch = false;
     /**
      * 
      * @method run
