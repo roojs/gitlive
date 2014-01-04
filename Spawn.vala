@@ -100,6 +100,7 @@ public class Spawn : Object
 	if (!this.cfg.args.length) {
 	    throw "No arguments";
 	}
+	this.run();
     
     }
 
