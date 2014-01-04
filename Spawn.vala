@@ -263,7 +263,7 @@ public class Spawn : Object
         // call input.. 
         if (this.pid > -1) {
             // child can exit before 1we get this far..
-            if (this.listeners.input) {
+            if (this.cfg.input != null) {
 				print("Trying to call listeners");
                 try {
                     this.write(this.listeners.input.call(this));
