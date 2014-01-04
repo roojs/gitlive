@@ -219,9 +219,9 @@ public class Spawn : Object
         
         function tidyup()
         {
-            if (_this.pid) {
-                GLib.spawn_close_pid(_this.pid); // hopefully kills it..
-                _this.pid = false;
+            if (this.pid > -1) {
+                Process.close_pid(this.pid); // hopefully kills it..
+                this.pid = -1;
             }
             if (_this.in_ch)  _this.in_ch.close();
             if (_this.out_ch)  _this.out_ch.close();
@@ -231,10 +231,10 @@ public class Spawn : Object
             _this.err_ch = false;
             _this.out_ch = false;
             // rmeove listeners !! important otherwise we kill the CPU
-            if (err_src !== false) GLib.source_remove(err_src);
-            if (out_src !== false) GLib.source_remove(out_src);
-            err_src = false;
-            out_src = false;
+            if (this.err_src !== false) GLib.source_remove(this.err_src);
+            if (this.out_src !== false) GLib.source_remove(this.out_src);
+            this.err_src = false;
+            this.out_src = false;
             
         }
         
