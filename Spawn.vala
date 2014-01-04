@@ -168,7 +168,7 @@ public class Spawn : Object
      * result is applied to object properties (eg. 'output' or 'stderr')
      * @returns {Object} self.
      */
-    public run()
+    public void run()
     {
         
          
@@ -286,7 +286,7 @@ public class Spawn : Object
         }
         // async - if running - return..
         if (this.cfg.async && this.pid > -1) {
-            return this;
+            return;
         }
          
         // start mainloop if not async..
@@ -310,9 +310,9 @@ public class Spawn : Object
         
         // finally throw, or return self..
         
-        return this;
+        return;
     
-    },
+    }
     
     
 
@@ -343,9 +343,9 @@ public class Spawn : Object
      * @arg str {String} string to write to stdin of process
      * @returns GLib.IOStatus (0 == error, 1= NORMAL)
      */
-    write : function(str) // write a line to 
+    public void write(str) // write a line to 
     {
-        if (!this.in_ch) {
+        if (this.in_ch is null) {
             return 0; // input is closed
         }
 	//print("write: " + str);
