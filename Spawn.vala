@@ -20,26 +20,9 @@ var GLib      = imports.gi.GLib;
 * Library to wrap GLib.spawn_async_with_pipes
 * 
 * usage:
-* 
-* Spawn = import.Spawn;
-* 
-* simple version..
-* var output = new Spawn({
-*   cwd : '/home',
-*   args : [ 'ls', '-l' ],
-*   env : [], // optional
-*   listeners : {
-        output : function (line) { Seed.print(line); },
-*       stderr :  function (line) {Seed.print("ERROR" + line);  },
-*       input : function() { return 'xxx' },
-*   }
-*  });
+* v 
 *
-*
-*
-*
-*
-*var output = Spawn.run( SpawnConfig() {
+*var output = new Spawn( SpawnConfig() {
     cwd = "/home",  // empty string to default to homedirectory.
     args = {"ls", "-l" },
     evn = {},
