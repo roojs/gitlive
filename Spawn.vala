@@ -215,13 +215,7 @@ public class Spawn : Object
             }
         });
 	    
-			// Triggered when the child indicated by child_pid exits
-			Process.close_pid (w_pid);
-			loop.quit ();
-		})
-	
-        GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
-           
+			  
         
         function tidyup()
         {
