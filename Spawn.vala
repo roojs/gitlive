@@ -274,13 +274,10 @@ public class Spawn : Object
 		    //but... let's close input now..
 		    this.in_ch.close();
 		    this.in_ch = -1;
-		   
-		    
-		    
-		    
+		     
 		    
                 } catch (e) {
-                    tidyup();
+                    this.tidyup();
                     throw e;
                     
                 }
