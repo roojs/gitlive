@@ -295,9 +295,8 @@ public class Spawn : Object
             if (this.cfg.debug) {
                 print("starting main loop");
             }
-	    
-            this.ctx = isSeed ? new GLib.MainLoop.c_new (null, false) : GLib.MainLoop.new (null, false);;
-            this.ctx.run(false); // wait fore exit?
+	    this.ctx = new MainLoop ();
+            loop.run(); // wait fore exit?
             
             //print("main_loop done!");
         } else {
