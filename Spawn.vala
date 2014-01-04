@@ -192,18 +192,18 @@ public class Spawn : Object
             print("PID: " + this.pid);
         }
          
-        
-	
-        GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
-            _this.result = result;
+        ChildWatch.add (this.pid, (w_pid, result) => {
+	    
+	    this.result = result;
             if (_this.debug) {
                 print("child_watch_add : result: " + result);
             }
-            _this.read(_this.out_ch);
-            _this.read(_this.err_ch);
+	    
+            this.read(this.out_ch);
+            this.read(this.err_ch);
             
 			
-            GLib.spawn_close_pid(_this.pid);
+            Process.close_pid(this.pid);
             _this.pid = false;
             if (_this.ctx) {
                 _this.ctx.quit();
@@ -214,6 +214,14 @@ public class Spawn : Object
                 _this.listeners.finish.call(this, _this.result);
             }
         });
+	    
+			// Triggered when the child indicated by child_pid exits
+			Process.close_pid (w_pid);
+			loop.quit ();
+		})
+	
+        GLib.child_watch_add(GLib.PRIORITY_DEFAULT, this.pid, function(pid, result) {
+           
         
         function tidyup()
         {
