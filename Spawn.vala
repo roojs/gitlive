@@ -204,7 +204,7 @@ public class Spawn : Object
             
 			
             Process.close_pid(this.pid);
-            _this.pid = false;
+            this.pid = -1;
             if (_this.ctx) {
                 _this.ctx.quit();
             }
