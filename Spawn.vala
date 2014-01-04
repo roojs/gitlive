@@ -143,11 +143,11 @@ public class Spawn : Object
     /**
      * @property out_ch {GLib.IOChannel} output io channel
      */
-    IOChannel out_ch = false;
+    IOChannel out_ch = null;
     /**
      * @property err_ch {GLib.IOChannel} stderr io channel
      */
-    IOChannel err_ch = false;
+    IOChannel err_ch = null;
     /**
      * 
      * @method run
@@ -155,7 +155,7 @@ public class Spawn : Object
      * result is applied to object properties (eg. 'output' or 'stderr')
      * @returns {Object} self.
      */
-    run : function()
+    public run : function()
     {
         
         var _this = this;
