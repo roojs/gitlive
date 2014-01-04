@@ -62,7 +62,8 @@ struct SpawnConfig {
     public string[] args;
     public string[]  env;
     public boolean async;
-    public bookean exceptions; // fire exceptions.
+    public boolean exceptions; // fire exceptions.
+    public boolean debug; // fire exceptions.
     
     public SpawnOutput output
     public SpawnErr stderr;
@@ -74,6 +75,7 @@ struct SpawnConfig {
 	env = [];
 	async = false;
 	exceptions = false;
+	debug = false;
 	
     }
 }
@@ -118,7 +120,6 @@ public class Spawn : Object
     
     ctx : false, // the mainloop ctx.
    
-    exceptions : false,
     debug : false,
     /**
      * @property output {String} resulting output
