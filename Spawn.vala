@@ -267,9 +267,9 @@ public class Spawn : Object
         if (this.pid > -1) {
             // child can exit before 1we get this far..
             if (this.cfg.input != null) {
-				print("Trying to call listeners");
+		print("Trying to call listeners");
                 try {
-                    this.write(this.listeners.input.call(this));
+                    this.write(this.cfg.input());
 		     // this probably needs to be a bit smarter...
 		    //but... let's close input now..
 		    this.in_ch.close();
