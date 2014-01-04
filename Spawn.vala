@@ -61,6 +61,7 @@ struct SpawnConfig {
     public string cwd;
     public string[] args;
     public string[]  env;
+    public boolean async;
     public SpawnOutput output
     public SpawnErr stderr;
     public SpawnInput input;
@@ -103,11 +104,8 @@ public class Spawn : Object
     
     }
 
-
-Spawn.prototype = {
     
     ctx : false, // the mainloop ctx.
-    listeners : false,
     async : false,
     env : null,
     cwd: false,
