@@ -161,6 +161,11 @@ public class Spawn : Object
          
         var err_src = false;
         var out_src = false;
+	int standard_input;
+	int standard_output;
+	int standard_error;
+
+
         var ret = {};
         
         if (this.cfg.debug) {
@@ -180,21 +185,7 @@ public class Spawn : Object
 
 		// stdout:
 	
-        var gret = GLib.spawn_async_with_pipes(this.cwd, this.args, this.env, 
-            GLib.SpawnFlags.DO_NOT_REAP_CHILD + GLib.SpawnFlags.SEARCH_PATH , 
-            null, null, ret);
-        
-		var isSeed = true;
-		if (typeof(Seed) == 'undefined') {
-			ret = {
-				child_pid : gret[1],
-				standard_input : gret[2],
-			    standard_output: gret[3], 
-			    standard_error: gret[4]
-			};
-			isSeed = false;	
-		}
-		
+         	
     	//print(JSON.stringify(gret));    
         this.pid = ret.child_pid;
         
