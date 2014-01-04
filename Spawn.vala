@@ -273,7 +273,7 @@ public class Spawn : Object
 		     // this probably needs to be a bit smarter...
 		    //but... let's close input now..
 		    this.in_ch.close();
-		    _this.in_ch = false;
+		    this.in_ch = -1;
 		   
 		    
 		    
