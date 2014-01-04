@@ -211,7 +211,7 @@ public class Spawn : Object
             this.tidyup();
 	    //print("DONE TIDYUP");
             if (this.cfg.finish) {
-                this.cfg.finish(this, this.result);
+                this.cfg.finish(this.result);
             }
         });
 	    
