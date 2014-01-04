@@ -163,8 +163,8 @@ public class Spawn : Object
         var out_src = false;
         var ret = {};
         
-        if (this.debug) {
-            print("cd " + this.cfg.cwd +";" + this.cfg.args.join(" "));
+        if (this.cfg.debug) {
+            print("cd " + this.cfg.cwd +";" + string.joinv(" ", this.cfg.args));
         }
         
         var gret = GLib.spawn_async_with_pipes(this.cwd, this.args, this.env, 
