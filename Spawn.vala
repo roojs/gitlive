@@ -168,7 +168,7 @@ public class Spawn : Object
      * result is applied to object properties (eg. 'output' or 'stderr')
      * @returns {Object} self.
      */
-    public Spawn  run()
+    public run()
     {
         
          
