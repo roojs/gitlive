@@ -40,7 +40,7 @@ var GLib      = imports.gi.GLib;
 *
 *
 *var output = Spawn.run( SpawnConfig() {
-    cwd = "/home",
+    cwd = "/home",  // empty string to default to homedirectory.
     args = {"ls", "-l" },
     evn = {},
     ouput  = (line) => { stdout.printf("%d\n", line); }
@@ -68,7 +68,7 @@ struct SpawnConfig {
 
 /**
  * @class Spawn
- * @param cfg {Object} settings - see properties.
+ * @param cfg {SpawnConfig} settings - see properties.
  * 
  * @arg cwd {String}            working directory. (defaults to home directory)
  * @arg args {Array}            arguments eg. [ 'ls', '-l' ]
@@ -82,19 +82,26 @@ struct SpawnConfig {
  * @arg debug {Boolean}    print out what's going on.. (default no)
  * 
  */
-function Spawn(cfg) {
-    this.cfg = 
-    for(var i in cfg) {
-        this[i] = cfg[i];
-    }
-    // set defaults?
-    this.listeners = this.listeners || {};
-    this.cwd =  this.cwd || GLib.get_home_dir();
-    if (!this.args || !this.args.length) {
-        throw "No arguments";
-    }
+
+
+public class Spawn : Object
+{
+
+
+
+    public Spawn(SpawnConfig cfg)
+    {
+       
+     
+        this.cfg = cfg;
+     
     
-}
+	this.cwd =  this.cfg.cwd.length || GLib.get_home_dir();
+	if (!this.cfg.args.length) {
+	    throw "No arguments";
+	}
+    
+    }
 
 
 Spawn.prototype = {
