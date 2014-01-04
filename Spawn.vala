@@ -148,10 +148,14 @@ public class Spawn : Object
      * @property err_ch {GLib.IOChannel} stderr io channel
      */
     IOChannel err_ch = null;
-    
+    /**
+     * @property err_src {int} the watch for errors
+     */
     
     int err_src = -1;
-    
+      /**
+     * @property err_src {int} the watch for output
+     */
     int out_src = -1;
     
     /**
