@@ -237,31 +237,28 @@ public class Spawn : Object
         
       
 			// using NONBLOCKING only works if io_add_watch
-	   //returns true/false in right conditions
-	   this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
-	   this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
-	   this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
-			
+	//returns true/false in right conditions
+	this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
+	this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
+	this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
+		     
 
       
         // add handlers for output and stderr.
-        out_src= GLib.io_add_watch(this.out_ch, GLib.PRIORITY_DEFAULT, 
-            GLib.IOCondition.OUT + GLib.IOCondition.IN  + GLib.IOCondition.PRI +  GLib.IOCondition.HUP +  GLib.IOCondition.ERR,
-            function() {
-                
-               return  _this.read(_this.out_ch);
-            
-            }
-        );
-        err_src= GLib.io_add_watch(this.err_ch, GLib.PRIORITY_DEFAULT, 
-            GLib.IOCondition.ERR + GLib.IOCondition.IN + GLib.IOCondition.PRI + GLib.IOCondition.OUT +  GLib.IOCondition.HUP, 
-            function()
-        {
-            return _this.read(_this.err_ch);
-             
-        });
-        
-      
+	
+	this.out_src = this.out_ch.add_watch (
+	    IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
+	    (channel, condition) => {
+	       return this.read(_this.out_ch);
+	    }
+	);
+        this.err_src = this.err_ch.add_watch (
+	    IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
+	    (channel, condition) => {
+	       return this.read(_this.err_ch);
+	    }
+	);
+          
         
         // call input.. 
         if (this.pid !== false) {
