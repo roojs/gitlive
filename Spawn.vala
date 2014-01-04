@@ -64,8 +64,6 @@ struct SpawnConfig {
     public SpawnOutput output
     public SpawnErr stderr;
     public SpawnInput input;
-    
-    
 }
 
 /**
@@ -85,6 +83,7 @@ struct SpawnConfig {
  * 
  */
 function Spawn(cfg) {
+    this.cfg = 
     for(var i in cfg) {
         this[i] = cfg[i];
     }
