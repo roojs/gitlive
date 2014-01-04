@@ -24,7 +24,7 @@ var GLib      = imports.gi.GLib;
 * Spawn = import.Spawn;
 * 
 * simple version..
-* var output = Spawn.run({
+* var output = new Spawn({
 *   cwd : '/home',
 *   args : [ 'ls', '-l' ],
 *   env : [], // optional
@@ -424,21 +424,7 @@ public class Spawn : Object
     }
     
 };
-/**
- * @function run 
- * 
- * simple run a process - returns result, or throws stderr result...
- * @param cfg {Object}  see spawn
- * @return {string} stdout output.
- */
-function run(cfg) {
-    cfg.exceptions = true;
-    cfg.async = false;
-    var s = new Spawn(cfg);
-    var ret = s.run();
-    return s.output;
-}
- /*
+  /*
 // test
 try { 
     Seed.print(run({
