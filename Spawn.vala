@@ -285,7 +285,7 @@ public class Spawn : Object
             }
         }
         // async - if running - return..
-        if (this.async && this.pid > -1) {
+        if (this.cfg.async && this.pid > -1) {
             return this;
         }
          
