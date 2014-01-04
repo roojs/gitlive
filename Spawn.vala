@@ -62,9 +62,20 @@ struct SpawnConfig {
     public string[] args;
     public string[]  env;
     public boolean async;
+    public bookean exceptions;
+    
     public SpawnOutput output
     public SpawnErr stderr;
     public SpawnInput input;
+    // defaults..
+    public SpawnConfig() {
+	cwd = "";
+	args = [];
+	env = [];
+	async = false;
+	exceptions = false;
+	
+    }
 }
 
 /**
@@ -106,10 +117,7 @@ public class Spawn : Object
 
     
     ctx : false, // the mainloop ctx.
-    async : false,
-    env : null,
-    cwd: false,
-    args: false,
+   
     exceptions : false,
     debug : false,
     /**
