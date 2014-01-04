@@ -76,6 +76,9 @@ struct SpawnConfig {
 	async = false;
 	exceptions = false;
 	debug = false;
+	output = null;
+	stderr = null;
+	input = null;
 	
     }
 }
