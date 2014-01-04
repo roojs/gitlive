@@ -362,7 +362,7 @@ public class Spawn : Object
         //return ret.value;
         return str.length;
         
-    },
+    }
     
     /**
      * read from pipe and call appropriate listerner and add to output or stderr string.
