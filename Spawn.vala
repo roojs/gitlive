@@ -187,9 +187,8 @@ public class Spawn : Object
 	
          	
     	//print(JSON.stringify(gret));    
-        this.pid = ret.child_pid;
-        
-        if (this.debug) {
+         
+        if (this.cfg.debug) {
             print("PID: " + this.pid);
         }
          
