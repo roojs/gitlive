@@ -205,13 +205,13 @@ public class Spawn : Object
 			
             Process.close_pid(this.pid);
             this.pid = -1;
-            if (_this.ctx) {
-                _this.ctx.quit();
+            if (this.ctx) {
+                this.ctx.quit();
             }
-            tidyup();
+            this.tidyup();
 	    //print("DONE TIDYUP");
-            if (_this.listeners.finish) {
-                _this.listeners.finish.call(this, _this.result);
+            if (this.cfg.finish) {
+                this.cfg.finish(this, this.result);
             }
         });
 	    
