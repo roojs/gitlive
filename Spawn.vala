@@ -38,8 +38,7 @@ delegate void SpawnErr(string line);
 delegate string SpawnInput();
 
 
-
-struct SpawnConfig
+ 
 struct SpawnConfig {
     public string cwd;
     public string[] args;
