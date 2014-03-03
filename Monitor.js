@@ -109,7 +109,10 @@ Monitor.prototype = {
         var f = Gio.file_new_for_path(path);
             //var cancel = new Gio.Cancellable ();
         if (depth > 0) {     
+
             var fm = f.monitor(2,null); //Gio.FileMonitorFlags.SEND_MOVED
+
+
             
             XObject.isSeed ?  fm.signal.changed.connect(fn) : fm.connect('changed',fn);
             this.monitors.push(fm);

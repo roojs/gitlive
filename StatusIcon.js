@@ -47,13 +47,16 @@ var StatusIcon  = new XObject({
             print("POPUP: " + typeof(menu.el.popup));
             
             var isSeed = typeof(Seed) != 'undefined';
-            if (isSeed) {  
+           /* if (isSeed) {
+                
+                //print(JSON.stringify([null, null, Gtk.StatusIcon.position_menu , this.el , 1, Gtk.get_current_event_time()]));
+                print(  Gtk.get_current_event_time());
                 menu.el.popup(null, null, Gtk.StatusIcon.position_menu , this.el , 1, Gtk.get_current_event_time());
             //menu.el.popup(null, null,null, null, 1, Gtk.get_current_event_time());
             
                 return;
             }
-            
+            */
             Gtk.get_current_event_device ()
             menu.el.popup_for_device(
                     Gtk.get_current_event_device (),

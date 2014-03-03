@@ -16,7 +16,7 @@ GLib        = imports.gi.GLib;
 //print(JSON.stringify(GI, null,4));
 // we add this in, as it appears to get lost sometimes if we set it using the ENV. variable in builder.sh
 // see the install instructions on how to override the default gir's
-GIRepository.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.2');
+//GIRepository.Repository.prepend_search_path(GLib.get_home_dir() + '/.Builder/girepository-1.2');
 
 var Gio      = imports.gi.Gio;
 var Gtk      = imports.gi.Gtk;
