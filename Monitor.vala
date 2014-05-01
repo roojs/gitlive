@@ -169,10 +169,10 @@ public class Monitor : Object
         //}
         FileEnumerator file_enum;
         try {      
-         file_enum = f.enumerate_children(
-            FileAttribute.STANDARD_DISPLAY_NAME + "," +   FileAttribute.STANDARD_TYPE,
-            0, // FileQueryInfoFlags.NONE,
-            null);
+            file_enum = f.enumerate_children(
+               FileAttribute.STANDARD_DISPLAY_NAME + "," +   FileAttribute.STANDARD_TYPE,
+               0, // FileQueryInfoFlags.NONE,
+               null);
         } catch (Error e) {
             // FIXME - show error..
             return;
