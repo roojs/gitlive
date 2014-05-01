@@ -265,7 +265,7 @@ public class Monitor : Object
         if (this.paused) {
             return;
         }
-        
+        print("onEvent");
         var f = this.realpath(f_orig);
         
         var of = this.realpath(of_orig);
