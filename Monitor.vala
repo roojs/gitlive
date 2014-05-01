@@ -154,7 +154,7 @@ public class Monitor : Object
                         //}
                         //this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
                 });
-                this.monitors.add(fm);
+                this.monitors.append_val(fm);
 
             } catch (Error e) {
                 // FIXME -- show error? do nothing..            
