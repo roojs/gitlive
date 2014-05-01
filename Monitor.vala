@@ -96,7 +96,7 @@ public class Monitor : Object
      */
     public void start()
     {
-        for(int i = 0; i < this.monitors.length ; i++) {
+        for(int i = 0; i < this.top.length ; i++) {
             this.monitor(this.top.index(i), ( fm,  f_orig,  of_orig,  event_type) => {
                 this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
                 } );
