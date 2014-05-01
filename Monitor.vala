@@ -80,7 +80,7 @@ public class Monitor : Object
      */
     public void add (string add)
     {
-        this.top.add(add);
+        this.top.append_val(add);
     }
     /**
      * start monitoring
