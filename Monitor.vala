@@ -151,7 +151,8 @@ public class Monitor : Object
           
         var f = File.new_for_path(path);
             //var cancel = new Gio.Cancellable ();
-        if (depth > 0) {   
+        if (depth > 0) { 
+  
             try {
   
                  var fm = f.monitor(FileMonitorFlags.SEND_MOVED,null); //Gio.FileMonitorFlags.SEND_MOVED
