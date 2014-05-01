@@ -157,7 +157,7 @@ public class Monitor : Object
                 this.monitors.add(fm);
 
             } catch (Error e) {
-                // do nothing..            
+                // FIXME -- show error? do nothing..            
             }
             // print("ADD path " + depth + ' ' + path);
         }
