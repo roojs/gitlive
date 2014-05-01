@@ -13,9 +13,13 @@
 static int main (string[] args) {
     // A reference to our file
     //var file = File.new_for_path ("data.txt");
-    var m = new Monitor();
-    var m.add("/home/alan/gitlive");
     
+    print("starting");
+    var m = new Monitor();
+    
+    m.add("/home/alan/gitlive");
+    m.start();
+
     return 0;
 
 }
@@ -282,6 +286,9 @@ public class Monitor : Object
          //    }
          //}
         
+
+
+
         //print (JSON.stringify([event_name , f.get_path(), of ? of.get_path() : false ] ));
         //print ("got src: " + src.toString());
         //print ("got event: " + src.toString());
