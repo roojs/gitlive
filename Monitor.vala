@@ -67,8 +67,8 @@ public class Monitor : Object
     {
        
      
-        this.monitors = new ArrayList<FileMonitor> ();
-        this.top = new ArrayList<string> ();
+        this.monitors = new Array<FileMonitor> ();
+        this.top = new Array<string> ();
         this.paused = false;
     }
      
@@ -103,7 +103,7 @@ public class Monitor : Object
         for(int i = 0; i < this.monitors.size ; i++) {
             this.monitors[i].cancel();
         } 
-        this.monitors = new ArrayList<FileMonitor>(); // clean /destroy/ kill old?
+        this.monitors = new Array<FileMonitor>(); // clean /destroy/ kill old?
     }
     /**
      * pause monitoring - without changing what's monitored 
