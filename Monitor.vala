@@ -167,7 +167,7 @@ public class Monitor : Object
             
         //    this.initRepo(path);
         //}
-        
+        FileEnumerator file_enum;
         try {      
          var file_enum = f.enumerate_children(
             FileAttribute.STANDARD_DISPLAY_NAME + "," +   FileAttribute.STANDARD_TYPE,
