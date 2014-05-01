@@ -178,7 +178,7 @@ public class Monitor : Object
         
         while (true) {
             try {        
-                next_file = file_enum.next_file(null))
+                next_file = file_enum.next_file(null));
             } catch (Error e) {
                 break;
             }
