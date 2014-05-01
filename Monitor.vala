@@ -176,8 +176,15 @@ public class Monitor : Object
         
         FileInfo next_file;
         
-        while ((next_file = file_enum.next_file(null)) != null) {
-         
+        while (true) {
+            try {        
+                next_file = file_enum.next_file(null))
+            } catch (Error e) {
+                break;
+            }
+            if (next_file == null) {
+                break;
+            }
             //print("got a file " + next_file.sudo () + '?=' + Gio.FileType.DIRECTORY);
             
             if (next_file.get_file_type() != FileType.DIRECTORY) {
