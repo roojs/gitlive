@@ -142,17 +142,23 @@ public class Monitor : Object
           
         var f = File.new_for_path(path);
             //var cancel = new Gio.Cancellable ();
-        if (depth > 0) {     
-            var fm = f.monitor(FileMonitorFlags.SEND_MOVED,null); //Gio.FileMonitorFlags.SEND_MOVED
-            
-            fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
-                    //if (fn) {
-                        fn (fm,  f_orig,  of_orig,  event_type ) ;
-                       // return;
-                    //}
-                    //this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
-            });
-            this.monitors.add(fm);
+        if (depth > 0) {   
+            try {
+  
+                 var fm = f.monitor(FileMonitorFlags.SEND_MOVED,null); //Gio.FileMonitorFlags.SEND_MOVED
+ 
+                 fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
+                        //if (fn) {
+                            fn (fm,  f_orig,  of_orig,  event_type ) ;
+                           // return;
+                        //}
+                        //this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
+                });
+                this.monitors.add(fm);
+
+            } catch (Error e) {
+                // do nothing..            
+            }
             // print("ADD path " + depth + ' ' + path);
         }
         // iterate children?
