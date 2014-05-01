@@ -12,8 +12,8 @@ using Gee; // for array list?
 
 static int main (string[] args) {
     // A reference to our file
-    var file = File.new_for_path ("data.txt");
-    var m = new Monitor();
+    //var file = File.new_for_path ("data.txt");
+    //var m = new Monitor();
     return 0;
 
 }
