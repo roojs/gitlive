@@ -138,7 +138,7 @@ public class Monitor : Object
     public void monitor(string path, onEventHander fn , int depth = 0)
     {
          
-       // print("ADD: " + path)
+        print("ADD: " + path)
         
         //depth = typeof(depth) == 'number'  ? depth *1 : 0;
         depth = depth > 0  ? depth *1 : 0;
