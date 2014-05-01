@@ -72,8 +72,8 @@ public class Monitor : Object
         this.paused = false;
     }
      
-    public ArrayList<FileMonitor> monitors;// Array of MonitorNamePathDirileMonitors
-    public ArrayList<string> top; // list of top level directories..
+    public Array<FileMonitor> monitors;// Array of MonitorNamePathDirileMonitors
+    public Array<string> top; // list of top level directories..
     public bool paused;
     /**
      * add a directory or file to monitor
