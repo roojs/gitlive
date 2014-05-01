@@ -168,12 +168,15 @@ public class Monitor : Object
         //    this.initRepo(path);
         //}
         
-       
+        try {      
          var file_enum = f.enumerate_children(
             FileAttribute.STANDARD_DISPLAY_NAME + "," +   FileAttribute.STANDARD_TYPE,
             0, // FileQueryInfoFlags.NONE,
             null);
-        
+        } catch (Error e) {
+            // FIXME - show error..
+            return;
+        }
         FileInfo next_file;
         
         while (true) {
