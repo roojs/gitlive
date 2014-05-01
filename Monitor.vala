@@ -178,7 +178,7 @@ public class Monitor : Object
         
         while (true) {
             try {        
-                next_file = file_enum.next_file(null));
+                next_file = file_enum.next_file(null);
             } catch (Error e) {
                 break;
             }
@@ -212,8 +212,11 @@ public class Monitor : Object
             this.monitor(sp, fn, depth + 1);
             
         }
-    
-        file_enum.close(null);
+        try {
+            file_enum.close(null);
+        } catch(Error e) {
+            // ignore?
+        }
     }
     
     
