@@ -253,37 +253,37 @@ public class Spawn : Object
 			  
         
         
-        this.in_ch = new GLib.IOChannel.unix_new(ret.standard_input);
-        this.out_ch = new GLib.IOChannel.unix_new(ret.standard_output);
-        this.err_ch = new GLib.IOChannel.unix_new(ret.standard_error);
+        this.in_ch = new GLib.IOChannel.unix_new(standard_input);
+        this.out_ch = new GLib.IOChannel.unix_new(standard_output);
+        this.err_ch = new GLib.IOChannel.unix_new(standard_error);
         
         // make everything non-blocking!
         
         
+            
+                  // using NONBLOCKING only works if io_add_watch
+          //returns true/false in right conditions
+          this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
+          this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
+          this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
+                   
       
-			// using NONBLOCKING only works if io_add_watch
-	//returns true/false in right conditions
-	this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
-	this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
-	this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
-		     
-
-      
-        // add handlers for output and stderr.
-	
-	this.out_src = this.out_ch.add_watch (
-	    IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
-	    (channel, condition) => {
-	       return this.read(_this.out_ch);
-	    }
-	);
+            
+            // add handlers for output and stderr.
+        
+        this.out_src = this.out_ch.add_watch (
+            IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
+            (channel, condition) => {
+               return this.read(_this.out_ch);
+            }
+        );
         this.err_src = this.err_ch.add_watch (
 	    IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
-	    (channel, condition) => {
-	       return this.read(_this.err_ch);
-	    }
-	);
-          
+            (channel, condition) => {
+               return this.read(_this.err_ch);
+            }
+        );
+              
         
         // call input.. 
         if (this.pid > -1) {
