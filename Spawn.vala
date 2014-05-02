@@ -119,7 +119,7 @@ public class  SpawnConfig {
 public class Spawn : Object
 {
 
-
+    SpawnConfig cfg;
 
     public Spawn(SpawnConfig cfg) throws Error
     {
