@@ -403,8 +403,9 @@ public class Spawn : Object
             string buffer;
             size_t term_pos;
             size_t len;
+            IOStatus status 
             try {
-                var status = ch.read_line( out buffer,  out len,  out term_pos );
+                status = ch.read_line( out buffer,  out len,  out term_pos );
             } catch (Error e) {
                 //FIXme
                 break; // ??
