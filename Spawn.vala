@@ -359,7 +359,7 @@ public class Spawn : Object
      * @arg str {String} string to write to stdin of process
      * @returns GLib.IOStatus (0 == error, 1= NORMAL)
      */
-    integer write(str) // write a line to 
+    int write(str) // write a line to 
     {
         if (this.in_ch is null) {
             return 0; // input is closed
