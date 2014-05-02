@@ -100,6 +100,10 @@ public class  SpawnConfig {
     
 }
 
+errordomain SpawnError {
+    NO_ARGS
+}
+
 /**
  * @class Spawn
  * @param cfg {SpawnConfig} settings - see properties.
@@ -132,7 +136,7 @@ public class Spawn : Object
     
         this.cfg.cwd =  this.cfg.cwd.length  < 1 ? GLib.Environment.get_home_dir() : this.cfg.cwd;
         if (this.cfg.args.length < 0) {
-            throw new Error("No arguments");
+            throw new SpawnError.NO_ARGS("No arguments");
         }
         this.run();
     
