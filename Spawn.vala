@@ -50,9 +50,9 @@ public class  SpawnConfig {
     public string cwd;
     public string[] args;
     public string[]  env;
-    public boolean async;
-    public boolean exceptions; // fire exceptions.
-    public boolean debug; // fire exceptions.
+    public bool async;
+    public bool exceptions; // fire exceptions.
+    public bool debug; // fire exceptions.
     
     public SpawnOutput output;
     public SpawnErr stderr;
@@ -77,9 +77,9 @@ public class  SpawnConfig {
     }
     
     public void setOptions(
-            boolean async,
-            boolean exceptions,
-            boolean debug
+            bool async,
+            bool exceptions,
+            bool debug
         ) {
         this.async = async;
         this.exceptions = exceptions;
@@ -137,7 +137,7 @@ public class Spawn : Object
     }
 
     
-    boolean ctx = false; // the mainloop ctx.
+    bool ctx = false; // the mainloop ctx.
     
     /**
      * @property output {String} resulting output
@@ -385,7 +385,7 @@ public class Spawn : Object
      * @arg giochannel to read from.
      * @returns none
      */
-    private boolean read(IOChannel ch) 
+    private bool read(IOChannel ch) 
     {
         String prop = (ch == this.out_ch) ? "output" : "stderr";
        // print("prop: " + prop);
