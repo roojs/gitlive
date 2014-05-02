@@ -223,27 +223,28 @@ public class Spawn : Object
     	//print(JSON.stringify(gret));    
          
         if (this.cfg.debug) {
+            
             stdout.print("PID: %d" ,this.pid);
         }
          
         ChildWatch.add (this.pid, (w_pid, result) => {
 	    
-	    this.result = result;
+            this.result = result;
             if (_this.debug) {
-                print("child_watch_add : result: " + result);
+                print("child_watch_add : result:%d ", result);
             }
-	    
+           
             this.read(this.out_ch);
             this.read(this.err_ch);
             
-			
+            
             Process.close_pid(this.pid);
             this.pid = -1;
             if (this.ctx) {
                 this.ctx.quit();
             }
             this.tidyup();
-	    //print("DONE TIDYUP");
+        //print("DONE TIDYUP");
             if (this.cfg.finish) {
                 this.cfg.finish(this.result);
             }
