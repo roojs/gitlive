@@ -404,7 +404,7 @@ public class Spawn : Object
             
             try {
                 var status = ch.read_line( buffer,  term_pos );
-            | catch (Error e) {
+            } catch (Error e) {
                 //FIXme
                 break; // ??
                 
