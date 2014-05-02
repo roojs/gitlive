@@ -5,7 +5,7 @@
 static int main (string[] args) {
     // A reference to our file
     var file = File.new_for_path ("data.txt");
-    var m = new Monitor();
+    var m = new Spawn();
     return 0;
 
 }
@@ -37,9 +37,9 @@ delegate void SpawnOutput(string line);
 delegate void SpawnErr(string line);
 delegate string SpawnInput();
 
-
  
-struct SpawnConfig {
+
+public class  SpawnConfig {
     public string cwd;
     public string[] args;
     public string[]  env;
@@ -51,17 +51,25 @@ struct SpawnConfig {
     public SpawnErr stderr;
     public SpawnInput input;
     // defaults..
-    public SpawnConfig() {
-	cwd = "";
-	args = [];
-	env = [];
-	async = false;
-	exceptions = false;
-	debug = false;
-	output = null;
-	stderr = null;
-	input = null;
-	
+    public SpawnConfig(
+            string cwd,
+            string[] args,
+            string[] env,
+            boolean async,
+            boolean exceptions,
+            boolean debug,
+            
+            ) {
+        cwd = "";
+        args = [];
+        env = [];
+        async = false;
+        exceptions = false;
+        debug = false;
+        output = null;
+        stderr = null;
+        input = null;
+        
     }
 }
 
@@ -95,11 +103,11 @@ public class Spawn : Object
         this.cfg = cfg;
      
     
-	this.cwd =  this.cfg.cwd.length || GLib.get_home_dir();
-	if (!this.cfg.args.length) {
-	    throw "No arguments";
-	}
-	this.run();
+        this.cwd =  this.cfg.cwd.length || GLib.get_home_dir();
+        if (!this.cfg.args.length) {
+            throw "No arguments";
+        }
+        this.run();
     
     }
 
