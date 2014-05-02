@@ -224,14 +224,14 @@ public class Spawn : Object
          
         if (this.cfg.debug) {
             
-            stdout.print("PID: %d" ,this.pid);
+            stdout.printf("PID: %d" ,this.pid);
         }
          
         ChildWatch.add (this.pid, (w_pid, result) => {
 	    
             this.result = result;
             if (this.debug) {
-                print("child_watch_add : result:%d ", result);
+                stdout.printf("child_watch_add : result:%d ", result);
             }
            
             this.read(this.out_ch);
