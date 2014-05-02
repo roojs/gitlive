@@ -51,15 +51,7 @@ public class  SpawnConfig {
     public SpawnErr stderr;
     public SpawnInput input;
     // defaults..
-    public SpawnConfig(
-            string cwd,
-            string[] args,
-            string[] env,
-            boolean async,
-            boolean exceptions,
-            boolean debug,
-            
-            ) {
+    public SpawnConfig() {
         cwd = "";
         args = [];
         env = [];
@@ -71,6 +63,34 @@ public class  SpawnConfig {
         input = null;
         
     }
+    public setCommand(string cwd,
+            string[] args,
+            string[] env
+        ) {
+        this.cwd = cwd;
+        this.args = args;
+        this.env = env;
+    }
+    public setOptions(
+            boolean async,
+            boolean exceptions,
+            boolean debug
+        ) {
+        this.async = async;
+        this.exceptions = exceptions;
+        this.debug = debug;
+    }
+    public setHandlers(
+            SpawnOutput output
+           SpawnErr stderr,
+           SpawnInput input
+         ) {
+        this.output = output;
+        this.stderr = stderr;
+        this.input = input;
+    }
+    
+    
 }
 
 /**
