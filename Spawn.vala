@@ -346,9 +346,13 @@ public class Spawn : Object
             Process.close_pid(this.pid); // hopefully kills it..
             this.pid = -1;
         }
-        if (this.in_ch != null)  this.in_ch.shutdown(true);
-        if (this.out_ch != null)  this.out_ch.shutdown(true);
-        if (this.err_ch != null)  this.err_ch.shutdown(true);
+        try {
+            if (this.in_ch != null)  this.in_ch.shutdown(true);
+            if (this.out_ch != null)  this.out_ch.shutdown(true);
+            if (this.err_ch != null)  this.err_ch.shutdown(true);
+        } catch (Error e) {
+            // error shutting donw.
+        }
         // blank out channels
         this.in_ch = null;
         this.err_ch = null;
