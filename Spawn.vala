@@ -17,8 +17,8 @@ static int main (string[] args) {
 
 }
 
-var Gio      = imports.gi.Gio;
-var GLib      = imports.gi.GLib;
+//var Gio      = imports.gi.Gio;
+//var GLib      = imports.gi.GLib;
 
 
 /**
