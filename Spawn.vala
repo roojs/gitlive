@@ -359,7 +359,7 @@ public class Spawn : Object
      * @arg str {String} string to write to stdin of process
      * @returns GLib.IOStatus (0 == error, 1= NORMAL)
      */
-    private int write(String str) // write a line to 
+    private int write(string str) // write a line to 
     {
         if (this.in_ch is null) {
             return 0; // input is closed
@@ -387,7 +387,7 @@ public class Spawn : Object
      */
     private bool read(IOChannel ch) 
     {
-        String prop = (ch == this.out_ch) ? "output" : "stderr";
+        string prop = (ch == this.out_ch) ? "output" : "stderr";
        // print("prop: " + prop);
         var _this = this;
         
