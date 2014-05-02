@@ -40,9 +40,9 @@ static int main (string[] args) {
 *
 *
 */
-delegate void SpawnOutput(string line);
-delegate void SpawnErr(string line);
-delegate string SpawnInput();
+public delegate void SpawnOutput(string line);
+public delegate void SpawnErr(string line);
+public delegate string SpawnInput();
 
  
 
