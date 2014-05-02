@@ -431,8 +431,8 @@ public class Spawn : Object
                     }
                     if (this.async) {
                         try {
-                            if (imports.gi.Gtk.events_pending()) {
-                                imports.gi.Gtk.main_iteration();
+                            if ( Gtk.events_pending()) {
+                                 Gtk.main_iteration();
                             }
                         } catch(Error e) {
                             
