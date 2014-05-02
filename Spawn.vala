@@ -348,8 +348,8 @@ public class Spawn : Object
 	// rmeove listeners !! important otherwise we kill the CPU
 	if (this.err_src > -1 ) GLib.source_remove(this.err_src);
 	if (this.out_src > -1 ) GLib.source_remove(this.out_src);
-	this.err_src = false;
-	this.out_src = false;
+	this.err_src = -1;
+	this.out_src = -1;
 	
     }
     
