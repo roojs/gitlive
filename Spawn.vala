@@ -121,7 +121,7 @@ public class Spawn : Object
 
 
 
-    public Spawn(SpawnConfig cfg)
+    public Spawn(SpawnConfig cfg) throws Error
     {
        
      
@@ -130,7 +130,7 @@ public class Spawn : Object
     
         this.cwd =  this.cfg.cwd.length || GLib.get_home_dir();
         if (!this.cfg.args.length) {
-            throw "No arguments";
+            throw new Error("No arguments");
         }
         this.run();
     
