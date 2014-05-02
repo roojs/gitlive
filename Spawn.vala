@@ -9,7 +9,7 @@
 static int main (string[] args) {
     // A reference to our file
     
-    var cfg = new SpawnConfig(null, { "ls" } , "");
+    var cfg = new SpawnConfig("", { "ls" } , "");
     var spawn = new Spawn(cfg);
     
     
