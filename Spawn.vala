@@ -429,7 +429,7 @@ public class Spawn : Object
                     if (this.cfg.debug) {
                         stdout.printf("%s : %s", prop , str_return);
                     }
-                    if (this.async) {
+                    if (this.cfg.async) {
                         try {
                             if ( Gtk.events_pending()) {
                                  Gtk.main_iteration();
