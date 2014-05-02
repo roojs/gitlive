@@ -387,7 +387,7 @@ public class Spawn : Object
      */
     private boolean read(IOChannel ch) 
     {
-        String prop = (ch == this.out_ch) ? 'output' : 'stderr';
+        String prop = (ch == this.out_ch) ? "output" : "stderr";
        // print("prop: " + prop);
         var _this = this;
         
