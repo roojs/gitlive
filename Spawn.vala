@@ -241,7 +241,7 @@ public class Spawn : Object
             
             Process.close_pid(this.pid);
             this.pid = -1;
-            if (this.ctx) {
+            if (this.ctx != null) {
                 this.ctx.quit();
             }
             this.tidyup();
