@@ -1,4 +1,6 @@
 
+
+using Glib;
 // compile valac 
 
 /// # valac  --pkg gio-2.0  --pkg posix Spawn.vala -o /tmp/Spawn
@@ -19,7 +21,7 @@ static int main (string[] args) {
 
 //var Gio      = imports.gi.Gio;
 //var GLib      = imports.gi.GLib;
-using Glib;
+
 
 /**
 * @namespace Spawn
