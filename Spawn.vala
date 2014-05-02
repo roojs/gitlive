@@ -425,7 +425,7 @@ public class Spawn : Object
                     } else {
                         this.stderr += buffer;
                     }
-                    _this[prop] += x.str_return;
+                    //_this[prop] += x.str_return;
                     if (_this.debug) {
                         print(prop + ':' + x.str_return.replace(/\n/, ''));
                     }
