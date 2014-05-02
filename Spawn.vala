@@ -86,9 +86,9 @@ public class  SpawnConfig {
         this.debug = debug;
     }
     public void setHandlers(
-            SpawnOutput output
-           SpawnErr stderr,
-           SpawnInput input
+            SpawnOutput output,
+            SpawnErr stderr,
+            SpawnInput input
          ) {
         this.output = output;
         this.stderr = stderr;
