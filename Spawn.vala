@@ -75,8 +75,7 @@ public class  SpawnConfig {
         input = null;
         
     }
-    public setCommand(
-    }
+    
     public setOptions(
             boolean async,
             boolean exceptions,
