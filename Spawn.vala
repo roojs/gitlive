@@ -9,8 +9,6 @@ static int main (string[] args) {
     var spawn = new Spawn(cfg);
     
     
-    var file = File.new_for_path ("data.txt");
-    var m = new Spawn();
     return 0;
 
 }
