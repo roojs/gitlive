@@ -400,7 +400,7 @@ public class Spawn : Object
         
         //print(JSON.stringify(ch, null,4));
         while (true) {
-            var buffer = new StringBuffer("");
+            var buffer = new GLib.StringBuffer("");
             
             try {
                 var status = ch.read_line( buffer,  term_pos );
