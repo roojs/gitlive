@@ -8,12 +8,19 @@
 /// # valac --pkg gee-0.8 --pkg gio-2.0  --pkg posix Monitor.val
 
  
-using Gee; // for array list?
+//using Gee; // for array list?
 
 static int main (string[] args) {
     // A reference to our file
-    var file = File.new_for_path ("data.txt");
+    //var file = File.new_for_path ("data.txt");
+    MainLoop loop = new MainLoop ();
+    print("starting");
     var m = new Monitor();
+    
+    m.add("/home/alan/gitlive");
+    m.start();
+    loop.run ();
+
     return 0;
 
 }
@@ -33,6 +40,8 @@ public class  MonitorNamePathDir {
         
     }
 }
+
+
 
 public delegate void onEventHander (FileMonitor fm, File f_orig, File of_orig, FileMonitorEvent event_type);
 
@@ -67,28 +76,28 @@ public class Monitor : Object
     {
        
      
-        this.monitors = new ArrayList<FileMonitor> ();
-        this.top = new ArrayList<string> ();
+        this.monitors = new Array<FileMonitor> ();
+        this.top = new Array<string> ();
         this.paused = false;
     }
      
-    public ArrayList<FileMonitor> monitors;// Array of MonitorNamePathDirileMonitors
-    public ArrayList<string> top; // list of top level directories..
+    public Array<FileMonitor> monitors;// Array of MonitorNamePathDirileMonitors
+    public Array<string> top; // list of top level directories..
     public bool paused;
     /**
      * add a directory or file to monitor
      */
     public void add (string add)
     {
-        this.top.add(add);
+        this.top.append_val(add);
     }
     /**
      * start monitoring
      */
     public void start()
     {
-        for(int i = 0; i < this.monitors.size ; i++) {
-            this.monitor(this.top[i], ( fm,  f_orig,  of_orig,  event_type) => {
+        for(int i = 0; i < this.top.length ; i++) {
+            this.monitor(this.top.index(i), ( fm,  f_orig,  of_orig,  event_type) => {
                 this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
                 } );
         }
@@ -100,10 +109,10 @@ public class Monitor : Object
     public void stop()
     {
         
-        for(int i = 0; i < this.monitors.size ; i++) {
-            this.monitors[i].cancel();
+        for(int i = 0; i < this.monitors.length ; i++) {
+            this.monitors.index(i).cancel();
         } 
-        this.monitors = new ArrayList<FileMonitor>(); // clean /destroy/ kill old?
+        this.monitors = new Array<FileMonitor>(); // clean /destroy/ kill old?
     }
     /**
      * pause monitoring - without changing what's monitored 
@@ -129,7 +138,7 @@ public class Monitor : Object
     public void monitor(string path, onEventHander fn , int depth = 0)
     {
          
-       // print("ADD: " + path)
+        print("ADD: " + path + "\n");
         
         //depth = typeof(depth) == 'number'  ? depth *1 : 0;
         depth = depth > 0  ? depth *1 : 0;
@@ -142,17 +151,24 @@ public class Monitor : Object
           
         var f = File.new_for_path(path);
             //var cancel = new Gio.Cancellable ();
-        if (depth > 0) {     
-            var fm = f.monitor(FileMonitorFlags.SEND_MOVED,null); //Gio.FileMonitorFlags.SEND_MOVED
-            
-            fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
-                    //if (fn) {
-                        fn (fm,  f_orig,  of_orig,  event_type ) ;
-                       // return;
-                    //}
-                    //this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
-            });
-            this.monitors.add(fm);
+        if (depth > 0) { 
+  
+            try {
+  
+                 var fm = f.monitor(FileMonitorFlags.SEND_MOVED,null); //Gio.FileMonitorFlags.SEND_MOVED
+ 
+                 fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
+                        //if (fn) {
+                            fn (fm,  f_orig,  of_orig,  event_type ) ;
+                           // return;
+                        //}
+                        //this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
+                });
+                this.monitors.append_val(fm);
+
+            } catch (Error e) {
+                // FIXME -- show error? do nothing..            
+            }
             // print("ADD path " + depth + ' ' + path);
         }
         // iterate children?
@@ -161,17 +177,27 @@ public class Monitor : Object
             
         //    this.initRepo(path);
         //}
-        
-       
-         var file_enum = f.enumerate_children(
-            FileAttribute.STANDARD_DISPLAY_NAME + "," +   FileAttribute.STANDARD_TYPE,
-            0, // FileQueryInfoFlags.NONE,
-            null);
-        
+        FileEnumerator file_enum;
+        try {      
+            file_enum = f.enumerate_children(
+               FileAttribute.STANDARD_DISPLAY_NAME + "," +   FileAttribute.STANDARD_TYPE,
+               0, // FileQueryInfoFlags.NONE,
+               null);
+        } catch (Error e) {
+            // FIXME - show error..
+            return;
+        }
         FileInfo next_file;
         
-        while ((next_file = file_enum.next_file(null)) != null) {
-         
+        while (true) {
+            try {        
+                next_file = file_enum.next_file(null);
+            } catch (Error e) {
+                break;
+            }
+            if (next_file == null) {
+                break;
+            }
             //print("got a file " + next_file.sudo () + '?=' + Gio.FileType.DIRECTORY);
             
             if (next_file.get_file_type() != FileType.DIRECTORY) {
@@ -199,8 +225,11 @@ public class Monitor : Object
             this.monitor(sp, fn, depth + 1);
             
         }
-    
-        file_enum.close(null);
+        try {
+            file_enum.close(null);
+        } catch(Error e) {
+            // ignore?
+        }
     }
     
     
@@ -237,7 +266,7 @@ public class Monitor : Object
         if (this.paused) {
             return;
         }
-        
+        print("onEvent");
         var f = this.realpath(f_orig);
         
         var of = this.realpath(of_orig);
@@ -261,6 +290,9 @@ public class Monitor : Object
          //    }
          //}
         
+
+
+
         //print (JSON.stringify([event_name , f.get_path(), of ? of.get_path() : false ] ));
         //print ("got src: " + src.toString());
         //print ("got event: " + src.toString());
