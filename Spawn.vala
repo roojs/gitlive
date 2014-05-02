@@ -144,7 +144,7 @@ public class Spawn : Object
     }
 
     
-    bool ctx = false; // the mainloop ctx.
+    MainLoop ctx = null; // the mainloop ctx.
     
     /**
      * @property output {String} resulting output
