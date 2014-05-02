@@ -19,7 +19,7 @@ static int main (string[] args) {
 
 //var Gio      = imports.gi.Gio;
 //var GLib      = imports.gi.GLib;
-
+using Glib;
 
 /**
 * @namespace Spawn
