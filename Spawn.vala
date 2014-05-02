@@ -51,25 +51,24 @@ public class  SpawnConfig {
     public SpawnErr stderr;
     public SpawnInput input;
     // defaults..
-    public SpawnConfig() {
-        cwd = "";
-        args = [];
-        env = [];
-        async = false;
-        exceptions = false;
-        debug = false;
-        output = null;
-        stderr = null;
-        input = null;
-        
-    }
-    public setCommand(string cwd,
+    public SpawnConfig(string cwd,
             string[] args,
             string[] env
         ) {
         this.cwd = cwd;
         this.args = args;
         this.env = env;
+         
+        async = false;
+        exceptions = false;
+        debug = false;
+        
+        output = null;
+        stderr = null;
+        input = null;
+        
+    }
+    public setCommand(
     }
     public setOptions(
             boolean async,
