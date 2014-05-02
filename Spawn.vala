@@ -54,7 +54,7 @@ public class  SpawnConfig {
     public boolean exceptions; // fire exceptions.
     public boolean debug; // fire exceptions.
     
-    public SpawnOutput output
+    public SpawnOutput output;
     public SpawnErr stderr;
     public SpawnInput input;
     // defaults..
