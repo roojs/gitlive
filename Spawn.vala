@@ -397,10 +397,10 @@ public class Spawn : Object
        // print("prop: " + prop);
         var _this = this;
         string str_return;
-	
+        
         //print(JSON.stringify(ch, null,4));
         while (true) {
- 
+            var buffer = new StringBuffer("");
             try {
                 var status = ch.read_line( buffer,  term_pos );
             catch (Error e) {
