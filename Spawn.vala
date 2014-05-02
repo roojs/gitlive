@@ -203,7 +203,7 @@ public class Spawn : Object
 
         
         if (this.cfg.debug) {
-            printf("cd %s; %s" , this.cfg.cwd , string.joinv(" ", this.cfg.args));
+            print("cd %s; %s" , this.cfg.cwd , string.joinv(" ", this.cfg.args));
         }
         
         Process.spawn_async_with_pipes (
