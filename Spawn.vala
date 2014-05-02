@@ -76,7 +76,7 @@ public class  SpawnConfig {
         
     }
     
-    public setOptions(
+    public void setOptions(
             boolean async,
             boolean exceptions,
             boolean debug
@@ -85,7 +85,7 @@ public class  SpawnConfig {
         this.exceptions = exceptions;
         this.debug = debug;
     }
-    public setHandlers(
+    public void setHandlers(
             SpawnOutput output
            SpawnErr stderr,
            SpawnInput input
