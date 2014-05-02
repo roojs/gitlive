@@ -350,9 +350,9 @@ public class Spawn : Object
         if (this.out_ch)  this.out_ch.shudown(true);
         if (this.err_ch)  this.err_ch.shudown(true);
         // blank out channels
-        this.in_ch = false;
-        this.err_ch = false;
-        this.out_ch = false;
+        this.in_ch = null;
+        this.err_ch = null;
+        this.out_ch = null;
         // rmeove listeners !! important otherwise we kill the CPU
         if (this.err_src > -1 ) GLib.source_remove(this.err_src);
         if (this.out_src > -1 ) GLib.source_remove(this.out_src);
