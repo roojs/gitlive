@@ -201,7 +201,6 @@ public class Spawn : Object
         int standard_error;
 
 
-        var ret = {};
         
         if (this.cfg.debug) {
             print("cd " + this.cfg.cwd +";" + string.joinv(" ", this.cfg.args));
