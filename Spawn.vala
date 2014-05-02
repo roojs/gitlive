@@ -230,7 +230,7 @@ public class Spawn : Object
         ChildWatch.add (this.pid, (w_pid, result) => {
 	    
             this.result = result;
-            if (_this.debug) {
+            if (this.debug) {
                 print("child_watch_add : result:%d ", result);
             }
            
