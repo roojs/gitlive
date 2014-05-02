@@ -128,7 +128,7 @@ public class Spawn : Object
         this.cfg = cfg;
      
     
-        this.cwd =  this.cfg.cwd.length || GLib.get_home_dir();
+        this.cfg.cwd =  this.cfg.cwd.length || GLib.get_home_dir();
         if (!this.cfg.args.length) {
             throw new Error("No arguments");
         }
