@@ -190,9 +190,9 @@ public class Spawn : Object
          
         var err_src = false;
         var out_src = false;
-	int standard_input;
-	int standard_output;
-	int standard_error;
+        int standard_input;
+        int standard_output;
+        int standard_error;
 
 
         var ret = {};
@@ -201,15 +201,15 @@ public class Spawn : Object
             print("cd " + this.cfg.cwd +";" + string.joinv(" ", this.cfg.args));
         }
         
-	Process.spawn_async_with_pipes (
-			this.cfg.cwd,
-			this.cfg.args,
-			this.cfg.env,
-			SpawnFlags.SEARCH_PATH | SpawnFlags.DO_NOT_REAP_CHILD,
-			null,
-			out this.pid,
-			out standard_input,
-			out standard_output,
+        Process.spawn_async_with_pipes (
+                this.cfg.cwd,
+                this.cfg.args,
+                this.cfg.env,
+                SpawnFlags.SEARCH_PATH | SpawnFlags.DO_NOT_REAP_CHILD,
+                null,
+                out this.pid,
+                out standard_input,
+                out standard_output,
 			out standard_error);
 
 		// stdout:
@@ -292,7 +292,7 @@ public class Spawn : Object
 		    this.in_ch = -1;
 		     
 		    
-                } catch (e) {
+                } catch (Error e) {
                     this.tidyup();
                     throw e;
                     
