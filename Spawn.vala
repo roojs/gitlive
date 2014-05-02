@@ -420,6 +420,11 @@ public class Spawn : Object
                     //if (this.listeners[prop]) {
                     //    this.listeners[prop].call(this, x.str_return);
                     //}
+                    if (ch == this.out_ch) {
+                        this.output += buffer;
+                    } else {
+                        this.stderr += buffer;
+                    }
                     _this[prop] += x.str_return;
                     if (_this.debug) {
                         print(prop + ':' + x.str_return.replace(/\n/, ''));
