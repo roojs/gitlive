@@ -378,8 +378,8 @@ public class Spawn : Object
         
         //print("write_char retunred:" + JSON.stringify(res) +  ' ' +JSON.stringify(ret)  );
         
-            if (res != GLib.IOStatus.NORMAL) {
-                throw "Write failed";
+        if (res != GLib.IOStatus.NORMAL) {
+            throw "Write failed";
         }
         //return ret.value;
         return str.length;
