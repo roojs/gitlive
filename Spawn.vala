@@ -361,7 +361,7 @@ public class Spawn : Object
      */
     private int write(string str) // write a line to 
     {
-        if (this.in_ch is null) {
+        if (this.in_ch == null) {
             return 0; // input is closed
         }
         //print("write: " + str);
