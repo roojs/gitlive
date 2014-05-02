@@ -131,7 +131,7 @@ public class Spawn : Object
      
     
         this.cfg.cwd =  this.cfg.cwd.length  < 1 ? GLib.Environment.get_home_dir() : this.cfg.cwd;
-        if (!this.cfg.args.length) {
+        if (!this.cfg.args.length < 0) {
             throw new Error("No arguments");
         }
         this.run();
