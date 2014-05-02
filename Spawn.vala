@@ -402,7 +402,7 @@ public class Spawn : Object
         while (true) {
  
            
-            var status = ch.read_line( str_return, len, term_pos );
+            var status = ch.read_line( buffer,  term_pos );
             // print('status: '  +JSON.stringify(status));
             // print(JSON.stringify(x));
              switch(status) {
