@@ -439,7 +439,7 @@ public class Spawn : Object
          return false; // allow it to be called again..
     }
     
-};
+}
   /*
 // test
 try { 
