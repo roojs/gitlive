@@ -401,8 +401,8 @@ public class Spawn : Object
         //print(JSON.stringify(ch, null,4));
         while (true) {
  
-            var x =   {};
-            var status = ch.read_line( x);
+           
+            var status = ch.read_line( str_return, );
             // print('status: '  +JSON.stringify(status));
             // print(JSON.stringify(x));
              switch(status) {
