@@ -4,6 +4,11 @@
 
 static int main (string[] args) {
     // A reference to our file
+    
+    var cfg = new SpawnConfig(null, { "ls" } , "");
+    var spawn = new Spawn(cfg);
+    
+    
     var file = File.new_for_path ("data.txt");
     var m = new Spawn();
     return 0;
