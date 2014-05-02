@@ -427,7 +427,7 @@ public class Spawn : Object
                     }
                     //_this[prop] += x.str_return;
                     if (this.cfg.debug) {
-                        stdout.print("%s : %s", prop , str_return);
+                        stdout.printf("%s : %s", prop , str_return);
                     }
                     if (this.async) {
                         try {
