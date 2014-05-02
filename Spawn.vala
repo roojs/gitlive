@@ -400,7 +400,7 @@ public class Spawn : Object
         
         //print(JSON.stringify(ch, null,4));
         while (true) {
-            var buffer = new StringBuilder("");
+            string buffer;
             size_t term_pos;
             try {
                 var status = ch.read_line( buffer,  out term_pos );
