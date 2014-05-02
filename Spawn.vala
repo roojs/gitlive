@@ -396,13 +396,13 @@ public class Spawn : Object
         string prop = (ch == this.out_ch) ? "output" : "stderr";
        // print("prop: " + prop);
         var _this = this;
-        
+        string str_return;
 	
         //print(JSON.stringify(ch, null,4));
         while (true) {
  
            
-            var status = ch.read_line( str_return, );
+            var status = ch.read_line( str_return, len, term_pos );
             // print('status: '  +JSON.stringify(status));
             // print(JSON.stringify(x));
              switch(status) {
