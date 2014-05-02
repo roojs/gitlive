@@ -401,8 +401,13 @@ public class Spawn : Object
         //print(JSON.stringify(ch, null,4));
         while (true) {
  
-           
-            var status = ch.read_line( buffer,  term_pos );
+            try {
+                var status = ch.read_line( buffer,  term_pos );
+            catch (Error e) {
+                //FIXme
+                break; // ??
+                
+            }
             // print('status: '  +JSON.stringify(status));
             // print(JSON.stringify(x));
              switch(status) {
