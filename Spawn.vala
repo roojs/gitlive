@@ -223,7 +223,7 @@ public class Spawn : Object
     	//print(JSON.stringify(gret));    
          
         if (this.cfg.debug) {
-            print("PID: " + this.pid);
+            stdout.print("PID: %d" ,this.pid);
         }
          
         ChildWatch.add (this.pid, (w_pid, result) => {
