@@ -385,7 +385,7 @@ public class Spawn : Object
      * @arg giochannel to read from.
      * @returns none
      */
-    read: function(ch) 
+    boolean read(ch) 
     {
         var prop = ch == this.out_ch ? 'output' : 'stderr';
        // print("prop: " + prop);
