@@ -334,23 +334,23 @@ public class Spawn : Object
 
     private void tidyup()
     {
-	if (this.pid > -1) {
-	    Process.close_pid(this.pid); // hopefully kills it..
-	    this.pid = -1;
-	}
-	if (this.in_ch)  this.in_ch.close();
-	if (this.out_ch)  this.out_ch.close();
-	if (this.err_ch)  this.err_ch.close();
-	// blank out channels
-	this.in_ch = false;
-	this.err_ch = false;
-	this.out_ch = false;
-	// rmeove listeners !! important otherwise we kill the CPU
-	if (this.err_src > -1 ) GLib.source_remove(this.err_src);
-	if (this.out_src > -1 ) GLib.source_remove(this.out_src);
-	this.err_src = -1;
-	this.out_src = -1;
-	
+        if (this.pid > -1) {
+            Process.close_pid(this.pid); // hopefully kills it..
+            this.pid = -1;
+        }
+        if (this.in_ch)  this.in_ch.close();
+        if (this.out_ch)  this.out_ch.close();
+        if (this.err_ch)  this.err_ch.close();
+        // blank out channels
+        this.in_ch = false;
+        this.err_ch = false;
+        this.out_ch = false;
+        // rmeove listeners !! important otherwise we kill the CPU
+        if (this.err_src > -1 ) GLib.source_remove(this.err_src);
+        if (this.out_src > -1 ) GLib.source_remove(this.out_src);
+        this.err_src = -1;
+        this.out_src = -1;
+        
     }
     
     
