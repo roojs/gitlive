@@ -364,16 +364,16 @@ public class Spawn : Object
         if (this.in_ch is null) {
             return 0; // input is closed
         }
-	//print("write: " + str);
-	// NEEDS GIR FIX! for return value.. let's ignore for the time being..
-	//var ret = {};
-        //var res = this.in_ch.write_chars(str, str.length, ret);
-	var res = this.in_ch.write_chars(str, str.length);
-	
-	//print("write_char retunred:" + JSON.stringify(res) +  ' ' +JSON.stringify(ret)  );
-	
-        if (res != GLib.IOStatus.NORMAL) {
-            throw "Write failed";
+        //print("write: " + str);
+        // NEEDS GIR FIX! for return value.. let's ignore for the time being..
+        //var ret = {};
+            //var res = this.in_ch.write_chars(str, str.length, ret);
+        var res = this.in_ch.write_chars(str, str.length);
+        
+        //print("write_char retunred:" + JSON.stringify(res) +  ' ' +JSON.stringify(ret)  );
+        
+            if (res != GLib.IOStatus.NORMAL) {
+                throw "Write failed";
         }
         //return ret.value;
         return str.length;
