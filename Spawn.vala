@@ -403,7 +403,7 @@ public class Spawn : Object
             var buffer = new StringBuilder("");
             
             try {
-                var status = ch.read_line( buffer,  term_pos );
+                var status = ch.read_line( buffer,  out term_pos );
             } catch (Error e) {
                 //FIXme
                 break; // ??
