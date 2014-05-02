@@ -415,7 +415,7 @@ public class Spawn : Object
                             if (imports.gi.Gtk.events_pending()) {
                                 imports.gi.Gtk.main_iteration();
                             }
-                        } catch(e) {
+                        } catch(Error e) {
                             
                         }
                     }
