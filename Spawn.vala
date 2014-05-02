@@ -243,6 +243,7 @@ public class Spawn : Object
             this.pid = -1;
             if (this.ctx != null) {
                 this.ctx.quit();
+                this.ctx = null;
             }
             this.tidyup();
         //print("DONE TIDYUP");
