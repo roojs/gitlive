@@ -23,7 +23,7 @@ using Gtk;
 static int main (string[] args) {
     // A reference to our file
     Gtk.init (ref args);
-    new StatusIcon();
+    new StatusIconA();
  
     Gtk.main ();
     return 0;
@@ -43,19 +43,18 @@ public class StatusIconA : StatusIcon {
         
         statusicon = this;
         
-        
          //title : 'gitlive',
         this.stock = Gtk.Stock.REFRESH;
         this.tooltip_text = "GitLive";
         this.title = "vgitlive";
         
-        this.set_name("gitlive");
+        this.set_name("vgitlive");
         this.set_visible(true);      
         
         var menu = new MenuA();
                  
          
-        this.popup_menu.connect( (button,event_time) =>{
+        this.activate.connect( () =>{
             
             //print(Array.prototype.slice.call(arguments).join(','));
             
@@ -70,13 +69,13 @@ public class StatusIconA : StatusIcon {
                 menu.resume.hide();
                 menu.pause.show();
             }
-             
+              
             //Gtk.get_current_event_device ()
             menu.popup(
                     
                         null, null,
-                        this.position_menu, button,
-                        event_time
+                        this.position_menu, 0,
+                         Gtk.get_current_event_time()
             );
                         
             
@@ -105,6 +104,14 @@ public class StatusIconA : StatusIcon {
             this.append(this.pause);
             this.resume = new ImageMenuItemB();
             this.append(this.resume);
+            this.append(new ImageMenuItemC());
+            this.append(new ImageMenuItemD());
+            this.append(new ImageMenuItemE());
+            this.append(new ImageMenuItemF());
+            this.append(new ImageMenuItemG());
+            
+            
+            
         }
         
         
@@ -136,7 +143,7 @@ public class StatusIconA : StatusIcon {
             
             
         }
-         class ImageMenuItemB : ImageMenuItem {
+        class ImageMenuItemB : ImageMenuItem {
             
             public ImageMenuItemB()
             {
@@ -158,32 +165,26 @@ public class StatusIconA : StatusIcon {
                     
                     
                 });
-                //    id : 'pause',
             }
             
             
         }
-    }
-}
-    
-    /*
+        
+        class ImageMenuItemC : ImageMenuItem {
+            
+            public ImageMenuItemC()
+            {
                 
-                {
-                    init : function() {
-                        this.el = XObject.isSeed ?
-                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_FULLSCREEN)
-                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_FULLSCREEN, null);
-                      
-                        XObject.prototype.init.call(this);
-                    },
-                    label: 'Pull (Refresh) All',
-                    always_show_image : true,
-                    accel_group : null,
-                    //label: 'Pause',
-                    pack:  'append',
-                    listeners : {
-                        activate : function () {
-                            imports.GitMonitor.GitMonitor.stop();
+                var  image = new Gtk.Image();
+                image.set_from_stock(Gtk.Stock.FULLSCREEN,Gtk.IconSize.MENU );
+		this.set_image (image);
+                this.label= "Pull (Refresh) All";
+                this.always_show_image = true;
+                this.accel_group = null;
+                
+                this.activate.connect( () => {
+                    /*
+                   imports.GitMonitor.GitMonitor.stop();
                            
                             
                             var tr = imports.Scm.Repo.Repo.list();
@@ -224,106 +225,109 @@ public class StatusIconA : StatusIcon {
                              
                           
                             imports.GitMonitor.GitMonitor.start();
-                        }   
-                    }
-                },
-                {
-                    init : function() {
-                        this.el = XObject.isSeed ?
-                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_SAVE)
-                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_SAVE, null);
-                         
-                        XObject.prototype.init.call(this);
-                    },
-                    label: 'Update Timesheet',
-                    always_show_image : true,
-                    accel_group : null,
                     
-                    //label: 'Pause',
-                    pack:  'append',
-                    listeners : {
-                        activate : function () {
-                            var ret = imports.FixBug.FixBug.show();
-                            
-                        }
-                    }
-                },
-                
-                
-                {
-                    init : function() {
-                        this.el = XObject.isSeed ?
-                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_FULLSCREEN)
-                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_FULLSCREEN, null);
-                         XObject.prototype.init.call(this);
-                    },
-                    label: 'Manage Clones',
-                    always_show_image : true,
-                    accel_group : null,
-                    
-                    //label: 'Pause',
-                    pack:  'append',
-                    listeners : {
-                        activate : function () {
-                             var ret = imports.Clones.Clones.show();
-                            
-                        }
-                    }
-                },
-                
-                
-                
+                    */
+                });
+            }
             
-                {
-                    init : function() {
-                        this.el = XObject.isSeed ?
-                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_ABOUT)
-                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_ABOUT, null);
-                   
-                        XObject.prototype.init.call(this);
-                    },
-                    label: 'About GitLive',
-                    pack:  'append',
-                    listeners : {
-                        activate : function () {
-                            var msg = new Gtk.AboutDialog({
-                                program_name : "Git Live",
-                                version: '0.3',
-                                website: 'http://www.roojs.org/index.php/projects/gitlive.html',
-                                website_label: 'RooJS Consulting',
-                                license : 'LGPL'
-                            });
-                            msg.set_authors([ "Alan Knowles <alan@roojs.com>" ]);
-                            msg.run();
-                            msg.destroy();
-                        }
-                    }
-                },
-                
-                {
-                    init : function() {
-                        
-                        this.el = XObject.isSeed ?
-                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_QUIT)
-                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_QUIT, null);
-                     
-                        XObject.prototype.init.call(this);
-                    },
-                    label: 'Quit',
-                    pack:  'append',
-                    listeners : {
-                        activate : function () {
-                            Seed.quit();
-                        }
-                    }
-                }
-                
-                
-            ]
+            
         }
-    ]
-    
-});
-*/
-
-
+        
+        
+        class ImageMenuItemD : ImageMenuItem {
+            
+            public ImageMenuItemD()
+            {
+                
+                var  image = new Gtk.Image();
+                image.set_from_stock(Gtk.Stock.SAVE,Gtk.IconSize.MENU );
+		this.set_image (image);
+                this.label= "Update Timesheet";
+                this.always_show_image = true;
+                this.accel_group = null;
+                
+                this.activate.connect( () => {
+                 //var ret = imports.FixBug.FixBug.show();
+                });
+            }
+            
+            
+        }
+        
+        class ImageMenuItemE : ImageMenuItem {
+            
+            public ImageMenuItemE()
+            {
+                
+                var  image = new Gtk.Image();
+                image.set_from_stock(Gtk.Stock.FULLSCREEN,Gtk.IconSize.MENU );
+		this.set_image (image);
+                this.label= "Manage Clones";
+                this.always_show_image = true;
+                this.accel_group = null;
+                
+                this.activate.connect( () => {
+                 //var ret = imports.Clones.Clones.show();
+                });
+            }
+            
+            
+        }
+        
+        class ImageMenuItemF : ImageMenuItem {
+            
+            public ImageMenuItemF()
+            {
+                
+                var  image = new Gtk.Image();
+                image.set_from_stock(Gtk.Stock.ABOUT,Gtk.IconSize.MENU );
+		this.set_image (image);
+                this.label= "About Gitlive";
+                this.always_show_image = true;
+                this.accel_group = null;
+                
+                this.activate.connect( () => {
+                 //var ret = imports.Clones.Clones.show();
+                 
+                    var msg = new Gtk.AboutDialog();
+                    msg.program_name = "Git Live";
+                    msg.version= "0.3";
+                    msg.website= "http://www.roojs.org/index.php/projects/gitlive.html";
+                    msg.website_label= "Roo J Solutions Ltd.";
+                    msg.license = "LGPL";
+                    msg.authors = { "Alan Knowles <alan@roojs.com>" };
+                    msg.run();
+                    msg.destroy();
+                });
+            }
+            
+            
+        }
+        
+         class ImageMenuItemG : ImageMenuItem {
+            
+            public ImageMenuItemG()
+            {
+                
+                var  image = new Gtk.Image();
+                image.set_from_stock(Gtk.Stock.QUIT,Gtk.IconSize.MENU );
+		this.set_image (image);
+                this.label= "Quit";
+                this.always_show_image = true;
+                this.accel_group = null;
+                
+                this.activate.connect( () => {
+                    // confirm?
+                    Gtk.main_quit();
+                 //var ret = imports.Clones.Clones.show();
+                 });
+            }
+            
+            
+        }
+        
+    }
+}
+      
+                
+                  
