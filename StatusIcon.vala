@@ -149,7 +149,7 @@ class StatusIconA : StatusIcon {
                     statusicon.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
                     
                     
-                })
+                });
                 //    id : 'pause',
             }
             
