@@ -94,7 +94,7 @@ class StatusIconA : StatusIcon {
         
     }
     
-    class MenuA : Menu
+    class MenuA : Gtk.Menu
     {
         public ImageMenuItem pause;
         public ImageMenuItem resume;
