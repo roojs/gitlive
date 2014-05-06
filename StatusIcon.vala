@@ -33,42 +33,7 @@ static int main (string[] args) {
      
 
 }
-
-public class TestButton : Button {
-    public TestButton()
-    {
-        this.set_label("Click me");
-        
-        
-        this.clicked.connect (() => {
-            this.label = "Thank you";
-        });
-        
-    }
-    
-    
-}
-
-public class TestWindow : Window {
-
-    public TestWindow() {
-         this.title = "First GTK+ Program";
-        this.border_width = 10;
-        this.window_position = WindowPosition.CENTER;
-        this.set_default_size (350, 70);
-        
-        // -- connect all
-        this.destroy.connect (Gtk.main_quit);        
-        
-        // add children..
-        this.add(new TestButton());
-
-    }
-   
-    
  
-   
-}
 
 
 pubic StatusIconA statusicon;
