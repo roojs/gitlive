@@ -47,7 +47,7 @@ public class StatusIconA : StatusIcon {
          //title : 'gitlive',
         this.stock = Gtk.Stock.REFRESH;
         this.tooltip_text = "GitLive";
-        this.title = "gitlive";
+        this.title = "vgitlive";
         
         this.set_name("gitlive");
         this.set_visible(true);      
