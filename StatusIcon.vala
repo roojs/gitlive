@@ -75,7 +75,7 @@ public class StatusIconA : StatusIcon {
             menu.popup(
                     
                         null, null,
-                        null, button,
+                        statusicon.position_menu, button,
                         event_time
             );
                         
