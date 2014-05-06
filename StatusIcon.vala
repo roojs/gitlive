@@ -114,9 +114,9 @@ class StatusIconA : StatusIcon {
             {
                 this.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
                 
-               var  image = new Gtk.Image();
-               image.set_from_stock(Gtk.Stock.MEDIA_PAUSE,Gtk.IconSize.MENU );
-		item_open.set_image (image);
+                var  image = new Gtk.Image();
+                image.set_from_stock(Gtk.Stock.MEDIA_PAUSE,Gtk.IconSize.MENU );
+		this.set_image (image);
                 
                 this.label= "Pause Commits";
                 this.always_show_image = true;
