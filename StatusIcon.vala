@@ -112,7 +112,7 @@ class StatusIconA : StatusIcon {
             
             public ImageMenuItemA()
             {
-                this.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+                this.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
                 this.label= "Pause Commits";
                 this.always_show_image = true;
                 this.accel_group = null;
@@ -122,7 +122,7 @@ class StatusIconA : StatusIcon {
                     
                     //GitMonitor.GitMonitor.stop();
                    // this.el.label  = status ? 'Resume' : 'Pause';
-                    statusicon.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+                    statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
                     
                     
                 });
