@@ -23,8 +23,7 @@ using Gtk;
 static int main (string[] args) {
     // A reference to our file
     Gtk.init (ref args);
-
-    var window = new TestWindow();
+  new StatusIcon();
     
     window.show_all ();
 
