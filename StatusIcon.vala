@@ -23,10 +23,8 @@ using Gtk;
 static int main (string[] args) {
     // A reference to our file
     Gtk.init (ref args);
-  new StatusIcon();
-    
-    window.show_all ();
-
+    new StatusIcon();
+ 
     Gtk.main ();
     return 0;
      
