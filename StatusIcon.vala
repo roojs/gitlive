@@ -33,7 +33,7 @@ static int main (string[] args) {
  
 
 
-pubic StatusIconA statusicon;
+public StatusIconA statusicon;
  
 class StatusIconA : StatusIcon {
 
