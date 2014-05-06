@@ -137,7 +137,16 @@ class StatusIconA : StatusIcon {
         {
             this.pause = new Gtk.ImageMenuItemA();
             this.add(this.pause);
+            this.resume = new Gtk.ImageMenuItemB();
+            this.add(this.resume);
         }
+        
+        
+        class ImageMenuItemA : ImageMenuItem {
+            f
+            
+        }
+        
     }
     
          
