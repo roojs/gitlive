@@ -76,7 +76,7 @@ public class StatusIconA : StatusIcon {
                     
                         null, null,
                         null, button,
-                        event_time, null
+                        event_time
             );
                         
             
