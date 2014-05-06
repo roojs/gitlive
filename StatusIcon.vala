@@ -61,7 +61,7 @@ class StatusIconA : StatusIcon {
             
             //var menu = this.get('menu');
             
-            this.menu.show_all();
+            menu.show_all();
             
             if (this.paused) {
                 menu.resume.show();
