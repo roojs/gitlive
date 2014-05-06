@@ -86,7 +86,11 @@ class StatusIconA : StatusIcon {
         this.title = "gitlive";
         
         this.set_name("gitlive");
+       
         
+        var menu = new MenuA();
+                 
+         
         this.popup_menu.connect( (button,event_time) =>{
             
             //print(Array.prototype.slice.call(arguments).join(','));
@@ -112,8 +116,6 @@ class StatusIconA : StatusIcon {
             );
                         
             
-            
-            this.menu = new MenuA();
             
             //var g = { };
             //var a = new Gdk.Rectangle();
@@ -148,8 +150,17 @@ class StatusIconA : StatusIcon {
             {
                 this.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
                 this.label= "Pause Commits";
-                this.always_show_image : true,
-                this.accel_group : null,
+                this.always_show_image = true;
+                this.accel_group = null;
+                
+                this.activate.connect( () => {
+                    this.parent.parent.paused = true;
+                    imports.GitMonitor.GitMonitor.stop();
+                   // this.el.label  = status ? 'Resume' : 'Pause';
+                    this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+                    
+                    
+                })
                 //    id : 'pause',
             }
             
