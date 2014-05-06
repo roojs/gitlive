@@ -156,8 +156,6 @@ class StatusIconA : StatusIcon {
                 this.accel_group = null;
                 
                 this.activate.connect( () => {
-                    this.parent.parent.paused = true;
-                    
                     statusicon.paused = true;
                     
                     //GitMonitor.GitMonitor.stop();
@@ -171,7 +169,30 @@ class StatusIconA : StatusIcon {
             
             
         }
-        
+         class ImageMenuItemB : ImageMenuItem {
+            
+            public ImageMenuItemB()
+            {
+                this.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
+                this.label= "Start Commits";
+                this.always_show_image = true;
+                this.accel_group = null;
+                
+                this.activate.connect( () => {
+                    //GitMonitor.GitMonitor.start();
+                    statusicon.paused = false;
+                    
+                    //
+                   // this.el.label  = status ? 'Resume' : 'Pause';
+                    statusicon.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+                    
+                    
+                })
+                //    id : 'pause',
+            }
+            
+            
+        }
     }
     
          
