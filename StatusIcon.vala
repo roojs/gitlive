@@ -100,15 +100,15 @@ class StatusIconA : StatusIcon {
             this.menu.show_all();
             
             if (this.paused) {
-                this.menu.resume.show();
-                this.menu.pause.hide();
+                menu.resume.show();
+                menu.pause.hide();
             } else {
-                this.menu.resume.hide();
-                this.menu.pause.show();
+                menu.resume.hide();
+                menu.pause.show();
             }
              
             //Gtk.get_current_event_device ()
-            this.menu.popup(
+            menu.popup(
                     
                         null, null,
                         null, button,
