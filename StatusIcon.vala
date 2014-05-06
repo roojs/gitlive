@@ -194,53 +194,9 @@ class StatusIconA : StatusIcon {
             
         }
     }
+}
     
-         
-    items : [
-       {
-            xtype: Gtk.Menu,
-            id : 'menu',
-            pack: false,
-            items : [
-                {
-                    
-                    //label: 'Pause',
-                    pack:  'append',
-                    listeners : {
-                        activate : function () {
-                            this.parent.parent.paused = true;
-                            imports.GitMonitor.GitMonitor.stop();
-                           // this.el.label  = status ? 'Resume' : 'Pause';
-                            this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
-                            
-                        }
-                    }
-                },
-                
-                {
-                    init : function() {
-                        this.el = XObject.isSeed ?
-                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PLAY)
-                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_MEDIA_PLAY, null);
-                        XObject.prototype.init.call(this);
-                    },
-                    label: 'Resume Commits',
-                    always_show_image : true,
-                    accel_group : null,
-                    id : 'resume',
-                    //label: 'Pause',
-                    pack:  'append',
-                    listeners : {
-                        activate : function () {
-                            this.parent.parent.paused = false;
-                             imports.GitMonitor.GitMonitor.start();
-                            //var status = this.el.label == 'Pause' ? 1 : 0
-                           // this.el.label  = status ? 'Resume' : 'Pause';
-                               
-                            
-                        }
-                    }
-                },
+    /*
                 
                 {
                     init : function() {
