@@ -71,7 +71,7 @@ public class TestWindow : Window {
 }
 
 
-
+pubic StatusIconA statusicon;
  
 class StatusIconA : StatusIcon {
 
