@@ -135,8 +135,8 @@ class StatusIconA : StatusIcon {
         
         public MenuA()
         {
-            this.pause
-            this.add(new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE)
+            this.pause = new Gtk.ImageMenuItemA();
+            this.add(this.pause);
         }
     }
     
