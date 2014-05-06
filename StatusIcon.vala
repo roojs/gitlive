@@ -136,9 +136,9 @@ class StatusIconA : StatusIcon {
         public MenuA()
         {
             this.pause = new ImageMenuItemA();
-            this.add(this.pause);
+            this.append(this.pause);
             this.resume = new ImageMenuItemB();
-            this.add(this.resume);
+            this.append(this.resume);
         }
         
         
@@ -147,6 +147,10 @@ class StatusIconA : StatusIcon {
             public ImageMenuItemA()
             {
                 this.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+                this.label= "Pause Commits";
+                this.always_show_image : true,
+                this.accel_group : null,
+                //    id : 'pause',
             }
             
             
@@ -162,18 +166,7 @@ class StatusIconA : StatusIcon {
             pack: false,
             items : [
                 {
-                    init : function() {
-                        
-                        this.el = XObject.isSeed ?
-                            new Gtk.ImageMenuItem.from_stock(Gtk.STOCK_MEDIA_PAUSE)
-                            : new Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_MEDIA_PAUSE, null);
-                        XObject.prototype.init.call(this);
-                    },
-                    label: 'Pause Commits',
-                   
-                    always_show_image : true,
-                    accel_group : null,
-                    id : 'pause',
+                    
                     //label: 'Pause',
                     pack:  'append',
                     listeners : {
