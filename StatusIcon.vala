@@ -135,7 +135,7 @@ class StatusIconA : StatusIcon {
             
             public ImageMenuItemB()
             {
-                this.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
+                this.set_from_stock( Gtk.Stock.MEDIA_PLAY );
                 this.label= "Start Commits";
                 this.always_show_image = true;
                 this.accel_group = null;
@@ -146,7 +146,7 @@ class StatusIconA : StatusIcon {
                     
                     //
                    // this.el.label  = status ? 'Resume' : 'Pause';
-                    statusicon.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
+                    statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
                     
                     
                 });
