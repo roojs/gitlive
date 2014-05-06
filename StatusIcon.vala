@@ -78,6 +78,10 @@ class StatusIconA : StatusIcon {
     bool paused = false;
      
     public StatusIconA() {
+        
+        statusicon = this;
+        
+        
          //title : 'gitlive',
         this.stock = Gtk.STOCK_REFRESH;
         this.tooltip_text = "GitLive";
