@@ -112,7 +112,7 @@ class StatusIconA : StatusIcon {
             
             public ImageMenuItemA()
             {
-                this.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
+                //this.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
                 
                 var  image = new Gtk.Image();
                 image.set_from_stock(Gtk.Stock.MEDIA_PAUSE,Gtk.IconSize.MENU );
@@ -140,7 +140,10 @@ class StatusIconA : StatusIcon {
             
             public ImageMenuItemB()
             {
-                this.set_from_stock( Gtk.Stock.MEDIA_PLAY );
+                
+                var  image = new Gtk.Image();
+                image.set_from_stock(Gtk.Stock.MEDIA_PLAY,Gtk.IconSize.MENU );
+		this.set_image (image);
                 this.label= "Start Commits";
                 this.always_show_image = true;
                 this.accel_group = null;
