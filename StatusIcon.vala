@@ -76,9 +76,7 @@ public class TestWindow : Window {
 class StatusIconA : StatusIcon {
 
     bool paused = false;
-    
-    MenuA menu = null;
-    
+     
     public StatusIconA() {
          //title : 'gitlive',
         this.stock = Gtk.STOCK_REFRESH;
