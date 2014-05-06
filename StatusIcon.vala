@@ -50,7 +50,7 @@ public class StatusIconA : StatusIcon {
         this.title = "gitlive";
         
         this.set_name("gitlive");
-       
+        this.set_visible(true);      
         
         var menu = new MenuA();
                  
