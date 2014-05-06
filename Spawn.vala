@@ -13,8 +13,22 @@ static int main (string[] args) {
     // A reference to our file
     
     var cfg = new SpawnConfig("", { "ls" } , { "" });
-    var spawn = new Spawn(cfg);
-    
+    cfg.setHandlers(
+            (line) => {
+	            stdout.printf("%s\n", line);
+            },
+            null,null,null );
+    cfg.setOptions(
+        false, // async
+        false, // exceptions?? needed??
+        false  // debug???
+    );
+    try {
+        new Spawn(cfg);
+       
+    } catch (Error e) {
+        stdout.printf("Error %s", e.message);
+    }
     
     return 0;
 
@@ -46,7 +60,7 @@ static int main (string[] args) {
 public delegate void SpawnOutput(string line);
 public delegate void SpawnErr(string line);
 public delegate string SpawnInput();
-
+public delegate void SpawnFinish(int result);
  
 
 public class  SpawnConfig {
@@ -60,6 +74,7 @@ public class  SpawnConfig {
     public SpawnOutput output;
     public SpawnErr stderr;
     public SpawnInput input;
+    public SpawnFinish finish;
     // defaults..
     public SpawnConfig(string cwd,
             string[] args,
@@ -89,20 +104,24 @@ public class  SpawnConfig {
         this.debug = debug;
     }
     public void setHandlers(
-            SpawnOutput output,
-            SpawnErr stderr,
-            SpawnInput input
+            SpawnOutput? output,
+            SpawnErr? stderr,
+            SpawnInput? input,
+            SpawnFinish? finish
          ) {
         this.output = output;
         this.stderr = stderr;
         this.input = input;
+        this.finish = finish;
     }
     
     
 }
 
-errordomain SpawnError {
-    NO_ARGS
+public errordomain SpawnError {
+    NO_ARGS,
+    WRITE_ERROR
+
 }
 
 /**
@@ -188,15 +207,15 @@ public class Spawn : Object
      * 
      * @method run
      * Run the configured command.
-     * result is applied to object properties (eg. 'output' or 'stderr')
+     * result is applied to object properties (eg. '?' or 'stderr')
      * @returns {Object} self.
      */
-    public void run()
+    public void run() throws SpawnError, GLib.SpawnError, GLib.IOChannelError
     {
         
          
-        var err_src = false;
-        var out_src = false;
+        err_src = -1;
+        out_src = -1;
         int standard_input;
         int standard_output;
         int standard_error;
@@ -247,7 +266,7 @@ public class Spawn : Object
             }
             this.tidyup();
         //print("DONE TIDYUP");
-            if (this.cfg.finish) {
+            if (this.cfg.finish != null) {
                 this.cfg.finish(this.result);
             }
         });
@@ -273,42 +292,44 @@ public class Spawn : Object
             
             // add handlers for output and stderr.
         
-        this.out_src = this.out_ch.add_watch (
+        this.out_src = (int) this.out_ch.add_watch (
             IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
             (channel, condition) => {
-               return this.read(_this.out_ch);
+               return this.read(this.out_ch);
             }
         );
-        this.err_src = this.err_ch.add_watch (
+        this.err_src = (int) this.err_ch.add_watch (
 	    IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
             (channel, condition) => {
-               return this.read(_this.err_ch);
+               return this.read(this.err_ch);
             }
         );
               
         
         // call input.. 
         if (this.pid > -1) {
-            // child can exit before 1we get this far..
+            // child can exit before we get this far..
             if (this.cfg.input != null) {
-		if (this.cfg.debug) print("Trying to call listeners");
+		        if (this.cfg.debug) print("Trying to call listeners");
                 try {
                     this.write(this.cfg.input());
-		     // this probably needs to be a bit smarter...
-		    //but... let's close input now..
-		    this.in_ch.close();
-		    this.in_ch = -1;
-		     
-		    
+                     // this probably needs to be a bit smarter...
+                    //but... let's close input now..
+                    this.in_ch.shutdown(true);
+                    this.in_ch = null;
+                     
+                    
                 } catch (Error e) {
                     this.tidyup();
-                    throw e;
+                    return;
+                  //  throw e;
                     
                 }
                 
             }
+            
         }
-        // async - if running - return..
+                // async - if running - return..
         if (this.cfg.async && this.pid > -1) {
             return;
         }
@@ -319,8 +340,8 @@ public class Spawn : Object
             if (this.cfg.debug) {
                 print("starting main loop");
             }
-	    this.ctx = new MainLoop ();
-            loop.run(); // wait fore exit?
+	        this.ctx = new MainLoop ();
+            this.ctx.run(); // wait fore exit?
             
             //print("main_loop done!");
         } else {
@@ -371,7 +392,7 @@ public class Spawn : Object
      * @arg str {String} string to write to stdin of process
      * @returns GLib.IOStatus (0 == error, 1= NORMAL)
      */
-    private int write(string str) // write a line to 
+    private int write(string str) throws Error // write a line to 
     {
         if (this.in_ch == null) {
             return 0; // input is closed
@@ -379,13 +400,13 @@ public class Spawn : Object
         //print("write: " + str);
         // NEEDS GIR FIX! for return value.. let's ignore for the time being..
         //var ret = {};
-            //var res = this.in_ch.write_chars(str, str.length, ret);
-        var res = this.in_ch.write_chars(str, str.length);
+        size_t written;
+        var res = this.in_ch.write_chars(str.to_utf8(), out written);
         
         //print("write_char retunred:" + JSON.stringify(res) +  ' ' +JSON.stringify(ret)  );
         
         if (res != GLib.IOStatus.NORMAL) {
-            throw "Write failed";
+            throw new SpawnError.WRITE_ERROR("Write failed");
         }
         //return ret.value;
         return str.length;
@@ -401,8 +422,7 @@ public class Spawn : Object
     {
         string prop = (ch == this.out_ch) ? "output" : "stderr";
        // print("prop: " + prop);
-        var _this = this;
-        string str_return;
+
         
         //print(JSON.stringify(ch, null,4));
         while (true) {
@@ -417,44 +437,45 @@ public class Spawn : Object
                 break; // ??
                 
             }
+
             // print('status: '  +JSON.stringify(status));
             // print(JSON.stringify(x));
              switch(status) {
                 case GLib.IOStatus.NORMAL:
 		
                     //write(fn, x.str);
+                    
                     //if (this.listeners[prop]) {
                     //    this.listeners[prop].call(this, x.str_return);
                     //}
                     if (ch == this.out_ch) {
                         this.output += buffer;
+                        this.cfg.output(  buffer);                  
                     } else {
                         this.stderr += buffer;
                     }
                     //_this[prop] += x.str_return;
                     if (this.cfg.debug) {
-                        stdout.printf("%s : %s", prop , str_return);
+                        stdout.printf("%s : %s", prop , buffer);
                     }
                     if (this.cfg.async) {
-                        try {
-                            if ( Gtk.events_pending()) {
-                                 Gtk.main_iteration();
-                            }
-                        } catch(Error e) {
-                            
+                         
+                        if ( Gtk.events_pending()) {
+                             Gtk.main_iteration();
                         }
+                         
                     }
                     
                     //this.ctx.iteration(true);
                    continue;
                 case GLib.IOStatus.AGAIN:
 		    //print("Should be called again.. waiting for more data..");
-		    return true;
-                    break;
+		            return true;
+                    //break;
                 case GLib.IOStatus.ERROR:    
                 case GLib.IOStatus.EOF:
-		    return false;
-                   break;
+		            return false;
+                    //break;
                 
             }
             break;
