@@ -160,7 +160,7 @@ class StatusIconA : StatusIcon {
                     
                     //GitMonitor.GitMonitor.stop();
                    // this.el.label  = status ? 'Resume' : 'Pause';
-                    statusicon.el.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
+                    statusicon.set_from_stock( Gtk.STOCK_MEDIA_PAUSE );
                     
                     
                 })
@@ -184,7 +184,7 @@ class StatusIconA : StatusIcon {
                     
                     //
                    // this.el.label  = status ? 'Resume' : 'Pause';
-                    statusicon.el.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
+                    statusicon.set_from_stock( Gtk.STOCK_MEDIA_PLAY );
                     
                     
                 })
