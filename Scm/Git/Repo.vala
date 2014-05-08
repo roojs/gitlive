@@ -52,7 +52,7 @@ class GitRepo : Object
      *
      * @argument {Array} files the files to add.
      */
-    remove : function ( files )
+    public string remove : function ( files )
     {
         // this may fail if files do not exist..
         // should really find out if these are untracked files each..
