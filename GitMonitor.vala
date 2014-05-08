@@ -111,9 +111,7 @@ public class GitMonitor : Monitor
 
             // call this.monitor on each of 'top'
             for(int i = 0; i < this.top.length ; i++) {
-                this.monitor(this.top.index(i), ( fm,  f_orig,  of_orig,  event_type) => {
-                    this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
-                } );
+                this.monitor(this.top.index(i) );
             }
             StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
              
@@ -165,7 +163,7 @@ public class GitMonitor : Monitor
     }
     
     
-    public void monitor (string path, onEventHander fn , int depth = 0)
+    public void monitor (string path,  int depth = 0)
     {
         
         //var depth = typeof(depth) == 'number'  ? depth *1 : 0;
@@ -189,7 +187,7 @@ public class GitMonitor : Monitor
         //print("PATH : " + path);
         
         
-        base.monitor(path,fn, depth);
+        base.monitor(path, depth);
     }
 
     
@@ -491,9 +489,7 @@ public class GitMonitor : Monitor
         // directory has bee created
         this.monitor(src.path);
         this.top.append_val(src.path);
-        this.monitor(src.path, ( fm,  f_orig,  of_orig,  event_type) => {
-                this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
-            } );
+        this.monitor(src.path );
 
 
 // -- no point in adding a dir.. as git does not handle them...
