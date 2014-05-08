@@ -245,7 +245,7 @@ public class GitMonitor : Monitor
         var done = new Array<GitMontitorQueue>();
         
         // first build a array of repo's to work with
-        var repo_list = new Array<GitMontitorRepo>();
+        var repo_list = new Array<GitRepo>();
         
         // pull and group.
         
@@ -258,7 +258,7 @@ public class GitMonitor : Monitor
             var gitpath = cmd.gitpath; 
             var ix  = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
             if (ix < 0) {
-                    repo_list.append_val(new GitMontitorRepo( gitpath ));
+                    repo_list.append_val(new GitRepo( gitpath ));
                     ix = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
             }
             
