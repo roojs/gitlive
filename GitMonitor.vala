@@ -129,3 +129,185 @@ public class GitMonitor : Monitor
     }
 
     
+
+    /**
+     * run the queue.
+     * - pulls the items off the queue 
+     *    (as commands run concurrently and new items may get added while it's running)
+     * - runs the queue items
+     * - pushes upstream.
+     * 
+     */
+    public void runQueue()
+    {
+        
+        if (this.paused) {
+            return;
+        }
+        this.queueRunning = true;
+
+        var cmds = new Array<GitMontitorQueue>();
+        for(var i = 0; i < this.queue.length; i++) {
+            cmds.add(this.queue.item(i));
+        }
+
+        this.queue = new Array<GitMontitorQueue>();// empty queue!
+
+        
+        var success = new Array<GitMontitorQueue>();
+        var failure = new Array<GitMontitorQueue>();
+        var repos = new Array<GitMontitorQueue>(); //??
+        var done = new Array<GitMontitorQueue>();
+        
+        // first build a array of repo's to work with
+        var repo_list = new Array<GitMontitorRepo>();
+        
+        // pull and group.
+        
+        //print(JSON.stringify(cmds));
+        this.paused = true;
+        
+        for(var i = 0; i < cmds.length; i++) {
+           
+        
+            var gitpath = cmd.gitpath; 
+            var ix  = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
+            if (ix < 0) {
+                    repo_list.add(new GitMontitorRepo( gitpath ));
+                    ix = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
+            }
+            
+
+            //if (typeof(repo_list[gitpath]) == 'undefined') {
+            //    repo_list[gitpath] = new imports.Scm.Git.Repo.Repo( { repopath : gitpath });
+            //    repo_list[gitpath].cmds = [];
+             //   repo_list[gitpath].pull();
+            //}
+            repo_list.item(ix).add(cmd);
+
+        }
+        this.paused = false;
+        // build add, remove and commit message list..
+        
+        for(var i = 0;i < repo_list.length;i++) {
+    
+
+            var repo = repo_list.item(i);
+
+            var add_files = new Array<GitMontitorQueue>();
+            var remove_files = new Array<GitMontitorQueue>();
+            var messages = new Array<GitMontitorQueue>();
+            //print(JSON.stringify(repo.cmds,null,4));
+            
+            for(var ii = 0;ii < repo.length;ii++) {
+                var cmd = repo.item(i);
+    
+                var name = cmd.shift();
+                var arg = cmd.shift();
+                
+                switch(cmd.name) {
+                    case "add" :
+                        
+                        if (GitMontitorQueue.indexOfAdd(this.add_files, cmd.add) < 0 ) {
+                           break;
+                        }
+        
+                        
+                        add_files.add(cmd);
+                        break;
+                    
+                    case 'rm':
+                        
+                        if (add_files.indexOf(arg) > -1) {
+                            break;
+                        }
+                        
+                        // if file exists, do not try and delete it.
+                        if (GLib.file_test(arg, GLib.FileTest.EXISTS)) {
+                            break;
+                        }
+                        
+                        remove_files.push(arg);
+                        break;
+                    
+                    case 'commit' :
+                        
+                        if (messages.indexOf(arg.message) < 0) { 
+                            messages.push(arg.message);
+                        }
+                        break;    
+                } 
+            });
+            
+            //repo.debug = 1;
+            // these can fail... at present... as we wildcard stuff.
+            print("ADD : "  + JSON.stringify(add_files));
+            
+            // make sure added files do not get removed..
+            remove_files  = remove_files.filter(function(v) {
+                return add_files.indexOf(v) < 0;
+            });
+            print("REMOVE : "  + JSON.stringify(remove_files));
+            
+            
+            // make sure monitoring is paused so it does not recursively pick up
+            // deletions
+            
+            // -- DO STUFF..
+            
+            repo.add(add_files);
+            
+            repo.remove(remove_files);
+            this.paused = false;
+            
+            
+            try { 
+                success.push(repo.commit({
+                    reason : messages.join("\n"),
+                    files : add_files  
+                }));
+                success.push(repo.push());
+
+            } catch(e) {
+                failure.push(e.message);
+                
+            }   
+        }
+        
+        // finally merge all the commit messages.
+         
+        try {
+            // catch notification failures.. so we can carry on..
+            if (success.length) {
+                print(success.join("\n"));
+                
+                var notification = new Notify.Notification({
+                    summary: "Git Live Commited",
+                    body : success.join("\n"),
+                    timeout : 5
+                    
+                });
+    
+                notification.set_timeout(5);
+                notification.show();   
+            }
+            
+            if (failure.length) {
+            
+                var notification = new Notify.Notification({
+                    summary: "Git Live ERROR!!",
+                    body : failure.join("\n"),
+                    timeout : 5
+                    
+                });
+    
+                notification.set_timeout(5); // show errros for longer
+                notification.show();   
+            }
+        } catch(e) {
+            print(e.toString());
+            
+        }
+        this.queueRunning = false;
+    },
+    
