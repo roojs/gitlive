@@ -264,11 +264,11 @@ public class GitMonitor : Monitor
             
             
             try { 
-                success.add_reff(repo.commit({
-                    reason : messages.join("\n"),
-                    files : add_files  
-                }));
-                success.push(repo.push());
+                success.append_val(repo.commit(
+                    GitMontitorQueue.messageToString(messages)
+                    add_files  
+                ));
+                success.push(repo.name);
 
             } catch(Error e) {
                 failure.push(e.message);
