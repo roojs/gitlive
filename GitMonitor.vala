@@ -319,3 +319,65 @@ public class GitMonitor : Monitor
         this.queueRunning = false;
     }
     
+
+
+    public bool shouldIgnore(GitMontitorQueue f)
+    {
+        
+        if (this.paused) {
+            return true;
+        }
+        
+        
+        // vim.. what a seriously brain dead program..
+        if (f.name == '4913') {
+            return true;
+        }
+        
+        if (f.name[0] == '.') {
+            // except!
+            if (f.name == '.htaccess') {
+                return false;
+            }
+            
+            return true;
+        }
+        //if (f.name.match(/~$/)) {
+        //    return true;
+        //}
+        //if (f.name.match(/^nbproject/)) {
+        //    return true;
+        //}
+        // ignore anything in top level!!!!
+        if (!f.vpath.length) {
+            return true;
+        }
+        
+        return false;
+    }
+
+/**
+     * parsePath:
+     * Fill in gitlive, vpath and repo  
+     * 
+     */
+    parsePath: function(GitMontitorQueue f)
+    {
+           
+        var vpath_ar = f.path.substring(this.gitlive.length +1).split('/', 0);
+        
+        f.gitpath = this.gitlive + '/' + vpath_ar[0];
+        
+        string[]  vpath = {};
+        for (var i = 1; i< vpath_ar.length; i++) {
+            vpath += vpath_ar[i];
+        }
+        f.vpath =  String.joinv("/", vpath);
+        //f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
+        
+        
+    }
+
+
+
+
