@@ -154,7 +154,7 @@ public class GitMonitor : Monitor
         this.queue = new Array<GitMontitorQueue>();// empty queue!
 
         
-        var success = new Array<GitMontitorQueue>();
+        var success = new Array<String>();
         var failure = new Array<GitMontitorQueue>();
         var repos = new Array<GitMontitorQueue>(); //??
         var done = new Array<GitMontitorQueue>();
@@ -264,13 +264,13 @@ public class GitMonitor : Monitor
             
             
             try { 
-                success.push(repo.commit({
+                success.add_reff(repo.commit({
                     reason : messages.join("\n"),
                     files : add_files  
                 }));
                 success.push(repo.push());
 
-            } catch(e) {
+            } catch(Error e) {
                 failure.push(e.message);
                 
             }   
