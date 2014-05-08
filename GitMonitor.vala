@@ -3,12 +3,14 @@
 public GitMontitorQueue : MonitorNamePathDir {
         public string gitpath;
         public string vpath;
-        public stirng message ; // for commit
+        public string message ; // for commit
+        public bool commit_all
         public GitMontitorQueue(MonitorNamePathDir f, string gitlive) {
             this.name = f.name;
             this.path = f.path;
             this.dir = f.dir;
-
+            this.message = "";
+            this.commit_all = false;
  
            
             var vpath_ar = this.path.substring(gitlive.length +1).split('/', 0);
@@ -472,11 +474,7 @@ public class GitMonitor : Monitor
         cmd.commit_all = true;
 
         this.queue.append_val(cmd);
-        this.queue.push( 
-            [ src.gitpath, 'rm' , src.vpath ],
-            [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
-            
-        );
+         
     
 
 
