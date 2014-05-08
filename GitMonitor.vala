@@ -28,7 +28,7 @@ public class GitMonitor : Monitor
     public void resume () {
         this.paused = false;
         this.queue = new Array<FileMonitor> ();
-        StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAN );
+        StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
         
         
     }
@@ -92,5 +92,40 @@ public class GitMonitor : Monitor
         },null,null);
         
       
-    },
+    }
+
+
+    public void stop() {
+        StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );;
+        base.stop();
+    }
+    
+    
+    public void monitor (string path, onEventHander fn , int depth = 0)
+    {
+        
+        //var depth = typeof(depth) == 'number'  ? depth *1 : 0;
+        
+         
+        // if we are not at top level.. and there is a .git directory  (it's a submodule .. ignore) 
+        if (depth > 1 && GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR)) {
+            return;
+        }
+        
+        if (depth == 1) {
+            // FIXME - check if repo is flagged as not autocommit..
+            //var repo = imports.Scm.Repo.Repo.get(path);
+            //if (!repo || !repo.autocommit()) {
+            //    return;
+            //} 
+        }
+        
+        
+        // check if the repo is to be monitored.
+        //print("PATH : " + path);
+        
+        
+        base.monitor(path,fn, depth);
+    }
+
     
