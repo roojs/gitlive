@@ -547,29 +547,37 @@ public class GitMonitor : Monitor
         
         if (this.shouldIgnore(src)) {
             this.onCreated(dest);
-            //this.onChangedDoneHint(dest);
+            this.onChangedDoneHint(dest);
             return;
 
         }
         if (this.shouldIgnore(dest)) {
             
-            this.onCreated(dest);
-            this.onChangedDoneHint(dest);
-
+            this.onDeleted(src);
+ 
 
             return;
         }
         
-        this.queue.push( 
-           // [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
-             [ src.gitpath, 'add',    dest.vpath ],
-             [ src.gitpath, 'rm',    src.vpath ],
-             
-            [ src.gitpath, 'commit' , 
-                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath}
-            ]
-        );
+        cmd_s.name = "rm";
+        cmd_s.rm = src.vpath;
+        this.queue.append_val(cmd_s);
+
+
+
+
+        cmd_d.name = "add";
+        cmd_d.add = src.vpath;
+        this.queue.append_val(cmd_d);
+
+
+        var cmd = new GitMontitorQueue(dest, this.gitlive);
+        cmd.name = "commit";
+        cmd.message = "MOVED " + cmd_s.vpath + " to " + cmd_d.vpath;
+        this.queue.append_val(cmd);
+
+
          
     }
        
-
+}
