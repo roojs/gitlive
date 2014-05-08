@@ -3,11 +3,28 @@
 public GitMontitorQueue : MonitorNamePathDir {
         public string gitpath;
         public string vpath;
-        public GitMontitorQueue(MonitorNamePathDir f) {
-                this.name = f.name;
-                this.path = f.path;
-                this.dir = f.dir;
+        public GitMontitorQueue(MonitorNamePathDir f, string gitlive) {
+            this.name = f.name;
+            this.path = f.path;
+            this.dir = f.dir;
+
+ 
+           
+            var vpath_ar = this.path.substring(gitlive.length +1).split('/', 0);
+            
+            this.gitpath = gitlive + '/' + vpath_ar[0];
+            
+            string[]  vpath = {};
+            for (var i = 1; i< vpath_ar.length; i++) {
+                vpath += vpath_ar[i];
+            }
+            this.vpath =  string.joinv("/", vpath);
+            //f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
+        
+        
         }
+
+
 }
 
 
