@@ -97,9 +97,7 @@ public class Monitor : Object
     public void start()
     {
         for(int i = 0; i < this.top.length ; i++) {
-            this.monitor(this.top.index(i), ( fm,  f_orig,  of_orig,  event_type) => {
-                this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
-                } );
+            this.monitor(this.top.index(i));
         }
     }
     /**
@@ -135,7 +133,7 @@ public class Monitor : Object
      * 
      * 
      */
-    public void monitor(string path, onEventHander fn , int depth = 0)
+    public void monitor(string path, int depth = 0)
     {
          
         print("ADD: " + path + "\n");
@@ -159,7 +157,7 @@ public class Monitor : Object
  
                  fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
                         //if (fn) {
-                            fn (fm,  f_orig,  of_orig,  event_type ) ;
+                            this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
                            // return;
                         //}
                         //this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
@@ -222,7 +220,7 @@ public class Monitor : Object
             
             
             
-            this.monitor(sp, fn, depth + 1);
+            this.monitor(sp, depth + 1);
             
         }
         try {
