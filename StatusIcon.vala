@@ -33,7 +33,7 @@ static int main (string[] args) {
  
 
 
-public StatusIconA statusicon;
+//public StatusIconA statusicon;
  
 public class StatusIconA : StatusIcon {
 
