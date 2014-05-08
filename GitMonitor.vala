@@ -200,10 +200,8 @@ public class GitMonitor : Monitor
             //print(JSON.stringify(repo.cmds,null,4));
             
             for(var ii = 0;ii < repo.length;ii++) {
-                var cmd = repo.item(i);
+                var cmd = repo.item(ii);
     
-                var name = cmd.shift();
-                var arg = cmd.shift();
                 
                 switch(cmd.name) {
                     case "add" :
@@ -238,17 +236,23 @@ public class GitMonitor : Monitor
                         
                         break;    
                 } 
-            });
+            }
             
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
-            print("ADD : "  + JSON.stringify(add_files));
+            stdout.printf("ADD : %d files"  , add_files.length);
             
             // make sure added files do not get removed..
-            remove_files  = remove_files.filter(function(v) {
-                return add_files.indexOf(v) < 0;
-            });
-            print("REMOVE : "  + JSON.stringify(remove_files));
+
+            var remove_files_f = new Array<GitMontitorQueue>();
+            for(var ii = 0;ii < remove_files.length;ii++) {
+                if (GitMontitorQueue.indexOfAdd(add_files,  remove_files.item(ii).rm) > -1 ) {
+                     continue;
+                }
+                remove_files_f.append_val(remove_files.item(ii));
+            };
+            stdout.printf("REMOVE : %d files"  , remove_files.length);
+            
             
             
             // make sure monitoring is paused so it does not recursively pick up
