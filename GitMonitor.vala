@@ -234,7 +234,7 @@ public class GitMonitor : Monitor
                            break;
                         }
                          
-                        messages.append_val(arg.message);
+                        messages.append_val(cmd);
                         
                         break;    
                 } 
