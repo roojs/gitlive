@@ -252,16 +252,13 @@ public class GitMonitor : Monitor
                 remove_files_f.append_val(remove_files.item(ii));
             };
             stdout.printf("REMOVE : %d files"  , remove_files.length);
-            
-            
-            
+             
             // make sure monitoring is paused so it does not recursively pick up
             // deletions
             
             // -- DO STUFF..
             
             repo.add(add_files);
-            
             repo.remove(remove_files);
             this.paused = false;
             
