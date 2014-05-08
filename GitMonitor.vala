@@ -388,8 +388,8 @@ public class GitMonitor : Monitor
     string[] just_created;
 
     public void initRepo(MonitorNamePathDir src) { } // called on startup at the top level repo dir.
-    public void onChanged(MonitorNamePathDir src) { }
-    public void onChangesDoneHint(MonitorNamePathDir src) { }
+ 
+ 
     public void onDeleted(MonitorNamePathDir src) { }
     public void onCreated(MonitorNamePathDir src) { }
     public void onAttributeChanged(MonitorNamePathDir src) { }
@@ -450,5 +450,37 @@ public class GitMonitor : Monitor
  
          
     }
+    public void onDeleted(MonitorNamePathDir src) 
+{ 
+        if (this.paused) {
+            return true;
+        }
+        this.lastAdd = new DateTime.now(); 
+        var cmd = new GitMontitorQueue(src, this.gitlive);
+        if (cmd.shouldIgnore()) {
+            return;
+        }
+        // should check if monitor needs removing..
+        // it should also check if it was a directory.. - so we dont have to commit all..
+        cmd.name = "rm";
+        cmd.rm = src.vpath;
+        this.queue.append_val(cmd);
 
+        var cmd = new GitMontitorQueue(src, this.gitlive);
+        cmd.name = "commit";
+        cmd.message = src.vpath;
+        cmd.commit_all = true;
+
+        this.queue.append_val(cmd);
+        this.queue.push( 
+            [ src.gitpath, 'rm' , src.vpath ],
+            [ src.gitpath, 'commit', { all: true, message: src.vpath} ]
+            
+        );
+    
+
+
+
+
+}
 
