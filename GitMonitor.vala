@@ -478,7 +478,32 @@ public class GitMonitor : Monitor
     }
     public void onCreated(MonitorNamePathDir src) {
 
+        if (this.paused) {
+            return true;
+        }
+        this.lastAdd = new DateTime.now(); 
+        var cmd = new GitMontitorQueue(src, this.gitlive);
+        if (cmd.shouldIgnore()) {
+            return;
+        }
+
+        if (!GLib.file_test(src.path, GLib.FileTest.IS_DIR)) {
+           // this.just_created[src.path] = true;
+            return; // we do not handle file create flags... - use done hint.
+        }
+        // director has bee created
+        this.monitor(src.path);
+        this.top.append_val(src.path);
+        this.monitor(src.path, ( fm,  f_orig,  of_orig,  event_type) => {
+                this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
+            } );
 
 
+// -- no point in adding a dir.. as git does not handle them...
+//        this.queue.push( 
+  //          [ src.gitpath, 'add' , src.vpath,  { all: true } ],
+ //           [ src.gitpath, 'commit' , { all: true, message: src.vpath} ]
+  //          
+   //     );
 
     }
