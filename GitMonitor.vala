@@ -388,9 +388,6 @@ public class GitMonitor : Monitor
     
 
     string[] just_created;
-
-    public void initRepo(MonitorNamePathDir src) { } // called on startup at the top level repo dir.
- 
  
  
 
