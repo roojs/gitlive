@@ -262,7 +262,7 @@ public class StatusIconA : StatusIcon {
                 
                 var  image = new Gtk.Image();
                 image.set_from_stock(Gtk.Stock.FULLSCREEN,Gtk.IconSize.MENU );
-		this.set_image (image);
+                this.set_image (image);
                 this.label= "Manage Clones";
                 this.always_show_image = true;
                 this.accel_group = null;
@@ -282,7 +282,7 @@ public class StatusIconA : StatusIcon {
                 
                 var  image = new Gtk.Image();
                 image.set_from_stock(Gtk.Stock.ABOUT,Gtk.IconSize.MENU );
-		this.set_image (image);
+                this.set_image (image);
                 this.label= "About Gitlive";
                 this.always_show_image = true;
                 this.accel_group = null;
