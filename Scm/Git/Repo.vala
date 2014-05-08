@@ -19,7 +19,7 @@ class GitRepo : Object
      *
      */
      
-    function(path) {
+    public GitRepo(path) {
         // cal parent?
         
         this.gitdir = path + "/.git";
@@ -28,4 +28,4 @@ class GitRepo : Object
         }
         //Repo.superclass.constructor.call(this,cfg);
         
-    },
+    }
