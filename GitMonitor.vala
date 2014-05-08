@@ -394,7 +394,7 @@ public class GitMonitor : Monitor
  
  
 
-    public void onAttributeChanged(MonitorNamePathDir src) { }
+
     public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
    
 
@@ -491,7 +491,7 @@ public class GitMonitor : Monitor
            // this.just_created[src.path] = true;
             return; // we do not handle file create flags... - use done hint.
         }
-        // director has bee created
+        // directory has bee created
         this.monitor(src.path);
         this.top.append_val(src.path);
         this.monitor(src.path, ( fm,  f_orig,  of_orig,  event_type) => {
@@ -507,3 +507,20 @@ public class GitMonitor : Monitor
    //     );
 
     }
+
+    public void onAttributeChanged(MonitorNamePathDir src) { }
+
+        if (this.paused) {
+            return true;
+        }
+        this.lastAdd = new DateTime.now(); 
+        var cmd = new GitMontitorQueue(src, this.gitlive);
+        if (cmd.shouldIgnore()) {
+            return;
+        }
+
+
+
+
+
+
