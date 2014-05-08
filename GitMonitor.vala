@@ -392,8 +392,8 @@ public class GitMonitor : Monitor
     public void initRepo(MonitorNamePathDir src) { } // called on startup at the top level repo dir.
  
  
-    public void onDeleted(MonitorNamePathDir src) { }
-    public void onCreated(MonitorNamePathDir src) { }
+ 
+
     public void onAttributeChanged(MonitorNamePathDir src) { }
     public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
    
@@ -453,7 +453,7 @@ public class GitMonitor : Monitor
          
     }
     public void onDeleted(MonitorNamePathDir src) 
-{ 
+   { 
         if (this.paused) {
             return true;
         }
@@ -474,11 +474,11 @@ public class GitMonitor : Monitor
         cmd.commit_all = true;
 
         this.queue.append_val(cmd);
-         
-    
+ 
+    }
+    public void onCreated(MonitorNamePathDir src) {
 
 
 
 
-}
-
+    }
