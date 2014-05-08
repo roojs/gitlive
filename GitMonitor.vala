@@ -259,7 +259,7 @@ public class GitMonitor : Monitor
             var ix  = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
             if (ix < 0) {
                     repo_list.append_val(new GitRepo( gitpath ));
-                    ix = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
+                    ix = GitRepo.indexOf(this.repos,  cmd.gitpath);
             }
             
 
