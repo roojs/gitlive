@@ -44,7 +44,7 @@ class GitRepo : Object
             var f = files.item(i);
             this.git( { "add",   f });
         }
-    },
+    }
     
       /**
      * remove:
