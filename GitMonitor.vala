@@ -395,7 +395,7 @@ public class GitMonitor : Monitor
  
 
 
-    public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
+
    
 
 
@@ -529,4 +529,47 @@ public class GitMonitor : Monitor
     }
 
 
+   public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
+    { 
+        this.lastAdd = new DateTime.now(); 
+        var cmd_s = new GitMontitorQueue(src, this.gitlive);
+
+        var cmd_d = new GitMontitorQueue(src, this.gitlive);
+   
+        
+        if (cmd_d.gitpath != cmd_s.gitpath) {
+            this.onDeleted(src);
+            this.onCreated(dest);
+            this.onChangedDoneHint(dest);
+            return;
+        }
+        // needs to handle move to/from unsupported types..
+        
+        if (this.shouldIgnore(src)) {
+            this.onCreated(dest);
+            //this.onChangedDoneHint(dest);
+            return;
+
+        }
+        if (this.shouldIgnore(dest)) {
+            
+            this.onCreated(dest);
+            this.onChangedDoneHint(dest);
+
+
+            return;
+        }
+        
+        this.queue.push( 
+           // [ src.gitpath, 'mv',  '-k', src.vpath, dest.vpath ],
+             [ src.gitpath, 'add',    dest.vpath ],
+             [ src.gitpath, 'rm',    src.vpath ],
+             
+            [ src.gitpath, 'commit' , 
+                { message:   'MOVED ' + src.vpath +' to ' + dest.vpath}
+            ]
+        );
+         
+    }
+       
 
