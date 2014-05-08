@@ -42,7 +42,7 @@ class GitRepo : Object
         // not sure if that is how git works.. but just be certian.
         for (var i = 0; i < files.length;i++) {
             var f = files.item(i);
-            this.git( { "add", { "" } , f });
+            this.git( { "add",  , f });
         }
     },
     
