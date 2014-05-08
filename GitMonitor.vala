@@ -148,7 +148,7 @@ public class GitMonitor : Monitor
 
         var cmds = new Array<GitMontitorQueue>();
         for(var i = 0; i < this.queue.length; i++) {
-            cmds.add(this.queue.item(i));
+            cmds.append_val(this.queue.item(i));
         }
 
         this.queue = new Array<GitMontitorQueue>();// empty queue!
@@ -173,7 +173,7 @@ public class GitMonitor : Monitor
             var gitpath = cmd.gitpath; 
             var ix  = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
             if (ix < 0) {
-                    repo_list.add(new GitMontitorRepo( gitpath ));
+                    repo_list.append_val(new GitMontitorRepo( gitpath ));
                     ix = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
             }
             
@@ -183,7 +183,7 @@ public class GitMonitor : Monitor
             //    repo_list[gitpath].cmds = [];
              //   repo_list[gitpath].pull();
             //}
-            repo_list.item(ix).add(cmd);
+            repo_list.item(ix).append_val(cmd);
 
         }
         this.paused = false;
@@ -208,33 +208,34 @@ public class GitMonitor : Monitor
                 switch(cmd.name) {
                     case "add" :
                         
-                        if (GitMontitorQueue.indexOfAdd(this.add_files, cmd.add) < 0 ) {
+                        if (GitMontitorQueue.indexOfAdd(add_files, cmd.add) > -1) {
                            break;
                         }
         
                         
-                        add_files.add(cmd);
+                        add_files.append_val(cmd);
                         break;
                     
                     case 'rm':
-                        
-                        if (add_files.indexOf(arg) > -1) {
-                            break;
+                        if (GitMontitorQueue.indexOfAdd(add_files, cmd.rm) > -1 ) {
+                           break;
                         }
                         
                         // if file exists, do not try and delete it.
-                        if (GLib.file_test(arg, GLib.FileTest.EXISTS)) {
+                        if (GLib.file_test(cmd.rm, GLib.FileTest.EXISTS)) {
                             break;
                         }
                         
-                        remove_files.push(arg);
+                        remove_files.append_val(cmd);
                         break;
                     
                     case 'commit' :
-                        
-                        if (messages.indexOf(arg.message) < 0) { 
-                            messages.push(arg.message);
+                        if (GitMontitorQueue.indexOfMessage(messages, cmd.message) > -1 ) {
+                           break;
                         }
+                         
+                        messages.append_val(arg.message);
+                        
                         break;    
                 } 
             });
