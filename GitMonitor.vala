@@ -1,4 +1,17 @@
- 
+
+
+public GitMontitorQueue : MonitorNamePathDir {
+        public string gitpath;
+        public string vpath;
+        public GitMontitorQueue(MonitorNamePathDir f) {
+                this.name = f.name;
+                this.path = f.path;
+                this.dir = f.dir;
+        }
+}
+
+
+
 public class GitMonitor : Monitor
 {
 
@@ -372,12 +385,64 @@ public class GitMonitor : Monitor
         for (var i = 1; i< vpath_ar.length; i++) {
             vpath += vpath_ar[i];
         }
-        f.vpath =  String.joinv("/", vpath);
+        f.vpath =  string.joinv("/", vpath);
         //f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
         
         
     }
 
+    string[] just_created;
 
+ public void initRepo(MonitorNamePathDir src) { } // called on startup at the top level repo dir.
+    public void onChanged(MonitorNamePathDir src) { }
+    public void onChangesDoneHint(MonitorNamePathDir src) { }
+    public void onDeleted(MonitorNamePathDir src) { }
+    public void onCreated(MonitorNamePathDir src) { }
+    public void onAttributeChanged(MonitorNamePathDir src) { }
+    public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
+   
+
+
+    public void onChanged(MonitorNamePathDir src) { }
+    { 
+        return; // always ignore this..?
+        //this.parsePath(src);
+    },
+    
+
+ 
+    /**
+     *  results in  git add  + git commit..
+     *
+     */
+    public void onChangesDoneHint(MonitorNamePathDir src) { }
+    { 
+        this.lastAdd = new Date();
+        this.parsePath(src);
+        if (this.shouldIgnore(src)) {
+            return;
+        }
+        
+       
+        var add_it = false;
+        if (typeof(this.just_created[src.path]) !='undefined') {
+            delete this.just_created[src.path];
+            
+            this.queue.push( 
+                [ src.gitpath,  'add', src.vpath ],
+                [ src.gitpath,  'commit',    { message: src.vpath} ] 
+                
+            );
+         
+            return;
+        }
+        
+        this.queue.push( 
+            [ src.gitpath,  'add', src.vpath ],
+            [ src.gitpath,  'commit',  {  message: src.vpath} ]
+
+            
+        );
+    },
 
 
