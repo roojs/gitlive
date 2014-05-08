@@ -448,7 +448,7 @@ public class GitMonitor : Monitor
         cmd.message = src.vpath;
         this.queue.append_val(cmd);
  
-        );
-    },
+         
+    }
 
 
