@@ -38,6 +38,7 @@ public StatusIconA statusicon;
 public class StatusIconA : StatusIcon {
 
     bool paused = false;
+    static StatusIconA statusicon;
      
     public StatusIconA() {
         
@@ -123,7 +124,7 @@ public class StatusIconA : StatusIcon {
                 
                 var  image = new Gtk.Image();
                 image.set_from_stock(Gtk.Stock.MEDIA_PAUSE,Gtk.IconSize.MENU );
-		this.set_image (image);
+                this.set_image (image);
                 
                 this.label= "Pause Commits";
                 this.always_show_image = true;
