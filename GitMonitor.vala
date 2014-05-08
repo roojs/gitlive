@@ -268,10 +268,10 @@ public class GitMonitor : Monitor
                     GitMontitorQueue.messageToString(messages)
                     add_files  
                 ));
-                success.push(repo.name);
+                success.push(repo.push());
 
             } catch(Error e) {
-                failure.push(e.message);
+                failure.append_val(e.message);
                 
             }   
         }
@@ -281,35 +281,41 @@ public class GitMonitor : Monitor
         try {
             // catch notification failures.. so we can carry on..
             if (success.length) {
-                print(success.join("\n"));
+                var success_str = "";
+                for(var ii = 0;ii < success.length;ii++) {
+                    success_str+= success.item(ii) + "\n";
+                }
                 
-                var notification = new Notify.Notification({
-                    summary: "Git Live Commited",
-                    body : success.join("\n"),
-                    timeout : 5
+                var notification = new Notify.Notification(
+                    "Git Live Commited",
+                    success_str,
+                     "dialog-information"
                     
-                });
+                );
     
                 notification.set_timeout(5);
                 notification.show();   
             }
             
             if (failure.length) {
-            
+                var failure_str = "";
+                for(var ii = 0;ii < failure.length;ii++) {
+                    failure_str+= failure.item(ii) + "\n";
+                }
                 var notification = new Notify.Notification({
                     summary: "Git Live ERROR!!",
-                    body : failure.join("\n"),
-                    timeout : 5
+                    failure_str,
+                    "dialog-information"
                     
                 });
     
                 notification.set_timeout(5); // show errros for longer
                 notification.show();   
             }
-        } catch(e) {
-            print(e.toString());
+        } catch(Error e) {
+            print(e.message);
             
         }
         this.queueRunning = false;
-    },
+    }
     
