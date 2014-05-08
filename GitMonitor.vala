@@ -518,9 +518,15 @@ public class GitMonitor : Monitor
         if (cmd.shouldIgnore()) {
             return;
         }
+        cmd.name = "add";
+        cmd.add = src.vpath;
+        this.queue.append_val(cmd);
 
-
-
+        var cmd = new GitMontitorQueue(src, this.gitlive);
+        cmd.name = "commit";
+        cmd.message = "Attribute changed " + cmd.vpath;
+        this.queue.append_val(cmd);
+    }
 
 
 
