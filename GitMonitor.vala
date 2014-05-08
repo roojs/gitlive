@@ -3,6 +3,7 @@
 public GitMontitorQueue : MonitorNamePathDir {
         public string gitpath;
         public string vpath;
+        public stirng message ; // for commit
         public GitMontitorQueue(MonitorNamePathDir f, string gitlive) {
             this.name = f.name;
             this.path = f.path;
@@ -24,7 +25,38 @@ public GitMontitorQueue : MonitorNamePathDir {
         
         }
 
-
+        public bool shouldIgnore(GitMonitor gm)
+        {
+            
+            
+            
+            // vim.. what a seriously brain dead program..
+            if (this.name == '4913') {
+                return true;
+            }
+            
+            if (this.name[0] == '.') {
+                // except!
+                if (this.name == '.htaccess') {
+                    return false;
+                }
+                
+                return true;
+            }
+            //if (f.name.match(/~$/)) {
+            //    return true;
+            //}
+            //if (f.name.match(/^nbproject/)) {
+            //    return true;
+            //}
+            // ignore anything in top level!!!!
+            if (!this.vpath.length) {
+                return true;
+            }
+            
+            return false;
+        }
+     
 }
 
 
@@ -351,66 +383,11 @@ public class GitMonitor : Monitor
     
 
 
-    public bool shouldIgnore(GitMontitorQueue f)
-    {
-        
-        if (this.paused) {
-            return true;
-        }
-        
-        
-        // vim.. what a seriously brain dead program..
-        if (f.name == '4913') {
-            return true;
-        }
-        
-        if (f.name[0] == '.') {
-            // except!
-            if (f.name == '.htaccess') {
-                return false;
-            }
-            
-            return true;
-        }
-        //if (f.name.match(/~$/)) {
-        //    return true;
-        //}
-        //if (f.name.match(/^nbproject/)) {
-        //    return true;
-        //}
-        // ignore anything in top level!!!!
-        if (!f.vpath.length) {
-            return true;
-        }
-        
-        return false;
-    }
-
-/**
-     * parsePath:
-     * Fill in gitlive, vpath and repo  
-     * 
-     */
-    parsePath: function(GitMontitorQueue f)
-    {
-           
-        var vpath_ar = f.path.substring(this.gitlive.length +1).split('/', 0);
-        
-        f.gitpath = this.gitlive + '/' + vpath_ar[0];
-        
-        string[]  vpath = {};
-        for (var i = 1; i< vpath_ar.length; i++) {
-            vpath += vpath_ar[i];
-        }
-        f.vpath =  string.joinv("/", vpath);
-        //f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
-        
-        
-    }
+    
 
     string[] just_created;
 
- public void initRepo(MonitorNamePathDir src) { } // called on startup at the top level repo dir.
+    public void initRepo(MonitorNamePathDir src) { } // called on startup at the top level repo dir.
     public void onChanged(MonitorNamePathDir src) { }
     public void onChangesDoneHint(MonitorNamePathDir src) { }
     public void onDeleted(MonitorNamePathDir src) { }
@@ -434,14 +411,23 @@ public class GitMonitor : Monitor
      */
     public void onChangesDoneHint(MonitorNamePathDir src) { }
     { 
-        this.lastAdd = new Date();
-        this.parsePath(src);
-        if (this.shouldIgnore(src)) {
+        
+        if (this.paused) {
+            return true;
+        }
+            
+
+        this.lastAdd = new DateTime.now(); 
+        var cmd = new GitMontitorQueue(src, this.gitlive);
+        if (cmd.shouldIgnore()) {
             return;
         }
         
        
         var add_it = false;
+        /*
+        if (this.is_just_created(cmd.path)) {
+            
         if (typeof(this.just_created[src.path]) !='undefined') {
             delete this.just_created[src.path];
             
@@ -453,12 +439,15 @@ public class GitMonitor : Monitor
          
             return;
         }
-        
-        this.queue.push( 
-            [ src.gitpath,  'add', src.vpath ],
-            [ src.gitpath,  'commit',  {  message: src.vpath} ]
+        */
+        cmd.add = src.vpath;
+        this.queue.append_val(cmd);
 
-            
+        var cmd = new GitMontitorQueue(src, this.gitlive);
+        cmd.name = "commit";
+        cmd.message = src.vpath;
+        this.queue.append_val(cmd);
+ 
         );
     },
 
