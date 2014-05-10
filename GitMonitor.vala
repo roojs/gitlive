@@ -443,7 +443,7 @@ public class GitMonitor : Monitor
    
 
 
-    public void onChanged(MonitorNamePathDir src) 
+    public new void onChanged(MonitorNamePathDir src) 
     { 
         return; // always ignore this..?
         //this.parsePath(src);
@@ -455,7 +455,7 @@ public class GitMonitor : Monitor
      *  results in  git add  + git commit..
      *
      */
-    public void onChangesDoneHint(MonitorNamePathDir src)  
+    public new void onChangesDoneHint(MonitorNamePathDir src)  
     { 
         
         if (this.paused) {
@@ -496,7 +496,7 @@ public class GitMonitor : Monitor
  
          
     }
-    public void onDeleted(MonitorNamePathDir src) 
+    public new void onDeleted(MonitorNamePathDir src) 
    { 
         if (this.paused) {
             return true;
@@ -520,7 +520,7 @@ public class GitMonitor : Monitor
         this.queue.append_val(cmd);
  
     }
-    public void onCreated(MonitorNamePathDir src) {
+    public new void onCreated(MonitorNamePathDir src) {
 
         if (this.paused) {
             return true;
@@ -550,7 +550,7 @@ public class GitMonitor : Monitor
 
     }
 
-    public void onAttributeChanged(MonitorNamePathDir src) { 
+    public new void onAttributeChanged(MonitorNamePathDir src) { 
 
         if (this.paused) {
             return true;
@@ -570,7 +570,7 @@ public class GitMonitor : Monitor
     }
 
 
-   public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest)  
+   public new void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest)  
     { 
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd_s = new GitMonitorQueue(src);
