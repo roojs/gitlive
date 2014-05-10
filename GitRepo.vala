@@ -192,7 +192,7 @@ public class GitRepo : Object
 
 
         if (this.gitdir != this.repopath) {
-            args +=   "--work-tree"
+            args +=   "--work-tree";
             args += this.repopath; 
         }
         for (var i = i; i < args_in.length;i++) {
