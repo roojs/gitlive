@@ -378,14 +378,11 @@ public class GitMonitor : Monitor
         try {
             // catch notification failures.. so we can carry on..
             if (success.length) {
-                var success_str = "";
-                for(var ii = 0;ii < success.length;ii++) {
-                    success_str+= success.item(ii) + "\n";
-                }
+
                 
                 var notification = new Notify.Notification(
                     "Git Live Commited",
-                    success_str,
+                    string.joinv("\n",success),
                      "dialog-information"
                     
                 );
