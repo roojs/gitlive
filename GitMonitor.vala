@@ -474,7 +474,7 @@ public class GitMonitor : Monitor
             return;
         }
         */
-        //cmd.add = src.vpath;
+
         this.queue.append_val(cmd);
 
         var cmd = new GitMonitorQueue(src);
@@ -549,7 +549,6 @@ public class GitMonitor : Monitor
             return;
         }
         cmd.action = "add";
-        cmd.add = src.vpath;
         this.queue.append_val(cmd);
 
         var cmd = new GitMonitorQueue(src);
@@ -590,14 +589,12 @@ public class GitMonitor : Monitor
         }
         
         cmd_s.action = "rm";
-        cmd_s.rm = src.vpath;
         this.queue.append_val(cmd_s);
 
 
 
 
         cmd_d.action = "add";
-        cmd_d.add = src.vpath;
         this.queue.append_val(cmd_d);
 
 
