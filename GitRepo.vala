@@ -188,7 +188,7 @@ public class GitRepo : Object
 
         string[]  args = { "git" };
         args +=  "--git-dir";
-        args +=  this.gitdir,
+        args +=  this.gitdir;
         args +=  "--no-pager";
 
 
