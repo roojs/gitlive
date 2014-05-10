@@ -67,7 +67,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
         
         /** -- statics --*/
         
-        public static int indexOfAdd( Array<GtkMonitorQueue> add_files, string add) {
+        public static int indexOfAdd( Array<GitMonitorQueue> add_files, string add) {
             for(var i =0; i < add_files.length; i++) {
                 if (addfiles.index(i).add == add) {
                     return i;
@@ -75,7 +75,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
             }
             return -1;
         }
-        public static  int indexOfMessage(Array<GtkMonitorQueue> messages, string message)  {
+        public static  int indexOfMessage(Array<GitMonitorQueue> messages, string message)  {
             for(var i =0; i < messages.length; i++) {
                 if (messages.index(i).message == message) {
                     return i;
@@ -83,7 +83,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
             }
             return -1;
         }
-        public static string messageToString(Array<GtkMonitorQueue> messages ) {
+        public static string messageToString(Array<GitMonitorQueue> messages ) {
             string[] ret = {};
             for(var i =0; i < messages.length; i++) {
                 ret+= messages.index(i).message;
@@ -107,7 +107,7 @@ public class GitMonitor : Monitor
     public static string gitlive = "";
     
     
-    public Array<GtkMonitorQueue> queue ;
+    public Array<GitMonitorQueue> queue ;
     public bool queueRunning = false;
     
     public DateTime lastAdd;
