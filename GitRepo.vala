@@ -17,7 +17,7 @@ public class GitRepo : Object
     */
      public static int indexOfAdd( Array<GitRepo> repos, string gitpath) {
         for(var i =0; i < repos.length; i++) {
-            if (reos.index(i).gitdir == gitpath) {
+            if (repos.index(i).gitdir == gitpath) {
                 return i;
             }
         }
