@@ -184,7 +184,8 @@ class GitRepo : Object
             // convert arguments.
             
 
-            var args = { "git", 
+            var args = {
+               "git", 
                 "--git-dir", this.gitdir,
                 "--no-pager",
             }; 
@@ -211,6 +212,16 @@ class GitRepo : Object
             //}
             
 
+            var cfg = new SpawnConfig(this.repopath, args , env);
+            
+
+             try {
+                    new Spawn(cfg);
+                   
+                } catch (Error e) {
+                    stdout.printf("Error %s", e.message);
+                }
+
             //print(JSON.stringify(args,null,4));  Seed.quit();
             var sp = new Spawn({
                 cwd : this.repopath,
@@ -222,7 +233,7 @@ class GitRepo : Object
             });
             sp.run();
             
-            if (sp.result) {
+            if (sp.result) {  // errno...
                 print(JSON.stringify(sp.result));
                 
                 print(JSON.stringify(sp.args));
