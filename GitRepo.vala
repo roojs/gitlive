@@ -7,7 +7,7 @@
  *
  *
  */
-class GitRepo : Object
+public class GitRepo : Object
 {
     
 
