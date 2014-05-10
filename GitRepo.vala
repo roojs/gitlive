@@ -184,7 +184,7 @@ public class GitRepo : Object
         // convert arguments.
         
 
-        var args = {
+        string[]  args = {
            "git", 
             "--git-dir", this.gitdir,
             "--no-pager",
