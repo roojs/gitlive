@@ -202,7 +202,7 @@ public class GitRepo : Object
         //this.lastCmd = args.join(" ");
         if(this.debug) {
          
-            print(  string.joinv (", ", args_list);); 
+            print(  string.joinv (", ", args_list)); 
         }
         
         env +=  ("HOME=" + GLib.get_home_dir() );
