@@ -261,7 +261,7 @@ public class GitMonitor : Monitor
         
         string[] success = {};
         string[] failure = {};
-        var repos = new Array<GitRepo>(); //??
+       //var repos = new Array<GitRepo>(); //??
         var done = new Array<GitMonitorQueue>();
         
         // first build a array of repo's to work with
@@ -277,7 +277,7 @@ public class GitMonitor : Monitor
             var cmd = cmds.index(i);
         
             var gitpath = cmd.gitpath; 
-            var ix  = GitRepo.indexOf(repos,  cmd.gitpath);
+            var ix  = GitRepo.indexOf(repos_list,  cmd.gitpath);
             if (ix < 0) {
                 repo_list.append_val(new GitRepo( gitpath ));
                 ix = GitRepo.indexOf(repo_list,  cmd.gitpath);
