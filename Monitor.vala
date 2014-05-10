@@ -37,7 +37,7 @@ public class  MonitorNamePathDir {
         this.name = name;
         this.path = path;
         this.dir = dir;
-        this.action = "?';
+        this.action = "?";
         
     }
 }
