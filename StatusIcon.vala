@@ -38,7 +38,7 @@ static int main (string[] args) {
 public class StatusIconA : StatusIcon {
 
     bool paused = false;
-    static StatusIconA statusicon;
+    public static StatusIconA statusicon;
      
     public StatusIconA() {
         
