@@ -42,7 +42,12 @@ class GitRepo : Object
         // not sure if that is how git works.. but just be certian.
         for (var i = 0; i < files.length;i++) {
             var f = files.item(i);
-            this.git( { "add",   f });
+            try {
+                this.git( { "add",   f });
+            } catch (Error e) {
+                ret += e.message  + "\n";
+            }        
+
         }
     }
     
@@ -52,20 +57,32 @@ class GitRepo : Object
      *
      * @argument {Array} files the files to add.
      */
-    public string remove : function ( files )
+    public string remove : function ( Array<GitMontitorQueue> files )
     {
         // this may fail if files do not exist..
         // should really find out if these are untracked files each..
         // we run multiple versions to make sure that if one failes, it does not ignore the whole lot..
         // not sure if that is how git works.. but just be certian.
-        var _t = this;
-        files.forEach(function(f) {
+        var ret = "";
+
+        for (var i = 0; i < files.length;i++) {
+            var f = files.item(i);
             try {
-                _t.git([ 'rm', { f: true } , { '': true }, f ]);
-            } catch(e) {} // ignore errors..
-        });  
+                this.git( { "rm",  "-f" ,  f });
+            } catch (Error e) {
+                ret += e.message  + "\n";
+            }        
+        }
+
+        return ret;
+
     },
     
+    /**
+    * index of..
+
+    
+
     /**
      * commit:
      * perform a commit.
