@@ -291,7 +291,7 @@ public class GitMonitor : Monitor
                 var cmd = repo.cmds.item(ii);
     
                 
-                switch(cmd.name) {
+                switch(cmd.action) {
                     case "add" :
                         
                         if (GitMontitorQueue.indexOfAdd(add_files, cmd.add) > -1) {
