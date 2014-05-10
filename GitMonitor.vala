@@ -369,13 +369,11 @@ public class GitMonitor : Monitor
                 repo.add(add_files);
             } catch(Error e) {
                 failure +=  e.message;
-                
             }  
             try {
                  repo.remove(remove_files_f);
             } catch(Error e) {
                 failure +=  e.message;
-                
             }  
 
             this.paused = false;
