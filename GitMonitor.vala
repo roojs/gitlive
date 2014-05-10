@@ -102,7 +102,7 @@ public class GitMonitor : Monitor
      *  dset by OWNER... - we should do this as a CTOR.
      *  
      */
-    public string gitlive = '';
+    public static string gitlive = '';
     
     
     public Array<GtkMonitorQueuequeue>;
