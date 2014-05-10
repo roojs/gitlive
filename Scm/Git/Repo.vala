@@ -113,12 +113,13 @@ class GitRepo : Object
      * 
      */
      
-    commit : function( cfg )
+    public string commit ( string message, Array<GitMontitorQueue> files  )
     {
         
-        var args= [  'commit'  ];
+
+        /*
         var env = [];
-        
+
         if (typeof(cfg.name) != 'undefined') {
             args.push( {
                 'author' : cfg.name + ' <' + cfg.email + '>'
@@ -128,16 +129,16 @@ class GitRepo : Object
                 "GIT_COMMITTER_EMAIL" + cfg.email
             );
         }
+
         if (typeof(cfg.changed) != 'undefined') {
             env.push("GIT_AUTHOR_DATE= " + cfg.changed )
             
         }
-        args.push( 
-            { 'm' : (cfg.reason ? cfg.reason : 'Changed') },
-            { '': true }
-        );
-        
-        cfg.files.forEach(function(f) { args.push(f); })
+        */
+        var args = { "commit", "-m", message.length ? message : "Changed" }
+        for (var i = i< files.length ; i++ ) {
+            args += files.items(i).path; // full path?
+        }
          
         return this.git(args, env);
     },
