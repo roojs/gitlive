@@ -356,7 +356,7 @@ public class GitMonitor : Monitor
             // -- DO STUFF..
             
             repo.add(add_files);
-            repo.remove(remove_files);
+            repo.remove(remove_files_f);
             this.paused = false;
             
             
