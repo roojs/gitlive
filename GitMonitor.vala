@@ -365,8 +365,12 @@ public class GitMonitor : Monitor
             // deletions
             
             // -- DO STUFF..
-            
-            repo.add(add_files);
+            try {
+                repo.add(add_files);
+            } catch(Error e) {
+                failure +=  e.message;
+                
+            }  
             repo.remove(remove_files_f);
             this.paused = false;
             
