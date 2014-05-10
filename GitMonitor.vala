@@ -355,7 +355,7 @@ public class GitMonitor : Monitor
 
             var remove_files_f = new Array<GitMonitorQueue>();
             for(var ii = 0;ii < remove_files.length;ii++) {
-                if (GitMonitorQueue.indexOfAdd(add_files,  remove_files.index(ii).rm) > -1 ) {
+                if (GitMonitorQueue.indexOfAdd(add_files,  remove_files.index(ii).vname) > -1 ) {
                      continue;
                 }
                 remove_files_f.append_val(remove_files.index(ii));
