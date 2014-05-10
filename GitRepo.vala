@@ -90,7 +90,8 @@ public class GitRepo : Object
         for (var i = 0; i < files.length;i++) {
             var f = files.index(i).vname;
             try {
-                this.git( { "rm",  "-f" } + f  );
+                string[] cmd = { "rm",  "-f" ,  f  };
+                this.git( cmd );
             } catch (Error e) {
                 ret += e.message  + "\n";
             }        
