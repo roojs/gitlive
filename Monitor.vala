@@ -37,6 +37,7 @@ public class  MonitorNamePathDir {
         this.name = name;
         this.path = path;
         this.dir = dir;
+        this.action = "?';
         
     }
 }
@@ -298,26 +299,33 @@ public class Monitor : Object
                 
             switch(event_type) {
                 case FileMonitorEvent.CHANGED:
+                    src.action = "changed";
                     this.onChanged(src);
                     return; // ingore thise?? -wait for changes_done_htin?
                     
                 case FileMonitorEvent.CHANGES_DONE_HINT:
+                    src.action = "changed";
                     this.onChangesDoneHint(src);
                     return;
                     
                 case FileMonitorEvent.DELETED:
+                    src.action = "rm";
                     this.onDeleted(src);
                     return;
                     
                 case FileMonitorEvent.CREATED:
+                    src.action = "created";
                     this.onCreated(src);
                     return;
                 
                 case FileMonitorEvent.ATTRIBUTE_CHANGED: // eg. chmod/chatt
+                    src.action = "attrib";
                     this.onAttributeChanged(src);
                     return;
                 
                 case FileMonitorEvent.MOVED: // eg. chmod/chatt
+                    src.action = "moved";
+                    dest.action = "moved";
                     this.onMoved(src,dest);
                     return; 
                 
