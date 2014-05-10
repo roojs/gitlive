@@ -141,7 +141,7 @@ public class GitRepo : Object
         }
         */
         string[] args = { "commit", "-m", };
-        arg +=  (message.length > 0  ? message : "Changed" );
+        args +=  (message.length > 0  ? message : "Changed" );
         for (var i = 0; i< files.length ; i++ ) {
             args += files.index(i).vname; // full path?
         }
