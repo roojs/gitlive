@@ -195,7 +195,7 @@ public class GitRepo : Object
             args +=   "--work-tree";
             args += this.repopath; 
         }
-        for (var i = i; i < args_in.length;i++) {
+        for (var i = 0; i < args_in.length;i++) {
             args += args_in[i];
         }            
 
