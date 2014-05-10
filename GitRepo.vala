@@ -97,7 +97,7 @@ public class GitRepo : Object
 
         return ret;
 
-    },
+    }
     
     /**
      * commit:
@@ -135,7 +135,7 @@ public class GitRepo : Object
             
         }
         */
-        var args = { "commit", "-m", message.length ? message : "Changed" }
+        var args = { "commit", "-m", message.length ? message : "Changed" };
         for (var i = i< files.length ; i++ ) {
             args += files.items(i).path; // full path?
         }
