@@ -322,7 +322,10 @@ public class GitMonitor : Monitor
                          
                         messages.append_val(cmd);
                         
-                        break;    
+                        break;
+                    default:
+                        print("Opps unmatched action");
+                        break;
                 } 
             }
             
