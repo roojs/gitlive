@@ -75,7 +75,7 @@ public class GitMontitorQueue : MonitorNamePathDir {
             }
             return -1;
         }
-        public static  int indexOfMessage(Array<GtkMonitorQueuequeue> messages, message)  {
+        public static  int indexOfMessage(Array<GtkMonitorQueuequeue> messages, string message)  {
             for(var i =0; i < messages.length; i++) {
                 if (messages.index(i).message == message) {
                     return i;
