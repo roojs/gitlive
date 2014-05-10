@@ -326,7 +326,7 @@ public class GitMonitor : Monitor
                         }
                         
                         // if file exists, do not try and delete it.
-                        if (FileUtils.test(cmd.rm, FileTest.EXISTS)) {
+                        if (FileUtils.test(cmd.vname, FileTest.EXISTS)) {
                             break;
                         }
                         
@@ -397,7 +397,7 @@ public class GitMonitor : Monitor
          
         try {
             // catch notification failures.. so we can carry on..
-            if (success.length) {
+            if (success.length > 0) {
 
                 
                 var notification = new Notify.Notification(
@@ -411,7 +411,7 @@ public class GitMonitor : Monitor
                 notification.show();   
             }
             
-            if (failure.length) {
+            if (failure.length > 0) {
 
                 var notification = new Notify.Notification({
                     summary: "Git Live ERROR!!",
