@@ -39,7 +39,7 @@ public class GitMontitorQueue : MonitorNamePathDir {
             
             
             // vim.. what a seriously brain dead program..
-            if (this.name == '4913') {
+            if (this.name == "4913") {
                 return true;
             }
             
