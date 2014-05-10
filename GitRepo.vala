@@ -213,7 +213,7 @@ public class GitRepo : Object
         //}
         
 
-        var cfg = new SpawnConfig(this.repopath, args , env);
+        var cfg = new SpawnConfig(this.gitdir, args , env);
         
 
        // may throw error...
