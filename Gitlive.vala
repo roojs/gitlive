@@ -25,7 +25,7 @@ static int main (string[] args) {
 
     Notify.init("gitlive");
 
-    StatusIconA.init();
+    new StatusIconA();
 
 
     GLib.timeout_add(GLib.PRIORITY_LOW, 500, () => {
