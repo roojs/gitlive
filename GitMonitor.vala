@@ -184,7 +184,7 @@ public class GitMonitor : Monitor
             
             //print("LAST RUN?" + last);
             
-            if (last < 5 * TimeSpan.SECOND) { // wait 1/2 a seconnd before running.
+            if (last < 5 * TimeSpan.SECOND) { // wait 5 seconds before running. ????
                 return true;
             }
             //_this.lastAdd = new Date();
