@@ -29,6 +29,7 @@ class GitRepo : Object
         if (!GLib.file_test(this.gitdir , GLib.FileTest.IS_DIR)) {
             this.gitdir = path; // naked...
         }
+        this.cmds = new  Array<GitMontitorQueue> ();
         //Repo.superclass.constructor.call(this,cfg);
         
     } 
