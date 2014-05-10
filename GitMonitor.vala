@@ -491,7 +491,7 @@ public class GitMonitor : Monitor
 
         cmd = new GitMonitorQueue(src);
         cmd.action = "commit";
-        cmd.message = src.vname;
+        cmd.message = cmd.vname;
         this.queue.append_val(cmd);
  
          
@@ -509,12 +509,12 @@ public class GitMonitor : Monitor
         // should check if monitor needs removing..
         // it should also check if it was a directory.. - so we dont have to commit all..
         cmd.action = "rm";
-        cmd.rm = src.vpath;
+        cmd.rm = cmd.vpath;
         this.queue.append_val(cmd);
 
         var cmd = new GitMonitorQueue(src);
         cmd.action = "commit";
-        cmd.message = src.vname;
+        cmd.message = cmd.vname;
         cmd.commit_all = true;
 
         this.queue.append_val(cmd);
