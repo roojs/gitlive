@@ -178,47 +178,47 @@ class GitRepo : Object
      *
      *
      */
+    
+    git: function(string[] args_in, string[] env = {})
+    {
+        // convert arguments.
         
-        git: function(string[] args_in, string[] env = {})
-        {
-            // convert arguments.
-            
 
-            var args = {
-               "git", 
-                "--git-dir", this.gitdir,
-                "--no-pager",
-            }; 
+        var args = {
+           "git", 
+            "--git-dir", this.gitdir,
+            "--no-pager",
+        }; 
 
 
-            if (this.gitdir != this.repopath) {
-                args +=   "--work-tree"
-                args += this.repopath; 
-            }
-            for (var i = i; i < args_in.length;i++) {
-                args += args_in[i];
-            }            
+        if (this.gitdir != this.repopath) {
+            args +=   "--work-tree"
+            args += this.repopath; 
+        }
+        for (var i = i; i < args_in.length;i++) {
+            args += args_in[i];
+        }            
 
-            //this.lastCmd = args.join(" ");
-            if(this.debug) {
-             
-                print(  string.joinv (", ", args_list);); 
-            }
-            
-            env +=  ("HOME=" + GLib.get_home_dir() );
-            // do not need to set gitpath..
-            //if (File.exists(this.repo + '/.git/config')) {
-                //env.push("GITPATH=" + this.repo );
-            //}
-            
+        //this.lastCmd = args.join(" ");
+        if(this.debug) {
+         
+            print(  string.joinv (", ", args_list);); 
+        }
+        
+        env +=  ("HOME=" + GLib.get_home_dir() );
+        // do not need to set gitpath..
+        //if (File.exists(this.repo + '/.git/config')) {
+            //env.push("GITPATH=" + this.repo );
+        //}
+        
 
-            var cfg = new SpawnConfig(this.repopath, args , env);
-            
+        var cfg = new SpawnConfig(this.repopath, args , env);
+        
 
-           // may throw error...
-            var sp = new Spawn(cfg);
-                    
-            //print("GOT: " + output)
-            // parse output for some commands ?
-            return sp.output;
-        },
+       // may throw error...
+        var sp = new Spawn(cfg);
+                
+        //print("GOT: " + output)
+        // parse output for some commands ?
+        return sp.output;
+    }
