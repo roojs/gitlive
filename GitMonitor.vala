@@ -491,7 +491,7 @@ public class GitMonitor : Monitor
 
         cmd = new GitMonitorQueue(src);
         cmd.action = "commit";
-        cmd.message = src.vpath;
+        cmd.message = src.vname;
         this.queue.append_val(cmd);
  
          
@@ -514,7 +514,7 @@ public class GitMonitor : Monitor
 
         var cmd = new GitMonitorQueue(src);
         cmd.action = "commit";
-        cmd.message = src.vpath;
+        cmd.message = src.vname;
         cmd.commit_all = true;
 
         this.queue.append_val(cmd);
