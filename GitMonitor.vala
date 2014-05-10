@@ -107,7 +107,7 @@ public class GitMonitor : Monitor
     public static string gitlive = '';
     
     
-    public Array<GtkMonitorQueuequeue>;
+    public Array<GtkMonitorQueue> queue ;
     public bool queueRunning = false;
     
     public DateTime lastAdd;
