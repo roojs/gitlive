@@ -27,7 +27,7 @@ public class GitRepo : Object
 
 
 
-     public Array<GitMontitorQueue> cmds;
+     public Array<GitMonitorQueue> cmds;
 
 
      public string gitdir;
@@ -46,7 +46,7 @@ public class GitRepo : Object
         if (!GLib.file_test(this.gitdir , GLib.FileTest.IS_DIR)) {
             this.gitdir = path; // naked...
         }
-        this.cmds = new  Array<GitMontitorQueue> ();
+        this.cmds = new  Array<GitMonitorQueue> ();
         //Repo.superclass.constructor.call(this,cfg);
         
     } 
@@ -56,7 +56,7 @@ public class GitRepo : Object
      *
      * @argument {Array} files the files to add.
      */
-    public string add ( Array<GitMontitorQueue> files )
+    public string add ( Array<GitMonitorQueue> files )
     {
         // should really find out if these are untracked files each..
         // we run multiple versions to make sure that if one failes, it does not ignore the whole lot..
@@ -78,7 +78,7 @@ public class GitRepo : Object
      *
      * @argument {Array} files the files to add.
      */
-    public string remove  ( Array<GitMontitorQueue> files )
+    public string remove  ( Array<GitMonitorQueue> files )
     {
         // this may fail if files do not exist..
         // should really find out if these are untracked files each..
@@ -113,7 +113,7 @@ public class GitRepo : Object
      * 
      */
      
-    public string commit ( string message, Array<GitMontitorQueue> files  )
+    public string commit ( string message, Array<GitMonitorQueue> files  )
     {
         
 
