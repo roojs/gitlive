@@ -433,7 +433,7 @@ public class GitMonitor : Monitor
     { 
         return; // always ignore this..?
         //this.parsePath(src);
-    },
+    }
     
 
  
