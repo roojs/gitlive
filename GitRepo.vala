@@ -192,10 +192,10 @@ public class GitRepo : Object
         args +=  "--no-pager";
 
 
-        if (this.gitdir != this.repopath) {
-            args +=   "--work-tree";
-            args += this.repopath; 
-        }
+        //if (this.gitdir != this.repopath) {
+        //    args +=   "--work-tree";
+         //   args += this.repopath; 
+        //}
         for (var i = 0; i < args_in.length;i++) {
             args += args_in[i];
         }            
