@@ -172,4 +172,85 @@ class GitRepo : Object
         return this.git({ "push" });
         
     },
-    
+     /**
+     * git:
+     * The meaty part.. run spawn.. with git..
+     *
+     * At present we just need this to push the current branch.
+     * -- maybe later it will have a few options and do more stuff..
+     *
+     */
+        
+        git: function(args_in,env)
+        {
+            // convert arguments.
+            
+            //print(JSON.stringify(args_in,null,4));
+            args_in.unshift( {
+                'git-dir' : this.gitdir,
+                'no-pager' : true 
+            });
+            var args = ['git' ];
+            
+            if (this.gitdir != this.repopath) {
+                args_in.unshift( { "work-tree" :  this.repopath } ); 
+            }
+            
+            args_in.forEach(function(arg) { 
+                 if (typeof(arg) == 'string') {
+                    args.push(arg);
+                    return;
+                }
+                if (typeof(arg) == 'object') {
+                    for(var k in arg) {
+                        var v = arg[k];
+                        
+                        args.push(k.length != 1 ? ('--' + k) : ('-' + k));
+                        
+                        if (v === true) {
+                            continue;;
+                        }
+                        args.push(v);
+                    }
+                }
+            });
+            this.lastCmd = args.join(" ");
+            if(this.debug) {
+               
+                print( args.join(" ")); 
+            }
+            env = env || [];
+            env.push(  "HOME=" + GLib.get_home_dir() );
+            // do not need to set gitpath..
+            //if (File.exists(this.repo + '/.git/config')) {
+                //env.push("GITPATH=" + this.repo );
+            //}
+            
+            //print(JSON.stringify(args,null,4));  Seed.quit();
+            var sp = new Spawn({
+                cwd : this.repopath,
+                args : args,
+                env : env, // optional
+                debug: this.debug,
+                exceptions : false,
+                async : false
+            });
+            sp.run();
+            
+            if (sp.result) {
+                print(JSON.stringify(sp.result));
+                
+                print(JSON.stringify(sp.args));
+                print(JSON.stringify(sp.stderr));
+                
+                throw {
+                    name    : "RepoSpawnError",
+                    message : sp.stderr,
+                    spawn   : sp
+                };                
+            }
+             
+            //print("GOT: " + output)
+            // parse output for some commands ?
+            return sp.output;
+        },
