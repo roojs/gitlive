@@ -2,7 +2,7 @@
 
 /*
  valac  --pkg gio-2.0  --pkg posix 
-        GitLive.vala \
+      GitLive.vala \
       Monitor.vala \
       GitMonitor.vala \
       Spawn.vala \
