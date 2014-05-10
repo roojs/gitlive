@@ -274,6 +274,7 @@ public class GitMonitor : Monitor
         
         for(var i = 0; i < cmds.length; i++) {
            
+            var cmd = cmds.index(i);
         
             var gitpath = cmd.gitpath; 
             var ix  = GitRepo.indexOf(this.repos,  cmd.gitpath);
