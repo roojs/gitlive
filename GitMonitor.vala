@@ -59,7 +59,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
             //    return true;
             //}
             // ignore anything in top level!!!!
-            if (!this.vpath.length) {
+            if (this.vpath.length < 1) {
                 return true;
             }
             
