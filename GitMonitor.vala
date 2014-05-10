@@ -362,7 +362,7 @@ public class GitMonitor : Monitor
             
             try { 
                 success.append_val(repo.commit(
-                    GitMontitorQueue.messageToString(messages)
+                    GitMontitorQueue.messageToString(messages),
                     add_files  
                 ));
                 success.push(repo.push());
