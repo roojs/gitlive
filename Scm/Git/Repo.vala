@@ -81,15 +81,15 @@ class GitRepo : Object
     /**
     * index of..
     */
-     public int GitMontitorQueue.indexOfAdd( Array<GtkMonitorQueuequeue> add_files, string add) {
-            for(var i =0; i < add_files.length; i++) {
-                if (addfiles.index(i).add == add) {
+     public static int indexOfAdd( Array<GitRepo> repos, string gitpath) {
+            for(var i =0; i < repos.length; i++) {
+                if (reos.index(i).gitpath == add) {
                     return i;
                 }
             }
             return -1;
         }
-
+    }
     /**
      * commit:
      * perform a commit.
