@@ -116,14 +116,14 @@ public class GitMonitor : Monitor
     public void pause() {
         this.paused = true;
         // what does this do to the old one...
-        this.queue = new Array<FileMonitor> ();
+        this.queue = new Array<GitMonitorQueue> ();
         StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
 
     }
     
     public void resume () {
         this.paused = false;
-        this.queue = new Array<FileMonitor> ();
+        this.queue = new Array<GitMonitorQueue> ();
         StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
         
         
