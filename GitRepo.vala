@@ -62,7 +62,7 @@ public class GitRepo : Object
         // we run multiple versions to make sure that if one failes, it does not ignore the whole lot..
         // not sure if that is how git works.. but just be certian.
         for (var i = 0; i < files.length;i++) {
-            var f = files.item(i).vname;
+            var f = files.index(i).vname;
             try {
                 this.git( { "add",   f });
             } catch (Error e) {
@@ -87,7 +87,7 @@ public class GitRepo : Object
         var ret = "";
 
         for (var i = 0; i < files.length;i++) {
-            var f = files.item(i).vname;
+            var f = files.index(i).vname;
             try {
                 this.git( { "rm",  "-f" ,  f });
             } catch (Error e) {
@@ -137,7 +137,7 @@ public class GitRepo : Object
         */
         var args = { "commit", "-m", message.length > 0  ? message : "Changed" };
         for (var i = 0; i< files.length ; i++ ) {
-            args += files.items(i).vname; // full path?
+            args += files.index(i).vname; // full path?
         }
          
         return this.git(args, env);
