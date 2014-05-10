@@ -169,11 +169,11 @@ public class Spawn : Object
     /**
      * @property output {String} resulting output
      */
-    string output  = "";
+    public string output  = "";
     /**
      * @property stderr {String} resulting output from stderr
      */
-    string stderr  = "";
+    public string stderr  = "";
      /**
      * @property result {Number} execution result.
      */
