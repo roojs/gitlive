@@ -57,7 +57,7 @@ public class GitRepo : Object
      *
      * @argument {Array} files the files to add.
      */
-    public string add ( Array<GitMonitorQueue> files )
+    public string add ( Array<GitMonitorQueue> files ) throws Error, SpawnError
     {
         // should really find out if these are untracked files each..
         // we run multiple versions to make sure that if one failes, it does not ignore the whole lot..
@@ -82,7 +82,7 @@ public class GitRepo : Object
      *
      * @argument {Array} files the files to add.
      */
-    public string remove  ( Array<GitMonitorQueue> files )
+    public string remove  ( Array<GitMonitorQueue> files ) throws Error, SpawnError
     {
         // this may fail if files do not exist..
         // should really find out if these are untracked files each..
@@ -118,7 +118,7 @@ public class GitRepo : Object
      * 
      */
      
-    public string commit ( string message, Array<GitMonitorQueue> files  )
+    public string commit ( string message, Array<GitMonitorQueue> files  ) throws Error, SpawnError
     {
         
 
@@ -157,7 +157,7 @@ public class GitRepo : Object
      * -- maybe later it will have a few options and do more stuff..
      *
      */
-    public string pull ()
+    public string pull () throws Error, SpawnError
     {
         // should probably hand error conditions better... 
         string[] cmd = { "pull" };
@@ -174,7 +174,7 @@ public class GitRepo : Object
      * -- maybe later it will have a few options and do more stuff..
      *
      */
-    public string push ()
+    public string push () throws Error, SpawnError
     {
         // should 
         return this.git({ "push" });
