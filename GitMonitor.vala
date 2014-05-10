@@ -349,7 +349,7 @@ public class GitMonitor : Monitor
             
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
-            stdout.printf("ADD : %d files"  , add_files.length);
+            stdout.printf("ADD : %u files"  , add_files.length);
             
             // make sure added files do not get removed..
 
