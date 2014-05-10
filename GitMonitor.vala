@@ -58,7 +58,10 @@ public GitMontitorQueue : MonitorNamePathDir {
             
             return false;
         }
-        public int GitMontitorQueue.indexOfAdd( Array<GtkMonitorQueuequeue> add_files, string add) {
+        
+        /** -- statics --*/
+        
+        public static int indexOfAdd( Array<GtkMonitorQueuequeue> add_files, string add) {
             for(var i =0; i < add_files.length; i++) {
                 if (addfiles.index(i).add == add) {
                     return i;
@@ -66,7 +69,7 @@ public GitMontitorQueue : MonitorNamePathDir {
             }
             return -1;
         }
-        public int GitMontitorQueue.indexOfMessage(Array<GtkMonitorQueuequeue> messages, message)  {
+        public static  int indexOfMessage(Array<GtkMonitorQueuequeue> messages, message)  {
             for(var i =0; i < messages.length; i++) {
                 if (messages.index(i).message == message) {
                     return i;
@@ -74,7 +77,7 @@ public GitMontitorQueue : MonitorNamePathDir {
             }
             return -1;
         }
-        public string GitMontitorQueue.messageToString(Array<GtkMonitorQueuequeue> messages ) {
+        public static string messageToString(Array<GtkMonitorQueuequeue> messages ) {
             string[] ret = {};
             for(var i =0; i < messages.length; i++) {
                 ret+= messages.index(i).message;
@@ -256,7 +259,7 @@ public class GitMonitor : Monitor
            
         
             var gitpath = cmd.gitpath; 
-            var ix  = GitMontitorRepo.indexOf(this.repos,  cmd.gitpath);
+            var ix  = GitRepo.indexOf(this.repos,  cmd.gitpath);
             if (ix < 0) {
                     repo_list.append_val(new GitRepo( gitpath ));
                     ix = GitRepo.indexOf(this.repos,  cmd.gitpath);
