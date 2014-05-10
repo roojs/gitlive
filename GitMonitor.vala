@@ -175,7 +175,7 @@ public class GitMonitor : Monitor
         
         Timeout.add_full(Priority.LOW, 1000, () => {
             //TIMEOUT", _this.queue.length , _this.queueRunning].join(', '));
-            if (_this.queue.length < 1  || _this.queueRunning) {
+            if (this.queue.length < 1  || this.queueRunning) {
                 return true;
             }
 
