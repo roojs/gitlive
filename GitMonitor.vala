@@ -121,7 +121,7 @@ public class GitMonitor : Monitor
     public DateTime lastAdd;
      
      
-    public void pause() {
+    public new void pause() {
         this.paused = true;
         // what does this do to the old one...
         this.queue = new Array<GitMonitorQueue> ();
@@ -129,7 +129,7 @@ public class GitMonitor : Monitor
 
     }
     
-    public void resume () {
+    public new void resume () {
         this.paused = false;
         this.queue = new Array<GitMonitorQueue> ();
         StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
@@ -141,7 +141,7 @@ public class GitMonitor : Monitor
      * and run the queue every 500 milliseconds..
      *
      */
-    public void start() {
+    public new void start() {
         StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_REFRESH );
         
          
@@ -197,13 +197,13 @@ public class GitMonitor : Monitor
     }
 
 
-    public void stop() {
+    public new void stop() {
         StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );;
         base.stop();
     }
     
     
-    public void monitor (string path,  int depth = 0)
+    public new void monitor (string path,  int depth = 0)
     {
         
         //var depth = typeof(depth) == 'number'  ? depth *1 : 0;
