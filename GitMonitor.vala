@@ -583,14 +583,14 @@ public class GitMonitor : Monitor
         if (cmd_d.gitpath != cmd_s.gitpath) {
             this.onDeleted(src);
             this.onCreated(dest);
-            this.onChangedDoneHint(dest);
+            this.onChangesDoneHint(dest);
             return;
         }
         // needs to handle move to/from unsupported types..
         
         if (this.shouldIgnore(src)) {
             this.onCreated(dest);
-            this.onChangedDoneHint(dest);
+            this.onChangesDoneHint(dest);
             return;
 
         }
