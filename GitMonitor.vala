@@ -147,7 +147,7 @@ public class GitMonitor : Monitor
          
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         
-        Timeout.add_full(GLib.PRIORITY_LOW, 500, () => {
+        Timeout.add_full(Priortiy.LOW, 500, () => {
 
             // call this.monitor on each of 'top'
             for(int i = 0; i < this.top.length ; i++) {
@@ -172,7 +172,7 @@ public class GitMonitor : Monitor
 
         });
         
-        Timeout.add_full(GLib.PRIORITY_LOW, 1000, () => {
+        Timeout.add_full(Priority.LOW, 1000, () => {
             //TIMEOUT", _this.queue.length , _this.queueRunning].join(', '));
             if (!_this.queue.length || _this.queueRunning) {
                 return true;
