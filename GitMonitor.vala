@@ -248,7 +248,7 @@ public class GitMonitor : Monitor
         this.queue = new Array<GitMonitorQueue>();// empty queue!
 
         
-        var success = {};
+        string[] success = {};
         var failure = new Array<GitMonitorQueue>();
         var repos = new Array<GitRepo>(); //??
         var done = new Array<GitMonitorQueue>();
