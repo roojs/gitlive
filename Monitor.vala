@@ -27,7 +27,7 @@ static int main (string[] args) {
 
 
 public class  MonitorNamePathDir {
-    
+    public string action;
     public string name;
     public string path;
     public string dir;
