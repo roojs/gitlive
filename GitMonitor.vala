@@ -159,11 +159,11 @@ public class GitMonitor : Monitor
            
             
             try { 
-                var notification = new Notify.Notification({
+                var notification = new Notify.Notification(
                     "Git Live",
                     GitMonitor.gitlive + "\nMonitoring " + _this.monitors.length + " Directories",
                      "dialog-information"
-                });
+                );
         
                 notification.set_timeout(5);
                 notification.show();
