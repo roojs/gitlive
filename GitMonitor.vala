@@ -19,9 +19,9 @@ public class GitMontitorQueue : MonitorNamePathDir {
             this.commit_all = false;
  
            
-            var vpath_ar = this.path.substring(GitMonitor.gitlive.length +1).split('/', 0);
+            var vpath_ar = this.path.substring(GitMonitor.gitlive.length +1).split("/", 0);
             
-            this.gitpath = GitMonitor.gitlive + '/' + vpath_ar[0];
+            this.gitpath = GitMonitor.gitlive + "/" + vpath_ar[0];
             
             string[]  vpath = {};
             for (var i = 1; i< vpath_ar.length; i++) {
@@ -104,7 +104,7 @@ public class GitMonitor : Monitor
      *  dset by OWNER... - we should do this as a CTOR.
      *  
      */
-    public static string gitlive = '';
+    public static string gitlive = "";
     
     
     public Array<GtkMonitorQueue> queue ;
@@ -308,7 +308,7 @@ public class GitMonitor : Monitor
                         add_files.append_val(cmd);
                         break;
                     
-                    case 'rm':
+                    case "rm":
                         if (GitMontitorQueue.indexOfAdd(add_files, cmd.rm) > -1 ) {
                            break;
                         }
@@ -321,7 +321,7 @@ public class GitMonitor : Monitor
                         remove_files.append_val(cmd);
                         break;
                     
-                    case 'commit' :
+                    case "commit" :
                         if (GitMontitorQueue.indexOfMessage(messages, cmd.message) > -1 ) {
                            break;
                         }
