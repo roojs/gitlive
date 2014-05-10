@@ -271,7 +271,7 @@ public class GitMonitor : Monitor
             //    repo_list[gitpath].cmds = [];
              //   repo_list[gitpath].pull();
             //}
-            repo_list.item(ix).append_val(cmd);
+            repo_list.item(ix).cmds.append_val(cmd);
 
         }
         this.paused = false;
