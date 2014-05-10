@@ -90,7 +90,7 @@ public class GitRepo : Object
         for (var i = 0; i < files.length;i++) {
             var f = files.index(i).vname;
             try {
-                this.git( { "rm",  "-f" ,  f });
+                this.git( { "rm",  "-f" } + f  );
             } catch (Error e) {
                 ret += e.message  + "\n";
             }        
@@ -136,7 +136,8 @@ public class GitRepo : Object
             
         }
         */
-        var args = { "commit", "-m", message.length > 0  ? message : "Changed" };
+        var args = { "commit", "-m", };
+        arg +=  (message.length > 0  ? message : "Changed" );
         for (var i = 0; i< files.length ; i++ ) {
             args += files.index(i).vname; // full path?
         }
