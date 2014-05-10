@@ -1,7 +1,7 @@
 
 
 /*
- valac  --pkg gio-2.0  --pkg posix  --pkg gtk+-3.0 \
+ valac  --pkg gio-2.0  --pkg posix  --pkg gtk+-3.0 --pkg libnotify \
       Gitlive.vala \
       Monitor.vala \
       GitMonitor.vala \
