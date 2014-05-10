@@ -1,8 +1,8 @@
 
 
 /*
- valac  --pkg gio-2.0  --pkg posix  --pkg gtk+-3.0 
-      GitLive.vala \
+ valac  --pkg gio-2.0  --pkg posix  --pkg gtk+-3.0 \
+      Gitlive.vala \
       Monitor.vala \
       GitMonitor.vala \
       Spawn.vala \
