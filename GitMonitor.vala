@@ -467,7 +467,7 @@ public class GitMonitor : Monitor
         this.queue.append_val(cmd);
 
         var cmd = new GitMontitorQueue(src, this.gitlive);
-        cmd.name = "commit";
+        cmd.action = "commit";
         cmd.message = src.vpath;
         this.queue.append_val(cmd);
  
@@ -485,12 +485,12 @@ public class GitMonitor : Monitor
         }
         // should check if monitor needs removing..
         // it should also check if it was a directory.. - so we dont have to commit all..
-        cmd.name = "rm";
+        cmd.action = "rm";
         cmd.rm = src.vpath;
         this.queue.append_val(cmd);
 
         var cmd = new GitMontitorQueue(src, this.gitlive);
-        cmd.name = "commit";
+        cmd.action = "commit";
         cmd.message = src.vpath;
         cmd.commit_all = true;
 
@@ -537,12 +537,12 @@ public class GitMonitor : Monitor
         if (cmd.shouldIgnore()) {
             return;
         }
-        cmd.name = "add";
+        cmd.action = "add";
         cmd.add = src.vpath;
         this.queue.append_val(cmd);
 
         var cmd = new GitMontitorQueue(src, this.gitlive);
-        cmd.name = "commit";
+        cmd.action = "commit";
         cmd.message = "Attribute changed " + cmd.vpath;
         this.queue.append_val(cmd);
     }
@@ -578,20 +578,20 @@ public class GitMonitor : Monitor
             return;
         }
         
-        cmd_s.name = "rm";
+        cmd_s.action = "rm";
         cmd_s.rm = src.vpath;
         this.queue.append_val(cmd_s);
 
 
 
 
-        cmd_d.name = "add";
+        cmd_d.action = "add";
         cmd_d.add = src.vpath;
         this.queue.append_val(cmd_d);
 
 
         var cmd = new GitMontitorQueue(dest, this.gitlive);
-        cmd.name = "commit";
+        cmd.action = "commit";
         cmd.message = "MOVED " + cmd_s.vpath + " to " + cmd_d.vpath;
         this.queue.append_val(cmd);
 
