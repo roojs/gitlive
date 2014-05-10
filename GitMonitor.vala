@@ -11,7 +11,6 @@ public class GitMonitorQueue : MonitorNamePathDir {
         public string message ; // for commit
         public bool commit_all;
         
-        public string add; // 
 
 
 
