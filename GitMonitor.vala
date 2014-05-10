@@ -1,6 +1,10 @@
 
 
 public GitMontitorQueue : MonitorNamePathDir {
+        // name = basename
+        // path = full path..
+        // dir = dir path
+    
         public string gitpath;
         public string vpath;
         public string message ; // for commit
