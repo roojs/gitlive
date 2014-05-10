@@ -12,9 +12,10 @@ public class GitMonitorQueue : MonitorNamePathDir {
 
 
         public GitMonitorQueue(MonitorNamePathDir f) {
-            this.name = f.name;
-            this.path = f.path;
-            this.dir = f.dir;
+
+            base(f.name, f.path, f.dir);
+
+
             this.message = "";
             this.commit_all = false;
  
