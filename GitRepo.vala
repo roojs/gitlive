@@ -138,7 +138,7 @@ public class GitRepo : Object
             
         }
         */
-        var args = { "commit", "-m", };
+        string[] args = { "commit", "-m", };
         arg +=  (message.length > 0  ? message : "Changed" );
         for (var i = 0; i< files.length ; i++ ) {
             args += files.index(i).vname; // full path?
@@ -158,7 +158,9 @@ public class GitRepo : Object
     public string pull ()
     {
         // should probably hand error conditions better... 
-        return this.git({ "pull" });
+        string[] cmd = { "pull" };
+        return this.git( cmd );
+
         
         
     }
