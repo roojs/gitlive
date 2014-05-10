@@ -169,7 +169,7 @@ class GitRepo : Object
     push : function ()
     {
         // should 
-        return this.git({ 'push' });
+        return this.git({ "push" });
         
     },
     
