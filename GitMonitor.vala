@@ -429,7 +429,7 @@ public class GitMonitor : Monitor
    
 
 
-    public void onChanged(MonitorNamePathDir src) { }
+    public void onChanged(MonitorNamePathDir src) 
     { 
         return; // always ignore this..?
         //this.parsePath(src);
@@ -441,7 +441,7 @@ public class GitMonitor : Monitor
      *  results in  git add  + git commit..
      *
      */
-    public void onChangesDoneHint(MonitorNamePathDir src) { }
+    public void onChangesDoneHint(MonitorNamePathDir src)  
     { 
         
         if (this.paused) {
