@@ -176,12 +176,10 @@ class GitRepo : Object
      * git:
      * The meaty part.. run spawn.. with git..
      *
-     * At present we just need this to push the current branch.
-     * -- maybe later it will have a few options and do more stuff..
      *
      */
         
-        git: function(args_in,env)
+        git: function(string[] args_in, string[] env = {})
         {
             // convert arguments.
             
