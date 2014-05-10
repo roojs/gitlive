@@ -251,7 +251,7 @@ public class GitMonitor : Monitor
 
         var cmds = new Array<GitMonitorQueue>();
         for(var i = 0; i < this.queue.length; i++) {
-            cmds.append_val(this.queue.item(i));
+            cmds.append_val(this.queue.index(i));
         }
 
         this.queue = new Array<GitMonitorQueue>();// empty queue!
@@ -286,7 +286,7 @@ public class GitMonitor : Monitor
             //    repo_list[gitpath].cmds = [];
              //   repo_list[gitpath].pull();
             //}
-            repo_list.item(ix).cmds.append_val(cmd);
+            repo_list.index(ix).cmds.append_val(cmd);
 
         }
         this.paused = false;
@@ -295,7 +295,7 @@ public class GitMonitor : Monitor
         for(var i = 0;i < repo_list.length;i++) {
     
 
-            var repo = repo_list.item(i);
+            var repo = repo_list.index(i);
 
             var add_files = new Array<GitMonitorQueue>();
             var remove_files = new Array<GitMonitorQueue>();
@@ -303,7 +303,7 @@ public class GitMonitor : Monitor
             //print(JSON.stringify(repo.cmds,null,4));
             
             for(var ii = 0;ii < repo.cmds.length;ii++) {
-                var cmd = repo.cmds.item(ii);
+                var cmd = repo.cmds.index(ii);
     
                 
                 switch(cmd.action) {
@@ -352,10 +352,10 @@ public class GitMonitor : Monitor
 
             var remove_files_f = new Array<GitMonitorQueue>();
             for(var ii = 0;ii < remove_files.length;ii++) {
-                if (GitMonitorQueue.indexOfAdd(add_files,  remove_files.item(ii).rm) > -1 ) {
+                if (GitMonitorQueue.indexOfAdd(add_files,  remove_files.index(ii).rm) > -1 ) {
                      continue;
                 }
-                remove_files_f.append_val(remove_files.item(ii));
+                remove_files_f.append_val(remove_files.index(ii));
             };
             stdout.printf("REMOVE : %d files"  , remove_files.length);
              
