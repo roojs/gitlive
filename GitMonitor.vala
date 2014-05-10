@@ -145,7 +145,7 @@ public class GitMonitor : Monitor
         StatusIconA.statusicon.set_from_stock( Gtk.Stock.REFRESH );
         
          
-        this.lastAdd = new DateTime.now(); 
+        this.lastAdd = new DateTime.now(new TimeZone.local()); 
         
         Timeout.add_full(GLib.PRIORITY_LOW, 500, () => {
 
@@ -178,7 +178,7 @@ public class GitMonitor : Monitor
                 return true;
             }
 
-            var last = this.lastAdd.difference(new DateTime.now());
+            var last = this.lastAdd.difference(new DateTime.now(new TimeZone.local()));
 
             
             //print("LAST RUN?" + last);
@@ -451,7 +451,7 @@ public class GitMonitor : Monitor
         }
             
 
-        this.lastAdd = new DateTime.now(); 
+        this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
@@ -489,7 +489,7 @@ public class GitMonitor : Monitor
         if (this.paused) {
             return true;
         }
-        this.lastAdd = new DateTime.now(); 
+        this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
@@ -513,7 +513,7 @@ public class GitMonitor : Monitor
         if (this.paused) {
             return true;
         }
-        this.lastAdd = new DateTime.now(); 
+        this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
@@ -543,7 +543,7 @@ public class GitMonitor : Monitor
         if (this.paused) {
             return true;
         }
-        this.lastAdd = new DateTime.now(); 
+        this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
@@ -560,7 +560,7 @@ public class GitMonitor : Monitor
 
    public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest)  
     { 
-        this.lastAdd = new DateTime.now(); 
+        this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd_s = new GitMonitorQueue(src);
 
         var cmd_d = new GitMonitorQueue(src);
