@@ -62,7 +62,7 @@ public class GitRepo : Object
         // should really find out if these are untracked files each..
         // we run multiple versions to make sure that if one failes, it does not ignore the whole lot..
         // not sure if that is how git works.. but just be certian.
-        return = "";
+        var ret = "";
         for (var i = 0; i < files.length;i++) {
             var f = files.index(i).vname;
             try {
