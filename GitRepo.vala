@@ -141,7 +141,7 @@ public class GitRepo : Object
         }
          
         return this.git(args, env);
-    },
+    }
     
     /**
      * pull:
@@ -151,13 +151,13 @@ public class GitRepo : Object
      * -- maybe later it will have a few options and do more stuff..
      *
      */
-    pull : function ()
+    public string pull ()
     {
         // should probably hand error conditions better... 
         return this.git({ "pull" });
         
         
-    },
+    }
     /**
      * push:
      * Send local changes to remote repo(s)
@@ -166,12 +166,12 @@ public class GitRepo : Object
      * -- maybe later it will have a few options and do more stuff..
      *
      */
-    push : function ()
+    public string push ()
     {
         // should 
         return this.git({ "push" });
         
-    },
+    }
      /**
      * git:
      * The meaty part.. run spawn.. with git..
@@ -179,7 +179,7 @@ public class GitRepo : Object
      *
      */
     
-    git: function(string[] args_in, string[] env = {})
+    public string git(string[] args_in, string[] env = {})
     {
         // convert arguments.
         
