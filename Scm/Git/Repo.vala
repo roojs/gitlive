@@ -215,37 +215,9 @@ class GitRepo : Object
             var cfg = new SpawnConfig(this.repopath, args , env);
             
 
-             try {
-                    new Spawn(cfg);
-                   
-                } catch (Error e) {
-                    stdout.printf("Error %s", e.message);
-                }
-
-            //print(JSON.stringify(args,null,4));  Seed.quit();
-            var sp = new Spawn({
-                cwd : this.repopath,
-                args : args,
-                env : env, // optional
-                debug: this.debug,
-                exceptions : false,
-                async : false
-            });
-            sp.run();
-            
-            if (sp.result) {  // errno...
-                print(JSON.stringify(sp.result));
-                
-                print(JSON.stringify(sp.args));
-                print(JSON.stringify(sp.stderr));
-                
-                throw {
-                    name    : "RepoSpawnError",
-                    message : sp.stderr,
-                    spawn   : sp
-                };                
-            }
-             
+           // may throw error...
+            var sp = new Spawn(cfg);
+                    
             //print("GOT: " + output)
             // parse output for some commands ?
             return sp.output;
