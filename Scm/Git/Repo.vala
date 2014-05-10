@@ -222,3 +222,5 @@ class GitRepo : Object
         // parse output for some commands ?
         return sp.output;
     }
+
+}
