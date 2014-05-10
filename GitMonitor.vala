@@ -42,7 +42,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
         
         }
 
-        public bool shouldIgnore(GitMonitor gm)
+        public bool shouldIgnore()
         {
             
             
