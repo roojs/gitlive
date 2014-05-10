@@ -28,7 +28,7 @@ static int main (string[] args) {
     new StatusIconA();
 
 
-    GLib.timeout_add(GLib.PRIORITY_LOW, 500, () => {
+    Timeout.add_full(Priority.LOW, 500, () => {
         // this should start after we have shown the icon...
         GitMonitor.add(GitMonitor.gitlive);
         GitMonitor.start();
