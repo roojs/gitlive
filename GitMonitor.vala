@@ -11,7 +11,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
         public bool commit_all;
 
 
-        public GitMontitorQueue(MonitorNamePathDir f) {
+        public GitMonitorQueue(MonitorNamePathDir f) {
             this.name = f.name;
             this.path = f.path;
             this.dir = f.dir;
