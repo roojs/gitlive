@@ -19,8 +19,17 @@
 
 
 static int main (string[] args) {
-    // A reference to our file
-    //var file = File.new_for_path ("data.txt");
+    Gtk.init (ref args);
+    
+    GitMonitor.gitlive =  GLib.get_home_dir() + "/gitlive";
+
+    Notify.init("gitlive");
+
+    StatusIcon.init();
+
+
+
+
     MainLoop loop = new MainLoop ();
     print("starting");
     var m = new Monitor();
@@ -28,6 +37,8 @@ static int main (string[] args) {
     m.add("/home/alan/gitlive");
     m.start();
     loop.run ();
+
+    Gtk.main ();
 
     return 0;
 
