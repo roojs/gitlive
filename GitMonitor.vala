@@ -413,12 +413,12 @@ public class GitMonitor : Monitor
             
             if (failure.length > 0) {
 
-                var notification = new Notify.Notification({
+                var notification = new Notify.Notification(
                     summary: "Git Live ERROR!!",
                     string.joinv("\n",failure),
                     "dialog-information"
                     
-                });
+                );
     
                 notification.set_timeout(5); // show errros for longer
                 notification.show();   
