@@ -10,7 +10,11 @@
 public class GitRepo : Object
 {
     
+    public Array<GitMonitorQueue> cmds;
 
+
+    public string gitdir;
+    public bool debug = false;
 
     /**
     * index of.. matching gitpath..
@@ -27,10 +31,7 @@ public class GitRepo : Object
 
 
 
-     public Array<GitMonitorQueue> cmds;
-
-
-     public string gitdir;
+   
     /**
      * constructor:
      * 
