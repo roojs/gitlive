@@ -194,7 +194,7 @@ public class GitMonitor : Monitor
         
             this.runQueue();
             return true;
-        },null,null);
+        });
         
       
     }
@@ -489,7 +489,7 @@ public class GitMonitor : Monitor
 
         this.queue.append_val(cmd);
 
-        var cmd = new GitMonitorQueue(src);
+        cmd = new GitMonitorQueue(src);
         cmd.action = "commit";
         cmd.message = src.vpath;
         this.queue.append_val(cmd);
