@@ -18,7 +18,7 @@
 
 
 using Gtk;
-
+/*
 
 static int main (string[] args) {
     // A reference to our file
@@ -30,7 +30,7 @@ static int main (string[] args) {
      
 
 }
- 
+ */
 
 
 //public StatusIconA statusicon;
