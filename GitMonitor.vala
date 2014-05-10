@@ -414,7 +414,7 @@ public class GitMonitor : Monitor
             if (failure.length > 0) {
 
                 var notification = new Notify.Notification(
-                    summary: "Git Live ERROR!!",
+                      "Git Live ERROR!!",
                     string.joinv("\n",failure),
                     "dialog-information"
                     
