@@ -187,7 +187,7 @@ public class GitRepo : Object
      *
      */
     
-    public string git(string[] args_in, ?string[] env) throws Error, SpawnError
+    public string git(string[] args_in, ) throws Error, SpawnError
     {
         // convert arguments.
         
@@ -197,9 +197,9 @@ public class GitRepo : Object
         args +=  this.gitdir;
         args +=  "--no-pager";
 
-        if (env == null) {
-            env = {};
-        }
+         
+
+        
 
         //if (this.gitdir != this.repopath) {
         //    args +=   "--work-tree";
@@ -214,6 +214,7 @@ public class GitRepo : Object
          
             print(  string.joinv (", ", args)); 
         }
+        string[]   env = {};
         string  home = "HOME=" + Environment.get_home_dir() ;
         env +=  home ;
         // do not need to set gitpath..
