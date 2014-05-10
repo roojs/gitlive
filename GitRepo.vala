@@ -78,7 +78,7 @@ public class GitRepo : Object
      *
      * @argument {Array} files the files to add.
      */
-    public string remove : function ( Array<GitMontitorQueue> files )
+    public string remove  ( Array<GitMontitorQueue> files )
     {
         // this may fail if files do not exist..
         // should really find out if these are untracked files each..
