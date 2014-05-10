@@ -203,13 +203,14 @@ class GitRepo : Object
              
                 print(  string.joinv (", ", args_list);); 
             }
-            env = env || [];
-            env.push(  "HOME=" + GLib.get_home_dir() );
+            
+            env +=  ("HOME=" + GLib.get_home_dir() );
             // do not need to set gitpath..
             //if (File.exists(this.repo + '/.git/config')) {
                 //env.push("GITPATH=" + this.repo );
             //}
             
+
             //print(JSON.stringify(args,null,4));  Seed.quit();
             var sp = new Spawn({
                 cwd : this.repopath,
