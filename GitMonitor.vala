@@ -372,7 +372,12 @@ public class GitMonitor : Monitor
                 
             }  
             try {
-            repo.remove(remove_files_f);
+                 repo.remove(remove_files_f);
+            } catch(Error e) {
+                failure +=  e.message;
+                
+            }  
+
             this.paused = false;
             
             
