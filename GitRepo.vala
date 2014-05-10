@@ -65,7 +65,7 @@ public class GitRepo : Object
         for (var i = 0; i < files.length;i++) {
             var f = files.index(i).vname;
             try {
-                this.git( { "add",   f });
+                this.git( { "add" } + f);
             } catch (Error e) {
                 ret += e.message  + "\n";
             }        
