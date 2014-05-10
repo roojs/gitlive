@@ -43,9 +43,9 @@ public class GitMontitorQueue : MonitorNamePathDir {
                 return true;
             }
             
-            if (this.name[0] == '.') {
+            if (this.name[0] == ".") {
                 // except!
-                if (this.name == '.htaccess') {
+                if (this.name == ".htaccess") {
                     return false;
                 }
                 
