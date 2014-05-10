@@ -161,7 +161,7 @@ public class GitMonitor : Monitor
             try { 
                 var notification = new Notify.Notification(
                     "Git Live",
-                    GitMonitor.gitlive + "\nMonitoring " + _this.monitors.length + " Directories",
+                    GitMonitor.gitlive + "\nMonitoring " + this.monitors.length + " Directories",
                      "dialog-information"
                 );
         
