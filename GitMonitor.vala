@@ -9,7 +9,7 @@ public GitMontitorQueue : MonitorNamePathDir {
         public string vpath;
         public string message ; // for commit
         public bool commit_all
-        public GitMontitorQueue(MonitorNamePathDir f, string gitlive) {
+        public GitMontitorQueue(MonitorNamePathDir f) {
             this.name = f.name;
             this.path = f.path;
             this.dir = f.dir;
@@ -448,7 +448,7 @@ public class GitMonitor : Monitor
             
 
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src, GitMonitor.gitlive);
+        var cmd = new GitMontitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
         }
