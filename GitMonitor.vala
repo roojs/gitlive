@@ -321,7 +321,7 @@ public class GitMonitor : Monitor
                         break;
                     
                     case "rm":
-                        if (GitMonitorQueue.indexOfAdd(add_files, cmd.rm) > -1 ) {
+                        if (GitMonitorQueue.indexOfAdd(add_files, cmd.vname) > -1 ) {
                            break;
                         }
                         
