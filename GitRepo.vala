@@ -210,7 +210,7 @@ public class GitRepo : Object
             print(  string.joinv (", ", args)); 
         }
         
-        env +=  ("HOME=" + Environment.get_home_dir() );
+        env +=  "HOME=" + Environment.get_home_dir() ;
         // do not need to set gitpath..
         //if (File.exists(this.repo + '/.git/config')) {
             //env.push("GITPATH=" + this.repo );
