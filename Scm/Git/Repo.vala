@@ -10,6 +10,9 @@
 class GitRepo : Object
 {
     
+     Array<GitMontitorQueue> cmds;
+
+
      public string gitdir;
     /**
      * constructor:
