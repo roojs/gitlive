@@ -117,14 +117,14 @@ public class GitMonitor : Monitor
         this.paused = true;
         // what does this do to the old one...
         this.queue = new Array<GitMonitorQueue> ();
-        StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
+        StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
 
     }
     
     public void resume () {
         this.paused = false;
         this.queue = new Array<GitMonitorQueue> ();
-        StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
+        StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
         
         
     }
@@ -134,7 +134,7 @@ public class GitMonitor : Monitor
      *
      */
     public void start() {
-        StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_REFRESH );
+        StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_REFRESH );
         
          
         this.lastAdd = new DateTime.now(); 
@@ -145,7 +145,7 @@ public class GitMonitor : Monitor
             for(int i = 0; i < this.top.length ; i++) {
                 this.monitor(this.top.index(i) );
             }
-            StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
+            StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_PLAY );
              
            
             
@@ -190,7 +190,7 @@ public class GitMonitor : Monitor
 
 
     public void stop() {
-        StatusIcon.statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );;
+        StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );;
         base.stop();
     }
     
