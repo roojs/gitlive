@@ -62,7 +62,7 @@ public class GitRepo : Object
         // we run multiple versions to make sure that if one failes, it does not ignore the whole lot..
         // not sure if that is how git works.. but just be certian.
         for (var i = 0; i < files.length;i++) {
-            var f = files.item(i);
+            var f = files.item(i).vname;
             try {
                 this.git( { "add",   f });
             } catch (Error e) {
