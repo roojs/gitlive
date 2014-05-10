@@ -202,7 +202,7 @@ public class GitMonitor : Monitor
         
          
         // if we are not at top level.. and there is a .git directory  (it's a submodule .. ignore) 
-        if (depth > 1 && GLib.file_test(path + '/.git' , GLib.FileTest.IS_DIR)) {
+        if (depth > 1 && GLib.file_test(path + "/.git" , GLib.FileTest.IS_DIR)) {
             return;
         }
         
