@@ -536,7 +536,7 @@ public class GitMonitor : Monitor
 
     }
 
-    public void onAttributeChanged(MonitorNamePathDir src) { }
+    public void onAttributeChanged(MonitorNamePathDir src) { 
 
         if (this.paused) {
             return true;
@@ -557,7 +557,7 @@ public class GitMonitor : Monitor
     }
 
 
-   public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
+   public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest)  
     { 
         this.lastAdd = new DateTime.now(); 
         var cmd_s = new GitMontitorQueue(src);
