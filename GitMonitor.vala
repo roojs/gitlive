@@ -163,7 +163,7 @@ public class GitMonitor : Monitor
               
                 var notification = new Notify.Notification(
                     "Git Live",
-                    "%s\nMonitoring %d Directories".printf(GitMonitor.gitlive, this.monitors.length), 
+                    "%s\nMonitoring %u Directories".printf(GitMonitor.gitlive, this.monitors.length), 
                      "dialog-information"
                 );
         
