@@ -361,11 +361,11 @@ public class GitMonitor : Monitor
             
             
             try { 
-                success.append_val(repo.commit(
+                success += repo.commit(
                     GitMonitorQueue.messageToString(messages),
                     add_files  
-                ));
-                success.push(repo.push());
+                );
+                success += repo.push();
 
             } catch(Error e) {
                 failure.append_val(e.message);
