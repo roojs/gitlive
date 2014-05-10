@@ -6,10 +6,12 @@ public class GitMonitorQueue : MonitorNamePathDir {
         // dir = dir path
     
         public string gitpath;
-        public string vpath;  // relative path (with in git)
+        public string vpath;  // relative path (within git)
+        public string vname;  // relative filename (within git)
         public string message ; // for commit
         public bool commit_all;
-
+        
+        public string add; // 
 
 
 
@@ -31,6 +33,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
             for (var i = 1; i< vpath_ar.length; i++) {
                 vpath += vpath_ar[i];
             }
+
             this.vpath =  string.joinv("/", vpath);
             //f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
         
