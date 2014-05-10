@@ -351,7 +351,7 @@ public class Spawn : Object
         
         if (this.cfg.exceptions && this.result != 0) {
 	    
-            throw new SpawnError.EXEC_ERROR(this.stderr);
+            throw new SpawnError.EXECUTE_ERROR(this.stderr);
             //this.toString = function() { return this.stderr; };
             ///throw new Exception this; // we throw self...
         }
