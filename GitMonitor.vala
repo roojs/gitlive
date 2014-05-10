@@ -308,7 +308,7 @@ public class GitMonitor : Monitor
                 switch(cmd.action) {
                     case "add" :
                         
-                        if (GitMonitorQueue.indexOfAdd(add_files, cmd.add) > -1) {
+                        if (GitMonitorQueue.indexOfAdd(add_files, cmd.vname) > -1) {
                            break;
                         }
         
@@ -474,7 +474,7 @@ public class GitMonitor : Monitor
             return;
         }
         */
-        cmd.add = src.vpath;
+        //cmd.add = src.vpath;
         this.queue.append_val(cmd);
 
         var cmd = new GitMonitorQueue(src);
