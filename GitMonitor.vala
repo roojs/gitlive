@@ -588,13 +588,13 @@ public class GitMonitor : Monitor
         }
         // needs to handle move to/from unsupported types..
         
-        if (this.shouldIgnore(src)) {
+        if (src.shouldIgnore()) {
             this.onCreated(dest);
             this.onChangesDoneHint(dest);
             return;
 
         }
-        if (this.shouldIgnore(dest)) {
+        if (dest.shouldIgnore()) {
             
             this.onDeleted(src);
  
