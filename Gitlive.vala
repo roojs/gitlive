@@ -21,7 +21,7 @@
 static int main (string[] args) {
     Gtk.init (ref args);
     
-    GitMonitor.gitlive =  GLib.get_home_dir() + "/gitlive";
+    GitMonitor.gitlive =  Enviroment.get_home_dir() + "/gitlive";
 
     Notify.init("gitlive");
 
