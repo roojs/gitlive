@@ -183,39 +183,25 @@ class GitRepo : Object
         {
             // convert arguments.
             
-            //print(JSON.stringify(args_in,null,4));
-            args_in.unshift( {
-                'git-dir' : this.gitdir,
-                'no-pager' : true 
-            });
-            var args = ['git' ];
-            
+
+            var args = { "git", 
+                "--git-dir", this.gitdir,
+                "--no-pager",
+            }; 
+
+
             if (this.gitdir != this.repopath) {
-                args_in.unshift( { "work-tree" :  this.repopath } ); 
+                args +=   "--work-tree"
+                args += this.repopath; 
             }
-            
-            args_in.forEach(function(arg) { 
-                 if (typeof(arg) == 'string') {
-                    args.push(arg);
-                    return;
-                }
-                if (typeof(arg) == 'object') {
-                    for(var k in arg) {
-                        var v = arg[k];
-                        
-                        args.push(k.length != 1 ? ('--' + k) : ('-' + k));
-                        
-                        if (v === true) {
-                            continue;;
-                        }
-                        args.push(v);
-                    }
-                }
-            });
-            this.lastCmd = args.join(" ");
+            for (var i = i; i < args_in.length;i++) {
+                args += args_in[i];
+            }            
+
+            //this.lastCmd = args.join(" ");
             if(this.debug) {
-               
-                print( args.join(" ")); 
+             
+                print(  string.joinv (", ", args_list);); 
             }
             env = env || [];
             env.push(  "HOME=" + GLib.get_home_dir() );
