@@ -79,7 +79,7 @@ class GitRepo : Object
     },
     
     /**
-    * index of..
+    * index of.. matching gitpath..
     */
      public static int indexOfAdd( Array<GitRepo> repos, string gitpath) {
             for(var i =0; i < repos.length; i++) {
