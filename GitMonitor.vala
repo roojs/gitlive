@@ -89,7 +89,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
             for(var i =0; i < messages.length; i++) {
                 ret+= messages.index(i).message;
             }
-            return string.joinv(ret,"\n");
+            return string.joinv("\n",ret);
         }
 
 }
