@@ -39,7 +39,7 @@ class GitRepo : Object
      *
      */
      
-    public GitRepo(path) {
+    public GitRepo(string path) {
         // cal parent?
         
         this.gitdir = path + "/.git";
