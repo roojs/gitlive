@@ -148,7 +148,7 @@ public class GitMonitor : Monitor
          
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         
-        Timeout.add_full(Priortiy.LOW, 500, () => {
+        Timeout.add_full(Priority.LOW, 500, () => {
 
             // call this.monitor on each of 'top'
             for(int i = 0; i < this.top.length ; i++) {
