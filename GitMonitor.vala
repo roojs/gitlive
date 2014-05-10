@@ -499,7 +499,7 @@ public class GitMonitor : Monitor
     public new void onDeleted(MonitorNamePathDir src) 
    { 
         if (this.paused) {
-            return true;
+            return;
         }
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd = new GitMonitorQueue(src);
@@ -523,7 +523,7 @@ public class GitMonitor : Monitor
     public new void onCreated(MonitorNamePathDir src) {
 
         if (this.paused) {
-            return true;
+            return;
         }
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd = new GitMonitorQueue(src);
@@ -553,7 +553,7 @@ public class GitMonitor : Monitor
     public new void onAttributeChanged(MonitorNamePathDir src) { 
 
         if (this.paused) {
-            return true;
+            return;
         }
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd = new GitMonitorQueue(src);
@@ -572,6 +572,9 @@ public class GitMonitor : Monitor
 
    public new void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest)  
     { 
+        if (this.paused) {
+            return;
+        }
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd_s = new GitMonitorQueue(src);
 
