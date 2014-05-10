@@ -6,9 +6,12 @@ public class GitMonitorQueue : MonitorNamePathDir {
         // dir = dir path
     
         public string gitpath;
-        public string vpath;
+        public string vpath;  // relative path (with in git)
         public string message ; // for commit
         public bool commit_all;
+
+
+
 
 
         public GitMonitorQueue(MonitorNamePathDir f) {
