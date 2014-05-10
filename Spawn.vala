@@ -120,7 +120,8 @@ public class  SpawnConfig {
 
 public errordomain SpawnError {
     NO_ARGS,
-    WRITE_ERROR
+    WRITE_ERROR,
+    EXECUTE_ERROR
 
 }
 
