@@ -136,7 +136,7 @@ public class GitRepo : Object
         }
         */
         var args = { "commit", "-m", message.length > 0  ? message : "Changed" };
-        for (var i = i< files.length ; i++ ) {
+        for (var i = 0; i< files.length ; i++ ) {
             args += files.items(i).path; // full path?
         }
          
