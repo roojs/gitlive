@@ -459,7 +459,7 @@ public class GitMonitor : Monitor
     { 
         
         if (this.paused) {
-            return true;
+            return;
         }
             
 
