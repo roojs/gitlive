@@ -87,7 +87,7 @@ public class GitRepo : Object
         var ret = "";
 
         for (var i = 0; i < files.length;i++) {
-            var f = files.item(i);
+            var f = files.item(i).vname;
             try {
                 this.git( { "rm",  "-f" ,  f });
             } catch (Error e) {
