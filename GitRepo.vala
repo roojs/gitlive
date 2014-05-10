@@ -186,11 +186,10 @@ public class GitRepo : Object
         // convert arguments.
         
 
-        string[]  args = {
-           "git", 
-            "--git-dir", this.gitdir,
-            "--no-pager",
-        }; 
+        string[]  args = { "git" };
+        args +=  "--git-dir";
+        args +=  this.gitdir,
+        args +=  "--no-pager";
 
 
         if (this.gitdir != this.repopath) {
