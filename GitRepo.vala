@@ -144,7 +144,7 @@ public class GitRepo : Object
             args += files.index(i).vname; // full path?
         }
          
-        return this.git(args, env);
+        return this.git(args);
     }
     
     /**
