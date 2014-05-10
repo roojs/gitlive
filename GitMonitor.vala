@@ -210,7 +210,7 @@ public class GitMonitor : Monitor
         
          
         // if we are not at top level.. and there is a .git directory  (it's a submodule .. ignore) 
-        if (depth > 1 && GLib.file_test(path + "/.git" , GLib.FileTest.IS_DIR)) {
+        if (depth > 1 && FileUtils.test(path + "/.git" , FileTest.IS_DIR)) {
             return;
         }
         
@@ -322,7 +322,7 @@ public class GitMonitor : Monitor
                         }
                         
                         // if file exists, do not try and delete it.
-                        if (GLib.file_test(cmd.rm, GLib.FileTest.EXISTS)) {
+                        if (FileUtils.test(cmd.rm, FileTest.EXISTS)) {
                             break;
                         }
                         
@@ -519,7 +519,7 @@ public class GitMonitor : Monitor
             return;
         }
 
-        if (!GLib.file_test(src.path, GLib.FileTest.IS_DIR)) {
+        if (!FileUtils.test(src.path, GLib.FileTest.IS_DIR)) {
            // this.just_created[src.path] = true;
             return; // we do not handle file create flags... - use done hint.
         }
