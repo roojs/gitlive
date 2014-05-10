@@ -160,10 +160,10 @@ public class GitMonitor : Monitor
             
             try {
 
-                var str = "%s\nMonitoring %d Directories"; 
+              
                 var notification = new Notify.Notification(
                     "Git Live",
-                    str.vprintf(GitMonitor.gitlive, this.monitors.length), 
+                    "%s\nMonitoring %d Directories".printf(GitMonitor.gitlive, this.monitors.length), 
                      "dialog-information"
                 );
         
