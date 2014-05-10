@@ -17,7 +17,7 @@ public GitMontitorQueue : MonitorNamePathDir {
             this.commit_all = false;
  
            
-            var vpath_ar = this.path.substring(gitlive.length +1).split('/', 0);
+            var vpath_ar = this.path.substring(GitMonitor.gitlive.length +1).split('/', 0);
             
             this.gitpath = gitlive + '/' + vpath_ar[0];
             
@@ -150,7 +150,7 @@ public class GitMonitor : Monitor
             try { 
                 var notification = new Notify.Notification({
                     "Git Live",
-                    this.gitlive + "\nMonitoring " + _this.monitors.length + " Directories",
+                    GitMonitor.gitlive + "\nMonitoring " + _this.monitors.length + " Directories",
                      "dialog-information"
                 });
         
@@ -448,7 +448,7 @@ public class GitMonitor : Monitor
             
 
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src, this.gitlive);
+        var cmd = new GitMontitorQueue(src, GitMonitor.gitlive);
         if (cmd.shouldIgnore()) {
             return;
         }
@@ -473,7 +473,7 @@ public class GitMonitor : Monitor
         cmd.add = src.vpath;
         this.queue.append_val(cmd);
 
-        var cmd = new GitMontitorQueue(src, this.gitlive);
+        var cmd = new GitMontitorQueue(src);
         cmd.action = "commit";
         cmd.message = src.vpath;
         this.queue.append_val(cmd);
@@ -486,7 +486,7 @@ public class GitMonitor : Monitor
             return true;
         }
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src, this.gitlive);
+        var cmd = new GitMontitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
         }
@@ -496,7 +496,7 @@ public class GitMonitor : Monitor
         cmd.rm = src.vpath;
         this.queue.append_val(cmd);
 
-        var cmd = new GitMontitorQueue(src, this.gitlive);
+        var cmd = new GitMontitorQueue(src);
         cmd.action = "commit";
         cmd.message = src.vpath;
         cmd.commit_all = true;
@@ -510,7 +510,7 @@ public class GitMonitor : Monitor
             return true;
         }
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src, this.gitlive);
+        var cmd = new GitMontitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
         }
@@ -540,7 +540,7 @@ public class GitMonitor : Monitor
             return true;
         }
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src, this.gitlive);
+        var cmd = new GitMontitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
         }
@@ -548,7 +548,7 @@ public class GitMonitor : Monitor
         cmd.add = src.vpath;
         this.queue.append_val(cmd);
 
-        var cmd = new GitMontitorQueue(src, this.gitlive);
+        var cmd = new GitMontitorQueue(src);
         cmd.action = "commit";
         cmd.message = "Attribute changed " + cmd.vpath;
         this.queue.append_val(cmd);
@@ -558,9 +558,9 @@ public class GitMonitor : Monitor
    public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
     { 
         this.lastAdd = new DateTime.now(); 
-        var cmd_s = new GitMontitorQueue(src, this.gitlive);
+        var cmd_s = new GitMontitorQueue(src);
 
-        var cmd_d = new GitMontitorQueue(src, this.gitlive);
+        var cmd_d = new GitMontitorQueue(src);
    
         
         if (cmd_d.gitpath != cmd_s.gitpath) {
@@ -597,7 +597,7 @@ public class GitMonitor : Monitor
         this.queue.append_val(cmd_d);
 
 
-        var cmd = new GitMontitorQueue(dest, this.gitlive);
+        var cmd = new GitMontitorQueue(dest);
         cmd.action = "commit";
         cmd.message = "MOVED " + cmd_s.vpath + " to " + cmd_d.vpath;
         this.queue.append_val(cmd);
