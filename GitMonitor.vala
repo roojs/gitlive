@@ -371,6 +371,7 @@ public class GitMonitor : Monitor
                 failure +=  e.message;
                 
             }  
+            try {
             repo.remove(remove_files_f);
             this.paused = false;
             
