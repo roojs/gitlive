@@ -240,18 +240,18 @@ public class GitMonitor : Monitor
         }
         this.queueRunning = true;
 
-        var cmds = new Array<GitMontitorQueue>();
+        var cmds = new Array<GitMonitorQueue>();
         for(var i = 0; i < this.queue.length; i++) {
             cmds.append_val(this.queue.item(i));
         }
 
-        this.queue = new Array<GitMontitorQueue>();// empty queue!
+        this.queue = new Array<GitMonitorQueue>();// empty queue!
 
         
         var success = new Array<String>();
-        var failure = new Array<GitMontitorQueue>();
+        var failure = new Array<GitMonitorQueue>();
         var repos = new Array<GitRepo>(); //??
-        var done = new Array<GitMontitorQueue>();
+        var done = new Array<GitMonitorQueue>();
         
         // first build a array of repo's to work with
         var repo_list = new Array<GitRepo>();
@@ -288,9 +288,9 @@ public class GitMonitor : Monitor
 
             var repo = repo_list.item(i);
 
-            var add_files = new Array<GitMontitorQueue>();
-            var remove_files = new Array<GitMontitorQueue>();
-            var messages = new Array<GitMontitorQueue>();
+            var add_files = new Array<GitMonitorQueue>();
+            var remove_files = new Array<GitMonitorQueue>();
+            var messages = new Array<GitMonitorQueue>();
             //print(JSON.stringify(repo.cmds,null,4));
             
             for(var ii = 0;ii < repo.cmds.length;ii++) {
@@ -300,7 +300,7 @@ public class GitMonitor : Monitor
                 switch(cmd.action) {
                     case "add" :
                         
-                        if (GitMontitorQueue.indexOfAdd(add_files, cmd.add) > -1) {
+                        if (GitMonitorQueue.indexOfAdd(add_files, cmd.add) > -1) {
                            break;
                         }
         
@@ -309,7 +309,7 @@ public class GitMonitor : Monitor
                         break;
                     
                     case "rm":
-                        if (GitMontitorQueue.indexOfAdd(add_files, cmd.rm) > -1 ) {
+                        if (GitMonitorQueue.indexOfAdd(add_files, cmd.rm) > -1 ) {
                            break;
                         }
                         
@@ -322,7 +322,7 @@ public class GitMonitor : Monitor
                         break;
                     
                     case "commit" :
-                        if (GitMontitorQueue.indexOfMessage(messages, cmd.message) > -1 ) {
+                        if (GitMonitorQueue.indexOfMessage(messages, cmd.message) > -1 ) {
                            break;
                         }
                          
@@ -341,9 +341,9 @@ public class GitMonitor : Monitor
             
             // make sure added files do not get removed..
 
-            var remove_files_f = new Array<GitMontitorQueue>();
+            var remove_files_f = new Array<GitMonitorQueue>();
             for(var ii = 0;ii < remove_files.length;ii++) {
-                if (GitMontitorQueue.indexOfAdd(add_files,  remove_files.item(ii).rm) > -1 ) {
+                if (GitMonitorQueue.indexOfAdd(add_files,  remove_files.item(ii).rm) > -1 ) {
                      continue;
                 }
                 remove_files_f.append_val(remove_files.item(ii));
@@ -362,7 +362,7 @@ public class GitMonitor : Monitor
             
             try { 
                 success.append_val(repo.commit(
-                    GitMontitorQueue.messageToString(messages),
+                    GitMonitorQueue.messageToString(messages),
                     add_files  
                 ));
                 success.push(repo.push());
@@ -450,7 +450,7 @@ public class GitMonitor : Monitor
             
 
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src);
+        var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
         }
@@ -475,7 +475,7 @@ public class GitMonitor : Monitor
         cmd.add = src.vpath;
         this.queue.append_val(cmd);
 
-        var cmd = new GitMontitorQueue(src);
+        var cmd = new GitMonitorQueue(src);
         cmd.action = "commit";
         cmd.message = src.vpath;
         this.queue.append_val(cmd);
@@ -488,7 +488,7 @@ public class GitMonitor : Monitor
             return true;
         }
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src);
+        var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
         }
@@ -498,7 +498,7 @@ public class GitMonitor : Monitor
         cmd.rm = src.vpath;
         this.queue.append_val(cmd);
 
-        var cmd = new GitMontitorQueue(src);
+        var cmd = new GitMonitorQueue(src);
         cmd.action = "commit";
         cmd.message = src.vpath;
         cmd.commit_all = true;
@@ -512,7 +512,7 @@ public class GitMonitor : Monitor
             return true;
         }
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src);
+        var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
         }
@@ -542,7 +542,7 @@ public class GitMonitor : Monitor
             return true;
         }
         this.lastAdd = new DateTime.now(); 
-        var cmd = new GitMontitorQueue(src);
+        var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {
             return;
         }
@@ -550,7 +550,7 @@ public class GitMonitor : Monitor
         cmd.add = src.vpath;
         this.queue.append_val(cmd);
 
-        var cmd = new GitMontitorQueue(src);
+        var cmd = new GitMonitorQueue(src);
         cmd.action = "commit";
         cmd.message = "Attribute changed " + cmd.vpath;
         this.queue.append_val(cmd);
@@ -560,9 +560,9 @@ public class GitMonitor : Monitor
    public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest)  
     { 
         this.lastAdd = new DateTime.now(); 
-        var cmd_s = new GitMontitorQueue(src);
+        var cmd_s = new GitMonitorQueue(src);
 
-        var cmd_d = new GitMontitorQueue(src);
+        var cmd_d = new GitMonitorQueue(src);
    
         
         if (cmd_d.gitpath != cmd_s.gitpath) {
@@ -599,7 +599,7 @@ public class GitMonitor : Monitor
         this.queue.append_val(cmd_d);
 
 
-        var cmd = new GitMontitorQueue(dest);
+        var cmd = new GitMonitorQueue(dest);
         cmd.action = "commit";
         cmd.message = "MOVED " + cmd_s.vpath + " to " + cmd_d.vpath;
         this.queue.append_val(cmd);
