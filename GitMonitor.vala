@@ -8,7 +8,9 @@ public class GitMontitorQueue : MonitorNamePathDir {
         public string gitpath;
         public string vpath;
         public string message ; // for commit
-        public bool commit_all
+        public bool commit_all;
+
+
         public GitMontitorQueue(MonitorNamePathDir f) {
             this.name = f.name;
             this.path = f.path;
