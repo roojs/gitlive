@@ -142,7 +142,7 @@ public class GitMonitor : Monitor
      *
      */
     public new void start() {
-        StatusIconA.statusicon.set_from_stock( Gtk.Stock.MEDIA_REFRESH );
+        StatusIconA.statusicon.set_from_stock( Gtk.Stock.REFRESH );
         
          
         this.lastAdd = new DateTime.now(); 
