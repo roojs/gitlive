@@ -187,7 +187,7 @@ public class GitRepo : Object
      *
      */
     
-    public string git(string[] args_in, ) throws Error, SpawnError
+    public string git(string[] args_in ) throws Error, SpawnError
     {
         // convert arguments.
         
