@@ -180,7 +180,7 @@ public class GitRepo : Object
      *
      */
     
-    public string git(string[] args_in, string[] env = {})
+    public string git(string[] args_in, string[] env = {}) throws Error, SpawnError
     {
         // convert arguments.
         
