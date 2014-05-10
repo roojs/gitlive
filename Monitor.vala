@@ -9,7 +9,7 @@
 
  
 //using Gee; // for array list?
-
+/*
 static int main (string[] args) {
     // A reference to our file
     //var file = File.new_for_path ("data.txt");
@@ -24,7 +24,7 @@ static int main (string[] args) {
     return 0;
 
 }
-
+*/
 
 public class  MonitorNamePathDir {
     public string action;
