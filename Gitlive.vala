@@ -28,15 +28,13 @@ static int main (string[] args) {
     StatusIcon.init();
 
 
-
-
-    MainLoop loop = new MainLoop ();
-    print("starting");
-    var m = new Monitor();
-    
-    m.add("/home/alan/gitlive");
-    m.start();
-    loop.run ();
+    GLib.timeout_add(GLib.PRIORITY_LOW, 500, () => {
+        // this should start after we have shown the icon...
+        GitMonitor.add(GitMonitor.gitlive);
+        GitMonitor.start();
+        
+        // WindowLog.start();
+    });
 
     Gtk.main ();
 
