@@ -16,13 +16,13 @@ class GitRepo : Object
     * index of.. matching gitpath..
     */
      public static int indexOfAdd( Array<GitRepo> repos, string gitpath) {
-            for(var i =0; i < repos.length; i++) {
-                if (reos.index(i).gitpath == add) {
-                    return i;
-                }
+        for(var i =0; i < repos.length; i++) {
+            if (reos.index(i).gitpath == add) {
+                return i;
             }
-            return -1;
         }
+        return -1;
+    
     }
 
 
