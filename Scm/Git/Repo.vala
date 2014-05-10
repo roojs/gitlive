@@ -154,7 +154,7 @@ class GitRepo : Object
     pull : function ()
     {
         // should probably hand error conditions better... 
-        return this.git([ 'pull' ]);
+        return this.git({ "pull" });
         
         
     },
@@ -169,7 +169,7 @@ class GitRepo : Object
     push : function ()
     {
         // should 
-        return this.git([ 'push' ]);
+        return this.git({ 'push' });
         
     },
     
