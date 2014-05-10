@@ -168,7 +168,7 @@ public class GitMonitor : Monitor
                 notification.set_timeout(5);
                 notification.show();
             } catch(Error e) {
-                print(e.toString());
+                print(e.message);
             }
 
         });
