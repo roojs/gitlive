@@ -287,8 +287,8 @@ public class GitMonitor : Monitor
             var messages = new Array<GitMontitorQueue>();
             //print(JSON.stringify(repo.cmds,null,4));
             
-            for(var ii = 0;ii < repo.length;ii++) {
-                var cmd = repo.item(ii);
+            for(var ii = 0;ii < repo.cmds.length;ii++) {
+                var cmd = repo.cmds.item(ii);
     
                 
                 switch(cmd.name) {
