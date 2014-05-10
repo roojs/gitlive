@@ -8,7 +8,7 @@ using Gtk;
 
 
 ///using Gee; // for array list?
-
+/*
 static int main (string[] args) {
     // A reference to our file
     
@@ -33,7 +33,7 @@ static int main (string[] args) {
     return 0;
 
 }
-
+*/
 //var Gio      = imports.gi.Gio;
 //var GLib      = imports.gi.GLib;
 
