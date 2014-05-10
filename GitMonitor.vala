@@ -1,6 +1,6 @@
 
 
-public class GitMontitorQueue : MonitorNamePathDir {
+public class GitMonitorQueue : MonitorNamePathDir {
         // name = basename
         // path = full path..
         // dir = dir path
