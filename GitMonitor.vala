@@ -249,7 +249,7 @@ public class GitMonitor : Monitor
 
         
         string[] success = {};
-        var failure = new Array<GitMonitorQueue>();
+        string[] failure = {};
         var repos = new Array<GitRepo>(); //??
         var done = new Array<GitMonitorQueue>();
         
@@ -368,7 +368,7 @@ public class GitMonitor : Monitor
                 success += repo.push();
 
             } catch(Error e) {
-                failure.append_val(e.message);
+                failure += e.message;
                 
             }   
         }
@@ -392,13 +392,10 @@ public class GitMonitor : Monitor
             }
             
             if (failure.length) {
-                var failure_str = "";
-                for(var ii = 0;ii < failure.length;ii++) {
-                    failure_str+= failure.item(ii) + "\n";
-                }
+
                 var notification = new Notify.Notification({
                     summary: "Git Live ERROR!!",
-                    failure_str,
+                    string.joinv("\n",failure),
                     "dialog-information"
                     
                 });
