@@ -19,7 +19,7 @@ public GitMontitorQueue : MonitorNamePathDir {
            
             var vpath_ar = this.path.substring(GitMonitor.gitlive.length +1).split('/', 0);
             
-            this.gitpath = gitlive + '/' + vpath_ar[0];
+            this.gitpath = GitMonitor.gitlive + '/' + vpath_ar[0];
             
             string[]  vpath = {};
             for (var i = 1; i< vpath_ar.length; i++) {
