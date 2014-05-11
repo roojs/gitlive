@@ -1,8 +1,8 @@
 #include <X11/extensions/scrnsaver.h>
 
-extern int xorg_idletime() {
+int xorg_idletime() {
   int rc = -1;
-  XScreenSaverInfo *info = XScreenSaverAllocInfo();
+  XScreenSaverInfo  *info = XScreenSaverAllocInfo();
   Display *display = XOpenDisplay(NULL);
   
   if (display != NULL) {

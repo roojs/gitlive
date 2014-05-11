@@ -399,7 +399,8 @@ public class GitMonitor : Monitor
             // make sure monitoring is paused so it does not recursively pick up
             // deletions
             
-            // -- DO STUFF..            try {
+            // -- DO STUFF..            
+            try {
                 repo.add(add_files);
             } catch(Error e) {
                 failure +=  e.message;

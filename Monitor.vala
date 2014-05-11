@@ -90,6 +90,8 @@ public class Monitor : Object
      */
     public void add (string add)
     {
+        
+        print("Monitor.add: " + add);
         this.top.append_val(add);
     }
     /**
@@ -137,7 +139,7 @@ public class Monitor : Object
     public void monitor(string path, int depth = 0)
     {
          
-        print("ADD: " + path + "\n");
+        stdout.printf("ADD: (%d): %s\n", depth, path);
         
         //depth = typeof(depth) == 'number'  ? depth *1 : 0;
         depth = depth > 0  ? depth *1 : 0;
@@ -156,13 +158,7 @@ public class Monitor : Object
   
                  var fm = f.monitor(FileMonitorFlags.SEND_MOVED,null); //Gio.FileMonitorFlags.SEND_MOVED
  
-                 fm.changed.connect( ( fm,  f_orig,  of_orig,  event_type) => {
-                        //if (fn) {
-                            this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
-                           // return;
-                        //}
-                        //this.onEvent (fm,  f_orig,  of_orig,  event_type ) ;
-                });
+                 fm.changed.connect( this.onEvent );
                 this.monitors.append_val(fm);
 
             } catch (Error e) {
@@ -177,34 +173,43 @@ public class Monitor : Object
         //    this.initRepo(path);
         //}
         FileEnumerator file_enum;
+        var cancellable = new Cancellable ();
         try {      
             file_enum = f.enumerate_children(
                FileAttribute.STANDARD_DISPLAY_NAME + "," +   FileAttribute.STANDARD_TYPE,
-               0, // FileQueryInfoFlags.NONE,
-               null);
+        		FileQueryInfoFlags.NOFOLLOW_SYMLINKS,  // FileQueryInfoFlags.NONE,
+               cancellable);
         } catch (Error e) {
             // FIXME - show error..
             return;
         }
         FileInfo next_file;
         
-        while (true) {
-            try {        
-                next_file = file_enum.next_file(null);
-            } catch (Error e) {
+        while (cancellable.is_cancelled () == false ) {
+            try {
+                next_file = file_enum .next_file (cancellable);
+            } catch(Error e) {
+                print(e.message);
                 break;
             }
+
             if (next_file == null) {
                 break;
             }
+
             //print("got a file " + next_file.sudo () + '?=' + Gio.FileType.DIRECTORY);
-            
+
             if (next_file.get_file_type() != FileType.DIRECTORY) {
                 next_file = null;
                 continue;
             }
-            
-            if (next_file.get_file_type() ==FileType.SYMBOLIC_LINK) {
+
+
+            //stdout.printf("Monitor.monitor: got file %s : type :%u\n",
+            //        next_file.get_display_name(), next_file.get_file_type());
+
+
+            if (next_file.get_is_symlink()) {
                 next_file = null;
                 continue;
             }
@@ -260,25 +265,19 @@ public class Monitor : Object
     
     
      
-    public void onEvent(FileMonitor fm, File f_orig, File of_orig, FileMonitorEvent event_type)
+    public void onEvent(File f_orig, File? of_orig, FileMonitorEvent event_type)
     {
         if (this.paused) {
             return;
         }
-        print("onEvent");
+       // print("onEvent\n");
         var f = this.realpath(f_orig);
-        
-        var of = this.realpath(of_orig);
- 
         
  
         MonitorNamePathDir src = new MonitorNamePathDir( f.get_basename(), f.get_path() , Path.get_dirname(f.get_path()));
-        MonitorNamePathDir dest = null;
+ 
         
-        if (of != null) {
-            dest = new MonitorNamePathDir( of.get_basename(), of.get_path(),  Path.get_dirname(of.get_path()));
-            
-        }
+       
         //string event_name = "UKNOWN";
         
         
@@ -297,6 +296,7 @@ public class Monitor : Object
         //print ("got event: " + src.toString());
         try {
                 
+
             switch(event_type) {
                 case FileMonitorEvent.CHANGED:
                     src.action = "changed";
@@ -324,11 +324,22 @@ public class Monitor : Object
                     return;
                 
                 case FileMonitorEvent.MOVED: // eg. chmod/chatt
+
+                      var of = this.realpath(of_orig);
+                       var   dest = new MonitorNamePathDir(
+                                     of.get_basename(), 
+                                    of.get_path(),  
+                                    Path.get_dirname(of.get_path())
+                                );
+                        
+
                     src.action = "moved";
                     dest.action = "moved";
                     this.onMoved(src,dest);
                     return; 
-                
+                default:
+                    stdout.printf("event type not handled %u", event_type);
+                    break;
                 // rest are mount related - not really relivant.. maybe add later..
             } 
         } catch(Error e) {
@@ -337,14 +348,15 @@ public class Monitor : Object
         
     }
     
+
     /** override these to do stuff.. */
-    public void initRepo(MonitorNamePathDir src) { } // called on startup at the top level repo dir.
-    public void onChanged(MonitorNamePathDir src) { }
-    public void onChangesDoneHint(MonitorNamePathDir src) { }
-    public void onDeleted(MonitorNamePathDir src) { }
-    public void onCreated(MonitorNamePathDir src) { }
-    public void onAttributeChanged(MonitorNamePathDir src) { }
-    public void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
+    //public void initRepo(MonitorNamePathDir src) { } // called on startup at the top level repo dir.
+    public virtual void  onChanged(MonitorNamePathDir src) { }
+    public virtual void onChangesDoneHint(MonitorNamePathDir src) { }
+    public virtual void onDeleted(MonitorNamePathDir src) { }
+    public virtual void onCreated(MonitorNamePathDir src) { }
+    public virtual void onAttributeChanged(MonitorNamePathDir src) { }
+    public virtual void onMoved(MonitorNamePathDir src,MonitorNamePathDir dest) { }
           
     
 }

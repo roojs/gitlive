@@ -14,23 +14,25 @@ public class GitRepo : Object
 
 
     public string gitdir;
+    public string git_working_dir;
     public bool debug = false;
 
     /**
     * index of.. matching gitpath..
     */
      public static int indexOf( Array<GitRepo> repos, string gitpath) {
+        // make a fake object to compare against..
+        var test_repo = new GitRepo(gitpath);
+        
         for(var i =0; i < repos.length; i++) {
-            if (repos.index(i).gitdir == gitpath) {
+            if (repos.index(i).gitdir == test_repo.gitdir) {
                 return i;
             }
         }
         return -1;
     
     }
-
-
-
+ 
    
     /**
      * constructor:
@@ -42,7 +44,7 @@ public class GitRepo : Object
      
     public GitRepo(string path) {
         // cal parent?
-        
+        this.git_working_dir = path;
         this.gitdir = path + "/.git";
         if (!FileUtils.test(this.gitdir , FileTest.IS_DIR)) {
             this.gitdir = path; // naked...
@@ -193,13 +195,10 @@ public class GitRepo : Object
         
 
         string[]  args = { "git" };
-        args +=  "--git-dir";
-        args +=  this.gitdir;
+        //args +=  "--git-dir";
+        //args +=  this.gitdir;
         args +=  "--no-pager";
-
-         
-
-        
+ 
 
         //if (this.gitdir != this.repopath) {
         //    args +=   "--work-tree";
@@ -210,10 +209,11 @@ public class GitRepo : Object
         }            
 
         //this.lastCmd = args.join(" ");
-        if(this.debug) {
-         
-            print(  string.joinv (", ", args)); 
-        }
+        //if(this.debug) {
+            stdout.printf( "CWD=%s\n",  this.git_working_dir ); 
+            print(  string.joinv (" ", args)); 
+        //}
+
         string[]   env = {};
         string  home = "HOME=" + Environment.get_home_dir() ;
         env +=  home ;
@@ -223,13 +223,14 @@ public class GitRepo : Object
         //}
         
 
-        var cfg = new SpawnConfig(this.gitdir, args , env);
+
+        var cfg = new SpawnConfig(this.git_working_dir , args , env);
         
 
        // may throw error...
         var sp = new Spawn(cfg);
-                
-        //print("GOT: " + output)
+
+        stdout.printf( "GOT: %s\n" , sp.output);
         // parse output for some commands ?
         return sp.output;
     }

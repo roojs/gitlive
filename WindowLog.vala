@@ -72,7 +72,10 @@ public class WindowLog : Object  {
             print("/proc/%u/cmdline".printf(pid) + "\n");
 
             if (pid > 0 ) { 
-                FileUtils.get_contents("/proc/%u/cmdline".printf(pid), out cmd, out len);
+                var cf = File.new_for_path("/proc/%u/cmdline".printf(pid));
+                var dis = new DataInputStream (cf.read ());
+                cmd = dis.read_line (null);
+ 
             }  else {
                 cmd = "UNKNOWN";
             } 
@@ -99,6 +102,8 @@ public class WindowLog : Object  {
         var now = new DateTime.now(new TimeZone.local()); 
 
         var dir =  this.outdir + now.format("/%Y/%m");
+        print(dir + "\n");
+
 
         if (this.lastdir.length < 1 || this.lastdir != dir) {
             if (!FileUtils.test(dir, FileTest.IS_DIR)) {
@@ -113,7 +118,8 @@ public class WindowLog : Object  {
         
         var fname = now.format("/%d") + ".log";
         var path  = dir + "/" + fname;
-        var time  = now.format("%H:%i:%s ");
+        var time  = now.format("%H:%M:%S ");
+        print("time: " + time + "\n");
         var f = File.new_for_path(path);
     	FileOutputStream ios = f.append_to (FileCreateFlags.NONE);
 		var data_out = new DataOutputStream (ios);

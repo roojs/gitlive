@@ -132,8 +132,8 @@ public class StatusIconA : StatusIcon {
                 
                 this.activate.connect( () => {
                     statusicon.paused = true;
-                    
-                    //GitMonitor.GitMonitor.stop();
+                    GitMonitor.gitmonitor.stop();
+
                    // this.el.label  = status ? 'Resume' : 'Pause';
                     statusicon.set_from_stock( Gtk.Stock.MEDIA_PAUSE );
                     
@@ -157,7 +157,7 @@ public class StatusIconA : StatusIcon {
                 this.accel_group = null;
                 
                 this.activate.connect( () => {
-                    //GitMonitor.GitMonitor.start();
+                    GitMonitor.gitmonitor.start();
                     statusicon.paused = false;
                     
                     //
