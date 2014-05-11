@@ -39,14 +39,14 @@ public class GitMonitorQueue : MonitorNamePathDir {
             this.vdir =  string.joinv("/", vpath);
 
             this.vname =  this.vdir + (this.vdir.length > 0 ? "/" : "") + this.name;
-
+/*
             stdout.printf(
                     "NEW GitMonitorQueue\nname: %s\npath: %s\ndir: %s\n" + 
                     "gitpath: %s\nvdir: %s\nvname: %s\n",
                     this.name, this.path, this.dir,
                     this.gitpath, this.vdir, this.vname
             );
-
+*/
 
             //f.repo = new imports.Scm.Git.Repo({ repopath: f.gitpath })
         
