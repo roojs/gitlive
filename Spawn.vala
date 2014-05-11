@@ -85,7 +85,7 @@ public class  SpawnConfig {
         this.env = env;
          
         async = false;
-        exceptions = false;
+        exceptions = true;
         debug = false;
         
         output = null;
@@ -93,16 +93,8 @@ public class  SpawnConfig {
         input = null;
         
     }
-    
-    public void setOptions(
-            bool async,
-            bool exceptions,
-            bool debug
-        ) {
-        this.async = async;
-        this.exceptions = exceptions;
-        this.debug = debug;
-    }
+
+ 
     public void setHandlers(
             SpawnOutput? output,
             SpawnErr? stderr,
@@ -153,7 +145,8 @@ public class Spawn : Object
        
      
         this.cfg = cfg;
-     
+        this.output = "";
+        this.stderr = "";
     
         this.cfg.cwd =  this.cfg.cwd.length  < 1 ? GLib.Environment.get_home_dir() : this.cfg.cwd;
         if (this.cfg.args.length < 0) {
@@ -169,11 +162,11 @@ public class Spawn : Object
     /**
      * @property output {String} resulting output
      */
-    public string output  = "";
+    public string output;
     /**
      * @property stderr {String} resulting output from stderr
      */
-    public string stderr  = "";
+    public string stderr;
      /**
      * @property result {Number} execution result.
      */
@@ -236,7 +229,7 @@ public class Spawn : Object
                 out this.pid,
                 out standard_input,
                 out standard_output,
-			out standard_error);
+			    out standard_error);
 
 		// stdout:
 	
@@ -247,7 +240,24 @@ public class Spawn : Object
             
             stdout.printf("PID: %d" ,this.pid);
         }
-         
+        
+        this.in_ch = new GLib.IOChannel.unix_new(standard_input);
+        this.out_ch = new GLib.IOChannel.unix_new(standard_output);
+        this.err_ch = new GLib.IOChannel.unix_new(standard_error);
+        
+        // make everything non-blocking!
+        
+        
+            
+                  // using NONBLOCKING only works if io_add_watch
+          //returns true/false in right conditions
+          this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
+          this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
+          this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
+                   
+      
+
+ 
         ChildWatch.add (this.pid, (w_pid, result) => {
 	    
             this.result = result;
@@ -275,21 +285,7 @@ public class Spawn : Object
 			  
         
         
-        this.in_ch = new GLib.IOChannel.unix_new(standard_input);
-        this.out_ch = new GLib.IOChannel.unix_new(standard_output);
-        this.err_ch = new GLib.IOChannel.unix_new(standard_error);
-        
-        // make everything non-blocking!
-        
-        
-            
-                  // using NONBLOCKING only works if io_add_watch
-          //returns true/false in right conditions
-          this.in_ch.set_flags (GLib.IOFlags.NONBLOCK);
-          this.out_ch.set_flags (GLib.IOFlags.NONBLOCK);
-          this.err_ch.set_flags (GLib.IOFlags.NONBLOCK);
-                   
-      
+       
             
             // add handlers for output and stderr.
         
@@ -300,7 +296,7 @@ public class Spawn : Object
             }
         );
         this.err_src = (int) this.err_ch.add_watch (
-	    IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
+	         IOCondition.OUT | IOCondition.IN  | IOCondition.PRI |  IOCondition.HUP |  IOCondition.ERR  ,
             (channel, condition) => {
                return this.read(this.err_ch);
             }
@@ -338,13 +334,14 @@ public class Spawn : Object
         // start mainloop if not async..
         
         if (this.pid > -1) {
-            if (this.cfg.debug) {
-                print("starting main loop");
-            }
+             print("starting main loop");
+             //if (this.cfg.debug) {
+             //  
+             // }
 	        this.ctx = new MainLoop ();
             this.ctx.run(); // wait fore exit?
             
-            //print("main_loop done!");
+            print("main_loop done!");
         } else {
             this.tidyup(); // tidyup get's called in main loop. 
         }
@@ -415,6 +412,8 @@ public class Spawn : Object
         return str.length;
         
     }
+
+
     
     /**
      * read from pipe and call appropriate listerner and add to output or stderr string.
@@ -453,14 +452,16 @@ public class Spawn : Object
                     //}
                     if (ch == this.out_ch) {
                         this.output += buffer;
-                        this.cfg.output(  buffer);                  
+                        if (this.cfg.output != null) {
+                                this.cfg.output(  buffer);                  
+                        }
                     } else {
                         this.stderr += buffer;
                     }
                     //_this[prop] += x.str_return;
-                    if (this.cfg.debug) {
+                    //if (this.cfg.debug) {
                         stdout.printf("%s : %s", prop , buffer);
-                    }
+                    //}
                     if (this.cfg.async) {
                          
                         if ( Gtk.events_pending()) {
