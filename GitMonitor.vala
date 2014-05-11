@@ -210,8 +210,8 @@ public class GitMonitor : Monitor
             
             var last = -1 * this.lastAdd.difference(new DateTime.now(new TimeZone.local()));
  
-            stdout.printf("LAST RUN: %s (expect %s) \n" ,
-                     last.to_string(),   (5 * TimeSpan.SECOND).to_string() );
+            // stdout.printf("LAST RUN: %s (expect %s) \n" ,
+            //         last.to_string(),   (5 * TimeSpan.SECOND).to_string() );
  
             if (last < 5 * TimeSpan.SECOND) { // wait 5 seconds before running. ????
                 return true;
