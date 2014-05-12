@@ -12,7 +12,7 @@ public class GitRepo : Object
     
     public Array<GitMonitorQueue> cmds;
 
-
+    public string name;
     public string gitdir;
     public string git_working_dir;
     public bool debug = false;
@@ -20,7 +20,7 @@ public class GitRepo : Object
     /**
     * index of.. matching gitpath..
     */
-     public static int indexOf( Array<GitRepo> repos, string gitpath) {
+    public static int indexOf( Array<GitRepo> repos, string gitpath) {
         // make a fake object to compare against..
         var test_repo = new GitRepo(gitpath);
         
@@ -33,32 +33,81 @@ public class GitRepo : Object
     
     }
     
-    public static Array<GitRepo> list_cache = null;
+     
     
-    public static Array<GitRepo> list()
+    public static   Array<GitRepo> list()
     {
         
-        if (GitRepo.list_cache !== null) {
-            return GitRepo.list_cache;
+        //if (GitRepo.list_cache !=  null) {
+        //    unowned  Array<GitRepo>    ret = GitRepo.list_cache;
+         //   return ret;
+        //}
+        
+        var list_cache = new Array<GitRepo>();
+        
+        var dir = Environment.get_home_dir() + "/gitlive";
+        
+        var f = File.new_for_path(dir);
+        FileEnumerator file_enum;
+        try {
+            file_enum = f.enumerate_children(
+                FileAttribute.STANDARD_DISPLAY_NAME + ","+ 
+                FileAttribute.STANDARD_TYPE,
+                FileQueryInfoFlags.NONE,
+                null);
+        } catch (Error e) {
+            
+            return list_cache;
+            
         }
+         
+        FileInfo next_file; 
         
-        GitRepo.list_cache = new Array<GitRepo>();
-        
-        var dir = Enviroment.get_home_dir() + '/gitlive';
-        
-        
-        var ar = File.list(dir );
-        print(JSON.stringify(ar));
-        ar.forEach(function(f) {
-            if (File.exists(dir + '/' + f +'/.git')) {
-                Repo._list.push(new imports.Scm.Git.Repo.Repo(  {
-                    repopath : dir  +'/' + f,
-                    name : f
-                }))
+        while (true) {
+            
+            try {
+                next_file = file_enum.next_file(null);
+                if (next_file == null) {
+                    break;
+                }
+                
+            } catch (Error e) {
+                print(e.message);
+                break;
             }
-        });
+         
+            //print("got a file " + next_file.sudo () + '?=' + Gio.FileType.DIRECTORY);
+            
+            if (next_file.get_file_type() !=  FileType.DIRECTORY) {
+                next_file = null;
+                continue;
+            }
+            
+            if (next_file.get_file_type() ==  FileType.SYMBOLIC_LINK) {
+                next_file = null;
+                continue;
+            }
+            
+            if (next_file.get_display_name()[0] == '.') {
+                next_file = null;
+                continue;
+            }
+            var sp = dir+"/"+next_file.get_display_name();
+           
+            var gitdir = dir + "/" + next_file.get_display_name() + "/.git";
+            
+            if (!FileUtils.test(gitdir, FileTest.IS_DIR)) {
+                continue;
+            }
+            
+             list_cache.append_val(new GitRepo(  sp )) ;
+             
+            
+        }
+    
+        return list_cache;
         
-        return Repo._list;
+         
           
 }
     
@@ -74,6 +123,9 @@ public class GitRepo : Object
      
     public GitRepo(string path) {
         // cal parent?
+        this.name =   File.new_for_path(path).get_basename();
+        
+        
         this.git_working_dir = path;
         this.gitdir = path + "/.git";
         if (!FileUtils.test(this.gitdir , FileTest.IS_DIR)) {
