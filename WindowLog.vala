@@ -68,7 +68,7 @@ public class WindowLog : Object  {
             //print("PID " + pid);
                     //var cmd = File.realpath('/proc/'+ pid + '/exe');
             string cmd = "";
-            size_t len = 0;
+             
             print("/proc/%u/cmdline".printf(pid) + "\n");
 
             if (pid > 0 ) { 
