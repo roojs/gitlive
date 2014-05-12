@@ -38,11 +38,15 @@ public class GitRepo : Object
     public static Array<GitRepo> list()
     {
         
-        if (Repo._list !== false) {
-            return Repo._list;
+        if (GitRepo.list_cache !== null) {
+            return GitRepo.list_cache;
         }
-        Repo._list  = [];
-        var dir = GLib.get_home_dir() + '/gitlive';
+        
+        GitRepo.list_cache = new Array<GitRepo>();
+        
+        var dir = Enviroment.get_home_dir() + '/gitlive';
+        
+        
         var ar = File.list(dir );
         print(JSON.stringify(ar));
         ar.forEach(function(f) {
