@@ -106,7 +106,7 @@ Monitor.prototype = {
         }
        
           
-        var f = File.new_for_path(path);
+        var f = Gio.file_new_for_path(path);
             //var cancel = new Gio.Cancellable ();
         if (depth > 0) {     
 
@@ -125,7 +125,7 @@ Monitor.prototype = {
         //    this.initRepo(path);
         //}
         
-        var file_enum = f.enumerate_children(
+         var file_enum = f.enumerate_children(
             Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME + ','+ 
             Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
             Gio.FileQueryInfoFlags.NONE,
