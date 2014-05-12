@@ -151,7 +151,7 @@ public class StatusIconA : StatusIcon {
                 
                 var  image = new Gtk.Image();
                 image.set_from_stock(Gtk.Stock.MEDIA_PLAY,Gtk.IconSize.MENU );
-		this.set_image (image);
+                this.set_image (image);
                 this.label= "Start Commits";
                 this.always_show_image = true;
                 this.accel_group = null;
@@ -171,6 +171,7 @@ public class StatusIconA : StatusIcon {
             
         }
         
+        
         class ImageMenuItemC : ImageMenuItem {
             
             public ImageMenuItemC()
@@ -184,12 +185,12 @@ public class StatusIconA : StatusIcon {
                 this.accel_group = null;
                 
                 this.activate.connect( () => {
-                    GitMonitor.gitmonitor.start();
+                    GitMonitor.gitmonitor.stop();
                     var tr = GitRepo.list();
                     for (var i= 0; i< tr.length;i++) {
                         statusicon.set_from_stock( i%2 == 0 ?  Gtk.Stock.FULLSCREEN : Gtk.Stock.LEAVE_FULLSCREEN );
                                 
-                        var repo = tr[i];
+                        var repo = tr.index(i);
                         //if (!repo.autocommit()) {
                             //??? should we ignore ones not on autocommit..
                         //    continue;
@@ -198,12 +199,13 @@ public class StatusIconA : StatusIcon {
                             statusicon.set_tooltip_text("pull: " + repo.name);
                             var str = repo.pull();
                                     // do not care if it's already in sycn..
-                            if (Regex.match_simple ("Already up-to-date", str); 
+                            if (Regex.match_simple ("Already up-to-date", str) ) {
                                 continue;
                             }
                             var notification = new Notify.Notification( 
                                      "Updated " + repo.name,
-                                    body : str
+                                     str,
+                                       "dialog-information"
                                    
                             );
                         
@@ -212,7 +214,7 @@ public class StatusIconA : StatusIcon {
                                      
                         } catch(Error e) {
                             print("notification or push errror- probably to many in queue..");
-                            statusicon.set_from_stock( Gtk.Stock.RECORD );
+                            statusicon.set_from_stock( Gtk.Stock.MEDIA_RECORD );
                             print(e.message);
                             
                         }        
