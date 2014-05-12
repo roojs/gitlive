@@ -32,6 +32,32 @@ public class GitRepo : Object
         return -1;
     
     }
+    
+    public static Array<GitRepo> list_cache = null;
+    
+    public static Array<GitRepo> list()
+    {
+        
+        if (Repo._list !== false) {
+            return Repo._list;
+        }
+        Repo._list  = [];
+        var dir = GLib.get_home_dir() + '/gitlive';
+        var ar = File.list(dir );
+        print(JSON.stringify(ar));
+        ar.forEach(function(f) {
+            if (File.exists(dir + '/' + f +'/.git')) {
+                Repo._list.push(new imports.Scm.Git.Repo.Repo(  {
+                    repopath : dir  +'/' + f,
+                    name : f
+                }))
+            }
+        });
+        
+        return Repo._list;
+          
+}
+    
  
    
     /**
