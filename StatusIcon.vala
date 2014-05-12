@@ -178,56 +178,51 @@ public class StatusIconA : StatusIcon {
                 
                 var  image = new Gtk.Image();
                 image.set_from_stock(Gtk.Stock.FULLSCREEN,Gtk.IconSize.MENU );
-		this.set_image (image);
+                this.set_image (image);
                 this.label= "Pull (Refresh) All";
                 this.always_show_image = true;
                 this.accel_group = null;
                 
                 this.activate.connect( () => {
-                    /*
-                   imports.GitMonitor.GitMonitor.stop();
-                           
-                            
-                            var tr = imports.Scm.Repo.Repo.list();
-                            for (var i= 0; i< tr.length;i++) {
-                                this.parent.parent.el.set_from_stock( i%2 ?  Gtk.STOCK_FULLSCREEN : Gtk.STOCK_LEAVE_FULLSCREEN );
+                    GitMonitor.gitmonitor.start();
+                    var tr = GitRepo.list();
+                    for (var i= 0; i< tr.length;i++) {
+                        statusicon.set_from_stock( i%2 == 0 ?  Gtk.Stock.FULLSCREEN : Gtk.Stock.LEAVE_FULLSCREEN );
                                 
-                                var repo = tr[i];
-                                if (!repo.autocommit()) {
-                                    //??? should we ignore ones not on autocommit..
-                                    continue;
-                                }
-                                try {
-                                    this.parent.parent.el.set_tooltip_text("pull: " + repo.name);
-                               
-                                    var str = repo.pull();
+                        var repo = tr[i];
+                        //if (!repo.autocommit()) {
+                            //??? should we ignore ones not on autocommit..
+                        //    continue;
+                        //}
+                        try {
+                            statusicon.set_tooltip_text("pull: " + repo.name);
+                            var str = repo.pull();
                                     // do not care if it's already in sycn..
-                                    if (str.match(/Already up-to-date/)) {
-                                        continue;
-                                    }
-                                    var notification = new Notify.Notification({
-                                       summary: "Updated " + repo.name,
-                                       body : str
-                                   });
-                                   notification.set_timeout(20);
-                                   notification.show();
-                                   
-                                } catch(e) {
-                                    this.parent.parent.el.set_from_stock( Gtk.STOCK_MEDIA_RECORD );
-                                    print(JSON.stringify(e));
-                                    print("notification or push errror- probably to many in queue..");
-                                    imports.gitlive.errorDialog(e.message);
-
-                                }
+                            if (Regex.match_simple ("Already up-to-date", str); 
+                                continue;
                             }
-                            this.parent.parent.el.set_tooltip_text(this.parent.parent.tooltip_text);
-                               
+                            var notification = new Notify.Notification( 
+                                     "Updated " + repo.name,
+                                    body : str
+                                   
+                            );
+                        
+                            notification.set_timeout(20);
+                            notification.show();
+                                     
+                        } catch(Error e) {
+                            print("notification or push errror- probably to many in queue..");
+                            statusicon.set_from_stock( Gtk.Stock.RECORD );
+                            print(e.message);
                             
+                        }        
+
+                    } 
+                    statusicon.set_tooltip_text("Gitlive");
                              
-                          
-                            imports.GitMonitor.GitMonitor.start();
-                    
-                    */
+                            
+                    GitMonitor.gitmonitor.start();         
+                           
                 });
             }
             
