@@ -244,7 +244,7 @@ public class GitRepo : Object
     public string pull () throws Error, SpawnError
     {
         // should probably hand error conditions better... 
-        string[] cmd = { "pull" };
+        string[] cmd = { "pull" , "--no-edit" };
         return this.git( cmd );
 
         
