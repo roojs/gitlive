@@ -402,7 +402,9 @@ public class GitMonitor : Monitor
                 repo.pull();
             } catch(Error e) {
                 failure +=  e.message;
-            }  
+            }
+            
+            
             // -- DO STUFF..            
             try {
                 repo.add(add_files);
