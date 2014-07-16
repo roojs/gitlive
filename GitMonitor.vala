@@ -18,7 +18,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
  
             this.message = "";
             this.commit_all = false;
-  
+            
             var vpath_ar = this.dir.substring(GitMonitor.gitlive.length +1).split("/", 0);
             
             if (vpath_ar[0].length < 1) {
@@ -596,6 +596,10 @@ public class GitMonitor : Monitor
         if (this.paused) {
             return;
         }
+        if (src.dir == GitMonitor.gitlive) {
+           return; // attribute on top level..
+        }
+        
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd = new GitMonitorQueue(src);
         if (cmd.shouldIgnore()) {

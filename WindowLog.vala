@@ -24,9 +24,7 @@ public class WindowLog : Object  {
             return this.getStatus();
         } );
         //Roo.log("Windowlog start");
-        this.screen.active_window_changed.connect((pr_win) => {
-            this.windowChanged();
-        });
+        this.screen.active_window_changed.connect( this.windowChanged );
     }
     
     
@@ -53,7 +51,7 @@ public class WindowLog : Object  {
         return true;
     }
 
-    public void windowChanged()
+    public void windowChanged(Wnck.Window? pr_win)
     {
         this.screen.force_update();
        // print("window changeD");
@@ -69,7 +67,7 @@ public class WindowLog : Object  {
                     //var cmd = File.realpath('/proc/'+ pid + '/exe');
             string cmd = "";
              
-            print("/proc/%u/cmdline".printf(pid) + "\n");
+           // print("/proc/%u/cmdline".printf(pid) + "\n");
 
             if (pid > 0 ) { 
                 var cf = File.new_for_path("/proc/%u/cmdline".printf(pid));
@@ -80,7 +78,7 @@ public class WindowLog : Object  {
                 cmd = "UNKNOWN";
             } 
             //  has it changed?
-            print(this.win +"\n" + cmd + "\n");
+            //print(this.win +"\n" + cmd + "\n");
             if (this.win.length < 1 || (win != this.win)) { 
         
                 //print((xDate.newDate()).format("Y-m-d H:i:s") + " " + win + ' - '+ cmd );
@@ -102,7 +100,7 @@ public class WindowLog : Object  {
         var now = new DateTime.now(new TimeZone.local()); 
 
         var dir =  this.outdir + now.format("/%Y/%m");
-        print(dir + "\n");
+        //print(dir + "\n");
 
 
         if (this.lastdir.length < 1 || this.lastdir != dir) {
@@ -119,7 +117,7 @@ public class WindowLog : Object  {
         var fname = now.format("/%d") + ".log";
         var path  = dir + "/" + fname;
         var time  = now.format("%H:%M:%S ");
-        print("time: " + time + "\n");
+        //print("time: " + time + "\n");
         var f = File.new_for_path(path);
     	FileOutputStream ios = f.append_to (FileCreateFlags.NONE);
 		var data_out = new DataOutputStream (ios);
