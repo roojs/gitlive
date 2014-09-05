@@ -400,6 +400,22 @@ public class GitMonitor : Monitor
             */
             
             // if file was added, then removed, 
+            var remove_files_f = new Array<GitMonitorQueue>();
+            for(var ii = 0;ii < remove_files.length;ii++) {
+                if (GitMonitorQueue.indexOfAdd(add_files,  remove_files.index(ii).vname) > -1 ) {
+                    // in add and remove - do not remvove
+                    continue;
+                }
+                remove_files_f.append_val(remove_files.index(ii));
+            };
+            for(var ii = 0;ii < add_files.length;ii++) {
+                if (GitMonitorQueue.indexOfAdd(remove_files,  add_files.index(ii).vname) > -1 ) {
+                    // in add and remove - do not remvove
+                    continue;
+                }
+                add_files_f.append_val(add_files.index(ii));
+            };
+            
             
             
             // make sure monitoring is paused so it does not recursively pick up
