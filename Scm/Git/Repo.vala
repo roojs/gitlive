@@ -63,6 +63,11 @@ class GitRepo : Object
         // not sure if that is how git works.. but just be certian.
         for (var i = 0; i < files.length;i++) {
             var f = files.item(i);
+            
+            if (!GLib.FileUtils.test(this.repopath +"/" + f, GLib.FileTest.EXISTS)) {
+                continue;
+            }
+            printf("Checked %s - exists\n", this.repopath +"/" + f);
             try {
                 this.git( { "add",   f });
             } catch (Error e) {
