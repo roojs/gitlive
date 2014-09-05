@@ -390,7 +390,7 @@ public class GitMonitor : Monitor
                         break;
                 } 
             }
-            
+            print( "ADD : %s\n", queueArrayToString(add_files));
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
            
@@ -438,7 +438,7 @@ public class GitMonitor : Monitor
             
             // -- DO STUFF..            
             try {
-                repo.add(add_files);
+                repo.add(add_files_f);
             } catch(Error e) {
                 failure +=  e.message;
             }  
