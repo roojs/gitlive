@@ -90,7 +90,8 @@ public class GitMonitorQueue : MonitorNamePathDir {
         
         /** -- statics --*/
         
-        public static int indexOfAdd( Array<GitMonitorQueue> add_files, string add) {
+        public static int indexOfAdd( Array<GitMonitorQueue> add_files, string add)
+        {
             for(var i =0; i < add_files.length; i++) {
                 if (add_files.index(i).vname == add) {
                     return i;
