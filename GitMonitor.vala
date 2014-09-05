@@ -338,6 +338,7 @@ public class GitMonitor : Monitor
             var repo = repo_list.index(i);
 
             var add_files = new Array<GitMonitorQueue>();
+            var add_files_f = new Array<GitMonitorQueue>();
             var remove_files = new Array<GitMonitorQueue>();
             var messages = new Array<GitMonitorQueue>();
             //print(JSON.stringify(repo.cmds,null,4));
@@ -386,8 +387,8 @@ public class GitMonitor : Monitor
             // these can fail... at present... as we wildcard stuff.
             stdout.printf("ADD : %u files\n"  , add_files.length);
             
-            // make sure added files do not get removed..
-
+            // make sure added files do not get removed.. ?? 
+            /*
             var remove_files_f = new Array<GitMonitorQueue>();
             for(var ii = 0;ii < remove_files.length;ii++) {
                 if (GitMonitorQueue.indexOfAdd(add_files,  remove_files.index(ii).vname) > -1 ) {
@@ -396,7 +397,11 @@ public class GitMonitor : Monitor
                 remove_files_f.append_val(remove_files.index(ii));
             };
             stdout.printf("REMOVE : %u files\n"  , remove_files_f.length);
-             
+            */
+            
+            // if file was added, then removed, 
+            
+            
             // make sure monitoring is paused so it does not recursively pick up
             // deletions
             try {
