@@ -114,11 +114,11 @@ public class GitMonitorQueue : MonitorNamePathDir {
             }
             return string.joinv("\n",ret);
         }
-        public static string queueArrayToString(Array<GitMonitorQueue> list{
+        public static string queueArrayToString(Array<GitMonitorQueue> list) {
             var ret = "";
             for(var i =0; i < list.length; i++) {
                 
-                ret += (ret.length > 0 ? ", " : "") + list.item(i).vname;
+                ret += (ret.length > 0 ? ", " : "") + list.index(i).vname;
             }
             return ret;
             
@@ -390,7 +390,8 @@ public class GitMonitor : Monitor
                         break;
                 } 
             }
-            print( "ADD : %s\n", queueArrayToString(add_files));
+            print( "ADD : %s\n", GitMonitorQueue.queueArrayToString(add_files));
+            print( "REMOVE FILES: %s\n", GitMonitorQueue.queueArrayToString(remove_files));
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
            
@@ -423,8 +424,8 @@ public class GitMonitor : Monitor
                 add_files_f.append_val(add_files.index(ii));
             };
             
-            print("ADD : %u files\n"  , add_files_f.length);
-            print("REMOVE: %u files\n"  , remove_files_f.length);
+            print( "ADD : %s\n", GitMonitorQueue.queueArrayToString(add_files_f));
+            print( "REMOVE FILES: %s\n", GitMonitorQueue.queueArrayToString(remove_files_f));
            
             
             // make sure monitoring is paused so it does not recursively pick up
@@ -682,8 +683,7 @@ public class GitMonitor : Monitor
         cmd_s.action = "rm";
         this.queue.append_val(cmd_s);
 
- 
-
+  
         cmd_d.action = "add";
         this.queue.append_val(cmd_d);
 
