@@ -385,8 +385,7 @@ public class GitMonitor : Monitor
             
             //repo.debug = 1;
             // these can fail... at present... as we wildcard stuff.
-            stdout.printf("ADD : %u files\n"  , add_files.length);
-            
+           
             // make sure added files do not get removed.. ?? 
             /*
             var remove_files_f = new Array<GitMonitorQueue>();
@@ -416,7 +415,9 @@ public class GitMonitor : Monitor
                 add_files_f.append_val(add_files.index(ii));
             };
             
-            
+            print("ADD : %u files\n"  , add_files_f.length);
+            print("REMOVE: %u files\n"  , remove_files_f.length);
+           
             
             // make sure monitoring is paused so it does not recursively pick up
             // deletions
@@ -645,7 +646,7 @@ public class GitMonitor : Monitor
         this.lastAdd = new DateTime.now(new TimeZone.local()); 
         var cmd_s = new GitMonitorQueue(src);
 
-        var cmd_d = new GitMonitorQueue(src);
+        var cmd_d = new GitMonitorQueue(dest);
    
         
         if (cmd_d.gitpath != cmd_s.gitpath) {
@@ -670,11 +671,12 @@ public class GitMonitor : Monitor
             return;
         }
         
+        
+        
         cmd_s.action = "rm";
         this.queue.append_val(cmd_s);
 
-
-
+ 
 
         cmd_d.action = "add";
         this.queue.append_val(cmd_d);
