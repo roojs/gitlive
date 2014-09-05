@@ -679,11 +679,11 @@ public class GitMonitor : Monitor
 
             return;
         }
-         
+        print("RM: %s\n", cmds_s.vname);
         cmd_s.action = "rm";
         this.queue.append_val(cmd_s);
 
-  
+        print("ADD: %s\n", cmds_d.vname);
         cmd_d.action = "add";
         this.queue.append_val(cmd_d);
 
