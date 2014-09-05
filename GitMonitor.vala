@@ -90,27 +90,27 @@ public class GitMonitorQueue : MonitorNamePathDir {
         
         /** -- statics --*/
         
-        public static int indexOfAdd( Gee.ArrayList<GitMonitorQueue> add_files, string add)
+        public static int indexOfAdd( Array<GitMonitorQueue> add_files, string add)
         {
             for(var i =0; i < add_files.length; i++) {
-                if (add_files.get(i).vname == add) {
+                if (add_files.index(i).vname == add) {
                     return i;
                 }
             }
             return -1;
         }
-        public static  int indexOfMessage(Gee.ArrayList<GitMonitorQueue> messages, string message)  {
-            for(var i =0; i < messages.size; i++) {
-                if (messages.get(i).message == message) {
+        public static  int indexOfMessage(Array<GitMonitorQueue> messages, string message)  {
+            for(var i =0; i < messages.length; i++) {
+                if (messages.index(i).message == message) {
                     return i;
                 }
             }
             return -1;
         }
-        public static string messageToString(Gee.ArrayList<GitMonitorQueue> messages ) {
+        public static string messageToString(Array<GitMonitorQueue> messages ) {
             string[] ret = {};
-            for(var i =0; i < messages.size; i++) {
-                ret+= messages.get(i).message;
+            for(var i =0; i < messages.length; i++) {
+                ret+= messages.index(i).message;
             }
             return string.joinv("\n",ret);
         }
@@ -131,7 +131,7 @@ public class GitMonitor : Monitor
     public static string gitlive;
     
     
-    public Gee.ArrayList<GitMonitorQueue> queue ;
+    public Array<GitMonitorQueue> queue ;
     public bool queueRunning = false;
     
     public DateTime lastAdd;
@@ -670,9 +670,7 @@ public class GitMonitor : Monitor
 
             return;
         }
-        
-        
-        
+         
         cmd_s.action = "rm";
         this.queue.append_val(cmd_s);
 
