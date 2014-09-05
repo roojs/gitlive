@@ -114,7 +114,15 @@ public class GitMonitorQueue : MonitorNamePathDir {
             }
             return string.joinv("\n",ret);
         }
-
+        public static string queueArrayToString(Array<GitMonitorQueue> list{
+            var ret = "";
+            for(var i =0; i < list.length; i++) {
+                
+                ret += (ret.length > 0 ? ", " : "") + list.item(i).vname;
+            }
+            return ret;
+            
+        }
 }
 
 
