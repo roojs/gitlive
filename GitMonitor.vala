@@ -679,10 +679,14 @@ public class GitMonitor : Monitor
 
             return;
         }
+        
+        
         print("RM: %s\n", cmd_s.vname);
         cmd_s.action = "rm";
         this.queue.append_val(cmd_s);
 
+        
+        
         print("ADD: %s\n", cmd_d.vname);
         cmd_d.action = "add";
         this.queue.append_val(cmd_d);
@@ -691,6 +695,10 @@ public class GitMonitor : Monitor
         var cmd = new GitMonitorQueue(dest);
         cmd.action = "commit";
         cmd.message = "MOVED " + cmd_s.vname + " to " + cmd_d.vname;
+        if (GitMonitorQueue.queueHas(cmd_s, "add")) {
+            cmd.message = cmd_d.vname;
+        }
+        
         this.queue.append_val(cmd);
 
 
