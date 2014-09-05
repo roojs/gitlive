@@ -366,7 +366,7 @@ public class GitMonitor : Monitor
                         break;
                     
                     case "rm":
-                        if (GitMonitorQueue.indexOfAdd(add_files, cmd.vname) > -1 ) {
+                        if (GitMonitorQueue.indexOfAdd(remove_files, cmd.vname) > -1 ) {
                            break;
                         }
                         
@@ -679,11 +679,11 @@ public class GitMonitor : Monitor
 
             return;
         }
-        print("RM: %s\n", cmds_s.vname);
+        print("RM: %s\n", cmd_s.vname);
         cmd_s.action = "rm";
         this.queue.append_val(cmd_s);
 
-        print("ADD: %s\n", cmds_d.vname);
+        print("ADD: %s\n", cmd_d.vname);
         cmd_d.action = "add";
         this.queue.append_val(cmd_d);
 
