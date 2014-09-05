@@ -123,6 +123,24 @@ public class GitMonitorQueue : MonitorNamePathDir {
             return ret;
             
         }
+        
+        public static bool GitMonitorQueue.queueHas(Array<GitMonitorQueue> list , GitMonitorQueue cmd_s, string action)) {
+            for(var i =0; i < list.length; i++) {
+                var test = list.index(i);
+                if (list.index(i).gitpath != cmd_s.gitpath) {
+                    continue
+                }
+                if (list.index(i).vname != cmd_s.vname) {
+                    continue
+                }
+                if (list.index(i).action != action) {
+                    continue
+                }
+                return true;
+            }
+            return false;
+        }
+        
 }
 
 
@@ -695,7 +713,7 @@ public class GitMonitor : Monitor
         var cmd = new GitMonitorQueue(dest);
         cmd.action = "commit";
         cmd.message = "MOVED " + cmd_s.vname + " to " + cmd_d.vname;
-        if (GitMonitorQueue.queueHas(cmd_s, "add")) {
+        if (GitMonitorQueue.queueHas(this.queue, cmd_s, "add")) {
             cmd.message = cmd_d.vname;
         }
         
