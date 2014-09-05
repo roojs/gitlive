@@ -131,7 +131,7 @@ public class GitMonitor : Monitor
     public static string gitlive;
     
     
-    public Array<GitMonitorQueue> queue ;
+    public Gee.ArrayList<GitMonitorQueue> queue ;
     public bool queueRunning = false;
     
     public DateTime lastAdd;
