@@ -90,7 +90,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
         
         /** -- statics --*/
         
-        public static int indexOfAdd( Array<GitMonitorQueue> add_files, string add)
+        public static int indexOfAdd( Gee.ArrayList<GitMonitorQueue> add_files, string add)
         {
             for(var i =0; i < add_files.length; i++) {
                 if (add_files.index(i).vname == add) {
@@ -99,7 +99,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
             }
             return -1;
         }
-        public static  int indexOfMessage(Array<GitMonitorQueue> messages, string message)  {
+        public static  int indexOfMessage(Gee.ArrayList<GitMonitorQueue> messages, string message)  {
             for(var i =0; i < messages.length; i++) {
                 if (messages.index(i).message == message) {
                     return i;
@@ -107,7 +107,7 @@ public class GitMonitorQueue : MonitorNamePathDir {
             }
             return -1;
         }
-        public static string messageToString(Array<GitMonitorQueue> messages ) {
+        public static string messageToString(Gee.ArrayList<GitMonitorQueue> messages ) {
             string[] ret = {};
             for(var i =0; i < messages.length; i++) {
                 ret+= messages.index(i).message;
