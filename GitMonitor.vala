@@ -445,7 +445,7 @@ public class GitMonitor : Monitor
             try { 
                 success += repo.commit(
                     GitMonitorQueue.messageToString(messages),
-                    add_files  
+                    add_files_f
                 );
                 success += repo.push();
 
