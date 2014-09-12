@@ -124,17 +124,17 @@ public class GitMonitorQueue : MonitorNamePathDir {
             
         }
         
-        public static bool GitMonitorQueue.queueHas(Array<GitMonitorQueue> list , GitMonitorQueue cmd_s, string action)) {
+        public static bool  queueHas(Array<GitMonitorQueue> list , GitMonitorQueue cmd_s, string action) {
             for(var i =0; i < list.length; i++) {
                 var test = list.index(i);
                 if (list.index(i).gitpath != cmd_s.gitpath) {
-                    continue
+                    continue;
                 }
                 if (list.index(i).vname != cmd_s.vname) {
-                    continue
+                    continue;
                 }
                 if (list.index(i).action != action) {
-                    continue
+                    continue;
                 }
                 return true;
             }
