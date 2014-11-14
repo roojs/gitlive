@@ -53,12 +53,12 @@ public class StatusIconA : StatusIcon {
         this.set_visible(true);      
         
         var menu = new MenuA();
-                 
+        menu.ref();       
          
-        this.activate.connect( () =>{
+        this.popup_menu.connect( () =>{
             
             //print(Array.prototype.slice.call(arguments).join(','));
-            
+            print("menu activiate called\n");
             //var menu = this.get('menu');
             
             menu.show_all();
