@@ -54,8 +54,9 @@ public class StatusIconA : StatusIcon {
         
         var menu = new MenuA();
         menu.ref();       
-         
-        this.popup_menu.connect( ((uint button, uint time) =>{
+
+	    
+        this.popup_menu.connect( (  button,   time) =>{
             
             //print(Array.prototype.slice.call(arguments).join(','));
             print("menu activiate called\n");
@@ -75,8 +76,10 @@ public class StatusIconA : StatusIcon {
             menu.popup(
                     
                         null, null,
-                        this.position_menu, 0,
-                         Gtk.get_current_event_time()
+                        //this.position_menu,
+                       null,
+                        button,
+                         time
             );
                         
             
