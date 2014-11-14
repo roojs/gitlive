@@ -55,7 +55,7 @@ public class StatusIconA : StatusIcon {
         var menu = new MenuA();
         menu.ref();       
          
-        this.popup_menu.connect( () =>{
+        this.popup_menu.connect( ((uint button, uint time) =>{
             
             //print(Array.prototype.slice.call(arguments).join(','));
             print("menu activiate called\n");
